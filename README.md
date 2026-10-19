@@ -1,6 +1,6 @@
 # DECODE-JOIN
 
-Based on `NLP_Proposal_3A_Updated.pdf` (mentor-approved). Draft, so expect edits.
+Drft version
 
 ## The problem
 
@@ -42,6 +42,10 @@ Early check: if the documented vs undocumented gap is tiny on Spider, we spend t
 
 ## Where things are
 
-- `../code/JoinGR-E656`: JoinGR code and data
-- `../references`: papers
-- `../plans`, `../proposal`: older versions, now superseded
+JoinGR: https://anonymous.4open.science/r/JoinGR-E656
+CoreT: https://github.com/UKPLab/emnlp2026-core-t
+BEAVER: Code: https://github.com/beaverbench/beaver , Dataset: https://huggingface.co/collections/beaverbench/beaver-dataset
+Spider: https://yale-lily.github.io/spider
+BIRD: https://bird-bench.github.io/
+KaggleDBQA: https://www.microsoft.com/en-us/research/publication/kaggledbqa-realistic-evaluation-of-text-to-sql-parsers/
+FIBEN: https://github.com/IBM/fiben-benchmark
