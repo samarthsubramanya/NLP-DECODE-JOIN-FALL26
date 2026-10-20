@@ -1,21 +1,9 @@
-"""Create the DECODE-JOIN DuckDB file and its metadata tables.
+"""Create an empty DuckDB file at data/decode_join.duckdb."""
+from pathlib import Path
 
-    python scripts/init_db.py [--db data/decode_join.duckdb]
-"""
-import argparse
+import duckdb
 
-from duckdb_utils import DEFAULT_DB, SCHEMA_SQL, connect
-
-
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--db", default=DEFAULT_DB)
-    args = ap.parse_args()
-    con = connect(args.db)
-    con.execute(SCHEMA_SQL.read_text())
-    n = con.execute("select count(*) from information_schema.tables where table_schema='meta'").fetchone()[0]
-    print(f"{args.db}: {n} meta tables ready")
-
-
-if __name__ == "__main__":
-    main()
+path = Path(__file__).resolve().parent.parent / "data" / "decode_join.duckdb"
+path.parent.mkdir(exist_ok=True)
+duckdb.connect(str(path)).close()
+print(f"created {path}")
