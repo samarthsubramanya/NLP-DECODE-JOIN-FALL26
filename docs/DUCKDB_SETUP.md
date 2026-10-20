@@ -77,3 +77,10 @@ again (the table was there), then remove the table and push so the master is emp
 
 - No schema or data. Whoever loads the datasets decides the table layout.
 - The `database-setup` branch has not been pushed to or merged on GitHub yet.
+
+## Initial file in git
+
+The empty starting database is committed once at `data/decode_join.duckdb` so the branch has a
+ready-made starting file. The Hugging Face repo remains the master copy: after your first pull
+this file will show as modified in git, and you should not commit it again. Use
+`git update-index --assume-unchanged data/decode_join.duckdb` to hide that.
