@@ -40,8 +40,34 @@ BIRD, Spider, BEAVER, KaggleDBQA, FIBEN.
 
 Early check: if the documented vs undocumented gap is tiny on Spider, we spend the rest of our effort on obfuscated BIRD/BEAVER.
 
+## Task 1: JoinGR baselines
+
+`baselines/` wraps JoinGR's own search and metric code (nothing in `../JoinGR-E656` is edited) and scores it per setting.
+
+```bash
+uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python -r requirements.txt
+.venv/bin/python -m baselines.settings --dataset beaver --setting documented no_desc stripped
+.venv/bin/python -m baselines.index --dataset beaver --setting documented     # repeat per setting
+.venv/bin/python -m baselines.run --dataset beaver --setting documented       # repeat per setting
+.venv/bin/python -m baselines.report
+```
+
+Datasets: `beaver` (DW), `bird` (dev), `spider` (dev). Graphs and embeddings go to `artifacts/` (not committed), scores to `results/<dataset>/<setting>/<encoder>/<method>.json`, the table to `results/summary.md`.
+
+`no_desc` isn't a proposal setting. It withholds only descriptions so the stripped loss splits into meaning vs structure.
+
+What we found so far:
+- Vanilla matches the paper on all three datasets, and the heuristic matches on Spider. Our heuristic beats the paper on Beaver and BIRD, so the paper probably used different heuristic settings. Ask the mentor.
+- JoinGR's gold labels keep the SQL's casing, so 28% of Spider gold tables can never match. That's why Spider caps at ~0.75. Results carry both the paper-protocol score and a `summary_fixed` score.
+- With gold fixed, Spider dev is ~0.999 PR@15 for dense retrieval: no headroom. BIRD has little (~0.96). Beaver is where the gap lives.
+- Heuristic JoinGR returns nothing without join edges, so on stripped graphs dense retrieval is the real floor.
+
+Still to do: trained JoinGR (in-domain and BIRD → Beaver), the obfuscated setting, KaggleDBQA/FIBEN, and column-level metrics once the gold-column extractor lands.
+
 ## Where things are
 
-- `../code/JoinGR-E656`: JoinGR code and data
-- `../references`: papers
-- `../plans`, `../proposal`: older versions, now superseded
+- `../../NLP_Proposal_3A_Updated.pdf`: final proposal
+- `../JoinGR-E656`: JoinGR code and data
+- `../beaver`, `../core-t`: BEAVER and CORE-T code
+- `../../references`: papers
+- `../../plans`, `../../proposal`: older versions, now superseded
