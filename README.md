@@ -49,3 +49,16 @@ Spider: https://yale-lily.github.io/spider
 BIRD: https://bird-bench.github.io/
 KaggleDBQA: https://www.microsoft.com/en-us/research/publication/kaggledbqa-realistic-evaluation-of-text-to-sql-parsers/
 FIBEN: https://github.com/IBM/fiben-benchmark
+
+## Shared DuckDB
+
+One database file lives in a private Hugging Face repo: https://huggingface.co/datasets/SuhxsReddy/decode-join-duckdb
+(ask Suhas for access, then `pip install duckdb huggingface_hub` and `hf auth login`).
+
+```
+python scripts/pull_db.py   # download to data/decode_join.duckdb
+# ... add your data ...
+python scripts/push_db.py   # upload (overwrites the shared file)
+```
+
+DuckDB allows one writer, so: always pull right before you start, tell the group chat before you push, and only one person pushes at a time.
