@@ -52,4 +52,4 @@ FIBEN: https://github.com/IBM/fiben-benchmark
 
 ## Shared DuckDB
 
-The team database is a single DuckDB file stored in a private Hugging Face repo. Pull it, work on it, push it back, one person at a time. Full explanation and steps: [docs/DUCKDB_SETUP.md](docs/DUCKDB_SETUP.md).
+The team database is a single DuckDB file stored in a Hugging Face repo. Pull it, work on it, then open a pull request with your changes; the repo owner merges. Full explanation and steps: [docs/DUCKDB_SETUP.md](docs/DUCKDB_SETUP.md).
