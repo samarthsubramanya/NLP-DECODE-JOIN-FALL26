@@ -14,16 +14,21 @@ Usage:
     python import_bird.py --bird-dir path/to/dev_20240627 --duckdb decode_join_bird_dev.duckdb
     python import_bird.py --bird-dir path/to/dev_20240627 --duckdb decode_join_bird_dev.duckdb --audit
     python import_bird.py --bird-dir path/to/dev_20240627 --duckdb decode_join_bird_dev.duckdb --audit-full
+    python import_bird.py --duckdb decode_join_bird_dev.duckdb --mapping-only
+    python import_bird.py --duckdb decode_join_bird_dev.duckdb --mapping-only --rename-schemas
 
 Outputs:
-    - the .duckdb file (one schema per SQLite file, plus the bird_metadata schema)
-    - schema_mapping.csv next to the .duckdb file (source_path, duckdb_schema)
+    - the .duckdb file (one bird_<db_name> schema per SQLite file, plus the bird_metadata schema)
+    - schema_mapping.csv next to the .duckdb file, one row per column
+      (source_database, target_schema, table, ordinal, column, sqlite_type,
+       duckdb_type, nullable, attributes)
 """
 import argparse
 import csv
 import hashlib
 import json
 import math
+import re
 import sqlite3
 from collections import Counter
 from pathlib import Path
@@ -71,9 +76,9 @@ def bytes_hash(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def schema_name(relative_path):
-    h = hashlib.sha256(relative_path.encode("utf-8")).hexdigest()[:20]
-    return SCHEMA_PREFIX + h
+def schema_name(path):
+    """Readable schema per database, e.g. california_schools.sqlite -> bird_california_schools."""
+    return SCHEMA_PREFIX + re.sub(r"[^0-9a-z_]+", "_", path.stem.lower())
 
 
 def is_skipped(path):
@@ -357,14 +362,20 @@ def import_table_preserving_types(sqlite_db, db, schema, table):
 
 def import_database(db, path):
     relative = path.relative_to(BIRD_DIR).as_posix()
-    schema = schema_name(relative)
+    schema = schema_name(path)
 
     existing = db.execute(
-        f"SELECT source_hash FROM {quote(META)}.files WHERE source_path = ?", [relative]
+        f"SELECT source_hash, duckdb_schema FROM {quote(META)}.files WHERE source_path = ?",
+        [relative],
     ).fetchone()
 
     if existing:
         print(f"Already imported: {relative}")
+        if existing[1] != schema:
+            raise RuntimeError(
+                f"{relative} was imported as schema {existing[1]}, expected {schema}. "
+                "Delete the .duckdb file and re-run the import."
+            )
         if file_hash(path) != existing[0]:
             raise RuntimeError(f"Original file changed: {relative}")
         with open_sqlite(path) as source:
@@ -511,14 +522,133 @@ def audit(db, full=False):
     print("AUDIT PASSED")
 
 
-def write_schema_mapping(db, out_path):
-    rows = db.execute(f"""
+def table_columns(db, schema, table):
+    return db.execute("""
+        SELECT column_name, data_type FROM information_schema.columns
+        WHERE table_schema = ? AND table_name = ?
+        ORDER BY ordinal_position
+    """, [schema, table]).fetchall()
+
+
+def rename_schemas(db):
+    """Move each database from its old schema to schema_name() inside DuckDB.
+    DuckDB cannot rename schemas, so tables are copied, checked, and the old schema dropped."""
+    records = db.execute(f"""
         SELECT source_path, duckdb_schema FROM {quote(META)}.files
         WHERE duckdb_schema IS NOT NULL ORDER BY source_path
     """).fetchall()
+    targets = Counter(schema_name(Path(relative)) for relative, _ in records)
+    clashes = sorted(s for s, n in targets.items() if n > 1)
+    if clashes:
+        raise SystemExit(f"Several databases map to the same schema name: {clashes}")
+
+    for relative, old in records:
+        new = schema_name(Path(relative))
+        if old == new:
+            continue
+        if db.execute(
+            "SELECT COUNT(*) FROM information_schema.schemata WHERE schema_name = ?", [new]
+        ).fetchone()[0]:
+            raise RuntimeError(f"Schema already exists: {new}")
+        tables = [
+            r[0]
+            for r in db.execute("""
+                SELECT table_name FROM information_schema.tables
+                WHERE table_schema = ? AND table_type = 'BASE TABLE'
+                ORDER BY table_name
+            """, [old]).fetchall()
+        ]
+        print(f"{old} -> {new} ({len(tables)} tables)", flush=True)
+
+        db.execute("BEGIN TRANSACTION")
+        try:
+            db.execute(f"CREATE SCHEMA {quote(new)}")
+            for table in tables:
+                src, dst = f"{quote(old)}.{quote(table)}", f"{quote(new)}.{quote(table)}"
+                db.execute(f"CREATE TABLE {dst} AS SELECT * FROM {src}")
+                if table_columns(db, old, table) != table_columns(db, new, table):
+                    raise RuntimeError(f"Column/type mismatch after copy: {new}.{table}")
+                old_n = db.execute(f"SELECT COUNT(*) FROM {src}").fetchone()[0]
+                new_n = db.execute(f"SELECT COUNT(*) FROM {dst}").fetchone()[0]
+                if old_n != new_n:
+                    raise RuntimeError(f"Row count mismatch after copy: {new}.{table}")
+            db.execute(f"DROP SCHEMA {quote(old)} CASCADE")
+            db.execute(
+                f"UPDATE {quote(META)}.files SET duckdb_schema = ? WHERE source_path = ?",
+                [new, relative],
+            )
+            db.execute("COMMIT")
+        except Exception:
+            db.execute("ROLLBACK")
+            raise
+    db.execute("CHECKPOINT")
+
+
+def compact(path):
+    """DuckDB does not shrink files after DROP; copy into a fresh file and swap it in."""
+    tmp = path.with_name(path.name + ".compact")
+    if tmp.exists():
+        raise SystemExit(f"Remove leftover file first: {tmp}")
+    db = duckdb.connect(str(path))
+    try:
+        db.execute(f"ATTACH {literal(tmp)} AS compacted")
+        db.execute(f"COPY FROM DATABASE {quote(path.stem)} TO compacted")
+        db.execute("DETACH compacted")
+    finally:
+        db.close()
+    before = path.stat().st_size
+    tmp.replace(path)
+    print(f"Compacted {path.name}: {before / 1e9:.2f} GB -> {path.stat().st_size / 1e9:.2f} GB")
+
+
+def column_attributes(col, fks):
+    attrs = []
+    if col["pk"]:
+        attrs.append("PRIMARY KEY")
+    if col["notnull"]:
+        attrs.append("NOT NULL")
+    if col["dflt_value"] is not None:
+        attrs.append(f"DEFAULT {col['dflt_value']}")
+    for fk in fks.get(col["name"], []):
+        target = fk["table"] + (f"({fk['to']})" if fk["to"] else "")
+        attrs.append(f"REFERENCES {target}")
+    return " ".join(attrs)
+
+
+def write_schema_mapping(db, out_path):
+    """One row per column: SQLite declared type and attributes next to the DuckDB type."""
+    tables = db.execute(f"""
+        SELECT f.source_path, f.duckdb_schema, t.table_name, t.metadata_json
+        FROM {quote(META)}.files f
+        JOIN {quote(META)}.table_info t USING (source_path)
+        WHERE f.duckdb_schema IS NOT NULL
+        ORDER BY f.source_path, t.table_name
+    """).fetchall()
+
+    rows = []
+    for relative, schema, table, metadata_json in tables:
+        meta = json.loads(metadata_json)
+        source_cols = [c for c in meta["table_xinfo"] if c["hidden"] == 0]
+        duck_cols = table_columns(db, schema, table)
+        if [c["name"] for c in source_cols] != [c[0] for c in duck_cols]:
+            raise RuntimeError(f"Column mismatch while writing mapping: {schema}.{table}")
+
+        fks = {}
+        for fk in meta["foreign_key_list"]:
+            fks.setdefault(fk["from"], []).append(fk)
+
+        for ordinal, (col, (_, duck_type)) in enumerate(zip(source_cols, duck_cols), 1):
+            rows.append([
+                Path(relative).stem, schema, table, ordinal, col["name"],
+                col["type"], duck_type, not col["notnull"], column_attributes(col, fks),
+            ])
+
     with open(out_path, "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["source_path", "duckdb_schema"])
+        w.writerow([
+            "source_database", "target_schema", "table", "ordinal", "column",
+            "sqlite_type", "duckdb_type", "nullable", "attributes",
+        ])
         w.writerows(rows)
     print(f"Wrote {len(rows)} rows to {out_path}")
 
@@ -528,7 +658,7 @@ def main():
     global BIRD_DIR, STORE_BYTES, LARGE_ROWS
 
     ap = argparse.ArgumentParser()
-    ap.add_argument("--bird-dir", required=True, type=Path,
+    ap.add_argument("--bird-dir", type=Path,
                     help="Folder containing dev_databases/ and/or train_databases/")
     ap.add_argument("--duckdb", default="decode_join_bird.duckdb", type=Path)
     ap.add_argument("--pilot", action="store_true", help="Import only the 'financial' database")
@@ -538,8 +668,30 @@ def main():
                     help="Also embed each .sqlite file's raw bytes in DuckDB (roughly doubles size)")
     ap.add_argument("--large-table-rows", type=int, default=2_000_000,
                     help="Above this row count, verify with a low-memory fingerprint")
+    ap.add_argument("--mapping-only", action="store_true",
+                    help="Only rewrite schema_mapping.csv from an existing .duckdb file")
+    ap.add_argument("--rename-schemas", action="store_true",
+                    help="With --mapping-only: first move old hashed schemas to bird_<db_name>")
     args = ap.parse_args()
 
+    if args.rename_schemas and not args.mapping_only:
+        raise SystemExit("--rename-schemas requires --mapping-only")
+    if args.mapping_only:
+        if not args.duckdb.is_file():
+            raise SystemExit("DuckDB file not found.")
+        db = duckdb.connect(str(args.duckdb), read_only=not args.rename_schemas)
+        try:
+            if args.rename_schemas:
+                rename_schemas(db)
+            write_schema_mapping(db, args.duckdb.with_name("schema_mapping.csv"))
+        finally:
+            db.close()
+        if args.rename_schemas:
+            compact(args.duckdb)
+        return
+
+    if args.bird_dir is None:
+        raise SystemExit("--bird-dir is required unless --mapping-only is set")
     BIRD_DIR = args.bird_dir.resolve()
     STORE_BYTES = args.store_original_bytes
     LARGE_ROWS = args.large_table_rows
@@ -552,6 +704,10 @@ def main():
         raise SystemExit("No .sqlite files found under --bird-dir")
 
     print(f"Found {len(sqlite_files)} SQLite files")
+    schemas = Counter(schema_name(p) for p in sqlite_files)
+    clashes = sorted(s for s, n in schemas.items() if n > 1)
+    if clashes:
+        raise SystemExit(f"Several databases map to the same schema name: {clashes}")
     per_split = Counter(p.relative_to(BIRD_DIR).parts[0] for p in sqlite_files)
     for split, n in per_split.items():
         exp = EXPECTED_DB_COUNTS.get(split)
