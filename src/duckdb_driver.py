@@ -27,5 +27,9 @@ spider_schema = schema_for("data/spider/schema_mapping.csv", "aircraft")
 spider_df = spider_bvr_con.execute(f'SELECT * FROM "{spider_schema}"."aircraft" LIMIT 5').df()
 print(f"Spider BVR schema: {spider_schema}")
 print(spider_df)
-print("="*100)
+print("="*100)          # file name as it appears in the repo
+bvr_schema = "beaver_dw"   # BEAVER schemas are fixed names: beaver_dw, beaver_nova, beaver_neutron
+bvr_df = spider_bvr_con.execute(f'SELECT * FROM "{bvr_schema}"."ACADEMIC_TERMS" LIMIT 5').df()
+print(f"Spider BVR schema: {bvr_schema}")
+print(bvr_df)
 
