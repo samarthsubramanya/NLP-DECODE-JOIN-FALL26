@@ -11,7 +11,7 @@ import duckdb
 
 
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 SPIDER_DIR = ROOT / "datasets" / "spider" / "spider_data"
 DUCKDB_FILE = ROOT / "data" / "decode_join.duckdb"
