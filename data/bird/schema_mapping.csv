@@ -1,12 +1,799 @@
-source_path,duckdb_schema
-dev_databases/california_schools/california_schools.sqlite,bird_2e377a20271f85d96bbb
-dev_databases/card_games/card_games.sqlite,bird_f1fe9dd89b5574237d69
-dev_databases/codebase_community/codebase_community.sqlite,bird_757af3a1e109efd8d512
-dev_databases/debit_card_specializing/debit_card_specializing.sqlite,bird_9fda5371a46f32c50511
-dev_databases/european_football_2/european_football_2.sqlite,bird_131d5b41127b44b228e3
-dev_databases/financial/financial.sqlite,bird_c90c8ceb92dad6062a8c
-dev_databases/formula_1/formula_1.sqlite,bird_62ef070769e1b9a9f5d9
-dev_databases/student_club/student_club.sqlite,bird_89e3c25b5a9e73f81e3a
-dev_databases/superhero/superhero.sqlite,bird_448cba80920ae8b3e21f
-dev_databases/thrombosis_prediction/thrombosis_prediction.sqlite,bird_154a31bbdb7ccdb4336c
-dev_databases/toxicology/toxicology.sqlite,bird_9df67b6d47c6b92a6bfd
+source_database,target_schema,table,ordinal,column,sqlite_type,duckdb_type,nullable,attributes
+california_schools,bird_california_schools,frpm,1,CDSCode,TEXT,VARCHAR,False,PRIMARY KEY NOT NULL REFERENCES schools(CDSCode)
+california_schools,bird_california_schools,frpm,2,Academic Year,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,3,County Code,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,4,District Code,INTEGER,BIGINT,True,
+california_schools,bird_california_schools,frpm,5,School Code,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,6,County Name,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,7,District Name,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,8,School Name,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,9,District Type,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,10,School Type,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,11,Educational Option Type,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,12,NSLP Provision Status,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,13,Charter School (Y/N),INTEGER,BIGINT,True,
+california_schools,bird_california_schools,frpm,14,Charter School Number,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,15,Charter Funding Type,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,16,IRC,INTEGER,BIGINT,True,
+california_schools,bird_california_schools,frpm,17,Low Grade,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,18,High Grade,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,frpm,19,Enrollment (K-12),REAL,DOUBLE,True,
+california_schools,bird_california_schools,frpm,20,Free Meal Count (K-12),REAL,DOUBLE,True,
+california_schools,bird_california_schools,frpm,21,Percent (%) Eligible Free (K-12),REAL,DOUBLE,True,
+california_schools,bird_california_schools,frpm,22,FRPM Count (K-12),REAL,DOUBLE,True,
+california_schools,bird_california_schools,frpm,23,Percent (%) Eligible FRPM (K-12),REAL,DOUBLE,True,
+california_schools,bird_california_schools,frpm,24,Enrollment (Ages 5-17),REAL,DOUBLE,True,
+california_schools,bird_california_schools,frpm,25,Free Meal Count (Ages 5-17),REAL,DOUBLE,True,
+california_schools,bird_california_schools,frpm,26,Percent (%) Eligible Free (Ages 5-17),REAL,DOUBLE,True,
+california_schools,bird_california_schools,frpm,27,FRPM Count (Ages 5-17),REAL,DOUBLE,True,
+california_schools,bird_california_schools,frpm,28,Percent (%) Eligible FRPM (Ages 5-17),REAL,DOUBLE,True,
+california_schools,bird_california_schools,frpm,29,2013-14 CALPADS Fall 1 Certification Status,INTEGER,BIGINT,True,
+california_schools,bird_california_schools,satscores,1,cds,TEXT,VARCHAR,False,PRIMARY KEY NOT NULL REFERENCES schools(CDSCode)
+california_schools,bird_california_schools,satscores,2,rtype,TEXT,VARCHAR,False,NOT NULL
+california_schools,bird_california_schools,satscores,3,sname,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,satscores,4,dname,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,satscores,5,cname,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,satscores,6,enroll12,INTEGER,BIGINT,False,NOT NULL
+california_schools,bird_california_schools,satscores,7,NumTstTakr,INTEGER,BIGINT,False,NOT NULL
+california_schools,bird_california_schools,satscores,8,AvgScrRead,INTEGER,BIGINT,True,
+california_schools,bird_california_schools,satscores,9,AvgScrMath,INTEGER,BIGINT,True,
+california_schools,bird_california_schools,satscores,10,AvgScrWrite,INTEGER,BIGINT,True,
+california_schools,bird_california_schools,satscores,11,NumGE1500,INTEGER,BIGINT,True,
+california_schools,bird_california_schools,schools,1,CDSCode,TEXT,VARCHAR,False,PRIMARY KEY NOT NULL
+california_schools,bird_california_schools,schools,2,NCESDist,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,3,NCESSchool,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,4,StatusType,TEXT,VARCHAR,False,NOT NULL
+california_schools,bird_california_schools,schools,5,County,TEXT,VARCHAR,False,NOT NULL
+california_schools,bird_california_schools,schools,6,District,TEXT,VARCHAR,False,NOT NULL
+california_schools,bird_california_schools,schools,7,School,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,8,Street,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,9,StreetAbr,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,10,City,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,11,Zip,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,12,State,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,13,MailStreet,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,14,MailStrAbr,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,15,MailCity,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,16,MailZip,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,17,MailState,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,18,Phone,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,19,Ext,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,20,Website,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,21,OpenDate,DATE,VARCHAR,True,
+california_schools,bird_california_schools,schools,22,ClosedDate,DATE,VARCHAR,True,
+california_schools,bird_california_schools,schools,23,Charter,INTEGER,BIGINT,True,
+california_schools,bird_california_schools,schools,24,CharterNum,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,25,FundingType,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,26,DOC,TEXT,VARCHAR,False,NOT NULL
+california_schools,bird_california_schools,schools,27,DOCType,TEXT,VARCHAR,False,NOT NULL
+california_schools,bird_california_schools,schools,28,SOC,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,29,SOCType,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,30,EdOpsCode,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,31,EdOpsName,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,32,EILCode,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,33,EILName,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,34,GSoffered,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,35,GSserved,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,36,Virtual,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,37,Magnet,INTEGER,BIGINT,True,
+california_schools,bird_california_schools,schools,38,Latitude,REAL,DOUBLE,True,
+california_schools,bird_california_schools,schools,39,Longitude,REAL,DOUBLE,True,
+california_schools,bird_california_schools,schools,40,AdmFName1,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,41,AdmLName1,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,42,AdmEmail1,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,43,AdmFName2,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,44,AdmLName2,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,45,AdmEmail2,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,46,AdmFName3,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,47,AdmLName3,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,48,AdmEmail3,TEXT,VARCHAR,True,
+california_schools,bird_california_schools,schools,49,LastUpdate,DATE,VARCHAR,False,NOT NULL
+card_games,bird_card_games,cards,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+card_games,bird_card_games,cards,2,artist,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,3,asciiName,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,4,availability,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,5,borderColor,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,6,cardKingdomFoilId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,7,cardKingdomId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,8,colorIdentity,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,9,colorIndicator,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,10,colors,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,11,convertedManaCost,REAL,DOUBLE,True,
+card_games,bird_card_games,cards,12,duelDeck,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,13,edhrecRank,INTEGER,BIGINT,True,
+card_games,bird_card_games,cards,14,faceConvertedManaCost,REAL,DOUBLE,True,
+card_games,bird_card_games,cards,15,faceName,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,16,flavorName,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,17,flavorText,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,18,frameEffects,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,19,frameVersion,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,20,hand,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,21,hasAlternativeDeckLimit,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,22,hasContentWarning,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,23,hasFoil,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,24,hasNonFoil,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,25,isAlternative,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,26,isFullArt,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,27,isOnlineOnly,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,28,isOversized,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,29,isPromo,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,30,isReprint,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,31,isReserved,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,32,isStarter,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,33,isStorySpotlight,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,34,isTextless,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,35,isTimeshifted,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,cards,36,keywords,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,37,layout,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,38,leadershipSkills,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,39,life,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,40,loyalty,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,41,manaCost,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,42,mcmId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,43,mcmMetaId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,44,mtgArenaId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,45,mtgjsonV4Id,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,46,mtgoFoilId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,47,mtgoId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,48,multiverseId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,49,name,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,50,number,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,51,originalReleaseDate,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,52,originalText,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,53,originalType,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,54,otherFaceIds,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,55,power,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,56,printings,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,57,promoTypes,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,58,purchaseUrls,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,59,rarity,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,60,scryfallId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,61,scryfallIllustrationId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,62,scryfallOracleId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,63,setCode,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,64,side,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,65,subtypes,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,66,supertypes,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,67,tcgplayerProductId,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,68,text,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,69,toughness,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,70,type,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,71,types,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,72,uuid,TEXT,VARCHAR,False,NOT NULL
+card_games,bird_card_games,cards,73,variations,TEXT,VARCHAR,True,
+card_games,bird_card_games,cards,74,watermark,TEXT,VARCHAR,True,
+card_games,bird_card_games,foreign_data,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+card_games,bird_card_games,foreign_data,2,flavorText,TEXT,VARCHAR,True,
+card_games,bird_card_games,foreign_data,3,language,TEXT,VARCHAR,True,
+card_games,bird_card_games,foreign_data,4,multiverseid,INTEGER,BIGINT,True,
+card_games,bird_card_games,foreign_data,5,name,TEXT,VARCHAR,True,
+card_games,bird_card_games,foreign_data,6,text,TEXT,VARCHAR,True,
+card_games,bird_card_games,foreign_data,7,type,TEXT,VARCHAR,True,
+card_games,bird_card_games,foreign_data,8,uuid,TEXT,VARCHAR,True,REFERENCES cards(uuid)
+card_games,bird_card_games,legalities,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+card_games,bird_card_games,legalities,2,format,TEXT,VARCHAR,True,
+card_games,bird_card_games,legalities,3,status,TEXT,VARCHAR,True,
+card_games,bird_card_games,legalities,4,uuid,TEXT,VARCHAR,True,REFERENCES cards(uuid)
+card_games,bird_card_games,rulings,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+card_games,bird_card_games,rulings,2,date,DATE,VARCHAR,True,
+card_games,bird_card_games,rulings,3,text,TEXT,VARCHAR,True,
+card_games,bird_card_games,rulings,4,uuid,TEXT,VARCHAR,True,REFERENCES cards(uuid)
+card_games,bird_card_games,set_translations,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+card_games,bird_card_games,set_translations,2,language,TEXT,VARCHAR,True,
+card_games,bird_card_games,set_translations,3,setCode,TEXT,VARCHAR,True,REFERENCES sets(code)
+card_games,bird_card_games,set_translations,4,translation,TEXT,VARCHAR,True,
+card_games,bird_card_games,sets,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+card_games,bird_card_games,sets,2,baseSetSize,INTEGER,BIGINT,True,
+card_games,bird_card_games,sets,3,block,TEXT,VARCHAR,True,
+card_games,bird_card_games,sets,4,booster,TEXT,VARCHAR,True,
+card_games,bird_card_games,sets,5,code,TEXT,VARCHAR,False,NOT NULL
+card_games,bird_card_games,sets,6,isFoilOnly,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,sets,7,isForeignOnly,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,sets,8,isNonFoilOnly,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,sets,9,isOnlineOnly,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,sets,10,isPartialPreview,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+card_games,bird_card_games,sets,11,keyruneCode,TEXT,VARCHAR,True,
+card_games,bird_card_games,sets,12,mcmId,INTEGER,BIGINT,True,
+card_games,bird_card_games,sets,13,mcmIdExtras,INTEGER,BIGINT,True,
+card_games,bird_card_games,sets,14,mcmName,TEXT,VARCHAR,True,
+card_games,bird_card_games,sets,15,mtgoCode,TEXT,VARCHAR,True,
+card_games,bird_card_games,sets,16,name,TEXT,VARCHAR,True,
+card_games,bird_card_games,sets,17,parentCode,TEXT,VARCHAR,True,
+card_games,bird_card_games,sets,18,releaseDate,DATE,VARCHAR,True,
+card_games,bird_card_games,sets,19,tcgplayerGroupId,INTEGER,BIGINT,True,
+card_games,bird_card_games,sets,20,totalSetSize,INTEGER,BIGINT,True,
+card_games,bird_card_games,sets,21,type,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,badges,1,Id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+codebase_community,bird_codebase_community,badges,2,UserId,INTEGER,BIGINT,True,REFERENCES users(Id)
+codebase_community,bird_codebase_community,badges,3,Name,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,badges,4,Date,DATETIME,VARCHAR,True,
+codebase_community,bird_codebase_community,comments,1,Id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+codebase_community,bird_codebase_community,comments,2,PostId,INTEGER,BIGINT,True,REFERENCES posts(Id)
+codebase_community,bird_codebase_community,comments,3,Score,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,comments,4,Text,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,comments,5,CreationDate,DATETIME,VARCHAR,True,
+codebase_community,bird_codebase_community,comments,6,UserId,INTEGER,BIGINT,True,REFERENCES users(Id)
+codebase_community,bird_codebase_community,comments,7,UserDisplayName,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,postHistory,1,Id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+codebase_community,bird_codebase_community,postHistory,2,PostHistoryTypeId,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,postHistory,3,PostId,INTEGER,BIGINT,True,REFERENCES posts(Id)
+codebase_community,bird_codebase_community,postHistory,4,RevisionGUID,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,postHistory,5,CreationDate,DATETIME,VARCHAR,True,
+codebase_community,bird_codebase_community,postHistory,6,UserId,INTEGER,BIGINT,True,REFERENCES users(Id)
+codebase_community,bird_codebase_community,postHistory,7,Text,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,postHistory,8,Comment,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,postHistory,9,UserDisplayName,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,postLinks,1,Id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+codebase_community,bird_codebase_community,postLinks,2,CreationDate,DATETIME,VARCHAR,True,
+codebase_community,bird_codebase_community,postLinks,3,PostId,INTEGER,BIGINT,True,REFERENCES posts(Id)
+codebase_community,bird_codebase_community,postLinks,4,RelatedPostId,INTEGER,BIGINT,True,REFERENCES posts(Id)
+codebase_community,bird_codebase_community,postLinks,5,LinkTypeId,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,posts,1,Id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+codebase_community,bird_codebase_community,posts,2,PostTypeId,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,posts,3,AcceptedAnswerId,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,posts,4,CreaionDate,DATETIME,VARCHAR,True,
+codebase_community,bird_codebase_community,posts,5,Score,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,posts,6,ViewCount,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,posts,7,Body,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,posts,8,OwnerUserId,INTEGER,BIGINT,True,REFERENCES users(Id)
+codebase_community,bird_codebase_community,posts,9,LasActivityDate,DATETIME,VARCHAR,True,
+codebase_community,bird_codebase_community,posts,10,Title,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,posts,11,Tags,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,posts,12,AnswerCount,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,posts,13,CommentCount,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,posts,14,FavoriteCount,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,posts,15,LastEditorUserId,INTEGER,BIGINT,True,REFERENCES users(Id)
+codebase_community,bird_codebase_community,posts,16,LastEditDate,DATETIME,VARCHAR,True,
+codebase_community,bird_codebase_community,posts,17,CommunityOwnedDate,DATETIME,VARCHAR,True,
+codebase_community,bird_codebase_community,posts,18,ParentId,INTEGER,BIGINT,True,REFERENCES posts(Id)
+codebase_community,bird_codebase_community,posts,19,ClosedDate,DATETIME,VARCHAR,True,
+codebase_community,bird_codebase_community,posts,20,OwnerDisplayName,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,posts,21,LastEditorDisplayName,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,tags,1,Id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+codebase_community,bird_codebase_community,tags,2,TagName,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,tags,3,Count,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,tags,4,ExcerptPostId,INTEGER,BIGINT,True,REFERENCES posts(Id)
+codebase_community,bird_codebase_community,tags,5,WikiPostId,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,users,1,Id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+codebase_community,bird_codebase_community,users,2,Reputation,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,users,3,CreationDate,DATETIME,VARCHAR,True,
+codebase_community,bird_codebase_community,users,4,DisplayName,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,users,5,LastAccessDate,DATETIME,VARCHAR,True,
+codebase_community,bird_codebase_community,users,6,WebsiteUrl,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,users,7,Location,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,users,8,AboutMe,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,users,9,Views,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,users,10,UpVotes,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,users,11,DownVotes,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,users,12,AccountId,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,users,13,Age,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,users,14,ProfileImageUrl,TEXT,VARCHAR,True,
+codebase_community,bird_codebase_community,votes,1,Id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+codebase_community,bird_codebase_community,votes,2,PostId,INTEGER,BIGINT,True,REFERENCES posts(Id)
+codebase_community,bird_codebase_community,votes,3,VoteTypeId,INTEGER,BIGINT,True,
+codebase_community,bird_codebase_community,votes,4,CreationDate,DATE,VARCHAR,True,
+codebase_community,bird_codebase_community,votes,5,UserId,INTEGER,BIGINT,True,REFERENCES users(Id)
+codebase_community,bird_codebase_community,votes,6,BountyAmount,INTEGER,BIGINT,True,
+debit_card_specializing,bird_debit_card_specializing,customers,1,CustomerID,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+debit_card_specializing,bird_debit_card_specializing,customers,2,Segment,TEXT,VARCHAR,True,
+debit_card_specializing,bird_debit_card_specializing,customers,3,Currency,TEXT,VARCHAR,True,
+debit_card_specializing,bird_debit_card_specializing,gasstations,1,GasStationID,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+debit_card_specializing,bird_debit_card_specializing,gasstations,2,ChainID,INTEGER,BIGINT,True,
+debit_card_specializing,bird_debit_card_specializing,gasstations,3,Country,TEXT,VARCHAR,True,
+debit_card_specializing,bird_debit_card_specializing,gasstations,4,Segment,TEXT,VARCHAR,True,
+debit_card_specializing,bird_debit_card_specializing,products,1,ProductID,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+debit_card_specializing,bird_debit_card_specializing,products,2,Description,TEXT,VARCHAR,True,
+debit_card_specializing,bird_debit_card_specializing,transactions_1k,1,TransactionID,INTEGER,BIGINT,True,PRIMARY KEY
+debit_card_specializing,bird_debit_card_specializing,transactions_1k,2,Date,DATE,VARCHAR,True,
+debit_card_specializing,bird_debit_card_specializing,transactions_1k,3,Time,TEXT,VARCHAR,True,
+debit_card_specializing,bird_debit_card_specializing,transactions_1k,4,CustomerID,INTEGER,BIGINT,True,
+debit_card_specializing,bird_debit_card_specializing,transactions_1k,5,CardID,INTEGER,BIGINT,True,
+debit_card_specializing,bird_debit_card_specializing,transactions_1k,6,GasStationID,INTEGER,BIGINT,True,
+debit_card_specializing,bird_debit_card_specializing,transactions_1k,7,ProductID,INTEGER,BIGINT,True,
+debit_card_specializing,bird_debit_card_specializing,transactions_1k,8,Amount,INTEGER,BIGINT,True,
+debit_card_specializing,bird_debit_card_specializing,transactions_1k,9,Price,REAL,DOUBLE,True,
+debit_card_specializing,bird_debit_card_specializing,yearmonth,1,CustomerID,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL REFERENCES customers REFERENCES customers
+debit_card_specializing,bird_debit_card_specializing,yearmonth,2,Date,TEXT,VARCHAR,False,PRIMARY KEY NOT NULL
+debit_card_specializing,bird_debit_card_specializing,yearmonth,3,Consumption,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Country,1,id,INTEGER,BIGINT,True,PRIMARY KEY
+european_football_2,bird_european_football_2,Country,2,name,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,League,1,id,INTEGER,BIGINT,True,PRIMARY KEY
+european_football_2,bird_european_football_2,League,2,country_id,INTEGER,BIGINT,True,REFERENCES country(id)
+european_football_2,bird_european_football_2,League,3,name,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Match,1,id,INTEGER,BIGINT,True,PRIMARY KEY
+european_football_2,bird_european_football_2,Match,2,country_id,INTEGER,BIGINT,True,REFERENCES Country
+european_football_2,bird_european_football_2,Match,3,league_id,INTEGER,BIGINT,True,REFERENCES League
+european_football_2,bird_european_football_2,Match,4,season,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Match,5,stage,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,6,date,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Match,7,match_api_id,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,8,home_team_api_id,INTEGER,BIGINT,True,REFERENCES Team(team_api_id)
+european_football_2,bird_european_football_2,Match,9,away_team_api_id,INTEGER,BIGINT,True,REFERENCES Team(team_api_id)
+european_football_2,bird_european_football_2,Match,10,home_team_goal,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,11,away_team_goal,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,12,home_player_X1,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,13,home_player_X2,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,14,home_player_X3,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,15,home_player_X4,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,16,home_player_X5,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,17,home_player_X6,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,18,home_player_X7,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,19,home_player_X8,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,20,home_player_X9,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,21,home_player_X10,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,22,home_player_X11,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,23,away_player_X1,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,24,away_player_X2,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,25,away_player_X3,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,26,away_player_X4,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,27,away_player_X5,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,28,away_player_X6,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,29,away_player_X7,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,30,away_player_X8,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,31,away_player_X9,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,32,away_player_X10,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,33,away_player_X11,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,34,home_player_Y1,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,35,home_player_Y2,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,36,home_player_Y3,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,37,home_player_Y4,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,38,home_player_Y5,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,39,home_player_Y6,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,40,home_player_Y7,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,41,home_player_Y8,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,42,home_player_Y9,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,43,home_player_Y10,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,44,home_player_Y11,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,45,away_player_Y1,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,46,away_player_Y2,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,47,away_player_Y3,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,48,away_player_Y4,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,49,away_player_Y5,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,50,away_player_Y6,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,51,away_player_Y7,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,52,away_player_Y8,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,53,away_player_Y9,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,54,away_player_Y10,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,55,away_player_Y11,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Match,56,home_player_1,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,57,home_player_2,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,58,home_player_3,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,59,home_player_4,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,60,home_player_5,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,61,home_player_6,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,62,home_player_7,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,63,home_player_8,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,64,home_player_9,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,65,home_player_10,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,66,home_player_11,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,67,away_player_1,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,68,away_player_2,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,69,away_player_3,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,70,away_player_4,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,71,away_player_5,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,72,away_player_6,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,73,away_player_7,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,74,away_player_8,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,75,away_player_9,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,76,away_player_10,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,77,away_player_11,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Match,78,goal,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Match,79,shoton,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Match,80,shotoff,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Match,81,foulcommit,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Match,82,card,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Match,83,cross,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Match,84,corner,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Match,85,possession,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Match,86,B365H,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,87,B365D,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,88,B365A,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,89,BWH,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,90,BWD,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,91,BWA,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,92,IWH,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,93,IWD,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,94,IWA,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,95,LBH,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,96,LBD,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,97,LBA,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,98,PSH,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,99,PSD,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,100,PSA,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,101,WHH,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,102,WHD,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,103,WHA,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,104,SJH,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,105,SJD,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,106,SJA,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,107,VCH,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,108,VCD,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,109,VCA,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,110,GBH,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,111,GBD,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,112,GBA,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,113,BSH,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,114,BSD,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Match,115,BSA,REAL,DOUBLE,True,
+european_football_2,bird_european_football_2,Player,1,id,INTEGER,BIGINT,True,PRIMARY KEY
+european_football_2,bird_european_football_2,Player,2,player_api_id,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player,3,player_name,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Player,4,player_fifa_api_id,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player,5,birthday,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Player,6,height,INTEGER,DOUBLE,True,
+european_football_2,bird_european_football_2,Player,7,weight,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,1,id,INTEGER,BIGINT,True,PRIMARY KEY
+european_football_2,bird_european_football_2,Player_Attributes,2,player_fifa_api_id,INTEGER,BIGINT,True,REFERENCES Player(player_fifa_api_id)
+european_football_2,bird_european_football_2,Player_Attributes,3,player_api_id,INTEGER,BIGINT,True,REFERENCES Player(player_api_id)
+european_football_2,bird_european_football_2,Player_Attributes,4,date,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Player_Attributes,5,overall_rating,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,6,potential,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,7,preferred_foot,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Player_Attributes,8,attacking_work_rate,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Player_Attributes,9,defensive_work_rate,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Player_Attributes,10,crossing,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,11,finishing,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,12,heading_accuracy,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,13,short_passing,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,14,volleys,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,15,dribbling,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,16,curve,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,17,free_kick_accuracy,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,18,long_passing,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,19,ball_control,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,20,acceleration,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,21,sprint_speed,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,22,agility,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,23,reactions,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,24,balance,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,25,shot_power,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,26,jumping,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,27,stamina,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,28,strength,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,29,long_shots,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,30,aggression,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,31,interceptions,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,32,positioning,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,33,vision,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,34,penalties,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,35,marking,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,36,standing_tackle,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,37,sliding_tackle,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,38,gk_diving,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,39,gk_handling,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,40,gk_kicking,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,41,gk_positioning,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Player_Attributes,42,gk_reflexes,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team,1,id,INTEGER,BIGINT,True,PRIMARY KEY
+european_football_2,bird_european_football_2,Team,2,team_api_id,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team,3,team_fifa_api_id,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team,4,team_long_name,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team,5,team_short_name,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,1,id,INTEGER,BIGINT,True,PRIMARY KEY
+european_football_2,bird_european_football_2,Team_Attributes,2,team_fifa_api_id,INTEGER,BIGINT,True,REFERENCES Team(team_fifa_api_id)
+european_football_2,bird_european_football_2,Team_Attributes,3,team_api_id,INTEGER,BIGINT,True,REFERENCES Team(team_api_id)
+european_football_2,bird_european_football_2,Team_Attributes,4,date,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,5,buildUpPlaySpeed,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team_Attributes,6,buildUpPlaySpeedClass,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,7,buildUpPlayDribbling,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team_Attributes,8,buildUpPlayDribblingClass,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,9,buildUpPlayPassing,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team_Attributes,10,buildUpPlayPassingClass,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,11,buildUpPlayPositioningClass,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,12,chanceCreationPassing,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team_Attributes,13,chanceCreationPassingClass,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,14,chanceCreationCrossing,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team_Attributes,15,chanceCreationCrossingClass,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,16,chanceCreationShooting,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team_Attributes,17,chanceCreationShootingClass,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,18,chanceCreationPositioningClass,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,19,defencePressure,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team_Attributes,20,defencePressureClass,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,21,defenceAggression,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team_Attributes,22,defenceAggressionClass,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,23,defenceTeamWidth,INTEGER,BIGINT,True,
+european_football_2,bird_european_football_2,Team_Attributes,24,defenceTeamWidthClass,TEXT,VARCHAR,True,
+european_football_2,bird_european_football_2,Team_Attributes,25,defenceDefenderLineClass,TEXT,VARCHAR,True,
+financial,bird_financial,account,1,account_id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL DEFAULT 0
+financial,bird_financial,account,2,district_id,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES district(district_id)
+financial,bird_financial,account,3,frequency,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,account,4,date,DATE,VARCHAR,False,NOT NULL
+financial,bird_financial,card,1,card_id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL DEFAULT 0
+financial,bird_financial,card,2,disp_id,INTEGER,BIGINT,False,NOT NULL REFERENCES disp(disp_id)
+financial,bird_financial,card,3,type,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,card,4,issued,DATE,VARCHAR,False,NOT NULL
+financial,bird_financial,client,1,client_id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+financial,bird_financial,client,2,gender,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,client,3,birth_date,DATE,VARCHAR,False,NOT NULL
+financial,bird_financial,client,4,district_id,INTEGER,BIGINT,False,NOT NULL REFERENCES district(district_id)
+financial,bird_financial,disp,1,disp_id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+financial,bird_financial,disp,2,client_id,INTEGER,BIGINT,False,NOT NULL REFERENCES client(client_id)
+financial,bird_financial,disp,3,account_id,INTEGER,BIGINT,False,NOT NULL REFERENCES account(account_id)
+financial,bird_financial,disp,4,type,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,district,1,district_id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL DEFAULT 0
+financial,bird_financial,district,2,A2,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,district,3,A3,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,district,4,A4,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,district,5,A5,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,district,6,A6,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,district,7,A7,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,district,8,A8,INTEGER,BIGINT,False,NOT NULL
+financial,bird_financial,district,9,A9,INTEGER,BIGINT,False,NOT NULL
+financial,bird_financial,district,10,A10,REAL,DOUBLE,False,NOT NULL
+financial,bird_financial,district,11,A11,INTEGER,BIGINT,False,NOT NULL
+financial,bird_financial,district,12,A12,REAL,DOUBLE,True,
+financial,bird_financial,district,13,A13,REAL,DOUBLE,False,NOT NULL
+financial,bird_financial,district,14,A14,INTEGER,BIGINT,False,NOT NULL
+financial,bird_financial,district,15,A15,INTEGER,BIGINT,True,
+financial,bird_financial,district,16,A16,INTEGER,BIGINT,False,NOT NULL
+financial,bird_financial,loan,1,loan_id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL DEFAULT 0
+financial,bird_financial,loan,2,account_id,INTEGER,BIGINT,False,NOT NULL REFERENCES account(account_id)
+financial,bird_financial,loan,3,date,DATE,VARCHAR,False,NOT NULL
+financial,bird_financial,loan,4,amount,INTEGER,BIGINT,False,NOT NULL
+financial,bird_financial,loan,5,duration,INTEGER,BIGINT,False,NOT NULL
+financial,bird_financial,loan,6,payments,REAL,DOUBLE,False,NOT NULL
+financial,bird_financial,loan,7,status,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,order,1,order_id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL DEFAULT 0
+financial,bird_financial,order,2,account_id,INTEGER,BIGINT,False,NOT NULL REFERENCES account(account_id)
+financial,bird_financial,order,3,bank_to,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,order,4,account_to,INTEGER,BIGINT,False,NOT NULL
+financial,bird_financial,order,5,amount,REAL,DOUBLE,False,NOT NULL
+financial,bird_financial,order,6,k_symbol,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,trans,1,trans_id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL DEFAULT 0
+financial,bird_financial,trans,2,account_id,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES account(account_id)
+financial,bird_financial,trans,3,date,DATE,VARCHAR,False,NOT NULL
+financial,bird_financial,trans,4,type,TEXT,VARCHAR,False,NOT NULL
+financial,bird_financial,trans,5,operation,TEXT,VARCHAR,True,
+financial,bird_financial,trans,6,amount,INTEGER,BIGINT,False,NOT NULL
+financial,bird_financial,trans,7,balance,INTEGER,BIGINT,False,NOT NULL
+financial,bird_financial,trans,8,k_symbol,TEXT,VARCHAR,True,
+financial,bird_financial,trans,9,bank,TEXT,VARCHAR,True,
+financial,bird_financial,trans,10,account,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,circuits,1,circuitId,INTEGER,BIGINT,True,PRIMARY KEY
+formula_1,bird_formula_1,circuits,2,circuitRef,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,circuits,3,name,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,circuits,4,location,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,circuits,5,country,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,circuits,6,lat,REAL,DOUBLE,True,
+formula_1,bird_formula_1,circuits,7,lng,REAL,DOUBLE,True,
+formula_1,bird_formula_1,circuits,8,alt,INTEGER,VARCHAR,True,
+formula_1,bird_formula_1,circuits,9,url,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,constructorResults,1,constructorResultsId,INTEGER,BIGINT,True,PRIMARY KEY
+formula_1,bird_formula_1,constructorResults,2,raceId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES races(raceId)
+formula_1,bird_formula_1,constructorResults,3,constructorId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES constructors(constructorId)
+formula_1,bird_formula_1,constructorResults,4,points,REAL,DOUBLE,True,
+formula_1,bird_formula_1,constructorResults,5,status,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,constructorStandings,1,constructorStandingsId,INTEGER,BIGINT,True,PRIMARY KEY
+formula_1,bird_formula_1,constructorStandings,2,raceId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES races(raceId)
+formula_1,bird_formula_1,constructorStandings,3,constructorId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES constructors(constructorId)
+formula_1,bird_formula_1,constructorStandings,4,points,REAL,DOUBLE,False,NOT NULL DEFAULT 0
+formula_1,bird_formula_1,constructorStandings,5,position,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,constructorStandings,6,positionText,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,constructorStandings,7,wins,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+formula_1,bird_formula_1,constructors,1,constructorId,INTEGER,BIGINT,True,PRIMARY KEY
+formula_1,bird_formula_1,constructors,2,constructorRef,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,constructors,3,name,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,constructors,4,nationality,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,constructors,5,url,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,driverStandings,1,driverStandingsId,INTEGER,BIGINT,True,PRIMARY KEY
+formula_1,bird_formula_1,driverStandings,2,raceId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES races(raceId)
+formula_1,bird_formula_1,driverStandings,3,driverId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES drivers(driverId)
+formula_1,bird_formula_1,driverStandings,4,points,REAL,DOUBLE,False,NOT NULL DEFAULT 0
+formula_1,bird_formula_1,driverStandings,5,position,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,driverStandings,6,positionText,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,driverStandings,7,wins,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+formula_1,bird_formula_1,drivers,1,driverId,INTEGER,BIGINT,True,PRIMARY KEY
+formula_1,bird_formula_1,drivers,2,driverRef,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,drivers,3,number,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,drivers,4,code,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,drivers,5,forename,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,drivers,6,surname,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,drivers,7,dob,DATE,VARCHAR,True,
+formula_1,bird_formula_1,drivers,8,nationality,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,drivers,9,url,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,lapTimes,1,raceId,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL REFERENCES races(raceId)
+formula_1,bird_formula_1,lapTimes,2,driverId,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL REFERENCES drivers(driverId)
+formula_1,bird_formula_1,lapTimes,3,lap,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+formula_1,bird_formula_1,lapTimes,4,position,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,lapTimes,5,time,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,lapTimes,6,milliseconds,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,pitStops,1,raceId,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL REFERENCES races(raceId)
+formula_1,bird_formula_1,pitStops,2,driverId,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL REFERENCES drivers(driverId)
+formula_1,bird_formula_1,pitStops,3,stop,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+formula_1,bird_formula_1,pitStops,4,lap,INTEGER,BIGINT,False,NOT NULL
+formula_1,bird_formula_1,pitStops,5,time,TEXT,VARCHAR,False,NOT NULL
+formula_1,bird_formula_1,pitStops,6,duration,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,pitStops,7,milliseconds,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,qualifying,1,qualifyId,INTEGER,BIGINT,True,PRIMARY KEY
+formula_1,bird_formula_1,qualifying,2,raceId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES races(raceId)
+formula_1,bird_formula_1,qualifying,3,driverId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES drivers(driverId)
+formula_1,bird_formula_1,qualifying,4,constructorId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES constructors(constructorId)
+formula_1,bird_formula_1,qualifying,5,number,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+formula_1,bird_formula_1,qualifying,6,position,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,qualifying,7,q1,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,qualifying,8,q2,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,qualifying,9,q3,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,races,1,raceId,INTEGER,BIGINT,True,PRIMARY KEY
+formula_1,bird_formula_1,races,2,year,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES seasons(year)
+formula_1,bird_formula_1,races,3,round,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+formula_1,bird_formula_1,races,4,circuitId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES circuits(circuitId)
+formula_1,bird_formula_1,races,5,name,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,races,6,date,DATE,VARCHAR,False,NOT NULL DEFAULT '0000-00-00'
+formula_1,bird_formula_1,races,7,time,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,races,8,url,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,results,1,resultId,INTEGER,BIGINT,True,PRIMARY KEY
+formula_1,bird_formula_1,results,2,raceId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES races(raceId)
+formula_1,bird_formula_1,results,3,driverId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES drivers(driverId)
+formula_1,bird_formula_1,results,4,constructorId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES constructors(constructorId)
+formula_1,bird_formula_1,results,5,number,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,results,6,grid,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+formula_1,bird_formula_1,results,7,position,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,results,8,positionText,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,results,9,positionOrder,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+formula_1,bird_formula_1,results,10,points,REAL,DOUBLE,False,NOT NULL DEFAULT 0
+formula_1,bird_formula_1,results,11,laps,INTEGER,BIGINT,False,NOT NULL DEFAULT 0
+formula_1,bird_formula_1,results,12,time,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,results,13,milliseconds,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,results,14,fastestLap,INTEGER,BIGINT,True,
+formula_1,bird_formula_1,results,15,rank,INTEGER,BIGINT,True,DEFAULT 0
+formula_1,bird_formula_1,results,16,fastestLapTime,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,results,17,fastestLapSpeed,TEXT,VARCHAR,True,
+formula_1,bird_formula_1,results,18,statusId,INTEGER,BIGINT,False,NOT NULL DEFAULT 0 REFERENCES status(statusId)
+formula_1,bird_formula_1,seasons,1,year,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL DEFAULT 0
+formula_1,bird_formula_1,seasons,2,url,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+formula_1,bird_formula_1,status,1,statusId,INTEGER,BIGINT,True,PRIMARY KEY
+formula_1,bird_formula_1,status,2,status,TEXT,VARCHAR,False,NOT NULL DEFAULT ''
+student_club,bird_student_club,attendance,1,link_to_event,TEXT,VARCHAR,True,PRIMARY KEY REFERENCES event(event_id)
+student_club,bird_student_club,attendance,2,link_to_member,TEXT,VARCHAR,True,PRIMARY KEY REFERENCES member(member_id)
+student_club,bird_student_club,budget,1,budget_id,TEXT,VARCHAR,True,PRIMARY KEY
+student_club,bird_student_club,budget,2,category,TEXT,VARCHAR,True,
+student_club,bird_student_club,budget,3,spent,REAL,DOUBLE,True,
+student_club,bird_student_club,budget,4,remaining,REAL,DOUBLE,True,
+student_club,bird_student_club,budget,5,amount,INTEGER,BIGINT,True,
+student_club,bird_student_club,budget,6,event_status,TEXT,VARCHAR,True,
+student_club,bird_student_club,budget,7,link_to_event,TEXT,VARCHAR,True,REFERENCES event(event_id)
+student_club,bird_student_club,event,1,event_id,TEXT,VARCHAR,True,PRIMARY KEY
+student_club,bird_student_club,event,2,event_name,TEXT,VARCHAR,True,
+student_club,bird_student_club,event,3,event_date,TEXT,VARCHAR,True,
+student_club,bird_student_club,event,4,type,TEXT,VARCHAR,True,
+student_club,bird_student_club,event,5,notes,TEXT,VARCHAR,True,
+student_club,bird_student_club,event,6,location,TEXT,VARCHAR,True,
+student_club,bird_student_club,event,7,status,TEXT,VARCHAR,True,
+student_club,bird_student_club,expense,1,expense_id,TEXT,VARCHAR,True,PRIMARY KEY
+student_club,bird_student_club,expense,2,expense_description,TEXT,VARCHAR,True,
+student_club,bird_student_club,expense,3,expense_date,TEXT,VARCHAR,True,
+student_club,bird_student_club,expense,4,cost,REAL,DOUBLE,True,
+student_club,bird_student_club,expense,5,approved,TEXT,VARCHAR,True,
+student_club,bird_student_club,expense,6,link_to_member,TEXT,VARCHAR,True,REFERENCES member(member_id)
+student_club,bird_student_club,expense,7,link_to_budget,TEXT,VARCHAR,True,REFERENCES budget(budget_id)
+student_club,bird_student_club,income,1,income_id,TEXT,VARCHAR,True,PRIMARY KEY
+student_club,bird_student_club,income,2,date_received,TEXT,VARCHAR,True,
+student_club,bird_student_club,income,3,amount,INTEGER,BIGINT,True,
+student_club,bird_student_club,income,4,source,TEXT,VARCHAR,True,
+student_club,bird_student_club,income,5,notes,TEXT,VARCHAR,True,
+student_club,bird_student_club,income,6,link_to_member,TEXT,VARCHAR,True,REFERENCES member(member_id)
+student_club,bird_student_club,major,1,major_id,TEXT,VARCHAR,True,PRIMARY KEY
+student_club,bird_student_club,major,2,major_name,TEXT,VARCHAR,True,
+student_club,bird_student_club,major,3,department,TEXT,VARCHAR,True,
+student_club,bird_student_club,major,4,college,TEXT,VARCHAR,True,
+student_club,bird_student_club,member,1,member_id,TEXT,VARCHAR,True,PRIMARY KEY
+student_club,bird_student_club,member,2,first_name,TEXT,VARCHAR,True,
+student_club,bird_student_club,member,3,last_name,TEXT,VARCHAR,True,
+student_club,bird_student_club,member,4,email,TEXT,VARCHAR,True,
+student_club,bird_student_club,member,5,position,TEXT,VARCHAR,True,
+student_club,bird_student_club,member,6,t_shirt_size,TEXT,VARCHAR,True,
+student_club,bird_student_club,member,7,phone,TEXT,VARCHAR,True,
+student_club,bird_student_club,member,8,zip,INTEGER,BIGINT,True,REFERENCES zip_code(zip_code)
+student_club,bird_student_club,member,9,link_to_major,TEXT,VARCHAR,True,REFERENCES major(major_id)
+student_club,bird_student_club,zip_code,1,zip_code,INTEGER,BIGINT,True,PRIMARY KEY
+student_club,bird_student_club,zip_code,2,type,TEXT,VARCHAR,True,
+student_club,bird_student_club,zip_code,3,city,TEXT,VARCHAR,True,
+student_club,bird_student_club,zip_code,4,county,TEXT,VARCHAR,True,
+student_club,bird_student_club,zip_code,5,state,TEXT,VARCHAR,True,
+student_club,bird_student_club,zip_code,6,short_state,TEXT,VARCHAR,True,
+superhero,bird_superhero,alignment,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+superhero,bird_superhero,alignment,2,alignment,TEXT,VARCHAR,True,DEFAULT NULL
+superhero,bird_superhero,attribute,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+superhero,bird_superhero,attribute,2,attribute_name,TEXT,VARCHAR,True,DEFAULT NULL
+superhero,bird_superhero,colour,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+superhero,bird_superhero,colour,2,colour,TEXT,VARCHAR,True,DEFAULT NULL
+superhero,bird_superhero,gender,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+superhero,bird_superhero,gender,2,gender,TEXT,VARCHAR,True,DEFAULT NULL
+superhero,bird_superhero,hero_attribute,1,hero_id,INTEGER,BIGINT,True,DEFAULT NULL REFERENCES superhero(id)
+superhero,bird_superhero,hero_attribute,2,attribute_id,INTEGER,BIGINT,True,DEFAULT NULL REFERENCES attribute(id)
+superhero,bird_superhero,hero_attribute,3,attribute_value,INTEGER,BIGINT,True,DEFAULT NULL
+superhero,bird_superhero,hero_power,1,hero_id,INTEGER,BIGINT,True,DEFAULT NULL REFERENCES superhero(id)
+superhero,bird_superhero,hero_power,2,power_id,INTEGER,BIGINT,True,DEFAULT NULL REFERENCES superpower(id)
+superhero,bird_superhero,publisher,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+superhero,bird_superhero,publisher,2,publisher_name,TEXT,VARCHAR,True,DEFAULT NULL
+superhero,bird_superhero,race,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+superhero,bird_superhero,race,2,race,TEXT,VARCHAR,True,DEFAULT NULL
+superhero,bird_superhero,superhero,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+superhero,bird_superhero,superhero,2,superhero_name,TEXT,VARCHAR,True,DEFAULT NULL
+superhero,bird_superhero,superhero,3,full_name,TEXT,VARCHAR,True,DEFAULT NULL
+superhero,bird_superhero,superhero,4,gender_id,INTEGER,BIGINT,True,DEFAULT NULL REFERENCES gender(id)
+superhero,bird_superhero,superhero,5,eye_colour_id,INTEGER,BIGINT,True,DEFAULT NULL REFERENCES colour(id)
+superhero,bird_superhero,superhero,6,hair_colour_id,INTEGER,BIGINT,True,DEFAULT NULL REFERENCES colour(id)
+superhero,bird_superhero,superhero,7,skin_colour_id,INTEGER,BIGINT,True,DEFAULT NULL REFERENCES colour(id)
+superhero,bird_superhero,superhero,8,race_id,INTEGER,BIGINT,True,DEFAULT NULL REFERENCES race(id)
+superhero,bird_superhero,superhero,9,publisher_id,INTEGER,BIGINT,True,DEFAULT NULL REFERENCES publisher(id)
+superhero,bird_superhero,superhero,10,alignment_id,INTEGER,BIGINT,True,DEFAULT NULL REFERENCES alignment(id)
+superhero,bird_superhero,superhero,11,height_cm,INTEGER,BIGINT,True,DEFAULT NULL
+superhero,bird_superhero,superhero,12,weight_kg,INTEGER,BIGINT,True,DEFAULT NULL
+superhero,bird_superhero,superpower,1,id,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL
+superhero,bird_superhero,superpower,2,power_name,TEXT,VARCHAR,True,DEFAULT NULL
+thrombosis_prediction,bird_thrombosis_prediction,Examination,1,ID,INTEGER,BIGINT,True,REFERENCES Patient(ID)
+thrombosis_prediction,bird_thrombosis_prediction,Examination,2,Examination Date,DATE,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Examination,3,aCL IgG,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Examination,4,aCL IgM,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Examination,5,ANA,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Examination,6,ANA Pattern,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Examination,7,aCL IgA,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Examination,8,Diagnosis,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Examination,9,KCT,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Examination,10,RVVT,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Examination,11,LAC,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Examination,12,Symptoms,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Examination,13,Thrombosis,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,1,ID,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL DEFAULT 0 REFERENCES Patient(ID)
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,2,Date,DATE,VARCHAR,False,PRIMARY KEY NOT NULL DEFAULT '0000-00-00'
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,3,GOT,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,4,GPT,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,5,LDH,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,6,ALP,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,7,TP,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,8,ALB,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,9,UA,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,10,UN,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,11,CRE,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,12,T-BIL,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,13,T-CHO,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,14,TG,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,15,CPK,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,16,GLU,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,17,WBC,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,18,RBC,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,19,HGB,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,20,HCT,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,21,PLT,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,22,PT,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,23,APTT,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,24,FG,REAL,DOUBLE,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,25,PIC,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,26,TAT,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,27,TAT2,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,28,U-PRO,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,29,IGG,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,30,IGA,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,31,IGM,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,32,CRP,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,33,RA,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,34,RF,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,35,C3,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,36,C4,INTEGER,BIGINT,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,37,RNP,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,38,SM,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,39,SC170,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,40,SSA,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,41,SSB,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,42,CENTROMEA,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,43,DNA,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Laboratory,44,DNA-II,INTEGER,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Patient,1,ID,INTEGER,BIGINT,False,PRIMARY KEY NOT NULL DEFAULT 0
+thrombosis_prediction,bird_thrombosis_prediction,Patient,2,SEX,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Patient,3,Birthday,DATE,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Patient,4,Description,DATE,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Patient,5,First Date,DATE,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Patient,6,Admission,TEXT,VARCHAR,True,
+thrombosis_prediction,bird_thrombosis_prediction,Patient,7,Diagnosis,TEXT,VARCHAR,True,
+toxicology,bird_toxicology,atom,1,atom_id,TEXT,VARCHAR,False,PRIMARY KEY NOT NULL
+toxicology,bird_toxicology,atom,2,molecule_id,TEXT,VARCHAR,True,DEFAULT NULL REFERENCES molecule(molecule_id)
+toxicology,bird_toxicology,atom,3,element,TEXT,VARCHAR,True,DEFAULT NULL
+toxicology,bird_toxicology,bond,1,bond_id,TEXT,VARCHAR,False,PRIMARY KEY NOT NULL
+toxicology,bird_toxicology,bond,2,molecule_id,TEXT,VARCHAR,True,DEFAULT NULL REFERENCES molecule(molecule_id)
+toxicology,bird_toxicology,bond,3,bond_type,TEXT,VARCHAR,True,DEFAULT NULL
+toxicology,bird_toxicology,connected,1,atom_id,TEXT,VARCHAR,False,PRIMARY KEY NOT NULL REFERENCES atom(atom_id)
+toxicology,bird_toxicology,connected,2,atom_id2,TEXT,VARCHAR,False,PRIMARY KEY NOT NULL REFERENCES atom(atom_id)
+toxicology,bird_toxicology,connected,3,bond_id,TEXT,VARCHAR,True,DEFAULT NULL REFERENCES bond(bond_id)
+toxicology,bird_toxicology,molecule,1,molecule_id,TEXT,VARCHAR,False,PRIMARY KEY NOT NULL
+toxicology,bird_toxicology,molecule,2,label,TEXT,VARCHAR,True,DEFAULT NULL
