@@ -68,7 +68,19 @@ DATASETS = {
         "node_to_edges": "spider_dev_node_to_edges_map.json",
         "queries": "dev_ground_truth.json",
     },
-    # TODO(phase 2+): KaggleDBQA and FIBEN need graphs built from raw tables first.
+    # Built by baselines.build_graph from ../datasets (all KaggleDBQA examples incl. few-shot; all 300 FIBEN questions).
+    **{
+        name: {
+            "dir": ARTIFACTS / "source" / name,
+            "nodes": "nodes.json",
+            "edges": ["edges.json"],
+            "table_node_map": "table_node_map.json",
+            "edge_to_nodes": "edge_to_nodes.json",
+            "node_to_edges": "node_to_edges.json",
+            "queries": "queries.json",
+        }
+        for name in ("kaggledbqa", "fiben")
+    },
 }
 
 GRAPH_FILES = ("nodes", "edges", "table_node_map", "edge_to_nodes", "node_to_edges", "queries")
