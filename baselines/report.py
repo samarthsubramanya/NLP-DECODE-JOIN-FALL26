@@ -41,6 +41,26 @@ def load(dataset):
     return found
 
 
+def best(res, setting, enc):
+    runs = [(r["summary_fixed"]["15"]["PR"], m) for (s, e, m), r in res.items() if s == setting and e == enc]
+    return max(runs) if runs else None
+
+
+def headline(datasets):
+    """Best documented vs best stripped PR@15 per dataset: the loss DECODE-JOIN has to recover."""
+    lines = [
+        "| dataset | encoder | documented (best) | stripped (best) | gap |",
+        "|---|---|---|---|---|",
+    ]
+    for d in datasets:
+        res = load(d)
+        for enc in sorted({e for _, e, _ in res}):
+            doc, strip = best(res, "documented", enc), best(res, "stripped", enc)
+            if doc and strip:
+                lines.append(f"| {d} | {enc} | {doc[0]:.3f} ({doc[1]}) | {strip[0]:.3f} ({strip[1]}) | {strip[0] - doc[0]:+.3f} |")
+    return "\n".join(lines)
+
+
 def fmt(vals):
     return " | ".join(f"{v:.3f}" for v in vals)
 
@@ -76,7 +96,12 @@ if __name__ == "__main__":
     p.add_argument("--dataset", nargs="+", default=list(DATASETS))
     args = p.parse_args()
 
-    parts = ["# Task 1 baselines"]
+    parts = [
+        "# Task 1 baselines",
+        "PR@15 with fixed gold labels. Heuristic JoinGR returns nothing without join edges, "
+        "so on stripped graphs the best method is dense retrieval.",
+        headline(args.dataset),
+    ]
     for d in args.dataset:
         t = table(d)
         if t:
