@@ -1,5 +1,6 @@
 import csv
 from functools import lru_cache
+from pathlib import PurePosixPath
 
 import duckdb
 import pandas as pd
@@ -14,9 +15,10 @@ def open_db(filename: str) -> duckdb.DuckDBPyConnection:
 
 def schema_for(mapping_csv: str, database: str) -> str:
     # mapping_csv rows: source_path, duckdb_schema
+    # match a folder in the path (database/aircraft/aircraft.sqlite) or the file stem (FIBEN.sql)
     with open(mapping_csv, newline="", encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            if f"/{database}/" in row["source_path"]:
+            if database in PurePosixPath(row["source_path"]).with_suffix("").parts:
                 return row["duckdb_schema"]
     raise KeyError(database)
 
@@ -47,4 +49,7 @@ if __name__ == "__main__":
     preview("decode_join.duckdb", "beaver_dw", "ACADEMIC_TERMS")
     preview("decode_join_kaggledbqa.duckdb", "WhatCDHipHop", "torrents",
             is_hashed=True, mapping_csv="data/kaggledbqa/schema_mapping.csv")
+    # FIBEN is a single database; its mapping source_path is FIBEN.sql
+    preview("decode_join_fiben.duckdb", "FIBEN", "CORPORATION",
+            is_hashed=True, mapping_csv="data/fiben/schema_mapping.csv")
     print("=" * 100)
