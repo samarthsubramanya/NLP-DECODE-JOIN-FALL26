@@ -1,0 +1,284 @@
+{
+ "accept": 70,
+ "db_id": "employee_hire_evaluation",
+ "tables": {
+  "employee": {
+   "candidate_keys": [
+    {
+     "column": "Employee_ID",
+     "score": 100.0
+    }
+   ],
+   "columns": {
+    "Age": {
+     "base": 58.333,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.6333333333333334,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8
+     },
+     "phi": 0.7,
+     "score": 40.833
+    },
+    "City": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "Employee_ID": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "Name": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    }
+   },
+   "primary_key": "Employee_ID"
+  },
+  "evaluation": {
+   "candidate_keys": [],
+   "columns": {
+    "Bonus": {
+     "base": 40.116,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.3518518518518518,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.7,
+     "score": 28.081
+    },
+    "Employee_ID": {
+     "base": 67.731,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7037037037037038,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.8333333333333334
+     },
+     "phi": 1.0,
+     "score": 67.731
+    },
+    "Year_awarded": {
+     "base": 67.731,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7037037037037038,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.8333333333333334
+     },
+     "phi": 0.85,
+     "score": 57.572
+    }
+   },
+   "primary_key": null
+  },
+  "hiring": {
+   "candidate_keys": [
+    {
+     "column": "Employee_ID",
+     "score": 85.0
+    }
+   ],
+   "columns": {
+    "Employee_ID": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 85.0
+    },
+    "Is_full_time": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.2857142857142857
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "Shop_ID": {
+     "base": 65.873,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.753968253968254,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8571428571428571
+     },
+     "phi": 1.0,
+     "score": 65.873
+    },
+    "Start_from": {
+     "base": 86.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 60.375
+    }
+   },
+   "primary_key": "Employee_ID"
+  },
+  "shop": {
+   "candidate_keys": [
+    {
+     "column": "Shop_ID",
+     "score": 100.0
+    }
+   ],
+   "columns": {
+    "District": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 40.562
+    },
+    "Location": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 51.625
+    },
+    "Manager_name": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 40.562
+    },
+    "Name": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    },
+    "Number_products": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    },
+    "Shop_ID": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    }
+   },
+   "primary_key": "Shop_ID"
+  }
+ },
+ "use_names": false
+}

@@ -1,0 +1,227 @@
+{
+ "accept": 70,
+ "db_id": "cre_Doc_Template_Mgt",
+ "rules": [],
+ "tables": {
+  "Documents": {
+   "candidate_keys": [
+    {
+     "column": "Document_ID",
+     "score": 105.0
+    }
+   ],
+   "columns": {
+    "Document_Description": {
+     "rejected": "blacklist: descriptive text (description)"
+    },
+    "Document_ID": {
+     "base": 85.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Paragraphs.Document_ID"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 105.0
+    },
+    "Document_Name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 20.65
+    },
+    "Other_Details": {
+     "rejected": "has nulls"
+    },
+    "Template_ID": {
+     "base": 66.667,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.6333333333333334,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8
+     },
+     "phi": 0.85,
+     "score": 22.667
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Document_ID"
+  },
+  "Paragraphs": {
+   "candidate_keys": [
+    {
+     "column": "Paragraph_ID",
+     "score": 105.0
+    }
+   ],
+   "columns": {
+    "Document_ID": {
+     "base": 52.593,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.3518518518518518,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.85,
+     "score": 17.881
+    },
+    "Other_Details": {
+     "rejected": "has nulls"
+    },
+    "Paragraph_ID": {
+     "base": 85.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 105.0
+    },
+    "Paragraph_Text": {
+     "rejected": "blacklist: descriptive text (text)"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Paragraph_ID"
+  },
+  "Ref_Template_Types": {
+   "candidate_keys": [],
+   "columns": {
+    "Template_Type_Code": {
+     "base": 69.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "Templates.Template_Type_Code"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 34.5
+    },
+    "Template_Type_Description": {
+     "rejected": "blacklist: descriptive text (description)"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "Templates": {
+   "candidate_keys": [
+    {
+     "column": "Template_ID",
+     "score": 105.0
+    }
+   ],
+   "columns": {
+    "Date_Effective_From": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "Date_Effective_To": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "Template_Details": {
+     "rejected": "mostly empty or zero"
+    },
+    "Template_ID": {
+     "base": 85.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Documents.Template_ID"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 105.0
+    },
+    "Template_Type_Code": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.25
+     },
+     "phi": 0.7,
+     "score": 13.3
+    },
+    "Version_Number": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.5
+     },
+     "phi": 0.85,
+     "score": 25.5
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Template_ID"
+  }
+ },
+ "use_names": true
+}

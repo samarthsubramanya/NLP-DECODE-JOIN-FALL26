@@ -1,0 +1,168 @@
+{
+ "accept": 70,
+ "db_id": "singer",
+ "rules": [
+  "R5"
+ ],
+ "tables": {
+  "singer": {
+   "candidate_keys": [
+    {
+     "column": "Singer_ID",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "Birth_Year": {
+     "rejected": "blacklist: date/time (year)"
+    },
+    "Citizenship": {
+     "base": 22.194,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.2638888888888889,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.625
+     },
+     "phi": 0.55,
+     "score": 12.207
+    },
+    "Name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    },
+    "Net_Worth_Millions": {
+     "base": 59.5,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.363
+    },
+    "Singer_ID": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Singer_ID"
+  },
+  "song": {
+   "candidate_keys": [
+    {
+     "column": "Song_ID",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "Highest_Position": {
+     "base": 14.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.25
+     },
+     "phi": 0.55,
+     "score": 7.975
+    },
+    "Sales": {
+     "base": 64.5,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 17.738
+    },
+    "Singer_ID": {
+     "base": 61.389,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.5277777777777778,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.75
+     },
+     "phi": 0.7,
+     "score": 17.189
+    },
+    "Song_ID": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "Title": {
+     "rejected": "blacklist: descriptive text (title)"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Song_ID"
+  }
+ },
+ "use_names": true
+}

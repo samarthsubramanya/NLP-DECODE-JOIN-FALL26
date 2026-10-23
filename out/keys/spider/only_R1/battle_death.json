@@ -1,0 +1,290 @@
+{
+ "accept": 70,
+ "db_id": "battle_death",
+ "rules": [
+  "R1"
+ ],
+ "tables": {
+  "battle": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "bulgarian_commander": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "id": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "latin_commander": {
+     "base": 35.389,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.5277777777777778,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.75
+     },
+     "phi": 0.55,
+     "score": 19.464
+    },
+    "name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    },
+    "result": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.375
+     },
+     "phi": 0.55,
+     "score": 4.95
+    }
+   },
+   "evidence": "score",
+   "primary_key": "id"
+  },
+  "death": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 119.0
+    }
+   ],
+   "columns": {
+    "caused_by_ship_id": {
+     "base": 50.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.46153846153846156
+     },
+     "phi": 1.0,
+     "score": 50.0
+    },
+    "id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "battle.id",
+       "death.caused_by_ship_id",
+       "ship.lost_in_battle",
+       "ship.id"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 119.0
+    },
+    "injured": {
+     "rejected": "mostly empty or zero"
+    },
+    "killed": {
+     "base": 27.179,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.24358974358974367,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6153846153846154
+     },
+     "phi": 0.55,
+     "score": 14.949
+    },
+    "note": {
+     "rejected": "blacklist: descriptive text (note)"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "id"
+  },
+  "ship": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 102.0
+    }
+   ],
+   "columns": {
+    "disposition_of_ship": {
+     "base": 16.54,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.15079365079365073,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5714285714285714
+     },
+     "phi": 0.55,
+     "score": 9.097
+    },
+    "id": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 102.0
+    },
+    "location": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.42857142857142855
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "lost_in_battle": {
+     "base": 52.619,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.45238095238095244,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.7142857142857143
+     },
+     "phi": 1.0,
+     "score": 52.619
+    },
+    "name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 20.65
+    },
+    "ship_type": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.42857142857142855
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "tonnage": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.42857142857142855
+     },
+     "phi": 0.55,
+     "score": 4.95
+    }
+   },
+   "evidence": "score",
+   "primary_key": "id"
+  }
+ },
+ "use_names": true
+}
