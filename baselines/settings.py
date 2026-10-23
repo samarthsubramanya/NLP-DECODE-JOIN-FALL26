@@ -5,11 +5,13 @@ no_desc     descriptions withheld, declared keys and joins kept; not one of the
             proposal's settings, but it splits the stripped loss into meaning vs structure
 stripped    descriptions, declared keys and every edge derived from them withheld;
             table names, column names and types remain
-obfuscated  stripped + opaque column names (not built yet)
+obfuscated  stripped + column names replaced by c1, c2, ... per table (table names
+            stay, as in the proposal); mapping.json keeps original -> opaque
 """
 
 import argparse
 import copy
+import json
 
 from baselines.joingr import load_source_graph, save_graph
 
@@ -51,9 +53,18 @@ def drop_keys(g):
 
 
 def obfuscate_names(g):
-    # TODO(phase 2): replace table/column names with opaque ids, write the
-    # original -> opaque mapping, and push gold tables/columns through the same map.
-    raise NotImplementedError("obfuscated setting comes after the stripped baseline")
+    # Positional ids repeat across tables on purpose: same-name columns with
+    # different meanings are one of the proposal's challenges.
+    # TODO(task 3): push gold columns through g["mapping"] once they exist.
+    mapping = {}
+    for entry in g["table_node_map"]["by_table"].values():
+        for i, nid in enumerate(entry["all_nodes"], 1):
+            node = g["nodes"][nid]
+            original = node["node_name"]
+            node["column_name"] = f"c{i}"
+            node["node_name"] = original[: -len(original.rsplit(".", 1)[-1])] + node["column_name"]
+            mapping[original] = node["node_name"]
+    g["mapping"] = mapping
 
 
 SETTINGS = {
@@ -68,7 +79,10 @@ def build(dataset, setting):
     g = copy.deepcopy(load_source_graph(dataset))
     for step in SETTINGS[setting]:
         step(g)
-    return save_graph(g, dataset, setting), g
+    out = save_graph(g, dataset, setting)
+    if "mapping" in g:
+        (out / "mapping.json").write_text(json.dumps(g["mapping"], indent=1, ensure_ascii=False))
+    return out, g
 
 
 if __name__ == "__main__":

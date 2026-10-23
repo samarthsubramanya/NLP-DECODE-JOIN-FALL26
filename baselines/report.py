@@ -41,23 +41,36 @@ def load(dataset):
     return found
 
 
-def best(res, setting, enc):
-    runs = [(r["summary_fixed"]["15"]["PR"], m) for (s, e, m), r in res.items() if s == setting and e == enc]
+def table_pr15(r):
+    return r["summary_fixed"]["15"]["PR"]
+
+
+def column_r15(r):
+    return r["summary_columns"]["15"]["R"] if r.get("summary_columns") else None
+
+
+def best(res, setting, enc, metric=table_pr15):
+    runs = [(metric(r), m) for (s, e, m), r in res.items() if s == setting and e == enc and metric(r) is not None]
     return max(runs) if runs else None
 
 
-def headline(datasets):
-    """Best documented vs best stripped PR@15 per dataset: the loss DECODE-JOIN has to recover."""
+def headline(datasets, metric=table_pr15):
+    """Best documented vs best stripped/obfuscated per dataset: the loss DECODE-JOIN has to recover."""
     lines = [
-        "| dataset | encoder | documented (best) | stripped (best) | gap |",
-        "|---|---|---|---|---|",
+        "| dataset | encoder | documented (best) | stripped (best) | gap | obfuscated (best) | gap |",
+        "|---|---|---|---|---|---|---|",
     ]
     for d in datasets:
         res = load(d)
         for enc in sorted({e for _, e, _ in res}):
-            doc, strip = best(res, "documented", enc), best(res, "stripped", enc)
-            if doc and strip:
-                lines.append(f"| {d} | {enc} | {doc[0]:.3f} ({doc[1]}) | {strip[0]:.3f} ({strip[1]}) | {strip[0] - doc[0]:+.3f} |")
+            doc = best(res, "documented", enc, metric)
+            if not doc:
+                continue
+            row = f"| {d} | {enc} | {doc[0]:.3f} ({doc[1]}) |"
+            for setting in ("stripped", "obfuscated"):
+                b = best(res, setting, enc, metric)
+                row += f" {b[0]:.3f} ({b[1]}) | {b[0] - doc[0]:+.3f} |" if b else " | |"
+            lines.append(row)
     return "\n".join(lines)
 
 
@@ -71,14 +84,14 @@ def table(dataset):
         return None
     encoders = sorted({e for _, e, _ in res})
     lines = [
-        "| encoder | method | setting | R@5 | R@15 | PR@5 | PR@15 | PR@15 fixed gold | Δ vs documented |",
-        "|" + "---|" * 9,
+        "| encoder | method | setting | R@5 | R@15 | PR@5 | PR@15 | PR@15 fixed gold | Δ vs documented | col R@15 | col PR@15 |",
+        "|" + "---|" * 11,
     ]
     for enc in encoders:
         for method in METHODS:
             paper = PAPER.get((dataset, enc, method))
             if paper:
-                lines.append(f"| {enc} | {method} | *paper* | {fmt(paper)} | | |")
+                lines.append(f"| {enc} | {method} | *paper* | {fmt(paper)} | | | | |")
             base = res.get(("documented", enc, method))
             for setting in SETTINGS:
                 r = res.get((setting, enc, method))
@@ -87,7 +100,9 @@ def table(dataset):
                 vals = [r["summary"][str(k)][m] for k, m in METRICS]
                 fixed = r["summary_fixed"]["15"]["PR"]
                 delta = f"{fixed - base['summary_fixed']['15']['PR']:+.3f}" if base and setting != "documented" else ""
-                lines.append(f"| {enc} | {method} | {setting} | {fmt(vals)} | {fixed:.3f} | {delta} |")
+                c = r.get("summary_columns")
+                cols = f"{c['15']['R']:.3f} | {c['15']['PR']:.3f}" if c else " | "
+                lines.append(f"| {enc} | {method} | {setting} | {fmt(vals)} | {fixed:.3f} | {delta} | {cols} |")
     return "\n".join(lines)
 
 
@@ -99,8 +114,12 @@ if __name__ == "__main__":
     parts = [
         "# Task 1 baselines",
         "PR@15 with fixed gold labels. Heuristic JoinGR returns nothing without join edges, "
-        "so on stripped graphs the best method is dense retrieval.",
+        "so on stripped and obfuscated graphs the best method is dense retrieval. "
+        "Obfuscated keeps table names, so small schemas (Spider, KaggleDBQA) barely move.",
         headline(args.dataset),
+        "## Columns\n\nColumn R@15: columns ranked by query similarity inside each method's top-15 tables, "
+        "against gold columns parsed from the gold SQL (gold/<dataset>.json).",
+        headline(args.dataset, column_r15),
     ]
     for d in args.dataset:
         t = table(d)
