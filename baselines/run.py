@@ -1,19 +1,26 @@
 """Scores JoinGR baselines on one dataset/setting/encoder and writes results JSON.
 
+Tables are ranked by the method. Columns are ranked inside the method's top-15
+tables by query-column similarity, so a missed table also hides its columns.
+Gold columns come from gold/<dataset>.json (baselines.gold_columns) as node ids,
+which stay the same in every setting, obfuscated included.
+
 vanilla    dense retrieval: tables ranked by their best-matching column
 heuristic  JoinGR's untrained walk with the repo's default settings
-trained    JoinGR's learned scorer (not wired in yet)
+trained    JoinGR's learned scorer, frozen; optional (see rank_trained)
 """
 
 import argparse
 import json
 import time
 
+import numpy as np
+
 from sentence_transformers import SentenceTransformer
 
 from baselines.joingr import (
     ENCODERS, RESULTS, TOP_K, NUM_ANCHORS, MAX_HOPS, ALPHA, BETA, LAMBDA_MMR,
-    embed_query, search, search_anchor_candidates, extract_table_name,
+    ROOT, embed_query, search, search_anchor_candidates, extract_table_name,
     precision_at_k, recall_at_k, perfect_recall_at_k, f1_at_k,
     load_graph, load_embeddings,
 )
@@ -39,12 +46,28 @@ def rank_heuristic(question, model, ctx):
 
 
 def rank_trained(question, model, ctx):
-    # TODO(phase 1b): load a scorer trained with JoinGR's beaver_/bird_train_eval_search_v13.py
-    # (in-domain) or train_X_eval_Y_v01.py (BIRD -> Beaver) and rank with it.
     raise NotImplementedError
 
 
 METHODS = {"vanilla": rank_vanilla, "heuristic": rank_heuristic, "trained": rank_trained}
+
+
+def rank_columns(query_vec, tables, ctx, table_budget=15):
+    # TODO(phase 3): DECODE-JOIN may re-rank columns with its descriptions and join roles;
+    # this baseline only uses the column embeddings JoinGR already has.
+    by_table = ctx["tnm"]["by_table"]
+    cols = [nid for t in tables[:table_budget] for nid in by_table.get(t, {}).get("all_nodes", [])]
+    if not cols:
+        return []
+    sims = np.stack([ctx["node_emb"][n] for n in cols]) @ query_vec
+    return [cols[j] for j in np.argsort(-sims)]
+
+
+def load_gold_columns(dataset):
+    path = ROOT / "gold" / f"{dataset}.json"
+    if not path.exists():
+        return None
+    return {x["i"]: set(x["gold_columns"]) for x in json.loads(path.read_text())}
 
 
 def score(ranked, gold, scores):
@@ -74,9 +97,11 @@ def evaluate(dataset, setting, encoder, method):
     # ("pets_1.pets" vs graph "pets_1.Pets") can never match. "summary" follows the
     # paper's protocol; "summary_fixed" maps gold names onto the graph case-insensitively.
     canonical = {t.lower(): t for t in g["table_node_map"]["by_table"]}
+    gold_columns = load_gold_columns(dataset)
 
     scores = {k: {"P": [], "R": [], "F1": [], "PR": []} for k in KS}
     scores_fixed = {k: {"P": [], "R": [], "F1": [], "PR": []} for k in KS}
+    scores_cols = {k: {"P": [], "R": [], "F1": [], "PR": []} for k in KS}
     per_query = []
     start = time.perf_counter()
     for i, q in enumerate(g["queries"]):
@@ -85,14 +110,23 @@ def evaluate(dataset, setting, encoder, method):
         ranked = rank(q["question"], model, ctx)
         score(ranked, gold, scores)
         score(ranked, gold_fixed, scores_fixed)
-        per_query.append({"i": i, "gold": sorted(gold_fixed), "ranked": ranked[:max(KS)], "n_ranked": len(ranked)})
-        # TODO(task 3): column P/R/PR@k once gold_columns exist; rank columns by node score inside the retrieved tables.
+        row = {"i": i, "gold": sorted(gold_fixed), "ranked": ranked[:max(KS)], "n_ranked": len(ranked)}
+
+        # Questions with no gold columns (SELECT count(*), unparsable SQL) are left out of column metrics.
+        if gold_columns and gold_columns.get(i):
+            cols = rank_columns(embed_query(q["question"], model), ranked, ctx)
+            score(cols, gold_columns[i], scores_cols)
+            row["ranked_columns"] = cols[:max(KS)]
+        per_query.append(row)
 
     n = len(per_query)
     out = {
         "dataset": dataset, "setting": setting, "encoder": encoder, "method": method,
         "n_queries": n, "seconds": round(time.perf_counter() - start, 1),
-        "summary": average(scores, n), "summary_fixed": average(scores_fixed, n), "per_query": per_query,
+        "summary": average(scores, n), "summary_fixed": average(scores_fixed, n),
+        "n_column_queries": len(scores_cols[KS[0]]["R"]),
+        "summary_columns": average(scores_cols, len(scores_cols[KS[0]]["R"])) if scores_cols[KS[0]]["R"] else None,
+        "per_query": per_query,
     }
     path = RESULTS / dataset / setting / encoder / f"{method}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -115,4 +149,6 @@ if __name__ == "__main__":
             print(f"{args.dataset}/{args.setting}/{encoder}/{method:<9} n={out['n_queries']}  "
                   + "  ".join(f"R@{k}={s[k]['R']:.3f} PR@{k}={s[k]['PR']:.3f}" for k in (5, 15))
                   + f"  PR@15(fixed gold)={out['summary_fixed'][15]['PR']:.3f}"
+                  + (f"  colR@15={out['summary_columns'][15]['R']:.3f} colPR@15={out['summary_columns'][15]['PR']:.3f}"
+                     if out["summary_columns"] else "")
                   + f"  -> {path.relative_to(RESULTS.parent)}")

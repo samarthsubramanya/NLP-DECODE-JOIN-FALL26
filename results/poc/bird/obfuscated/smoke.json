@@ -1,0 +1,86 @@
+{
+ "dataset": "bird",
+ "setting": "obfuscated",
+ "run": "smoke",
+ "databases": [
+  "shop"
+ ],
+ "pk": {
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "tp": 3,
+  "pred": 3,
+  "gold": 3,
+  "composite_pks_skipped": 0
+ },
+ "fk": {
+  "stats": {
+   "precision": 0.5,
+   "recall": 1.0,
+   "f1": 0.6666666666666666,
+   "tp": 2,
+   "pred": 4,
+   "gold": 2,
+   "direction_correct": 2,
+   "per_db": {
+    "shop": {
+     "precision": 0.5,
+     "recall": 1.0,
+     "f1": 0.6666666666666666,
+     "tp": 2,
+     "pred": 4,
+     "gold": 2
+    }
+   }
+  },
+  "llm": {
+   "precision": 0.5,
+   "recall": 1.0,
+   "f1": 0.6666666666666666,
+   "tp": 2,
+   "pred": 4,
+   "gold": 2,
+   "direction_correct": 2,
+   "per_db": {
+    "shop": {
+     "precision": 0.5,
+     "recall": 1.0,
+     "f1": 0.6666666666666666,
+     "tp": 2,
+     "pred": 4,
+     "gold": 2
+    }
+   }
+  }
+ },
+ "fk_by_decision": {
+  "accepted": {
+   "n": 4,
+   "in_gold": 2
+  },
+  "rejected_gate": {
+   "n": 3,
+   "in_gold": 0
+  }
+ },
+ "llm_usage": {
+  "calls": {
+   "describe/fake": 3
+  },
+  "unparsable": 0,
+  "api_tokens": 0
+ },
+ "description_status": {
+  "columns": 10,
+  "status": {
+   "resolved": 1.0
+  },
+  "roles": {
+   "category": 10
+  }
+ },
+ "description_reference": {
+  "note": "no reference descriptions found"
+ }
+}
