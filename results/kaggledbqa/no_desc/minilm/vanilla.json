@@ -4,7 +4,7 @@
  "encoder": "minilm",
  "method": "vanilla",
  "n_queries": 272,
- "seconds": 2.2,
+ "seconds": 3.2,
  "summary": {
   "5": {
    "P": 0.225,
@@ -45,6 +45,27 @@
    "PR": 1.0
   }
  },
+ "n_column_queries": 271,
+ "summary_columns": {
+  "5": {
+   "P": 0.24797047970479705,
+   "R": 0.5767747320330346,
+   "F1": 0.32494256461046134,
+   "PR": 0.36531365313653136
+  },
+  "10": {
+   "P": 0.16125461254612547,
+   "R": 0.7281980319803198,
+   "F1": 0.2514806955820631,
+   "PR": 0.5608856088560885
+  },
+  "15": {
+   "P": 0.12004920049200492,
+   "R": 0.8028290282902829,
+   "F1": 0.20059100034345395,
+   "PR": 0.6863468634686347
+  }
+ },
  "per_query": [
   {
    "i": 0,
@@ -66,7 +87,24 @@
     "StudentMathScore.FINREV_FED_17",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "d73ccf03de72af53",
+    "615f16ea574cc4bd",
+    "cb11d5830baa9c53",
+    "559df7022c01131e",
+    "a1ad3cc6848da621",
+    "6fa5436c3b527f27",
+    "5eecaea0238d9c2e",
+    "b70599f241ffd205",
+    "de86376beaaf4685",
+    "96b9230748412177",
+    "4b1021105f523105",
+    "81112f597dbf7662",
+    "960d9a0019360313",
+    "ec8ea5abe727f55f",
+    "9a34a1c60688ad8b"
+   ]
   },
   {
    "i": 1,
@@ -88,7 +126,24 @@
     "Pesticide.resultsdata15",
     "Pesticide.sampledata15"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "615f16ea574cc4bd",
+    "6fa5436c3b527f27",
+    "cb11d5830baa9c53",
+    "ec8ea5abe727f55f",
+    "a1ad3cc6848da621",
+    "4b41d3d2f8b525eb",
+    "d383d254eb04ed75",
+    "4b1021105f523105",
+    "5eecaea0238d9c2e",
+    "96b9230748412177",
+    "de86376beaaf4685",
+    "bcc881288fa57552",
+    "559df7022c01131e",
+    "b70599f241ffd205",
+    "17074c60ed8df134"
+   ]
   },
   {
    "i": 2,
@@ -111,7 +166,24 @@
     "StudentMathScore.FINREV_FED_17",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "cb11d5830baa9c53",
+    "a1ad3cc6848da621",
+    "81112f597dbf7662",
+    "4b1021105f523105",
+    "d73ccf03de72af53",
+    "b70599f241ffd205",
+    "17074c60ed8df134",
+    "615f16ea574cc4bd",
+    "960d9a0019360313",
+    "f971acd1eec6ed71",
+    "9a34a1c60688ad8b",
+    "559df7022c01131e",
+    "96b9230748412177",
+    "5eecaea0238d9c2e",
+    "6fa5436c3b527f27"
+   ]
   },
   {
    "i": 3,
@@ -135,7 +207,24 @@
     "StudentMathScore.FINREV_FED_17",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "615f16ea574cc4bd",
+    "2a23f9dcdb9a073c",
+    "05cd62898239d8c9",
+    "559df7022c01131e",
+    "96b9230748412177",
+    "cb11d5830baa9c53",
+    "6fa5436c3b527f27",
+    "b70599f241ffd205",
+    "5eecaea0238d9c2e",
+    "4b1021105f523105",
+    "a1b9c4af0847a4e2",
+    "e1901ee5c668677b",
+    "4ce18ecec3c8a2b6",
+    "8bdac71c203072f0",
+    "d73ccf03de72af53"
+   ]
   },
   {
    "i": 4,
@@ -156,7 +245,24 @@
     "Pesticide.resultsdata15",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "05cd62898239d8c9",
+    "4b1021105f523105",
+    "615f16ea574cc4bd",
+    "2a23f9dcdb9a073c",
+    "cb11d5830baa9c53",
+    "559df7022c01131e",
+    "96b9230748412177",
+    "6fa5436c3b527f27",
+    "d73ccf03de72af53",
+    "e1901ee5c668677b",
+    "5eecaea0238d9c2e",
+    "a1ad3cc6848da621",
+    "b70599f241ffd205",
+    "de86376beaaf4685",
+    "5e0dcce42867d822"
+   ]
   },
   {
    "i": 5,
@@ -180,7 +286,24 @@
     "Pesticide.sampledata15",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "615f16ea574cc4bd",
+    "a1ad3cc6848da621",
+    "559df7022c01131e",
+    "cb11d5830baa9c53",
+    "de86376beaaf4685",
+    "5eecaea0238d9c2e",
+    "4b1021105f523105",
+    "030643183db4c6d4",
+    "96b9230748412177",
+    "b70599f241ffd205",
+    "960d9a0019360313",
+    "ec8ea5abe727f55f",
+    "6fa5436c3b527f27",
+    "1b092dd7107d09bd",
+    "81112f597dbf7662"
+   ]
   },
   {
    "i": 6,
@@ -203,7 +326,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "6fa5436c3b527f27",
+    "ec8ea5abe727f55f",
+    "615f16ea574cc4bd",
+    "cb11d5830baa9c53",
+    "559df7022c01131e",
+    "de86376beaaf4685",
+    "5eecaea0238d9c2e",
+    "b70599f241ffd205",
+    "a1ad3cc6848da621",
+    "960d9a0019360313",
+    "4b1021105f523105",
+    "f7b51b375354f993",
+    "17074c60ed8df134",
+    "96b9230748412177",
+    "bcc881288fa57552"
+   ]
   },
   {
    "i": 7,
@@ -227,7 +367,24 @@
     "USWildFires.Fires",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "a1ad3cc6848da621",
+    "2ed8bf0758c00ddc",
+    "559df7022c01131e",
+    "615f16ea574cc4bd",
+    "ec8ea5abe727f55f",
+    "4b1021105f523105",
+    "cb11d5830baa9c53",
+    "6fa5436c3b527f27",
+    "81112f597dbf7662",
+    "b0f352e195623d37",
+    "e2f085b29cf4ce12",
+    "17074c60ed8df134",
+    "c4ed11e81d8aa95d"
+   ]
   },
   {
    "i": 8,
@@ -250,7 +407,24 @@
     "WhatCDHipHop.torrents",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "2a23f9dcdb9a073c",
+    "05cd62898239d8c9",
+    "f971acd1eec6ed71",
+    "4b1021105f523105",
+    "96b9230748412177",
+    "559df7022c01131e",
+    "cb11d5830baa9c53",
+    "5eecaea0238d9c2e",
+    "6fa5436c3b527f27",
+    "de86376beaaf4685",
+    "e1901ee5c668677b",
+    "615f16ea574cc4bd",
+    "a1ad3cc6848da621",
+    "d73ccf03de72af53",
+    "ec8ea5abe727f55f"
+   ]
   },
   {
    "i": 9,
@@ -274,7 +448,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "a1ad3cc6848da621",
+    "6653840cff196873",
+    "4b1021105f523105",
+    "de86376beaaf4685",
+    "ec8ea5abe727f55f",
+    "cb11d5830baa9c53",
+    "e2f085b29cf4ce12",
+    "6fa5436c3b527f27",
+    "5eecaea0238d9c2e",
+    "c48acd09008a5e8a",
+    "f7b51b375354f993",
+    "559df7022c01131e",
+    "345a70d3e7751458"
+   ]
   },
   {
    "i": 10,
@@ -296,7 +487,24 @@
     "StudentMathScore.FINREV_FED_17",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "615f16ea574cc4bd",
+    "559df7022c01131e",
+    "b70599f241ffd205",
+    "6fa5436c3b527f27",
+    "5eecaea0238d9c2e",
+    "96b9230748412177",
+    "4b1021105f523105",
+    "cb11d5830baa9c53",
+    "960d9a0019360313",
+    "de86376beaaf4685",
+    "ec8ea5abe727f55f",
+    "030643183db4c6d4",
+    "a1ad3cc6848da621",
+    "e1901ee5c668677b",
+    "2ed8bf0758c00ddc"
+   ]
   },
   {
    "i": 11,
@@ -318,7 +526,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "615f16ea574cc4bd",
+    "559df7022c01131e",
+    "96b9230748412177",
+    "5eecaea0238d9c2e",
+    "6fa5436c3b527f27",
+    "cb11d5830baa9c53",
+    "b70599f241ffd205",
+    "4b1021105f523105",
+    "6d38a7de959ecec4",
+    "de86376beaaf4685",
+    "a1b9c4af0847a4e2",
+    "b7b96335f9060d59",
+    "90e1519552d25adb",
+    "d73ccf03de72af53",
+    "e1901ee5c668677b"
+   ]
   },
   {
    "i": 12,
@@ -342,7 +567,24 @@
     "Pesticide.resultsdata15",
     "Pesticide.sampledata15"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "559df7022c01131e",
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "615f16ea574cc4bd",
+    "a1ad3cc6848da621",
+    "cb11d5830baa9c53",
+    "de86376beaaf4685",
+    "ec8ea5abe727f55f",
+    "5eecaea0238d9c2e",
+    "6fa5436c3b527f27",
+    "4b1021105f523105",
+    "81112f597dbf7662",
+    "2ed8bf0758c00ddc",
+    "17074c60ed8df134",
+    "030643183db4c6d4"
+   ]
   },
   {
    "i": 13,
@@ -363,7 +605,24 @@
     "StudentMathScore.FINREV_FED_17",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "559df7022c01131e",
+    "615f16ea574cc4bd",
+    "90e1519552d25adb",
+    "6d38a7de959ecec4",
+    "e1901ee5c668677b",
+    "cb11d5830baa9c53",
+    "96b9230748412177",
+    "b70599f241ffd205",
+    "5e0dcce42867d822",
+    "a1b9c4af0847a4e2",
+    "5eecaea0238d9c2e",
+    "c412fd9c59749347",
+    "6fa5436c3b527f27",
+    "4ce18ecec3c8a2b6",
+    "b7b96335f9060d59"
+   ]
   },
   {
    "i": 14,
@@ -386,7 +645,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "USWildFires.Fires"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "4b1021105f523105",
+    "615f16ea574cc4bd",
+    "559df7022c01131e",
+    "b70599f241ffd205",
+    "960d9a0019360313",
+    "96b9230748412177",
+    "cb11d5830baa9c53",
+    "de86376beaaf4685",
+    "5eecaea0238d9c2e",
+    "a1ad3cc6848da621",
+    "030643183db4c6d4",
+    "d38c292189a82ac8",
+    "6fa5436c3b527f27",
+    "e1901ee5c668677b",
+    "ec8ea5abe727f55f"
+   ]
   },
   {
    "i": 15,
@@ -408,7 +684,24 @@
     "WhatCDHipHop.tags",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "a1ad3cc6848da621",
+    "960d9a0019360313",
+    "cb11d5830baa9c53",
+    "b70599f241ffd205",
+    "81112f597dbf7662",
+    "6653840cff196873",
+    "2ce553434539330d",
+    "b0f352e195623d37",
+    "f7b51b375354f993",
+    "559df7022c01131e",
+    "8bdac71c203072f0",
+    "97d654829c41b719",
+    "4ce18ecec3c8a2b6",
+    "2b404d3676b0f110",
+    "a1b9c4af0847a4e2"
+   ]
   },
   {
    "i": 16,
@@ -427,7 +720,24 @@
     "USWildFires.Fires",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "a1ad3cc6848da621",
+    "cb11d5830baa9c53",
+    "5a89a734afbdaa1a",
+    "f7b51b375354f993",
+    "ec8ea5abe727f55f",
+    "81112f597dbf7662",
+    "960d9a0019360313",
+    "1b092dd7107d09bd",
+    "4b1021105f523105",
+    "79d37341051e30d3",
+    "9d317e025344e884",
+    "e1901ee5c668677b",
+    "2ed8bf0758c00ddc",
+    "bcc881288fa57552",
+    "d99951181dafd8c1"
+   ]
   },
   {
    "i": 17,
@@ -451,7 +761,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "USWildFires.Fires"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "d73ccf03de72af53",
+    "2a23f9dcdb9a073c",
+    "615f16ea574cc4bd",
+    "05cd62898239d8c9",
+    "cb11d5830baa9c53",
+    "559df7022c01131e",
+    "b70599f241ffd205",
+    "81112f597dbf7662",
+    "a1ad3cc6848da621",
+    "9a34a1c60688ad8b",
+    "f971acd1eec6ed71",
+    "96b9230748412177",
+    "17074c60ed8df134",
+    "5eecaea0238d9c2e",
+    "120f20d4b102e336"
+   ]
   },
   {
    "i": 18,
@@ -472,7 +799,24 @@
     "WorldSoccerDataBase.betfront",
     "TheHistoryofBaseball.player_award_vote"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "99ba645c6a644bab",
+    "e2a68459f338f81e",
+    "05138aa2701e35f8",
+    "909a4be3368383a2",
+    "85b1a89ca7038e68",
+    "3dfa2ae44034f55a",
+    "194cb3f8e15a3a1e",
+    "fba87de16ab60cad",
+    "c0ca079616739136",
+    "4a59e817249c91bc",
+    "7d12e7a2ae3ccfa5",
+    "9e327d42e3a3a50e",
+    "3b1b7136442716bc",
+    "e513cc4c315fab3a",
+    "4410e6f5c7bb99f0"
+   ]
   },
   {
    "i": 19,
@@ -495,7 +839,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "fba87de16ab60cad",
+    "194cb3f8e15a3a1e",
+    "99ba645c6a644bab",
+    "909a4be3368383a2",
+    "e2a68459f338f81e",
+    "85b1a89ca7038e68",
+    "7d12e7a2ae3ccfa5",
+    "3dfa2ae44034f55a",
+    "0fa465a0dd93a2e6",
+    "9b277b41405a46f4",
+    "2dbd18fb6fb5a69c",
+    "4a59e817249c91bc",
+    "951c6114c2ff0262",
+    "05138aa2701e35f8",
+    "9e327d42e3a3a50e"
+   ]
   },
   {
    "i": 20,
@@ -519,7 +880,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "TheHistoryofBaseball.player_award_vote"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "e2a68459f338f81e",
+    "3dfa2ae44034f55a",
+    "909a4be3368383a2",
+    "194cb3f8e15a3a1e",
+    "99ba645c6a644bab",
+    "4a59e817249c91bc",
+    "c0ca079616739136",
+    "e513cc4c315fab3a",
+    "366a8ed20e2531db",
+    "0fa465a0dd93a2e6",
+    "85b1a89ca7038e68",
+    "4410e6f5c7bb99f0",
+    "05138aa2701e35f8",
+    "2dbd18fb6fb5a69c",
+    "7d12e7a2ae3ccfa5"
+   ]
   },
   {
    "i": 21,
@@ -540,7 +918,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "9e327d42e3a3a50e",
+    "194cb3f8e15a3a1e",
+    "9b277b41405a46f4",
+    "99ba645c6a644bab",
+    "fba87de16ab60cad",
+    "85b1a89ca7038e68",
+    "4a59e817249c91bc",
+    "e2a68459f338f81e",
+    "0fa465a0dd93a2e6",
+    "767792c6783bc708",
+    "909a4be3368383a2",
+    "3dfa2ae44034f55a",
+    "7d12e7a2ae3ccfa5",
+    "05138aa2701e35f8",
+    "951c6114c2ff0262"
+   ]
   },
   {
    "i": 22,
@@ -563,7 +958,24 @@
     "WorldSoccerDataBase.betfront",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "c0ca079616739136",
+    "e2a68459f338f81e",
+    "e513cc4c315fab3a",
+    "4410e6f5c7bb99f0",
+    "7d12e7a2ae3ccfa5",
+    "2dbd18fb6fb5a69c",
+    "05138aa2701e35f8",
+    "909a4be3368383a2",
+    "30325cab259dca00",
+    "99ba645c6a644bab",
+    "3c34c481931aac62",
+    "3b1b7136442716bc",
+    "85b1a89ca7038e68",
+    "3dfa2ae44034f55a",
+    "0fa465a0dd93a2e6"
+   ]
   },
   {
    "i": 23,
@@ -586,7 +998,24 @@
     "TheHistoryofBaseball.salary",
     "TheHistoryofBaseball.player_award"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "30325cab259dca00",
+    "7d12e7a2ae3ccfa5",
+    "4410e6f5c7bb99f0",
+    "05138aa2701e35f8",
+    "0fa465a0dd93a2e6",
+    "909a4be3368383a2",
+    "2dbd18fb6fb5a69c",
+    "3dfa2ae44034f55a",
+    "fba87de16ab60cad",
+    "194cb3f8e15a3a1e",
+    "c0ca079616739136",
+    "e2a68459f338f81e",
+    "99ba645c6a644bab",
+    "793ea1ecec214f3c",
+    "85b1a89ca7038e68"
+   ]
   },
   {
    "i": 24,
@@ -609,7 +1038,24 @@
     "TheHistoryofBaseball.salary",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "3dfa2ae44034f55a",
+    "05138aa2701e35f8",
+    "e2a68459f338f81e",
+    "909a4be3368383a2",
+    "7d12e7a2ae3ccfa5",
+    "30325cab259dca00",
+    "0fa465a0dd93a2e6",
+    "c0ca079616739136",
+    "e513cc4c315fab3a",
+    "99ba645c6a644bab",
+    "4410e6f5c7bb99f0",
+    "85b1a89ca7038e68",
+    "1744ce60da3afb61",
+    "194cb3f8e15a3a1e",
+    "2dbd18fb6fb5a69c"
+   ]
   },
   {
    "i": 25,
@@ -629,7 +1075,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "30325cab259dca00",
+    "7d12e7a2ae3ccfa5",
+    "3dfa2ae44034f55a",
+    "05138aa2701e35f8",
+    "4410e6f5c7bb99f0",
+    "0fa465a0dd93a2e6",
+    "2dbd18fb6fb5a69c",
+    "909a4be3368383a2",
+    "99ba645c6a644bab",
+    "194cb3f8e15a3a1e",
+    "e2a68459f338f81e",
+    "793ea1ecec214f3c",
+    "e891a6cbc170fc40",
+    "85b1a89ca7038e68",
+    "fba87de16ab60cad"
+   ]
   },
   {
    "i": 26,
@@ -652,7 +1115,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "e513cc4c315fab3a",
+    "6c741ac18a8e67d7",
+    "67829649e57693d7",
+    "c0ca079616739136",
+    "05138aa2701e35f8",
+    "4410e6f5c7bb99f0",
+    "47bfdde25dc00b8a",
+    "1744ce60da3afb61",
+    "2bc98850da781239",
+    "2dbd18fb6fb5a69c",
+    "366a8ed20e2531db",
+    "7d12e7a2ae3ccfa5",
+    "793ea1ecec214f3c",
+    "e2a68459f338f81e",
+    "3c34c481931aac62"
+   ]
   },
   {
    "i": 27,
@@ -673,7 +1153,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "909a4be3368383a2",
+    "e2a68459f338f81e",
+    "7d12e7a2ae3ccfa5",
+    "4410e6f5c7bb99f0",
+    "0fa465a0dd93a2e6",
+    "194cb3f8e15a3a1e",
+    "3dfa2ae44034f55a",
+    "c0ca079616739136",
+    "99ba645c6a644bab",
+    "05138aa2701e35f8",
+    "85b1a89ca7038e68",
+    "e891a6cbc170fc40",
+    "30325cab259dca00",
+    "3c34c481931aac62",
+    "9b277b41405a46f4"
+   ]
   },
   {
    "i": 28,
@@ -694,7 +1191,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "909a4be3368383a2",
+    "3dfa2ae44034f55a",
+    "7d12e7a2ae3ccfa5",
+    "4410e6f5c7bb99f0",
+    "e2a68459f338f81e",
+    "05138aa2701e35f8",
+    "99ba645c6a644bab",
+    "e891a6cbc170fc40",
+    "c0ca079616739136",
+    "194cb3f8e15a3a1e",
+    "0fa465a0dd93a2e6",
+    "793ea1ecec214f3c",
+    "85b1a89ca7038e68",
+    "30325cab259dca00",
+    "3c34c481931aac62"
+   ]
   },
   {
    "i": 29,
@@ -718,7 +1232,24 @@
     "TheHistoryofBaseball.salary",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "6c741ac18a8e67d7",
+    "67829649e57693d7",
+    "e891a6cbc170fc40",
+    "767792c6783bc708",
+    "e513cc4c315fab3a",
+    "05138aa2701e35f8",
+    "3c34c481931aac62",
+    "2dbd18fb6fb5a69c",
+    "47bfdde25dc00b8a",
+    "c0ca079616739136",
+    "7d12e7a2ae3ccfa5",
+    "3b1b7136442716bc",
+    "1744ce60da3afb61",
+    "e2a68459f338f81e",
+    "4410e6f5c7bb99f0"
+   ]
   },
   {
    "i": 30,
@@ -742,7 +1273,24 @@
     "WhatCDHipHop.torrents",
     "TheHistoryofBaseball.player_award_vote"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "6c741ac18a8e67d7",
+    "4410e6f5c7bb99f0",
+    "30325cab259dca00",
+    "7d12e7a2ae3ccfa5",
+    "67829649e57693d7",
+    "e513cc4c315fab3a",
+    "3dfa2ae44034f55a",
+    "793ea1ecec214f3c",
+    "e891a6cbc170fc40",
+    "2dbd18fb6fb5a69c",
+    "c0ca079616739136",
+    "47bfdde25dc00b8a",
+    "05138aa2701e35f8",
+    "1744ce60da3afb61",
+    "3c34c481931aac62"
+   ]
   },
   {
    "i": 31,
@@ -765,7 +1313,24 @@
     "TheHistoryofBaseball.salary",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "6c741ac18a8e67d7",
+    "05138aa2701e35f8",
+    "30325cab259dca00",
+    "3dfa2ae44034f55a",
+    "e513cc4c315fab3a",
+    "7d12e7a2ae3ccfa5",
+    "67829649e57693d7",
+    "e891a6cbc170fc40",
+    "47bfdde25dc00b8a",
+    "c0ca079616739136",
+    "2dbd18fb6fb5a69c",
+    "4410e6f5c7bb99f0",
+    "3c34c481931aac62",
+    "793ea1ecec214f3c",
+    "909a4be3368383a2"
+   ]
   },
   {
    "i": 32,
@@ -789,7 +1354,24 @@
     "WhatCDHipHop.torrents",
     "TheHistoryofBaseball.player_award"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "6c741ac18a8e67d7",
+    "3dfa2ae44034f55a",
+    "30325cab259dca00",
+    "e891a6cbc170fc40",
+    "67829649e57693d7",
+    "7d12e7a2ae3ccfa5",
+    "2dbd18fb6fb5a69c",
+    "47bfdde25dc00b8a",
+    "e513cc4c315fab3a",
+    "05138aa2701e35f8",
+    "793ea1ecec214f3c",
+    "4410e6f5c7bb99f0",
+    "1744ce60da3afb61",
+    "c0ca079616739136",
+    "909a4be3368383a2"
+   ]
   },
   {
    "i": 33,
@@ -811,7 +1393,24 @@
     "WhatCDHipHop.tags",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "6c741ac18a8e67d7",
+    "2dbd18fb6fb5a69c",
+    "05138aa2701e35f8",
+    "7d12e7a2ae3ccfa5",
+    "67829649e57693d7",
+    "c0ca079616739136",
+    "e513cc4c315fab3a",
+    "e891a6cbc170fc40",
+    "30325cab259dca00",
+    "4410e6f5c7bb99f0",
+    "3b1b7136442716bc",
+    "47bfdde25dc00b8a",
+    "e2a68459f338f81e",
+    "fba87de16ab60cad",
+    "909a4be3368383a2"
+   ]
   },
   {
    "i": 34,
@@ -832,7 +1431,24 @@
     "TheHistoryofBaseball.player_award",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "6c741ac18a8e67d7",
+    "c0ca079616739136",
+    "05138aa2701e35f8",
+    "e513cc4c315fab3a",
+    "47bfdde25dc00b8a",
+    "7d12e7a2ae3ccfa5",
+    "2dbd18fb6fb5a69c",
+    "4410e6f5c7bb99f0",
+    "3dfa2ae44034f55a",
+    "1744ce60da3afb61",
+    "67829649e57693d7",
+    "30325cab259dca00",
+    "909a4be3368383a2",
+    "3c34c481931aac62",
+    "3b1b7136442716bc"
+   ]
   },
   {
    "i": 35,
@@ -851,7 +1467,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "30325cab259dca00",
+    "7d12e7a2ae3ccfa5",
+    "6c741ac18a8e67d7",
+    "a4c7a9f99b1a2948",
+    "07a0c9074ea0bea4",
+    "2dbd18fb6fb5a69c",
+    "951bd200be08041e",
+    "e891a6cbc170fc40",
+    "67829649e57693d7",
+    "e513cc4c315fab3a",
+    "05138aa2701e35f8",
+    "c0ca079616739136",
+    "4410e6f5c7bb99f0",
+    "0fa465a0dd93a2e6",
+    "793ea1ecec214f3c"
+   ]
   },
   {
    "i": 36,
@@ -876,7 +1509,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "TheHistoryofBaseball.player_award_vote"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "793ea1ecec214f3c",
+    "e513cc4c315fab3a",
+    "1744ce60da3afb61",
+    "30325cab259dca00",
+    "c0ca079616739136",
+    "05138aa2701e35f8",
+    "6c741ac18a8e67d7",
+    "99ba645c6a644bab",
+    "4410e6f5c7bb99f0",
+    "e2a68459f338f81e",
+    "fba87de16ab60cad",
+    "47bfdde25dc00b8a",
+    "67829649e57693d7",
+    "2bc98850da781239",
+    "85b1a89ca7038e68"
+   ]
   },
   {
    "i": 37,
@@ -894,7 +1544,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "USWildFires.Fires"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "30325cab259dca00",
+    "a4c7a9f99b1a2948",
+    "05138aa2701e35f8",
+    "7d12e7a2ae3ccfa5",
+    "fba87de16ab60cad",
+    "32a66118e7c58ef4",
+    "7e2978402f566d08",
+    "c0ca079616739136",
+    "9bee93418090159e",
+    "4410e6f5c7bb99f0",
+    "d21fdf98408ab133",
+    "2096ec5a3e133db4",
+    "d33302d66a14a7b9",
+    "29bd306b7d8f597e",
+    "ccf052b9a89da4f3"
+   ]
   },
   {
    "i": 38,
@@ -919,7 +1586,24 @@
     "WorldSoccerDataBase.football_data",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "3dfa2ae44034f55a",
+    "7d12e7a2ae3ccfa5",
+    "30325cab259dca00",
+    "4410e6f5c7bb99f0",
+    "5a9f99ef49d44fc9",
+    "c0ca079616739136",
+    "0fa465a0dd93a2e6",
+    "909a4be3368383a2",
+    "e513cc4c315fab3a",
+    "05138aa2701e35f8",
+    "e2a68459f338f81e",
+    "793ea1ecec214f3c",
+    "277292f8bb6bc118",
+    "194cb3f8e15a3a1e",
+    "2dbd18fb6fb5a69c"
+   ]
   },
   {
    "i": 39,
@@ -943,7 +1627,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "c0ca079616739136",
+    "3c34c481931aac62",
+    "4410e6f5c7bb99f0",
+    "e2a68459f338f81e",
+    "e513cc4c315fab3a",
+    "3b1b7136442716bc",
+    "366a8ed20e2531db",
+    "2bc98850da781239",
+    "194cb3f8e15a3a1e",
+    "7d12e7a2ae3ccfa5",
+    "909a4be3368383a2",
+    "05138aa2701e35f8",
+    "277292f8bb6bc118",
+    "951c6114c2ff0262",
+    "793ea1ecec214f3c"
+   ]
   },
   {
    "i": 40,
@@ -964,7 +1665,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "4410e6f5c7bb99f0",
+    "e513cc4c315fab3a",
+    "30325cab259dca00",
+    "c0ca079616739136",
+    "05138aa2701e35f8",
+    "3dfa2ae44034f55a",
+    "e2a68459f338f81e",
+    "5a9f99ef49d44fc9",
+    "7d12e7a2ae3ccfa5",
+    "909a4be3368383a2",
+    "0fa465a0dd93a2e6",
+    "194cb3f8e15a3a1e",
+    "2dbd18fb6fb5a69c",
+    "99ba645c6a644bab",
+    "e891a6cbc170fc40"
+   ]
   },
   {
    "i": 41,
@@ -984,7 +1702,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "767792c6783bc708",
+    "9e327d42e3a3a50e",
+    "67829649e57693d7",
+    "2bc98850da781239",
+    "6c741ac18a8e67d7",
+    "05138aa2701e35f8",
+    "4410e6f5c7bb99f0",
+    "c0ca079616739136",
+    "a31302a34b8d4f1d",
+    "e891a6cbc170fc40",
+    "5a9f99ef49d44fc9",
+    "e513cc4c315fab3a",
+    "366a8ed20e2531db",
+    "e2a68459f338f81e",
+    "3c34c481931aac62"
+   ]
   },
   {
    "i": 42,
@@ -1007,7 +1742,24 @@
     "StudentMathScore.FINREV_FED_17",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "30325cab259dca00",
+    "7d12e7a2ae3ccfa5",
+    "4410e6f5c7bb99f0",
+    "05138aa2701e35f8",
+    "3dfa2ae44034f55a",
+    "909a4be3368383a2",
+    "2dbd18fb6fb5a69c",
+    "0fa465a0dd93a2e6",
+    "e2a68459f338f81e",
+    "c0ca079616739136",
+    "194cb3f8e15a3a1e",
+    "fba87de16ab60cad",
+    "3b1b7136442716bc",
+    "99ba645c6a644bab",
+    "3c34c481931aac62"
+   ]
   },
   {
    "i": 43,
@@ -1031,7 +1783,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "30325cab259dca00",
+    "a4c7a9f99b1a2948",
+    "277cb8e614fd568d",
+    "3dfa2ae44034f55a",
+    "350ff7a2c2f28d3a",
+    "d15d65a2491717a9",
+    "252c6bbd44d5ba21",
+    "4410e6f5c7bb99f0",
+    "a52717ca11ff60a3",
+    "9d0b0d477bc36ba9",
+    "d21fdf98408ab133",
+    "7d12e7a2ae3ccfa5",
+    "64880982942eb52c",
+    "2096ec5a3e133db4",
+    "32a66118e7c58ef4"
+   ]
   },
   {
    "i": 44,
@@ -1053,7 +1822,24 @@
     "WorldSoccerDataBase.football_data",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "e513cc4c315fab3a",
+    "4410e6f5c7bb99f0",
+    "2dbd18fb6fb5a69c",
+    "e2a68459f338f81e",
+    "7d12e7a2ae3ccfa5",
+    "3dfa2ae44034f55a",
+    "05138aa2701e35f8",
+    "0fa465a0dd93a2e6",
+    "909a4be3368383a2",
+    "30325cab259dca00",
+    "c0ca079616739136",
+    "2bc98850da781239",
+    "99ba645c6a644bab",
+    "366a8ed20e2531db",
+    "5a9f99ef49d44fc9"
+   ]
   },
   {
    "i": 45,
@@ -1077,7 +1863,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "6c741ac18a8e67d7",
+    "67829649e57693d7",
+    "47bfdde25dc00b8a",
+    "e513cc4c315fab3a",
+    "1744ce60da3afb61",
+    "e891a6cbc170fc40",
+    "793ea1ecec214f3c",
+    "2dbd18fb6fb5a69c",
+    "2f73e0087797399a",
+    "05138aa2701e35f8",
+    "3dfa2ae44034f55a",
+    "7d12e7a2ae3ccfa5",
+    "c0ca079616739136",
+    "6061fbc4e659508c",
+    "e2a68459f338f81e"
+   ]
   },
   {
    "i": 46,
@@ -1101,7 +1904,24 @@
     "WhatCDHipHop.torrents",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "30325cab259dca00",
+    "350ff7a2c2f28d3a",
+    "3dfa2ae44034f55a",
+    "277cb8e614fd568d",
+    "d15d65a2491717a9",
+    "2f73e0087797399a",
+    "163a2b3c283f6d6f",
+    "e2a7766525b1e73f",
+    "abcce680b5aafeea",
+    "f53353bd44fb245b",
+    "4d9a794941b4e55b",
+    "64880982942eb52c",
+    "9d0b0d477bc36ba9",
+    "252c6bbd44d5ba21"
+   ]
   },
   {
    "i": 47,
@@ -1125,7 +1945,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "4410e6f5c7bb99f0",
+    "30325cab259dca00",
+    "a4c7a9f99b1a2948",
+    "3dfa2ae44034f55a",
+    "350ff7a2c2f28d3a",
+    "7d12e7a2ae3ccfa5",
+    "277cb8e614fd568d",
+    "d15d65a2491717a9",
+    "f53353bd44fb245b",
+    "32a66118e7c58ef4",
+    "abcce680b5aafeea",
+    "4d9a794941b4e55b",
+    "c0ca079616739136",
+    "29bd306b7d8f597e",
+    "7e2978402f566d08"
+   ]
   },
   {
    "i": 48,
@@ -1149,7 +1986,24 @@
     "TheHistoryofBaseball.player_award_vote",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "e513cc4c315fab3a",
+    "c0ca079616739136",
+    "67829649e57693d7",
+    "a52717ca11ff60a3",
+    "6c741ac18a8e67d7",
+    "05138aa2701e35f8",
+    "0fbc973f6462d9e4",
+    "ded511e979c5de1a",
+    "8322e3fe6bd2af95",
+    "2bc98850da781239",
+    "366a8ed20e2531db",
+    "3c34c481931aac62",
+    "767792c6783bc708",
+    "0c0fd4ecb2a213f7",
+    "277292f8bb6bc118"
+   ]
   },
   {
    "i": 49,
@@ -1173,7 +2027,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "6061fbc4e659508c",
+    "6c741ac18a8e67d7",
+    "a1b9c4af0847a4e2",
+    "67829649e57693d7",
+    "0158a20995f91667",
+    "e513cc4c315fab3a",
+    "4ce18ecec3c8a2b6",
+    "64880982942eb52c",
+    "8bdac71c203072f0",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "9d0b0d477bc36ba9",
+    "8c939ec32e119a34",
+    "6516cb7faf9172d4",
+    "8322e3fe6bd2af95"
+   ]
   },
   {
    "i": 50,
@@ -1195,7 +2066,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "30325cab259dca00",
+    "6c741ac18a8e67d7",
+    "7d12e7a2ae3ccfa5",
+    "67829649e57693d7",
+    "2dbd18fb6fb5a69c",
+    "07a0c9074ea0bea4",
+    "a4c7a9f99b1a2948",
+    "951bd200be08041e",
+    "05138aa2701e35f8",
+    "e513cc4c315fab3a",
+    "e891a6cbc170fc40",
+    "793ea1ecec214f3c",
+    "4410e6f5c7bb99f0",
+    "3c34c481931aac62",
+    "c0ca079616739136"
+   ]
   },
   {
    "i": 51,
@@ -1218,7 +2106,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "e513cc4c315fab3a",
+    "6c741ac18a8e67d7",
+    "67829649e57693d7",
+    "120f20d4b102e336",
+    "6061fbc4e659508c",
+    "2bc98850da781239",
+    "462874aa7e352405",
+    "6cf9d773fefbcd00",
+    "ea4f756e3a9ccfc2",
+    "cb998edccbab0f73",
+    "b438ea6e72877f9a",
+    "0c0fd4ecb2a213f7",
+    "9dd5eb02258221b3",
+    "97d654829c41b719",
+    "2b4a60b697789d08"
+   ]
   },
   {
    "i": 52,
@@ -1239,7 +2144,24 @@
     "WhatCDHipHop.tags",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "6c741ac18a8e67d7",
+    "6061fbc4e659508c",
+    "67829649e57693d7",
+    "767792c6783bc708",
+    "e891a6cbc170fc40",
+    "e513cc4c315fab3a",
+    "05138aa2701e35f8",
+    "366a8ed20e2531db",
+    "9dd5eb02258221b3",
+    "3b1b7136442716bc",
+    "2bc98850da781239",
+    "40bcbff50f16b32a",
+    "e2a68459f338f81e",
+    "3c34c481931aac62",
+    "2dbd18fb6fb5a69c"
+   ]
   },
   {
    "i": 53,
@@ -1263,7 +2185,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "6c741ac18a8e67d7",
+    "e891a6cbc170fc40",
+    "2dbd18fb6fb5a69c",
+    "05138aa2701e35f8",
+    "67829649e57693d7",
+    "6061fbc4e659508c",
+    "47bfdde25dc00b8a",
+    "e513cc4c315fab3a",
+    "1744ce60da3afb61",
+    "3b1b7136442716bc",
+    "3dfa2ae44034f55a",
+    "e2a68459f338f81e",
+    "4410e6f5c7bb99f0",
+    "c0ca079616739136",
+    "3c34c481931aac62"
+   ]
   },
   {
    "i": 54,
@@ -1286,7 +2225,24 @@
     "TheHistoryofBaseball.player_award",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "6c741ac18a8e67d7",
+    "67829649e57693d7",
+    "e891a6cbc170fc40",
+    "9e327d42e3a3a50e",
+    "2dbd18fb6fb5a69c",
+    "e513cc4c315fab3a",
+    "05138aa2701e35f8",
+    "5a9f99ef49d44fc9",
+    "fba87de16ab60cad",
+    "e2a68459f338f81e",
+    "1744ce60da3afb61",
+    "767792c6783bc708",
+    "47bfdde25dc00b8a",
+    "4410e6f5c7bb99f0",
+    "c0ca079616739136"
+   ]
   },
   {
    "i": 55,
@@ -1307,7 +2263,24 @@
     "WhatCDHipHop.tags",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "767792c6783bc708",
+    "67829649e57693d7",
+    "6061fbc4e659508c",
+    "120f20d4b102e336",
+    "366a8ed20e2531db",
+    "e891a6cbc170fc40",
+    "6c741ac18a8e67d7",
+    "5a9f99ef49d44fc9",
+    "c4ed11e81d8aa95d",
+    "2bc98850da781239",
+    "d73ccf03de72af53",
+    "462874aa7e352405",
+    "fba87de16ab60cad",
+    "6a120745d3dd0b20",
+    "e513cc4c315fab3a"
+   ]
   },
   {
    "i": 56,
@@ -1331,7 +2304,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "e513cc4c315fab3a",
+    "6c741ac18a8e67d7",
+    "120f20d4b102e336",
+    "67829649e57693d7",
+    "6061fbc4e659508c",
+    "6cf9d773fefbcd00",
+    "462874aa7e352405",
+    "97d654829c41b719",
+    "e891a6cbc170fc40",
+    "ea4f756e3a9ccfc2",
+    "c4ed11e81d8aa95d",
+    "2bc98850da781239",
+    "8bdac71c203072f0",
+    "6516cb7faf9172d4",
+    "a1b9c4af0847a4e2"
+   ]
   },
   {
    "i": 57,
@@ -1355,7 +2345,24 @@
     "TheHistoryofBaseball.player",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "e513cc4c315fab3a",
+    "6061fbc4e659508c",
+    "0c0fd4ecb2a213f7",
+    "0158a20995f91667",
+    "6c741ac18a8e67d7",
+    "6cf9d773fefbcd00",
+    "120f20d4b102e336",
+    "05138aa2701e35f8",
+    "67829649e57693d7",
+    "366a8ed20e2531db",
+    "e891a6cbc170fc40",
+    "2bc98850da781239",
+    "8303469f44d8ae0f",
+    "edc3c041be52733d",
+    "a52717ca11ff60a3"
+   ]
   },
   {
    "i": 58,
@@ -1377,7 +2384,24 @@
     "WhatCDHipHop.tags",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "5a9f99ef49d44fc9",
+    "67829649e57693d7",
+    "e513cc4c315fab3a",
+    "fba87de16ab60cad",
+    "2bc98850da781239",
+    "6c741ac18a8e67d7",
+    "e891a6cbc170fc40",
+    "277292f8bb6bc118",
+    "366a8ed20e2531db",
+    "9e327d42e3a3a50e",
+    "4a59e817249c91bc",
+    "99ba645c6a644bab",
+    "05138aa2701e35f8",
+    "a31302a34b8d4f1d",
+    "4410e6f5c7bb99f0"
+   ]
   },
   {
    "i": 59,
@@ -1398,7 +2422,24 @@
     "TheHistoryofBaseball.player_award",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "fba87de16ab60cad",
+    "2dbd18fb6fb5a69c",
+    "05138aa2701e35f8",
+    "85b1a89ca7038e68",
+    "a31302a34b8d4f1d",
+    "99ba645c6a644bab",
+    "e2a68459f338f81e",
+    "767792c6783bc708",
+    "7d12e7a2ae3ccfa5",
+    "4a59e817249c91bc",
+    "67829649e57693d7",
+    "277292f8bb6bc118",
+    "951c6114c2ff0262",
+    "909a4be3368383a2",
+    "4410e6f5c7bb99f0"
+   ]
   },
   {
    "i": 60,
@@ -1418,7 +2459,24 @@
     "WorldSoccerDataBase.football_data",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "767792c6783bc708",
+    "6061fbc4e659508c",
+    "67829649e57693d7",
+    "2bc98850da781239",
+    "e513cc4c315fab3a",
+    "120f20d4b102e336",
+    "6c741ac18a8e67d7",
+    "9e327d42e3a3a50e",
+    "5a9f99ef49d44fc9",
+    "366a8ed20e2531db",
+    "e891a6cbc170fc40",
+    "462874aa7e352405",
+    "8c939ec32e119a34",
+    "c4ed11e81d8aa95d",
+    "6cf9d773fefbcd00"
+   ]
   },
   {
    "i": 61,
@@ -1442,7 +2500,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "767792c6783bc708",
+    "9e327d42e3a3a50e",
+    "e891a6cbc170fc40",
+    "163a2b3c283f6d6f",
+    "a31302a34b8d4f1d",
+    "14449f1e1ec064e7",
+    "67829649e57693d7",
+    "05138aa2701e35f8",
+    "909a4be3368383a2",
+    "e2a68459f338f81e",
+    "4410e6f5c7bb99f0",
+    "4a59e817249c91bc",
+    "6c741ac18a8e67d7",
+    "277292f8bb6bc118",
+    "3b1b7136442716bc"
+   ]
   },
   {
    "i": 62,
@@ -1462,7 +2537,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "6c741ac18a8e67d7",
+    "30325cab259dca00",
+    "67829649e57693d7",
+    "e513cc4c315fab3a",
+    "7d12e7a2ae3ccfa5",
+    "2dbd18fb6fb5a69c",
+    "05138aa2701e35f8",
+    "c0ca079616739136",
+    "e891a6cbc170fc40",
+    "4410e6f5c7bb99f0",
+    "793ea1ecec214f3c",
+    "1744ce60da3afb61",
+    "47bfdde25dc00b8a",
+    "0fa465a0dd93a2e6",
+    "e2a68459f338f81e"
+   ]
   },
   {
    "i": 63,
@@ -1484,7 +2576,24 @@
     "TheHistoryofBaseball.player_award_vote",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "05138aa2701e35f8",
+    "767792c6783bc708",
+    "3dfa2ae44034f55a",
+    "c0ca079616739136",
+    "4410e6f5c7bb99f0",
+    "194cb3f8e15a3a1e",
+    "5a9f99ef49d44fc9",
+    "e513cc4c315fab3a",
+    "9e327d42e3a3a50e",
+    "30325cab259dca00",
+    "3c34c481931aac62",
+    "47bfdde25dc00b8a",
+    "1744ce60da3afb61",
+    "277292f8bb6bc118",
+    "fba87de16ab60cad"
+   ]
   },
   {
    "i": 64,
@@ -1503,7 +2612,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "30325cab259dca00",
+    "7d12e7a2ae3ccfa5",
+    "4410e6f5c7bb99f0",
+    "3dfa2ae44034f55a",
+    "2dbd18fb6fb5a69c",
+    "c0ca079616739136",
+    "05138aa2701e35f8",
+    "909a4be3368383a2",
+    "793ea1ecec214f3c",
+    "85b1a89ca7038e68",
+    "e2a68459f338f81e",
+    "99ba645c6a644bab",
+    "0fa465a0dd93a2e6",
+    "fba87de16ab60cad",
+    "3c34c481931aac62"
+   ]
   },
   {
    "i": 65,
@@ -1525,7 +2651,24 @@
     "StudentMathScore.FINREV_FED_17",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "30325cab259dca00",
+    "7d12e7a2ae3ccfa5",
+    "4410e6f5c7bb99f0",
+    "05138aa2701e35f8",
+    "c0ca079616739136",
+    "2dbd18fb6fb5a69c",
+    "a4c7a9f99b1a2948",
+    "3dfa2ae44034f55a",
+    "fba87de16ab60cad",
+    "e513cc4c315fab3a",
+    "07a0c9074ea0bea4",
+    "6c741ac18a8e67d7",
+    "0fa465a0dd93a2e6",
+    "793ea1ecec214f3c",
+    "951bd200be08041e"
+   ]
   },
   {
    "i": 66,
@@ -1549,7 +2692,24 @@
     "TheHistoryofBaseball.player_award_vote",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "767792c6783bc708",
+    "c0ca079616739136",
+    "05138aa2701e35f8",
+    "e513cc4c315fab3a",
+    "4410e6f5c7bb99f0",
+    "3c34c481931aac62",
+    "5a9f99ef49d44fc9",
+    "6c741ac18a8e67d7",
+    "47bfdde25dc00b8a",
+    "30325cab259dca00",
+    "1744ce60da3afb61",
+    "67829649e57693d7",
+    "3dfa2ae44034f55a",
+    "793ea1ecec214f3c",
+    "3b1b7136442716bc"
+   ]
   },
   {
    "i": 67,
@@ -1570,7 +2730,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "767792c6783bc708",
+    "3c34c481931aac62",
+    "e891a6cbc170fc40",
+    "3dfa2ae44034f55a",
+    "194cb3f8e15a3a1e",
+    "05138aa2701e35f8",
+    "909a4be3368383a2",
+    "e2a68459f338f81e",
+    "c0ca079616739136",
+    "3b1b7136442716bc",
+    "9e327d42e3a3a50e",
+    "4410e6f5c7bb99f0",
+    "a31302a34b8d4f1d",
+    "366a8ed20e2531db",
+    "99ba645c6a644bab"
+   ]
   },
   {
    "i": 68,
@@ -1592,7 +2769,24 @@
     "WorldSoccerDataBase.football_data",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "2f73e0087797399a",
+    "5e9c3534283255a9",
+    "6cf9d773fefbcd00",
+    "6061fbc4e659508c",
+    "edc3c041be52733d",
+    "8c939ec32e119a34",
+    "163a2b3c283f6d6f",
+    "64880982942eb52c",
+    "14449f1e1ec064e7",
+    "277cb8e614fd568d",
+    "9d0b0d477bc36ba9",
+    "0158a20995f91667",
+    "793ea1ecec214f3c",
+    "345a70d3e7751458"
+   ]
   },
   {
    "i": 69,
@@ -1610,7 +2804,24 @@
     "TheHistoryofBaseball.player",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "2f73e0087797399a",
+    "df8cf9c9eb89f93b",
+    "5e9c3534283255a9",
+    "163a2b3c283f6d6f",
+    "8d75094c32455f74",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "64880982942eb52c",
+    "9d0b0d477bc36ba9",
+    "8c939ec32e119a34",
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "277cb8e614fd568d",
+    "9a34a1c60688ad8b",
+    "47bfdde25dc00b8a"
+   ]
   },
   {
    "i": 70,
@@ -1627,7 +2838,24 @@
     "WorldSoccerDataBase.football_data",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 8
+   "n_ranked": 8,
+   "ranked_columns": [
+    "14449f1e1ec064e7",
+    "6061fbc4e659508c",
+    "edc3c041be52733d",
+    "df8cf9c9eb89f93b",
+    "277cb8e614fd568d",
+    "6cf9d773fefbcd00",
+    "163a2b3c283f6d6f",
+    "8c939ec32e119a34",
+    "0158a20995f91667",
+    "a9c8752e0358e904",
+    "8d75094c32455f74",
+    "2f73e0087797399a",
+    "5e9c3534283255a9",
+    "f30a05c59661ef1e",
+    "252c6bbd44d5ba21"
+   ]
   },
   {
    "i": 71,
@@ -1646,7 +2874,24 @@
     "TheHistoryofBaseball.player_award_vote",
     "TheHistoryofBaseball.player_award"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "163a2b3c283f6d6f",
+    "8d75094c32455f74",
+    "2f73e0087797399a",
+    "df8cf9c9eb89f93b",
+    "5e9c3534283255a9",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "14449f1e1ec064e7",
+    "6061fbc4e659508c",
+    "8c939ec32e119a34",
+    "277cb8e614fd568d",
+    "f30a05c59661ef1e",
+    "0158a20995f91667",
+    "252c6bbd44d5ba21",
+    "a9c8752e0358e904"
+   ]
   },
   {
    "i": 72,
@@ -1665,7 +2910,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "277cb8e614fd568d",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "64880982942eb52c",
+    "9d0b0d477bc36ba9",
+    "252c6bbd44d5ba21",
+    "2f73e0087797399a",
+    "8c939ec32e119a34",
+    "163a2b3c283f6d6f",
+    "0158a20995f91667",
+    "5e9c3534283255a9",
+    "0a53ece3a64b8505"
+   ]
   },
   {
    "i": 73,
@@ -1685,7 +2947,24 @@
     "TheHistoryofBaseball.player",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "277cb8e614fd568d",
+    "df8cf9c9eb89f93b",
+    "252c6bbd44d5ba21",
+    "9d0b0d477bc36ba9",
+    "64880982942eb52c",
+    "8c939ec32e119a34",
+    "2f73e0087797399a",
+    "163a2b3c283f6d6f",
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "0a53ece3a64b8505",
+    "5e9c3534283255a9",
+    "0158a20995f91667"
+   ]
   },
   {
    "i": 74,
@@ -1701,7 +2980,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "WorldSoccerDataBase.football_data"
    ],
-   "n_ranked": 7
+   "n_ranked": 7,
+   "ranked_columns": [
+    "6cf9d773fefbcd00",
+    "df8cf9c9eb89f93b",
+    "edc3c041be52733d",
+    "0158a20995f91667",
+    "277cb8e614fd568d",
+    "f30a05c59661ef1e",
+    "6061fbc4e659508c",
+    "8c939ec32e119a34",
+    "9d0b0d477bc36ba9",
+    "64880982942eb52c",
+    "2f73e0087797399a",
+    "14449f1e1ec064e7",
+    "252c6bbd44d5ba21",
+    "163a2b3c283f6d6f",
+    "8d75094c32455f74"
+   ]
   },
   {
    "i": 75,
@@ -1723,7 +3019,24 @@
     "TheHistoryofBaseball.player",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "2f73e0087797399a",
+    "5e9c3534283255a9",
+    "277cb8e614fd568d",
+    "793ea1ecec214f3c",
+    "c8daac32fd0e030d",
+    "163a2b3c283f6d6f",
+    "8d75094c32455f74",
+    "32a66118e7c58ef4",
+    "a4c7a9f99b1a2948",
+    "51c2f5cbda3e36d1"
+   ]
   },
   {
    "i": 76,
@@ -1741,7 +3054,24 @@
     "WhatCDHipHop.torrents",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "6cf9d773fefbcd00",
+    "df8cf9c9eb89f93b",
+    "edc3c041be52733d",
+    "6061fbc4e659508c",
+    "0158a20995f91667",
+    "8c939ec32e119a34",
+    "277cb8e614fd568d",
+    "9d0b0d477bc36ba9",
+    "2f73e0087797399a",
+    "64880982942eb52c",
+    "14449f1e1ec064e7",
+    "163a2b3c283f6d6f",
+    "f30a05c59661ef1e",
+    "252c6bbd44d5ba21",
+    "5e9c3534283255a9"
+   ]
   },
   {
    "i": 77,
@@ -1764,7 +3094,24 @@
     "TheHistoryofBaseball.player_award",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "6cf9d773fefbcd00",
+    "df8cf9c9eb89f93b",
+    "edc3c041be52733d",
+    "6061fbc4e659508c",
+    "64880982942eb52c",
+    "9d0b0d477bc36ba9",
+    "2f73e0087797399a",
+    "277cb8e614fd568d",
+    "8c939ec32e119a34",
+    "14449f1e1ec064e7",
+    "252c6bbd44d5ba21",
+    "0158a20995f91667",
+    "163a2b3c283f6d6f",
+    "5e9c3534283255a9",
+    "0a53ece3a64b8505"
+   ]
   },
   {
    "i": 78,
@@ -1784,7 +3131,24 @@
     "TheHistoryofBaseball.player_award_vote",
     "TheHistoryofBaseball.player_award"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "6cf9d773fefbcd00",
+    "edc3c041be52733d",
+    "6061fbc4e659508c",
+    "2f73e0087797399a",
+    "0158a20995f91667",
+    "277cb8e614fd568d",
+    "8c939ec32e119a34",
+    "14449f1e1ec064e7",
+    "163a2b3c283f6d6f",
+    "9d0b0d477bc36ba9",
+    "64880982942eb52c",
+    "5e9c3534283255a9",
+    "8d75094c32455f74",
+    "f30a05c59661ef1e"
+   ]
   },
   {
    "i": 79,
@@ -1807,7 +3171,24 @@
     "Pesticide.resultsdata15",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "6cf9d773fefbcd00",
+    "edc3c041be52733d",
+    "2f73e0087797399a",
+    "6061fbc4e659508c",
+    "8c939ec32e119a34",
+    "64880982942eb52c",
+    "5e9c3534283255a9",
+    "9d0b0d477bc36ba9",
+    "0158a20995f91667",
+    "14449f1e1ec064e7",
+    "163a2b3c283f6d6f",
+    "345a70d3e7751458",
+    "277cb8e614fd568d",
+    "6653840cff196873"
+   ]
   },
   {
    "i": 80,
@@ -1827,7 +3208,24 @@
     "TheHistoryofBaseball.salary",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "df8cf9c9eb89f93b",
+    "edc3c041be52733d",
+    "277cb8e614fd568d",
+    "6cf9d773fefbcd00",
+    "163a2b3c283f6d6f",
+    "2f73e0087797399a",
+    "8c939ec32e119a34",
+    "5e9c3534283255a9",
+    "8d75094c32455f74",
+    "252c6bbd44d5ba21",
+    "0a53ece3a64b8505",
+    "a9c8752e0358e904",
+    "9d0b0d477bc36ba9"
+   ]
   },
   {
    "i": 81,
@@ -1846,7 +3244,24 @@
     "TheHistoryofBaseball.player_award_vote",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "df8cf9c9eb89f93b",
+    "277cb8e614fd568d",
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "9d0b0d477bc36ba9",
+    "2f73e0087797399a",
+    "163a2b3c283f6d6f",
+    "0158a20995f91667",
+    "8c939ec32e119a34",
+    "64880982942eb52c",
+    "f30a05c59661ef1e",
+    "252c6bbd44d5ba21",
+    "0a53ece3a64b8505"
+   ]
   },
   {
    "i": 82,
@@ -1865,7 +3280,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "277cb8e614fd568d",
+    "df8cf9c9eb89f93b",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "2f73e0087797399a",
+    "9d0b0d477bc36ba9",
+    "163a2b3c283f6d6f",
+    "252c6bbd44d5ba21",
+    "5e9c3534283255a9",
+    "64880982942eb52c",
+    "8c939ec32e119a34",
+    "209db2ba15001a43",
+    "8d75094c32455f74"
+   ]
   },
   {
    "i": 83,
@@ -1889,7 +3321,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "6061fbc4e659508c",
+    "6cf9d773fefbcd00",
+    "edc3c041be52733d",
+    "14449f1e1ec064e7",
+    "2f73e0087797399a",
+    "0158a20995f91667",
+    "8c939ec32e119a34",
+    "9d0b0d477bc36ba9",
+    "277cb8e614fd568d",
+    "64880982942eb52c",
+    "163a2b3c283f6d6f",
+    "252c6bbd44d5ba21",
+    "5e9c3534283255a9",
+    "8d75094c32455f74"
+   ]
   },
   {
    "i": 84,
@@ -1913,7 +3362,24 @@
     "WhatCDHipHop.tags",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "6653840cff196873",
+    "e2f085b29cf4ce12",
+    "345a70d3e7751458",
+    "960d9a0019360313",
+    "c48acd09008a5e8a",
+    "b70599f241ffd205",
+    "a52717ca11ff60a3",
+    "5fa376d3f1938066",
+    "61b9ac25caf0215e",
+    "df8cf9c9eb89f93b",
+    "8e2d65ce0f6df7ab",
+    "793ea1ecec214f3c",
+    "dd6e84c133aaa187",
+    "9a34a1c60688ad8b",
+    "d08e9387d422bc3a"
+   ]
   },
   {
    "i": 85,
@@ -1936,7 +3402,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "2f73e0087797399a",
+    "163a2b3c283f6d6f",
+    "5e9c3534283255a9",
+    "345a70d3e7751458",
+    "793ea1ecec214f3c",
+    "6cf9d773fefbcd00",
+    "6653840cff196873",
+    "960d9a0019360313",
+    "e2f085b29cf4ce12",
+    "edc3c041be52733d",
+    "6061fbc4e659508c",
+    "8c939ec32e119a34",
+    "b70599f241ffd205",
+    "8d75094c32455f74"
+   ]
   },
   {
    "i": 86,
@@ -1957,7 +3440,24 @@
     "WhatCDHipHop.torrents",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "0158a20995f91667",
+    "8303469f44d8ae0f",
+    "8d75094c32455f74",
+    "df8cf9c9eb89f93b",
+    "163a2b3c283f6d6f",
+    "252c6bbd44d5ba21",
+    "5e9c3534283255a9",
+    "a9c8752e0358e904",
+    "f30a05c59661ef1e",
+    "2f73e0087797399a",
+    "0a53ece3a64b8505"
+   ]
   },
   {
    "i": 87,
@@ -1979,7 +3479,24 @@
     "WorldSoccerDataBase.football_data",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "2f73e0087797399a",
+    "277cb8e614fd568d",
+    "9d0b0d477bc36ba9",
+    "64880982942eb52c",
+    "0158a20995f91667",
+    "6061fbc4e659508c",
+    "8c939ec32e119a34",
+    "163a2b3c283f6d6f",
+    "5e9c3534283255a9",
+    "345a70d3e7751458",
+    "793ea1ecec214f3c",
+    "14449f1e1ec064e7"
+   ]
   },
   {
    "i": 88,
@@ -2003,7 +3520,24 @@
     "TheHistoryofBaseball.salary",
     "TheHistoryofBaseball.player_award_vote"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "0158a20995f91667",
+    "f30a05c59661ef1e",
+    "8322e3fe6bd2af95",
+    "cdffb3c2068096b7",
+    "ded511e979c5de1a",
+    "0fbc973f6462d9e4",
+    "a52717ca11ff60a3",
+    "132a54123b75011c",
+    "0c0fd4ecb2a213f7",
+    "9bee93418090159e",
+    "1b092dd7107d09bd",
+    "90e1519552d25adb",
+    "6653840cff196873",
+    "2b404d3676b0f110",
+    "79d37341051e30d3"
+   ]
   },
   {
    "i": 89,
@@ -2025,7 +3559,24 @@
     "WhatCDHipHop.torrents",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "277cb8e614fd568d",
+    "9a34a1c60688ad8b",
+    "793ea1ecec214f3c",
+    "de72fa8d868c44e3",
+    "e891a6cbc170fc40",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "30325cab259dca00",
+    "2f73e0087797399a",
+    "6061fbc4e659508c",
+    "6653840cff196873",
+    "345a70d3e7751458",
+    "d73ccf03de72af53",
+    "1744ce60da3afb61"
+   ]
   },
   {
    "i": 90,
@@ -2043,7 +3594,24 @@
     "TheHistoryofBaseball.player",
     "WorldSoccerDataBase.football_data"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "6cf9d773fefbcd00",
+    "edc3c041be52733d",
+    "df8cf9c9eb89f93b",
+    "163a2b3c283f6d6f",
+    "0158a20995f91667",
+    "8d75094c32455f74",
+    "8c939ec32e119a34",
+    "252c6bbd44d5ba21",
+    "277cb8e614fd568d",
+    "2f73e0087797399a",
+    "9d0b0d477bc36ba9",
+    "8303469f44d8ae0f",
+    "64880982942eb52c"
+   ]
   },
   {
    "i": 91,
@@ -2066,7 +3634,24 @@
     "TheHistoryofBaseball.player",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "277cb8e614fd568d",
+    "6cf9d773fefbcd00",
+    "6061fbc4e659508c",
+    "0158a20995f91667",
+    "edc3c041be52733d",
+    "2f73e0087797399a",
+    "350ff7a2c2f28d3a",
+    "793ea1ecec214f3c",
+    "14449f1e1ec064e7",
+    "8c939ec32e119a34",
+    "9d0b0d477bc36ba9",
+    "e891a6cbc170fc40",
+    "e2f085b29cf4ce12",
+    "6653840cff196873"
+   ]
   },
   {
    "i": 92,
@@ -2088,7 +3673,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "edc3c041be52733d",
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "6cf9d773fefbcd00",
+    "2f73e0087797399a",
+    "163a2b3c283f6d6f",
+    "277cb8e614fd568d",
+    "5e9c3534283255a9",
+    "8c939ec32e119a34",
+    "8d75094c32455f74",
+    "9d0b0d477bc36ba9",
+    "252c6bbd44d5ba21",
+    "a9c8752e0358e904",
+    "0158a20995f91667"
+   ]
   },
   {
    "i": 93,
@@ -2108,7 +3710,24 @@
     "TheHistoryofBaseball.salary",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "6cf9d773fefbcd00",
+    "edc3c041be52733d",
+    "6061fbc4e659508c",
+    "df8cf9c9eb89f93b",
+    "277cb8e614fd568d",
+    "0158a20995f91667",
+    "64880982942eb52c",
+    "4410e6f5c7bb99f0",
+    "9d0b0d477bc36ba9",
+    "8c939ec32e119a34",
+    "2bc98850da781239",
+    "e513cc4c315fab3a",
+    "366a8ed20e2531db",
+    "2f73e0087797399a",
+    "6c741ac18a8e67d7"
+   ]
   },
   {
    "i": 94,
@@ -2128,7 +3747,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "277cb8e614fd568d",
+    "df8cf9c9eb89f93b",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "252c6bbd44d5ba21",
+    "9d0b0d477bc36ba9",
+    "14449f1e1ec064e7",
+    "64880982942eb52c",
+    "2f73e0087797399a",
+    "6061fbc4e659508c",
+    "163a2b3c283f6d6f",
+    "8c939ec32e119a34",
+    "5e9c3534283255a9",
+    "8d75094c32455f74",
+    "0a53ece3a64b8505"
+   ]
   },
   {
    "i": 95,
@@ -2145,7 +3781,24 @@
     "WorldSoccerDataBase.football_data",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 8
+   "n_ranked": 8,
+   "ranked_columns": [
+    "14449f1e1ec064e7",
+    "6061fbc4e659508c",
+    "df8cf9c9eb89f93b",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "277cb8e614fd568d",
+    "2f73e0087797399a",
+    "8c939ec32e119a34",
+    "163a2b3c283f6d6f",
+    "0158a20995f91667",
+    "5e9c3534283255a9",
+    "9d0b0d477bc36ba9",
+    "f30a05c59661ef1e",
+    "64880982942eb52c",
+    "a9c8752e0358e904"
+   ]
   },
   {
    "i": 96,
@@ -2161,7 +3814,24 @@
     "Pesticide.resultsdata15",
     "WorldSoccerDataBase.football_data"
    ],
-   "n_ranked": 7
+   "n_ranked": 7,
+   "ranked_columns": [
+    "277cb8e614fd568d",
+    "df8cf9c9eb89f93b",
+    "6cf9d773fefbcd00",
+    "edc3c041be52733d",
+    "9d0b0d477bc36ba9",
+    "64880982942eb52c",
+    "0158a20995f91667",
+    "6061fbc4e659508c",
+    "8c939ec32e119a34",
+    "14449f1e1ec064e7",
+    "2f73e0087797399a",
+    "f30a05c59661ef1e",
+    "252c6bbd44d5ba21",
+    "163a2b3c283f6d6f",
+    "a9c8752e0358e904"
+   ]
   },
   {
    "i": 97,
@@ -2184,7 +3854,24 @@
     "TheHistoryofBaseball.player",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "6061fbc4e659508c",
+    "6cf9d773fefbcd00",
+    "edc3c041be52733d",
+    "14449f1e1ec064e7",
+    "2f73e0087797399a",
+    "8c939ec32e119a34",
+    "277cb8e614fd568d",
+    "0158a20995f91667",
+    "5e9c3534283255a9",
+    "163a2b3c283f6d6f",
+    "64880982942eb52c",
+    "9d0b0d477bc36ba9",
+    "8d75094c32455f74",
+    "252c6bbd44d5ba21"
+   ]
   },
   {
    "i": 98,
@@ -2207,7 +3894,24 @@
     "WhatCDHipHop.tags",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "6cf9d773fefbcd00",
+    "edc3c041be52733d",
+    "277cb8e614fd568d",
+    "2f73e0087797399a",
+    "6061fbc4e659508c",
+    "0158a20995f91667",
+    "8c939ec32e119a34",
+    "9d0b0d477bc36ba9",
+    "64880982942eb52c",
+    "163a2b3c283f6d6f",
+    "14449f1e1ec064e7",
+    "5e9c3534283255a9",
+    "f30a05c59661ef1e",
+    "252c6bbd44d5ba21"
+   ]
   },
   {
    "i": 99,
@@ -2230,7 +3934,24 @@
     "StudentMathScore.FINREV_FED_17",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "6cf9d773fefbcd00",
+    "6061fbc4e659508c",
+    "edc3c041be52733d",
+    "2f73e0087797399a",
+    "64880982942eb52c",
+    "9d0b0d477bc36ba9",
+    "277cb8e614fd568d",
+    "8c939ec32e119a34",
+    "14449f1e1ec064e7",
+    "163a2b3c283f6d6f",
+    "252c6bbd44d5ba21",
+    "0158a20995f91667",
+    "5e9c3534283255a9",
+    "8d75094c32455f74"
+   ]
   },
   {
    "i": 100,
@@ -2251,7 +3972,24 @@
     "Pesticide.sampledata15",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "df8cf9c9eb89f93b",
+    "277cb8e614fd568d",
+    "0158a20995f91667",
+    "252c6bbd44d5ba21",
+    "8d75094c32455f74",
+    "a9c8752e0358e904",
+    "0a53ece3a64b8505",
+    "f30a05c59661ef1e",
+    "5e9c3534283255a9",
+    "163a2b3c283f6d6f",
+    "8303469f44d8ae0f"
+   ]
   },
   {
    "i": 101,
@@ -2272,7 +4010,24 @@
     "TheHistoryofBaseball.player_award",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "df8cf9c9eb89f93b",
+    "9d0b0d477bc36ba9",
+    "350ff7a2c2f28d3a",
+    "6061fbc4e659508c",
+    "64880982942eb52c",
+    "277cb8e614fd568d",
+    "163a2b3c283f6d6f",
+    "14449f1e1ec064e7",
+    "51c2f5cbda3e36d1",
+    "0158a20995f91667",
+    "a4c7a9f99b1a2948",
+    "d21fdf98408ab133",
+    "8c939ec32e119a34"
+   ]
   },
   {
    "i": 102,
@@ -2293,7 +4048,24 @@
     "TheHistoryofBaseball.player_award_vote",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "6cf9d773fefbcd00",
+    "edc3c041be52733d",
+    "0158a20995f91667",
+    "277cb8e614fd568d",
+    "793ea1ecec214f3c",
+    "f30a05c59661ef1e",
+    "9d0b0d477bc36ba9",
+    "6061fbc4e659508c",
+    "64880982942eb52c",
+    "2f73e0087797399a",
+    "8c939ec32e119a34",
+    "14449f1e1ec064e7",
+    "8d75094c32455f74",
+    "350ff7a2c2f28d3a"
+   ]
   },
   {
    "i": 103,
@@ -2311,7 +4083,24 @@
     "TheHistoryofBaseball.player",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "0158a20995f91667",
+    "6cf9d773fefbcd00",
+    "df8cf9c9eb89f93b",
+    "277cb8e614fd568d",
+    "f30a05c59661ef1e",
+    "edc3c041be52733d",
+    "6061fbc4e659508c",
+    "9d0b0d477bc36ba9",
+    "14449f1e1ec064e7",
+    "2f73e0087797399a",
+    "8c939ec32e119a34",
+    "64880982942eb52c",
+    "252c6bbd44d5ba21",
+    "163a2b3c283f6d6f",
+    "de72fa8d868c44e3"
+   ]
   },
   {
    "i": 104,
@@ -2329,7 +4118,24 @@
     "WhatCDHipHop.torrents",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "df8cf9c9eb89f93b",
+    "64880982942eb52c",
+    "9d0b0d477bc36ba9",
+    "edc3c041be52733d",
+    "6cf9d773fefbcd00",
+    "277cb8e614fd568d",
+    "8c939ec32e119a34",
+    "2f73e0087797399a",
+    "163a2b3c283f6d6f",
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "252c6bbd44d5ba21",
+    "0158a20995f91667",
+    "5e9c3534283255a9",
+    "8d75094c32455f74"
+   ]
   },
   {
    "i": 105,
@@ -2349,7 +4155,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "350ff7a2c2f28d3a",
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "abcce680b5aafeea",
+    "f53353bd44fb245b",
+    "d21fdf98408ab133",
+    "7e2978402f566d08",
+    "d15d65a2491717a9",
+    "29bd306b7d8f597e",
+    "32a66118e7c58ef4",
+    "51c2f5cbda3e36d1",
+    "30325cab259dca00",
+    "4d9a794941b4e55b",
+    "c8daac32fd0e030d"
+   ]
   },
   {
    "i": 106,
@@ -2367,7 +4190,24 @@
     "WhatCDHipHop.torrents",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "abcce680b5aafeea",
+    "32a66118e7c58ef4",
+    "d21fdf98408ab133",
+    "4d9a794941b4e55b",
+    "d15d65a2491717a9",
+    "29bd306b7d8f597e",
+    "51c2f5cbda3e36d1",
+    "ccf052b9a89da4f3",
+    "f53353bd44fb245b",
+    "2096ec5a3e133db4",
+    "350ff7a2c2f28d3a",
+    "7e2978402f566d08",
+    "c8daac32fd0e030d",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 107,
@@ -2387,7 +4227,24 @@
     "WhatCDHipHop.tags",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "51c2f5cbda3e36d1",
+    "d21fdf98408ab133",
+    "32a66118e7c58ef4",
+    "350ff7a2c2f28d3a",
+    "2096ec5a3e133db4",
+    "7e2978402f566d08",
+    "ccf052b9a89da4f3",
+    "c8daac32fd0e030d",
+    "abcce680b5aafeea",
+    "f53353bd44fb245b",
+    "29bd306b7d8f597e",
+    "a4c7a9f99b1a2948",
+    "d15d65a2491717a9",
+    "4d9a794941b4e55b",
+    "9dd5eb02258221b3"
+   ]
   },
   {
    "i": 108,
@@ -2405,7 +4262,24 @@
     "Pesticide.resultsdata15",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "7e2978402f566d08",
+    "4d9a794941b4e55b",
+    "ccf052b9a89da4f3",
+    "29bd306b7d8f597e",
+    "abcce680b5aafeea",
+    "d15d65a2491717a9",
+    "2096ec5a3e133db4",
+    "f53353bd44fb245b",
+    "350ff7a2c2f28d3a",
+    "07a0c9074ea0bea4",
+    "51c2f5cbda3e36d1",
+    "32a66118e7c58ef4",
+    "d21fdf98408ab133",
+    "c8daac32fd0e030d"
+   ]
   },
   {
    "i": 109,
@@ -2424,7 +4298,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "345a70d3e7751458",
+    "2f73e0087797399a",
+    "47bfdde25dc00b8a",
+    "64880982942eb52c",
+    "350ff7a2c2f28d3a",
+    "9d0b0d477bc36ba9",
+    "6c741ac18a8e67d7",
+    "df8cf9c9eb89f93b",
+    "f53353bd44fb245b",
+    "793ea1ecec214f3c",
+    "51c2f5cbda3e36d1",
+    "d21fdf98408ab133",
+    "7e2978402f566d08",
+    "2096ec5a3e133db4",
+    "ccf052b9a89da4f3"
+   ]
   },
   {
    "i": 110,
@@ -2444,7 +4335,24 @@
     "WhatCDHipHop.tags",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "51c2f5cbda3e36d1",
+    "d21fdf98408ab133",
+    "32a66118e7c58ef4",
+    "350ff7a2c2f28d3a",
+    "2096ec5a3e133db4",
+    "abcce680b5aafeea",
+    "7e2978402f566d08",
+    "ccf052b9a89da4f3",
+    "f53353bd44fb245b",
+    "a4c7a9f99b1a2948",
+    "29bd306b7d8f597e",
+    "d15d65a2491717a9",
+    "c8daac32fd0e030d",
+    "4d9a794941b4e55b",
+    "c0ca079616739136"
+   ]
   },
   {
    "i": 111,
@@ -2467,7 +4375,24 @@
     "WhatCDHipHop.tags",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "d21fdf98408ab133",
+    "350ff7a2c2f28d3a",
+    "51c2f5cbda3e36d1",
+    "32a66118e7c58ef4",
+    "abcce680b5aafeea",
+    "c8daac32fd0e030d",
+    "ccf052b9a89da4f3",
+    "f53353bd44fb245b",
+    "2096ec5a3e133db4",
+    "29bd306b7d8f597e",
+    "7e2978402f566d08",
+    "a4c7a9f99b1a2948",
+    "d15d65a2491717a9",
+    "4d9a794941b4e55b",
+    "6061fbc4e659508c"
+   ]
   },
   {
    "i": 112,
@@ -2487,7 +4412,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "abcce680b5aafeea",
+    "d21fdf98408ab133",
+    "350ff7a2c2f28d3a",
+    "32a66118e7c58ef4",
+    "51c2f5cbda3e36d1",
+    "29bd306b7d8f597e",
+    "d15d65a2491717a9",
+    "f53353bd44fb245b",
+    "4d9a794941b4e55b",
+    "7e2978402f566d08",
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "c8daac32fd0e030d",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 113,
@@ -2506,7 +4448,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "d21fdf98408ab133",
+    "abcce680b5aafeea",
+    "32a66118e7c58ef4",
+    "51c2f5cbda3e36d1",
+    "350ff7a2c2f28d3a",
+    "29bd306b7d8f597e",
+    "d15d65a2491717a9",
+    "f53353bd44fb245b",
+    "7e2978402f566d08",
+    "4d9a794941b4e55b",
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "c8daac32fd0e030d",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 114,
@@ -2525,7 +4484,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "abcce680b5aafeea",
+    "d21fdf98408ab133",
+    "32a66118e7c58ef4",
+    "29bd306b7d8f597e",
+    "51c2f5cbda3e36d1",
+    "350ff7a2c2f28d3a",
+    "d15d65a2491717a9",
+    "f53353bd44fb245b",
+    "4d9a794941b4e55b",
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "7e2978402f566d08",
+    "c8daac32fd0e030d",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 115,
@@ -2546,7 +4522,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "350ff7a2c2f28d3a",
+    "a4c7a9f99b1a2948",
+    "d21fdf98408ab133",
+    "32a66118e7c58ef4",
+    "abcce680b5aafeea",
+    "51c2f5cbda3e36d1",
+    "29bd306b7d8f597e",
+    "f53353bd44fb245b",
+    "7e2978402f566d08",
+    "d15d65a2491717a9",
+    "4d9a794941b4e55b",
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "c8daac32fd0e030d",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 116,
@@ -2565,7 +4558,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "350ff7a2c2f28d3a",
+    "a4c7a9f99b1a2948",
+    "d21fdf98408ab133",
+    "32a66118e7c58ef4",
+    "abcce680b5aafeea",
+    "51c2f5cbda3e36d1",
+    "29bd306b7d8f597e",
+    "d15d65a2491717a9",
+    "f53353bd44fb245b",
+    "4d9a794941b4e55b",
+    "7e2978402f566d08",
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "c8daac32fd0e030d",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 117,
@@ -2586,7 +4596,24 @@
     "WhatCDHipHop.torrents",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "d21fdf98408ab133",
+    "32a66118e7c58ef4",
+    "abcce680b5aafeea",
+    "51c2f5cbda3e36d1",
+    "350ff7a2c2f28d3a",
+    "29bd306b7d8f597e",
+    "d15d65a2491717a9",
+    "f53353bd44fb245b",
+    "7e2978402f566d08",
+    "4d9a794941b4e55b",
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "c8daac32fd0e030d",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 118,
@@ -2607,7 +4634,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "d21fdf98408ab133",
+    "51c2f5cbda3e36d1",
+    "350ff7a2c2f28d3a",
+    "32a66118e7c58ef4",
+    "d15d65a2491717a9",
+    "4d9a794941b4e55b",
+    "abcce680b5aafeea",
+    "f53353bd44fb245b",
+    "29bd306b7d8f597e",
+    "7e2978402f566d08",
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "c8daac32fd0e030d",
+    "07a0c9074ea0bea4"
+   ]
   },
   {
    "i": 119,
@@ -2627,7 +4671,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "d21fdf98408ab133",
+    "51c2f5cbda3e36d1",
+    "4d9a794941b4e55b",
+    "350ff7a2c2f28d3a",
+    "f53353bd44fb245b",
+    "32a66118e7c58ef4",
+    "29bd306b7d8f597e",
+    "ccf052b9a89da4f3",
+    "d15d65a2491717a9",
+    "2096ec5a3e133db4",
+    "abcce680b5aafeea",
+    "c8daac32fd0e030d",
+    "7e2978402f566d08",
+    "209db2ba15001a43"
+   ]
   },
   {
    "i": 120,
@@ -2647,7 +4708,24 @@
     "WorldSoccerDataBase.football_data",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "350ff7a2c2f28d3a",
+    "d21fdf98408ab133",
+    "32a66118e7c58ef4",
+    "51c2f5cbda3e36d1",
+    "7e2978402f566d08",
+    "abcce680b5aafeea",
+    "ccf052b9a89da4f3",
+    "29bd306b7d8f597e",
+    "2096ec5a3e133db4",
+    "f53353bd44fb245b",
+    "a4c7a9f99b1a2948",
+    "d15d65a2491717a9",
+    "4d9a794941b4e55b",
+    "c8daac32fd0e030d",
+    "edc3c041be52733d"
+   ]
   },
   {
    "i": 121,
@@ -2668,7 +4746,24 @@
     "WhatCDHipHop.torrents",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "350ff7a2c2f28d3a",
+    "d21fdf98408ab133",
+    "51c2f5cbda3e36d1",
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "7e2978402f566d08",
+    "32a66118e7c58ef4",
+    "4d9a794941b4e55b",
+    "a4c7a9f99b1a2948",
+    "f53353bd44fb245b",
+    "d15d65a2491717a9",
+    "abcce680b5aafeea",
+    "29bd306b7d8f597e",
+    "c8daac32fd0e030d",
+    "64880982942eb52c"
+   ]
   },
   {
    "i": 122,
@@ -2690,7 +4785,24 @@
     "Pesticide.resultsdata15",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "7e2978402f566d08",
+    "350ff7a2c2f28d3a",
+    "d21fdf98408ab133",
+    "51c2f5cbda3e36d1",
+    "32a66118e7c58ef4",
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "abcce680b5aafeea",
+    "f53353bd44fb245b",
+    "4d9a794941b4e55b",
+    "29bd306b7d8f597e",
+    "d15d65a2491717a9",
+    "c8daac32fd0e030d",
+    "a4c7a9f99b1a2948",
+    "209db2ba15001a43"
+   ]
   },
   {
    "i": 123,
@@ -2710,7 +4822,24 @@
     "WorldSoccerDataBase.football_data",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "51c2f5cbda3e36d1",
+    "d21fdf98408ab133",
+    "32a66118e7c58ef4",
+    "350ff7a2c2f28d3a",
+    "2096ec5a3e133db4",
+    "7e2978402f566d08",
+    "abcce680b5aafeea",
+    "ccf052b9a89da4f3",
+    "f53353bd44fb245b",
+    "29bd306b7d8f597e",
+    "c8daac32fd0e030d",
+    "a4c7a9f99b1a2948",
+    "d15d65a2491717a9",
+    "4d9a794941b4e55b",
+    "c0ca079616739136"
+   ]
   },
   {
    "i": 124,
@@ -2729,7 +4858,24 @@
     "WhatCDHipHop.tags",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "07a0c9074ea0bea4",
+    "30325cab259dca00",
+    "951bd200be08041e",
+    "4d9a794941b4e55b",
+    "d15d65a2491717a9",
+    "7e2978402f566d08",
+    "7d12e7a2ae3ccfa5",
+    "abcce680b5aafeea",
+    "f53353bd44fb245b",
+    "29bd306b7d8f597e",
+    "32a66118e7c58ef4",
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "350ff7a2c2f28d3a"
+   ]
   },
   {
    "i": 125,
@@ -2747,7 +4893,24 @@
     "WhatCDHipHop.torrents",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "ccf052b9a89da4f3",
+    "2096ec5a3e133db4",
+    "d21fdf98408ab133",
+    "51c2f5cbda3e36d1",
+    "29bd306b7d8f597e",
+    "f53353bd44fb245b",
+    "32a66118e7c58ef4",
+    "abcce680b5aafeea",
+    "7e2978402f566d08",
+    "a4c7a9f99b1a2948",
+    "350ff7a2c2f28d3a",
+    "d15d65a2491717a9",
+    "c8daac32fd0e030d",
+    "4d9a794941b4e55b",
+    "07a0c9074ea0bea4"
+   ]
   },
   {
    "i": 126,
@@ -2769,7 +4932,24 @@
     "TheHistoryofBaseball.player_award_vote",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "32a66118e7c58ef4",
+    "d21fdf98408ab133",
+    "29bd306b7d8f597e",
+    "abcce680b5aafeea",
+    "51c2f5cbda3e36d1",
+    "7e2978402f566d08",
+    "f53353bd44fb245b",
+    "ccf052b9a89da4f3",
+    "d15d65a2491717a9",
+    "2096ec5a3e133db4",
+    "4d9a794941b4e55b",
+    "350ff7a2c2f28d3a",
+    "c8daac32fd0e030d",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 127,
@@ -2789,7 +4969,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "350ff7a2c2f28d3a",
+    "51c2f5cbda3e36d1",
+    "d21fdf98408ab133",
+    "32a66118e7c58ef4",
+    "ccf052b9a89da4f3",
+    "abcce680b5aafeea",
+    "2096ec5a3e133db4",
+    "7e2978402f566d08",
+    "29bd306b7d8f597e",
+    "a4c7a9f99b1a2948",
+    "f53353bd44fb245b",
+    "4d9a794941b4e55b",
+    "d15d65a2491717a9",
+    "c8daac32fd0e030d",
+    "6c741ac18a8e67d7"
+   ]
   },
   {
    "i": 128,
@@ -2809,7 +5006,24 @@
     "WorldSoccerDataBase.betfront",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "350ff7a2c2f28d3a",
+    "d21fdf98408ab133",
+    "ccf052b9a89da4f3",
+    "51c2f5cbda3e36d1",
+    "2096ec5a3e133db4",
+    "32a66118e7c58ef4",
+    "f53353bd44fb245b",
+    "7e2978402f566d08",
+    "abcce680b5aafeea",
+    "a4c7a9f99b1a2948",
+    "c8daac32fd0e030d",
+    "29bd306b7d8f597e",
+    "d15d65a2491717a9",
+    "4d9a794941b4e55b",
+    "6cf9d773fefbcd00"
+   ]
   },
   {
    "i": 129,
@@ -2830,7 +5044,24 @@
     "WorldSoccerDataBase.football_data",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "350ff7a2c2f28d3a",
+    "d21fdf98408ab133",
+    "51c2f5cbda3e36d1",
+    "32a66118e7c58ef4",
+    "7e2978402f566d08",
+    "2096ec5a3e133db4",
+    "ccf052b9a89da4f3",
+    "abcce680b5aafeea",
+    "c8daac32fd0e030d",
+    "f53353bd44fb245b",
+    "a4c7a9f99b1a2948",
+    "29bd306b7d8f597e",
+    "d15d65a2491717a9",
+    "4d9a794941b4e55b",
+    "9dd5eb02258221b3"
+   ]
   },
   {
    "i": 130,
@@ -2849,7 +5080,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "7e2978402f566d08",
+    "32a66118e7c58ef4",
+    "d21fdf98408ab133",
+    "abcce680b5aafeea",
+    "350ff7a2c2f28d3a",
+    "51c2f5cbda3e36d1",
+    "29bd306b7d8f597e",
+    "f53353bd44fb245b",
+    "ccf052b9a89da4f3",
+    "d15d65a2491717a9",
+    "2096ec5a3e133db4",
+    "4d9a794941b4e55b",
+    "c8daac32fd0e030d",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 131,
@@ -2870,7 +5118,24 @@
     "TheHistoryofBaseball.player",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "32a66118e7c58ef4",
+    "abcce680b5aafeea",
+    "29bd306b7d8f597e",
+    "350ff7a2c2f28d3a",
+    "7e2978402f566d08",
+    "d21fdf98408ab133",
+    "d15d65a2491717a9",
+    "2096ec5a3e133db4",
+    "ccf052b9a89da4f3",
+    "f53353bd44fb245b",
+    "51c2f5cbda3e36d1",
+    "c8daac32fd0e030d",
+    "4d9a794941b4e55b",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 132,
@@ -2888,7 +5153,24 @@
     "WhatCDHipHop.torrents",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "d21fdf98408ab133",
+    "32a66118e7c58ef4",
+    "7e2978402f566d08",
+    "51c2f5cbda3e36d1",
+    "abcce680b5aafeea",
+    "29bd306b7d8f597e",
+    "a4c7a9f99b1a2948",
+    "ccf052b9a89da4f3",
+    "4d9a794941b4e55b",
+    "2096ec5a3e133db4",
+    "d15d65a2491717a9",
+    "350ff7a2c2f28d3a",
+    "f53353bd44fb245b",
+    "c8daac32fd0e030d",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 133,
@@ -2909,7 +5191,24 @@
     "TheHistoryofBaseball.salary",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "350ff7a2c2f28d3a",
+    "a4c7a9f99b1a2948",
+    "abcce680b5aafeea",
+    "32a66118e7c58ef4",
+    "7e2978402f566d08",
+    "29bd306b7d8f597e",
+    "f53353bd44fb245b",
+    "ccf052b9a89da4f3",
+    "d21fdf98408ab133",
+    "2096ec5a3e133db4",
+    "d15d65a2491717a9",
+    "51c2f5cbda3e36d1",
+    "4d9a794941b4e55b",
+    "c8daac32fd0e030d",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 134,
@@ -2932,7 +5231,24 @@
     "StudentMathScore.FINREV_FED_17",
     "Pesticide.sampledata15"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "e2f085b29cf4ce12",
+    "23953fbfa41b3740",
+    "2ed8bf0758c00ddc",
+    "f5cdb9df6e8016c9",
+    "81112f597dbf7662",
+    "c412fd9c59749347",
+    "6653840cff196873",
+    "93da83d0d87d25f2",
+    "b98f81cdf2818031",
+    "e1901ee5c668677b",
+    "5e0dcce42867d822",
+    "0c0fd4ecb2a213f7",
+    "6a104613a01d4ab2",
+    "17074c60ed8df134",
+    "f7b51b375354f993"
+   ]
   },
   {
    "i": 135,
@@ -2953,7 +5269,24 @@
     "WorldSoccerDataBase.betfront",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "350ff7a2c2f28d3a",
+    "d21fdf98408ab133",
+    "51c2f5cbda3e36d1",
+    "32a66118e7c58ef4",
+    "7e2978402f566d08",
+    "2096ec5a3e133db4",
+    "ccf052b9a89da4f3",
+    "abcce680b5aafeea",
+    "f53353bd44fb245b",
+    "c8daac32fd0e030d",
+    "a4c7a9f99b1a2948",
+    "29bd306b7d8f597e",
+    "d15d65a2491717a9",
+    "4d9a794941b4e55b",
+    "4410e6f5c7bb99f0"
+   ]
   },
   {
    "i": 136,
@@ -2977,7 +5310,24 @@
     "TheHistoryofBaseball.player_award_vote",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "a4c7a9f99b1a2948",
+    "abcce680b5aafeea",
+    "ccf052b9a89da4f3",
+    "4d9a794941b4e55b",
+    "2096ec5a3e133db4",
+    "32a66118e7c58ef4",
+    "d15d65a2491717a9",
+    "209db2ba15001a43",
+    "f53353bd44fb245b",
+    "29bd306b7d8f597e",
+    "350ff7a2c2f28d3a",
+    "7e2978402f566d08",
+    "d21fdf98408ab133",
+    "51c2f5cbda3e36d1",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 137,
@@ -2999,7 +5349,24 @@
     "TheHistoryofBaseball.salary",
     "WorldSoccerDataBase.football_data"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "d33302d66a14a7b9",
+    "0c0fd4ecb2a213f7",
+    "0fbc973f6462d9e4",
+    "8322e3fe6bd2af95",
+    "a52717ca11ff60a3",
+    "cdffb3c2068096b7",
+    "9bee93418090159e",
+    "2f73e0087797399a",
+    "2bc98850da781239",
+    "df8cf9c9eb89f93b",
+    "8c939ec32e119a34",
+    "960d9a0019360313",
+    "793ea1ecec214f3c",
+    "1744ce60da3afb61",
+    "6061fbc4e659508c"
+   ]
   },
   {
    "i": 138,
@@ -3022,7 +5389,24 @@
     "TheHistoryofBaseball.salary",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "9bee93418090159e",
+    "8322e3fe6bd2af95",
+    "cdffb3c2068096b7",
+    "a52717ca11ff60a3",
+    "f7b51b375354f993",
+    "6653840cff196873",
+    "2a23f9dcdb9a073c",
+    "11669ced7d028eb1",
+    "0fbc973f6462d9e4",
+    "05cd62898239d8c9",
+    "6a104613a01d4ab2",
+    "b70599f241ffd205",
+    "5e0dcce42867d822",
+    "c412fd9c59749347",
+    "f5cdb9df6e8016c9"
+   ]
   },
   {
    "i": 139,
@@ -3046,7 +5430,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "d33302d66a14a7b9",
+    "0fbc973f6462d9e4",
+    "0c0fd4ecb2a213f7",
+    "8322e3fe6bd2af95",
+    "a52717ca11ff60a3",
+    "cdffb3c2068096b7",
+    "9bee93418090159e",
+    "2bc98850da781239",
+    "2f73e0087797399a",
+    "c0ca079616739136",
+    "df8cf9c9eb89f93b",
+    "132a54123b75011c",
+    "6061fbc4e659508c",
+    "366a8ed20e2531db",
+    "67829649e57693d7"
+   ]
   },
   {
    "i": 140,
@@ -3070,7 +5471,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "a52717ca11ff60a3",
+    "9bee93418090159e",
+    "8322e3fe6bd2af95",
+    "0fbc973f6462d9e4",
+    "6653840cff196873",
+    "0c0fd4ecb2a213f7",
+    "d33302d66a14a7b9",
+    "b70599f241ffd205",
+    "960d9a0019360313",
+    "cdffb3c2068096b7",
+    "11669ced7d028eb1",
+    "793ea1ecec214f3c",
+    "6c741ac18a8e67d7",
+    "345a70d3e7751458",
+    "559df7022c01131e"
+   ]
   },
   {
    "i": 141,
@@ -3095,7 +5513,24 @@
     "StudentMathScore.FINREV_FED_17",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "9bee93418090159e",
+    "a52717ca11ff60a3",
+    "345a70d3e7751458",
+    "6653840cff196873",
+    "0c0fd4ecb2a213f7",
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "030643183db4c6d4",
+    "c4ed11e81d8aa95d",
+    "793ea1ecec214f3c",
+    "11669ced7d028eb1",
+    "8322e3fe6bd2af95",
+    "0fbc973f6462d9e4",
+    "d33302d66a14a7b9",
+    "de86376beaaf4685"
+   ]
   },
   {
    "i": 142,
@@ -3119,7 +5554,24 @@
     "Pesticide.sampledata15",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "9bee93418090159e",
+    "0fbc973f6462d9e4",
+    "8322e3fe6bd2af95",
+    "a52717ca11ff60a3",
+    "d33302d66a14a7b9",
+    "0c0fd4ecb2a213f7",
+    "030643183db4c6d4",
+    "cdffb3c2068096b7",
+    "132a54123b75011c",
+    "ded511e979c5de1a",
+    "6fa5436c3b527f27",
+    "b70599f241ffd205",
+    "ec8ea5abe727f55f",
+    "f7b51b375354f993",
+    "5eecaea0238d9c2e"
+   ]
   },
   {
    "i": 143,
@@ -3143,7 +5595,24 @@
     "TheHistoryofBaseball.salary",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "9bee93418090159e",
+    "b70599f241ffd205",
+    "6653840cff196873",
+    "960d9a0019360313",
+    "0c0fd4ecb2a213f7",
+    "a52717ca11ff60a3",
+    "559df7022c01131e",
+    "345a70d3e7751458",
+    "11669ced7d028eb1",
+    "8322e3fe6bd2af95",
+    "030643183db4c6d4",
+    "0fbc973f6462d9e4",
+    "2f73e0087797399a",
+    "f7b51b375354f993",
+    "132a54123b75011c"
+   ]
   },
   {
    "i": 144,
@@ -3166,7 +5635,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "WorldSoccerDataBase.football_data"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "0c0fd4ecb2a213f7",
+    "a52717ca11ff60a3",
+    "d33302d66a14a7b9",
+    "0fbc973f6462d9e4",
+    "8322e3fe6bd2af95",
+    "cdffb3c2068096b7",
+    "9bee93418090159e",
+    "793ea1ecec214f3c",
+    "2f73e0087797399a",
+    "960d9a0019360313",
+    "1744ce60da3afb61",
+    "df8cf9c9eb89f93b",
+    "b70599f241ffd205",
+    "6653840cff196873",
+    "e2f085b29cf4ce12"
+   ]
   },
   {
    "i": 145,
@@ -3190,7 +5676,24 @@
     "WorldSoccerDataBase.football_data",
     "USWildFires.Fires"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "0fbc973f6462d9e4",
+    "0c0fd4ecb2a213f7",
+    "a52717ca11ff60a3",
+    "8322e3fe6bd2af95",
+    "d33302d66a14a7b9",
+    "6c741ac18a8e67d7",
+    "67829649e57693d7",
+    "132a54123b75011c",
+    "ded511e979c5de1a",
+    "6653840cff196873",
+    "b70599f241ffd205",
+    "c0ca079616739136",
+    "960d9a0019360313",
+    "e513cc4c315fab3a",
+    "e2f085b29cf4ce12"
+   ]
   },
   {
    "i": 146,
@@ -3213,7 +5716,24 @@
     "WorldSoccerDataBase.betfront",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "8322e3fe6bd2af95",
+    "9bee93418090159e",
+    "a52717ca11ff60a3",
+    "0fbc973f6462d9e4",
+    "cdffb3c2068096b7",
+    "f7b51b375354f993",
+    "6653840cff196873",
+    "559df7022c01131e",
+    "b70599f241ffd205",
+    "ded511e979c5de1a",
+    "960d9a0019360313",
+    "ec8ea5abe727f55f",
+    "0c0fd4ecb2a213f7",
+    "615f16ea574cc4bd",
+    "6fa5436c3b527f27"
+   ]
   },
   {
    "i": 147,
@@ -3234,7 +5754,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "0c0fd4ecb2a213f7",
+    "d33302d66a14a7b9",
+    "030643183db4c6d4",
+    "0fbc973f6462d9e4",
+    "960d9a0019360313",
+    "9bee93418090159e",
+    "de86376beaaf4685",
+    "ec8ea5abe727f55f",
+    "163a2b3c283f6d6f",
+    "b70599f241ffd205",
+    "5eecaea0238d9c2e",
+    "11669ced7d028eb1",
+    "8322e3fe6bd2af95",
+    "96b9230748412177",
+    "a52717ca11ff60a3"
+   ]
   },
   {
    "i": 148,
@@ -3254,7 +5791,24 @@
     "WorldSoccerDataBase.betfront",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "d33302d66a14a7b9",
+    "0c0fd4ecb2a213f7",
+    "030643183db4c6d4",
+    "960d9a0019360313",
+    "163a2b3c283f6d6f",
+    "1b092dd7107d09bd",
+    "de86376beaaf4685",
+    "0fbc973f6462d9e4",
+    "9d317e025344e884",
+    "ec8ea5abe727f55f",
+    "4b1021105f523105",
+    "9bee93418090159e",
+    "11669ced7d028eb1",
+    "5fa376d3f1938066",
+    "b70599f241ffd205"
+   ]
   },
   {
    "i": 149,
@@ -3274,7 +5828,24 @@
     "WorldSoccerDataBase.football_data",
     "USWildFires.Fires"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "9bee93418090159e",
+    "de86376beaaf4685",
+    "cdffb3c2068096b7",
+    "030643183db4c6d4",
+    "0fbc973f6462d9e4",
+    "4b1021105f523105",
+    "ec8ea5abe727f55f",
+    "5eecaea0238d9c2e",
+    "d33302d66a14a7b9",
+    "960d9a0019360313",
+    "ded511e979c5de1a",
+    "615f16ea574cc4bd",
+    "0c0fd4ecb2a213f7",
+    "a1ad3cc6848da621",
+    "96b9230748412177"
+   ]
   },
   {
    "i": 150,
@@ -3297,7 +5868,24 @@
     "WhatCDHipHop.tags",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "960d9a0019360313",
+    "6653840cff196873",
+    "b70599f241ffd205",
+    "345a70d3e7751458",
+    "e2f085b29cf4ce12",
+    "c48acd09008a5e8a",
+    "a52717ca11ff60a3",
+    "de86376beaaf4685",
+    "030643183db4c6d4",
+    "ec8ea5abe727f55f",
+    "11669ced7d028eb1",
+    "5fa376d3f1938066",
+    "4b1021105f523105",
+    "df8cf9c9eb89f93b",
+    "8e2d65ce0f6df7ab"
+   ]
   },
   {
    "i": 151,
@@ -3318,7 +5906,24 @@
     "WorldSoccerDataBase.football_data",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "9bee93418090159e",
+    "8322e3fe6bd2af95",
+    "cdffb3c2068096b7",
+    "f7b51b375354f993",
+    "6fa5436c3b527f27",
+    "030643183db4c6d4",
+    "ec8ea5abe727f55f",
+    "a52717ca11ff60a3",
+    "5eecaea0238d9c2e",
+    "11669ced7d028eb1",
+    "cb11d5830baa9c53",
+    "b70599f241ffd205",
+    "de86376beaaf4685",
+    "c412fd9c59749347",
+    "6a104613a01d4ab2"
+   ]
   },
   {
    "i": 152,
@@ -3338,7 +5943,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "66618e4e6b0c61e0",
+    "ded511e979c5de1a",
+    "132a54123b75011c",
+    "9bee93418090159e",
+    "d33302d66a14a7b9",
+    "277cb8e614fd568d",
+    "de72fa8d868c44e3",
+    "252c6bbd44d5ba21",
+    "8303469f44d8ae0f",
+    "cdffb3c2068096b7",
+    "0a53ece3a64b8505",
+    "f30a05c59661ef1e",
+    "209db2ba15001a43",
+    "14449f1e1ec064e7",
+    "6516cb7faf9172d4"
+   ]
   },
   {
    "i": 153,
@@ -3360,7 +5982,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "TheHistoryofBaseball.player_award"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "d33302d66a14a7b9",
+    "0c0fd4ecb2a213f7",
+    "6c741ac18a8e67d7",
+    "67829649e57693d7",
+    "8322e3fe6bd2af95",
+    "6061fbc4e659508c",
+    "0fbc973f6462d9e4",
+    "a52717ca11ff60a3",
+    "3c34c481931aac62",
+    "c0ca079616739136",
+    "05138aa2701e35f8",
+    "366a8ed20e2531db",
+    "2b4a60b697789d08",
+    "2dbd18fb6fb5a69c",
+    "2f73e0087797399a"
+   ]
   },
   {
    "i": 154,
@@ -3383,7 +6022,24 @@
     "WorldSoccerDataBase.football_data",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "a52717ca11ff60a3",
+    "0c0fd4ecb2a213f7",
+    "0fbc973f6462d9e4",
+    "b70599f241ffd205",
+    "6653840cff196873",
+    "8322e3fe6bd2af95",
+    "960d9a0019360313",
+    "345a70d3e7751458",
+    "793ea1ecec214f3c",
+    "9bee93418090159e",
+    "d33302d66a14a7b9",
+    "67829649e57693d7",
+    "6c741ac18a8e67d7",
+    "c4ed11e81d8aa95d",
+    "132a54123b75011c"
+   ]
   },
   {
    "i": 155,
@@ -3405,7 +6061,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "0c0fd4ecb2a213f7",
+    "0fbc973f6462d9e4",
+    "9bee93418090159e",
+    "a52717ca11ff60a3",
+    "8322e3fe6bd2af95",
+    "d33302d66a14a7b9",
+    "cdffb3c2068096b7",
+    "2f73e0087797399a",
+    "960d9a0019360313",
+    "132a54123b75011c",
+    "6653840cff196873",
+    "b70599f241ffd205",
+    "345a70d3e7751458",
+    "ded511e979c5de1a",
+    "11669ced7d028eb1"
+   ]
   },
   {
    "i": 156,
@@ -3429,7 +6102,24 @@
     "WorldSoccerDataBase.football_data",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "d33302d66a14a7b9",
+    "cdffb3c2068096b7",
+    "9bee93418090159e",
+    "8322e3fe6bd2af95",
+    "0fbc973f6462d9e4",
+    "a52717ca11ff60a3",
+    "0c0fd4ecb2a213f7",
+    "ded511e979c5de1a",
+    "f971acd1eec6ed71",
+    "132a54123b75011c",
+    "66618e4e6b0c61e0",
+    "de72fa8d868c44e3",
+    "2f73e0087797399a",
+    "d73ccf03de72af53",
+    "df8cf9c9eb89f93b"
+   ]
   },
   {
    "i": 157,
@@ -3452,7 +6142,24 @@
     "Pesticide.resultsdata15",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "d33302d66a14a7b9",
+    "9bee93418090159e",
+    "a52717ca11ff60a3",
+    "f971acd1eec6ed71",
+    "df8cf9c9eb89f93b",
+    "0fbc973f6462d9e4",
+    "345a70d3e7751458",
+    "0c0fd4ecb2a213f7",
+    "2f73e0087797399a",
+    "8322e3fe6bd2af95",
+    "cdffb3c2068096b7",
+    "64880982942eb52c",
+    "b70599f241ffd205",
+    "97d654829c41b719",
+    "9a34a1c60688ad8b"
+   ]
   },
   {
    "i": 158,
@@ -3476,7 +6183,24 @@
     "StudentMathScore.FINREV_FED_17",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "b70599f241ffd205",
+    "a52717ca11ff60a3",
+    "559df7022c01131e",
+    "615f16ea574cc4bd",
+    "0fbc973f6462d9e4",
+    "8322e3fe6bd2af95",
+    "0c0fd4ecb2a213f7",
+    "9bee93418090159e",
+    "960d9a0019360313",
+    "6653840cff196873",
+    "6fa5436c3b527f27",
+    "f7b51b375354f993",
+    "c412fd9c59749347",
+    "96b9230748412177",
+    "132a54123b75011c"
+   ]
   },
   {
    "i": 159,
@@ -3500,7 +6224,24 @@
     "WorldSoccerDataBase.football_data",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "c412fd9c59749347",
+    "5e0dcce42867d822",
+    "b70599f241ffd205",
+    "6a104613a01d4ab2",
+    "a52717ca11ff60a3",
+    "6653840cff196873",
+    "8e2d65ce0f6df7ab",
+    "c48acd09008a5e8a",
+    "960d9a0019360313",
+    "e1901ee5c668677b",
+    "6fa5436c3b527f27",
+    "96b9230748412177",
+    "93da83d0d87d25f2",
+    "b026f6828fe1d065",
+    "615f16ea574cc4bd"
+   ]
   },
   {
    "i": 160,
@@ -3524,7 +6265,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "WorldSoccerDataBase.football_data"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "a52717ca11ff60a3",
+    "960d9a0019360313",
+    "793ea1ecec214f3c",
+    "345a70d3e7751458",
+    "df8cf9c9eb89f93b",
+    "6653840cff196873",
+    "c4ed11e81d8aa95d",
+    "b70599f241ffd205",
+    "2f73e0087797399a",
+    "0c0fd4ecb2a213f7",
+    "d33302d66a14a7b9",
+    "e2f085b29cf4ce12",
+    "0fbc973f6462d9e4",
+    "8322e3fe6bd2af95",
+    "5fa376d3f1938066"
+   ]
   },
   {
    "i": 161,
@@ -3546,7 +6304,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "WorldSoccerDataBase.football_data"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "d33302d66a14a7b9",
+    "0c0fd4ecb2a213f7",
+    "a52717ca11ff60a3",
+    "0fbc973f6462d9e4",
+    "8322e3fe6bd2af95",
+    "9bee93418090159e",
+    "cdffb3c2068096b7",
+    "2f73e0087797399a",
+    "163a2b3c283f6d6f",
+    "1744ce60da3afb61",
+    "fba87de16ab60cad",
+    "793ea1ecec214f3c",
+    "05138aa2701e35f8",
+    "2dbd18fb6fb5a69c",
+    "5e9c3534283255a9"
+   ]
   },
   {
    "i": 162,
@@ -3570,7 +6345,24 @@
     "StudentMathScore.FINREV_FED_17",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "a52717ca11ff60a3",
+    "8322e3fe6bd2af95",
+    "cdffb3c2068096b7",
+    "b70599f241ffd205",
+    "793ea1ecec214f3c",
+    "6fa5436c3b527f27",
+    "6c741ac18a8e67d7",
+    "1744ce60da3afb61",
+    "c412fd9c59749347",
+    "960d9a0019360313",
+    "cb11d5830baa9c53",
+    "559df7022c01131e",
+    "96b9230748412177",
+    "5e0dcce42867d822",
+    "f971acd1eec6ed71"
+   ]
   },
   {
    "i": 163,
@@ -3594,7 +6386,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "TheHistoryofBaseball.player_award_vote"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "66618e4e6b0c61e0",
+    "d33302d66a14a7b9",
+    "ded511e979c5de1a",
+    "132a54123b75011c",
+    "cdffb3c2068096b7",
+    "9bee93418090159e",
+    "0fbc973f6462d9e4",
+    "0c0fd4ecb2a213f7",
+    "a52717ca11ff60a3",
+    "f30a05c59661ef1e",
+    "8322e3fe6bd2af95",
+    "4b1021105f523105",
+    "0a53ece3a64b8505",
+    "5e9c3534283255a9",
+    "030643183db4c6d4"
+   ]
   },
   {
    "i": 164,
@@ -3618,7 +6427,24 @@
     "StudentMathScore.FINREV_FED_17",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "6653840cff196873",
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "df8cf9c9eb89f93b",
+    "345a70d3e7751458",
+    "c4ed11e81d8aa95d",
+    "793ea1ecec214f3c",
+    "2f73e0087797399a",
+    "a52717ca11ff60a3",
+    "c48acd09008a5e8a",
+    "11669ced7d028eb1",
+    "030643183db4c6d4",
+    "8e2d65ce0f6df7ab",
+    "f7b51b375354f993",
+    "5fa376d3f1938066"
+   ]
   },
   {
    "i": 165,
@@ -3641,7 +6467,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "9bee93418090159e",
+    "8322e3fe6bd2af95",
+    "cdffb3c2068096b7",
+    "a52717ca11ff60a3",
+    "0fbc973f6462d9e4",
+    "f7b51b375354f993",
+    "6a104613a01d4ab2",
+    "c412fd9c59749347",
+    "11669ced7d028eb1",
+    "05cd62898239d8c9",
+    "5e0dcce42867d822",
+    "2a23f9dcdb9a073c",
+    "d33302d66a14a7b9",
+    "0c0fd4ecb2a213f7",
+    "2dbd18fb6fb5a69c"
+   ]
   },
   {
    "i": 166,
@@ -3664,7 +6507,24 @@
     "WorldSoccerDataBase.betfront",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "8322e3fe6bd2af95",
+    "9bee93418090159e",
+    "0c0fd4ecb2a213f7",
+    "a52717ca11ff60a3",
+    "0fbc973f6462d9e4",
+    "cdffb3c2068096b7",
+    "d33302d66a14a7b9",
+    "559df7022c01131e",
+    "030643183db4c6d4",
+    "b70599f241ffd205",
+    "6fa5436c3b527f27",
+    "5eecaea0238d9c2e",
+    "132a54123b75011c",
+    "cb11d5830baa9c53",
+    "96b9230748412177"
+   ]
   },
   {
    "i": 167,
@@ -3688,7 +6548,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "a52717ca11ff60a3",
+    "6653840cff196873",
+    "960d9a0019360313",
+    "345a70d3e7751458",
+    "b70599f241ffd205",
+    "c4ed11e81d8aa95d",
+    "df8cf9c9eb89f93b",
+    "0fbc973f6462d9e4",
+    "0c0fd4ecb2a213f7",
+    "9bee93418090159e",
+    "793ea1ecec214f3c",
+    "8322e3fe6bd2af95",
+    "d33302d66a14a7b9",
+    "11669ced7d028eb1",
+    "2f73e0087797399a"
+   ]
   },
   {
    "i": 168,
@@ -3709,7 +6586,24 @@
     "TheHistoryofBaseball.player",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "d33302d66a14a7b9",
+    "0c0fd4ecb2a213f7",
+    "9bee93418090159e",
+    "0fbc973f6462d9e4",
+    "a52717ca11ff60a3",
+    "8322e3fe6bd2af95",
+    "cdffb3c2068096b7",
+    "2f73e0087797399a",
+    "163a2b3c283f6d6f",
+    "132a54123b75011c",
+    "dd6e84c133aaa187",
+    "ded511e979c5de1a",
+    "66618e4e6b0c61e0",
+    "1744ce60da3afb61",
+    "df8cf9c9eb89f93b"
+   ]
   },
   {
    "i": 169,
@@ -3732,7 +6626,24 @@
     "WorldSoccerDataBase.football_data",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "d33302d66a14a7b9",
+    "0fbc973f6462d9e4",
+    "9bee93418090159e",
+    "8322e3fe6bd2af95",
+    "a52717ca11ff60a3",
+    "0c0fd4ecb2a213f7",
+    "cdffb3c2068096b7",
+    "132a54123b75011c",
+    "ded511e979c5de1a",
+    "c0ca079616739136",
+    "66618e4e6b0c61e0",
+    "030643183db4c6d4",
+    "3c34c481931aac62",
+    "ec8ea5abe727f55f",
+    "67829649e57693d7"
+   ]
   },
   {
    "i": 170,
@@ -3754,7 +6665,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "9bee93418090159e",
+    "0fbc973f6462d9e4",
+    "d33302d66a14a7b9",
+    "8322e3fe6bd2af95",
+    "a52717ca11ff60a3",
+    "cdffb3c2068096b7",
+    "0c0fd4ecb2a213f7",
+    "132a54123b75011c",
+    "ded511e979c5de1a",
+    "66618e4e6b0c61e0",
+    "11669ced7d028eb1",
+    "f7b51b375354f993",
+    "030643183db4c6d4",
+    "ec8ea5abe727f55f",
+    "6fa5436c3b527f27"
+   ]
   },
   {
    "i": 171,
@@ -3778,7 +6706,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "d33302d66a14a7b9",
+    "0fbc973f6462d9e4",
+    "0c0fd4ecb2a213f7",
+    "8322e3fe6bd2af95",
+    "a52717ca11ff60a3",
+    "6c741ac18a8e67d7",
+    "67829649e57693d7",
+    "e513cc4c315fab3a",
+    "366a8ed20e2531db",
+    "2bc98850da781239",
+    "ded511e979c5de1a",
+    "2f73e0087797399a",
+    "132a54123b75011c",
+    "df8cf9c9eb89f93b",
+    "6061fbc4e659508c"
+   ]
   },
   {
    "i": 172,
@@ -3802,7 +6747,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "0c0fd4ecb2a213f7",
+    "a52717ca11ff60a3",
+    "0fbc973f6462d9e4",
+    "960d9a0019360313",
+    "e2f085b29cf4ce12",
+    "df8cf9c9eb89f93b",
+    "345a70d3e7751458",
+    "8322e3fe6bd2af95",
+    "6653840cff196873",
+    "b70599f241ffd205",
+    "d33302d66a14a7b9",
+    "793ea1ecec214f3c",
+    "2f73e0087797399a",
+    "c4ed11e81d8aa95d",
+    "23953fbfa41b3740"
+   ]
   },
   {
    "i": 173,
@@ -3826,7 +6788,24 @@
     "Pesticide.resultsdata15",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "d33302d66a14a7b9",
+    "0c0fd4ecb2a213f7",
+    "a52717ca11ff60a3",
+    "0fbc973f6462d9e4",
+    "9bee93418090159e",
+    "cdffb3c2068096b7",
+    "8322e3fe6bd2af95",
+    "132a54123b75011c",
+    "ded511e979c5de1a",
+    "960d9a0019360313",
+    "030643183db4c6d4",
+    "4b1021105f523105",
+    "66618e4e6b0c61e0",
+    "345a70d3e7751458",
+    "5fa376d3f1938066"
+   ]
   },
   {
    "i": 174,
@@ -3849,7 +6828,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "9bee93418090159e",
+    "d33302d66a14a7b9",
+    "0fbc973f6462d9e4",
+    "a52717ca11ff60a3",
+    "8322e3fe6bd2af95",
+    "0c0fd4ecb2a213f7",
+    "ded511e979c5de1a",
+    "cdffb3c2068096b7",
+    "132a54123b75011c",
+    "66618e4e6b0c61e0",
+    "345a70d3e7751458",
+    "11669ced7d028eb1",
+    "2f73e0087797399a",
+    "6653840cff196873",
+    "2dbd18fb6fb5a69c"
+   ]
   },
   {
    "i": 175,
@@ -3871,7 +6867,24 @@
     "TheHistoryofBaseball.salary",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "0c0fd4ecb2a213f7",
+    "0fbc973f6462d9e4",
+    "a52717ca11ff60a3",
+    "9bee93418090159e",
+    "8322e3fe6bd2af95",
+    "d33302d66a14a7b9",
+    "cdffb3c2068096b7",
+    "ded511e979c5de1a",
+    "2f73e0087797399a",
+    "6c741ac18a8e67d7",
+    "e513cc4c315fab3a",
+    "132a54123b75011c",
+    "67829649e57693d7",
+    "345a70d3e7751458",
+    "2dbd18fb6fb5a69c"
+   ]
   },
   {
    "i": 176,
@@ -3890,7 +6903,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "8322e3fe6bd2af95",
+    "cdffb3c2068096b7",
+    "9bee93418090159e",
+    "a52717ca11ff60a3",
+    "d33302d66a14a7b9",
+    "2dbd18fb6fb5a69c",
+    "0fbc973f6462d9e4",
+    "0c0fd4ecb2a213f7",
+    "793ea1ecec214f3c",
+    "e891a6cbc170fc40",
+    "2b404d3676b0f110",
+    "2f73e0087797399a",
+    "345a70d3e7751458",
+    "baf57f830638a646",
+    "97d654829c41b719"
+   ]
   },
   {
    "i": 177,
@@ -3914,7 +6944,24 @@
     "Pesticide.sampledata15",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "6653840cff196873",
+    "a52717ca11ff60a3",
+    "c48acd09008a5e8a",
+    "345a70d3e7751458",
+    "e2f085b29cf4ce12",
+    "df8cf9c9eb89f93b",
+    "2ed8bf0758c00ddc",
+    "d33302d66a14a7b9",
+    "ec8ea5abe727f55f",
+    "5fa376d3f1938066",
+    "f7b51b375354f993",
+    "23953fbfa41b3740",
+    "11669ced7d028eb1"
+   ]
   },
   {
    "i": 178,
@@ -3939,7 +6986,24 @@
     "Pesticide.sampledata15",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "11669ced7d028eb1",
+    "e1901ee5c668677b",
+    "5e0dcce42867d822",
+    "c412fd9c59749347",
+    "6653840cff196873",
+    "93da83d0d87d25f2",
+    "6a104613a01d4ab2",
+    "f7b51b375354f993",
+    "f5cdb9df6e8016c9",
+    "b70599f241ffd205",
+    "5eecaea0238d9c2e",
+    "cb11d5830baa9c53",
+    "96b9230748412177",
+    "960d9a0019360313",
+    "6fa5436c3b527f27"
+   ]
   },
   {
    "i": 179,
@@ -3960,7 +7024,24 @@
     "USWildFires.Fires",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "81112f597dbf7662",
+    "2ed8bf0758c00ddc",
+    "17074c60ed8df134",
+    "a1ad3cc6848da621",
+    "cb11d5830baa9c53",
+    "23953fbfa41b3740",
+    "e2f085b29cf4ce12",
+    "de86376beaaf4685",
+    "ec8ea5abe727f55f",
+    "4b1021105f523105",
+    "f7b51b375354f993",
+    "960d9a0019360313",
+    "5eecaea0238d9c2e",
+    "030643183db4c6d4",
+    "6fa5436c3b527f27"
+   ]
   },
   {
    "i": 180,
@@ -3982,7 +7063,24 @@
     "USWildFires.Fires",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "17074c60ed8df134",
+    "2ed8bf0758c00ddc",
+    "81112f597dbf7662",
+    "23953fbfa41b3740",
+    "e2f085b29cf4ce12",
+    "a1ad3cc6848da621",
+    "cb11d5830baa9c53",
+    "ec8ea5abe727f55f",
+    "960d9a0019360313",
+    "de86376beaaf4685",
+    "6fa5436c3b527f27",
+    "4b1021105f523105",
+    "b70599f241ffd205",
+    "559df7022c01131e",
+    "b98f81cdf2818031"
+   ]
   },
   {
    "i": 181,
@@ -4006,7 +7104,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "11669ced7d028eb1",
+    "2ed8bf0758c00ddc",
+    "81112f597dbf7662",
+    "f7b51b375354f993",
+    "6653840cff196873",
+    "a1ad3cc6848da621",
+    "23953fbfa41b3740",
+    "17074c60ed8df134",
+    "960d9a0019360313",
+    "93da83d0d87d25f2",
+    "de86376beaaf4685",
+    "e2f085b29cf4ce12",
+    "cb11d5830baa9c53",
+    "f5cdb9df6e8016c9",
+    "b70599f241ffd205"
+   ]
   },
   {
    "i": 182,
@@ -4030,7 +7145,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "Pesticide.sampledata15"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "11669ced7d028eb1",
+    "81112f597dbf7662",
+    "2ed8bf0758c00ddc",
+    "6653840cff196873",
+    "23953fbfa41b3740",
+    "f7b51b375354f993",
+    "a1ad3cc6848da621",
+    "17074c60ed8df134",
+    "960d9a0019360313",
+    "93da83d0d87d25f2",
+    "e2f085b29cf4ce12",
+    "de86376beaaf4685",
+    "f5cdb9df6e8016c9",
+    "cb11d5830baa9c53",
+    "e1901ee5c668677b"
+   ]
   },
   {
    "i": 183,
@@ -4053,7 +7185,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "USWildFires.Fires"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "2ed8bf0758c00ddc",
+    "81112f597dbf7662",
+    "23953fbfa41b3740",
+    "17074c60ed8df134",
+    "e2f085b29cf4ce12",
+    "a1ad3cc6848da621",
+    "960d9a0019360313",
+    "ec8ea5abe727f55f",
+    "cb11d5830baa9c53",
+    "de86376beaaf4685",
+    "b70599f241ffd205",
+    "f7b51b375354f993",
+    "6fa5436c3b527f27",
+    "4b1021105f523105",
+    "bcc881288fa57552"
+   ]
   },
   {
    "i": 184,
@@ -4075,7 +7224,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "e2a7766525b1e73f",
+    "d99951181dafd8c1",
+    "f7b51b375354f993",
+    "2ed8bf0758c00ddc",
+    "a1ad3cc6848da621",
+    "bcc881288fa57552",
+    "ec8ea5abe727f55f",
+    "c48acd09008a5e8a",
+    "cb11d5830baa9c53",
+    "81112f597dbf7662",
+    "9d317e025344e884",
+    "6fa5436c3b527f27",
+    "7b1f4b75c0ac6be2",
+    "011464579ef58cb3",
+    "79d37341051e30d3"
+   ]
   },
   {
    "i": 185,
@@ -4099,7 +7265,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "c48acd09008a5e8a",
+    "f7b51b375354f993",
+    "011464579ef58cb3",
+    "8e2d65ce0f6df7ab",
+    "960d9a0019360313",
+    "a1ad3cc6848da621",
+    "e2a7766525b1e73f",
+    "d08e9387d422bc3a",
+    "11669ced7d028eb1",
+    "ec8ea5abe727f55f",
+    "1b092dd7107d09bd",
+    "6653840cff196873",
+    "bcc881288fa57552",
+    "9d317e025344e884",
+    "b70599f241ffd205"
+   ]
   },
   {
    "i": 186,
@@ -4120,7 +7303,24 @@
     "WorldSoccerDataBase.betfront",
     "USWildFires.Fires"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "81112f597dbf7662",
+    "a1ad3cc6848da621",
+    "17074c60ed8df134",
+    "2ed8bf0758c00ddc",
+    "cb11d5830baa9c53",
+    "23953fbfa41b3740",
+    "e2f085b29cf4ce12",
+    "de86376beaaf4685",
+    "5eecaea0238d9c2e",
+    "4b1021105f523105",
+    "960d9a0019360313",
+    "ec8ea5abe727f55f",
+    "b70599f241ffd205",
+    "96b9230748412177",
+    "6fa5436c3b527f27"
+   ]
   },
   {
    "i": 187,
@@ -4144,7 +7344,24 @@
     "StudentMathScore.FINREV_FED_17",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "559df7022c01131e",
+    "615f16ea574cc4bd",
+    "cb11d5830baa9c53",
+    "a1ad3cc6848da621",
+    "b70599f241ffd205",
+    "960d9a0019360313",
+    "5eecaea0238d9c2e",
+    "de86376beaaf4685",
+    "6fa5436c3b527f27",
+    "96b9230748412177",
+    "ec8ea5abe727f55f",
+    "81112f597dbf7662",
+    "4b1021105f523105",
+    "030643183db4c6d4",
+    "f7b51b375354f993"
+   ]
   },
   {
    "i": 188,
@@ -4167,7 +7384,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "e2a7766525b1e73f",
+    "960d9a0019360313",
+    "c48acd09008a5e8a",
+    "b70599f241ffd205",
+    "8e2d65ce0f6df7ab",
+    "2ed8bf0758c00ddc",
+    "011464579ef58cb3",
+    "d08e9387d422bc3a",
+    "bcc881288fa57552",
+    "ec8ea5abe727f55f",
+    "f7b51b375354f993",
+    "559df7022c01131e",
+    "a1ad3cc6848da621",
+    "6fa5436c3b527f27",
+    "d99951181dafd8c1"
+   ]
   },
   {
    "i": 189,
@@ -4191,7 +7425,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "5fa376d3f1938066",
+    "f7b51b375354f993",
+    "a1ad3cc6848da621",
+    "c48acd09008a5e8a",
+    "ec8ea5abe727f55f",
+    "1b092dd7107d09bd",
+    "960d9a0019360313",
+    "2ed8bf0758c00ddc",
+    "bcc881288fa57552",
+    "d38c292189a82ac8",
+    "b026f6828fe1d065",
+    "cb11d5830baa9c53",
+    "f5ad44e05080e8d5",
+    "011464579ef58cb3",
+    "79d37341051e30d3"
+   ]
   },
   {
    "i": 190,
@@ -4215,7 +7466,24 @@
     "StudentMathScore.FINREV_FED_17",
     "Pesticide.sampledata15"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "5e0dcce42867d822",
+    "c412fd9c59749347",
+    "e1901ee5c668677b",
+    "96b9230748412177",
+    "b70599f241ffd205",
+    "5eecaea0238d9c2e",
+    "cb11d5830baa9c53",
+    "6fa5436c3b527f27",
+    "615f16ea574cc4bd",
+    "11669ced7d028eb1",
+    "559df7022c01131e",
+    "6653840cff196873",
+    "93da83d0d87d25f2",
+    "f7b51b375354f993",
+    "6a104613a01d4ab2"
+   ]
   },
   {
    "i": 191,
@@ -4238,7 +7506,24 @@
     "USWildFires.Fires",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "b98f81cdf2818031",
+    "2ed8bf0758c00ddc",
+    "559df7022c01131e",
+    "ec8ea5abe727f55f",
+    "bcc881288fa57552",
+    "a1ad3cc6848da621",
+    "6fa5436c3b527f27",
+    "f7b51b375354f993",
+    "cb11d5830baa9c53",
+    "615f16ea574cc4bd",
+    "960d9a0019360313",
+    "81112f597dbf7662",
+    "17074c60ed8df134",
+    "030643183db4c6d4",
+    "b70599f241ffd205"
+   ]
   },
   {
    "i": 192,
@@ -4262,7 +7547,24 @@
     "Pesticide.sampledata15",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "de86376beaaf4685",
+    "a1ad3cc6848da621",
+    "5eecaea0238d9c2e",
+    "cb11d5830baa9c53",
+    "ec8ea5abe727f55f",
+    "4b1021105f523105",
+    "c48acd09008a5e8a",
+    "6fa5436c3b527f27",
+    "6653840cff196873",
+    "96b9230748412177",
+    "615f16ea574cc4bd",
+    "f7b51b375354f993",
+    "8e2d65ce0f6df7ab"
+   ]
   },
   {
    "i": 193,
@@ -4286,7 +7588,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "Pesticide.sampledata15"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "2ed8bf0758c00ddc",
+    "81112f597dbf7662",
+    "23953fbfa41b3740",
+    "17074c60ed8df134",
+    "e2f085b29cf4ce12",
+    "960d9a0019360313",
+    "a1ad3cc6848da621",
+    "de86376beaaf4685",
+    "ec8ea5abe727f55f",
+    "b70599f241ffd205",
+    "030643183db4c6d4",
+    "4b1021105f523105",
+    "cb11d5830baa9c53",
+    "5eecaea0238d9c2e",
+    "f7b51b375354f993"
+   ]
   },
   {
    "i": 194,
@@ -4310,7 +7629,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "81112f597dbf7662",
+    "2ed8bf0758c00ddc",
+    "11669ced7d028eb1",
+    "23953fbfa41b3740",
+    "6653840cff196873",
+    "f7b51b375354f993",
+    "960d9a0019360313",
+    "e2f085b29cf4ce12",
+    "17074c60ed8df134",
+    "a1ad3cc6848da621",
+    "93da83d0d87d25f2",
+    "de86376beaaf4685",
+    "b70599f241ffd205",
+    "f5cdb9df6e8016c9",
+    "cb11d5830baa9c53"
+   ]
   },
   {
    "i": 195,
@@ -4334,7 +7670,24 @@
     "WhatCDHipHop.torrents",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "6653840cff196873",
+    "e1901ee5c668677b",
+    "5e0dcce42867d822",
+    "c412fd9c59749347",
+    "11669ced7d028eb1",
+    "b70599f241ffd205",
+    "93da83d0d87d25f2",
+    "f5cdb9df6e8016c9",
+    "559df7022c01131e",
+    "960d9a0019360313",
+    "f7b51b375354f993",
+    "6a104613a01d4ab2",
+    "5eecaea0238d9c2e",
+    "96b9230748412177",
+    "cb11d5830baa9c53"
+   ]
   },
   {
    "i": 196,
@@ -4357,7 +7710,24 @@
     "WhatCDHipHop.torrents",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "81112f597dbf7662",
+    "17074c60ed8df134",
+    "23953fbfa41b3740",
+    "2ed8bf0758c00ddc",
+    "e2f085b29cf4ce12",
+    "a1ad3cc6848da621",
+    "cb11d5830baa9c53",
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "de86376beaaf4685",
+    "ec8ea5abe727f55f",
+    "559df7022c01131e",
+    "5eecaea0238d9c2e",
+    "4b1021105f523105",
+    "6fa5436c3b527f27"
+   ]
   },
   {
    "i": 197,
@@ -4380,7 +7750,24 @@
     "WorldSoccerDataBase.betfront",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "81112f597dbf7662",
+    "23953fbfa41b3740",
+    "2ed8bf0758c00ddc",
+    "17074c60ed8df134",
+    "e2f085b29cf4ce12",
+    "a1ad3cc6848da621",
+    "cb11d5830baa9c53",
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "559df7022c01131e",
+    "de86376beaaf4685",
+    "ec8ea5abe727f55f",
+    "615f16ea574cc4bd",
+    "4b1021105f523105",
+    "5eecaea0238d9c2e"
+   ]
   },
   {
    "i": 198,
@@ -4404,7 +7791,24 @@
     "StudentMathScore.FINREV_FED_17",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "de86376beaaf4685",
+    "960d9a0019360313",
+    "5eecaea0238d9c2e",
+    "ec8ea5abe727f55f",
+    "b70599f241ffd205",
+    "6fa5436c3b527f27",
+    "7b1f4b75c0ac6be2",
+    "e2a7766525b1e73f",
+    "615f16ea574cc4bd",
+    "559df7022c01131e",
+    "a1ad3cc6848da621",
+    "8e2d65ce0f6df7ab",
+    "cb11d5830baa9c53",
+    "c48acd09008a5e8a",
+    "4b1021105f523105"
+   ]
   },
   {
    "i": 199,
@@ -4428,7 +7832,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "Pesticide.sampledata15"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "11669ced7d028eb1",
+    "f7b51b375354f993",
+    "6653840cff196873",
+    "e1901ee5c668677b",
+    "a1ad3cc6848da621",
+    "960d9a0019360313",
+    "93da83d0d87d25f2",
+    "5e0dcce42867d822",
+    "b70599f241ffd205",
+    "cb11d5830baa9c53",
+    "de86376beaaf4685",
+    "c412fd9c59749347",
+    "5eecaea0238d9c2e",
+    "ec8ea5abe727f55f",
+    "f5cdb9df6e8016c9"
+   ]
   },
   {
    "i": 200,
@@ -4452,7 +7873,24 @@
     "WhatCDHipHop.tags",
     "USWildFires.Fires"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "de86376beaaf4685",
+    "5eecaea0238d9c2e",
+    "2ed8bf0758c00ddc",
+    "a1ad3cc6848da621",
+    "960d9a0019360313",
+    "ec8ea5abe727f55f",
+    "81112f597dbf7662",
+    "cb11d5830baa9c53",
+    "b70599f241ffd205",
+    "6fa5436c3b527f27",
+    "030643183db4c6d4",
+    "4b1021105f523105",
+    "23953fbfa41b3740",
+    "17074c60ed8df134",
+    "559df7022c01131e"
+   ]
   },
   {
    "i": 201,
@@ -4476,7 +7914,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "e1901ee5c668677b",
+    "5e0dcce42867d822",
+    "c412fd9c59749347",
+    "6653840cff196873",
+    "b70599f241ffd205",
+    "11669ced7d028eb1",
+    "93da83d0d87d25f2",
+    "5eecaea0238d9c2e",
+    "960d9a0019360313",
+    "6a104613a01d4ab2",
+    "96b9230748412177",
+    "f5cdb9df6e8016c9",
+    "cb11d5830baa9c53",
+    "f7b51b375354f993",
+    "6fa5436c3b527f27"
+   ]
   },
   {
    "i": 202,
@@ -4498,7 +7953,24 @@
     "WhatCDHipHop.tags",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "f7b51b375354f993",
+    "11669ced7d028eb1",
+    "6653840cff196873",
+    "93da83d0d87d25f2",
+    "a1ad3cc6848da621",
+    "f5cdb9df6e8016c9",
+    "960d9a0019360313",
+    "e1901ee5c668677b",
+    "e2a7766525b1e73f",
+    "6a104613a01d4ab2",
+    "5e0dcce42867d822",
+    "c412fd9c59749347",
+    "de86376beaaf4685",
+    "b70599f241ffd205",
+    "cb11d5830baa9c53"
+   ]
   },
   {
    "i": 203,
@@ -4522,7 +7994,24 @@
     "USWildFires.Fires",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "5eecaea0238d9c2e",
+    "de86376beaaf4685",
+    "b70599f241ffd205",
+    "960d9a0019360313",
+    "96b9230748412177",
+    "615f16ea574cc4bd",
+    "6fa5436c3b527f27",
+    "cb11d5830baa9c53",
+    "4b1021105f523105",
+    "559df7022c01131e",
+    "ec8ea5abe727f55f",
+    "a1ad3cc6848da621",
+    "5e0dcce42867d822",
+    "c412fd9c59749347",
+    "e1901ee5c668677b"
+   ]
   },
   {
    "i": 204,
@@ -4546,7 +8035,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "de86376beaaf4685",
+    "5eecaea0238d9c2e",
+    "b70599f241ffd205",
+    "960d9a0019360313",
+    "96b9230748412177",
+    "4b1021105f523105",
+    "6fa5436c3b527f27",
+    "615f16ea574cc4bd",
+    "cb11d5830baa9c53",
+    "a1ad3cc6848da621",
+    "ec8ea5abe727f55f",
+    "11669ced7d028eb1",
+    "5e0dcce42867d822",
+    "559df7022c01131e",
+    "c412fd9c59749347"
+   ]
   },
   {
    "i": 205,
@@ -4569,7 +8075,24 @@
     "WhatCDHipHop.tags",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "11669ced7d028eb1",
+    "6653840cff196873",
+    "93da83d0d87d25f2",
+    "f7b51b375354f993",
+    "6a104613a01d4ab2",
+    "f5cdb9df6e8016c9",
+    "e1901ee5c668677b",
+    "5e0dcce42867d822",
+    "c412fd9c59749347",
+    "a1ad3cc6848da621",
+    "960d9a0019360313",
+    "cb11d5830baa9c53",
+    "b70599f241ffd205",
+    "de86376beaaf4685",
+    "4b1021105f523105"
+   ]
   },
   {
    "i": 206,
@@ -4594,7 +8117,24 @@
     "Pesticide.resultsdata15",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "11669ced7d028eb1",
+    "f7b51b375354f993",
+    "6653840cff196873",
+    "93da83d0d87d25f2",
+    "f5cdb9df6e8016c9",
+    "e1901ee5c668677b",
+    "c412fd9c59749347",
+    "960d9a0019360313",
+    "5e0dcce42867d822",
+    "6a104613a01d4ab2",
+    "a1ad3cc6848da621",
+    "5fa376d3f1938066",
+    "de86376beaaf4685",
+    "b70599f241ffd205",
+    "cb11d5830baa9c53"
+   ]
   },
   {
    "i": 207,
@@ -4619,7 +8159,24 @@
     "USWildFires.Fires",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "5eecaea0238d9c2e",
+    "de86376beaaf4685",
+    "615f16ea574cc4bd",
+    "559df7022c01131e",
+    "6fa5436c3b527f27",
+    "96b9230748412177",
+    "120f20d4b102e336",
+    "cb11d5830baa9c53",
+    "b70599f241ffd205",
+    "2ed8bf0758c00ddc",
+    "4b1021105f523105",
+    "ec8ea5abe727f55f",
+    "960d9a0019360313",
+    "a1ad3cc6848da621",
+    "23953fbfa41b3740"
+   ]
   },
   {
    "i": 208,
@@ -4641,7 +8198,24 @@
     "USWildFires.Fires",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "11669ced7d028eb1",
+    "f7b51b375354f993",
+    "93da83d0d87d25f2",
+    "de86376beaaf4685",
+    "5e0dcce42867d822",
+    "c412fd9c59749347",
+    "e1901ee5c668677b",
+    "5eecaea0238d9c2e",
+    "6a104613a01d4ab2",
+    "6653840cff196873",
+    "a1ad3cc6848da621",
+    "f5cdb9df6e8016c9",
+    "cb11d5830baa9c53",
+    "6fa5436c3b527f27",
+    "960d9a0019360313"
+   ]
   },
   {
    "i": 209,
@@ -4664,7 +8238,24 @@
     "Pesticide.sampledata15",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "559df7022c01131e",
+    "a1ad3cc6848da621",
+    "cb11d5830baa9c53",
+    "de86376beaaf4685",
+    "6fa5436c3b527f27",
+    "ec8ea5abe727f55f",
+    "5eecaea0238d9c2e",
+    "615f16ea574cc4bd",
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "4b1021105f523105",
+    "030643183db4c6d4",
+    "96b9230748412177",
+    "f7b51b375354f993",
+    "bcc881288fa57552"
+   ]
   },
   {
    "i": 210,
@@ -4689,7 +8280,24 @@
     "StudentMathScore.FINREV_FED_17",
     "Pesticide.resultsdata15"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "6653840cff196873",
+    "8e2d65ce0f6df7ab",
+    "11669ced7d028eb1",
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "e1901ee5c668677b",
+    "f7b51b375354f993",
+    "c48acd09008a5e8a",
+    "5e0dcce42867d822",
+    "c412fd9c59749347",
+    "93da83d0d87d25f2",
+    "d08e9387d422bc3a",
+    "cb11d5830baa9c53",
+    "a1ad3cc6848da621",
+    "6a104613a01d4ab2"
+   ]
   },
   {
    "i": 211,
@@ -4712,7 +8320,24 @@
     "WhatCDHipHop.torrents",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "a1ad3cc6848da621",
+    "cb11d5830baa9c53",
+    "de86376beaaf4685",
+    "960d9a0019360313",
+    "5eecaea0238d9c2e",
+    "b70599f241ffd205",
+    "ec8ea5abe727f55f",
+    "6fa5436c3b527f27",
+    "4b1021105f523105",
+    "559df7022c01131e",
+    "96b9230748412177",
+    "615f16ea574cc4bd",
+    "81112f597dbf7662",
+    "f7b51b375354f993",
+    "030643183db4c6d4"
+   ]
   },
   {
    "i": 212,
@@ -4736,7 +8361,24 @@
     "Pesticide.resultsdata15",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "ec8ea5abe727f55f",
+    "bcc881288fa57552",
+    "a1ad3cc6848da621",
+    "f7b51b375354f993",
+    "9d317e025344e884",
+    "6fa5436c3b527f27",
+    "1b092dd7107d09bd",
+    "960d9a0019360313",
+    "cb11d5830baa9c53",
+    "d38c292189a82ac8",
+    "de86376beaaf4685",
+    "559df7022c01131e",
+    "79d37341051e30d3",
+    "4b1021105f523105",
+    "2ed8bf0758c00ddc"
+   ]
   },
   {
    "i": 213,
@@ -4759,7 +8401,24 @@
     "WhatCDHipHop.tags",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "960d9a0019360313",
+    "b70599f241ffd205",
+    "615f16ea574cc4bd",
+    "de86376beaaf4685",
+    "ec8ea5abe727f55f",
+    "559df7022c01131e",
+    "6fa5436c3b527f27",
+    "a1ad3cc6848da621",
+    "5eecaea0238d9c2e",
+    "4b1021105f523105",
+    "cb11d5830baa9c53",
+    "030643183db4c6d4",
+    "96b9230748412177",
+    "f7b51b375354f993",
+    "2ed8bf0758c00ddc"
+   ]
   },
   {
    "i": 214,
@@ -4781,7 +8440,24 @@
     "WhatCDHipHop.tags",
     "Pesticide.sampledata15"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "e2a7766525b1e73f",
+    "7b1f4b75c0ac6be2",
+    "c48acd09008a5e8a",
+    "011464579ef58cb3",
+    "8e2d65ce0f6df7ab",
+    "d08e9387d422bc3a",
+    "a1ad3cc6848da621",
+    "f7b51b375354f993",
+    "2ed8bf0758c00ddc",
+    "22ebd61bdbbf8c5b",
+    "d99951181dafd8c1",
+    "ec8ea5abe727f55f",
+    "bcc881288fa57552",
+    "cb11d5830baa9c53",
+    "960d9a0019360313"
+   ]
   },
   {
    "i": 215,
@@ -4805,7 +8481,24 @@
     "WorldSoccerDataBase.betfront",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "de86376beaaf4685",
+    "559df7022c01131e",
+    "a1ad3cc6848da621",
+    "ec8ea5abe727f55f",
+    "615f16ea574cc4bd",
+    "2ed8bf0758c00ddc",
+    "5eecaea0238d9c2e",
+    "960d9a0019360313",
+    "6fa5436c3b527f27",
+    "b98f81cdf2818031",
+    "cb11d5830baa9c53",
+    "b70599f241ffd205",
+    "4b1021105f523105",
+    "96b9230748412177",
+    "f7b51b375354f993"
+   ]
   },
   {
    "i": 216,
@@ -4829,7 +8522,24 @@
     "USWildFires.Fires",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "2ed8bf0758c00ddc",
+    "81112f597dbf7662",
+    "23953fbfa41b3740",
+    "17074c60ed8df134",
+    "e2f085b29cf4ce12",
+    "960d9a0019360313",
+    "a1ad3cc6848da621",
+    "de86376beaaf4685",
+    "b70599f241ffd205",
+    "cb11d5830baa9c53",
+    "ec8ea5abe727f55f",
+    "5eecaea0238d9c2e",
+    "4b1021105f523105",
+    "030643183db4c6d4",
+    "559df7022c01131e"
+   ]
   },
   {
    "i": 217,
@@ -4854,7 +8564,24 @@
     "WhatCDHipHop.tags",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "0e0590fc59dd423c",
+    "9dd5eb02258221b3",
+    "c4ed11e81d8aa95d",
+    "40bcbff50f16b32a",
+    "fcb361df42f97fd9",
+    "e2f085b29cf4ce12",
+    "277cb8e614fd568d",
+    "120f20d4b102e336",
+    "36081f52c814b87f",
+    "462874aa7e352405",
+    "6a120745d3dd0b20",
+    "df8cf9c9eb89f93b",
+    "23953fbfa41b3740",
+    "b438ea6e72877f9a",
+    "0c0fd4ecb2a213f7"
+   ]
   },
   {
    "i": 218,
@@ -4879,7 +8606,24 @@
     "WhatCDHipHop.tags",
     "TheHistoryofBaseball.player_award"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "9dd5eb02258221b3",
+    "0e0590fc59dd423c",
+    "40bcbff50f16b32a",
+    "c4ed11e81d8aa95d",
+    "fcb361df42f97fd9",
+    "277cb8e614fd568d",
+    "64880982942eb52c",
+    "120f20d4b102e336",
+    "9d0b0d477bc36ba9",
+    "36081f52c814b87f",
+    "462874aa7e352405",
+    "3dfa2ae44034f55a",
+    "6a120745d3dd0b20",
+    "df8cf9c9eb89f93b",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 219,
@@ -4903,7 +8647,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "Pesticide.sampledata15"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "b70599f241ffd205",
+    "615f16ea574cc4bd",
+    "559df7022c01131e",
+    "96b9230748412177",
+    "960d9a0019360313",
+    "6fa5436c3b527f27",
+    "5eecaea0238d9c2e",
+    "e2f085b29cf4ce12",
+    "cb11d5830baa9c53",
+    "e1901ee5c668677b",
+    "c412fd9c59749347",
+    "5e0dcce42867d822",
+    "9dd5eb02258221b3",
+    "de86376beaaf4685"
+   ]
   },
   {
    "i": 220,
@@ -4927,7 +8688,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "0e0590fc59dd423c",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "462874aa7e352405",
+    "36081f52c814b87f",
+    "d2575313bdc7ec2d",
+    "b438ea6e72877f9a",
+    "2b4a60b697789d08",
+    "ef4bfc78df10da3a",
+    "ea4f756e3a9ccfc2",
+    "c4ed11e81d8aa95d",
+    "6a120745d3dd0b20",
+    "fcb361df42f97fd9",
+    "cb998edccbab0f73",
+    "120f20d4b102e336"
+   ]
   },
   {
    "i": 221,
@@ -4951,7 +8729,24 @@
     "WorldSoccerDataBase.football_data",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "9dd5eb02258221b3",
+    "0e0590fc59dd423c",
+    "40bcbff50f16b32a",
+    "2b4a60b697789d08",
+    "c4ed11e81d8aa95d",
+    "b438ea6e72877f9a",
+    "cb998edccbab0f73",
+    "462874aa7e352405",
+    "36081f52c814b87f",
+    "ea4f756e3a9ccfc2",
+    "d2575313bdc7ec2d",
+    "ef4bfc78df10da3a",
+    "6a120745d3dd0b20",
+    "fcb361df42f97fd9",
+    "120f20d4b102e336"
+   ]
   },
   {
    "i": 222,
@@ -4975,7 +8770,24 @@
     "TheHistoryofBaseball.player_award",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "0e0590fc59dd423c",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "462874aa7e352405",
+    "36081f52c814b87f",
+    "c4ed11e81d8aa95d",
+    "b438ea6e72877f9a",
+    "d2575313bdc7ec2d",
+    "ea4f756e3a9ccfc2",
+    "6a120745d3dd0b20",
+    "2b4a60b697789d08",
+    "fcb361df42f97fd9",
+    "cb998edccbab0f73",
+    "ef4bfc78df10da3a",
+    "120f20d4b102e336"
+   ]
   },
   {
    "i": 223,
@@ -4997,7 +8809,24 @@
     "TheHistoryofBaseball.salary",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "fcb361df42f97fd9",
+    "120f20d4b102e336",
+    "c4ed11e81d8aa95d",
+    "6a120745d3dd0b20",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "36081f52c814b87f",
+    "0e0590fc59dd423c",
+    "462874aa7e352405",
+    "d2575313bdc7ec2d",
+    "cb998edccbab0f73",
+    "ea4f756e3a9ccfc2",
+    "b438ea6e72877f9a",
+    "2b4a60b697789d08",
+    "9d0b0d477bc36ba9"
+   ]
   },
   {
    "i": 224,
@@ -5019,7 +8848,24 @@
     "TheHistoryofBaseball.salary",
     "TheHistoryofBaseball.player_award_vote"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "fcb361df42f97fd9",
+    "9dd5eb02258221b3",
+    "6a120745d3dd0b20",
+    "120f20d4b102e336",
+    "40bcbff50f16b32a",
+    "c4ed11e81d8aa95d",
+    "36081f52c814b87f",
+    "0e0590fc59dd423c",
+    "462874aa7e352405",
+    "d2575313bdc7ec2d",
+    "2b4a60b697789d08",
+    "cb998edccbab0f73",
+    "b438ea6e72877f9a",
+    "ef4bfc78df10da3a",
+    "ea4f756e3a9ccfc2"
+   ]
   },
   {
    "i": 225,
@@ -5042,7 +8888,24 @@
     "WhatCDHipHop.torrents",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "fcb361df42f97fd9",
+    "c4ed11e81d8aa95d",
+    "6a120745d3dd0b20",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "462874aa7e352405",
+    "ea4f756e3a9ccfc2",
+    "b438ea6e72877f9a",
+    "0e0590fc59dd423c",
+    "cb998edccbab0f73",
+    "2b4a60b697789d08",
+    "d2575313bdc7ec2d",
+    "36081f52c814b87f",
+    "ef4bfc78df10da3a"
+   ]
   },
   {
    "i": 226,
@@ -5066,7 +8929,24 @@
     "WorldSoccerDataBase.betfront",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "0e0590fc59dd423c",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "fcb361df42f97fd9",
+    "36081f52c814b87f",
+    "6a120745d3dd0b20",
+    "c4ed11e81d8aa95d",
+    "277cb8e614fd568d",
+    "462874aa7e352405",
+    "d2575313bdc7ec2d",
+    "ef4bfc78df10da3a",
+    "cb998edccbab0f73",
+    "2b4a60b697789d08",
+    "b438ea6e72877f9a",
+    "120f20d4b102e336"
+   ]
   },
   {
    "i": 227,
@@ -5091,7 +8971,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "WorldSoccerDataBase.football_data"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "462874aa7e352405",
+    "40bcbff50f16b32a",
+    "9dd5eb02258221b3",
+    "23953fbfa41b3740",
+    "e2f085b29cf4ce12",
+    "0158a20995f91667",
+    "ea4f756e3a9ccfc2",
+    "b438ea6e72877f9a",
+    "0c0fd4ecb2a213f7",
+    "120f20d4b102e336",
+    "2b4a60b697789d08",
+    "d2575313bdc7ec2d",
+    "cb998edccbab0f73",
+    "36081f52c814b87f",
+    "345a70d3e7751458"
+   ]
   },
   {
    "i": 228,
@@ -5117,7 +9014,24 @@
     "GreaterManchesterCrime.GreaterManchesterCrime",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "9dd5eb02258221b3",
+    "fcb361df42f97fd9",
+    "40bcbff50f16b32a",
+    "c4ed11e81d8aa95d",
+    "36081f52c814b87f",
+    "6a120745d3dd0b20",
+    "0e0590fc59dd423c",
+    "6061fbc4e659508c",
+    "462874aa7e352405",
+    "277cb8e614fd568d",
+    "e2f085b29cf4ce12",
+    "23953fbfa41b3740",
+    "cb998edccbab0f73",
+    "df8cf9c9eb89f93b"
+   ]
   },
   {
    "i": 229,
@@ -5143,7 +9057,24 @@
     "Pesticide.sampledata15",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "0e0590fc59dd423c",
+    "120f20d4b102e336",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "fcb361df42f97fd9",
+    "6a120745d3dd0b20",
+    "36081f52c814b87f",
+    "462874aa7e352405",
+    "c4ed11e81d8aa95d",
+    "d2575313bdc7ec2d",
+    "ef4bfc78df10da3a",
+    "2b4a60b697789d08",
+    "b438ea6e72877f9a",
+    "ea4f756e3a9ccfc2",
+    "cb998edccbab0f73"
+   ]
   },
   {
    "i": 230,
@@ -5167,7 +9098,24 @@
     "TheHistoryofBaseball.player",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "fcb361df42f97fd9",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "c4ed11e81d8aa95d",
+    "6a120745d3dd0b20",
+    "36081f52c814b87f",
+    "462874aa7e352405",
+    "cb998edccbab0f73",
+    "0e0590fc59dd423c",
+    "ea4f756e3a9ccfc2",
+    "b438ea6e72877f9a",
+    "559df7022c01131e",
+    "2b4a60b697789d08",
+    "ef4bfc78df10da3a"
+   ]
   },
   {
    "i": 231,
@@ -5193,7 +9141,24 @@
     "WhatCDHipHop.tags",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "6a120745d3dd0b20",
+    "c4ed11e81d8aa95d",
+    "0e0590fc59dd423c",
+    "fcb361df42f97fd9",
+    "462874aa7e352405",
+    "ea4f756e3a9ccfc2",
+    "b438ea6e72877f9a",
+    "cb998edccbab0f73",
+    "d2575313bdc7ec2d",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "5a9f99ef49d44fc9",
+    "2b4a60b697789d08",
+    "ef4bfc78df10da3a"
+   ]
   },
   {
    "i": 232,
@@ -5219,7 +9184,24 @@
     "WorldSoccerDataBase.betfront",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "0e0590fc59dd423c",
+    "fcb361df42f97fd9",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "6a120745d3dd0b20",
+    "36081f52c814b87f",
+    "c4ed11e81d8aa95d",
+    "462874aa7e352405",
+    "ef4bfc78df10da3a",
+    "d2575313bdc7ec2d",
+    "2b4a60b697789d08",
+    "cb998edccbab0f73",
+    "ea4f756e3a9ccfc2",
+    "b438ea6e72877f9a"
+   ]
   },
   {
    "i": 233,
@@ -5245,7 +9227,24 @@
     "WorldSoccerDataBase.betfront",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "c4ed11e81d8aa95d",
+    "6a120745d3dd0b20",
+    "0e0590fc59dd423c",
+    "fcb361df42f97fd9",
+    "462874aa7e352405",
+    "ea4f756e3a9ccfc2",
+    "b438ea6e72877f9a",
+    "cb998edccbab0f73",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "2b4a60b697789d08",
+    "d2575313bdc7ec2d",
+    "5a9f99ef49d44fc9",
+    "23953fbfa41b3740"
+   ]
   },
   {
    "i": 234,
@@ -5271,7 +9270,24 @@
     "WorldSoccerDataBase.football_data",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "0e0590fc59dd423c",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "fcb361df42f97fd9",
+    "36081f52c814b87f",
+    "c4ed11e81d8aa95d",
+    "6a120745d3dd0b20",
+    "462874aa7e352405",
+    "d2575313bdc7ec2d",
+    "2b4a60b697789d08",
+    "ef4bfc78df10da3a",
+    "cb998edccbab0f73",
+    "ea4f756e3a9ccfc2",
+    "b438ea6e72877f9a"
+   ]
   },
   {
    "i": 235,
@@ -5295,7 +9311,24 @@
     "TheHistoryofBaseball.player_award",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "fcb361df42f97fd9",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "6a120745d3dd0b20",
+    "c4ed11e81d8aa95d",
+    "36081f52c814b87f",
+    "462874aa7e352405",
+    "0e0590fc59dd423c",
+    "cb998edccbab0f73",
+    "d2575313bdc7ec2d",
+    "ea4f756e3a9ccfc2",
+    "ef4bfc78df10da3a",
+    "b438ea6e72877f9a",
+    "2b4a60b697789d08"
+   ]
   },
   {
    "i": 236,
@@ -5318,7 +9351,24 @@
     "USWildFires.Fires",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "559df7022c01131e",
+    "615f16ea574cc4bd",
+    "6fa5436c3b527f27",
+    "cb11d5830baa9c53",
+    "b70599f241ffd205",
+    "96b9230748412177",
+    "5eecaea0238d9c2e",
+    "4b1021105f523105",
+    "ec8ea5abe727f55f",
+    "a1ad3cc6848da621",
+    "960d9a0019360313",
+    "de86376beaaf4685",
+    "40bcbff50f16b32a",
+    "462874aa7e352405"
+   ]
   },
   {
    "i": 237,
@@ -5343,7 +9393,24 @@
     "TheHistoryofBaseball.player_award",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "0e0590fc59dd423c",
+    "c4ed11e81d8aa95d",
+    "6a120745d3dd0b20",
+    "fcb361df42f97fd9",
+    "120f20d4b102e336",
+    "9dd5eb02258221b3",
+    "462874aa7e352405",
+    "40bcbff50f16b32a",
+    "277cb8e614fd568d",
+    "d2575313bdc7ec2d",
+    "b438ea6e72877f9a",
+    "ded511e979c5de1a",
+    "ea4f756e3a9ccfc2",
+    "a52717ca11ff60a3",
+    "36081f52c814b87f"
+   ]
   },
   {
    "i": 238,
@@ -5367,7 +9434,24 @@
     "WorldSoccerDataBase.football_data",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "9dd5eb02258221b3",
+    "8303469f44d8ae0f",
+    "6061fbc4e659508c",
+    "40bcbff50f16b32a",
+    "64880982942eb52c",
+    "277cb8e614fd568d",
+    "9d0b0d477bc36ba9",
+    "0158a20995f91667",
+    "252c6bbd44d5ba21",
+    "3dfa2ae44034f55a",
+    "df8cf9c9eb89f93b",
+    "8d75094c32455f74",
+    "6cf9d773fefbcd00",
+    "edc3c041be52733d",
+    "5e9c3534283255a9"
+   ]
   },
   {
    "i": 239,
@@ -5392,7 +9476,24 @@
     "TheHistoryofBaseball.player",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "277cb8e614fd568d",
+    "a4c7a9f99b1a2948",
+    "e2f085b29cf4ce12",
+    "252c6bbd44d5ba21",
+    "23953fbfa41b3740",
+    "30325cab259dca00",
+    "81112f597dbf7662",
+    "07a0c9074ea0bea4",
+    "df8cf9c9eb89f93b",
+    "3dfa2ae44034f55a",
+    "f30a05c59661ef1e",
+    "9d0b0d477bc36ba9",
+    "64880982942eb52c",
+    "5e9c3534283255a9",
+    "17074c60ed8df134"
+   ]
   },
   {
    "i": 240,
@@ -5417,7 +9518,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "GreaterManchesterCrime.GreaterManchesterCrime"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "0e0590fc59dd423c",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "462874aa7e352405",
+    "d2575313bdc7ec2d",
+    "36081f52c814b87f",
+    "c4ed11e81d8aa95d",
+    "2b4a60b697789d08",
+    "b438ea6e72877f9a",
+    "ea4f756e3a9ccfc2",
+    "cb998edccbab0f73",
+    "ef4bfc78df10da3a",
+    "6a120745d3dd0b20",
+    "120f20d4b102e336",
+    "fcb361df42f97fd9"
+   ]
   },
   {
    "i": 241,
@@ -5441,7 +9559,24 @@
     "WorldSoccerDataBase.football_data",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "0e0590fc59dd423c",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "462874aa7e352405",
+    "2b4a60b697789d08",
+    "c4ed11e81d8aa95d",
+    "d2575313bdc7ec2d",
+    "6a120745d3dd0b20",
+    "b438ea6e72877f9a",
+    "36081f52c814b87f",
+    "ea4f756e3a9ccfc2",
+    "fcb361df42f97fd9",
+    "cb998edccbab0f73",
+    "ef4bfc78df10da3a",
+    "120f20d4b102e336"
+   ]
   },
   {
    "i": 242,
@@ -5465,7 +9600,24 @@
     "GeoNuclearData.nuclear_power_plants",
     "WhatCDHipHop.torrents"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "6a120745d3dd0b20",
+    "fcb361df42f97fd9",
+    "c4ed11e81d8aa95d",
+    "d2575313bdc7ec2d",
+    "462874aa7e352405",
+    "40bcbff50f16b32a",
+    "9dd5eb02258221b3",
+    "b438ea6e72877f9a",
+    "ea4f756e3a9ccfc2",
+    "cb998edccbab0f73",
+    "2b4a60b697789d08",
+    "0e0590fc59dd423c",
+    "36081f52c814b87f",
+    "ef4bfc78df10da3a"
+   ]
   },
   {
    "i": 243,
@@ -5489,7 +9641,24 @@
     "TheHistoryofBaseball.hall_of_fame",
     "WorldSoccerDataBase.football_data"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "120f20d4b102e336",
+    "6a120745d3dd0b20",
+    "c4ed11e81d8aa95d",
+    "fcb361df42f97fd9",
+    "462874aa7e352405",
+    "d2575313bdc7ec2d",
+    "9dd5eb02258221b3",
+    "40bcbff50f16b32a",
+    "cb998edccbab0f73",
+    "b438ea6e72877f9a",
+    "ea4f756e3a9ccfc2",
+    "0e0590fc59dd423c",
+    "2b4a60b697789d08",
+    "36081f52c814b87f",
+    "ef4bfc78df10da3a"
+   ]
   },
   {
    "i": 244,
@@ -5513,7 +9682,24 @@
     "TheHistoryofBaseball.player",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "0e0590fc59dd423c",
+    "c4ed11e81d8aa95d",
+    "120f20d4b102e336",
+    "462874aa7e352405",
+    "6a120745d3dd0b20",
+    "e513cc4c315fab3a",
+    "40bcbff50f16b32a",
+    "9dd5eb02258221b3",
+    "67829649e57693d7",
+    "fcb361df42f97fd9",
+    "6c741ac18a8e67d7",
+    "36081f52c814b87f",
+    "cb998edccbab0f73",
+    "23953fbfa41b3740",
+    "ef4bfc78df10da3a"
+   ]
   },
   {
    "i": 245,
@@ -5537,7 +9723,24 @@
     "WorldSoccerDataBase.betfront",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "209db2ba15001a43",
+    "d73ccf03de72af53",
+    "f971acd1eec6ed71",
+    "1ec17650a37dd479",
+    "277cb8e614fd568d",
+    "22ebd61bdbbf8c5b",
+    "7b1f4b75c0ac6be2",
+    "9d0b0d477bc36ba9",
+    "30325cab259dca00",
+    "64880982942eb52c",
+    "6061fbc4e659508c",
+    "14449f1e1ec064e7",
+    "2bc98850da781239"
+   ]
   },
   {
    "i": 246,
@@ -5559,7 +9762,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "WorldSoccerDataBase.betfront"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "d73ccf03de72af53",
+    "209db2ba15001a43",
+    "f971acd1eec6ed71",
+    "1ec17650a37dd479",
+    "e1901ee5c668677b",
+    "cb11d5830baa9c53",
+    "559df7022c01131e",
+    "5e0dcce42867d822",
+    "615f16ea574cc4bd",
+    "96b9230748412177",
+    "22ebd61bdbbf8c5b",
+    "1b092dd7107d09bd",
+    "b70599f241ffd205"
+   ]
   },
   {
    "i": 247,
@@ -5579,7 +9799,24 @@
     "WorldSoccerDataBase.football_data",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "d73ccf03de72af53",
+    "209db2ba15001a43",
+    "f971acd1eec6ed71",
+    "1ec17650a37dd479",
+    "e1901ee5c668677b",
+    "22ebd61bdbbf8c5b",
+    "5e0dcce42867d822",
+    "cb11d5830baa9c53",
+    "559df7022c01131e",
+    "1b092dd7107d09bd",
+    "615f16ea574cc4bd",
+    "7b1f4b75c0ac6be2",
+    "96b9230748412177"
+   ]
   },
   {
    "i": 248,
@@ -5603,7 +9840,24 @@
     "WorldSoccerDataBase.football_data",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "209db2ba15001a43",
+    "f971acd1eec6ed71",
+    "d73ccf03de72af53",
+    "1ec17650a37dd479",
+    "30325cab259dca00",
+    "277cb8e614fd568d",
+    "2bc98850da781239",
+    "7d12e7a2ae3ccfa5",
+    "0e0590fc59dd423c",
+    "194cb3f8e15a3a1e",
+    "5a9f99ef49d44fc9",
+    "3dfa2ae44034f55a",
+    "67829649e57693d7"
+   ]
   },
   {
    "i": 249,
@@ -5626,7 +9880,24 @@
     "TheHistoryofBaseball.salary",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "209db2ba15001a43",
+    "f971acd1eec6ed71",
+    "d73ccf03de72af53",
+    "2bc98850da781239",
+    "67829649e57693d7",
+    "30325cab259dca00",
+    "6c741ac18a8e67d7",
+    "1ec17650a37dd479",
+    "5a9f99ef49d44fc9",
+    "e513cc4c315fab3a",
+    "7d12e7a2ae3ccfa5",
+    "366a8ed20e2531db",
+    "194cb3f8e15a3a1e"
+   ]
   },
   {
    "i": 250,
@@ -5647,7 +9918,24 @@
     "TheHistoryofBaseball.player_award_vote",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "d33302d66a14a7b9",
+    "8322e3fe6bd2af95",
+    "cdffb3c2068096b7",
+    "1ec17650a37dd479",
+    "f971acd1eec6ed71",
+    "0fbc973f6462d9e4",
+    "d73ccf03de72af53",
+    "9bee93418090159e",
+    "209db2ba15001a43",
+    "866708c6daf6b599",
+    "3c34c481931aac62",
+    "5a9f99ef49d44fc9",
+    "30325cab259dca00"
+   ]
   },
   {
    "i": 251,
@@ -5670,7 +9958,24 @@
     "WorldSoccerDataBase.betfront",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "209db2ba15001a43",
+    "f971acd1eec6ed71",
+    "277cb8e614fd568d",
+    "1ec17650a37dd479",
+    "d73ccf03de72af53",
+    "9d0b0d477bc36ba9",
+    "8322e3fe6bd2af95",
+    "0fbc973f6462d9e4",
+    "2bc98850da781239",
+    "a52717ca11ff60a3",
+    "6061fbc4e659508c",
+    "30325cab259dca00",
+    "0c0fd4ecb2a213f7"
+   ]
   },
   {
    "i": 252,
@@ -5689,7 +9994,24 @@
     "WhatCDHipHop.torrents",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "209db2ba15001a43",
+    "f971acd1eec6ed71",
+    "277cb8e614fd568d",
+    "d73ccf03de72af53",
+    "30325cab259dca00",
+    "07a0c9074ea0bea4",
+    "1ec17650a37dd479",
+    "14449f1e1ec064e7",
+    "951bd200be08041e",
+    "4d9a794941b4e55b",
+    "9d0b0d477bc36ba9",
+    "22ebd61bdbbf8c5b",
+    "a4c7a9f99b1a2948"
+   ]
   },
   {
    "i": 253,
@@ -5712,7 +10034,24 @@
     "StudentMathScore.FINREV_FED_KEY_17",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "d73ccf03de72af53",
+    "f971acd1eec6ed71",
+    "6061fbc4e659508c",
+    "209db2ba15001a43",
+    "14449f1e1ec064e7",
+    "1ec17650a37dd479",
+    "2bc98850da781239",
+    "05cd62898239d8c9",
+    "277cb8e614fd568d",
+    "5a9f99ef49d44fc9",
+    "30325cab259dca00",
+    "366a8ed20e2531db",
+    "67829649e57693d7"
+   ]
   },
   {
    "i": 254,
@@ -5734,7 +10073,24 @@
     "WhatCDHipHop.tags",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "9a34a1c60688ad8b",
+    "de72fa8d868c44e3",
+    "dd6e84c133aaa187",
+    "61b9ac25caf0215e",
+    "47bfdde25dc00b8a",
+    "8d75094c32455f74",
+    "163a2b3c283f6d6f",
+    "d73ccf03de72af53",
+    "f971acd1eec6ed71",
+    "f5ad44e05080e8d5",
+    "209db2ba15001a43",
+    "d08e9387d422bc3a",
+    "5e9c3534283255a9",
+    "1ec17650a37dd479",
+    "7b1f4b75c0ac6be2"
+   ]
   },
   {
    "i": 255,
@@ -5757,7 +10113,24 @@
     "StudentMathScore.FINREV_FED_17",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "d73ccf03de72af53",
+    "209db2ba15001a43",
+    "f971acd1eec6ed71",
+    "1ec17650a37dd479",
+    "22ebd61bdbbf8c5b",
+    "7b1f4b75c0ac6be2",
+    "14449f1e1ec064e7",
+    "fba87de16ab60cad",
+    "277cb8e614fd568d",
+    "f5ad44e05080e8d5",
+    "6061fbc4e659508c",
+    "17074c60ed8df134",
+    "81112f597dbf7662"
+   ]
   },
   {
    "i": 256,
@@ -5779,7 +10152,24 @@
     "TheHistoryofBaseball.player_award",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "d73ccf03de72af53",
+    "209db2ba15001a43",
+    "f971acd1eec6ed71",
+    "1ec17650a37dd479",
+    "22ebd61bdbbf8c5b",
+    "7b1f4b75c0ac6be2",
+    "e1901ee5c668677b",
+    "277cb8e614fd568d",
+    "cdffb3c2068096b7",
+    "6061fbc4e659508c",
+    "9bee93418090159e",
+    "d33302d66a14a7b9",
+    "14449f1e1ec064e7"
+   ]
   },
   {
    "i": 257,
@@ -5803,7 +10193,24 @@
     "TheHistoryofBaseball.salary",
     "StudentMathScore.NDECoreExcel_Math_Grade8"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "6061fbc4e659508c",
+    "d73ccf03de72af53",
+    "14449f1e1ec064e7",
+    "2bc98850da781239",
+    "f971acd1eec6ed71",
+    "67829649e57693d7",
+    "462874aa7e352405",
+    "366a8ed20e2531db",
+    "6c741ac18a8e67d7",
+    "132a54123b75011c",
+    "8c939ec32e119a34",
+    "9dd5eb02258221b3",
+    "2dbd18fb6fb5a69c"
+   ]
   },
   {
    "i": 258,
@@ -5850,7 +10257,24 @@
     "TheHistoryofBaseball.salary",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "d73ccf03de72af53",
+    "f971acd1eec6ed71",
+    "209db2ba15001a43",
+    "6061fbc4e659508c",
+    "1ec17650a37dd479",
+    "277cb8e614fd568d",
+    "14449f1e1ec064e7",
+    "cdffb3c2068096b7",
+    "8322e3fe6bd2af95",
+    "22ebd61bdbbf8c5b",
+    "30325cab259dca00",
+    "0c0fd4ecb2a213f7",
+    "d33302d66a14a7b9"
+   ]
   },
   {
    "i": 260,
@@ -5874,7 +10298,24 @@
     "TheHistoryofBaseball.player_award",
     "GeoNuclearData.nuclear_power_plants"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "d73ccf03de72af53",
+    "f971acd1eec6ed71",
+    "163a2b3c283f6d6f",
+    "1ec17650a37dd479",
+    "209db2ba15001a43",
+    "14449f1e1ec064e7",
+    "6061fbc4e659508c",
+    "fba87de16ab60cad",
+    "a31302a34b8d4f1d",
+    "2bc98850da781239",
+    "e891a6cbc170fc40",
+    "5a9f99ef49d44fc9",
+    "0c0fd4ecb2a213f7"
+   ]
   },
   {
    "i": 261,
@@ -5896,7 +10337,24 @@
     "StudentMathScore.NDECoreExcel_Math_Grade8",
     "StudentMathScore.FINREV_FED_KEY_17"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "e513cc4c315fab3a",
+    "6c741ac18a8e67d7",
+    "3c34c481931aac62",
+    "67829649e57693d7",
+    "fba87de16ab60cad",
+    "4a59e817249c91bc",
+    "2bc98850da781239",
+    "2dbd18fb6fb5a69c",
+    "277292f8bb6bc118",
+    "3dfa2ae44034f55a",
+    "47bfdde25dc00b8a",
+    "c0ca079616739136",
+    "9b277b41405a46f4",
+    "194cb3f8e15a3a1e"
+   ]
   },
   {
    "i": 262,
@@ -5920,7 +10378,24 @@
     "WhatCDHipHop.torrents",
     "WhatCDHipHop.tags"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "9a34a1c60688ad8b",
+    "de72fa8d868c44e3",
+    "6061fbc4e659508c",
+    "793ea1ecec214f3c",
+    "2f73e0087797399a",
+    "d73ccf03de72af53",
+    "1744ce60da3afb61",
+    "2bc98850da781239",
+    "47bfdde25dc00b8a",
+    "f971acd1eec6ed71",
+    "5fa376d3f1938066",
+    "366a8ed20e2531db",
+    "b026f6828fe1d065",
+    "67829649e57693d7",
+    "fba87de16ab60cad"
+   ]
   },
   {
    "i": 263,
@@ -5941,7 +10416,24 @@
     "TheHistoryofBaseball.salary",
     "TheHistoryofBaseball.player_award_vote"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "30325cab259dca00",
+    "209db2ba15001a43",
+    "7d12e7a2ae3ccfa5",
+    "3dfa2ae44034f55a",
+    "0fa465a0dd93a2e6",
+    "2dbd18fb6fb5a69c",
+    "fba87de16ab60cad",
+    "99ba645c6a644bab",
+    "5a9f99ef49d44fc9",
+    "4a59e817249c91bc",
+    "277292f8bb6bc118",
+    "67829649e57693d7",
+    "6c741ac18a8e67d7"
+   ]
   },
   {
    "i": 264,
@@ -5963,7 +10455,24 @@
     "StudentMathScore.FINREV_FED_17",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "d33302d66a14a7b9",
+    "8322e3fe6bd2af95",
+    "1ec17650a37dd479",
+    "f971acd1eec6ed71",
+    "cdffb3c2068096b7",
+    "d73ccf03de72af53",
+    "9bee93418090159e",
+    "0fbc973f6462d9e4",
+    "209db2ba15001a43",
+    "866708c6daf6b599",
+    "6061fbc4e659508c",
+    "3c34c481931aac62",
+    "0c0fd4ecb2a213f7"
+   ]
   },
   {
    "i": 265,
@@ -5980,7 +10489,24 @@
     "Pesticide.resultsdata15",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 8
+   "n_ranked": 8,
+   "ranked_columns": [
+    "209db2ba15001a43",
+    "4d9a794941b4e55b",
+    "de72fa8d868c44e3",
+    "d15d65a2491717a9",
+    "9d0b0d477bc36ba9",
+    "a4c7a9f99b1a2948",
+    "30325cab259dca00",
+    "f971acd1eec6ed71",
+    "64880982942eb52c",
+    "277cb8e614fd568d",
+    "07a0c9074ea0bea4",
+    "32a66118e7c58ef4",
+    "51c2f5cbda3e36d1",
+    "2096ec5a3e133db4",
+    "abcce680b5aafeea"
+   ]
   },
   {
    "i": 266,
@@ -5997,7 +10523,24 @@
     "WorldSoccerDataBase.football_data",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 8
+   "n_ranked": 8,
+   "ranked_columns": [
+    "209db2ba15001a43",
+    "4d9a794941b4e55b",
+    "d15d65a2491717a9",
+    "a4c7a9f99b1a2948",
+    "de72fa8d868c44e3",
+    "30325cab259dca00",
+    "9d0b0d477bc36ba9",
+    "277cb8e614fd568d",
+    "51c2f5cbda3e36d1",
+    "f971acd1eec6ed71",
+    "32a66118e7c58ef4",
+    "2096ec5a3e133db4",
+    "64880982942eb52c",
+    "f53353bd44fb245b",
+    "9a34a1c60688ad8b"
+   ]
   },
   {
    "i": 267,
@@ -6021,7 +10564,24 @@
     "TheHistoryofBaseball.salary",
     "StudentMathScore.FINREV_FED_17"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "209db2ba15001a43",
+    "d73ccf03de72af53",
+    "1ec17650a37dd479",
+    "f971acd1eec6ed71",
+    "e1901ee5c668677b",
+    "559df7022c01131e",
+    "22ebd61bdbbf8c5b",
+    "7b1f4b75c0ac6be2",
+    "d99951181dafd8c1",
+    "0c0fd4ecb2a213f7",
+    "615f16ea574cc4bd",
+    "5e0dcce42867d822",
+    "6061fbc4e659508c"
+   ]
   },
   {
    "i": 268,
@@ -6044,7 +10604,24 @@
     "TheHistoryofBaseball.salary",
     "TheHistoryofBaseball.player"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "209db2ba15001a43",
+    "6c741ac18a8e67d7",
+    "f971acd1eec6ed71",
+    "e513cc4c315fab3a",
+    "1ec17650a37dd479",
+    "67829649e57693d7",
+    "6cf9d773fefbcd00",
+    "d73ccf03de72af53",
+    "9d0b0d477bc36ba9",
+    "462874aa7e352405",
+    "6061fbc4e659508c",
+    "9cbe50995b2cae4a",
+    "d1e113e3563ef35b"
+   ]
   },
   {
    "i": 269,
@@ -6066,7 +10643,24 @@
     "TheHistoryofBaseball.player_award",
     "TheHistoryofBaseball.player_award_vote"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "d73ccf03de72af53",
+    "6061fbc4e659508c",
+    "e891a6cbc170fc40",
+    "14449f1e1ec064e7",
+    "d33302d66a14a7b9",
+    "2bc98850da781239",
+    "f971acd1eec6ed71",
+    "866708c6daf6b599",
+    "1ec17650a37dd479",
+    "fba87de16ab60cad",
+    "8322e3fe6bd2af95",
+    "951c6114c2ff0262",
+    "0fbc973f6462d9e4"
+   ]
   },
   {
    "i": 270,
@@ -6090,7 +10684,24 @@
     "TheHistoryofBaseball.player_award",
     "TheHistoryofBaseball.salary"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "de72fa8d868c44e3",
+    "9a34a1c60688ad8b",
+    "d73ccf03de72af53",
+    "f971acd1eec6ed71",
+    "14449f1e1ec064e7",
+    "6061fbc4e659508c",
+    "1ec17650a37dd479",
+    "209db2ba15001a43",
+    "163a2b3c283f6d6f",
+    "e891a6cbc170fc40",
+    "277cb8e614fd568d",
+    "22ebd61bdbbf8c5b",
+    "fba87de16ab60cad",
+    "d99951181dafd8c1",
+    "2bc98850da781239"
+   ]
   },
   {
    "i": 271,
@@ -6114,7 +10725,24 @@
     "TheHistoryofBaseball.player_award",
     "TheHistoryofBaseball.hall_of_fame"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "67829649e57693d7",
+    "6061fbc4e659508c",
+    "2bc98850da781239",
+    "d73ccf03de72af53",
+    "366a8ed20e2531db",
+    "277292f8bb6bc118",
+    "2f73e0087797399a",
+    "a1b9c4af0847a4e2",
+    "9a34a1c60688ad8b",
+    "14449f1e1ec064e7",
+    "4ce18ecec3c8a2b6",
+    "a31302a34b8d4f1d",
+    "47bfdde25dc00b8a",
+    "99ba645c6a644bab",
+    "fba87de16ab60cad"
+   ]
   }
  ]
 }

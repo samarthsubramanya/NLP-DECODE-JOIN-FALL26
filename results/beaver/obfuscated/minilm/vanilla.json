@@ -1,0 +1,4607 @@
+{
+ "dataset": "beaver",
+ "setting": "obfuscated",
+ "encoder": "minilm",
+ "method": "vanilla",
+ "n_queries": 121,
+ "seconds": 3.2,
+ "summary": {
+  "5": {
+   "P": 0.2049586776859504,
+   "R": 0.272353404171586,
+   "F1": 0.2296000143107581,
+   "PR": 0.01652892561983471
+  },
+  "10": {
+   "P": 0.1487603305785124,
+   "R": 0.3907713498622589,
+   "F1": 0.2121166266888192,
+   "PR": 0.09090909090909091
+  },
+  "15": {
+   "P": 0.10303030303030303,
+   "R": 0.4084809130263676,
+   "F1": 0.16232493920235394,
+   "PR": 0.09917355371900827
+  }
+ },
+ "summary_fixed": {
+  "5": {
+   "P": 0.2049586776859504,
+   "R": 0.272353404171586,
+   "F1": 0.2296000143107581,
+   "PR": 0.01652892561983471
+  },
+  "10": {
+   "P": 0.1487603305785124,
+   "R": 0.3907713498622589,
+   "F1": 0.2121166266888192,
+   "PR": 0.09090909090909091
+  },
+  "15": {
+   "P": 0.10303030303030303,
+   "R": 0.4084809130263676,
+   "F1": 0.16232493920235394,
+   "PR": 0.09917355371900827
+  }
+ },
+ "n_column_queries": 121,
+ "summary_columns": {
+  "5": {
+   "P": 0.06446280991735538,
+   "R": 0.03297127573987078,
+   "F1": 0.042428941838781986,
+   "PR": 0.0
+  },
+  "10": {
+   "P": 0.06446280991735538,
+   "R": 0.061901454700433796,
+   "F1": 0.06148610872231987,
+   "PR": 0.0
+  },
+  "15": {
+   "P": 0.05564738292011019,
+   "R": 0.07852128223421369,
+   "F1": 0.06351010808980138,
+   "PR": 0.0
+  }
+ },
+ "per_query": [
+  {
+   "i": 0,
+   "gold": [
+    "BUILDINGS",
+    "FCLT_BUILDING_ADDRESS",
+    "FCLT_ORG_DLC_KEY",
+    "FCLT_ROOMS",
+    "MASTER_DEPT_HIERARCHY"
+   ],
+   "ranked": [
+    "FAC_BUILDING_ADDRESS",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "BUILDINGS",
+    "FCLT_BUILDING_ADDRESS",
+    "SIS_TERM_ADDRESS_CATEGORY",
+    "SIS_ADMIN_DEPARTMENT",
+    "MASTER_DEPT_DCODE_PARENT",
+    "MASTER_DEPT_HIERARCHY",
+    "MASTER_DEPT_HIERARCHY_LINKS",
+    "DRUPAL_EMPLOYEE_DIRECTORY",
+    "PERSON_AUTH_AREA",
+    "TOP_LEVEL_DOMAIN"
+   ],
+   "n_ranked": 12,
+   "ranked_columns": [
+    "b97e42d25beb2b96",
+    "5ba084334625e3d4",
+    "5ee3d7fce20e0508",
+    "8a8e03ecf753d12b",
+    "605e90f29eec9602",
+    "ecabcbaaa2960c50",
+    "7596cb9fc727ab48",
+    "2910607c0bd98e1f",
+    "8ac74c74852b0b5b",
+    "bb9c0876a438f9ce",
+    "be6c1ae1433e6527",
+    "435ad1d8d6c2003c",
+    "6bf09646d22b9238",
+    "72a554db306a654d",
+    "b006c22172a5165e"
+   ]
+  },
+  {
+   "i": 1,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_PERSON",
+    "IAP_SUBJECT_SESSION"
+   ],
+   "ranked": [
+    "HR_FACULTY_ROSTER",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "ACADEMIC_TERMS",
+    "MIT_HOLIDAY_CLOSING_CALENDAR",
+    "SUBJECT_IAP_SCHEDULE",
+    "ACADEMIC_TERMS_ALL",
+    "CIS_COURSE_CATALOG",
+    "OPA_PERSON_CURRENT",
+    "SIS_COURSE_DESCRIPTION",
+    "PROFIT_CENTER_GROUP",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "FUND_CENTER_HIERARCHY",
+    "SUBJECT_GROUPING",
+    "DRUPAL_EMPLOYEE_DIRECTORY",
+    "IAP_SUBJECT_DETAIL"
+   ],
+   "n_ranked": 50,
+   "ranked_columns": [
+    "ba554c0e55bb81ee",
+    "27f1f9f78ce93b16",
+    "6530c5f62931b888",
+    "9999534a48073e3c",
+    "729b81778ffcc90a",
+    "579246c5ca368dff",
+    "19ca9a7439260d27",
+    "0364111a42b3be81",
+    "efe4fac1fd953dcc",
+    "b8c507c8a9e1c907",
+    "d07790e678138172",
+    "2a455c57da96f2fc",
+    "cd61280bb53d7310",
+    "d0da7d3ee711ffc8",
+    "bbae6c735ca4859f"
+   ]
+  },
+  {
+   "i": 2,
+   "gold": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "DRUPAL_COURSE_CATALOG"
+   ],
+   "n_ranked": 3,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "6530c5f62931b888",
+    "27f1f9f78ce93b16",
+    "9999534a48073e3c",
+    "db3784a89a20304a",
+    "c4b60b8a43403060",
+    "5516abde2b28e52f",
+    "e40569463ea8cf8c",
+    "6a0cee6f85dcb686",
+    "bc44eb61f579c3c7",
+    "887c5c78e5196e46"
+   ]
+  },
+  {
+   "i": 3,
+   "gold": [
+    "BUILDINGS",
+    "EMPLOYEE_DIRECTORY",
+    "FAC_BUILDING_ADDRESS",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "FAC_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "FAC_BUILDING_ADDRESS",
+    "FCLT_ROOMS",
+    "FCLT_BUILDING_ADDRESS",
+    "ZPM_ROOMS_LOAD",
+    "BUILDINGS"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "bd9df34467cd7f8c",
+    "ebd1586eb4a474b9",
+    "de2b7291effbdb6c",
+    "f95f0be57a7e80e9",
+    "5768826100956b4e",
+    "5e5bb94b120c351d",
+    "0934e8f45a7d30e4",
+    "932522af7f3d7b3f",
+    "49b027749d27104a",
+    "080c1a5b853e7807",
+    "7596cb9fc727ab48",
+    "2910607c0bd98e1f",
+    "bfd2c78050be6ff6",
+    "323b8f626bc3a41a",
+    "e1af22b7878917df"
+   ]
+  },
+  {
+   "i": 4,
+   "gold": [
+    "BUILDINGS",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "FCLT_BUILDING",
+    "FCLT_BUILDING_ADDRESS",
+    "FCLT_ROOMS"
+   ],
+   "ranked": [
+    "STUDENT_DEGREE_PROGRAM",
+    "FAC_ROOMS",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "BUILDINGS",
+    "MIT_STUDENT_DIRECTORY",
+    "LIBRARY_COURSE_INSTRUCTOR"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "5e0840ed373288b6",
+    "bd9df34467cd7f8c",
+    "ebd1586eb4a474b9",
+    "f95f0be57a7e80e9",
+    "5e5bb94b120c351d",
+    "de2b7291effbdb6c",
+    "7f444082e5e40c42",
+    "a5959cf9d114abd7",
+    "40729c80f69fae5a",
+    "4981021136009f38",
+    "29c4ebfe7816a5f9",
+    "0249db01a3ee6bff",
+    "6e6ea9161ac838fd",
+    "98fdd64208cf5cf7",
+    "b1249bcaab0e8edb"
+   ]
+  },
+  {
+   "i": 5,
+   "gold": [
+    "BUILDINGS",
+    "FCLT_BUILDING_ADDRESS",
+    "FCLT_ROOMS",
+    "SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "DRUPAL_COURSE_CATALOG",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "8874a8bf0469fd72",
+    "6a0cee6f85dcb686",
+    "4b81897b23f689aa",
+    "ca375c58d2e05249",
+    "e40569463ea8cf8c",
+    "c973a090bcaaa36e",
+    "30922678b5877f01",
+    "c1d15b0ac9b82eb8",
+    "ad857f340b1bcd7d",
+    "788bac56fcecc519"
+   ]
+  },
+  {
+   "i": 6,
+   "gold": [
+    "TIP_DETAIL",
+    "TIP_MATERIAL",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_SUBJECT_OFFERED",
+    "SUBJECT_OFFERED",
+    "SUBJECT_OFFERED_SUMMARY",
+    "TIP_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "SUBJECT_SUMMARY"
+   ],
+   "n_ranked": 7,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "d1d26743711ee79f",
+    "d6e812ef06a8f17c",
+    "56ffcb1ce3a46f80",
+    "7f5436a2e475ddfe",
+    "59c1630e871c7ca2",
+    "269c36b67be95b07",
+    "31880d971340be09",
+    "e40569463ea8cf8c",
+    "76f23a6fbc8c4505",
+    "8cb23d7ffe458f8d",
+    "68cfb58fd1c9226c",
+    "e4cb539f8d73e94d"
+   ]
+  },
+  {
+   "i": 7,
+   "gold": [
+    "EMPLOYEE_DIRECTORY",
+    "FCLT_BUILDING_HIST",
+    "FCLT_ROOMS"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "DRUPAL_EMPLOYEE_DIRECTORY",
+    "EMPLOYEE_DIRECTORY",
+    "FCLT_ROOMS",
+    "FAC_ROOMS",
+    "PROFIT_CENTER_GROUP",
+    "FCLT_BUILDING",
+    "STUDENT_DEGREE_PROGRAM",
+    "FCLT_BUILDING_ADDRESS",
+    "FAC_BUILDING",
+    "FCLT_ROOMS_HIST"
+   ],
+   "n_ranked": 11,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d52c8e0252fd1c66",
+    "d1a580412a2c0c65",
+    "3c2282dbdc30d9e9",
+    "34a0abdca118420d",
+    "d7f28abe1ca8ad3d",
+    "fbab6d659ccae143",
+    "0975df4d28cb25f7",
+    "00046b4b294106fd",
+    "10c6dc52ab9439ec",
+    "db30fd403cd36262",
+    "950d1253fbb8e677",
+    "ebc04c6e10f52702",
+    "c90631e778f48b95",
+    "4e8618a8e6885024"
+   ]
+  },
+  {
+   "i": 8,
+   "gold": [
+    "CIS_COURSE_CATALOG",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "FCLT_BUILDING",
+    "FCLT_ROOMS"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "DRUPAL_COURSE_CATALOG",
+    "CIS_COURSE_CATALOG",
+    "LIBRARY_COURSE_INSTRUCTOR"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "884c3fc153553c79",
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "c973a090bcaaa36e",
+    "ca375c58d2e05249",
+    "e40569463ea8cf8c",
+    "788bac56fcecc519",
+    "c1d15b0ac9b82eb8",
+    "5516abde2b28e52f",
+    "6a0cee6f85dcb686",
+    "6bd82a420957b11b",
+    "31880d971340be09",
+    "30922678b5877f01"
+   ]
+  },
+  {
+   "i": 9,
+   "gold": [
+    "FCLT_BUILDING",
+    "FCLT_ROOMS",
+    "MIT_STUDENT_DIRECTORY"
+   ],
+   "ranked": [
+    "STUDENT_DEGREE_PROGRAM",
+    "MIT_STUDENT_DIRECTORY",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "BUILDINGS",
+    "STUDENT_DEPARTMENT",
+    "DRUPAL_COURSE_CATALOG",
+    "FAC_ROOMS",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "FCLT_ROOMS"
+   ],
+   "n_ranked": 10,
+   "ranked_columns": [
+    "5e0840ed373288b6",
+    "8d1b41a320dadb1b",
+    "7f444082e5e40c42",
+    "40729c80f69fae5a",
+    "03b05b7f866fb7a9",
+    "4981021136009f38",
+    "a5959cf9d114abd7",
+    "6e6ea9161ac838fd",
+    "29c4ebfe7816a5f9",
+    "98fdd64208cf5cf7",
+    "0249db01a3ee6bff",
+    "9193d7c6bbfd7ea8",
+    "b1249bcaab0e8edb",
+    "29d9fc46f6ed01eb",
+    "76ef5dc1847f726b"
+   ]
+  },
+  {
+   "i": 10,
+   "gold": [
+    "FAC_BUILDING",
+    "FAC_FLOOR"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FAC_ROOMS",
+    "FAC_FLOOR",
+    "FCLT_FLOOR_HIST",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "FCLT_FLOOR",
+    "FAC_BUILDING_ADDRESS",
+    "FCLT_BUILDING_ADDRESS",
+    "FAC_BUILDING",
+    "SPACE_FLOOR",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "PROFIT_CENTER_GROUP",
+    "FCLT_BUILDING_HIST_1"
+   ],
+   "n_ranked": 14,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "d52c8e0252fd1c66",
+    "bd9df34467cd7f8c",
+    "c0e62ccbe3bb9d1c",
+    "327fa401b8a74998",
+    "323b8f626bc3a41a",
+    "de2b7291effbdb6c",
+    "ebd1586eb4a474b9",
+    "f95f0be57a7e80e9",
+    "7d5c4a8b97c4d24f",
+    "69fdb82184760c4d",
+    "5e5bb94b120c351d",
+    "c96c9ba7e93a45f2",
+    "21c031f897331ac3"
+   ]
+  },
+  {
+   "i": 11,
+   "gold": [
+    "IAP_SUBJECT_CATEGORY",
+    "IAP_SUBJECT_DETAIL",
+    "TIME_DAY"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SUBJECT_ENROLLABLE",
+    "IAP_SUBJECT_SPONSOR",
+    "STUDENT_DEGREE_PROGRAM",
+    "IAP_SUBJECT_CATEGORY",
+    "ACADEMIC_TERM_PARAMETER",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "ACADEMIC_TERMS"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "7f5436a2e475ddfe",
+    "56ffcb1ce3a46f80",
+    "68cfb58fd1c9226c",
+    "54fc932dfa28151b",
+    "a35df552c1dd75ad",
+    "9edcc1d1730a97ee",
+    "41be9a90f8945bed",
+    "76f23a6fbc8c4505",
+    "8cb23d7ffe458f8d",
+    "e40569463ea8cf8c"
+   ]
+  },
+  {
+   "i": 12,
+   "gold": [
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_SESSION",
+    "IAP_SUBJECT_SPONSOR"
+   ],
+   "ranked": [
+    "IAP_SUBJECT_SPONSOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "SUBJECT_ENROLLABLE",
+    "SUBJECT_OFFERED_SUMMARY",
+    "SIS_COURSE_DESCRIPTION",
+    "LIBRARY_SUBJECT_OFFERED",
+    "TIP_SUBJECT_OFFERED",
+    "CIS_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "HR_FACULTY_ROSTER"
+   ],
+   "n_ranked": 11,
+   "ranked_columns": [
+    "e19ee6126525e8f0",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "4a80cbcde8ac2551",
+    "790c4b4f58ec0631",
+    "56ffcb1ce3a46f80",
+    "7f5436a2e475ddfe",
+    "27f1f9f78ce93b16",
+    "6530c5f62931b888",
+    "4aff8d964adeab43",
+    "9999534a48073e3c",
+    "32639f3929bba022"
+   ]
+  },
+  {
+   "i": 13,
+   "gold": [
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_PERSON",
+    "TIME_DAY"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SUBJECT_ENROLLABLE",
+    "STUDENT_DEGREE_PROGRAM",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "IAP_SUBJECT_SPONSOR"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "7f5436a2e475ddfe",
+    "56ffcb1ce3a46f80",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "884c3fc153553c79",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "54fc932dfa28151b",
+    "2eb7e8bdaa033347",
+    "c973a090bcaaa36e",
+    "e40569463ea8cf8c",
+    "6a0cee6f85dcb686",
+    "4b81897b23f689aa",
+    "a35df552c1dd75ad",
+    "0551b202f981c86e"
+   ]
+  },
+  {
+   "i": 14,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_SESSION"
+   ],
+   "ranked": [
+    "SUBJECT_ENROLLABLE",
+    "ACADEMIC_TERM_PARAMETER",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "ACADEMIC_TERMS",
+    "SUBJECT_OFFERED_SUMMARY",
+    "ACADEMIC_TERMS_ALL"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "32639f3929bba022",
+    "7b53cbf639332808",
+    "66bfa7cb755a013d",
+    "3750d0794a141154",
+    "309f879fd591b7fa",
+    "f479cd0967718a32",
+    "e1b37f7554381e1e",
+    "af4366c955a32b76",
+    "0a422c8972e110b6",
+    "a9c8888e52dde3d0",
+    "f3bd62c0d03b2df4",
+    "3a1f0fdb7c72620e",
+    "884c3fc153553c79",
+    "333d13ba2fa1e626",
+    "2866a00b966a74f6"
+   ]
+  },
+  {
+   "i": 15,
+   "gold": [
+    "BUILDINGS",
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_SESSION"
+   ],
+   "ranked": [
+    "IAP_SUBJECT_SESSION",
+    "SUBJECT_ENROLLABLE",
+    "IAP_SUBJECT_PERSON",
+    "IAP_SUBJECT_SPONSOR",
+    "SUBJECT_IAP_SCHEDULE",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "IAP_SUBJECT_DETAIL",
+    "HR_FACULTY_ROSTER",
+    "FAC_ROOMS",
+    "PERSON_AUTH_AREA",
+    "SUBJECT_OFFERED_SUMMARY"
+   ],
+   "n_ranked": 11,
+   "ranked_columns": [
+    "dcf3988ef4fd498f",
+    "3977ecfe6070823b",
+    "625f5aed048d414f",
+    "82ff8d7c6a84aa8c",
+    "5aba6bf53e9b2f7a",
+    "816b39cb38b38250",
+    "988952511df66ea1",
+    "72a8f8864c91c171",
+    "7fdaa0815cf0ae47",
+    "46efdae001f19db9",
+    "32639f3929bba022",
+    "8eb92b1157ec7837",
+    "e19ee6126525e8f0",
+    "206f430b6d7b325a",
+    "859b69c6ebd0c3c7"
+   ]
+  },
+  {
+   "i": 16,
+   "gold": [
+    "BUILDINGS",
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_SESSION"
+   ],
+   "ranked": [
+    "IAP_SUBJECT_SESSION",
+    "SUBJECT_IAP_SCHEDULE",
+    "SUBJECT_ENROLLABLE",
+    "IAP_SUBJECT_SPONSOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "IAP_SUBJECT_PERSON",
+    "SUBJECT_OFFERED_SUMMARY",
+    "SUBJECT_OFFERED",
+    "IAP_SUBJECT_DETAIL"
+   ],
+   "n_ranked": 9,
+   "ranked_columns": [
+    "625f5aed048d414f",
+    "dcf3988ef4fd498f",
+    "3977ecfe6070823b",
+    "82ff8d7c6a84aa8c",
+    "988952511df66ea1",
+    "816b39cb38b38250",
+    "5aba6bf53e9b2f7a",
+    "72a8f8864c91c171",
+    "7fdaa0815cf0ae47",
+    "46efdae001f19db9",
+    "206f430b6d7b325a",
+    "32639f3929bba022",
+    "e19ee6126525e8f0",
+    "7f5436a2e475ddfe",
+    "7b53cbf639332808"
+   ]
+  },
+  {
+   "i": 17,
+   "gold": [
+    "SIS_COURSE_DESCRIPTION",
+    "SIS_DEPARTMENT",
+    "SIS_SUBJECT_CODE"
+   ],
+   "ranked": [
+    "STUDENT_DEGREE_PROGRAM",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "5e0840ed373288b6",
+    "884c3fc153553c79",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "7df48e2e49c20353",
+    "0b452b204cab82d7",
+    "6a0cee6f85dcb686",
+    "2eb7e8bdaa033347",
+    "54fc932dfa28151b",
+    "c1d15b0ac9b82eb8",
+    "8874a8bf0469fd72",
+    "30922678b5877f01",
+    "50ba958614d1c588",
+    "ad857f340b1bcd7d"
+   ]
+  },
+  {
+   "i": 18,
+   "gold": [
+    "SIS_ADMIN_DEPARTMENT",
+    "SIS_COURSE_DESCRIPTION",
+    "SIS_DEPARTMENT",
+    "SIS_SUBJECT_CODE"
+   ],
+   "ranked": [
+    "SIS_COURSE_DESCRIPTION",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SIS_DEPARTMENT",
+    "DRUPAL_COURSE_CATALOG",
+    "SIS_ADMIN_DEPARTMENT"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "f4a0b1f716b51107",
+    "241da6425e657602",
+    "804be749d1547af9",
+    "1e63994aee99b511",
+    "ba00835e633c460e",
+    "3ada3fe32f943ffa",
+    "2326c6aceab80519",
+    "267bd3c5bcf4fafb",
+    "1fbb2b51570aaf7d",
+    "710dc43f7669bfc4",
+    "b70437229753c329",
+    "5f19892b5d852288",
+    "59107099306df907",
+    "1b2bf336dc963dce",
+    "ae261c472a835468"
+   ]
+  },
+  {
+   "i": 19,
+   "gold": [
+    "SIS_COURSE_DESCRIPTION",
+    "SIS_DEPARTMENT",
+    "SIS_SUBJECT_CODE"
+   ],
+   "ranked": [
+    "STUDENT_DEGREE_PROGRAM",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "LIBRARY_COURSE_INSTRUCTOR"
+   ],
+   "n_ranked": 4,
+   "ranked_columns": [
+    "5e0840ed373288b6",
+    "884c3fc153553c79",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "0b452b204cab82d7",
+    "54fc932dfa28151b",
+    "6a0cee6f85dcb686",
+    "7f444082e5e40c42",
+    "98fdd64208cf5cf7",
+    "8874a8bf0469fd72",
+    "9edcc1d1730a97ee",
+    "e40569463ea8cf8c",
+    "2eb7e8bdaa033347"
+   ]
+  },
+  {
+   "i": 20,
+   "gold": [
+    "BUILDINGS",
+    "SPACE_DETAIL",
+    "SPACE_FLOOR",
+    "SPACE_SUPERVISOR_USAGE",
+    "SPACE_UNIT"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "ZPM_ROOMS_LOAD",
+    "MASTER_DEPT_HIERARCHY",
+    "FAC_FLOOR"
+   ],
+   "n_ranked": 7,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "d52c8e0252fd1c66",
+    "5e5bb94b120c351d",
+    "de2b7291effbdb6c",
+    "ebd1586eb4a474b9",
+    "bd9df34467cd7f8c",
+    "f95f0be57a7e80e9",
+    "1f3f9c49957e6857",
+    "7d5c4a8b97c4d24f",
+    "323b8f626bc3a41a",
+    "c96c9ba7e93a45f2",
+    "e7eff53a9626f077",
+    "69fdb82184760c4d",
+    "d74209e55413ddec"
+   ]
+  },
+  {
+   "i": 21,
+   "gold": [
+    "FCLT_BUILDING",
+    "FCLT_ORGANIZATION",
+    "SPACE_DETAIL",
+    "SPACE_FLOOR",
+    "SPACE_SUPERVISOR_USAGE",
+    "SPACE_UNIT"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FCLT_ORG_DLC_KEY",
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "MASTER_DEPT_HIERARCHY",
+    "SUBJECT_OFFERED_SUMMARY",
+    "MASTER_DEPT_HIERARCHY_LINKS",
+    "SUBJECT_SUMMARY",
+    "FAC_FLOOR",
+    "FUND_CENTER_HIERARCHY",
+    "SPACE_SUPERVISOR_USAGE",
+    "FAC_BUILDING",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 13,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "5db3480d7dd8b0a9",
+    "d52c8e0252fd1c66",
+    "ebd1586eb4a474b9",
+    "d1a580412a2c0c65",
+    "ff988111af1f0ec8",
+    "5e5bb94b120c351d",
+    "f95f0be57a7e80e9",
+    "de2b7291effbdb6c",
+    "bd9df34467cd7f8c",
+    "e7eff53a9626f077",
+    "c96c9ba7e93a45f2",
+    "d74209e55413ddec",
+    "1d029979898d4b88",
+    "6e1714261ba300df"
+   ]
+  },
+  {
+   "i": 22,
+   "gold": [
+    "TIP_DETAIL",
+    "TIP_MATERIAL",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "STUDENT_DEPARTMENT",
+    "DRUPAL_COURSE_CATALOG",
+    "TIP_SUBJECT_OFFERED",
+    "ESTIMATED_SURCHARGES_ESTONLY"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "5e0840ed373288b6",
+    "6a0cee6f85dcb686",
+    "a9cccfcf27920b8b",
+    "4b81897b23f689aa",
+    "2c36a5e9d257d0c2",
+    "f92f5507a9b0f8b9",
+    "2eb7e8bdaa033347",
+    "6141292c35eeea03",
+    "e40569463ea8cf8c",
+    "c1d15b0ac9b82eb8"
+   ]
+  },
+  {
+   "i": 23,
+   "gold": [
+    "ACADEMIC_TERMS",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "EMPLOYEE_DIRECTORY",
+    "SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "ACADEMIC_TERMS",
+    "DRUPAL_COURSE_CATALOG",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "ACADEMIC_TERMS_ALL",
+    "STUDENT_DEGREE_PROGRAM"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "50ba958614d1c588",
+    "8874a8bf0469fd72",
+    "5516abde2b28e52f",
+    "2eb7e8bdaa033347",
+    "c973a090bcaaa36e",
+    "4b81897b23f689aa",
+    "6a0cee6f85dcb686",
+    "c1d15b0ac9b82eb8",
+    "bc44eb61f579c3c7",
+    "ca375c58d2e05249",
+    "d4afe6411c5e869a",
+    "30922678b5877f01",
+    "41be9a90f8945bed",
+    "f2565b790c6c44d1",
+    "c18f6213cde8dd57"
+   ]
+  },
+  {
+   "i": 24,
+   "gold": [
+    "IAP_SUBJECT_CATEGORY",
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_SESSION",
+    "IAP_SUBJECT_SPONSOR"
+   ],
+   "ranked": [
+    "IAP_SUBJECT_SESSION",
+    "IAP_SUBJECT_SPONSOR",
+    "IAP_SUBJECT_PERSON",
+    "IAP_SUBJECT_DETAIL",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "IAP_SUBJECT_CATEGORY",
+    "SUBJECT_ENROLLABLE",
+    "SUBJECT_IAP_SCHEDULE",
+    "LIBRARY_COURSE_INSTRUCTOR"
+   ],
+   "n_ranked": 9,
+   "ranked_columns": [
+    "3977ecfe6070823b",
+    "dcf3988ef4fd498f",
+    "e19ee6126525e8f0",
+    "82ff8d7c6a84aa8c",
+    "625f5aed048d414f",
+    "5aba6bf53e9b2f7a",
+    "988952511df66ea1",
+    "72a8f8864c91c171",
+    "816b39cb38b38250",
+    "7fdaa0815cf0ae47",
+    "46efdae001f19db9",
+    "4aff8d964adeab43",
+    "790c4b4f58ec0631",
+    "4a80cbcde8ac2551",
+    "8eb92b1157ec7837"
+   ]
+  },
+  {
+   "i": 25,
+   "gold": [
+    "SIS_COURSE_DESCRIPTION",
+    "SIS_DEPARTMENT",
+    "SIS_SUBJECT_CODE"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "SIS_COURSE_DESCRIPTION"
+   ],
+   "n_ranked": 3,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "0b452b204cab82d7",
+    "8874a8bf0469fd72",
+    "ad857f340b1bcd7d",
+    "6a0cee6f85dcb686",
+    "ca375c58d2e05249",
+    "788bac56fcecc519",
+    "6bd82a420957b11b",
+    "54fc932dfa28151b",
+    "4b81897b23f689aa",
+    "2eb7e8bdaa033347"
+   ]
+  },
+  {
+   "i": 26,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "ACADEMIC_TERM_PARAMETER",
+    "CIS_COURSE_CATALOG"
+   ],
+   "ranked": [
+    "CIS_COURSE_CATALOG",
+    "COURSE_CATALOG_SUBJECT_OFFERED"
+   ],
+   "n_ranked": 2,
+   "ranked_columns": [
+    "47a05ae0f2ab0493",
+    "50e6e44d0d64718b",
+    "5e6b4a795bef3b20",
+    "7decf3c0f6fcd105",
+    "7f1b7dca4e9fb297",
+    "3e3b55355cdfd1a5",
+    "147b3f26ec390d74",
+    "90e75786b1bff73c",
+    "852e4f35ce9ced17",
+    "feb2dbfce2947ead",
+    "385e67018f5c0a2e",
+    "8ec290c609dd4293",
+    "86b273b5ace659a6",
+    "eb67ff6dbca82627",
+    "c147e1a80696025d"
+   ]
+  },
+  {
+   "i": 27,
+   "gold": [
+    "STUDENT_DEPARTMENT",
+    "TIP_DETAIL",
+    "TIP_MATERIAL",
+    "TIP_MATERIAL_STATUS",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "STUDENT_DEGREE_PROGRAM",
+    "DRUPAL_COURSE_CATALOG",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "884c3fc153553c79",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "7df48e2e49c20353",
+    "7f5436a2e475ddfe",
+    "56ffcb1ce3a46f80",
+    "6530c5f62931b888",
+    "e40569463ea8cf8c",
+    "6a0cee6f85dcb686",
+    "27f1f9f78ce93b16",
+    "54fc932dfa28151b",
+    "0b452b204cab82d7",
+    "9edcc1d1730a97ee",
+    "68cfb58fd1c9226c"
+   ]
+  },
+  {
+   "i": 28,
+   "gold": [
+    "TIP_DETAIL",
+    "TIP_MATERIAL",
+    "TIP_MATERIAL_STATUS",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "CIS_COURSE_CATALOG",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "SUBJECT_OFFERED_SUMMARY",
+    "TIP_SUBJECT_OFFERED",
+    "SUBJECT_OFFERED",
+    "LIBRARY_SUBJECT_OFFERED"
+   ],
+   "n_ranked": 9,
+   "ranked_columns": [
+    "884c3fc153553c79",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "6a0cee6f85dcb686",
+    "76f23a6fbc8c4505",
+    "68cfb58fd1c9226c",
+    "e40569463ea8cf8c",
+    "59c1630e871c7ca2",
+    "e4cb539f8d73e94d",
+    "9edcc1d1730a97ee",
+    "41be9a90f8945bed",
+    "8cb23d7ffe458f8d",
+    "30922678b5877f01"
+   ]
+  },
+  {
+   "i": 29,
+   "gold": [
+    "STUDENT_DEPARTMENT",
+    "TIP_DETAIL",
+    "TIP_MATERIAL",
+    "TIP_MATERIAL_STATUS",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "LIBRARY_MATERIAL_STATUS",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "TIP_MATERIAL_STATUS",
+    "ACADEMIC_TERMS",
+    "ACADEMIC_TERM_PARAMETER",
+    "STUDENT_DEGREE_PROGRAM",
+    "ACADEMIC_TERMS_ALL",
+    "SUBJECT_OFFERED_SUMMARY"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "adfaa7a686923943",
+    "884c3fc153553c79",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "7df48e2e49c20353",
+    "7f5436a2e475ddfe",
+    "56ffcb1ce3a46f80",
+    "5495d63d79d25b84",
+    "342e8808d6b418dd",
+    "23ee1a84743b366e",
+    "5d8d6f1ca724a0e9",
+    "00c88456b0e1e443",
+    "3a1f0fdb7c72620e",
+    "da8a0c56e4c034b8"
+   ]
+  },
+  {
+   "i": 30,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "TIP_DETAIL",
+    "TIP_MATERIAL",
+    "TIP_MATERIAL_STATUS",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SUBJECT_OFFERED_SUMMARY",
+    "STUDENT_DEGREE_PROGRAM",
+    "DRUPAL_COURSE_CATALOG",
+    "SUBJECT_SUMMARY",
+    "SUBJECT_OFFERED"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "884c3fc153553c79",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "85d8085d3a70cde1",
+    "17fb0630ffb7644d",
+    "8be0cee5ab25eddb",
+    "2c01151c2d37b270",
+    "ba62972fe4ca41c6",
+    "584b97bf90b8841e",
+    "d0ecd2f993355463",
+    "66a7b7ee45b3167e",
+    "76f23a6fbc8c4505",
+    "41be9a90f8945bed",
+    "68cfb58fd1c9226c"
+   ]
+  },
+  {
+   "i": 31,
+   "gold": [
+    "BUILDINGS",
+    "FAC_BUILDING",
+    "FAC_BUILDING_ADDRESS",
+    "FAC_ORGANIZATION",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FCLT_BUILDING_ADDRESS",
+    "FAC_BUILDING_ADDRESS",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "FAC_BUILDING",
+    "MASTER_DEPT_HIERARCHY",
+    "MASTER_DEPT_HIERARCHY_LINKS",
+    "SPACE_DETAIL",
+    "FCLT_BUILDING"
+   ],
+   "n_ranked": 12,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "d52c8e0252fd1c66",
+    "e7eff53a9626f077",
+    "6b17433900d80072",
+    "ecb8626842a04a1d",
+    "1d029979898d4b88",
+    "d74209e55413ddec",
+    "5ee3d7fce20e0508",
+    "8ac74c74852b0b5b",
+    "605e90f29eec9602",
+    "d6d8df8765195ca1",
+    "8a8e03ecf753d12b",
+    "2910607c0bd98e1f",
+    "c66388bcc4416138"
+   ]
+  },
+  {
+   "i": 32,
+   "gold": [
+    "ACADEMIC_TERMS",
+    "COURSE_CATALOG_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "DRUPAL_COURSE_CATALOG",
+    "ACADEMIC_TERMS",
+    "ACADEMIC_TERM_PARAMETER",
+    "ACADEMIC_TERMS_ALL"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "884c3fc153553c79",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "85d8085d3a70cde1",
+    "bc44eb61f579c3c7",
+    "9edcc1d1730a97ee",
+    "76f23a6fbc8c4505",
+    "8874a8bf0469fd72",
+    "59c1630e871c7ca2",
+    "1f819c59df64994c",
+    "c973a090bcaaa36e",
+    "4b81897b23f689aa",
+    "c1d15b0ac9b82eb8",
+    "41be9a90f8945bed"
+   ]
+  },
+  {
+   "i": 33,
+   "gold": [
+    "FAC_BUILDING",
+    "FAC_FLOOR",
+    "FAC_ORGANIZATION",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "BUILDINGS",
+    "SUBJECT_OFFERED_SUMMARY",
+    "ZPM_ROOMS_LOAD",
+    "FAC_FLOOR",
+    "SUBJECT_SUMMARY"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "bd9df34467cd7f8c",
+    "de2b7291effbdb6c",
+    "5e5bb94b120c351d",
+    "f95f0be57a7e80e9",
+    "ebd1586eb4a474b9",
+    "323b8f626bc3a41a",
+    "1f3f9c49957e6857",
+    "69fdb82184760c4d",
+    "7d5c4a8b97c4d24f",
+    "c96c9ba7e93a45f2",
+    "49b027749d27104a",
+    "0934e8f45a7d30e4",
+    "932522af7f3d7b3f",
+    "5768826100956b4e",
+    "5a3f83e24964814d"
+   ]
+  },
+  {
+   "i": 34,
+   "gold": [
+    "FAC_BUILDING",
+    "FAC_FLOOR",
+    "FAC_ORGANIZATION",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "BUILDINGS",
+    "SUBJECT_OFFERED_SUMMARY",
+    "ZPM_ROOMS_LOAD",
+    "SUBJECT_SUMMARY",
+    "FAC_FLOOR"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "bd9df34467cd7f8c",
+    "5e5bb94b120c351d",
+    "de2b7291effbdb6c",
+    "f95f0be57a7e80e9",
+    "ebd1586eb4a474b9",
+    "323b8f626bc3a41a",
+    "1f3f9c49957e6857",
+    "69fdb82184760c4d",
+    "7d5c4a8b97c4d24f",
+    "c96c9ba7e93a45f2",
+    "7836f163d9431265",
+    "e4e6841da7370ca0",
+    "5a3f83e24964814d",
+    "c18f08d133030f6c",
+    "0307d5e5ea436244"
+   ]
+  },
+  {
+   "i": 35,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "EMPLOYEE_DIRECTORY",
+    "SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "DRUPAL_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "ACADEMIC_TERMS_ALL",
+    "ACADEMIC_TERMS",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 7,
+   "ranked_columns": [
+    "7f5436a2e475ddfe",
+    "6530c5f62931b888",
+    "9999534a48073e3c",
+    "27f1f9f78ce93b16",
+    "56ffcb1ce3a46f80",
+    "d6e812ef06a8f17c",
+    "d1d26743711ee79f",
+    "884c3fc153553c79",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "6a0cee6f85dcb686",
+    "c973a090bcaaa36e",
+    "c1d15b0ac9b82eb8",
+    "ac7abd70e7989ad3",
+    "788bac56fcecc519"
+   ]
+  },
+  {
+   "i": 36,
+   "gold": [
+    "FAC_BUILDING",
+    "FAC_FLOOR",
+    "FAC_ORGANIZATION",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "FAC_FLOOR",
+    "PROFIT_CENTER_GROUP",
+    "FCLT_FLOOR_HIST",
+    "FCLT_FLOOR",
+    "ZPM_ROOMS_LOAD"
+   ],
+   "n_ranked": 9,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "d52c8e0252fd1c66",
+    "bd9df34467cd7f8c",
+    "5e5bb94b120c351d",
+    "f95f0be57a7e80e9",
+    "de2b7291effbdb6c",
+    "ebd1586eb4a474b9",
+    "323b8f626bc3a41a",
+    "1f3f9c49957e6857",
+    "69fdb82184760c4d",
+    "7d5c4a8b97c4d24f",
+    "c96c9ba7e93a45f2",
+    "5768826100956b4e",
+    "0934e8f45a7d30e4"
+   ]
+  },
+  {
+   "i": 37,
+   "gold": [
+    "MIT_STUDENT_DIRECTORY",
+    "SIS_ADMIN_DEPARTMENT",
+    "SIS_DEPARTMENT"
+   ],
+   "ranked": [
+    "STUDENT_DEPARTMENT",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "STUDENT_DEGREE_PROGRAM",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "MIT_STUDENT_DIRECTORY",
+    "DRUPAL_COURSE_CATALOG",
+    "HR_FACULTY_ROSTER"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "4746394d0f3f06d3",
+    "2b9bc4e003a8f6e0",
+    "5e0840ed373288b6",
+    "2c36a5e9d257d0c2",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "a9cccfcf27920b8b",
+    "f92f5507a9b0f8b9",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "6141292c35eeea03",
+    "8d1b41a320dadb1b",
+    "94fcde874d8c5d86",
+    "c4b60b8a43403060"
+   ]
+  },
+  {
+   "i": 38,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "EMPLOYEE_DIRECTORY"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "DRUPAL_COURSE_CATALOG"
+   ],
+   "n_ranked": 3,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "bc44eb61f579c3c7",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "887c5c78e5196e46",
+    "59c1630e871c7ca2",
+    "c973a090bcaaa36e",
+    "1f819c59df64994c",
+    "ac7abd70e7989ad3",
+    "c18f6213cde8dd57",
+    "5516abde2b28e52f",
+    "6a0cee6f85dcb686",
+    "9edcc1d1730a97ee",
+    "30922678b5877f01"
+   ]
+  },
+  {
+   "i": 39,
+   "gold": [
+    "BUILDINGS",
+    "FAC_BUILDING",
+    "FAC_ORGANIZATION",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "DRUPAL_EMPLOYEE_DIRECTORY",
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "MASTER_DEPT_HIERARCHY_LINKS",
+    "HR_ORG_UNIT",
+    "EMPLOYEE_DIRECTORY",
+    "MASTER_DEPT_HIERARCHY"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "d52c8e0252fd1c66",
+    "e7eff53a9626f077",
+    "d74209e55413ddec",
+    "6b17433900d80072",
+    "1d029979898d4b88",
+    "ecb8626842a04a1d",
+    "5ee3d7fce20e0508",
+    "ebc04c6e10f52702",
+    "decc41c66af4b455",
+    "3c2282dbdc30d9e9",
+    "db30fd403cd36262",
+    "c315ca481c1b5da9",
+    "fbab6d659ccae143"
+   ]
+  },
+  {
+   "i": 40,
+   "gold": [
+    "ACADEMIC_TERMS",
+    "BUILDINGS",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "EMPLOYEE_DIRECTORY",
+    "FAC_BUILDING_ADDRESS",
+    "FAC_FLOOR",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "STUDENT_DEGREE_PROGRAM",
+    "ACADEMIC_TERMS"
+   ],
+   "n_ranked": 4,
+   "ranked_columns": [
+    "ca375c58d2e05249",
+    "a35df552c1dd75ad",
+    "8874a8bf0469fd72",
+    "4b81897b23f689aa",
+    "6a0cee6f85dcb686",
+    "e40569463ea8cf8c",
+    "bc44eb61f579c3c7",
+    "788bac56fcecc519",
+    "1324d24160431b97",
+    "1f819c59df64994c",
+    "269c36b67be95b07",
+    "d4afe6411c5e869a",
+    "9edcc1d1730a97ee",
+    "8cb23d7ffe458f8d",
+    "30922678b5877f01"
+   ]
+  },
+  {
+   "i": 41,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "CIS_HASS_ATTRIBUTE",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SIS_DEPARTMENT"
+   ],
+   "ranked": [
+    "ACADEMIC_TERMS",
+    "ACADEMIC_TERMS_ALL",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "ACADEMIC_TERM_PARAMETER",
+    "STUDENT_DEGREE_PROGRAM"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "f79be32f51521876",
+    "955c539fadccf9e5",
+    "74ec3f3c40c1d941",
+    "8d168e7495ae46ad",
+    "200d3ebe15d06585",
+    "b952d98f5f9c3430",
+    "740f227d3152293b",
+    "b75f5590deabbab9",
+    "d815c485f0f4b191",
+    "9899c1e3a4fddf34",
+    "b92f6b16c66b294a",
+    "827bfacf502b8cb7",
+    "92a89320d5d6c501",
+    "c5aaa10612a38462",
+    "fba395b7f51b07a5"
+   ]
+  },
+  {
+   "i": 42,
+   "gold": [
+    "BUILDINGS",
+    "FAC_BUILDING",
+    "FAC_BUILDING_ADDRESS",
+    "FAC_FLOOR",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FAC_ROOMS",
+    "FCLT_BUILDING_ADDRESS",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "FAC_BUILDING_ADDRESS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "FAC_FLOOR"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "d52c8e0252fd1c66",
+    "1d029979898d4b88",
+    "ecb8626842a04a1d",
+    "6b17433900d80072",
+    "e7eff53a9626f077",
+    "d74209e55413ddec",
+    "5ee3d7fce20e0508",
+    "bd9df34467cd7f8c",
+    "5e5bb94b120c351d",
+    "f95f0be57a7e80e9",
+    "ebd1586eb4a474b9",
+    "8ac74c74852b0b5b",
+    "8a8e03ecf753d12b"
+   ]
+  },
+  {
+   "i": 43,
+   "gold": [
+    "CIP",
+    "SIS_COURSE_DESCRIPTION",
+    "SIS_DEPARTMENT"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "CIS_COURSE_CATALOG",
+    "DRUPAL_COURSE_CATALOG"
+   ],
+   "n_ranked": 4,
+   "ranked_columns": [
+    "884c3fc153553c79",
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "5e0840ed373288b6",
+    "0b452b204cab82d7",
+    "8874a8bf0469fd72",
+    "c960ce7035b9ff11",
+    "ca375c58d2e05249",
+    "31880d971340be09",
+    "6a0cee6f85dcb686",
+    "54fc932dfa28151b",
+    "788bac56fcecc519",
+    "9c389c94fe615a8c"
+   ]
+  },
+  {
+   "i": 44,
+   "gold": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "LIBRARY_MATERIAL_STATUS",
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL"
+   ],
+   "ranked": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "ACADEMIC_TERMS",
+    "ACADEMIC_TERMS_ALL",
+    "LIBRARY_MATERIAL_STATUS",
+    "CIS_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "6530c5f62931b888",
+    "27f1f9f78ce93b16",
+    "9999534a48073e3c",
+    "d1d26743711ee79f",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "85d8085d3a70cde1",
+    "7df48e2e49c20353",
+    "7f5436a2e475ddfe",
+    "56ffcb1ce3a46f80",
+    "2b9bc4e003a8f6e0",
+    "c4b60b8a43403060",
+    "0cfb4e5947d87b1d",
+    "db3784a89a20304a",
+    "572f1bca58545413"
+   ]
+  },
+  {
+   "i": 45,
+   "gold": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_RESERVE_CATALOG",
+    "DRUPAL_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "CIS_COURSE_CATALOG",
+    "LIBRARY_SUBJECT_OFFERED",
+    "MIT_STUDENT_DIRECTORY"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "9999534a48073e3c",
+    "6530c5f62931b888",
+    "27f1f9f78ce93b16",
+    "2b9bc4e003a8f6e0",
+    "c4b60b8a43403060",
+    "0cfb4e5947d87b1d",
+    "db3784a89a20304a",
+    "94fcde874d8c5d86",
+    "14dbfb835f1f1ece",
+    "7f5436a2e475ddfe",
+    "d1d26743711ee79f",
+    "56ffcb1ce3a46f80",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "85d8085d3a70cde1"
+   ]
+  },
+  {
+   "i": 46,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "LIBRARY_MATERIAL_STATUS",
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "CIS_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "ACADEMIC_TERMS",
+    "LIBRARY_SUBJECT_OFFERED",
+    "ACADEMIC_TERMS_ALL"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "6530c5f62931b888",
+    "27f1f9f78ce93b16",
+    "9999534a48073e3c",
+    "d1d26743711ee79f",
+    "db3784a89a20304a",
+    "884c3fc153553c79",
+    "0cfb4e5947d87b1d",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "c4b60b8a43403060",
+    "94fcde874d8c5d86",
+    "7df48e2e49c20353",
+    "14dbfb835f1f1ece",
+    "2b9bc4e003a8f6e0",
+    "572f1bca58545413"
+   ]
+  },
+  {
+   "i": 47,
+   "gold": [
+    "BUILDINGS",
+    "FCLT_BUILDING_ADDRESS",
+    "FCLT_ORGANIZATION",
+    "SPACE_DETAIL",
+    "SPACE_FLOOR",
+    "SPACE_UNIT",
+    "SPACE_USAGE"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FCLT_ROOMS",
+    "FAC_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "FCLT_BUILDING_ADDRESS",
+    "SPACE_USAGE",
+    "FAC_BUILDING_ADDRESS",
+    "PROFIT_CENTER_GROUP",
+    "SPACE_DETAIL",
+    "FCLT_BUILDING_HIST_1",
+    "SPACE_FLOOR",
+    "FAC_BUILDING",
+    "SPACE_SUPERVISOR_USAGE",
+    "FAC_FLOOR"
+   ],
+   "n_ranked": 15,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d52c8e0252fd1c66",
+    "d1a580412a2c0c65",
+    "e7eff53a9626f077",
+    "1f3f9c49957e6857",
+    "5e5bb94b120c351d",
+    "6b17433900d80072",
+    "69fdb82184760c4d",
+    "f95f0be57a7e80e9",
+    "ecb8626842a04a1d",
+    "7d5c4a8b97c4d24f",
+    "d74209e55413ddec",
+    "de2b7291effbdb6c",
+    "bd9df34467cd7f8c",
+    "c96c9ba7e93a45f2"
+   ]
+  },
+  {
+   "i": 48,
+   "gold": [
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "MOIRA_LIST_OWNER"
+   ],
+   "ranked": [
+    "MOIRA_LIST_OWNER",
+    "MOIRA_LIST_DETAIL",
+    "OPA_PERSON_CURRENT",
+    "MOIRA_LIST",
+    "SUBJECT_OFFERED",
+    "PROFIT_CENTER_GROUP",
+    "IAP_SUBJECT_PERSON",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "FCLT_ROOMS",
+    "SUBJECT_GROUPING",
+    "IAP_SUBJECT_DETAIL",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "CIS_COURSE_CATALOG",
+    "LIBRARY_SUBJECT_OFFERED",
+    "TIP_MATERIAL"
+   ],
+   "n_ranked": 23,
+   "ranked_columns": [
+    "d9acb0a8ce4966df",
+    "e496c11f4ee11593",
+    "5b2537e8123ae322",
+    "5501800cd35ce262",
+    "bc2ce8b7641aee21",
+    "9880f2c9312f2592",
+    "6f48cdf760dc1c56",
+    "dcedefde32d18ad6",
+    "b6e09b33b6f119ce",
+    "9d935136574278ec",
+    "553892c64a72569d",
+    "7d4218279bae5b72",
+    "664b6ed7f63980f3",
+    "f036baa8701b3257",
+    "3c1bb7b09872118b"
+   ]
+  },
+  {
+   "i": 49,
+   "gold": [
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "MOIRA_LIST_OWNER"
+   ],
+   "ranked": [
+    "MOIRA_LIST_OWNER",
+    "OPA_PERSON_CURRENT",
+    "PROFIT_CENTER_GROUP",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "PERSON_AUTH_AREA",
+    "FAC_BUILDING_ADDRESS",
+    "FCLT_BUILDING_ADDRESS",
+    "BUILDINGS",
+    "ROLES_FIN_PA"
+   ],
+   "n_ranked": 10,
+   "ranked_columns": [
+    "5b2537e8123ae322",
+    "e496c11f4ee11593",
+    "d9acb0a8ce4966df",
+    "5501800cd35ce262",
+    "9880f2c9312f2592",
+    "6f48cdf760dc1c56",
+    "cbcfb9e63a0af9bc",
+    "fa341e5b96bfcec5",
+    "c3498ea187e80b5c",
+    "b4fa4ad03f520c3d",
+    "3c6d55dae3e23a90",
+    "d7c60d21474fd876",
+    "54e0f74ce8a3aeb2",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1"
+   ]
+  },
+  {
+   "i": 50,
+   "gold": [
+    "ACADEMIC_TERMS",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "EMPLOYEE_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL"
+   ],
+   "ranked": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "SUBJECT_ENROLLABLE",
+    "ACADEMIC_TERMS"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "27f1f9f78ce93b16",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "6530c5f62931b888",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "9999534a48073e3c",
+    "56ffcb1ce3a46f80",
+    "7f5436a2e475ddfe",
+    "6a0cee6f85dcb686",
+    "0b452b204cab82d7",
+    "788bac56fcecc519",
+    "6bd2529cd2c674b6",
+    "6bd82a420957b11b"
+   ]
+  },
+  {
+   "i": 51,
+   "gold": [
+    "MIT_STUDENT_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "SE_PERSON",
+    "SIS_DEPARTMENT"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "SUBJECT_ENROLLABLE",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "STUDENT_DEPARTMENT"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "d6e812ef06a8f17c",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "6a0cee6f85dcb686",
+    "d1d26743711ee79f",
+    "269c36b67be95b07",
+    "9c389c94fe615a8c",
+    "ca375c58d2e05249",
+    "6bd82a420957b11b",
+    "0b452b204cab82d7",
+    "c960ce7035b9ff11",
+    "a3d5aee5838047df",
+    "423010bb5ad15b69",
+    "f48a7bb93606559d"
+   ]
+  },
+  {
+   "i": 52,
+   "gold": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "EMPLOYEE_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "DRUPAL_COURSE_CATALOG",
+    "CIS_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "HR_FACULTY_ROSTER",
+    "ACADEMIC_TERMS",
+    "ACADEMIC_TERMS_ALL"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "7f5436a2e475ddfe",
+    "d1d26743711ee79f",
+    "56ffcb1ce3a46f80",
+    "884c3fc153553c79",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "7df48e2e49c20353",
+    "27f1f9f78ce93b16",
+    "6530c5f62931b888",
+    "6a0cee6f85dcb686",
+    "50ba958614d1c588",
+    "c973a090bcaaa36e",
+    "5516abde2b28e52f",
+    "ca375c58d2e05249",
+    "c1d15b0ac9b82eb8"
+   ]
+  },
+  {
+   "i": 53,
+   "gold": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "SE_PERSON"
+   ],
+   "ranked": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "CIS_COURSE_CATALOG",
+    "DRUPAL_COURSE_CATALOG",
+    "SIS_COURSE_DESCRIPTION",
+    "STUDENT_DEGREE_PROGRAM"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "6530c5f62931b888",
+    "27f1f9f78ce93b16",
+    "9999534a48073e3c",
+    "db3784a89a20304a",
+    "d1d26743711ee79f",
+    "884c3fc153553c79",
+    "94fcde874d8c5d86",
+    "0cfb4e5947d87b1d",
+    "85d8085d3a70cde1",
+    "2b9bc4e003a8f6e0",
+    "14dbfb835f1f1ece",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "c4b60b8a43403060",
+    "7f5436a2e475ddfe"
+   ]
+  },
+  {
+   "i": 54,
+   "gold": [
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "MOIRA_LIST_OWNER",
+    "SE_PERSON"
+   ],
+   "ranked": [
+    "HR_FACULTY_ROSTER",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "LIBRARY_SUBJECT_OFFERED",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SUBJECT_ENROLLABLE",
+    "OPA_PERSON_CURRENT"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "20abe43287f015e6",
+    "ce8e0a57614ff305",
+    "db95ce49bfdf7523",
+    "2703d263feda2732",
+    "ae81832126904c94",
+    "b5999cc6ec2e15a6",
+    "b0c60b6b40f02f40",
+    "7d204dbc8ce77d4d",
+    "d21ba2ee499e51a3",
+    "fba56dc0b1c99a4c",
+    "914b1ee7b782336c",
+    "5f56352020f60d0a",
+    "a5be3e470e1759cb",
+    "0e053b2df96524ba",
+    "ba554c0e55bb81ee"
+   ]
+  },
+  {
+   "i": 55,
+   "gold": [
+    "MIT_STUDENT_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "SE_PERSON",
+    "SIS_ADMIN_DEPARTMENT"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "STUDENT_DEGREE_PROGRAM",
+    "MIT_STUDENT_DIRECTORY",
+    "DRUPAL_COURSE_CATALOG",
+    "HR_FACULTY_ROSTER",
+    "SUBJECT_ENROLLABLE",
+    "LIBRARY_SUBJECT_OFFERED",
+    "CIS_COURSE_CATALOG",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "ACADEMIC_TERMS",
+    "STUDENT_DEPARTMENT"
+   ],
+   "n_ranked": 12,
+   "ranked_columns": [
+    "7f5436a2e475ddfe",
+    "56ffcb1ce3a46f80",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "7df48e2e49c20353",
+    "27f1f9f78ce93b16",
+    "6bd2529cd2c674b6",
+    "582478ba64f9476b",
+    "6530c5f62931b888",
+    "9999534a48073e3c",
+    "76ef5dc1847f726b",
+    "5e0840ed373288b6",
+    "b18455dfe57ab15f"
+   ]
+  },
+  {
+   "i": 56,
+   "gold": [
+    "EMPLOYEE_DIRECTORY",
+    "FAC_BUILDING",
+    "FAC_FLOOR",
+    "FAC_ROOMS",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "EMPLOYEE_DIRECTORY",
+    "FAC_ROOMS",
+    "DRUPAL_EMPLOYEE_DIRECTORY",
+    "FAC_BUILDING_ADDRESS",
+    "PERSON_AUTH_AREA",
+    "FCLT_BUILDING_ADDRESS",
+    "FCLT_ROOMS",
+    "MASTER_DEPT_HIERARCHY_LINKS",
+    "WAREHOUSE_USERS",
+    "FCLT_BUILDING_ADDRESS_HIST"
+   ],
+   "n_ranked": 11,
+   "ranked_columns": [
+    "e7eff53a9626f077",
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "d74209e55413ddec",
+    "ecb8626842a04a1d",
+    "d52c8e0252fd1c66",
+    "1d029979898d4b88",
+    "6b17433900d80072",
+    "62e56f4e10f5231a",
+    "ebd1586eb4a474b9",
+    "5ee3d7fce20e0508",
+    "d7f28abe1ca8ad3d",
+    "f95f0be57a7e80e9",
+    "de2b7291effbdb6c",
+    "7d158009e72fbf97"
+   ]
+  },
+  {
+   "i": 57,
+   "gold": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "EMPLOYEE_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "HR_FACULTY_ROSTER",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "LIBRARY_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "SUBJECT_ENROLLABLE"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "884c3fc153553c79",
+    "ce8e0a57614ff305",
+    "db95ce49bfdf7523",
+    "2703d263feda2732",
+    "ae81832126904c94",
+    "b5999cc6ec2e15a6",
+    "7d204dbc8ce77d4d",
+    "d21ba2ee499e51a3",
+    "b0c60b6b40f02f40",
+    "a5be3e470e1759cb",
+    "fba56dc0b1c99a4c"
+   ]
+  },
+  {
+   "i": 58,
+   "gold": [
+    "MIT_STUDENT_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "SE_PERSON",
+    "SIS_ADMIN_DEPARTMENT",
+    "SIS_DEPARTMENT"
+   ],
+   "ranked": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "STUDENT_DEGREE_PROGRAM",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "MIT_STUDENT_DIRECTORY",
+    "DRUPAL_COURSE_CATALOG",
+    "HR_FACULTY_ROSTER",
+    "SUBJECT_ENROLLABLE",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "SIS_COURSE_DESCRIPTION",
+    "CIS_COURSE_CATALOG",
+    "FAC_BUILDING_ADDRESS",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "PERSON_AUTH_AREA",
+    "FAC_ROOMS",
+    "FCLT_BUILDING_ADDRESS"
+   ],
+   "n_ranked": 15,
+   "ranked_columns": [
+    "27f1f9f78ce93b16",
+    "6530c5f62931b888",
+    "9999534a48073e3c",
+    "6bd2529cd2c674b6",
+    "582478ba64f9476b",
+    "76ef5dc1847f726b",
+    "56ffcb1ce3a46f80",
+    "7f5436a2e475ddfe",
+    "b18455dfe57ab15f",
+    "9250ec472e9009f1",
+    "85d8085d3a70cde1",
+    "ba554c0e55bb81ee",
+    "12fddd816a416865",
+    "d1d26743711ee79f",
+    "32639f3929bba022"
+   ]
+  },
+  {
+   "i": 59,
+   "gold": [
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "SE_PERSON"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "SUBJECT_ENROLLABLE",
+    "LIBRARY_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "HR_FACULTY_ROSTER",
+    "STUDENT_DEPARTMENT",
+    "SUBJECT_OFFERED",
+    "MASTER_DEPT_HIERARCHY_LINKS"
+   ],
+   "n_ranked": 9,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "d1d26743711ee79f",
+    "9c389c94fe615a8c",
+    "ca375c58d2e05249",
+    "ee6a970d68606a8a",
+    "269c36b67be95b07",
+    "2b9bc4e003a8f6e0",
+    "0a422c8972e110b6",
+    "e40569463ea8cf8c",
+    "c960ce7035b9ff11",
+    "6a0cee6f85dcb686",
+    "f48a7bb93606559d"
+   ]
+  },
+  {
+   "i": 60,
+   "gold": [
+    "MIT_STUDENT_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "SE_PERSON",
+    "SIS_ADMIN_DEPARTMENT"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "STUDENT_DEPARTMENT",
+    "MIT_STUDENT_DIRECTORY",
+    "DRUPAL_COURSE_CATALOG",
+    "SUBJECT_ENROLLABLE",
+    "LIBRARY_COURSE_INSTRUCTOR"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "884c3fc153553c79",
+    "5e0840ed373288b6",
+    "6bd2529cd2c674b6",
+    "7f5436a2e475ddfe",
+    "582478ba64f9476b",
+    "d356f74082e1d79f",
+    "56ffcb1ce3a46f80",
+    "76ef5dc1847f726b",
+    "30922678b5877f01",
+    "c973a090bcaaa36e",
+    "50ba958614d1c588"
+   ]
+  },
+  {
+   "i": 61,
+   "gold": [
+    "EMPLOYEE_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "FCLT_BUILDING_ADDRESS",
+    "FAC_ROOMS",
+    "FAC_BUILDING_ADDRESS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "SUBJECT_SUMMARY",
+    "FAC_FLOOR",
+    "LIBRARY_SUBJECT_OFFERED",
+    "FAC_BUILDING",
+    "SUBJECT_OFFERED",
+    "OPA_PERSON_CURRENT"
+   ],
+   "n_ranked": 13,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "7596cb9fc727ab48",
+    "d52c8e0252fd1c66",
+    "8a8e03ecf753d12b",
+    "d295e116b1aa5305",
+    "9092defc4cc001c2",
+    "73d4d35aec6b40a1",
+    "d6d8df8765195ca1",
+    "be6c1ae1433e6527",
+    "ebd1586eb4a474b9",
+    "8ac74c74852b0b5b",
+    "435ad1d8d6c2003c",
+    "bd9df34467cd7f8c",
+    "f95f0be57a7e80e9"
+   ]
+  },
+  {
+   "i": 62,
+   "gold": [
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "SE_PERSON"
+   ],
+   "ranked": [
+    "HR_FACULTY_ROSTER",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_SUBJECT_OFFERED",
+    "SUBJECT_OFFERED",
+    "SUBJECT_ENROLLABLE",
+    "SUBJECT_OFFERED_SUMMARY",
+    "SUBJECT_IAP_SCHEDULE",
+    "IR_INSTITUTION"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "ce8e0a57614ff305",
+    "db95ce49bfdf7523",
+    "2703d263feda2732",
+    "ae81832126904c94",
+    "b5999cc6ec2e15a6",
+    "7d204dbc8ce77d4d",
+    "20abe43287f015e6",
+    "b0c60b6b40f02f40",
+    "d21ba2ee499e51a3",
+    "85d8085d3a70cde1",
+    "a5be3e470e1759cb",
+    "914b1ee7b782336c",
+    "d6e812ef06a8f17c",
+    "fba56dc0b1c99a4c",
+    "5f56352020f60d0a"
+   ]
+  },
+  {
+   "i": 63,
+   "gold": [
+    "MIT_STUDENT_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "SE_PERSON",
+    "SIS_ADMIN_DEPARTMENT"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "DRUPAL_COURSE_CATALOG",
+    "LIBRARY_SUBJECT_OFFERED",
+    "STUDENT_DEPARTMENT"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "85d8085d3a70cde1",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "d1d26743711ee79f",
+    "884c3fc153553c79",
+    "e40569463ea8cf8c",
+    "56ffcb1ce3a46f80",
+    "ca375c58d2e05249",
+    "c960ce7035b9ff11",
+    "7f5436a2e475ddfe",
+    "5516abde2b28e52f",
+    "f48a7bb93606559d",
+    "6a0cee6f85dcb686",
+    "07cefcc4ce62f6f8",
+    "2eb7e8bdaa033347"
+   ]
+  },
+  {
+   "i": 64,
+   "gold": [
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "MOIRA_LIST_OWNER"
+   ],
+   "ranked": [
+    "OPA_PERSON_CURRENT",
+    "PROFIT_CENTER_GROUP",
+    "SUBJECT_OFFERED_SUMMARY",
+    "MOIRA_LIST_OWNER",
+    "SUBJECT_SUMMARY",
+    "ESTIMATED_SURCHARGES_ESTONLY",
+    "PERSON_AUTH_AREA",
+    "BUILDINGS",
+    "SUBJECT_OFFERED",
+    "COURSE_CATALOG_SUBJECT_OFFERED"
+   ],
+   "n_ranked": 10,
+   "ranked_columns": [
+    "9880f2c9312f2592",
+    "6f48cdf760dc1c56",
+    "fa341e5b96bfcec5",
+    "cbcfb9e63a0af9bc",
+    "b4fa4ad03f520c3d",
+    "c3498ea187e80b5c",
+    "3c6d55dae3e23a90",
+    "d7c60d21474fd876",
+    "2db6967ad3524be2",
+    "4923686fc82ca5d6",
+    "17fb0630ffb7644d",
+    "66a7b7ee45b3167e",
+    "d0ecd2f993355463",
+    "8be0cee5ab25eddb",
+    "ba62972fe4ca41c6"
+   ]
+  },
+  {
+   "i": 65,
+   "gold": [
+    "LIBRARY_RESERVE_CATALOG",
+    "SIS_COURSE_DESCRIPTION",
+    "SUBJECT_OFFERED_SUMMARY",
+    "TIP_DETAIL",
+    "TIP_MATERIAL"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "CIS_COURSE_CATALOG",
+    "LIBRARY_COURSE_INSTRUCTOR"
+   ],
+   "n_ranked": 4,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "884c3fc153553c79",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "31880d971340be09",
+    "c960ce7035b9ff11",
+    "9c389c94fe615a8c",
+    "f48a7bb93606559d",
+    "423010bb5ad15b69",
+    "8cb23d7ffe458f8d",
+    "a35df552c1dd75ad",
+    "41be9a90f8945bed",
+    "59c1630e871c7ca2",
+    "1f819c59df64994c"
+   ]
+  },
+  {
+   "i": 66,
+   "gold": [
+    "ACADEMIC_TERMS",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SIS_COURSE_DESCRIPTION",
+    "SIS_DEPARTMENT"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "DRUPAL_COURSE_CATALOG",
+    "SUBJECT_OFFERED_SUMMARY",
+    "STUDENT_DEGREE_PROGRAM"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "85d8085d3a70cde1",
+    "56ffcb1ce3a46f80",
+    "7f5436a2e475ddfe",
+    "bc44eb61f579c3c7",
+    "9edcc1d1730a97ee",
+    "c18f6213cde8dd57",
+    "1f819c59df64994c",
+    "ac7abd70e7989ad3",
+    "59c1630e871c7ca2",
+    "6bd82a420957b11b",
+    "30922678b5877f01"
+   ]
+  },
+  {
+   "i": 67,
+   "gold": [
+    "CIS_COURSE_CATALOG",
+    "SIS_DEPARTMENT",
+    "SIS_SUBJECT_CODE",
+    "SUBJECT_OFFERED_SUMMARY"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "LIBRARY_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "CIS_COURSE_CATALOG",
+    "CIS_HASS_ATTRIBUTE",
+    "SUBJECT_OFFERED",
+    "SUBJECT_OFFERED_SUMMARY"
+   ],
+   "n_ranked": 9,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "d6e812ef06a8f17c",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "bc44eb61f579c3c7",
+    "1f819c59df64994c",
+    "68cfb58fd1c9226c",
+    "a35df552c1dd75ad",
+    "c973a090bcaaa36e",
+    "59c1630e871c7ca2",
+    "41be9a90f8945bed",
+    "76f23a6fbc8c4505",
+    "9edcc1d1730a97ee",
+    "3f8632988e683963"
+   ]
+  },
+  {
+   "i": 68,
+   "gold": [
+    "SIS_COURSE_DESCRIPTION",
+    "SIS_DEPARTMENT",
+    "SUBJECT_OFFERED_SUMMARY"
+   ],
+   "ranked": [
+    "STUDENT_DEGREE_PROGRAM",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEPARTMENT",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "SUBJECT_ENROLLABLE"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "5e0840ed373288b6",
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "6bd2529cd2c674b6",
+    "9193d7c6bbfd7ea8",
+    "0249db01a3ee6bff",
+    "582478ba64f9476b",
+    "57a03e6b321a6b96",
+    "b1249bcaab0e8edb",
+    "29d9fc46f6ed01eb",
+    "6e6ea9161ac838fd",
+    "76ef5dc1847f726b"
+   ]
+  },
+  {
+   "i": 69,
+   "gold": [
+    "FAC_BUILDING",
+    "FAC_BUILDING_ADDRESS",
+    "SIS_COURSE_DESCRIPTION",
+    "SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "STUDENT_DEGREE_PROGRAM",
+    "DRUPAL_COURSE_CATALOG",
+    "MIT_STUDENT_DIRECTORY",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "884c3fc153553c79",
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "2b9bc4e003a8f6e0",
+    "9c389c94fe615a8c",
+    "5e0840ed373288b6",
+    "ca375c58d2e05249",
+    "c960ce7035b9ff11",
+    "31880d971340be09",
+    "f48a7bb93606559d",
+    "6530c5f62931b888",
+    "423010bb5ad15b69",
+    "1d71614cb26177b4"
+   ]
+  },
+  {
+   "i": 70,
+   "gold": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "FAC_BUILDING",
+    "FAC_BUILDING_ADDRESS",
+    "FAC_MAJOR_USE",
+    "FAC_ROOMS",
+    "SIS_COURSE_DESCRIPTION"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "FAC_ROOMS",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "DRUPAL_COURSE_CATALOG",
+    "SIS_COURSE_DESCRIPTION",
+    "STUDENT_DEGREE_PROGRAM"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "5e5bb94b120c351d",
+    "de2b7291effbdb6c",
+    "f95f0be57a7e80e9",
+    "ebd1586eb4a474b9",
+    "bd9df34467cd7f8c",
+    "4b81897b23f689aa",
+    "8874a8bf0469fd72",
+    "ca375c58d2e05249",
+    "ee6a970d68606a8a",
+    "6530c5f62931b888"
+   ]
+  },
+  {
+   "i": 71,
+   "gold": [
+    "LIBRARY_MATERIAL_STATUS",
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED",
+    "SIS_SUBJECT_CODE"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "SUBJECT_OFFERED_SUMMARY",
+    "CIS_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "LIBRARY_SUBJECT_OFFERED"
+   ],
+   "n_ranked": 7,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "572f1bca58545413",
+    "a83706ea5ce870f5",
+    "96519c2f52a2cf19",
+    "b0e97e31d502b0c0",
+    "614f86a4625c2501",
+    "27f1f9f78ce93b16",
+    "6530c5f62931b888",
+    "9999534a48073e3c",
+    "56ffcb1ce3a46f80",
+    "8be0cee5ab25eddb"
+   ]
+  },
+  {
+   "i": 72,
+   "gold": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "STUDENT_DEGREE_PROGRAM",
+    "CIS_COURSE_CATALOG",
+    "LIBRARY_SUBJECT_OFFERED",
+    "SUBJECT_OFFERED_SUMMARY"
+   ],
+   "n_ranked": 7,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "d6e812ef06a8f17c",
+    "85d8085d3a70cde1",
+    "7df48e2e49c20353",
+    "884c3fc153553c79",
+    "572f1bca58545413",
+    "a83706ea5ce870f5",
+    "96519c2f52a2cf19",
+    "b0e97e31d502b0c0",
+    "614f86a4625c2501",
+    "27f1f9f78ce93b16",
+    "c4b60b8a43403060",
+    "2b9bc4e003a8f6e0",
+    "9999534a48073e3c",
+    "6530c5f62931b888"
+   ]
+  },
+  {
+   "i": 73,
+   "gold": [
+    "SIS_DEPARTMENT",
+    "TIP_DETAIL",
+    "TIP_MATERIAL",
+    "TIP_MATERIAL_STATUS",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "41be9a90f8945bed",
+    "1f819c59df64994c",
+    "68cfb58fd1c9226c",
+    "8cb23d7ffe458f8d",
+    "bc44eb61f579c3c7",
+    "76f23a6fbc8c4505",
+    "59c1630e871c7ca2",
+    "e4cb539f8d73e94d",
+    "50ba958614d1c588",
+    "a3d5aee5838047df"
+   ]
+  },
+  {
+   "i": 74,
+   "gold": [
+    "TIP_DETAIL",
+    "TIP_MATERIAL",
+    "TIP_MATERIAL_STATUS",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "TIP_MATERIAL_STATUS",
+    "TIP_MATERIAL",
+    "SUBJECT_OFFERED_SUMMARY",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "TIP_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "LIBRARY_MATERIAL_STATUS",
+    "SUBJECT_SUMMARY",
+    "TIP_DETAIL",
+    "SUBJECT_OFFERED"
+   ],
+   "n_ranked": 10,
+   "ranked_columns": [
+    "5495d63d79d25b84",
+    "dcb6b731ef26ecd0",
+    "40f0f6bb9f082497",
+    "841908f6134c811f",
+    "5f54cc76d2489533",
+    "aa353523209ba889",
+    "a09cd155291af208",
+    "6034cb960f6bc7d1",
+    "8be0cee5ab25eddb",
+    "66a7b7ee45b3167e",
+    "17fb0630ffb7644d",
+    "ba62972fe4ca41c6",
+    "d0ecd2f993355463",
+    "2c01151c2d37b270",
+    "584b97bf90b8841e"
+   ]
+  },
+  {
+   "i": 75,
+   "gold": [
+    "FCLT_BUILDING",
+    "FCLT_FLOOR",
+    "FCLT_ORGANIZATION",
+    "FCLT_ROOMS"
+   ],
+   "ranked": [
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "BUILDINGS",
+    "FCLT_ROOMS_HIST",
+    "PROFIT_CENTER_GROUP",
+    "FAC_FLOOR",
+    "SUBJECT_SUMMARY",
+    "SUBJECT_OFFERED_SUMMARY",
+    "FCLT_FLOOR",
+    "FCLT_FLOOR_HIST",
+    "ESTIMATED_SURCHARGES_ESTONLY"
+   ],
+   "n_ranked": 11,
+   "ranked_columns": [
+    "bd9df34467cd7f8c",
+    "5e5bb94b120c351d",
+    "f95f0be57a7e80e9",
+    "de2b7291effbdb6c",
+    "ebd1586eb4a474b9",
+    "323b8f626bc3a41a",
+    "1f3f9c49957e6857",
+    "69fdb82184760c4d",
+    "7d5c4a8b97c4d24f",
+    "c96c9ba7e93a45f2",
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "d52c8e0252fd1c66",
+    "49b027749d27104a",
+    "5768826100956b4e"
+   ]
+  },
+  {
+   "i": 76,
+   "gold": [
+    "ACADEMIC_TERMS",
+    "ACADEMIC_TERM_PARAMETER",
+    "TIME_DAY",
+    "TIME_MONTH",
+    "TIME_QUARTER"
+   ],
+   "ranked": [
+    "ACADEMIC_TERM_PARAMETER",
+    "ACADEMIC_TERMS",
+    "ACADEMIC_TERMS_ALL",
+    "STUDENT_DEGREE_PROGRAM",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "FRC_FISCAL_PERIODS",
+    "DRUPAL_COURSE_CATALOG",
+    "MIT_STUDENT_DIRECTORY",
+    "SUBJECT_OFFERED_SUMMARY",
+    "SIS_COURSE_DESCRIPTION",
+    "SIS_ADMIN_DEPARTMENT",
+    "SUBJECT_ENROLLABLE"
+   ],
+   "n_ranked": 13,
+   "ranked_columns": [
+    "3a1f0fdb7c72620e",
+    "a4d48dab951b3259",
+    "da8a0c56e4c034b8",
+    "00c88456b0e1e443",
+    "d2b9d3cacc6ba25a",
+    "729b81778ffcc90a",
+    "5d9aec7a508ee3e6",
+    "d07790e678138172",
+    "0364111a42b3be81",
+    "bbae6c735ca4859f",
+    "404c129debec977b",
+    "a25b09e6cd1cc386",
+    "d0da7d3ee711ffc8",
+    "2a455c57da96f2fc",
+    "f96c14f76a3af9d0"
+   ]
+  },
+  {
+   "i": 77,
+   "gold": [
+    "FCLT_BUILDING",
+    "FCLT_BUILDING_ADDRESS",
+    "FCLT_FLOOR",
+    "FCLT_ORGANIZATION",
+    "FCLT_ROOMS"
+   ],
+   "ranked": [
+    "PROFIT_CENTER_GROUP",
+    "BUILDINGS",
+    "FAC_ROOMS",
+    "STUDENT_DEGREE_PROGRAM",
+    "FCLT_ROOMS",
+    "MASTER_DEPT_HIERARCHY",
+    "IR_INSTITUTION",
+    "STUDENT_DEPARTMENT",
+    "MASTER_DEPT_DCODE_PARENT",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "MASTER_DEPT_HIERARCHY_LINKS",
+    "FCLT_ROOMS_HIST",
+    "DRUPAL_COURSE_CATALOG",
+    "MIT_STUDENT_DIRECTORY"
+   ],
+   "n_ranked": 14,
+   "ranked_columns": [
+    "cbcfb9e63a0af9bc",
+    "c3498ea187e80b5c",
+    "b4fa4ad03f520c3d",
+    "fa341e5b96bfcec5",
+    "3c6d55dae3e23a90",
+    "d7c60d21474fd876",
+    "726c435ae499625c",
+    "2db6967ad3524be2",
+    "d1a580412a2c0c65",
+    "4923686fc82ca5d6",
+    "d52c8e0252fd1c66",
+    "5e5bb94b120c351d",
+    "de2b7291effbdb6c",
+    "f95f0be57a7e80e9",
+    "82355c21ae30d1a9"
+   ]
+  },
+  {
+   "i": 78,
+   "gold": [
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED",
+    "TIP_DETAIL",
+    "TIP_MATERIAL",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "LIBRARY_SUBJECT_OFFERED",
+    "CIS_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "LIBRARY_RESERVE_CATALOG",
+    "SUBJECT_OFFERED_SUMMARY"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "2b9bc4e003a8f6e0",
+    "c4b60b8a43403060",
+    "db3784a89a20304a",
+    "94fcde874d8c5d86",
+    "27f1f9f78ce93b16",
+    "6530c5f62931b888",
+    "9999534a48073e3c",
+    "0cfb4e5947d87b1d",
+    "14dbfb835f1f1ece",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "7df48e2e49c20353",
+    "572f1bca58545413"
+   ]
+  },
+  {
+   "i": 79,
+   "gold": [
+    "LIBRARY_MATERIAL_STATUS",
+    "LIBRARY_RESERVE_MATRL_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED",
+    "TIP_DETAIL",
+    "TIP_MATERIAL_STATUS",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "TIP_MATERIAL",
+    "SUBJECT_OFFERED_SUMMARY",
+    "LIBRARY_SUBJECT_OFFERED",
+    "TIP_SUBJECT_OFFERED",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SUBJECT_SUMMARY",
+    "TIP_DETAIL",
+    "TIP_MATERIAL_STATUS",
+    "LIBRARY_MATERIAL_STATUS",
+    "LIBRARY_RESERVE_CATALOG",
+    "DRUPAL_COURSE_CATALOG",
+    "CIS_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "MASTER_DEPT_DCODE_PARENT",
+    "IR_INSTITUTION"
+   ],
+   "n_ranked": 15,
+   "ranked_columns": [
+    "5f54cc76d2489533",
+    "a09cd155291af208",
+    "aa353523209ba889",
+    "6034cb960f6bc7d1",
+    "17fb0630ffb7644d",
+    "8be0cee5ab25eddb",
+    "66a7b7ee45b3167e",
+    "2c01151c2d37b270",
+    "d0ecd2f993355463",
+    "ba62972fe4ca41c6",
+    "584b97bf90b8841e",
+    "beaef772ddfeb873",
+    "3fdf410b1f3aa665",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1"
+   ]
+  },
+  {
+   "i": 80,
+   "gold": [
+    "BUILDINGS",
+    "FAC_BUILDING",
+    "FAC_BUILDING_ADDRESS"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FCLT_BUILDING_ADDRESS",
+    "FAC_BUILDING_ADDRESS",
+    "MIT_STUDENT_DIRECTORY",
+    "MASTER_DEPT_HIERARCHY_LINKS",
+    "MASTER_DEPT_DCODE_PARENT",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "FAC_ROOMS",
+    "MASTER_DEPT_HIERARCHY",
+    "FCLT_ROOMS",
+    "DRUPAL_EMPLOYEE_DIRECTORY",
+    "FCLT_ROOMS_HIST"
+   ],
+   "n_ranked": 12,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "e7eff53a9626f077",
+    "d52c8e0252fd1c66",
+    "ecb8626842a04a1d",
+    "6b17433900d80072",
+    "1d029979898d4b88",
+    "d74209e55413ddec",
+    "5ee3d7fce20e0508",
+    "714cdde3cf18402e",
+    "605e90f29eec9602",
+    "b97e42d25beb2b96",
+    "2910607c0bd98e1f",
+    "f0dafccc7159668a",
+    "f7f065f30695f1ee"
+   ]
+  },
+  {
+   "i": 81,
+   "gold": [
+    "FAC_BUILDING"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FAC_BUILDING_ADDRESS",
+    "PROFIT_CENTER_GROUP",
+    "DRUPAL_EMPLOYEE_DIRECTORY",
+    "FCLT_BUILDING_ADDRESS",
+    "SIS_DEPARTMENT",
+    "MASTER_DEPT_DCODE_PARENT",
+    "SIS_ADMIN_DEPARTMENT",
+    "STUDENT_DEGREE_PROGRAM",
+    "MASTER_DEPT_HIERARCHY_LINKS",
+    "FAC_ROOMS",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "FCLT_ROOMS",
+    "EMPLOYEE_DIRECTORY",
+    "ESTIMATED_SURCHARGES_ESTONLY"
+   ],
+   "n_ranked": 22,
+   "ranked_columns": [
+    "5ee3d7fce20e0508",
+    "d1a580412a2c0c65",
+    "726c435ae499625c",
+    "d52c8e0252fd1c66",
+    "b97e42d25beb2b96",
+    "d1bc1b923603af07",
+    "e7eff53a9626f077",
+    "d74209e55413ddec",
+    "26f322058aebd94d",
+    "ecb8626842a04a1d",
+    "6b17433900d80072",
+    "c3498ea187e80b5c",
+    "ecabcbaaa2960c50",
+    "1d029979898d4b88",
+    "4923686fc82ca5d6"
+   ]
+  },
+  {
+   "i": 82,
+   "gold": [
+    "FCLT_BUILDING_HIST",
+    "FCLT_ORGANIZATION",
+    "FCLT_ROOMS"
+   ],
+   "ranked": [
+    "PROFIT_CENTER_GROUP",
+    "BUILDINGS",
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "MASTER_DEPT_DCODE_PARENT",
+    "MIT_STUDENT_DIRECTORY",
+    "MASTER_DEPT_HIERARCHY",
+    "SUBJECT_OFFERED_SUMMARY",
+    "IR_INSTITUTION",
+    "EMPLOYEE_DIRECTORY",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "MASTER_DEPT_HIERARCHY_LINKS",
+    "FAC_BUILDING",
+    "SUBJECT_SUMMARY"
+   ],
+   "n_ranked": 15,
+   "ranked_columns": [
+    "cbcfb9e63a0af9bc",
+    "c3498ea187e80b5c",
+    "fa341e5b96bfcec5",
+    "b4fa4ad03f520c3d",
+    "3c6d55dae3e23a90",
+    "d7c60d21474fd876",
+    "4923686fc82ca5d6",
+    "2db6967ad3524be2",
+    "d1a580412a2c0c65",
+    "726c435ae499625c",
+    "d52c8e0252fd1c66",
+    "82355c21ae30d1a9",
+    "d23b07d1af13f4ab",
+    "5e5bb94b120c351d",
+    "f95f0be57a7e80e9"
+   ]
+  },
+  {
+   "i": 83,
+   "gold": [
+    "FCLT_BUILDING",
+    "FCLT_ORGANIZATION",
+    "FCLT_ROOMS"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "PROFIT_CENTER_GROUP",
+    "SPACE_USAGE",
+    "FAC_BUILDING",
+    "STUDENT_DEGREE_PROGRAM",
+    "SUBJECT_OFFERED_SUMMARY",
+    "FCLT_BUILDING",
+    "SUBJECT_SUMMARY",
+    "FAC_FLOOR",
+    "ESTIMATED_SURCHARGES_ESTONLY"
+   ],
+   "n_ranked": 13,
+   "ranked_columns": [
+    "d1a580412a2c0c65",
+    "726c435ae499625c",
+    "d52c8e0252fd1c66",
+    "5e5bb94b120c351d",
+    "bd9df34467cd7f8c",
+    "f95f0be57a7e80e9",
+    "de2b7291effbdb6c",
+    "ebd1586eb4a474b9",
+    "1f3f9c49957e6857",
+    "323b8f626bc3a41a",
+    "69fdb82184760c4d",
+    "7d5c4a8b97c4d24f",
+    "c96c9ba7e93a45f2",
+    "49b027749d27104a",
+    "0934e8f45a7d30e4"
+   ]
+  },
+  {
+   "i": 84,
+   "gold": [
+    "FCLT_ORGANIZATION",
+    "FCLT_ROOMS",
+    "MASTER_DEPT_HIERARCHY"
+   ],
+   "ranked": [
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "BUILDINGS",
+    "IR_INSTITUTION",
+    "PROFIT_CENTER_GROUP",
+    "ZPM_ROOMS_LOAD",
+    "MASTER_DEPT_DCODE_PARENT"
+   ],
+   "n_ranked": 10,
+   "ranked_columns": [
+    "bd9df34467cd7f8c",
+    "f95f0be57a7e80e9",
+    "5e5bb94b120c351d",
+    "de2b7291effbdb6c",
+    "ebd1586eb4a474b9",
+    "69fdb82184760c4d",
+    "323b8f626bc3a41a",
+    "1f3f9c49957e6857",
+    "7d5c4a8b97c4d24f",
+    "c96c9ba7e93a45f2",
+    "49b027749d27104a",
+    "932522af7f3d7b3f",
+    "0934e8f45a7d30e4",
+    "5768826100956b4e",
+    "080c1a5b853e7807"
+   ]
+  },
+  {
+   "i": 85,
+   "gold": [
+    "FCLT_MAJOR_USE",
+    "FCLT_ROOMS"
+   ],
+   "ranked": [
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "SUBJECT_OFFERED_SUMMARY",
+    "SUBJECT_SUMMARY",
+    "ZPM_ROOMS_LOAD"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "de2b7291effbdb6c",
+    "bd9df34467cd7f8c",
+    "f95f0be57a7e80e9",
+    "5e5bb94b120c351d",
+    "ebd1586eb4a474b9",
+    "7d5c4a8b97c4d24f",
+    "69fdb82184760c4d",
+    "1f3f9c49957e6857",
+    "323b8f626bc3a41a",
+    "c96c9ba7e93a45f2",
+    "49b027749d27104a",
+    "0934e8f45a7d30e4",
+    "932522af7f3d7b3f",
+    "66a7b7ee45b3167e",
+    "ba62972fe4ca41c6"
+   ]
+  },
+  {
+   "i": 86,
+   "gold": [
+    "BUILDINGS",
+    "FAC_FLOOR",
+    "FAC_ROOMS",
+    "FCLT_ORGANIZATION"
+   ],
+   "ranked": [
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "BUILDINGS",
+    "SIS_ADMIN_DEPARTMENT",
+    "MASTER_DEPT_HIERARCHY",
+    "SIS_DEPARTMENT",
+    "STUDENT_DEPARTMENT",
+    "SUBJECT_SUMMARY",
+    "FCLT_ROOMS_HIST",
+    "FAC_FLOOR",
+    "PROFIT_CENTER_GROUP",
+    "SUBJECT_OFFERED_SUMMARY"
+   ],
+   "n_ranked": 12,
+   "ranked_columns": [
+    "bd9df34467cd7f8c",
+    "323b8f626bc3a41a",
+    "f95f0be57a7e80e9",
+    "5e5bb94b120c351d",
+    "d1a580412a2c0c65",
+    "de2b7291effbdb6c",
+    "726c435ae499625c",
+    "ebd1586eb4a474b9",
+    "69fdb82184760c4d",
+    "aa37f5af38a61867",
+    "d52c8e0252fd1c66",
+    "1f3f9c49957e6857",
+    "7d5c4a8b97c4d24f",
+    "b0b2ebf91eed67f2",
+    "f1ceca585beff8cf"
+   ]
+  },
+  {
+   "i": 87,
+   "gold": [
+    "FAC_BUILDING",
+    "FAC_BUILDING_ADDRESS",
+    "FAC_FLOOR",
+    "FAC_ORGANIZATION",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "SUBJECT_SUMMARY",
+    "SUBJECT_OFFERED_SUMMARY",
+    "FAC_FLOOR",
+    "PROFIT_CENTER_GROUP"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "bd9df34467cd7f8c",
+    "d1a580412a2c0c65",
+    "d52c8e0252fd1c66",
+    "5e5bb94b120c351d",
+    "f95f0be57a7e80e9",
+    "de2b7291effbdb6c",
+    "ebd1586eb4a474b9",
+    "323b8f626bc3a41a",
+    "1f3f9c49957e6857",
+    "69fdb82184760c4d",
+    "7d5c4a8b97c4d24f",
+    "c96c9ba7e93a45f2",
+    "49b027749d27104a",
+    "5768826100956b4e"
+   ]
+  },
+  {
+   "i": 88,
+   "gold": [
+    "ACADEMIC_TERM_PARAMETER",
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "DRUPAL_COURSE_CATALOG",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "SUBJECT_OFFERED_SUMMARY",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "5e0840ed373288b6",
+    "a83706ea5ce870f5",
+    "8874a8bf0469fd72",
+    "96519c2f52a2cf19",
+    "c960ce7035b9ff11",
+    "f48a7bb93606559d",
+    "9c389c94fe615a8c",
+    "e40569463ea8cf8c",
+    "b0e97e31d502b0c0",
+    "614f86a4625c2501"
+   ]
+  },
+  {
+   "i": 89,
+   "gold": [
+    "EMPLOYEE_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "MOIRA_LIST_OWNER"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "PROFIT_CENTER_GROUP",
+    "OPA_PERSON_CURRENT",
+    "SUBJECT_OFFERED_SUMMARY",
+    "SUBJECT_SUMMARY",
+    "FAC_BUILDING_ADDRESS",
+    "BUILDINGS",
+    "EMPLOYEE_DIRECTORY",
+    "IAP_SUBJECT_SPONSOR",
+    "MASTER_DEPT_DCODE_PARENT",
+    "LIBRARY_SUBJECT_OFFERED",
+    "SUBJECT_OFFERED",
+    "MOIRA_LIST_OWNER",
+    "DRUPAL_EMPLOYEE_DIRECTORY",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 15,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "fa341e5b96bfcec5",
+    "cbcfb9e63a0af9bc",
+    "c3498ea187e80b5c",
+    "b4fa4ad03f520c3d",
+    "9880f2c9312f2592",
+    "d7c60d21474fd876",
+    "17fb0630ffb7644d",
+    "66a7b7ee45b3167e",
+    "4923686fc82ca5d6",
+    "269c36b67be95b07"
+   ]
+  },
+  {
+   "i": 90,
+   "gold": [
+    "IAP_SUBJECT_CATEGORY",
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_SESSION",
+    "IAP_SUBJECT_SPONSOR"
+   ],
+   "ranked": [
+    "IAP_SUBJECT_SPONSOR",
+    "IAP_SUBJECT_SESSION",
+    "SUBJECT_OFFERED_SUMMARY",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "IAP_SUBJECT_CATEGORY",
+    "SUBJECT_IAP_SCHEDULE",
+    "IAP_SUBJECT_DETAIL",
+    "SUBJECT_SUMMARY",
+    "SUBJECT_OFFERED",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "n_ranked": 10,
+   "ranked_columns": [
+    "e19ee6126525e8f0",
+    "790c4b4f58ec0631",
+    "4a80cbcde8ac2551",
+    "4aff8d964adeab43",
+    "625f5aed048d414f",
+    "584b97bf90b8841e",
+    "8be0cee5ab25eddb",
+    "66a7b7ee45b3167e",
+    "17fb0630ffb7644d",
+    "ba62972fe4ca41c6",
+    "2c01151c2d37b270",
+    "7df48e2e49c20353",
+    "d0ecd2f993355463",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79"
+   ]
+  },
+  {
+   "i": 91,
+   "gold": [
+    "BUILDINGS",
+    "EMPLOYEE_DIRECTORY",
+    "FAC_BUILDING_ADDRESS",
+    "FAC_ROOMS",
+    "FCLT_BUILDING_HIST"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FAC_BUILDING",
+    "FAC_BUILDING_ADDRESS",
+    "FCLT_ROOMS_HIST",
+    "FCLT_BUILDING",
+    "FCLT_BUILDING_ADDRESS",
+    "DRUPAL_EMPLOYEE_DIRECTORY",
+    "SPACE_DETAIL"
+   ],
+   "n_ranked": 10,
+   "ranked_columns": [
+    "d1a580412a2c0c65",
+    "726c435ae499625c",
+    "d52c8e0252fd1c66",
+    "e7eff53a9626f077",
+    "d74209e55413ddec",
+    "6b17433900d80072",
+    "ecb8626842a04a1d",
+    "1d029979898d4b88",
+    "5e5bb94b120c351d",
+    "f95f0be57a7e80e9",
+    "bd9df34467cd7f8c",
+    "de2b7291effbdb6c",
+    "ebd1586eb4a474b9",
+    "1f3f9c49957e6857",
+    "5ee3d7fce20e0508"
+   ]
+  },
+  {
+   "i": 92,
+   "gold": [
+    "FCLT_ORGANIZATION",
+    "SPACE_DETAIL",
+    "SPACE_UNIT",
+    "SPACE_USAGE",
+    "ZPM_ROOMS_LOAD"
+   ],
+   "ranked": [
+    "SPACE_USAGE",
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "BUILDINGS",
+    "ESTIMATED_SURCHARGES_ESTONLY",
+    "PROFIT_CENTER_GROUP",
+    "ZPM_ROOMS_LOAD",
+    "SUBJECT_SUMMARY"
+   ],
+   "n_ranked": 9,
+   "ranked_columns": [
+    "a10bc83b87778ebe",
+    "bd9df34467cd7f8c",
+    "f95f0be57a7e80e9",
+    "de2b7291effbdb6c",
+    "5e5bb94b120c351d",
+    "ebd1586eb4a474b9",
+    "69fdb82184760c4d",
+    "323b8f626bc3a41a",
+    "7d5c4a8b97c4d24f",
+    "1f3f9c49957e6857",
+    "c96c9ba7e93a45f2",
+    "49b027749d27104a",
+    "0934e8f45a7d30e4",
+    "5768826100956b4e",
+    "932522af7f3d7b3f"
+   ]
+  },
+  {
+   "i": 93,
+   "gold": [
+    "FCLT_ORGANIZATION",
+    "HR_FACULTY_ROSTER",
+    "HR_ORG_UNIT",
+    "MASTER_DEPT_HIERARCHY"
+   ],
+   "ranked": [
+    "HR_FACULTY_ROSTER",
+    "DRUPAL_EMPLOYEE_DIRECTORY",
+    "MASTER_DEPT_HIERARCHY_LINKS",
+    "PROFIT_CENTER_GROUP",
+    "EMPLOYEE_DIRECTORY",
+    "MASTER_DEPT_HIERARCHY",
+    "IR_INSTITUTION",
+    "MASTER_DEPT_DCODE_PARENT"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "6a58d331852bb991",
+    "2703d263feda2732",
+    "db95ce49bfdf7523",
+    "a5be3e470e1759cb",
+    "914b1ee7b782336c",
+    "d21ba2ee499e51a3",
+    "b5999cc6ec2e15a6",
+    "fba56dc0b1c99a4c",
+    "ba554c0e55bb81ee",
+    "5f56352020f60d0a",
+    "7d204dbc8ce77d4d",
+    "26f322058aebd94d",
+    "b0c60b6b40f02f40",
+    "ae81832126904c94",
+    "ce8e0a57614ff305"
+   ]
+  },
+  {
+   "i": 94,
+   "gold": [
+    "ACADEMIC_TERMS",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "FCLT_BUILDING",
+    "FCLT_ROOMS"
+   ],
+   "ranked": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "DRUPAL_COURSE_CATALOG",
+    "SIS_COURSE_DESCRIPTION",
+    "CIS_COURSE_CATALOG",
+    "ACADEMIC_TERMS",
+    "MIT_STUDENT_DIRECTORY",
+    "ACADEMIC_TERMS_ALL"
+   ],
+   "n_ranked": 9,
+   "ranked_columns": [
+    "27f1f9f78ce93b16",
+    "6530c5f62931b888",
+    "56ffcb1ce3a46f80",
+    "9999534a48073e3c",
+    "7f5436a2e475ddfe",
+    "6bd2529cd2c674b6",
+    "76ef5dc1847f726b",
+    "582478ba64f9476b",
+    "9250ec472e9009f1",
+    "12fddd816a416865",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "cda9deb64ff0eb28"
+   ]
+  },
+  {
+   "i": 95,
+   "gold": [
+    "ACADEMIC_TERMS",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "FCLT_BUILDING",
+    "FCLT_ROOMS"
+   ],
+   "ranked": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "SIS_COURSE_DESCRIPTION",
+    "STUDENT_DEGREE_PROGRAM",
+    "CIS_COURSE_CATALOG",
+    "MIT_STUDENT_DIRECTORY"
+   ],
+   "n_ranked": 7,
+   "ranked_columns": [
+    "6530c5f62931b888",
+    "27f1f9f78ce93b16",
+    "9999534a48073e3c",
+    "56ffcb1ce3a46f80",
+    "7f5436a2e475ddfe",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "d1d26743711ee79f",
+    "884c3fc153553c79",
+    "9250ec472e9009f1",
+    "cda9deb64ff0eb28",
+    "12fddd816a416865",
+    "6bd2529cd2c674b6",
+    "ca375c58d2e05249"
+   ]
+  },
+  {
+   "i": 96,
+   "gold": [
+    "ACADEMIC_TERMS",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "FCLT_BUILDING",
+    "FCLT_ROOMS"
+   ],
+   "ranked": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "DRUPAL_COURSE_CATALOG",
+    "CIS_COURSE_CATALOG",
+    "MIT_STUDENT_DIRECTORY",
+    "SIS_COURSE_DESCRIPTION",
+    "ACADEMIC_TERMS",
+    "ACADEMIC_TERMS_ALL"
+   ],
+   "n_ranked": 9,
+   "ranked_columns": [
+    "27f1f9f78ce93b16",
+    "6530c5f62931b888",
+    "56ffcb1ce3a46f80",
+    "7f5436a2e475ddfe",
+    "9999534a48073e3c",
+    "6bd2529cd2c674b6",
+    "76ef5dc1847f726b",
+    "582478ba64f9476b",
+    "9250ec472e9009f1",
+    "72a357db47096078",
+    "12fddd816a416865",
+    "27d67e23cbaf370c",
+    "b18455dfe57ab15f",
+    "cda9deb64ff0eb28",
+    "7df48e2e49c20353"
+   ]
+  },
+  {
+   "i": 97,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "SUBJECT_SUMMARY"
+   ],
+   "ranked": [
+    "STUDENT_DEGREE_PROGRAM",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "SUBJECT_GROUPING",
+    "ACADEMIC_TERMS",
+    "SUBJECT_ENROLLABLE",
+    "CIS_COURSE_CATALOG",
+    "HR_FACULTY_ROSTER",
+    "SUBJECT_OFFERED_SUMMARY",
+    "ACADEMIC_TERMS_ALL",
+    "SIS_COURSE_DESCRIPTION",
+    "MIT_STUDENT_DIRECTORY",
+    "ACADEMIC_TERM_PARAMETER",
+    "SUBJECT_SUMMARY"
+   ],
+   "n_ranked": 16,
+   "ranked_columns": [
+    "6bd2529cd2c674b6",
+    "76ef5dc1847f726b",
+    "582478ba64f9476b",
+    "27f1f9f78ce93b16",
+    "6530c5f62931b888",
+    "7f5436a2e475ddfe",
+    "56ffcb1ce3a46f80",
+    "9999534a48073e3c",
+    "d356f74082e1d79f",
+    "b441ff9a18f78495",
+    "729b81778ffcc90a",
+    "7df48e2e49c20353",
+    "0364111a42b3be81",
+    "32639f3929bba022",
+    "bbae6c735ca4859f"
+   ]
+  },
+  {
+   "i": 98,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "SUBJECT_OFFERED",
+    "SUBJECT_SUMMARY"
+   ],
+   "ranked": [
+    "STUDENT_DEGREE_PROGRAM",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "ACADEMIC_TERMS",
+    "HR_FACULTY_ROSTER",
+    "SUBJECT_ENROLLABLE",
+    "SIS_DEPARTMENT",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "CIS_COURSE_CATALOG",
+    "ACADEMIC_TERMS_ALL",
+    "SUBJECT_OFFERED_SUMMARY",
+    "SIS_COURSE_DESCRIPTION",
+    "SUBJECT_GROUPING",
+    "STUDENT_DEPARTMENT",
+    "DRUPAL_COURSE_CATALOG"
+   ],
+   "n_ranked": 17,
+   "ranked_columns": [
+    "6bd2529cd2c674b6",
+    "76ef5dc1847f726b",
+    "582478ba64f9476b",
+    "27f1f9f78ce93b16",
+    "6530c5f62931b888",
+    "7f5436a2e475ddfe",
+    "9999534a48073e3c",
+    "56ffcb1ce3a46f80",
+    "7df48e2e49c20353",
+    "729b81778ffcc90a",
+    "85d8085d3a70cde1",
+    "ba554c0e55bb81ee",
+    "d6e812ef06a8f17c",
+    "d1d26743711ee79f",
+    "0364111a42b3be81"
+   ]
+  },
+  {
+   "i": 99,
+   "gold": [
+    "TIP_DETAIL",
+    "TIP_MATERIAL",
+    "TIP_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "CIS_COURSE_CATALOG",
+    "MASTER_DEPT_DCODE_PARENT",
+    "STUDENT_DEPARTMENT"
+   ],
+   "n_ranked": 7,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "7f5436a2e475ddfe",
+    "ca375c58d2e05249",
+    "c960ce7035b9ff11",
+    "56ffcb1ce3a46f80",
+    "41be9a90f8945bed",
+    "2eb7e8bdaa033347",
+    "59c1630e871c7ca2",
+    "4b81897b23f689aa",
+    "c1d15b0ac9b82eb8",
+    "31880d971340be09"
+   ]
+  },
+  {
+   "i": 100,
+   "gold": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SIS_ADMIN_DEPARTMENT",
+    "SIS_DEPARTMENT"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEPARTMENT",
+    "STUDENT_DEGREE_PROGRAM",
+    "ACADEMIC_TERMS",
+    "ACADEMIC_TERMS_ALL",
+    "SIS_DEPARTMENT",
+    "DRUPAL_COURSE_CATALOG"
+   ],
+   "n_ranked": 7,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "6141292c35eeea03",
+    "2c36a5e9d257d0c2",
+    "4746394d0f3f06d3",
+    "f92f5507a9b0f8b9",
+    "5e0840ed373288b6",
+    "a9cccfcf27920b8b",
+    "6bd2529cd2c674b6",
+    "d2b9d3cacc6ba25a",
+    "729b81778ffcc90a",
+    "a25b09e6cd1cc386"
+   ]
+  },
+  {
+   "i": 101,
+   "gold": [
+    "ACADEMIC_TERMS",
+    "IAP_SUBJECT_CATEGORY",
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_SESSION"
+   ],
+   "ranked": [
+    "IAP_SUBJECT_SESSION",
+    "SUBJECT_GROUPING",
+    "SUBJECT_OFFERED_SUMMARY",
+    "SUBJECT_SUMMARY",
+    "SUBJECT_IAP_SCHEDULE",
+    "ACADEMIC_TERMS",
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_SPONSOR",
+    "IAP_SUBJECT_CATEGORY",
+    "ACADEMIC_TERMS_ALL",
+    "SUBJECT_ENROLLABLE",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "IAP_SUBJECT_PERSON",
+    "OPA_PERSON_CURRENT",
+    "ACADEMIC_TERM_PARAMETER"
+   ],
+   "n_ranked": 20,
+   "ranked_columns": [
+    "3977ecfe6070823b",
+    "dcf3988ef4fd498f",
+    "625f5aed048d414f",
+    "b441ff9a18f78495",
+    "7fdaa0815cf0ae47",
+    "46efdae001f19db9",
+    "72a8f8864c91c171",
+    "82ff8d7c6a84aa8c",
+    "5aba6bf53e9b2f7a",
+    "816b39cb38b38250",
+    "988952511df66ea1",
+    "65fd3bdaf8c62be3",
+    "62dd298a0af38d38",
+    "19ca9a7439260d27",
+    "729b81778ffcc90a"
+   ]
+  },
+  {
+   "i": 102,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "COURSE_CATALOG_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "STUDENT_DEGREE_PROGRAM",
+    "ACADEMIC_TERMS",
+    "ACADEMIC_TERMS_ALL",
+    "ACADEMIC_TERM_PARAMETER",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SUBJECT_ENROLLABLE",
+    "MIT_STUDENT_DIRECTORY",
+    "SUBJECT_OFFERED_SUMMARY",
+    "HR_FACULTY_ROSTER",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "DRUPAL_COURSE_CATALOG"
+   ],
+   "n_ranked": 12,
+   "ranked_columns": [
+    "582478ba64f9476b",
+    "6bd2529cd2c674b6",
+    "00c88456b0e1e443",
+    "d2b9d3cacc6ba25a",
+    "76ef5dc1847f726b",
+    "5d9aec7a508ee3e6",
+    "729b81778ffcc90a",
+    "a25b09e6cd1cc386",
+    "404c129debec977b",
+    "cf44e49f8a9ebe5c",
+    "bbae6c735ca4859f",
+    "f96c14f76a3af9d0",
+    "d07790e678138172",
+    "0364111a42b3be81",
+    "a59d5d1b524c3557"
+   ]
+  },
+  {
+   "i": 103,
+   "gold": [
+    "MIT_STUDENT_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "MOIRA_LIST_OWNER",
+    "SE_PERSON"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "STUDENT_DEGREE_PROGRAM",
+    "SUBJECT_OFFERED",
+    "LIBRARY_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 7,
+   "ranked_columns": [
+    "884c3fc153553c79",
+    "85d8085d3a70cde1",
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "d6e812ef06a8f17c",
+    "a35df552c1dd75ad",
+    "6a0cee6f85dcb686",
+    "8874a8bf0469fd72",
+    "0b452b204cab82d7",
+    "54fc932dfa28151b",
+    "3f8632988e683963",
+    "e40569463ea8cf8c",
+    "9edcc1d1730a97ee",
+    "f48a7bb93606559d",
+    "68cfb58fd1c9226c"
+   ]
+  },
+  {
+   "i": 104,
+   "gold": [
+    "MIT_STUDENT_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "SE_PERSON",
+    "SIS_ADMIN_DEPARTMENT",
+    "SIS_DEPARTMENT"
+   ],
+   "ranked": [
+    "STUDENT_DEGREE_PROGRAM",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "DRUPAL_COURSE_CATALOG",
+    "STUDENT_DEPARTMENT",
+    "STUDENT_ETHNIC_SUBGROUP",
+    "FAC_ROOMS",
+    "MIT_STUDENT_DIRECTORY"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "5e0840ed373288b6",
+    "d1d26743711ee79f",
+    "884c3fc153553c79",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "7df48e2e49c20353",
+    "2b9bc4e003a8f6e0",
+    "8d1b41a320dadb1b",
+    "c4b60b8a43403060",
+    "0cfb4e5947d87b1d",
+    "94fcde874d8c5d86",
+    "db3784a89a20304a",
+    "0249db01a3ee6bff",
+    "40729c80f69fae5a",
+    "b1249bcaab0e8edb"
+   ]
+  },
+  {
+   "i": 105,
+   "gold": [
+    "MIT_STUDENT_DIRECTORY",
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "SE_PERSON",
+    "SIS_DEPARTMENT"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SUBJECT_OFFERED_SUMMARY",
+    "STUDENT_DEGREE_PROGRAM",
+    "SUBJECT_SUMMARY",
+    "LIBRARY_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "CIS_COURSE_CATALOG",
+    "STUDENT_DEPARTMENT",
+    "SUBJECT_OFFERED"
+   ],
+   "n_ranked": 9,
+   "ranked_columns": [
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "6a0cee6f85dcb686",
+    "50ba958614d1c588",
+    "30922678b5877f01",
+    "ca375c58d2e05249",
+    "07cefcc4ce62f6f8",
+    "5516abde2b28e52f",
+    "17fb0630ffb7644d",
+    "41be9a90f8945bed",
+    "788bac56fcecc519",
+    "0b452b204cab82d7"
+   ]
+  },
+  {
+   "i": 106,
+   "gold": [
+    "FAC_BUILDING",
+    "FAC_FLOOR",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "FAC_ROOMS",
+    "BUILDINGS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "SPACE_FLOOR",
+    "ZPM_ROOMS_LOAD",
+    "FAC_FLOOR",
+    "PROFIT_CENTER_GROUP"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "de2b7291effbdb6c",
+    "d1a580412a2c0c65",
+    "726c435ae499625c",
+    "f95f0be57a7e80e9",
+    "5e5bb94b120c351d",
+    "7d5c4a8b97c4d24f",
+    "bd9df34467cd7f8c",
+    "d52c8e0252fd1c66",
+    "69fdb82184760c4d",
+    "ebd1586eb4a474b9",
+    "1f3f9c49957e6857",
+    "323b8f626bc3a41a",
+    "c96c9ba7e93a45f2",
+    "e7eff53a9626f077",
+    "5a3f83e24964814d"
+   ]
+  },
+  {
+   "i": 107,
+   "gold": [
+    "FAC_MAJOR_USE",
+    "FAC_ORGANIZATION",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "BUILDINGS",
+    "ZPM_ROOMS_LOAD",
+    "PROFIT_CENTER_GROUP",
+    "SUBJECT_SUMMARY"
+   ],
+   "n_ranked": 7,
+   "ranked_columns": [
+    "ebd1586eb4a474b9",
+    "c96c9ba7e93a45f2",
+    "5e5bb94b120c351d",
+    "f95f0be57a7e80e9",
+    "bd9df34467cd7f8c",
+    "de2b7291effbdb6c",
+    "69fdb82184760c4d",
+    "1f3f9c49957e6857",
+    "7d5c4a8b97c4d24f",
+    "932522af7f3d7b3f",
+    "323b8f626bc3a41a",
+    "49b027749d27104a",
+    "5768826100956b4e",
+    "0934e8f45a7d30e4",
+    "080c1a5b853e7807"
+   ]
+  },
+  {
+   "i": 108,
+   "gold": [
+    "FAC_BUILDING",
+    "FAC_BUILDING_ADDRESS",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FAC_ROOMS",
+    "FCLT_ROOMS",
+    "FCLT_ROOMS_HIST",
+    "SUBJECT_SUMMARY",
+    "SUBJECT_OFFERED_SUMMARY",
+    "FAC_BUILDING_ADDRESS"
+   ],
+   "n_ranked": 7,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "d52c8e0252fd1c66",
+    "e7eff53a9626f077",
+    "d74209e55413ddec",
+    "ecb8626842a04a1d",
+    "bd9df34467cd7f8c",
+    "f95f0be57a7e80e9",
+    "5e5bb94b120c351d",
+    "de2b7291effbdb6c",
+    "1d029979898d4b88",
+    "6b17433900d80072",
+    "ebd1586eb4a474b9",
+    "5ee3d7fce20e0508",
+    "69fdb82184760c4d"
+   ]
+  },
+  {
+   "i": 109,
+   "gold": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "STUDENT_DEGREE_PROGRAM",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "a83706ea5ce870f5",
+    "572f1bca58545413",
+    "b0e97e31d502b0c0",
+    "96519c2f52a2cf19",
+    "6bd82a420957b11b",
+    "7f5436a2e475ddfe",
+    "bc44eb61f579c3c7",
+    "614f86a4625c2501",
+    "6a0cee6f85dcb686",
+    "30922678b5877f01"
+   ]
+  },
+  {
+   "i": 110,
+   "gold": [
+    "LIBRARY_MATERIAL_STATUS",
+    "LIBRARY_RESERVE_MATRL_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "DRUPAL_COURSE_CATALOG",
+    "CIS_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM",
+    "SIS_COURSE_DESCRIPTION"
+   ],
+   "n_ranked": 6,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "56ffcb1ce3a46f80",
+    "7f5436a2e475ddfe",
+    "e40569463ea8cf8c",
+    "59c1630e871c7ca2",
+    "30922678b5877f01",
+    "e4cb539f8d73e94d",
+    "6a0cee6f85dcb686",
+    "8cb23d7ffe458f8d",
+    "1f819c59df64994c",
+    "68cfb58fd1c9226c"
+   ]
+  },
+  {
+   "i": 111,
+   "gold": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "LIBRARY_MATERIAL_STATUS",
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL"
+   ],
+   "ranked": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "DRUPAL_COURSE_CATALOG",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "6530c5f62931b888",
+    "9999534a48073e3c",
+    "27f1f9f78ce93b16",
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "c4b60b8a43403060",
+    "884c3fc153553c79",
+    "db3784a89a20304a",
+    "2b9bc4e003a8f6e0",
+    "94fcde874d8c5d86",
+    "0cfb4e5947d87b1d",
+    "14dbfb835f1f1ece",
+    "56ffcb1ce3a46f80"
+   ]
+  },
+  {
+   "i": 112,
+   "gold": [
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "LIBRARY_MATERIAL_STATUS",
+    "LIBRARY_RESERVE_CATALOG",
+    "LIBRARY_RESERVE_MATRL_DETAIL"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "ACADEMIC_TERMS",
+    "STUDENT_DEGREE_PROGRAM",
+    "DRUPAL_COURSE_CATALOG",
+    "ACADEMIC_TERMS_ALL",
+    "ACADEMIC_TERM_PARAMETER",
+    "CIS_COURSE_CATALOG"
+   ],
+   "n_ranked": 8,
+   "ranked_columns": [
+    "7f5436a2e475ddfe",
+    "56ffcb1ce3a46f80",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "7df48e2e49c20353",
+    "27f1f9f78ce93b16",
+    "5d9aec7a508ee3e6",
+    "d2b9d3cacc6ba25a",
+    "9999534a48073e3c",
+    "6530c5f62931b888",
+    "00c88456b0e1e443",
+    "cf44e49f8a9ebe5c",
+    "f96c14f76a3af9d0"
+   ]
+  },
+  {
+   "i": 113,
+   "gold": [
+    "IAP_SUBJECT_CATEGORY",
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_SPONSOR"
+   ],
+   "ranked": [
+    "IAP_SUBJECT_SPONSOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "IAP_SUBJECT_CATEGORY",
+    "SUBJECT_OFFERED_SUMMARY",
+    "LIBRARY_SUBJECT_OFFERED",
+    "TIP_SUBJECT_OFFERED",
+    "SUBJECT_OFFERED",
+    "IAP_SUBJECT_DETAIL",
+    "SUBJECT_IAP_SCHEDULE"
+   ],
+   "n_ranked": 9,
+   "ranked_columns": [
+    "e19ee6126525e8f0",
+    "4a80cbcde8ac2551",
+    "4aff8d964adeab43",
+    "790c4b4f58ec0631",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "9c389c94fe615a8c",
+    "7f5436a2e475ddfe",
+    "f48a7bb93606559d",
+    "c960ce7035b9ff11",
+    "68cfb58fd1c9226c",
+    "31880d971340be09"
+   ]
+  },
+  {
+   "i": 114,
+   "gold": [
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_SESSION",
+    "IAP_SUBJECT_SPONSOR"
+   ],
+   "ranked": [
+    "IAP_SUBJECT_SPONSOR",
+    "IAP_SUBJECT_SESSION",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "SUBJECT_IAP_SCHEDULE",
+    "SUBJECT_OFFERED",
+    "IAP_SUBJECT_PERSON",
+    "IAP_SUBJECT_DETAIL",
+    "TIP_SUBJECT_OFFERED",
+    "LIBRARY_SUBJECT_OFFERED",
+    "SUBJECT_ENROLLABLE"
+   ],
+   "n_ranked": 10,
+   "ranked_columns": [
+    "e19ee6126525e8f0",
+    "4aff8d964adeab43",
+    "790c4b4f58ec0631",
+    "4a80cbcde8ac2551",
+    "625f5aed048d414f",
+    "884c3fc153553c79",
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "3977ecfe6070823b",
+    "dcf3988ef4fd498f",
+    "82ff8d7c6a84aa8c",
+    "5aba6bf53e9b2f7a",
+    "988952511df66ea1"
+   ]
+  },
+  {
+   "i": 115,
+   "gold": [
+    "IAP_SUBJECT_CATEGORY",
+    "IAP_SUBJECT_DETAIL",
+    "IAP_SUBJECT_PERSON"
+   ],
+   "ranked": [
+    "IAP_SUBJECT_PERSON",
+    "IAP_SUBJECT_CATEGORY",
+    "IAP_SUBJECT_SPONSOR",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "ROLES_FIN_PA",
+    "SUBJECT_OFFERED_SUMMARY",
+    "IAP_SUBJECT_DETAIL",
+    "OPA_PERSON_CURRENT",
+    "SUBJECT_IAP_SCHEDULE",
+    "ESTIMATED_SURCHARGES_ESTONLY",
+    "SUBJECT_OFFERED",
+    "TIP_SUBJECT_OFFERED",
+    "SUBJECT_SUMMARY",
+    "PROFIT_CENTER_GROUP",
+    "IAP_SUBJECT_SESSION"
+   ],
+   "n_ranked": 15,
+   "ranked_columns": [
+    "8564e67c352f6bd3",
+    "13be2c08aacf3ee1",
+    "264f82c9ea47559c",
+    "d9ead2f26a5461a2",
+    "4a43bad45fff48cb",
+    "7fb9e2d8cfb66e1f",
+    "634d54f68dc2c659",
+    "790c4b4f58ec0631",
+    "24d14a22099bcbf6",
+    "4a80cbcde8ac2551",
+    "02279842f52c90bd",
+    "640203cbd98ed796",
+    "4aff8d964adeab43",
+    "c3f81b12d656013e",
+    "8eb92b1157ec7837"
+   ]
+  },
+  {
+   "i": 116,
+   "gold": [
+    "FAC_BUILDING",
+    "FAC_FLOOR",
+    "FAC_ROOMS"
+   ],
+   "ranked": [
+    "BUILDINGS",
+    "FAC_ROOMS",
+    "MASTER_DEPT_HIERARCHY_LINKS",
+    "FCLT_ROOMS",
+    "SPACE_FLOOR",
+    "FAC_FLOOR",
+    "FCLT_ROOMS_HIST",
+    "ZPM_ROOMS_LOAD",
+    "FCLT_FLOOR_HIST",
+    "MASTER_DEPT_HIERARCHY",
+    "FAC_BUILDING_ADDRESS",
+    "FUND_CENTER_HIERARCHY"
+   ],
+   "n_ranked": 12,
+   "ranked_columns": [
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "d52c8e0252fd1c66",
+    "e7eff53a9626f077",
+    "d74209e55413ddec",
+    "ecb8626842a04a1d",
+    "1d029979898d4b88",
+    "6b17433900d80072",
+    "f95f0be57a7e80e9",
+    "de2b7291effbdb6c",
+    "5ee3d7fce20e0508",
+    "ebd1586eb4a474b9",
+    "5e5bb94b120c351d",
+    "bd9df34467cd7f8c",
+    "af8c27341b8bc30c"
+   ]
+  },
+  {
+   "i": 117,
+   "gold": [
+    "ACADEMIC_TERMS_ALL",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "EMPLOYEE_DIRECTORY"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "LIBRARY_COURSE_INSTRUCTOR",
+    "DRUPAL_COURSE_CATALOG",
+    "STUDENT_DEGREE_PROGRAM"
+   ],
+   "n_ranked": 4,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "85d8085d3a70cde1",
+    "6530c5f62931b888",
+    "884c3fc153553c79",
+    "9999534a48073e3c",
+    "27f1f9f78ce93b16",
+    "db3784a89a20304a",
+    "bc44eb61f579c3c7",
+    "56ffcb1ce3a46f80",
+    "e40569463ea8cf8c",
+    "c4b60b8a43403060",
+    "ca375c58d2e05249",
+    "887c5c78e5196e46"
+   ]
+  },
+  {
+   "i": 118,
+   "gold": [
+    "MOIRA_LIST",
+    "MOIRA_LIST_DETAIL",
+    "MOIRA_LIST_OWNER"
+   ],
+   "ranked": [
+    "MOIRA_LIST_OWNER",
+    "PERSON_AUTH_AREA",
+    "OPA_PERSON_CURRENT",
+    "FCLT_BUILDING_ADDRESS_HIST",
+    "PROFIT_CENTER_GROUP",
+    "FCLT_BUILDING_ADDRESS",
+    "SPACE_SUPERVISOR_USAGE",
+    "FAC_BUILDING_ADDRESS",
+    "SPACE_USAGE",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "MOIRA_LIST_DETAIL",
+    "SUBJECT_OFFERED_SUMMARY",
+    "SPACE_DETAIL",
+    "LIBRARY_SUBJECT_OFFERED",
+    "SUBJECT_OFFERED"
+   ],
+   "n_ranked": 21,
+   "ranked_columns": [
+    "5501800cd35ce262",
+    "e496c11f4ee11593",
+    "5b2537e8123ae322",
+    "d9acb0a8ce4966df",
+    "fe620815cb74e9e2",
+    "9880f2c9312f2592",
+    "5ba084334625e3d4",
+    "fa341e5b96bfcec5",
+    "6f48cdf760dc1c56",
+    "0ecb72c89d8f5a32",
+    "4923686fc82ca5d6",
+    "72cd92a9d5d9efec",
+    "b4fa4ad03f520c3d",
+    "2db6967ad3524be2",
+    "ec53781b9b084d30"
+   ]
+  },
+  {
+   "i": 119,
+   "gold": [
+    "SIS_COURSE_DESCRIPTION",
+    "SIS_DEPARTMENT",
+    "SIS_SUBJECT_CODE"
+   ],
+   "ranked": [
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "STUDENT_DEGREE_PROGRAM",
+    "SIS_COURSE_DESCRIPTION",
+    "DRUPAL_COURSE_CATALOG"
+   ],
+   "n_ranked": 4,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "d6e812ef06a8f17c",
+    "7df48e2e49c20353",
+    "884c3fc153553c79",
+    "85d8085d3a70cde1",
+    "6a0cee6f85dcb686",
+    "c973a090bcaaa36e",
+    "8874a8bf0469fd72",
+    "f48a7bb93606559d",
+    "c960ce7035b9ff11",
+    "5e0840ed373288b6",
+    "68cfb58fd1c9226c",
+    "0b452b204cab82d7",
+    "31880d971340be09",
+    "a35df552c1dd75ad"
+   ]
+  },
+  {
+   "i": 120,
+   "gold": [
+    "MIT_STUDENT_DIRECTORY",
+    "SIS_ADMIN_DEPARTMENT",
+    "SIS_DEPARTMENT"
+   ],
+   "ranked": [
+    "STUDENT_DEPARTMENT",
+    "STUDENT_DEGREE_PROGRAM",
+    "COURSE_CATALOG_SUBJECT_OFFERED",
+    "DRUPAL_COURSE_CATALOG",
+    "LIBRARY_COURSE_INSTRUCTOR"
+   ],
+   "n_ranked": 5,
+   "ranked_columns": [
+    "2c36a5e9d257d0c2",
+    "5e0840ed373288b6",
+    "a9cccfcf27920b8b",
+    "f92f5507a9b0f8b9",
+    "6141292c35eeea03",
+    "4746394d0f3f06d3",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "d6e812ef06a8f17c",
+    "7df48e2e49c20353",
+    "884c3fc153553c79",
+    "6bd2529cd2c674b6",
+    "4981021136009f38",
+    "b1249bcaab0e8edb",
+    "a5959cf9d114abd7"
+   ]
+  }
+ ]
+}

@@ -4,7 +4,7 @@
  "encoder": "minilm",
  "method": "vanilla",
  "n_queries": 121,
- "seconds": 2.2,
+ "seconds": 3.4,
  "summary": {
   "5": {
    "P": 0.2347107438016529,
@@ -45,6 +45,27 @@
    "PR": 0.2396694214876033
   }
  },
+ "n_column_queries": 121,
+ "summary_columns": {
+  "5": {
+   "P": 0.1421487603305785,
+   "R": 0.07484536340880532,
+   "F1": 0.09588436270778421,
+   "PR": 0.0
+  },
+  "10": {
+   "P": 0.1024793388429752,
+   "R": 0.10614230675606465,
+   "F1": 0.10165667150383453,
+   "PR": 0.0
+  },
+  "15": {
+   "P": 0.09035812672176309,
+   "R": 0.1356020335042544,
+   "F1": 0.10584280276051944,
+   "PR": 0.0
+  }
+ },
  "per_query": [
   {
    "i": 0,
@@ -72,7 +93,24 @@
     "MASTER_DEPT_HIERARCHY_LINKS",
     "FCLT_ORGANIZATION_HIST"
    ],
-   "n_ranked": 26
+   "n_ranked": 26,
+   "ranked_columns": [
+    "dbd680cefadb8163",
+    "b006c22172a5165e",
+    "8b6cac47531dcde3",
+    "514293fd400fcf61",
+    "7596cb9fc727ab48",
+    "73d4d35aec6b40a1",
+    "b97e42d25beb2b96",
+    "1d029979898d4b88",
+    "6b17433900d80072",
+    "0153a35c2d4297dc",
+    "5d17a5cab4a11a5a",
+    "605e90f29eec9602",
+    "2302d6aed82055d0",
+    "8a8e03ecf753d12b",
+    "f986a7bb31afe525"
+   ]
   },
   {
    "i": 1,
@@ -99,7 +137,24 @@
     "OPA_PERSON_CURRENT",
     "LIBRARY_COURSE_INSTRUCTOR"
    ],
-   "n_ranked": 45
+   "n_ranked": 45,
+   "ranked_columns": [
+    "54c8191cca768c04",
+    "12fddd816a416865",
+    "5f1c1bcfd740a6eb",
+    "76ef5dc1847f726b",
+    "7f5436a2e475ddfe",
+    "cda9deb64ff0eb28",
+    "582478ba64f9476b",
+    "64b678d1f814554b",
+    "0c5c3b4ffc463cf7",
+    "578c0cb6e18d5003",
+    "da696d42505d86dd",
+    "560aaf0bc2efada8",
+    "b0b2ebf91eed67f2",
+    "cd61280bb53d7310",
+    "5d9aec7a508ee3e6"
+   ]
   },
   {
    "i": 2,
@@ -120,7 +175,24 @@
     "LIBRARY_SUBJECT_OFFERED",
     "CIS_COURSE_CATALOG"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "2b9bc4e003a8f6e0",
+    "7df48e2e49c20353",
+    "1324d24160431b97",
+    "c4b60b8a43403060",
+    "94fcde874d8c5d86",
+    "54fc932dfa28151b",
+    "0551b202f981c86e",
+    "14dbfb835f1f1ece",
+    "0cfb4e5947d87b1d",
+    "ad857f340b1bcd7d",
+    "6bd82a420957b11b",
+    "85d8085d3a70cde1",
+    "41be9a90f8945bed",
+    "30922678b5877f01",
+    "c18f6213cde8dd57"
+   ]
   },
   {
    "i": 3,
@@ -147,7 +219,24 @@
     "OPA_PERSON_CURRENT",
     "SIS_ADMIN_DEPARTMENT"
    ],
-   "n_ranked": 19
+   "n_ranked": 19,
+   "ranked_columns": [
+    "de2b7291effbdb6c",
+    "932522af7f3d7b3f",
+    "dbd680cefadb8163",
+    "69fdb82184760c4d",
+    "49b027749d27104a",
+    "a01c14e22ed8f22d",
+    "b006c22172a5165e",
+    "bd9df34467cd7f8c",
+    "923b01c85ea27548",
+    "73d4d35aec6b40a1",
+    "1fb4d7fcb7df1406",
+    "76208c832a99a671",
+    "e182344dc99e7e85",
+    "080c1a5b853e7807",
+    "7596cb9fc727ab48"
+   ]
   },
   {
    "i": 4,
@@ -175,7 +264,24 @@
     "CIS_COURSE_CATALOG",
     "FAC_BUILDING"
    ],
-   "n_ranked": 23
+   "n_ranked": 23,
+   "ranked_columns": [
+    "bd9df34467cd7f8c",
+    "7df48e2e49c20353",
+    "f95f0be57a7e80e9",
+    "0249db01a3ee6bff",
+    "de2b7291effbdb6c",
+    "323b8f626bc3a41a",
+    "24a87951bc3c663c",
+    "63a80360e8c7e3a6",
+    "e1af22b7878917df",
+    "5e5bb94b120c351d",
+    "f2bf58f0714faa36",
+    "5f73724b368c7989",
+    "29d9fc46f6ed01eb",
+    "66bfa7cb755a013d",
+    "c74018bf604eda60"
+   ]
   },
   {
    "i": 5,
@@ -200,7 +306,24 @@
     "SIS_COURSE_DESCRIPTION",
     "CIS_COURSE_CATALOG"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "ee6a970d68606a8a",
+    "9edcc1d1730a97ee",
+    "33d347778e0e0650",
+    "c18f6213cde8dd57",
+    "0551b202f981c86e",
+    "bc44eb61f579c3c7",
+    "0cfb4e5947d87b1d",
+    "884c3fc153553c79",
+    "3ee1173f27a8cbb7",
+    "bc6641c0ee5aaaf5",
+    "f2bf58f0714faa36",
+    "6bd82a420957b11b",
+    "85d8085d3a70cde1",
+    "a83706ea5ce870f5"
+   ]
   },
   {
    "i": 6,
@@ -221,7 +344,24 @@
     "IAP_SUBJECT_DETAIL",
     "PROFIT_CENTER_GROUP"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "6034cb960f6bc7d1",
+    "a09cd155291af208",
+    "7df48e2e49c20353",
+    "8778bf7e11c8de96",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "68cfb58fd1c9226c",
+    "66a7b7ee45b3167e",
+    "03c99ec2ae46ebc3",
+    "aa353523209ba889",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "41be9a90f8945bed",
+    "ec17f6b485d4278f",
+    "c2c3786240d18f34"
+   ]
   },
   {
    "i": 7,
@@ -247,7 +387,24 @@
     "HR_FACULTY_ROSTER",
     "FAC_ROOMS"
    ],
-   "n_ranked": 18
+   "n_ranked": 18,
+   "ranked_columns": [
+    "d1a580412a2c0c65",
+    "db30fd403cd36262",
+    "6f675a94deee8925",
+    "e7eff53a9626f077",
+    "d52c8e0252fd1c66",
+    "ecb8626842a04a1d",
+    "6b17433900d80072",
+    "34a0abdca118420d",
+    "3c2282dbdc30d9e9",
+    "d7f28abe1ca8ad3d",
+    "c315ca481c1b5da9",
+    "90b481f7538081a8",
+    "726c435ae499625c",
+    "decc41c66af4b455",
+    "fbab6d659ccae143"
+   ]
   },
   {
    "i": 8,
@@ -274,7 +431,24 @@
     "FCLT_ORGANIZATION",
     "ACADEMIC_TERMS_ALL"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "defa0021b3dc70a6",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "a83706ea5ce870f5",
+    "85d8085d3a70cde1",
+    "66a7b7ee45b3167e",
+    "d1d26743711ee79f",
+    "fee47798123b542a",
+    "0551b202f981c86e",
+    "1324d24160431b97",
+    "98fdd64208cf5cf7",
+    "96519c2f52a2cf19",
+    "385e67018f5c0a2e",
+    "9dde40080c9c953e"
+   ]
   },
   {
    "i": 9,
@@ -300,7 +474,24 @@
     "SIS_COURSE_DESCRIPTION",
     "FCLT_BUILDING_HIST"
    ],
-   "n_ranked": 28
+   "n_ranked": 28,
+   "ranked_columns": [
+    "a83706ea5ce870f5",
+    "7714415d899866f3",
+    "96519c2f52a2cf19",
+    "5e0840ed373288b6",
+    "57a03e6b321a6b96",
+    "63a80360e8c7e3a6",
+    "beaef772ddfeb873",
+    "98fdd64208cf5cf7",
+    "7df48e2e49c20353",
+    "c3a9f1deed4f27f1",
+    "bc6641c0ee5aaaf5",
+    "f9bbf32c3a417189",
+    "29d9fc46f6ed01eb",
+    "b1249bcaab0e8edb",
+    "a8cc5180530a8a9c"
+   ]
   },
   {
    "i": 10,
@@ -325,7 +516,24 @@
     "SPACE_DETAIL",
     "FAC_BUILDING"
    ],
-   "n_ranked": 18
+   "n_ranked": 18,
+   "ranked_columns": [
+    "a01c14e22ed8f22d",
+    "d1a580412a2c0c65",
+    "76208c832a99a671",
+    "726c435ae499625c",
+    "e7eff53a9626f077",
+    "6b17433900d80072",
+    "a288dce9f7e1df5f",
+    "d52c8e0252fd1c66",
+    "c0e62ccbe3bb9d1c",
+    "bd9df34467cd7f8c",
+    "323b8f626bc3a41a",
+    "ac0c2fbcd37780a2",
+    "ecb8626842a04a1d",
+    "9092defc4cc001c2",
+    "b271d16427a86677"
+   ]
   },
   {
    "i": 11,
@@ -349,7 +557,24 @@
     "ACADEMIC_TERMS_ALL",
     "ACADEMIC_TERMS"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "f541936ded8fce91",
+    "a3d5aee5838047df",
+    "783ec89e79a7ffac",
+    "17fb0630ffb7644d",
+    "7df48e2e49c20353",
+    "bc6641c0ee5aaaf5",
+    "d1d26743711ee79f",
+    "a334bece9544aece",
+    "c973a090bcaaa36e",
+    "beaef772ddfeb873",
+    "f2bf58f0714faa36",
+    "d61a4a22aad23ee4",
+    "1324d24160431b97",
+    "2c01151c2d37b270",
+    "06b079d3dfc124ad"
+   ]
   },
   {
    "i": 12,
@@ -375,7 +600,24 @@
     "CIS_COURSE_CATALOG",
     "DRUPAL_COURSE_CATALOG"
    ],
-   "n_ranked": 18
+   "n_ranked": 18,
+   "ranked_columns": [
+    "7f5436a2e475ddfe",
+    "66a7b7ee45b3167e",
+    "4a80cbcde8ac2551",
+    "d0ecd2f993355463",
+    "7df48e2e49c20353",
+    "4aff8d964adeab43",
+    "2c01151c2d37b270",
+    "12051c0ecbdebe8c",
+    "582478ba64f9476b",
+    "07cefcc4ce62f6f8",
+    "3fdf410b1f3aa665",
+    "17fb0630ffb7644d",
+    "beaef772ddfeb873",
+    "664b6ed7f63980f3",
+    "cd61280bb53d7310"
+   ]
   },
   {
    "i": 13,
@@ -399,7 +641,24 @@
     "CIS_COURSE_CATALOG",
     "ACADEMIC_TERMS"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "f541936ded8fce91",
+    "783ec89e79a7ffac",
+    "bc6641c0ee5aaaf5",
+    "a3d5aee5838047df",
+    "17fb0630ffb7644d",
+    "1324d24160431b97",
+    "7df48e2e49c20353",
+    "beaef772ddfeb873",
+    "7f5436a2e475ddfe",
+    "c973a090bcaaa36e",
+    "3fdf410b1f3aa665",
+    "06b079d3dfc124ad",
+    "d1d26743711ee79f",
+    "f2bf58f0714faa36",
+    "ab195698eeea79f6"
+   ]
   },
   {
    "i": 14,
@@ -425,7 +684,24 @@
     "LIBRARY_SUBJECT_OFFERED",
     "LIBRARY_RESERVE_MATRL_DETAIL"
    ],
-   "n_ranked": 20
+   "n_ranked": 20,
+   "ranked_columns": [
+    "3750d0794a141154",
+    "9edcc1d1730a97ee",
+    "333d13ba2fa1e626",
+    "63cf62f004d5a874",
+    "f541936ded8fce91",
+    "ee6a970d68606a8a",
+    "d10104966b176473",
+    "6614cf1b9ed1c40c",
+    "a334bece9544aece",
+    "a53233b19aa742df",
+    "07cefcc4ce62f6f8",
+    "d0ecd2f993355463",
+    "d61a4a22aad23ee4",
+    "f3bd62c0d03b2df4",
+    "ce4a8dc6da260145"
+   ]
   },
   {
    "i": 15,
@@ -451,7 +727,24 @@
     "SUBJECT_OFFERED",
     "DRUPAL_COURSE_CATALOG"
    ],
-   "n_ranked": 23
+   "n_ranked": 23,
+   "ranked_columns": [
+    "816b39cb38b38250",
+    "46efdae001f19db9",
+    "988952511df66ea1",
+    "625f5aed048d414f",
+    "206f430b6d7b325a",
+    "72a8f8864c91c171",
+    "dcf3988ef4fd498f",
+    "82ff8d7c6a84aa8c",
+    "5aba6bf53e9b2f7a",
+    "7fdaa0815cf0ae47",
+    "3977ecfe6070823b",
+    "124e169f38be1a25",
+    "859b69c6ebd0c3c7",
+    "fd538f006093041a",
+    "f541936ded8fce91"
+   ]
   },
   {
    "i": 16,
@@ -476,7 +769,24 @@
     "STUDENT_DEGREE_PROGRAM",
     "ESTIMATED_SURCHARGES_ESTONLY"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "625f5aed048d414f",
+    "816b39cb38b38250",
+    "988952511df66ea1",
+    "206f430b6d7b325a",
+    "dcf3988ef4fd498f",
+    "5aba6bf53e9b2f7a",
+    "72a8f8864c91c171",
+    "46efdae001f19db9",
+    "82ff8d7c6a84aa8c",
+    "7fdaa0815cf0ae47",
+    "0439f57fe3de066f",
+    "fd538f006093041a",
+    "f541936ded8fce91",
+    "66a7b7ee45b3167e",
+    "07cefcc4ce62f6f8"
+   ]
   },
   {
    "i": 17,
@@ -498,7 +808,24 @@
     "SUBJECT_OFFERED",
     "SIS_DEPARTMENT"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "bc44eb61f579c3c7",
+    "0249db01a3ee6bff",
+    "b1249bcaab0e8edb",
+    "7df48e2e49c20353",
+    "2018aa53f1ca3b5f",
+    "f9bbf32c3a417189",
+    "f2bf58f0714faa36",
+    "ee6a970d68606a8a",
+    "5e0840ed373288b6",
+    "9edcc1d1730a97ee",
+    "1324d24160431b97",
+    "33d347778e0e0650",
+    "c18f6213cde8dd57",
+    "3ee1173f27a8cbb7",
+    "884c3fc153553c79"
+   ]
   },
   {
    "i": 18,
@@ -519,7 +846,24 @@
     "SUBJECT_OFFERED",
     "CIS_COURSE_CATALOG"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "eeadf919a4872839",
+    "241da6425e657602",
+    "1b2bf336dc963dce",
+    "1e63994aee99b511",
+    "267bd3c5bcf4fafb",
+    "804be749d1547af9",
+    "69f2aa0a73eedbb2",
+    "3ee1173f27a8cbb7",
+    "b70437229753c329",
+    "6af2c0ba5547e407",
+    "f4a0b1f716b51107",
+    "9264aceb22414b8f",
+    "49928955e51a0394",
+    "eb7b9c7559c1daa3",
+    "3ada3fe32f943ffa"
+   ]
   },
   {
    "i": 19,
@@ -545,7 +889,24 @@
     "SIS_DEPARTMENT",
     "SUBJECT_SELECTOR"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "3ee1173f27a8cbb7",
+    "7df48e2e49c20353",
+    "884c3fc153553c79",
+    "f2bf58f0714faa36",
+    "c960ce7035b9ff11",
+    "423010bb5ad15b69",
+    "0249db01a3ee6bff",
+    "bc44eb61f579c3c7",
+    "1324d24160431b97",
+    "d6e812ef06a8f17c",
+    "85d8085d3a70cde1",
+    "b1249bcaab0e8edb",
+    "98fdd64208cf5cf7",
+    "33d347778e0e0650",
+    "5e0840ed373288b6"
+   ]
   },
   {
    "i": 20,
@@ -573,7 +934,24 @@
     "FCLT_BUILDING_ADDRESS",
     "SUBJECT_OFFERED_SUMMARY"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "d52c8e0252fd1c66",
+    "726c435ae499625c",
+    "a01c14e22ed8f22d",
+    "a288dce9f7e1df5f",
+    "923b01c85ea27548",
+    "61362a7b828a1938",
+    "76208c832a99a671",
+    "323b8f626bc3a41a",
+    "f1892d5baf3c7928",
+    "7cfea9099bae29e5",
+    "e7eff53a9626f077",
+    "0974d71048cac780",
+    "9010013fa1dec6ae",
+    "d1a580412a2c0c65",
+    "b7c37bbfa7bb3b94"
+   ]
   },
   {
    "i": 21,
@@ -602,7 +980,24 @@
     "SPACE_UNIT2",
     "FCLT_FLOOR"
    ],
-   "n_ranked": 29
+   "n_ranked": 29,
+   "ranked_columns": [
+    "4543a6bca5ee2d06",
+    "97f3bdcb0143350d",
+    "b72b82d8f28d3c5d",
+    "a85c29994a7cf4fd",
+    "c2dbeb8daf0d6adf",
+    "d52c8e0252fd1c66",
+    "5db3480d7dd8b0a9",
+    "726c435ae499625c",
+    "f95f0be57a7e80e9",
+    "a6faa2602f9bfe20",
+    "5e5bb94b120c351d",
+    "ff988111af1f0ec8",
+    "8b43b4261e5c460d",
+    "9775113ce755e298",
+    "a457cbadd6aaf719"
+   ]
   },
   {
    "i": 22,
@@ -628,7 +1023,24 @@
     "MIT_STUDENT_DIRECTORY",
     "IAP_SUBJECT_DETAIL"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "3fdf410b1f3aa665",
+    "ce63d7e71950d1de",
+    "0ae0bf002f20b226",
+    "4842dc626133764f",
+    "0a62ba8932346e58",
+    "83dd94a973cbf872",
+    "d9e9d8cb6d2af462",
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "5f54cc76d2489533",
+    "66a7b7ee45b3167e",
+    "17fb0630ffb7644d",
+    "aa353523209ba889",
+    "03c99ec2ae46ebc3",
+    "bc6641c0ee5aaaf5"
+   ]
   },
   {
    "i": 23,
@@ -652,7 +1064,24 @@
     "SIS_SUBJECT_CODE",
     "ACADEMIC_TERM_PARAMETER"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "9edcc1d1730a97ee",
+    "ee6a970d68606a8a",
+    "c18f6213cde8dd57",
+    "bc44eb61f579c3c7",
+    "07cefcc4ce62f6f8",
+    "8876c3bf54b17a36",
+    "1324d24160431b97",
+    "b267e6d52af20d82",
+    "7df48e2e49c20353",
+    "0551b202f981c86e",
+    "33d347778e0e0650",
+    "60218939e99988a1",
+    "f2bf58f0714faa36",
+    "e4cb539f8d73e94d",
+    "a3d5aee5838047df"
+   ]
   },
   {
    "i": 24,
@@ -679,7 +1108,24 @@
     "SUBJECT_SUMMARY",
     "ACADEMIC_TERMS_ALL"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "816b39cb38b38250",
+    "988952511df66ea1",
+    "72a8f8864c91c171",
+    "625f5aed048d414f",
+    "5aba6bf53e9b2f7a",
+    "dcf3988ef4fd498f",
+    "82ff8d7c6a84aa8c",
+    "46efdae001f19db9",
+    "7fdaa0815cf0ae47",
+    "206f430b6d7b325a",
+    "7f5436a2e475ddfe",
+    "3bc1af04475dd355",
+    "4a80cbcde8ac2551",
+    "fd538f006093041a",
+    "5f1c1bcfd740a6eb"
+   ]
   },
   {
    "i": 25,
@@ -704,7 +1150,24 @@
     "SUBJECT_SELECTOR",
     "SUBJECT_SUMMARY"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "1e63994aee99b511",
+    "bc44eb61f579c3c7",
+    "804be749d1547af9",
+    "3ee1173f27a8cbb7",
+    "69f2aa0a73eedbb2",
+    "eeadf919a4872839",
+    "f6d91dbc3cfede97",
+    "a5effabec2f56daf",
+    "2018aa53f1ca3b5f",
+    "7df48e2e49c20353",
+    "9edcc1d1730a97ee",
+    "267bd3c5bcf4fafb",
+    "ab195698eeea79f6",
+    "1324d24160431b97",
+    "9264aceb22414b8f"
+   ]
   },
   {
    "i": 26,
@@ -725,7 +1188,24 @@
     "STUDENT_DEGREE_PROGRAM",
     "SUBJECT_OFFERED_SUMMARY"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "852e4f35ce9ced17",
+    "0511774f065cf5ef",
+    "9edcc1d1730a97ee",
+    "8876c3bf54b17a36",
+    "fd79968b32d5b02d",
+    "c23cd00937f25054",
+    "ee6a970d68606a8a",
+    "08ae1f9c6d26ed77",
+    "54837b90ce964ede",
+    "27d67e23cbaf370c",
+    "c0a73d416b9c4d66",
+    "b3fde4344df04d1d",
+    "1c50cf1deefd8471",
+    "aa566d4adad62343",
+    "07cefcc4ce62f6f8"
+   ]
   },
   {
    "i": 27,
@@ -748,7 +1228,24 @@
     "SUBJECT_SUMMARY",
     "TIP_SUBJECT_OFFERED"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "1324d24160431b97",
+    "85d8085d3a70cde1",
+    "d1d26743711ee79f",
+    "f2bf58f0714faa36",
+    "884c3fc153553c79",
+    "6bd82a420957b11b",
+    "d6e812ef06a8f17c",
+    "a3d5aee5838047df",
+    "31880d971340be09",
+    "54fc932dfa28151b",
+    "0551b202f981c86e",
+    "423010bb5ad15b69",
+    "f48a7bb93606559d",
+    "beaef772ddfeb873"
+   ]
   },
   {
    "i": 28,
@@ -770,7 +1267,24 @@
     "SUBJECT_OFFERED",
     "STUDENT_DEGREE_PROGRAM"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "66a7b7ee45b3167e",
+    "f48a7bb93606559d",
+    "a83706ea5ce870f5",
+    "3fdf410b1f3aa665",
+    "8c16201b1fc03cbe",
+    "1324d24160431b97",
+    "c960ce7035b9ff11",
+    "a09cd155291af208",
+    "6034cb960f6bc7d1",
+    "03c99ec2ae46ebc3"
+   ]
   },
   {
    "i": 29,
@@ -798,7 +1312,24 @@
     "IAP_SUBJECT_DETAIL",
     "CIS_COURSE_CATALOG"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "66a7b7ee45b3167e",
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "23ee1a84743b366e",
+    "17fb0630ffb7644d",
+    "59c1630e871c7ca2",
+    "316eba960b029792",
+    "5d8d6f1ca724a0e9",
+    "beaef772ddfeb873",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "efe4fac1fd953dcc",
+    "d02126d99a78b595",
+    "d6e812ef06a8f17c",
+    "342e8808d6b418dd"
+   ]
   },
   {
    "i": 30,
@@ -825,7 +1356,24 @@
     "ACADEMIC_TERMS",
     "ACADEMIC_TERM_PARAMETER"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "17fb0630ffb7644d",
+    "66a7b7ee45b3167e",
+    "3fdf410b1f3aa665",
+    "316eba960b029792",
+    "7df48e2e49c20353",
+    "bc6641c0ee5aaaf5",
+    "9edcc1d1730a97ee",
+    "2c01151c2d37b270",
+    "d1d26743711ee79f",
+    "defa04d397bd6410",
+    "ee6a970d68606a8a",
+    "beaef772ddfeb873",
+    "07cefcc4ce62f6f8",
+    "d61a4a22aad23ee4",
+    "d0ecd2f993355463"
+   ]
   },
   {
    "i": 31,
@@ -853,7 +1401,24 @@
     "PROFIT_CENTER_GROUP",
     "SPACE_SUPERVISOR_USAGE"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "d52c8e0252fd1c66",
+    "726c435ae499625c",
+    "6b17433900d80072",
+    "d6a9b2eea8d36941",
+    "1d029979898d4b88",
+    "e7eff53a9626f077",
+    "b006c22172a5165e",
+    "2910607c0bd98e1f",
+    "514293fd400fcf61",
+    "d1a580412a2c0c65",
+    "d6d8df8765195ca1",
+    "f56ac18c17b02164",
+    "8a8e03ecf753d12b",
+    "2302d6aed82055d0",
+    "7596cb9fc727ab48"
+   ]
   },
   {
    "i": 32,
@@ -878,7 +1443,24 @@
     "STUDENT_DEGREE_PROGRAM",
     "ACADEMIC_TERMS_ALL"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "9edcc1d1730a97ee",
+    "07cefcc4ce62f6f8",
+    "ee6a970d68606a8a",
+    "54fc932dfa28151b",
+    "5516abde2b28e52f",
+    "e3b37b2674324eb4",
+    "1324d24160431b97",
+    "e34b7bd4e5dd828c",
+    "8876c3bf54b17a36",
+    "ca375c58d2e05249",
+    "9295029adf2339c2",
+    "7df48e2e49c20353",
+    "c23cd00937f25054",
+    "0551b202f981c86e",
+    "defa04d397bd6410"
+   ]
   },
   {
    "i": 33,
@@ -905,7 +1487,24 @@
     "FCLT_FLOOR_HIST",
     "FCLT_FLOOR"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "bd9df34467cd7f8c",
+    "323b8f626bc3a41a",
+    "080c1a5b853e7807",
+    "923b01c85ea27548",
+    "f3e7a85a0e0a76cf",
+    "5f73724b368c7989",
+    "a01c14e22ed8f22d",
+    "a3676f0786616f9e",
+    "24a87951bc3c663c",
+    "e21348dcaf38c97c",
+    "a288dce9f7e1df5f",
+    "2a808d0e64168682",
+    "76208c832a99a671",
+    "e5815b13014b4556",
+    "b7c37bbfa7bb3b94"
+   ]
   },
   {
    "i": 34,
@@ -932,7 +1531,24 @@
     "FCLT_FLOOR_HIST",
     "COURSE_CATALOG_SUBJECT_OFFERED"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "bd9df34467cd7f8c",
+    "323b8f626bc3a41a",
+    "f3e7a85a0e0a76cf",
+    "923b01c85ea27548",
+    "080c1a5b853e7807",
+    "5f73724b368c7989",
+    "a3676f0786616f9e",
+    "a01c14e22ed8f22d",
+    "24a87951bc3c663c",
+    "e21348dcaf38c97c",
+    "a288dce9f7e1df5f",
+    "2a808d0e64168682",
+    "76208c832a99a671",
+    "c74018bf604eda60",
+    "b7c37bbfa7bb3b94"
+   ]
   },
   {
    "i": 35,
@@ -953,7 +1569,24 @@
     "LIBRARY_SUBJECT_OFFERED",
     "SUBJECT_OFFERED_SUMMARY"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "a3d5aee5838047df",
+    "9999534a48073e3c",
+    "07cefcc4ce62f6f8",
+    "ad857f340b1bcd7d",
+    "7df48e2e49c20353",
+    "6530c5f62931b888",
+    "1324d24160431b97",
+    "0551b202f981c86e",
+    "54fc932dfa28151b",
+    "9edcc1d1730a97ee",
+    "317fe34bb5480bb8",
+    "b267e6d52af20d82",
+    "7f5436a2e475ddfe",
+    "2b9bc4e003a8f6e0",
+    "94fcde874d8c5d86"
+   ]
   },
   {
    "i": 36,
@@ -980,7 +1613,24 @@
     "FAC_FLOOR",
     "PROFIT_CENTER_GROUP"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "a01c14e22ed8f22d",
+    "76208c832a99a671",
+    "a288dce9f7e1df5f",
+    "bd9df34467cd7f8c",
+    "323b8f626bc3a41a",
+    "d1a580412a2c0c65",
+    "726c435ae499625c",
+    "d52c8e0252fd1c66",
+    "5f73724b368c7989",
+    "080c1a5b853e7807",
+    "e7eff53a9626f077",
+    "f1892d5baf3c7928",
+    "2a808d0e64168682",
+    "f95f0be57a7e80e9",
+    "e21348dcaf38c97c"
+   ]
   },
   {
    "i": 37,
@@ -1006,7 +1656,24 @@
     "SUBJECT_GROUPING",
     "SUBJECT_SUMMARY"
    ],
-   "n_ranked": 20
+   "n_ranked": 20,
+   "ranked_columns": [
+    "2c36a5e9d257d0c2",
+    "beaef772ddfeb873",
+    "db3784a89a20304a",
+    "7df48e2e49c20353",
+    "f7f065f30695f1ee",
+    "a9cccfcf27920b8b",
+    "f92f5507a9b0f8b9",
+    "2b9bc4e003a8f6e0",
+    "4746394d0f3f06d3",
+    "a5959cf9d114abd7",
+    "63a80360e8c7e3a6",
+    "bc6641c0ee5aaaf5",
+    "f9bbf32c3a417189",
+    "3fdf410b1f3aa665",
+    "a83706ea5ce870f5"
+   ]
   },
   {
    "i": 38,
@@ -1025,7 +1692,24 @@
     "TIP_SUBJECT_OFFERED",
     "LIBRARY_SUBJECT_OFFERED"
    ],
-   "n_ranked": 8
+   "n_ranked": 8,
+   "ranked_columns": [
+    "54fc932dfa28151b",
+    "ad857f340b1bcd7d",
+    "68cfb58fd1c9226c",
+    "41be9a90f8945bed",
+    "0551b202f981c86e",
+    "d4afe6411c5e869a",
+    "e8cac5eed32c7010",
+    "7df48e2e49c20353",
+    "2eb7e8bdaa033347",
+    "6bd82a420957b11b",
+    "5516abde2b28e52f",
+    "50ba958614d1c588",
+    "e34b7bd4e5dd828c",
+    "30922678b5877f01",
+    "9c389c94fe615a8c"
+   ]
   },
   {
    "i": 39,
@@ -1052,7 +1736,24 @@
     "ESTIMATED_SURCHARGES_ESTONLY",
     "FAC_ORGANIZATION"
    ],
-   "n_ranked": 27
+   "n_ranked": 27,
+   "ranked_columns": [
+    "d52c8e0252fd1c66",
+    "726c435ae499625c",
+    "db30fd403cd36262",
+    "6b17433900d80072",
+    "6f675a94deee8925",
+    "b0d8272f8e278f3f",
+    "e7eff53a9626f077",
+    "923b01c85ea27548",
+    "000b26be81880297",
+    "d1a580412a2c0c65",
+    "dcd38ec9f3ac934b",
+    "4f0bc28e6274a95e",
+    "1996972b7480fcdf",
+    "81a8300b2127684c",
+    "ecb8626842a04a1d"
+   ]
   },
   {
    "i": 40,
@@ -1077,7 +1778,24 @@
     "SUBJECT_OFFERED",
     "ACADEMIC_TERMS_ALL"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "788bac56fcecc519",
+    "f2bf58f0714faa36",
+    "ad857f340b1bcd7d",
+    "9edcc1d1730a97ee",
+    "54fc932dfa28151b",
+    "0551b202f981c86e",
+    "7df48e2e49c20353",
+    "97c586fb3191df38",
+    "ee6a970d68606a8a",
+    "ca375c58d2e05249",
+    "68cfb58fd1c9226c",
+    "6bd82a420957b11b",
+    "07cefcc4ce62f6f8",
+    "b267e6d52af20d82",
+    "41be9a90f8945bed"
+   ]
   },
   {
    "i": 41,
@@ -1104,7 +1822,24 @@
     "IAP_SUBJECT_DETAIL",
     "SUBJECT_SELECTOR"
    ],
-   "n_ranked": 25
+   "n_ranked": 25,
+   "ranked_columns": [
+    "9edcc1d1730a97ee",
+    "8876c3bf54b17a36",
+    "852e4f35ce9ced17",
+    "e3a85cda3411151b",
+    "ee6a970d68606a8a",
+    "06d6ac23d0b75d4f",
+    "bc44eb61f579c3c7",
+    "c0a73d416b9c4d66",
+    "2018aa53f1ca3b5f",
+    "f3bd62c0d03b2df4",
+    "f7de56f3444b5901",
+    "3750d0794a141154",
+    "200d3ebe15d06585",
+    "d815c485f0f4b191",
+    "5687568d6eb50277"
+   ]
   },
   {
    "i": 42,
@@ -1130,7 +1865,24 @@
     "FAC_BUILDING",
     "FAC_FLOOR"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "6b17433900d80072",
+    "d52c8e0252fd1c66",
+    "726c435ae499625c",
+    "b006c22172a5165e",
+    "514293fd400fcf61",
+    "7596cb9fc727ab48",
+    "0153a35c2d4297dc",
+    "d6d8df8765195ca1",
+    "1d029979898d4b88",
+    "2302d6aed82055d0",
+    "5d17a5cab4a11a5a",
+    "8a8e03ecf753d12b",
+    "d6a9b2eea8d36941",
+    "c66388bcc4416138",
+    "2910607c0bd98e1f"
+   ]
   },
   {
    "i": 43,
@@ -1150,7 +1902,24 @@
     "SUBJECT_OFFERED_SUMMARY",
     "LIBRARY_COURSE_INSTRUCTOR"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "bc44eb61f579c3c7",
+    "9edcc1d1730a97ee",
+    "ee6a970d68606a8a",
+    "0249db01a3ee6bff",
+    "7df48e2e49c20353",
+    "33d347778e0e0650",
+    "b1249bcaab0e8edb",
+    "1324d24160431b97",
+    "8ec290c609dd4293",
+    "50e6e44d0d64718b",
+    "d1d26743711ee79f",
+    "5e0840ed373288b6",
+    "3ee1173f27a8cbb7",
+    "2018aa53f1ca3b5f",
+    "ae261c472a835468"
+   ]
   },
   {
    "i": 44,
@@ -1174,7 +1943,24 @@
     "STUDENT_DEGREE_PROGRAM",
     "ACADEMIC_TERM_PARAMETER"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "a83706ea5ce870f5",
+    "beaef772ddfeb873",
+    "9999534a48073e3c",
+    "d6e812ef06a8f17c",
+    "85d8085d3a70cde1",
+    "6530c5f62931b888",
+    "59820ac70bff667d",
+    "c4b60b8a43403060",
+    "884c3fc153553c79",
+    "8778bf7e11c8de96",
+    "a175cdb21d73eb6f",
+    "66a7b7ee45b3167e",
+    "b0e97e31d502b0c0"
+   ]
   },
   {
    "i": 45,
@@ -1200,7 +1986,24 @@
     "ACADEMIC_TERMS_ALL",
     "ACADEMIC_TERMS"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "9e4f8b0c0d410046",
+    "9999534a48073e3c",
+    "c4b60b8a43403060",
+    "7df48e2e49c20353",
+    "beaef772ddfeb873",
+    "6530c5f62931b888",
+    "14dbfb835f1f1ece",
+    "2b9bc4e003a8f6e0",
+    "94fcde874d8c5d86",
+    "0cfb4e5947d87b1d",
+    "27f1f9f78ce93b16",
+    "66a7b7ee45b3167e",
+    "d1d26743711ee79f",
+    "a83706ea5ce870f5",
+    "db3784a89a20304a"
+   ]
   },
   {
    "i": 46,
@@ -1226,7 +2029,24 @@
     "SUBJECT_OFFERED",
     "SIS_SUBJECT_CODE"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "0cfb4e5947d87b1d",
+    "7df48e2e49c20353",
+    "9edcc1d1730a97ee",
+    "a83706ea5ce870f5",
+    "14dbfb835f1f1ece",
+    "ee6a970d68606a8a",
+    "8876c3bf54b17a36",
+    "852e4f35ce9ced17",
+    "db3784a89a20304a",
+    "66a7b7ee45b3167e",
+    "c4b60b8a43403060",
+    "d1d26743711ee79f",
+    "2b9bc4e003a8f6e0",
+    "beaef772ddfeb873",
+    "0551b202f981c86e"
+   ]
   },
   {
    "i": 47,
@@ -1256,7 +2076,24 @@
     "ZPM_ROOMS_LOAD",
     "SPACE_SUPERVISOR_USAGE"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "6b17433900d80072",
+    "d52c8e0252fd1c66",
+    "726c435ae499625c",
+    "a01c14e22ed8f22d",
+    "923b01c85ea27548",
+    "76208c832a99a671",
+    "1d029979898d4b88",
+    "514293fd400fcf61",
+    "d6a9b2eea8d36941",
+    "d6d8df8765195ca1",
+    "b006c22172a5165e",
+    "8a8e03ecf753d12b",
+    "9092defc4cc001c2",
+    "ac0c2fbcd37780a2",
+    "f56ac18c17b02164"
+   ]
   },
   {
    "i": 48,
@@ -1282,7 +2119,24 @@
     "FAC_BUILDING_ADDRESS",
     "PROFIT_CENTER_GROUP"
    ],
-   "n_ranked": 36
+   "n_ranked": 36,
+   "ranked_columns": [
+    "553892c64a72569d",
+    "7d4218279bae5b72",
+    "bc2ce8b7641aee21",
+    "634d54f68dc2c659",
+    "5b2537e8123ae322",
+    "d9acb0a8ce4966df",
+    "e496c11f4ee11593",
+    "a598bca727d69f6c",
+    "b8d4411622fc5b69",
+    "91c610604385d276",
+    "811a8f22c458a8ac",
+    "fa4c29c969eabd66",
+    "4d465ffc73d1aafd",
+    "56ad60128b55387e",
+    "3c1bb7b09872118b"
+   ]
   },
   {
    "i": 49,
@@ -1308,7 +2162,24 @@
     "WAREHOUSE_USERS",
     "COURSE_CATALOG_SUBJECT_OFFERED"
    ],
-   "n_ranked": 27
+   "n_ranked": 27,
+   "ranked_columns": [
+    "553892c64a72569d",
+    "1d029979898d4b88",
+    "73d4d35aec6b40a1",
+    "8b6cac47531dcde3",
+    "dbd680cefadb8163",
+    "4d465ffc73d1aafd",
+    "00046b4b294106fd",
+    "811a8f22c458a8ac",
+    "634d54f68dc2c659",
+    "33b9b2252f5a3032",
+    "d9acb0a8ce4966df",
+    "5b2537e8123ae322",
+    "bb1a44b947efe363",
+    "e496c11f4ee11593",
+    "00e59c659560e126"
+   ]
   },
   {
    "i": 50,
@@ -1334,7 +2205,24 @@
     "SUBJECT_ENROLLABLE",
     "SUBJECT_OFFERED_SUMMARY"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "b267e6d52af20d82",
+    "f2bf58f0714faa36",
+    "ad857f340b1bcd7d",
+    "ab195698eeea79f6",
+    "7df48e2e49c20353",
+    "db3784a89a20304a",
+    "beaef772ddfeb873",
+    "bc44eb61f579c3c7",
+    "9edcc1d1730a97ee",
+    "a3d5aee5838047df",
+    "54fc932dfa28151b",
+    "e4cb539f8d73e94d",
+    "63a80360e8c7e3a6",
+    "1324d24160431b97",
+    "f9bbf32c3a417189"
+   ]
   },
   {
    "i": 51,
@@ -1362,7 +2250,24 @@
     "STUDENT_ETHNIC_SUBGROUP",
     "SUBJECT_SUMMARY"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "beaef772ddfeb873",
+    "bc6641c0ee5aaaf5",
+    "3fdf410b1f3aa665",
+    "f2bf58f0714faa36",
+    "17fb0630ffb7644d",
+    "66bfa7cb755a013d",
+    "2eb7e8bdaa033347",
+    "dbd19432fd8003e1",
+    "7df48e2e49c20353",
+    "9193d7c6bbfd7ea8",
+    "f9bbf32c3a417189",
+    "1324d24160431b97",
+    "57a03e6b321a6b96",
+    "6e6ea9161ac838fd",
+    "bc44eb61f579c3c7"
+   ]
   },
   {
    "i": 52,
@@ -1383,7 +2288,24 @@
     "ACADEMIC_TERMS",
     "ACADEMIC_TERMS_ALL"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "b267e6d52af20d82",
+    "9edcc1d1730a97ee",
+    "54fc932dfa28151b",
+    "1324d24160431b97",
+    "7df48e2e49c20353",
+    "ab195698eeea79f6",
+    "8e8a52c5588a97e3",
+    "ad857f340b1bcd7d",
+    "e34b7bd4e5dd828c",
+    "ee6a970d68606a8a",
+    "0551b202f981c86e",
+    "07cefcc4ce62f6f8",
+    "6bd82a420957b11b",
+    "8778bf7e11c8de96",
+    "bc44eb61f579c3c7"
+   ]
   },
   {
    "i": 53,
@@ -1408,7 +2330,24 @@
     "SUBJECT_OFFERED_SUMMARY",
     "STUDENT_DEGREE_PROGRAM"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "2b9bc4e003a8f6e0",
+    "ad857f340b1bcd7d",
+    "94fcde874d8c5d86",
+    "9999534a48073e3c",
+    "c4b60b8a43403060",
+    "14dbfb835f1f1ece",
+    "0cfb4e5947d87b1d",
+    "7df48e2e49c20353",
+    "6530c5f62931b888",
+    "59c1630e871c7ca2",
+    "ee38b558313bccb3",
+    "54fc932dfa28151b",
+    "1324d24160431b97",
+    "9e4f8b0c0d410046",
+    "b4e8aeeb8a385c08"
+   ]
   },
   {
    "i": 54,
@@ -1435,7 +2374,24 @@
     "IAP_SUBJECT_PERSON",
     "SUBJECT_GROUPING"
    ],
-   "n_ranked": 24
+   "n_ranked": 24,
+   "ranked_columns": [
+    "811a8f22c458a8ac",
+    "10426c9a8a347f7e",
+    "914b1ee7b782336c",
+    "ae81832126904c94",
+    "b5999cc6ec2e15a6",
+    "b0c60b6b40f02f40",
+    "2042a6fb67821a5c",
+    "7d204dbc8ce77d4d",
+    "db95ce49bfdf7523",
+    "5f56352020f60d0a",
+    "0e053b2df96524ba",
+    "20abe43287f015e6",
+    "f8cd592948f5420a",
+    "d21ba2ee499e51a3",
+    "7078ca8646571433"
+   ]
   },
   {
    "i": 55,
@@ -1463,7 +2419,24 @@
     "ACADEMIC_TERMS",
     "ACADEMIC_TERMS_ALL"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "beaef772ddfeb873",
+    "884c3fc153553c79",
+    "7df48e2e49c20353",
+    "17fb0630ffb7644d",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "b0e97e31d502b0c0",
+    "bc6641c0ee5aaaf5",
+    "3fdf410b1f3aa665",
+    "a83706ea5ce870f5",
+    "f48a7bb93606559d",
+    "66a7b7ee45b3167e",
+    "c960ce7035b9ff11",
+    "27d67e23cbaf370c"
+   ]
   },
   {
    "i": 56,
@@ -1492,7 +2465,24 @@
     "FAC_BUILDING",
     "SPACE_DETAIL"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "1d029979898d4b88",
+    "cf72b52166e2c1da",
+    "811a8f22c458a8ac",
+    "6b17433900d80072",
+    "90b481f7538081a8",
+    "dbd680cefadb8163",
+    "22e41ad3e4646d46",
+    "ce9129db1aac0dd0",
+    "b006c22172a5165e",
+    "8b6cac47531dcde3",
+    "9f9e81d97df04f52",
+    "73d4d35aec6b40a1",
+    "605e90f29eec9602",
+    "0153a35c2d4297dc",
+    "2910607c0bd98e1f"
+   ]
   },
   {
    "i": 57,
@@ -1517,7 +2507,24 @@
     "OPA_PERSON_CURRENT",
     "SUBJECT_ENROLLABLE"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "b267e6d52af20d82",
+    "ae81832126904c94",
+    "7d204dbc8ce77d4d",
+    "ad857f340b1bcd7d",
+    "10426c9a8a347f7e",
+    "ab195698eeea79f6",
+    "b5999cc6ec2e15a6",
+    "f2bf58f0714faa36",
+    "7df48e2e49c20353",
+    "beaef772ddfeb873",
+    "8778bf7e11c8de96",
+    "b0c60b6b40f02f40",
+    "44e546f17ac4e391",
+    "f8cd592948f5420a",
+    "0e053b2df96524ba"
+   ]
   },
   {
    "i": 58,
@@ -1546,7 +2553,24 @@
     "SUBJECT_SUMMARY",
     "STUDENT_ETHNIC_SUBGROUP"
    ],
-   "n_ranked": 20
+   "n_ranked": 20,
+   "ranked_columns": [
+    "582478ba64f9476b",
+    "76ef5dc1847f726b",
+    "9999534a48073e3c",
+    "6530c5f62931b888",
+    "7f5436a2e475ddfe",
+    "27f1f9f78ce93b16",
+    "12fddd816a416865",
+    "6bd2529cd2c674b6",
+    "7df48e2e49c20353",
+    "beaef772ddfeb873",
+    "59c1630e871c7ca2",
+    "a83706ea5ce870f5",
+    "cda9deb64ff0eb28",
+    "56ffcb1ce3a46f80",
+    "27d67e23cbaf370c"
+   ]
   },
   {
    "i": 59,
@@ -1572,7 +2596,24 @@
     "TIP_SUBJECT_OFFERED",
     "SPACE_SUPERVISOR_USAGE"
    ],
-   "n_ranked": 22
+   "n_ranked": 22,
+   "ranked_columns": [
+    "ec17f6b485d4278f",
+    "8778bf7e11c8de96",
+    "f2bf58f0714faa36",
+    "beaef772ddfeb873",
+    "8b6cac47531dcde3",
+    "9edcc1d1730a97ee",
+    "dbd680cefadb8163",
+    "73d4d35aec6b40a1",
+    "ab195698eeea79f6",
+    "2987346f02b58528",
+    "884c3fc153553c79",
+    "e735fc428eec9e84",
+    "59820ac70bff667d",
+    "7df48e2e49c20353",
+    "f9bbf32c3a417189"
+   ]
   },
   {
    "i": 60,
@@ -1600,7 +2641,24 @@
     "IAP_SUBJECT_DETAIL",
     "CIS_COURSE_CATALOG"
    ],
-   "n_ranked": 18
+   "n_ranked": 18,
+   "ranked_columns": [
+    "bc6641c0ee5aaaf5",
+    "17fb0630ffb7644d",
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "3fdf410b1f3aa665",
+    "884c3fc153553c79",
+    "beaef772ddfeb873",
+    "66a7b7ee45b3167e",
+    "12051c0ecbdebe8c",
+    "d0ecd2f993355463",
+    "d6e812ef06a8f17c",
+    "18ec5440fbb56697",
+    "316eba960b029792",
+    "b6d1c7f494331bca",
+    "2dd6201b49523983"
+   ]
   },
   {
    "i": 61,
@@ -1626,7 +2684,24 @@
     "EMPLOYEE_DIRECTORY",
     "ZIP_CANADA"
    ],
-   "n_ranked": 22
+   "n_ranked": 22,
+   "ranked_columns": [
+    "1d029979898d4b88",
+    "8b6cac47531dcde3",
+    "73d4d35aec6b40a1",
+    "dbd680cefadb8163",
+    "f56ac18c17b02164",
+    "d6a9b2eea8d36941",
+    "8a8e03ecf753d12b",
+    "d6d8df8765195ca1",
+    "7596cb9fc727ab48",
+    "514293fd400fcf61",
+    "2910607c0bd98e1f",
+    "b006c22172a5165e",
+    "2302d6aed82055d0",
+    "9092defc4cc001c2",
+    "be6c1ae1433e6527"
+   ]
   },
   {
    "i": 62,
@@ -1652,7 +2727,24 @@
     "CIS_COURSE_CATALOG",
     "SUBJECT_ENROLLABLE"
    ],
-   "n_ranked": 19
+   "n_ranked": 19,
+   "ranked_columns": [
+    "914b1ee7b782336c",
+    "20abe43287f015e6",
+    "0e053b2df96524ba",
+    "ae81832126904c94",
+    "db95ce49bfdf7523",
+    "beaef772ddfeb873",
+    "44e546f17ac4e391",
+    "7d204dbc8ce77d4d",
+    "10426c9a8a347f7e",
+    "b267e6d52af20d82",
+    "fba56dc0b1c99a4c",
+    "5f56352020f60d0a",
+    "a5be3e470e1759cb",
+    "ad857f340b1bcd7d",
+    "30ead670f0b7a9ea"
+   ]
   },
   {
    "i": 63,
@@ -1678,7 +2770,24 @@
     "MIT_STUDENT_DIRECTORY",
     "CIS_COURSE_CATALOG"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "beaef772ddfeb873",
+    "884c3fc153553c79",
+    "d1d26743711ee79f",
+    "bc6641c0ee5aaaf5",
+    "d6e812ef06a8f17c",
+    "f2bf58f0714faa36",
+    "8778bf7e11c8de96",
+    "a83706ea5ce870f5",
+    "3fdf410b1f3aa665",
+    "bc44eb61f579c3c7",
+    "17fb0630ffb7644d",
+    "85d8085d3a70cde1",
+    "8cb23d7ffe458f8d",
+    "ad857f340b1bcd7d"
+   ]
   },
   {
    "i": 64,
@@ -1704,7 +2813,24 @@
     "MOIRA_LIST",
     "DRUPAL_EMPLOYEE_DIRECTORY"
    ],
-   "n_ranked": 29
+   "n_ranked": 29,
+   "ranked_columns": [
+    "4d465ffc73d1aafd",
+    "3c6d55dae3e23a90",
+    "fb0215f427cd004d",
+    "fa341e5b96bfcec5",
+    "2db6967ad3524be2",
+    "54e0f74ce8a3aeb2",
+    "9880f2c9312f2592",
+    "d7c60d21474fd876",
+    "ba62972fe4ca41c6",
+    "c3498ea187e80b5c",
+    "4923686fc82ca5d6",
+    "cbcfb9e63a0af9bc",
+    "b4fa4ad03f520c3d",
+    "33b9b2252f5a3032",
+    "00e59c659560e126"
+   ]
   },
   {
    "i": 65,
@@ -1727,7 +2853,24 @@
     "SUBJECT_ENROLLABLE",
     "LIBRARY_COURSE_INSTRUCTOR"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "d6e812ef06a8f17c",
+    "d0ecd2f993355463",
+    "d1d26743711ee79f",
+    "a83706ea5ce870f5",
+    "66a7b7ee45b3167e",
+    "85d8085d3a70cde1",
+    "8f87e75ed7c1752d",
+    "ce4a8dc6da260145",
+    "a53233b19aa742df",
+    "12051c0ecbdebe8c",
+    "0551b202f981c86e",
+    "17fb0630ffb7644d",
+    "884c3fc153553c79",
+    "316eba960b029792"
+   ]
   },
   {
    "i": 66,
@@ -1747,7 +2890,24 @@
     "SUBJECT_SUMMARY",
     "LIBRARY_SUBJECT_OFFERED"
    ],
-   "n_ranked": 8
+   "n_ranked": 8,
+   "ranked_columns": [
+    "ad857f340b1bcd7d",
+    "ca375c58d2e05249",
+    "662e17072938bb89",
+    "54fc932dfa28151b",
+    "7df48e2e49c20353",
+    "b4e8aeeb8a385c08",
+    "5516abde2b28e52f",
+    "788bac56fcecc519",
+    "1c50cf1deefd8471",
+    "07cefcc4ce62f6f8",
+    "0551b202f981c86e",
+    "d1d26743711ee79f",
+    "ee38b558313bccb3",
+    "9edcc1d1730a97ee",
+    "e3b37b2674324eb4"
+   ]
   },
   {
    "i": 67,
@@ -1770,7 +2930,24 @@
     "STUDENT_DEGREE_PROGRAM",
     "SUBJECT_SUMMARY"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "3f8632988e683963",
+    "6a0cee6f85dcb686",
+    "bda3f7202a1f330d",
+    "9b7214408983b784",
+    "623ebdc7b302f415",
+    "884c3fc153553c79",
+    "47b54081a0421b28",
+    "d1d26743711ee79f",
+    "1324d24160431b97",
+    "f2bf58f0714faa36",
+    "bc44eb61f579c3c7",
+    "ac7abd70e7989ad3",
+    "d4afe6411c5e869a",
+    "beaef772ddfeb873",
+    "7df48e2e49c20353"
+   ]
   },
   {
    "i": 68,
@@ -1795,7 +2972,24 @@
     "CIS_COURSE_CATALOG",
     "SIS_SUBJECT_CODE"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "d0ecd2f993355463",
+    "12051c0ecbdebe8c",
+    "da34087be4ec6907",
+    "b6d1c7f494331bca",
+    "ce4a8dc6da260145",
+    "e1b37f7554381e1e",
+    "c427c5ac4fd9d89b",
+    "18ec5440fbb56697",
+    "2dd6201b49523983",
+    "a53233b19aa742df",
+    "8a424d94475c9072",
+    "7ebfc54088312231",
+    "3cbe73a49b56eb43",
+    "17fb0630ffb7644d",
+    "f2bf58f0714faa36"
+   ]
   },
   {
    "i": 69,
@@ -1821,7 +3015,24 @@
     "FAC_BUILDING",
     "MIT_STUDENT_DIRECTORY"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "a83706ea5ce870f5",
+    "d1d26743711ee79f",
+    "66a7b7ee45b3167e",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "85d8085d3a70cde1",
+    "0551b202f981c86e",
+    "316eba960b029792",
+    "14dbfb835f1f1ece",
+    "17fb0630ffb7644d",
+    "bc6641c0ee5aaaf5",
+    "0cfb4e5947d87b1d",
+    "ab195698eeea79f6",
+    "f2bf58f0714faa36"
+   ]
   },
   {
    "i": 70,
@@ -1850,7 +3061,24 @@
     "FCLT_ROOMS",
     "LIBRARY_SUBJECT_OFFERED"
    ],
-   "n_ranked": 21
+   "n_ranked": 21,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "269c36b67be95b07",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "66a7b7ee45b3167e",
+    "d1d26743711ee79f",
+    "f2565b790c6c44d1",
+    "316eba960b029792",
+    "a83706ea5ce870f5",
+    "0551b202f981c86e",
+    "a01c14e22ed8f22d",
+    "bd9df34467cd7f8c",
+    "0cfb4e5947d87b1d",
+    "3ee1173f27a8cbb7"
+   ]
   },
   {
    "i": 71,
@@ -1876,7 +3104,24 @@
     "ACADEMIC_TERMS",
     "LIBRARY_RESERVE_CATALOG"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "b0e97e31d502b0c0",
+    "66a7b7ee45b3167e",
+    "17fb0630ffb7644d",
+    "beaef772ddfeb873",
+    "7df48e2e49c20353",
+    "a83706ea5ce870f5",
+    "316eba960b029792",
+    "8ec290c609dd4293",
+    "50e6e44d0d64718b",
+    "defa04d397bd6410",
+    "3e3b55355cdfd1a5",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c"
+   ]
   },
   {
    "i": 72,
@@ -1899,7 +3144,24 @@
     "SUBJECT_OFFERED",
     "TIP_SUBJECT_OFFERED"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "b0e97e31d502b0c0",
+    "7df48e2e49c20353",
+    "a83706ea5ce870f5",
+    "66a7b7ee45b3167e",
+    "beaef772ddfeb873",
+    "316eba960b029792",
+    "db3784a89a20304a",
+    "17fb0630ffb7644d",
+    "884c3fc153553c79",
+    "85d8085d3a70cde1",
+    "d6e812ef06a8f17c",
+    "8778bf7e11c8de96",
+    "8ec290c609dd4293",
+    "59820ac70bff667d"
+   ]
   },
   {
    "i": 73,
@@ -1922,7 +3184,24 @@
     "TIP_SUBJECT_OFFERED",
     "LIBRARY_COURSE_INSTRUCTOR"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "d1d26743711ee79f",
+    "7df48e2e49c20353",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "a83706ea5ce870f5",
+    "b0e97e31d502b0c0",
+    "d6e812ef06a8f17c",
+    "66a7b7ee45b3167e",
+    "f2bf58f0714faa36",
+    "1324d24160431b97",
+    "bc44eb61f579c3c7",
+    "572f1bca58545413",
+    "8ec290c609dd4293",
+    "c973a090bcaaa36e",
+    "0551b202f981c86e"
+   ]
   },
   {
    "i": 74,
@@ -1949,7 +3228,24 @@
     "DRUPAL_COURSE_CATALOG",
     "LIBRARY_RESERVE_MATRL_DETAIL"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "3fdf410b1f3aa665",
+    "17fb0630ffb7644d",
+    "66a7b7ee45b3167e",
+    "841908f6134c811f",
+    "2c01151c2d37b270",
+    "316eba960b029792",
+    "dcb6b731ef26ecd0",
+    "bc6641c0ee5aaaf5",
+    "d0ecd2f993355463",
+    "ba66075a92f1bc0c",
+    "beaef772ddfeb873",
+    "40f0f6bb9f082497",
+    "defa04d397bd6410",
+    "d1d26743711ee79f",
+    "2cec471459d4bf93"
+   ]
   },
   {
    "i": 75,
@@ -1976,7 +3272,24 @@
     "SUBJECT_OFFERED_SUMMARY",
     "FAC_BUILDING"
    ],
-   "n_ranked": 21
+   "n_ranked": 21,
+   "ranked_columns": [
+    "323b8f626bc3a41a",
+    "080c1a5b853e7807",
+    "d52c8e0252fd1c66",
+    "a01c14e22ed8f22d",
+    "029c84c260d2e2ae",
+    "a288dce9f7e1df5f",
+    "1697632243d0885a",
+    "5f73724b368c7989",
+    "76208c832a99a671",
+    "923b01c85ea27548",
+    "21c031f897331ac3",
+    "f3e7a85a0e0a76cf",
+    "bd9df34467cd7f8c",
+    "07940b4edf163514",
+    "f95f0be57a7e80e9"
+   ]
   },
   {
    "i": 76,
@@ -2004,7 +3317,24 @@
     "LIBRARY_SUBJECT_OFFERED",
     "LIBRARY_COURSE_INSTRUCTOR"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "ae6d45886d436311",
+    "8d168e7495ae46ad",
+    "d0da7d3ee711ffc8",
+    "bbae6c735ca4859f",
+    "3a1f0fdb7c72620e",
+    "0364111a42b3be81",
+    "2a455c57da96f2fc",
+    "a4d48dab951b3259",
+    "97c630441e48ae78",
+    "da8a0c56e4c034b8",
+    "404c129debec977b",
+    "d2b9d3cacc6ba25a",
+    "0d622a11774ae284",
+    "00c88456b0e1e443",
+    "13e9a0089c2d489b"
+   ]
   },
   {
    "i": 77,
@@ -2032,7 +3362,24 @@
     "CIS_COURSE_CATALOG",
     "HR_ORG_UNIT"
    ],
-   "n_ranked": 31
+   "n_ranked": 31,
+   "ranked_columns": [
+    "7714415d899866f3",
+    "2db6967ad3524be2",
+    "4923686fc82ca5d6",
+    "c3498ea187e80b5c",
+    "d7c60d21474fd876",
+    "fa341e5b96bfcec5",
+    "b4fa4ad03f520c3d",
+    "cbcfb9e63a0af9bc",
+    "d52c8e0252fd1c66",
+    "7cd544aad51053b5",
+    "b92a0c3999ad20b6",
+    "b0e97e31d502b0c0",
+    "316eba960b029792",
+    "a01c14e22ed8f22d",
+    "66a7b7ee45b3167e"
+   ]
   },
   {
    "i": 78,
@@ -2060,7 +3407,24 @@
     "ESTIMATED_SURCHARGES_ESTONLY",
     "SPACE_SUPERVISOR_USAGE"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "db3784a89a20304a",
+    "7df48e2e49c20353",
+    "66a7b7ee45b3167e",
+    "a83706ea5ce870f5",
+    "14dbfb835f1f1ece",
+    "9e4f8b0c0d410046",
+    "beaef772ddfeb873",
+    "0cfb4e5947d87b1d",
+    "c4b60b8a43403060",
+    "d1d26743711ee79f",
+    "2b9bc4e003a8f6e0",
+    "316eba960b029792",
+    "94fcde874d8c5d86",
+    "0551b202f981c86e",
+    "1274f2a85bb1ba50"
+   ]
   },
   {
    "i": 79,
@@ -2089,7 +3453,24 @@
     "LIBRARY_RESERVE_MATRL_DETAIL",
     "LIBRARY_RESERVE_CATALOG"
    ],
-   "n_ranked": 20
+   "n_ranked": 20,
+   "ranked_columns": [
+    "66a7b7ee45b3167e",
+    "ce63d7e71950d1de",
+    "316eba960b029792",
+    "a09cd155291af208",
+    "0a62ba8932346e58",
+    "4842dc626133764f",
+    "ba62972fe4ca41c6",
+    "5f54cc76d2489533",
+    "d1d26743711ee79f",
+    "beaef772ddfeb873",
+    "0ae0bf002f20b226",
+    "b0e97e31d502b0c0",
+    "6034cb960f6bc7d1",
+    "584b97bf90b8841e",
+    "3fdf410b1f3aa665"
+   ]
   },
   {
    "i": 80,
@@ -2115,7 +3496,24 @@
     "FCLT_ROOMS",
     "MASTER_DEPT_HIERARCHY"
    ],
-   "n_ranked": 19
+   "n_ranked": 19,
+   "ranked_columns": [
+    "6b17433900d80072",
+    "d52c8e0252fd1c66",
+    "1d029979898d4b88",
+    "726c435ae499625c",
+    "b006c22172a5165e",
+    "2910607c0bd98e1f",
+    "d6a9b2eea8d36941",
+    "2302d6aed82055d0",
+    "f56ac18c17b02164",
+    "d6d8df8765195ca1",
+    "605e90f29eec9602",
+    "e7eff53a9626f077",
+    "514293fd400fcf61",
+    "8a8e03ecf753d12b",
+    "d94654c26ead969f"
+   ]
   },
   {
    "i": 81,
@@ -2139,7 +3537,24 @@
     "FAC_ROOMS",
     "HR_ORG_UNIT_NEW"
    ],
-   "n_ranked": 24
+   "n_ranked": 24,
+   "ranked_columns": [
+    "d52c8e0252fd1c66",
+    "e7eff53a9626f077",
+    "0ae0bf002f20b226",
+    "f441b61306c52682",
+    "d1a580412a2c0c65",
+    "ce63d7e71950d1de",
+    "83dd94a973cbf872",
+    "6b17433900d80072",
+    "726c435ae499625c",
+    "b97e42d25beb2b96",
+    "0dc8bd02b1a3fa1f",
+    "4842dc626133764f",
+    "5ee3d7fce20e0508",
+    "29b1d3eec98692e6",
+    "ecb8626842a04a1d"
+   ]
   },
   {
    "i": 82,
@@ -2165,7 +3580,24 @@
     "COURSE_CATALOG_SUBJECT_OFFERED",
     "MASTER_DEPT_DCODE_PARENT"
    ],
-   "n_ranked": 22
+   "n_ranked": 22,
+   "ranked_columns": [
+    "d52c8e0252fd1c66",
+    "726c435ae499625c",
+    "3c6d55dae3e23a90",
+    "2db6967ad3524be2",
+    "c3498ea187e80b5c",
+    "5f54cc76d2489533",
+    "4923686fc82ca5d6",
+    "d7c60d21474fd876",
+    "cbcfb9e63a0af9bc",
+    "923b01c85ea27548",
+    "fa341e5b96bfcec5",
+    "b4fa4ad03f520c3d",
+    "0ae0bf002f20b226",
+    "a01c14e22ed8f22d",
+    "d1a580412a2c0c65"
+   ]
   },
   {
    "i": 83,
@@ -2191,7 +3623,24 @@
     "DRUPAL_COURSE_CATALOG",
     "FAC_BUILDING_ADDRESS"
    ],
-   "n_ranked": 24
+   "n_ranked": 24,
+   "ranked_columns": [
+    "d52c8e0252fd1c66",
+    "d1a580412a2c0c65",
+    "726c435ae499625c",
+    "323b8f626bc3a41a",
+    "a01c14e22ed8f22d",
+    "a288dce9f7e1df5f",
+    "e7eff53a9626f077",
+    "76208c832a99a671",
+    "923b01c85ea27548",
+    "5f73724b368c7989",
+    "080c1a5b853e7807",
+    "bd9df34467cd7f8c",
+    "0ae0bf002f20b226",
+    "f95f0be57a7e80e9",
+    "6b17433900d80072"
+   ]
   },
   {
    "i": 84,
@@ -2217,7 +3666,24 @@
     "HR_ORG_UNIT",
     "SUBJECT_OFFERED_SUMMARY"
    ],
-   "n_ranked": 25
+   "n_ranked": 25,
+   "ranked_columns": [
+    "bd9df34467cd7f8c",
+    "323b8f626bc3a41a",
+    "a01c14e22ed8f22d",
+    "080c1a5b853e7807",
+    "76208c832a99a671",
+    "a288dce9f7e1df5f",
+    "74086d312e62139e",
+    "0307d5e5ea436244",
+    "5f73724b368c7989",
+    "de2b7291effbdb6c",
+    "bd75368117284d2a",
+    "e8cba43a6111985e",
+    "f95f0be57a7e80e9",
+    "7836f163d9431265",
+    "c86982dfb72e1849"
+   ]
   },
   {
    "i": 85,
@@ -2240,7 +3706,24 @@
     "FAC_BUILDING",
     "BUILDINGS"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "323b8f626bc3a41a",
+    "080c1a5b853e7807",
+    "5f73724b368c7989",
+    "bd9df34467cd7f8c",
+    "a01c14e22ed8f22d",
+    "316eba960b029792",
+    "c039cf8abd004219",
+    "66a7b7ee45b3167e",
+    "f48d0e31386a53ef",
+    "ba62972fe4ca41c6",
+    "e611c386a5829c59",
+    "bf9461127fe2dc9e",
+    "07940b4edf163514",
+    "a288dce9f7e1df5f",
+    "5e5bb94b120c351d"
+   ]
   },
   {
    "i": 86,
@@ -2267,7 +3750,24 @@
     "BUILDINGS",
     "FCLT_FLOOR"
    ],
-   "n_ranked": 30
+   "n_ranked": 30,
+   "ranked_columns": [
+    "5687568d6eb50277",
+    "2d7c30a6e59cb0cb",
+    "ce63d7e71950d1de",
+    "37868961843606c9",
+    "2db6967ad3524be2",
+    "fa341e5b96bfcec5",
+    "aa37f5af38a61867",
+    "d7c60d21474fd876",
+    "b4fa4ad03f520c3d",
+    "c3498ea187e80b5c",
+    "4923686fc82ca5d6",
+    "4842dc626133764f",
+    "cbcfb9e63a0af9bc",
+    "0ae0bf002f20b226",
+    "64eb831c2c17ea8d"
+   ]
   },
   {
    "i": 87,
@@ -2295,7 +3795,24 @@
     "FCLT_FLOOR_HIST",
     "FCLT_FLOOR"
    ],
-   "n_ranked": 24
+   "n_ranked": 24,
+   "ranked_columns": [
+    "d52c8e0252fd1c66",
+    "323b8f626bc3a41a",
+    "080c1a5b853e7807",
+    "a01c14e22ed8f22d",
+    "a288dce9f7e1df5f",
+    "bd9df34467cd7f8c",
+    "ce63d7e71950d1de",
+    "de2b7291effbdb6c",
+    "7836f163d9431265",
+    "76208c832a99a671",
+    "5687568d6eb50277",
+    "678e082d16af54d5",
+    "726c435ae499625c",
+    "923b01c85ea27548",
+    "e7eff53a9626f077"
+   ]
   },
   {
    "i": 88,
@@ -2317,7 +3834,24 @@
     "CIS_COURSE_CATALOG",
     "LIBRARY_COURSE_INSTRUCTOR"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "17fb0630ffb7644d",
+    "7df48e2e49c20353",
+    "66a7b7ee45b3167e",
+    "d1d26743711ee79f",
+    "beaef772ddfeb873",
+    "316eba960b029792",
+    "a83706ea5ce870f5",
+    "d6e812ef06a8f17c",
+    "884c3fc153553c79",
+    "bc6641c0ee5aaaf5",
+    "defa04d397bd6410",
+    "b0e97e31d502b0c0",
+    "85d8085d3a70cde1",
+    "5e0840ed373288b6",
+    "2c01151c2d37b270"
+   ]
   },
   {
    "i": 89,
@@ -2344,7 +3878,24 @@
     "MOIRA_LIST",
     "TIP_MATERIAL"
    ],
-   "n_ranked": 26
+   "n_ranked": 26,
+   "ranked_columns": [
+    "2db6967ad3524be2",
+    "fa341e5b96bfcec5",
+    "4923686fc82ca5d6",
+    "d7c60d21474fd876",
+    "cbcfb9e63a0af9bc",
+    "c3498ea187e80b5c",
+    "b4fa4ad03f520c3d",
+    "dbd680cefadb8163",
+    "811a8f22c458a8ac",
+    "1d029979898d4b88",
+    "59c1630e871c7ca2",
+    "8b6cac47531dcde3",
+    "d1d26743711ee79f",
+    "60bc69d8aacdc1ae",
+    "a334bece9544aece"
+   ]
   },
   {
    "i": 90,
@@ -2371,7 +3922,24 @@
     "OPA_PERSON_CURRENT",
     "SPACE_SUPERVISOR_USAGE"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "66a7b7ee45b3167e",
+    "d0ecd2f993355463",
+    "4aff8d964adeab43",
+    "4a80cbcde8ac2551",
+    "625f5aed048d414f",
+    "316eba960b029792",
+    "ce4a8dc6da260145",
+    "790c4b4f58ec0631",
+    "a53233b19aa742df",
+    "8a424d94475c9072",
+    "206f430b6d7b325a",
+    "c427c5ac4fd9d89b",
+    "17fb0630ffb7644d",
+    "e19ee6126525e8f0",
+    "f541936ded8fce91"
+   ]
   },
   {
    "i": 91,
@@ -2399,7 +3967,24 @@
     "FCLT_ROOMS_HIST",
     "ZIP_CANADA"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "d52c8e0252fd1c66",
+    "e7eff53a9626f077",
+    "726c435ae499625c",
+    "6b17433900d80072",
+    "d1a580412a2c0c65",
+    "1d029979898d4b88",
+    "ecb8626842a04a1d",
+    "d74209e55413ddec",
+    "2910607c0bd98e1f",
+    "b006c22172a5165e",
+    "2302d6aed82055d0",
+    "d6a9b2eea8d36941",
+    "ac0c2fbcd37780a2",
+    "d6d8df8765195ca1",
+    "514293fd400fcf61"
+   ]
   },
   {
    "i": 92,
@@ -2427,7 +4012,24 @@
     "FCLT_BUILDING_HIST",
     "SPACE_SUPERVISOR_USAGE"
    ],
-   "n_ranked": 22
+   "n_ranked": 22,
+   "ranked_columns": [
+    "323b8f626bc3a41a",
+    "5f73724b368c7989",
+    "080c1a5b853e7807",
+    "c039cf8abd004219",
+    "d52c8e0252fd1c66",
+    "ce63d7e71950d1de",
+    "07a53d56c585c3b6",
+    "923b01c85ea27548",
+    "f3e7a85a0e0a76cf",
+    "a01c14e22ed8f22d",
+    "0ae0bf002f20b226",
+    "a3676f0786616f9e",
+    "a10bc83b87778ebe",
+    "a288dce9f7e1df5f",
+    "7e2f14a153726dbe"
+   ]
   },
   {
    "i": 93,
@@ -2454,7 +4056,24 @@
     "MASTER_DEPT_HIERARCHY_LINKS",
     "HR_ORG_UNIT_NEW"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "20abe43287f015e6",
+    "9880f2c9312f2592",
+    "5f56352020f60d0a",
+    "0e053b2df96524ba",
+    "6f675a94deee8925",
+    "2703d263feda2732",
+    "db30fd403cd36262",
+    "b5999cc6ec2e15a6",
+    "d626bc2a72639fab",
+    "4923686fc82ca5d6",
+    "2db6967ad3524be2",
+    "32fa245dcc674dd3",
+    "a5be3e470e1759cb",
+    "61a83a99c544702b",
+    "b4fa4ad03f520c3d"
+   ]
   },
   {
    "i": 94,
@@ -2480,7 +4099,24 @@
     "SUBJECT_SUMMARY",
     "TIP_SUBJECT_OFFERED"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "582478ba64f9476b",
+    "07cefcc4ce62f6f8",
+    "7f5436a2e475ddfe",
+    "d2b9d3cacc6ba25a",
+    "9295029adf2339c2",
+    "00c88456b0e1e443",
+    "9999534a48073e3c",
+    "76ef5dc1847f726b",
+    "0d622a11774ae284",
+    "0b947910a98bc8d0",
+    "6530c5f62931b888",
+    "a25b09e6cd1cc386",
+    "12fddd816a416865",
+    "efe4fac1fd953dcc",
+    "7df48e2e49c20353"
+   ]
   },
   {
    "i": 95,
@@ -2504,7 +4140,24 @@
     "ACADEMIC_TERMS_ALL",
     "SIS_SUBJECT_CODE"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "7f5436a2e475ddfe",
+    "582478ba64f9476b",
+    "9999534a48073e3c",
+    "6530c5f62931b888",
+    "7df48e2e49c20353",
+    "c2c3786240d18f34",
+    "1324d24160431b97",
+    "8778bf7e11c8de96",
+    "12fddd816a416865",
+    "269c36b67be95b07",
+    "85d8085d3a70cde1",
+    "0551b202f981c86e",
+    "27f1f9f78ce93b16",
+    "884c3fc153553c79",
+    "56ffcb1ce3a46f80"
+   ]
   },
   {
    "i": 96,
@@ -2528,7 +4181,24 @@
     "SIS_COURSE_DESCRIPTION",
     "TIP_SUBJECT_OFFERED"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "582478ba64f9476b",
+    "7f5436a2e475ddfe",
+    "9999534a48073e3c",
+    "6530c5f62931b888",
+    "00c88456b0e1e443",
+    "27d67e23cbaf370c",
+    "0b947910a98bc8d0",
+    "12fddd816a416865",
+    "76ef5dc1847f726b",
+    "d2b9d3cacc6ba25a",
+    "72a357db47096078",
+    "0d622a11774ae284",
+    "56ffcb1ce3a46f80",
+    "d0da7d3ee711ffc8",
+    "bbae6c735ca4859f"
+   ]
   },
   {
    "i": 97,
@@ -2553,7 +4223,24 @@
     "PROFIT_CENTER_GROUP",
     "LIBRARY_COURSE_INSTRUCTOR"
    ],
-   "n_ranked": 19
+   "n_ranked": 19,
+   "ranked_columns": [
+    "582478ba64f9476b",
+    "8a424d94475c9072",
+    "18ec5440fbb56697",
+    "76ef5dc1847f726b",
+    "d0ecd2f993355463",
+    "c427c5ac4fd9d89b",
+    "66a7b7ee45b3167e",
+    "2dd6201b49523983",
+    "3cbe73a49b56eb43",
+    "316eba960b029792",
+    "b6d1c7f494331bca",
+    "a53233b19aa742df",
+    "7f5436a2e475ddfe",
+    "17fb0630ffb7644d",
+    "ce4a8dc6da260145"
+   ]
   },
   {
    "i": 98,
@@ -2579,7 +4266,24 @@
     "LIBRARY_COURSE_INSTRUCTOR",
     "DRUPAL_COURSE_CATALOG"
    ],
-   "n_ranked": 19
+   "n_ranked": 19,
+   "ranked_columns": [
+    "582478ba64f9476b",
+    "76ef5dc1847f726b",
+    "66a7b7ee45b3167e",
+    "316eba960b029792",
+    "7f5436a2e475ddfe",
+    "27d67e23cbaf370c",
+    "d2b9d3cacc6ba25a",
+    "defa04d397bd6410",
+    "17fb0630ffb7644d",
+    "c2c3786240d18f34",
+    "0d622a11774ae284",
+    "8778bf7e11c8de96",
+    "a25b09e6cd1cc386",
+    "efe4fac1fd953dcc",
+    "07cefcc4ce62f6f8"
+   ]
   },
   {
    "i": 99,
@@ -2604,7 +4308,24 @@
     "SIS_SUBJECT_CODE",
     "SIS_COURSE_DESCRIPTION"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "d1d26743711ee79f",
+    "a83706ea5ce870f5",
+    "66a7b7ee45b3167e",
+    "85d8085d3a70cde1",
+    "bc44eb61f579c3c7",
+    "884c3fc153553c79",
+    "03c99ec2ae46ebc3",
+    "d6e812ef06a8f17c",
+    "3fdf410b1f3aa665",
+    "2d5b6f8eac3adb55",
+    "b0e97e31d502b0c0",
+    "316eba960b029792",
+    "2323eedc6289a305",
+    "0551b202f981c86e"
+   ]
   },
   {
    "i": 100,
@@ -2630,7 +4351,24 @@
     "ACADEMIC_TERMS",
     "ACADEMIC_TERMS_ALL"
    ],
-   "n_ranked": 19
+   "n_ranked": 19,
+   "ranked_columns": [
+    "5687568d6eb50277",
+    "ce63d7e71950d1de",
+    "c2c3786240d18f34",
+    "defa04d397bd6410",
+    "d1d26743711ee79f",
+    "8778bf7e11c8de96",
+    "9edcc1d1730a97ee",
+    "66a7b7ee45b3167e",
+    "bc44eb61f579c3c7",
+    "0a77ce1656d243ef",
+    "316eba960b029792",
+    "17fb0630ffb7644d",
+    "29c4ebfe7816a5f9",
+    "03c99ec2ae46ebc3",
+    "4842dc626133764f"
+   ]
   },
   {
    "i": 101,
@@ -2657,7 +4395,24 @@
     "STUDENT_DEGREE_PROGRAM",
     "IAP_SUBJECT_CATEGORY"
    ],
-   "n_ranked": 25
+   "n_ranked": 25,
+   "ranked_columns": [
+    "dcf3988ef4fd498f",
+    "816b39cb38b38250",
+    "625f5aed048d414f",
+    "988952511df66ea1",
+    "206f430b6d7b325a",
+    "3977ecfe6070823b",
+    "5aba6bf53e9b2f7a",
+    "46efdae001f19db9",
+    "82ff8d7c6a84aa8c",
+    "8a424d94475c9072",
+    "72a8f8864c91c171",
+    "5f1c1bcfd740a6eb",
+    "c427c5ac4fd9d89b",
+    "d0ecd2f993355463",
+    "fd538f006093041a"
+   ]
   },
   {
    "i": 102,
@@ -2682,7 +4437,24 @@
     "ESTIMATED_SURCHARGES_ESTONLY",
     "LIBRARY_COURSE_INSTRUCTOR"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "bbae6c735ca4859f",
+    "d0da7d3ee711ffc8",
+    "74ec3f3c40c1d941",
+    "b952d98f5f9c3430",
+    "740f227d3152293b",
+    "827bfacf502b8cb7",
+    "b92f6b16c66b294a",
+    "0364111a42b3be81",
+    "2a455c57da96f2fc",
+    "bf616edd6ba6ac29",
+    "d2b9d3cacc6ba25a",
+    "00c88456b0e1e443",
+    "0b947910a98bc8d0",
+    "0d622a11774ae284",
+    "97c630441e48ae78"
+   ]
   },
   {
    "i": 103,
@@ -2710,7 +4482,24 @@
     "SUBJECT_GROUPING",
     "MOIRA_LIST"
    ],
-   "n_ranked": 15
+   "n_ranked": 15,
+   "ranked_columns": [
+    "f2bf58f0714faa36",
+    "dbd19432fd8003e1",
+    "811a8f22c458a8ac",
+    "beaef772ddfeb873",
+    "6bd82a420957b11b",
+    "bc6641c0ee5aaaf5",
+    "d4afe6411c5e869a",
+    "c960ce7035b9ff11",
+    "634d54f68dc2c659",
+    "f48a7bb93606559d",
+    "63a80360e8c7e3a6",
+    "3fdf410b1f3aa665",
+    "78eb273316bc92d7",
+    "33d347778e0e0650",
+    "884c3fc153553c79"
+   ]
   },
   {
    "i": 104,
@@ -2739,7 +4528,24 @@
     "SIS_SUBJECT_CODE",
     "STUDENT_DEPARTMENT"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "17fb0630ffb7644d",
+    "beaef772ddfeb873",
+    "bc6641c0ee5aaaf5",
+    "7df48e2e49c20353",
+    "316eba960b029792",
+    "66a7b7ee45b3167e",
+    "3fdf410b1f3aa665",
+    "d1d26743711ee79f",
+    "5e0840ed373288b6",
+    "a83706ea5ce870f5",
+    "884c3fc153553c79",
+    "85d8085d3a70cde1",
+    "8778bf7e11c8de96",
+    "d6e812ef06a8f17c",
+    "f2bf58f0714faa36"
+   ]
   },
   {
    "i": 105,
@@ -2767,7 +4573,24 @@
     "DRUPAL_EMPLOYEE_DIRECTORY",
     "CIS_COURSE_CATALOG"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "17fb0630ffb7644d",
+    "beaef772ddfeb873",
+    "7df48e2e49c20353",
+    "66a7b7ee45b3167e",
+    "d1d26743711ee79f",
+    "bc6641c0ee5aaaf5",
+    "316eba960b029792",
+    "884c3fc153553c79",
+    "dbd19432fd8003e1",
+    "59c1630e871c7ca2",
+    "f541936ded8fce91",
+    "6bd82a420957b11b",
+    "2c01151c2d37b270",
+    "3fdf410b1f3aa665",
+    "24273673c17efd3d"
+   ]
   },
   {
    "i": 106,
@@ -2793,7 +4616,24 @@
     "SPACE_FLOOR",
     "PROFIT_CENTER_GROUP"
    ],
-   "n_ranked": 19
+   "n_ranked": 19,
+   "ranked_columns": [
+    "323b8f626bc3a41a",
+    "726c435ae499625c",
+    "a01c14e22ed8f22d",
+    "d52c8e0252fd1c66",
+    "080c1a5b853e7807",
+    "cf94f697ae5ea2e3",
+    "21c031f897331ac3",
+    "327fa401b8a74998",
+    "97857c8380e98a99",
+    "a288dce9f7e1df5f",
+    "76208c832a99a671",
+    "15e599e2afb0cf69",
+    "5f73724b368c7989",
+    "282f0ba3903ce54e",
+    "923b01c85ea27548"
+   ]
   },
   {
    "i": 107,
@@ -2819,7 +4659,24 @@
     "PROFIT_CENTER_GROUP",
     "HR_ORG_UNIT"
    ],
-   "n_ranked": 16
+   "n_ranked": 16,
+   "ranked_columns": [
+    "a01c14e22ed8f22d",
+    "76208c832a99a671",
+    "bd9df34467cd7f8c",
+    "a288dce9f7e1df5f",
+    "323b8f626bc3a41a",
+    "d52c8e0252fd1c66",
+    "080c1a5b853e7807",
+    "923b01c85ea27548",
+    "5f73724b368c7989",
+    "726c435ae499625c",
+    "0974d71048cac780",
+    "9aec11b577dda8c5",
+    "7cfea9099bae29e5",
+    "9010013fa1dec6ae",
+    "24a87951bc3c663c"
+   ]
   },
   {
    "i": 108,
@@ -2845,7 +4702,24 @@
     "SPACE_DETAIL",
     "FCLT_FLOOR_HIST"
    ],
-   "n_ranked": 21
+   "n_ranked": 21,
+   "ranked_columns": [
+    "d52c8e0252fd1c66",
+    "a01c14e22ed8f22d",
+    "e7eff53a9626f077",
+    "6b17433900d80072",
+    "d1a580412a2c0c65",
+    "d46cfae7616bd570",
+    "323b8f626bc3a41a",
+    "76208c832a99a671",
+    "a288dce9f7e1df5f",
+    "fa341e5b96bfcec5",
+    "2db6967ad3524be2",
+    "726c435ae499625c",
+    "cbcfb9e63a0af9bc",
+    "c3498ea187e80b5c",
+    "d7c60d21474fd876"
+   ]
   },
   {
    "i": 109,
@@ -2868,7 +4742,24 @@
     "SUBJECT_SUMMARY",
     "SIS_COURSE_DESCRIPTION"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "a83706ea5ce870f5",
+    "bc44eb61f579c3c7",
+    "8778bf7e11c8de96",
+    "c2c3786240d18f34",
+    "1324d24160431b97",
+    "85d8085d3a70cde1",
+    "884c3fc153553c79",
+    "d1d26743711ee79f",
+    "e4cb539f8d73e94d",
+    "0a10687cefb0bd01",
+    "0551b202f981c86e",
+    "d6e812ef06a8f17c",
+    "03c99ec2ae46ebc3",
+    "54fc932dfa28151b"
+   ]
   },
   {
    "i": 110,
@@ -2890,7 +4781,24 @@
     "SUBJECT_SUMMARY",
     "LIBRARY_COURSE_INSTRUCTOR"
    ],
-   "n_ranked": 11
+   "n_ranked": 11,
+   "ranked_columns": [
+    "c2c3786240d18f34",
+    "8778bf7e11c8de96",
+    "7df48e2e49c20353",
+    "0a10687cefb0bd01",
+    "85d8085d3a70cde1",
+    "03c99ec2ae46ebc3",
+    "d1d26743711ee79f",
+    "ec17f6b485d4278f",
+    "1324d24160431b97",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c",
+    "defa04d397bd6410",
+    "2d5b6f8eac3adb55",
+    "d98e83f19b2ee2ef",
+    "0551b202f981c86e"
+   ]
   },
   {
    "i": 111,
@@ -2914,7 +4822,24 @@
     "LIBRARY_RESERVE_MATRL_DETAIL",
     "STUDENT_DEGREE_PROGRAM"
    ],
-   "n_ranked": 12
+   "n_ranked": 12,
+   "ranked_columns": [
+    "7df48e2e49c20353",
+    "2b9bc4e003a8f6e0",
+    "14dbfb835f1f1ece",
+    "c4b60b8a43403060",
+    "94fcde874d8c5d86",
+    "0cfb4e5947d87b1d",
+    "54fc932dfa28151b",
+    "66a7b7ee45b3167e",
+    "a83706ea5ce870f5",
+    "8778bf7e11c8de96",
+    "d1d26743711ee79f",
+    "85d8085d3a70cde1",
+    "ad857f340b1bcd7d",
+    "9999534a48073e3c",
+    "c2c3786240d18f34"
+   ]
   },
   {
    "i": 112,
@@ -2940,7 +4865,24 @@
     "SUBJECT_SUMMARY",
     "TIME_MONTH"
    ],
-   "n_ranked": 14
+   "n_ranked": 14,
+   "ranked_columns": [
+    "bbae6c735ca4859f",
+    "00c88456b0e1e443",
+    "d0da7d3ee711ffc8",
+    "7df48e2e49c20353",
+    "a3d5aee5838047df",
+    "d2b9d3cacc6ba25a",
+    "0364111a42b3be81",
+    "0b947910a98bc8d0",
+    "2a455c57da96f2fc",
+    "7f5436a2e475ddfe",
+    "8778bf7e11c8de96",
+    "07cefcc4ce62f6f8",
+    "0d622a11774ae284",
+    "59c1630e871c7ca2",
+    "317fe34bb5480bb8"
+   ]
   },
   {
    "i": 113,
@@ -2964,7 +4906,24 @@
     "SUBJECT_SUMMARY",
     "CIS_COURSE_CATALOG"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "4a80cbcde8ac2551",
+    "4aff8d964adeab43",
+    "790c4b4f58ec0631",
+    "97bca8f593194c18",
+    "0439f57fe3de066f",
+    "783ec89e79a7ffac",
+    "d1d26743711ee79f",
+    "0ae0bf002f20b226",
+    "7f5436a2e475ddfe",
+    "e19ee6126525e8f0",
+    "83dd94a973cbf872",
+    "7df48e2e49c20353",
+    "03c99ec2ae46ebc3",
+    "884c3fc153553c79",
+    "d6e812ef06a8f17c"
+   ]
   },
   {
    "i": 114,
@@ -2988,7 +4947,24 @@
     "DRUPAL_COURSE_CATALOG",
     "IAP_SUBJECT_PERSON"
    ],
-   "n_ranked": 13
+   "n_ranked": 13,
+   "ranked_columns": [
+    "4a80cbcde8ac2551",
+    "4aff8d964adeab43",
+    "790c4b4f58ec0631",
+    "97bca8f593194c18",
+    "625f5aed048d414f",
+    "e19ee6126525e8f0",
+    "f541936ded8fce91",
+    "206f430b6d7b325a",
+    "12051c0ecbdebe8c",
+    "3fdf410b1f3aa665",
+    "7df48e2e49c20353",
+    "66a7b7ee45b3167e",
+    "783ec89e79a7ffac",
+    "bc6641c0ee5aaaf5",
+    "72a8f8864c91c171"
+   ]
   },
   {
    "i": 115,
@@ -3014,7 +4990,24 @@
     "ROLES_FIN_PA",
     "IR_INSTITUTION"
    ],
-   "n_ranked": 18
+   "n_ranked": 18,
+   "ranked_columns": [
+    "0439f57fe3de066f",
+    "13be2c08aacf3ee1",
+    "2db6967ad3524be2",
+    "cbcfb9e63a0af9bc",
+    "4923686fc82ca5d6",
+    "c3498ea187e80b5c",
+    "d7c60d21474fd876",
+    "fa341e5b96bfcec5",
+    "b4fa4ad03f520c3d",
+    "640203cbd98ed796",
+    "06b88e0d26fc1146",
+    "a4fbdaaab54ab490",
+    "2d5b6f8eac3adb55",
+    "f255f1d6eb68397b",
+    "f541936ded8fce91"
+   ]
   },
   {
    "i": 116,
@@ -3040,7 +5033,24 @@
     "FCLT_ROOMS_HIST",
     "PROFIT_CENTER_GROUP"
    ],
-   "n_ranked": 19
+   "n_ranked": 19,
+   "ranked_columns": [
+    "6b17433900d80072",
+    "d52c8e0252fd1c66",
+    "726c435ae499625c",
+    "d1a580412a2c0c65",
+    "e7eff53a9626f077",
+    "a01c14e22ed8f22d",
+    "ecb8626842a04a1d",
+    "2a808d0e64168682",
+    "e21348dcaf38c97c",
+    "e5815b13014b4556",
+    "d74209e55413ddec",
+    "76208c832a99a671",
+    "923b01c85ea27548",
+    "359019f3fe0df00b",
+    "b7c37bbfa7bb3b94"
+   ]
   },
   {
    "i": 117,
@@ -3060,7 +5070,24 @@
     "TIP_SUBJECT_OFFERED",
     "LIBRARY_SUBJECT_OFFERED"
    ],
-   "n_ranked": 9
+   "n_ranked": 9,
+   "ranked_columns": [
+    "ad857f340b1bcd7d",
+    "7df48e2e49c20353",
+    "07cefcc4ce62f6f8",
+    "54fc932dfa28151b",
+    "788bac56fcecc519",
+    "b4e8aeeb8a385c08",
+    "68cfb58fd1c9226c",
+    "2b9bc4e003a8f6e0",
+    "ca375c58d2e05249",
+    "0551b202f981c86e",
+    "94fcde874d8c5d86",
+    "6bd82a420957b11b",
+    "66a7b7ee45b3167e",
+    "f2bf58f0714faa36",
+    "41be9a90f8945bed"
+   ]
   },
   {
    "i": 118,
@@ -3086,7 +5113,24 @@
     "FAC_BUILDING_ADDRESS",
     "PROFIT_CENTER_GROUP"
    ],
-   "n_ranked": 26
+   "n_ranked": 26,
+   "ranked_columns": [
+    "d9acb0a8ce4966df",
+    "5b2537e8123ae322",
+    "e496c11f4ee11593",
+    "1d029979898d4b88",
+    "00e59c659560e126",
+    "553892c64a72569d",
+    "b8d4411622fc5b69",
+    "6fbefbd59345ed2f",
+    "4d465ffc73d1aafd",
+    "91dcde318d7d2124",
+    "73d4d35aec6b40a1",
+    "8b6cac47531dcde3",
+    "497a5d77eeed020c",
+    "2f526f95a3944de3",
+    "634d54f68dc2c659"
+   ]
   },
   {
    "i": 119,
@@ -3107,7 +5151,24 @@
     "SUBJECT_OFFERED",
     "SUBJECT_OFFERED_SUMMARY"
    ],
-   "n_ranked": 10
+   "n_ranked": 10,
+   "ranked_columns": [
+    "3ee1173f27a8cbb7",
+    "eeadf919a4872839",
+    "267bd3c5bcf4fafb",
+    "1b2bf336dc963dce",
+    "1e8fc910c69278e8",
+    "7df48e2e49c20353",
+    "9264aceb22414b8f",
+    "50c76bb989a3f7e6",
+    "241da6425e657602",
+    "0551b202f981c86e",
+    "f4a0b1f716b51107",
+    "1324d24160431b97",
+    "33d347778e0e0650",
+    "884c3fc153553c79",
+    "d1d26743711ee79f"
+   ]
   },
   {
    "i": 120,
@@ -3133,7 +5194,24 @@
     "SIS_DEPARTMENT",
     "TIP_SUBJECT_OFFERED"
    ],
-   "n_ranked": 17
+   "n_ranked": 17,
+   "ranked_columns": [
+    "2c36a5e9d257d0c2",
+    "a83706ea5ce870f5",
+    "a5959cf9d114abd7",
+    "7df48e2e49c20353",
+    "af588270f928c76a",
+    "2018aa53f1ca3b5f",
+    "db3784a89a20304a",
+    "63a80360e8c7e3a6",
+    "4746394d0f3f06d3",
+    "f9bbf32c3a417189",
+    "bc44eb61f579c3c7",
+    "6141292c35eeea03",
+    "e4cb539f8d73e94d",
+    "f7f065f30695f1ee",
+    "9295029adf2339c2"
+   ]
   }
  ]
 }

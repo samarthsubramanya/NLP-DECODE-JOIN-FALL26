@@ -4,7 +4,7 @@
  "encoder": "bge",
  "method": "heuristic",
  "n_queries": 300,
- "seconds": 9.3,
+ "seconds": 15.2,
  "summary": {
   "5": {
    "P": 0.31,
@@ -45,6 +45,27 @@
    "PR": 0.8266666666666667
   }
  },
+ "n_column_queries": 298,
+ "summary_columns": {
+  "5": {
+   "P": 0.20604026845637585,
+   "R": 0.12801912386643932,
+   "F1": 0.15079644937685846,
+   "PR": 0.0
+  },
+  "10": {
+   "P": 0.16711409395973156,
+   "R": 0.19392781572509168,
+   "F1": 0.1722487107280783,
+   "PR": 0.0
+  },
+  "15": {
+   "P": 0.18008948545861297,
+   "R": 0.2964360558838451,
+   "F1": 0.21666904632723416,
+   "PR": 0.006711409395973154
+  }
+ },
  "per_query": [
   {
    "i": 0,
@@ -69,7 +90,24 @@
     "fiben.FINANCIALINSTRUMENT",
     "fiben.COUNTRY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "01874b89027f3495",
+    "ea1b6656ab06f368",
+    "d27d70d2c483591b",
+    "fe416fd78401c0ef",
+    "1fd401420ac1b29e",
+    "637575a3b4abdc4e",
+    "c6c262245ba24ab5",
+    "8a5da30605546a98",
+    "0a9c118462882911",
+    "a4eee242e2944ae5",
+    "d99cea34b34c1fb5",
+    "8dac5ebcd24070a3",
+    "9236b134fe57a0d7"
+   ]
   },
   {
    "i": 1,
@@ -97,7 +135,24 @@
     "fiben.LIABILITY",
     "fiben.FINANCIALREPORT"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "cde1d4ddcf43942d",
+    "7739966b94d797ed",
+    "01874b89027f3495",
+    "63112904ac8c9b42",
+    "26f83ade10efe987",
+    "ea1b6656ab06f368",
+    "b34360dfede1ce0b",
+    "45906a6a74570c80",
+    "9c5c5ad8294ba063",
+    "a270f09be69202ec",
+    "5133ce14d0c4c5f7",
+    "ea23f3c863187b8f",
+    "d39881868cababe3",
+    "78690acbe9a7442b"
+   ]
   },
   {
    "i": 2,
@@ -122,7 +177,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "c6c262245ba24ab5",
+    "01874b89027f3495",
+    "fe416fd78401c0ef",
+    "8a5da30605546a98",
+    "724d54e90a8db9f9",
+    "d27d70d2c483591b",
+    "a31256c245fa82b2",
+    "c4d6bafa3e6f9d54",
+    "8cb3a2c42a1b18e8"
+   ]
   },
   {
    "i": 3,
@@ -149,7 +221,24 @@
     "fiben.FINANCIALREPORT",
     "fiben.AUTONOMOUSAGENT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "a7a83e0dd2f00566",
+    "8a5406402512599e",
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592",
+    "3db988597cfc35a0",
+    "08791775c2b52d10",
+    "1f88a469adc8b8fb",
+    "f779219aaea7ce89",
+    "60ce494a0def6286",
+    "9bd03a25e8f026df",
+    "429a581b66f07a19",
+    "8a5da30605546a98",
+    "532b4360a7fa04a6",
+    "72ddc85fb68630cc",
+    "3523aabab882f937"
+   ]
   },
   {
    "i": 4,
@@ -174,7 +263,24 @@
     "fiben.HOLDING",
     "fiben.LISTEDSECURITY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "7cf04867e5dea1a0",
+    "f779219aaea7ce89",
+    "d45cb47931613fd0",
+    "4d5211090d9bb17a",
+    "fc5eed00e46b3498",
+    "cd9138a5fd24bb70",
+    "043502ffb00dff04",
+    "532b4360a7fa04a6",
+    "3523aabab882f937",
+    "3db988597cfc35a0",
+    "37f901ec3acbf398",
+    "9c5c5ad8294ba063",
+    "60ce494a0def6286",
+    "365b44f189d1e0d1",
+    "82de6f7fc8247231"
+   ]
   },
   {
    "i": 5,
@@ -199,7 +305,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "fe416fd78401c0ef",
+    "b0edaf62db255fd2",
+    "c6c262245ba24ab5",
+    "d27d70d2c483591b",
+    "01874b89027f3495",
+    "bec6195b3e1bc592",
+    "a31256c245fa82b2",
+    "8a5da30605546a98",
+    "4ca88f1a93bd3554",
+    "9236b134fe57a0d7",
+    "f779219aaea7ce89",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 6,
@@ -224,7 +347,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "bec6195b3e1bc592",
+    "b0edaf62db255fd2",
+    "c6c262245ba24ab5",
+    "a31256c245fa82b2",
+    "fe416fd78401c0ef",
+    "8a5da30605546a98",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "4ca88f1a93bd3554",
+    "c4d6bafa3e6f9d54",
+    "8dac5ebcd24070a3",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 7,
@@ -253,7 +393,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.CONTRACTPARTY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4ca88f1a93bd3554",
+    "b0edaf62db255fd2",
+    "d627b5e80bf1a648",
+    "1348c8459decd323",
+    "4f4e8c13c3a5e78e",
+    "bfc04de9ad1dd197",
+    "3db988597cfc35a0",
+    "043502ffb00dff04",
+    "3523aabab882f937",
+    "1c6988534fab59d7",
+    "f779219aaea7ce89",
+    "1eaacae5d12bfdea",
+    "06626db4f9fe45c7",
+    "acb3fb8af8956d5e"
+   ]
   },
   {
    "i": 8,
@@ -280,7 +437,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "bfc04de9ad1dd197",
+    "c6c262245ba24ab5",
+    "01874b89027f3495",
+    "fe416fd78401c0ef",
+    "8a5da30605546a98",
+    "1348c8459decd323",
+    "a31256c245fa82b2",
+    "d27d70d2c483591b",
+    "c4d6bafa3e6f9d54",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "9236b134fe57a0d7"
+   ]
   },
   {
    "i": 9,
@@ -307,7 +481,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "ea1b6656ab06f368",
+    "bfc04de9ad1dd197",
+    "4ca88f1a93bd3554",
+    "1348c8459decd323",
+    "01874b89027f3495",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "d627b5e80bf1a648",
+    "0465092b9362c45d",
+    "b3c32d0e0e2f38b7",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 10,
@@ -332,7 +523,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "8a5da30605546a98",
+    "ea1b6656ab06f368",
+    "c4d6bafa3e6f9d54",
+    "d27d70d2c483591b",
+    "1b4b177dd9f8e897",
+    "cd3ebca5b9c6d2fd",
+    "a31256c245fa82b2",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "01874b89027f3495",
+    "429a581b66f07a19",
+    "532b4360a7fa04a6",
+    "8dac5ebcd24070a3"
+   ]
   },
   {
    "i": 11,
@@ -357,7 +565,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "c6c262245ba24ab5",
+    "fe416fd78401c0ef",
+    "01874b89027f3495",
+    "764c543129516a6e",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "d27d70d2c483591b",
+    "e246c7c5a332c6a2",
+    "c4d6bafa3e6f9d54",
+    "69d502c0e851e2c3",
+    "637575a3b4abdc4e",
+    "98426731c7cd1df9"
+   ]
   },
   {
    "i": 12,
@@ -386,7 +611,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "d627b5e80bf1a648",
+    "b0edaf62db255fd2",
+    "1f88a469adc8b8fb",
+    "4ca88f1a93bd3554",
+    "8ef4c07639f83830",
+    "1348c8459decd323",
+    "bfc04de9ad1dd197",
+    "4f4e8c13c3a5e78e",
+    "a17ce9c62c1a90cd",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "0a9c118462882911",
+    "d27d70d2c483591b",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 13,
@@ -411,7 +653,24 @@
     "fiben.CONTRACTPARTY",
     "fiben.CORPORATION"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "092684b0920e4ae6",
+    "fda5c349c58ac47e",
+    "f1d3665960cfcdb6",
+    "532b4360a7fa04a6",
+    "30d6fa86ed99f61f",
+    "a503bf78aba3fa21",
+    "60ce494a0def6286",
+    "429a581b66f07a19",
+    "95f6b3ede1800e0d",
+    "0e6aa44515168352",
+    "db7446730a9ee8a7",
+    "f779219aaea7ce89",
+    "173745a5ae16b141",
+    "3db988597cfc35a0",
+    "98426731c7cd1df9"
+   ]
   },
   {
    "i": 14,
@@ -436,7 +695,24 @@
     "fiben.INVENTORYNONCURRENT",
     "fiben.COSTMETHODINVESTMENTS"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "60ec8f32da8947ad",
+    "1348c8459decd323",
+    "ea1b6656ab06f368",
+    "1b4b177dd9f8e897",
+    "1c6988534fab59d7",
+    "4f4e8c13c3a5e78e",
+    "db7446730a9ee8a7",
+    "d627b5e80bf1a648",
+    "51f6456aaedf32f6",
+    "cd3ebca5b9c6d2fd",
+    "90fd4b86b8f3d56f",
+    "540138dded2d6546",
+    "ca766ca8fb21f249",
+    "6923505e7970e0c8"
+   ]
   },
   {
    "i": 15,
@@ -464,7 +740,24 @@
     "fiben.HOLDING",
     "fiben.COUNTRY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "9c5c5ad8294ba063",
+    "d25e586a727fe5a7",
+    "cde1d4ddcf43942d",
+    "bb21af1e75d8dca7",
+    "25c9f89589c15898",
+    "db7446730a9ee8a7",
+    "9bd03a25e8f026df",
+    "7218c0cebdf80712",
+    "a7aa1e87b685cad6",
+    "532b4360a7fa04a6",
+    "ea23f3c863187b8f",
+    "429a581b66f07a19",
+    "f779219aaea7ce89",
+    "8e4f3fb38c87bdaf",
+    "06626db4f9fe45c7"
+   ]
   },
   {
    "i": 16,
@@ -491,7 +784,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "01874b89027f3495",
+    "b0edaf62db255fd2",
+    "4ca88f1a93bd3554",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "c4d6bafa3e6f9d54",
+    "ec1d5c5086259295",
+    "9236b134fe57a0d7",
+    "a31256c245fa82b2"
+   ]
   },
   {
    "i": 17,
@@ -518,7 +828,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "01874b89027f3495",
+    "b3c32d0e0e2f38b7",
+    "b0edaf62db255fd2",
+    "d27d70d2c483591b",
+    "4ca88f1a93bd3554",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "c4d6bafa3e6f9d54",
+    "724d54e90a8db9f9",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 18,
@@ -543,7 +870,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "d27d70d2c483591b",
+    "1348c8459decd323",
+    "bfc04de9ad1dd197",
+    "51f6456aaedf32f6",
+    "105e58e1a48ff47a",
+    "01874b89027f3495",
+    "d627b5e80bf1a648",
+    "ea1b6656ab06f368",
+    "60ec8f32da8947ad",
+    "9bd03a25e8f026df",
+    "9236b134fe57a0d7",
+    "bec6195b3e1bc592",
+    "0a9c118462882911",
+    "06626db4f9fe45c7",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 19,
@@ -568,7 +912,24 @@
     "fiben.DISTRIBUTIONTOOWNER",
     "fiben.EXPENSE"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "532b4360a7fa04a6",
+    "092684b0920e4ae6",
+    "429a581b66f07a19",
+    "60ce494a0def6286",
+    "7facc9a30ec85748",
+    "f1d3665960cfcdb6",
+    "bb21af1e75d8dca7",
+    "fda5c349c58ac47e",
+    "90fd4b86b8f3d56f",
+    "30d6fa86ed99f61f",
+    "cde1d4ddcf43942d",
+    "08791775c2b52d10",
+    "7739966b94d797ed",
+    "173745a5ae16b141",
+    "164d5f7a5682905f"
+   ]
   },
   {
    "i": 20,
@@ -596,7 +957,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "db7446730a9ee8a7",
+    "764c543129516a6e",
+    "bfc04de9ad1dd197",
+    "e246c7c5a332c6a2",
+    "ea1b6656ab06f368",
+    "d627b5e80bf1a648",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "0a9c118462882911",
+    "1348c8459decd323",
+    "b3c32d0e0e2f38b7",
+    "01874b89027f3495",
+    "c4d6bafa3e6f9d54",
+    "d99cea34b34c1fb5"
+   ]
   },
   {
    "i": 21,
@@ -621,7 +999,24 @@
     "fiben.MONETARYAMOUNT",
     "fiben.POSTALADDRESS"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "72ddc85fb68630cc",
+    "60ce494a0def6286",
+    "429a581b66f07a19",
+    "30d6fa86ed99f61f",
+    "532b4360a7fa04a6",
+    "fda5c349c58ac47e",
+    "6db81298006e371d",
+    "7991c01866fc044e",
+    "f1d3665960cfcdb6",
+    "a7a83e0dd2f00566",
+    "092684b0920e4ae6",
+    "ac7b60bf8b617914",
+    "8a5406402512599e",
+    "31b990464f9369d6",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 22,
@@ -646,7 +1041,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "c6c262245ba24ab5",
+    "bec6195b3e1bc592",
+    "fe416fd78401c0ef",
+    "8a5da30605546a98",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "a31256c245fa82b2",
+    "4ca88f1a93bd3554",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d",
+    "98426731c7cd1df9"
+   ]
   },
   {
    "i": 23,
@@ -671,7 +1083,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "c6c262245ba24ab5",
+    "d27d70d2c483591b",
+    "4f4e8c13c3a5e78e",
+    "fe416fd78401c0ef",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "9236b134fe57a0d7",
+    "bec6195b3e1bc592",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 24,
@@ -696,7 +1125,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "c6c262245ba24ab5",
+    "01874b89027f3495",
+    "bec6195b3e1bc592",
+    "fe416fd78401c0ef",
+    "4ca88f1a93bd3554",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "c4d6bafa3e6f9d54",
+    "d27d70d2c483591b",
+    "0465092b9362c45d",
+    "d25e586a727fe5a7"
+   ]
   },
   {
    "i": 25,
@@ -723,7 +1169,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "d27d70d2c483591b",
+    "1f88a469adc8b8fb",
+    "9bd03a25e8f026df",
+    "fe416fd78401c0ef",
+    "e246c7c5a332c6a2",
+    "06626db4f9fe45c7",
+    "9236b134fe57a0d7",
+    "4f4e8c13c3a5e78e",
+    "8dac5ebcd24070a3",
+    "c6c262245ba24ab5",
+    "bec6195b3e1bc592",
+    "764c543129516a6e",
+    "8a5da30605546a98",
+    "acb3fb8af8956d5e"
+   ]
   },
   {
    "i": 26,
@@ -748,7 +1211,24 @@
     "fiben.COUNTRY",
     "fiben.EQUITYMETHODINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "1f88a469adc8b8fb",
+    "bec6195b3e1bc592",
+    "ea1b6656ab06f368",
+    "db7446730a9ee8a7",
+    "60ec8f32da8947ad",
+    "9bd03a25e8f026df",
+    "51f6456aaedf32f6",
+    "95f6b3ede1800e0d",
+    "8a5da30605546a98",
+    "01874b89027f3495",
+    "724d54e90a8db9f9",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 27,
@@ -775,7 +1255,24 @@
     "fiben.AUTONOMOUSAGENT",
     "fiben.CONTRACT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "3db988597cfc35a0",
+    "60ec8f32da8947ad",
+    "51f6456aaedf32f6",
+    "9bd03a25e8f026df",
+    "8a5da30605546a98",
+    "f779219aaea7ce89",
+    "50ebea2186ad0df5",
+    "d25e586a727fe5a7",
+    "01874b89027f3495",
+    "c4d6bafa3e6f9d54",
+    "043502ffb00dff04"
+   ]
   },
   {
    "i": 28,
@@ -800,7 +1297,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "60ec8f32da8947ad",
+    "bec6195b3e1bc592",
+    "ea1b6656ab06f368",
+    "1348c8459decd323",
+    "9bd03a25e8f026df",
+    "51f6456aaedf32f6",
+    "d27d70d2c483591b",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "d627b5e80bf1a648",
+    "1c6988534fab59d7",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 29,
@@ -825,7 +1339,24 @@
     "fiben.COUNTRY",
     "fiben.GAINLOSSONINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "bec6195b3e1bc592",
+    "4f4e8c13c3a5e78e",
+    "60ec8f32da8947ad",
+    "ea1b6656ab06f368",
+    "1f88a469adc8b8fb",
+    "db7446730a9ee8a7",
+    "51f6456aaedf32f6",
+    "9bd03a25e8f026df",
+    "01874b89027f3495",
+    "95f6b3ede1800e0d",
+    "8a5da30605546a98",
+    "0465092b9362c45d",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 30,
@@ -851,7 +1382,24 @@
     "fiben.AUTONOMOUSAGENT",
     "fiben.CONTRACTPARTY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "8a5da30605546a98",
+    "429a581b66f07a19",
+    "532b4360a7fa04a6",
+    "9bd03a25e8f026df",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d",
+    "bec6195b3e1bc592",
+    "6cd6c2981d93c231",
+    "30d6fa86ed99f61f",
+    "b5d5fc1a5c581446",
+    "98426731c7cd1df9",
+    "105e58e1a48ff47a",
+    "173745a5ae16b141",
+    "ec1d5c5086259295",
+    "60ce494a0def6286"
+   ]
   },
   {
    "i": 31,
@@ -882,7 +1430,24 @@
     "fiben.CONTRACTPARTY",
     "fiben.CONTRACT"
    ],
-   "n_ranked": 151
+   "n_ranked": 151,
+   "ranked_columns": [
+    "066d90cba1b5337f",
+    "54d5783f0a4a4d3c",
+    "3f9f122a6c985183",
+    "1700fd3cc187ecd8",
+    "fda5c349c58ac47e",
+    "8966be3a36df9578",
+    "2b7606b9bf43abdc",
+    "a271606ef2730416",
+    "ae71ac52d5db14f9",
+    "b859afc1a184b89a",
+    "68dfc7f111b891e3",
+    "6889fbdab46c15b3",
+    "30d6fa86ed99f61f",
+    "32513157434bc6c5",
+    "934881c00093dfea"
+   ]
   },
   {
    "i": 32,
@@ -907,7 +1472,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "1c6988534fab59d7",
+    "d27d70d2c483591b",
+    "724d54e90a8db9f9",
+    "8a5da30605546a98",
+    "d627b5e80bf1a648",
+    "01874b89027f3495",
+    "a31256c245fa82b2",
+    "9236b134fe57a0d7",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 33,
@@ -932,7 +1514,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1348c8459decd323",
+    "d27d70d2c483591b",
+    "bfc04de9ad1dd197",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "51f6456aaedf32f6",
+    "d627b5e80bf1a648",
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "60ec8f32da8947ad",
+    "0a9c118462882911",
+    "9236b134fe57a0d7",
+    "0465092b9362c45d",
+    "94094a3b75381f06"
+   ]
   },
   {
    "i": 34,
@@ -957,7 +1556,24 @@
     "fiben.AUTONOMOUSAGENT",
     "fiben.CONTRACTPARTY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "429a581b66f07a19",
+    "532b4360a7fa04a6",
+    "60ce494a0def6286",
+    "0e6aa44515168352",
+    "f1d3665960cfcdb6",
+    "bec6195b3e1bc592",
+    "b1d38e40f69a26f6",
+    "092684b0920e4ae6",
+    "a503bf78aba3fa21",
+    "173745a5ae16b141",
+    "e7da672a4e1f2789",
+    "8a5da30605546a98",
+    "68cfe47b173966a7",
+    "98426731c7cd1df9",
+    "9bd03a25e8f026df"
+   ]
   },
   {
    "i": 35,
@@ -982,7 +1598,24 @@
     "fiben.COUNTRY",
     "fiben.EQUITYMETHODINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "bec6195b3e1bc592",
+    "ea1b6656ab06f368",
+    "db7446730a9ee8a7",
+    "60ec8f32da8947ad",
+    "1f88a469adc8b8fb",
+    "9bd03a25e8f026df",
+    "51f6456aaedf32f6",
+    "95f6b3ede1800e0d",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 36,
@@ -1007,7 +1640,24 @@
     "fiben.COUNTRY",
     "fiben.EQUITYMETHODINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1348c8459decd323",
+    "bfc04de9ad1dd197",
+    "d27d70d2c483591b",
+    "d627b5e80bf1a648",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "51f6456aaedf32f6",
+    "60ec8f32da8947ad",
+    "9bd03a25e8f026df",
+    "0a9c118462882911",
+    "121dcc8fe13f15e7",
+    "1c6988534fab59d7",
+    "acb3fb8af8956d5e"
+   ]
   },
   {
    "i": 37,
@@ -1032,7 +1682,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "d27d70d2c483591b",
+    "4f4e8c13c3a5e78e",
+    "9bd03a25e8f026df",
+    "c6c262245ba24ab5",
+    "1f88a469adc8b8fb",
+    "fe416fd78401c0ef",
+    "01874b89027f3495",
+    "bec6195b3e1bc592",
+    "9236b134fe57a0d7",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "06626db4f9fe45c7",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 38,
@@ -1057,7 +1724,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "bfc04de9ad1dd197",
+    "60ec8f32da8947ad",
+    "db7446730a9ee8a7",
+    "bec6195b3e1bc592",
+    "ea1b6656ab06f368",
+    "1f88a469adc8b8fb",
+    "9bd03a25e8f026df",
+    "1348c8459decd323",
+    "51f6456aaedf32f6",
+    "8a5da30605546a98",
+    "95f6b3ede1800e0d",
+    "0465092b9362c45d",
+    "d25e586a727fe5a7",
+    "01874b89027f3495"
+   ]
   },
   {
    "i": 39,
@@ -1084,7 +1768,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "1f88a469adc8b8fb",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "a31256c245fa82b2",
+    "9236b134fe57a0d7",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592",
+    "8dac5ebcd24070a3",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 40,
@@ -1111,7 +1812,24 @@
     "fiben.SECURITIESTRANSACTION",
     "fiben.HOLDING"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "8966be3a36df9578",
+    "3f9f122a6c985183",
+    "32513157434bc6c5",
+    "e9243f992f053e6f",
+    "72ddc85fb68630cc",
+    "e877e2af845492e2",
+    "fabb825224a00ff1",
+    "5230d2251a8a9838",
+    "35cbb4f55703254d",
+    "52082c83342a8369",
+    "2e16512f83454ea6",
+    "6db81298006e371d",
+    "ee8e2125081c74b7",
+    "934881c00093dfea",
+    "72f33f26c961d8fa"
+   ]
   },
   {
    "i": 41,
@@ -1141,7 +1859,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "bec6195b3e1bc592",
+    "1348c8459decd323",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "d627b5e80bf1a648",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "0a9c118462882911",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 42,
@@ -1169,7 +1904,24 @@
     "fiben.LOSS",
     "fiben.INDUSTRYSECTORCLASSIFIER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "d25e586a727fe5a7",
+    "cde1d4ddcf43942d",
+    "a7aa1e87b685cad6",
+    "94094a3b75381f06",
+    "9c5c5ad8294ba063",
+    "ea23f3c863187b8f",
+    "63112904ac8c9b42",
+    "25c9f89589c15898",
+    "830e69d78a49ef76",
+    "45906a6a74570c80",
+    "7739966b94d797ed",
+    "8e4f3fb38c87bdaf",
+    "7940d0af6443bf08",
+    "06626db4f9fe45c7"
+   ]
   },
   {
    "i": 43,
@@ -1196,7 +1948,24 @@
     "fiben.CURRENCY",
     "fiben.COUNTRY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "a31256c245fa82b2",
+    "b3c32d0e0e2f38b7",
+    "c6c262245ba24ab5",
+    "8a5da30605546a98",
+    "fe416fd78401c0ef",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592",
+    "8dac5ebcd24070a3",
+    "01874b89027f3495",
+    "c4d6bafa3e6f9d54",
+    "532b4360a7fa04a6",
+    "429a581b66f07a19",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 44,
@@ -1221,7 +1990,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "c6c262245ba24ab5",
+    "1f88a469adc8b8fb",
+    "fe416fd78401c0ef",
+    "bec6195b3e1bc592",
+    "d27d70d2c483591b",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "9236b134fe57a0d7",
+    "c4d6bafa3e6f9d54",
+    "f779219aaea7ce89"
+   ]
   },
   {
    "i": 45,
@@ -1248,7 +2034,24 @@
     "fiben.SECURITIESTRANSACTION",
     "fiben.HOLDING"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "32513157434bc6c5",
+    "8966be3a36df9578",
+    "e9243f992f053e6f",
+    "3f9f122a6c985183",
+    "fabb825224a00ff1",
+    "e877e2af845492e2",
+    "72ddc85fb68630cc",
+    "52082c83342a8369",
+    "35cbb4f55703254d",
+    "5230d2251a8a9838",
+    "2e16512f83454ea6",
+    "ee8e2125081c74b7",
+    "6db81298006e371d",
+    "6b5ff70912738e4e",
+    "934881c00093dfea"
+   ]
   },
   {
    "i": 46,
@@ -1275,7 +2078,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.CONTRACTPARTY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "a7a83e0dd2f00566",
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "043502ffb00dff04",
+    "8a5406402512599e",
+    "f140099c600eb8b6",
+    "4cc57a58e6313b1b",
+    "3523aabab882f937",
+    "72ddc85fb68630cc",
+    "472b64f80be9d203",
+    "3db988597cfc35a0",
+    "51d3a7d2cd4f69a1",
+    "31b990464f9369d6",
+    "7991c01866fc044e",
+    "50ebea2186ad0df5"
+   ]
   },
   {
    "i": 47,
@@ -1302,7 +2122,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "b0edaf62db255fd2",
+    "01874b89027f3495",
+    "b3c32d0e0e2f38b7",
+    "d27d70d2c483591b",
+    "4ca88f1a93bd3554",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "c4d6bafa3e6f9d54",
+    "8dac5ebcd24070a3",
+    "9236b134fe57a0d7"
+   ]
   },
   {
    "i": 48,
@@ -1327,7 +2164,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "4f4e8c13c3a5e78e",
+    "db7446730a9ee8a7",
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "60ec8f32da8947ad",
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "d27d70d2c483591b",
+    "51f6456aaedf32f6",
+    "95f6b3ede1800e0d",
+    "8a5da30605546a98",
+    "01874b89027f3495",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 49,
@@ -1354,7 +2208,24 @@
     "fiben.COUNTRY",
     "fiben.EQUITYMETHODINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1348c8459decd323",
+    "d27d70d2c483591b",
+    "bfc04de9ad1dd197",
+    "d627b5e80bf1a648",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "ea1b6656ab06f368",
+    "51f6456aaedf32f6",
+    "b0edaf62db255fd2",
+    "9bd03a25e8f026df",
+    "121dcc8fe13f15e7",
+    "60ec8f32da8947ad",
+    "9236b134fe57a0d7",
+    "0a9c118462882911",
+    "acb3fb8af8956d5e"
+   ]
   },
   {
    "i": 50,
@@ -1379,7 +2250,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "bec6195b3e1bc592",
+    "01874b89027f3495",
+    "b0edaf62db255fd2",
+    "8a5da30605546a98",
+    "4ca88f1a93bd3554",
+    "a31256c245fa82b2",
+    "c4d6bafa3e6f9d54",
+    "51f8815359ac8c25",
+    "d27d70d2c483591b",
+    "d25e586a727fe5a7"
+   ]
   },
   {
    "i": 51,
@@ -1404,7 +2292,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "c6c262245ba24ab5",
+    "a31256c245fa82b2",
+    "fe416fd78401c0ef",
+    "8a5da30605546a98",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592",
+    "4ca88f1a93bd3554",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d",
+    "98426731c7cd1df9"
+   ]
   },
   {
    "i": 52,
@@ -1429,7 +2334,24 @@
     "fiben.FINANCIALINSTRUMENT",
     "fiben.COUNTRY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "01874b89027f3495",
+    "637575a3b4abdc4e",
+    "fe416fd78401c0ef",
+    "1fd401420ac1b29e",
+    "c6c262245ba24ab5",
+    "d27d70d2c483591b",
+    "d99cea34b34c1fb5",
+    "8a5da30605546a98",
+    "98426731c7cd1df9",
+    "8dac5ebcd24070a3",
+    "69d502c0e851e2c3",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 53,
@@ -1454,7 +2376,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "d27d70d2c483591b",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "c4d6bafa3e6f9d54",
+    "0a9c118462882911",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 54,
@@ -1481,7 +2420,24 @@
     "fiben.SECURITIESTRANSACTION",
     "fiben.HOLDING"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "8966be3a36df9578",
+    "3f9f122a6c985183",
+    "32513157434bc6c5",
+    "e9243f992f053e6f",
+    "e877e2af845492e2",
+    "fabb825224a00ff1",
+    "72ddc85fb68630cc",
+    "5230d2251a8a9838",
+    "52082c83342a8369",
+    "6db81298006e371d",
+    "35cbb4f55703254d",
+    "2e16512f83454ea6",
+    "72f33f26c961d8fa",
+    "ee8e2125081c74b7",
+    "68dfc7f111b891e3"
+   ]
   },
   {
    "i": 55,
@@ -1506,7 +2462,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592",
+    "db7446730a9ee8a7",
+    "60ec8f32da8947ad",
+    "ea1b6656ab06f368",
+    "1f88a469adc8b8fb",
+    "9bd03a25e8f026df",
+    "51f6456aaedf32f6",
+    "d27d70d2c483591b",
+    "95f6b3ede1800e0d",
+    "0465092b9362c45d",
+    "8a5da30605546a98",
+    "01874b89027f3495"
+   ]
   },
   {
    "i": 56,
@@ -1531,7 +2504,24 @@
     "fiben.COSTMETHODINVESTMENTS",
     "fiben.TRADINGSECURITIESANDOTHERTRADINGASSETS"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "bfc04de9ad1dd197",
+    "1f88a469adc8b8fb",
+    "60ec8f32da8947ad",
+    "db7446730a9ee8a7",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "1348c8459decd323",
+    "90fd4b86b8f3d56f",
+    "1b4b177dd9f8e897",
+    "51f6456aaedf32f6",
+    "a17ce9c62c1a90cd",
+    "cd3ebca5b9c6d2fd",
+    "1c6988534fab59d7",
+    "95f6b3ede1800e0d"
+   ]
   },
   {
    "i": 57,
@@ -1558,7 +2548,24 @@
     "fiben.COUNTRY",
     "fiben.INVESTMENTINCOME"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "8a5da30605546a98",
+    "105e58e1a48ff47a",
+    "0a9c118462882911",
+    "c4d6bafa3e6f9d54",
+    "f9040bcb65af9997",
+    "fe416fd78401c0ef",
+    "d27d70d2c483591b",
+    "ea1b6656ab06f368",
+    "c6c262245ba24ab5",
+    "01874b89027f3495",
+    "8939719d9d1eedd5",
+    "a17ce9c62c1a90cd"
+   ]
   },
   {
    "i": 58,
@@ -1585,7 +2592,24 @@
     "fiben.PHONENUMBER",
     "fiben.SECURITIESTRANSACTION"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "32513157434bc6c5",
+    "e9243f992f053e6f",
+    "3f9f122a6c985183",
+    "fabb825224a00ff1",
+    "8966be3a36df9578",
+    "72ddc85fb68630cc",
+    "e877e2af845492e2",
+    "35cbb4f55703254d",
+    "ee8e2125081c74b7",
+    "934881c00093dfea",
+    "2b7606b9bf43abdc",
+    "6db81298006e371d",
+    "a271606ef2730416",
+    "68dfc7f111b891e3",
+    "5230d2251a8a9838"
+   ]
   },
   {
    "i": 59,
@@ -1612,7 +2636,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "b0edaf62db255fd2",
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592",
+    "a31256c245fa82b2",
+    "1f88a469adc8b8fb",
+    "8a5da30605546a98",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "d27d70d2c483591b",
+    "c4d6bafa3e6f9d54",
+    "8dac5ebcd24070a3",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 60,
@@ -1637,7 +2678,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "4f4e8c13c3a5e78e",
+    "fe416fd78401c0ef",
+    "c6c262245ba24ab5",
+    "8a5da30605546a98",
+    "8dac5ebcd24070a3",
+    "a31256c245fa82b2",
+    "0a9c118462882911",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 61,
@@ -1664,7 +2722,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "d27d70d2c483591b",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "9236b134fe57a0d7",
+    "c4d6bafa3e6f9d54",
+    "f779219aaea7ce89"
+   ]
   },
   {
    "i": 62,
@@ -1689,7 +2764,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "d27d70d2c483591b",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "1b4b177dd9f8e897",
+    "bec6195b3e1bc592",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "c4d6bafa3e6f9d54",
+    "06626db4f9fe45c7",
+    "9236b134fe57a0d7",
+    "540138dded2d6546",
+    "a31256c245fa82b2"
+   ]
   },
   {
    "i": 63,
@@ -1717,7 +2809,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "1f88a469adc8b8fb",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "a31256c245fa82b2",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592",
+    "c4d6bafa3e6f9d54",
+    "d27d70d2c483591b",
+    "9236b134fe57a0d7",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 64,
@@ -1742,7 +2851,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "d27d70d2c483591b",
+    "4f4e8c13c3a5e78e",
+    "fe416fd78401c0ef",
+    "c6c262245ba24ab5",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "c4d6bafa3e6f9d54",
+    "a31256c245fa82b2",
+    "9236b134fe57a0d7",
+    "d25e586a727fe5a7"
+   ]
   },
   {
    "i": 65,
@@ -1770,7 +2896,24 @@
     "fiben.COUNTRY",
     "fiben.ELEMENTSOFFINANCIALREPORT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "db7446730a9ee8a7",
+    "d627b5e80bf1a648",
+    "bfc04de9ad1dd197",
+    "8a5da30605546a98",
+    "1c6988534fab59d7",
+    "764c543129516a6e",
+    "e246c7c5a332c6a2",
+    "1348c8459decd323",
+    "0a9c118462882911",
+    "95f6b3ede1800e0d",
+    "b3c32d0e0e2f38b7",
+    "c4d6bafa3e6f9d54",
+    "d99cea34b34c1fb5",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 66,
@@ -1797,7 +2940,24 @@
     "fiben.DEFERREDTAXASSETSANDLIABILITIES",
     "fiben.DIVIDENDPAYMENTRESTRICTIONS"
    ],
-   "n_ranked": 144
+   "n_ranked": 144,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4cc57a58e6313b1b",
+    "d25e586a727fe5a7",
+    "a503bf78aba3fa21",
+    "f140099c600eb8b6",
+    "105e58e1a48ff47a",
+    "e8b9fcae533d1699",
+    "2304d916dcfb0c57",
+    "f2654b4d185035b8",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "256375ded4eab77e",
+    "36cba2c8b647b96d"
+   ]
   },
   {
    "i": 67,
@@ -1825,7 +2985,24 @@
     "fiben.FINANCIALINSTRUMENT",
     "fiben.COUNTRY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "01874b89027f3495",
+    "637575a3b4abdc4e",
+    "6d3592924cae885f",
+    "1fd401420ac1b29e",
+    "b7571009886b6081",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "d99cea34b34c1fb5",
+    "98426731c7cd1df9",
+    "0a9c118462882911",
+    "69d502c0e851e2c3",
+    "8dac5ebcd24070a3"
+   ]
   },
   {
    "i": 68,
@@ -1850,7 +3027,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "b0edaf62db255fd2",
+    "fe416fd78401c0ef",
+    "c6c262245ba24ab5",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "4ca88f1a93bd3554",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592",
+    "a31256c245fa82b2",
+    "0a9c118462882911",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 69,
@@ -1875,7 +3069,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "60ec8f32da8947ad",
+    "bec6195b3e1bc592",
+    "db7446730a9ee8a7",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "51f6456aaedf32f6",
+    "9bd03a25e8f026df",
+    "95f6b3ede1800e0d",
+    "8a5da30605546a98",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 70,
@@ -1900,7 +3111,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "bec6195b3e1bc592",
+    "db7446730a9ee8a7",
+    "1f88a469adc8b8fb",
+    "60ec8f32da8947ad",
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "51f6456aaedf32f6",
+    "95f6b3ede1800e0d",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "0465092b9362c45d",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 71,
@@ -1927,7 +3155,24 @@
     "fiben.AUTONOMOUSAGENT",
     "fiben.CONTRACT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "3db988597cfc35a0",
+    "ea1b6656ab06f368",
+    "60ec8f32da8947ad",
+    "51f6456aaedf32f6",
+    "f779219aaea7ce89",
+    "8a5da30605546a98",
+    "9bd03a25e8f026df",
+    "50ebea2186ad0df5",
+    "043502ffb00dff04",
+    "3523aabab882f937",
+    "01874b89027f3495",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 72,
@@ -1954,7 +3199,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "a4eee242e2944ae5",
+    "b0edaf62db255fd2",
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "b3c32d0e0e2f38b7",
+    "01874b89027f3495",
+    "043502ffb00dff04",
+    "4ca88f1a93bd3554",
+    "d27d70d2c483591b",
+    "a31256c245fa82b2",
+    "bec6195b3e1bc592",
+    "c4d6bafa3e6f9d54",
+    "8a5da30605546a98"
+   ]
   },
   {
    "i": 73,
@@ -1979,7 +3241,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "1f88a469adc8b8fb",
+    "d27d70d2c483591b",
+    "01874b89027f3495",
+    "fe416fd78401c0ef",
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592",
+    "c6c262245ba24ab5",
+    "8a5da30605546a98",
+    "9236b134fe57a0d7",
+    "0a9c118462882911",
+    "a31256c245fa82b2",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 74,
@@ -2004,7 +3283,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "ea1b6656ab06f368",
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "fe416fd78401c0ef",
+    "01874b89027f3495",
+    "c6c262245ba24ab5",
+    "d27d70d2c483591b",
+    "a31256c245fa82b2",
+    "724d54e90a8db9f9",
+    "8a5da30605546a98",
+    "0a9c118462882911",
+    "8dac5ebcd24070a3"
+   ]
   },
   {
    "i": 75,
@@ -2031,7 +3327,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "9bd03a25e8f026df",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "b0edaf62db255fd2",
+    "01874b89027f3495",
+    "724d54e90a8db9f9",
+    "4ca88f1a93bd3554",
+    "a31256c245fa82b2",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "8dac5ebcd24070a3",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 76,
@@ -2056,7 +3369,24 @@
     "fiben.MONETARYAMOUNT",
     "fiben.COMPREHENSIVEINCOME"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "60ce494a0def6286",
+    "532b4360a7fa04a6",
+    "30d6fa86ed99f61f",
+    "fda5c349c58ac47e",
+    "f1d3665960cfcdb6",
+    "429a581b66f07a19",
+    "092684b0920e4ae6",
+    "bb21af1e75d8dca7",
+    "cde1d4ddcf43942d",
+    "509e1461eac1539b",
+    "bec6195b3e1bc592",
+    "72ddc85fb68630cc",
+    "8cc2c999aa377097",
+    "0f40dc0f56d51b05",
+    "173745a5ae16b141"
+   ]
   },
   {
    "i": 77,
@@ -2083,7 +3413,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "c6c262245ba24ab5",
+    "4f4e8c13c3a5e78e",
+    "01874b89027f3495",
+    "fe416fd78401c0ef",
+    "8a5da30605546a98",
+    "1f88a469adc8b8fb",
+    "a31256c245fa82b2",
+    "c4d6bafa3e6f9d54",
+    "d27d70d2c483591b",
+    "d25e586a727fe5a7",
+    "bec6195b3e1bc592",
+    "9236b134fe57a0d7"
+   ]
   },
   {
    "i": 78,
@@ -2110,7 +3457,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "c6c262245ba24ab5",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "a31256c245fa82b2",
+    "8a5da30605546a98",
+    "fe416fd78401c0ef",
+    "c4d6bafa3e6f9d54",
+    "d27d70d2c483591b",
+    "0465092b9362c45d",
+    "bec6195b3e1bc592",
+    "8dac5ebcd24070a3"
+   ]
   },
   {
    "i": 79,
@@ -2135,7 +3499,24 @@
     "fiben.COUNTRY",
     "fiben.SALELEASEBACKTRANSACTION"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "d27d70d2c483591b",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "bfc04de9ad1dd197",
+    "c4d6bafa3e6f9d54",
+    "ea1b6656ab06f368",
+    "c6c262245ba24ab5",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "0a9c118462882911",
+    "8939719d9d1eedd5",
+    "fe416fd78401c0ef",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 80,
@@ -2162,7 +3543,24 @@
     "fiben.COUNTRY",
     "fiben.INVESTMENTINCOME"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "9bd03a25e8f026df",
+    "e7da672a4e1f2789",
+    "fe416fd78401c0ef",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "ea1b6656ab06f368",
+    "51f6456aaedf32f6",
+    "a17ce9c62c1a90cd",
+    "60ec8f32da8947ad",
+    "0a9c118462882911",
+    "b1d38e40f69a26f6",
+    "8ef4c07639f83830",
+    "c6c262245ba24ab5"
+   ]
   },
   {
    "i": 81,
@@ -2187,7 +3585,24 @@
     "fiben.COUNTRY",
     "fiben.UNREALIZEDGAINLOSSONINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "1f88a469adc8b8fb",
+    "bec6195b3e1bc592",
+    "db7446730a9ee8a7",
+    "ea1b6656ab06f368",
+    "1b4b177dd9f8e897",
+    "9bd03a25e8f026df",
+    "95f6b3ede1800e0d",
+    "540138dded2d6546",
+    "d27d70d2c483591b",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "724d54e90a8db9f9"
+   ]
   },
   {
    "i": 82,
@@ -2215,7 +3630,24 @@
     "fiben.CONTRACT",
     "fiben.INDUSTRYSECTORCLASSIFIER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "9c5c5ad8294ba063",
+    "cde1d4ddcf43942d",
+    "d25e586a727fe5a7",
+    "f779219aaea7ce89",
+    "25c9f89589c15898",
+    "121dcc8fe13f15e7",
+    "06626db4f9fe45c7",
+    "ea23f3c863187b8f",
+    "acb3fb8af8956d5e",
+    "429a581b66f07a19",
+    "532b4360a7fa04a6",
+    "9bd03a25e8f026df",
+    "94094a3b75381f06",
+    "a7aa1e87b685cad6"
+   ]
   },
   {
    "i": 83,
@@ -2242,7 +3674,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "01874b89027f3495",
+    "fe416fd78401c0ef",
+    "6d3592924cae885f",
+    "d27d70d2c483591b",
+    "637575a3b4abdc4e",
+    "c6c262245ba24ab5",
+    "b7571009886b6081",
+    "1fd401420ac1b29e",
+    "8a5da30605546a98",
+    "0a9c118462882911",
+    "d99cea34b34c1fb5",
+    "8dac5ebcd24070a3"
+   ]
   },
   {
    "i": 84,
@@ -2269,7 +3718,24 @@
     "fiben.FINANCIALINSTRUMENT",
     "fiben.COUNTRY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "01874b89027f3495",
+    "637575a3b4abdc4e",
+    "d27d70d2c483591b",
+    "1fd401420ac1b29e",
+    "fe416fd78401c0ef",
+    "c6c262245ba24ab5",
+    "d99cea34b34c1fb5",
+    "8a5da30605546a98",
+    "69d502c0e851e2c3",
+    "98426731c7cd1df9",
+    "9236b134fe57a0d7",
+    "8dac5ebcd24070a3"
+   ]
   },
   {
    "i": 85,
@@ -2296,7 +3762,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "60ec8f32da8947ad",
+    "1c6988534fab59d7",
+    "51f6456aaedf32f6",
+    "1348c8459decd323",
+    "8a5da30605546a98",
+    "9bd03a25e8f026df",
+    "d627b5e80bf1a648",
+    "d25e586a727fe5a7",
+    "01874b89027f3495",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 86,
@@ -2321,7 +3804,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "c6c262245ba24ab5",
+    "fe416fd78401c0ef",
+    "a31256c245fa82b2",
+    "8a5da30605546a98",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d",
+    "8dac5ebcd24070a3"
+   ]
   },
   {
    "i": 87,
@@ -2346,7 +3846,24 @@
     "fiben.SECURITY",
     "fiben.CURRENCY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "60ce494a0def6286",
+    "72ddc85fb68630cc",
+    "429a581b66f07a19",
+    "532b4360a7fa04a6",
+    "30d6fa86ed99f61f",
+    "f1d3665960cfcdb6",
+    "fda5c349c58ac47e",
+    "092684b0920e4ae6",
+    "7991c01866fc044e",
+    "bec6195b3e1bc592",
+    "6db81298006e371d",
+    "ac7b60bf8b617914",
+    "173745a5ae16b141",
+    "31b990464f9369d6",
+    "215ac0780ea6396b"
+   ]
   },
   {
    "i": 88,
@@ -2373,7 +3890,24 @@
     "fiben.SECURITIESTRANSACTION",
     "fiben.HOLDING"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "32513157434bc6c5",
+    "8966be3a36df9578",
+    "3f9f122a6c985183",
+    "e9243f992f053e6f",
+    "fabb825224a00ff1",
+    "e877e2af845492e2",
+    "72ddc85fb68630cc",
+    "52082c83342a8369",
+    "5230d2251a8a9838",
+    "2e16512f83454ea6",
+    "35cbb4f55703254d",
+    "ee8e2125081c74b7",
+    "6db81298006e371d",
+    "72f33f26c961d8fa",
+    "934881c00093dfea"
+   ]
   },
   {
    "i": 89,
@@ -2400,7 +3934,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "60ec8f32da8947ad",
+    "51f6456aaedf32f6",
+    "1348c8459decd323",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "9bd03a25e8f026df",
+    "d627b5e80bf1a648",
+    "01874b89027f3495",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 90,
@@ -2425,7 +3976,24 @@
     "fiben.EXPENSE",
     "fiben.DISTRIBUTIONTOOWNER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "60ce494a0def6286",
+    "532b4360a7fa04a6",
+    "092684b0920e4ae6",
+    "429a581b66f07a19",
+    "f1d3665960cfcdb6",
+    "fda5c349c58ac47e",
+    "bb21af1e75d8dca7",
+    "cde1d4ddcf43942d",
+    "30d6fa86ed99f61f",
+    "7facc9a30ec85748",
+    "90fd4b86b8f3d56f",
+    "7739966b94d797ed",
+    "173745a5ae16b141",
+    "08791775c2b52d10",
+    "b34360dfede1ce0b"
+   ]
   },
   {
    "i": 91,
@@ -2452,7 +4020,24 @@
     "fiben.COUNTRY",
     "fiben.INVESTMENTINCOME"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "9bd03a25e8f026df",
+    "0465092b9362c45d",
+    "fe416fd78401c0ef",
+    "e7da672a4e1f2789",
+    "51f6456aaedf32f6",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "ea1b6656ab06f368",
+    "60ec8f32da8947ad",
+    "a17ce9c62c1a90cd",
+    "0a9c118462882911",
+    "8ef4c07639f83830",
+    "b1d38e40f69a26f6",
+    "c6c262245ba24ab5"
+   ]
   },
   {
    "i": 92,
@@ -2479,7 +4064,24 @@
     "fiben.VALUATIONANDQUALIFYINGACCOUNTSDISCLOSURE",
     "fiben.HELDTOMATURITYSECURITIES"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "f140099c600eb8b6",
+    "9fd1a2a873f8eb18",
+    "4cc57a58e6313b1b",
+    "92073132ba4bd6e6",
+    "7d01f8c8574d9982",
+    "2304d916dcfb0c57",
+    "4a6c341433892148",
+    "e38f87d749ea465f",
+    "932c728fd3c462c3",
+    "8601f60f4003a438",
+    "1f88a469adc8b8fb",
+    "f2654b4d185035b8",
+    "a503bf78aba3fa21",
+    "9dc0e6ba2561c1fb",
+    "472b64f80be9d203"
+   ]
   },
   {
    "i": 93,
@@ -2504,7 +4106,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "4f4e8c13c3a5e78e",
+    "b3c32d0e0e2f38b7",
+    "b0edaf62db255fd2",
+    "a4eee242e2944ae5",
+    "043502ffb00dff04",
+    "1f88a469adc8b8fb",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592",
+    "4ca88f1a93bd3554",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 94,
@@ -2530,7 +4149,24 @@
     "fiben.HOLDING",
     "fiben.COUNTRY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "8a5da30605546a98",
+    "c4d6bafa3e6f9d54",
+    "6cd6c2981d93c231",
+    "0465092b9362c45d",
+    "8939719d9d1eedd5",
+    "0877c177fa050b36",
+    "105e58e1a48ff47a",
+    "bfc04de9ad1dd197",
+    "98426731c7cd1df9",
+    "b3c32d0e0e2f38b7",
+    "f779219aaea7ce89",
+    "bec6195b3e1bc592",
+    "532b4360a7fa04a6",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 95,
@@ -2557,7 +4193,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "c6c262245ba24ab5",
+    "1f88a469adc8b8fb",
+    "01874b89027f3495",
+    "fe416fd78401c0ef",
+    "d27d70d2c483591b",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "9236b134fe57a0d7",
+    "c4d6bafa3e6f9d54",
+    "bec6195b3e1bc592",
+    "ec1d5c5086259295"
+   ]
   },
   {
    "i": 96,
@@ -2584,7 +4237,24 @@
     "fiben.VIRTUALADDRESS",
     "fiben.CONTRACT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "3f9f122a6c985183",
+    "5230d2251a8a9838",
+    "72ddc85fb68630cc",
+    "e877e2af845492e2",
+    "72f33f26c961d8fa",
+    "bec6195b3e1bc592",
+    "724d54e90a8db9f9",
+    "fabb825224a00ff1",
+    "8966be3a36df9578",
+    "51f8815359ac8c25",
+    "32513157434bc6c5",
+    "ee8e2125081c74b7",
+    "6db81298006e371d",
+    "a4eee242e2944ae5",
+    "ac7b60bf8b617914"
+   ]
   },
   {
    "i": 97,
@@ -2609,7 +4279,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "d27d70d2c483591b",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "9236b134fe57a0d7",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "4ca88f1a93bd3554",
+    "06626db4f9fe45c7",
+    "0465092b9362c45d",
+    "f779219aaea7ce89"
+   ]
   },
   {
    "i": 98,
@@ -2634,7 +4321,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "d27d70d2c483591b",
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "9bd03a25e8f026df",
+    "01874b89027f3495",
+    "fe416fd78401c0ef",
+    "c6c262245ba24ab5",
+    "9236b134fe57a0d7",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "8dac5ebcd24070a3",
+    "06626db4f9fe45c7"
+   ]
   },
   {
    "i": 99,
@@ -2659,7 +4363,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "c6c262245ba24ab5",
+    "d27d70d2c483591b",
+    "01874b89027f3495",
+    "fe416fd78401c0ef",
+    "8a5da30605546a98",
+    "724d54e90a8db9f9",
+    "a31256c245fa82b2",
+    "c4d6bafa3e6f9d54",
+    "9236b134fe57a0d7"
+   ]
   },
   {
    "i": 100,
@@ -2684,7 +4405,24 @@
     "fiben.MONETARYAMOUNT",
     "fiben.POSTALADDRESS"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "60ce494a0def6286",
+    "72ddc85fb68630cc",
+    "429a581b66f07a19",
+    "30d6fa86ed99f61f",
+    "532b4360a7fa04a6",
+    "fda5c349c58ac47e",
+    "f1d3665960cfcdb6",
+    "092684b0920e4ae6",
+    "7991c01866fc044e",
+    "6db81298006e371d",
+    "a7a83e0dd2f00566",
+    "bec6195b3e1bc592",
+    "ac7b60bf8b617914",
+    "8a5406402512599e",
+    "31b990464f9369d6"
+   ]
   },
   {
    "i": 101,
@@ -2711,7 +4449,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "01874b89027f3495",
+    "4f4e8c13c3a5e78e",
+    "c6c262245ba24ab5",
+    "1f88a469adc8b8fb",
+    "fe416fd78401c0ef",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "d27d70d2c483591b",
+    "c4d6bafa3e6f9d54",
+    "8dac5ebcd24070a3",
+    "0a9c118462882911",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 102,
@@ -2736,7 +4491,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "01874b89027f3495",
+    "b0edaf62db255fd2",
+    "8a5da30605546a98",
+    "4ca88f1a93bd3554",
+    "9236b134fe57a0d7",
+    "06626db4f9fe45c7",
+    "c4d6bafa3e6f9d54",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 103,
@@ -2761,7 +4533,24 @@
     "fiben.MONETARYAMOUNT",
     "fiben.POSTALADDRESS"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "60ce494a0def6286",
+    "72ddc85fb68630cc",
+    "429a581b66f07a19",
+    "532b4360a7fa04a6",
+    "30d6fa86ed99f61f",
+    "f1d3665960cfcdb6",
+    "6db81298006e371d",
+    "7991c01866fc044e",
+    "fda5c349c58ac47e",
+    "092684b0920e4ae6",
+    "ac7b60bf8b617914",
+    "a7a83e0dd2f00566",
+    "215ac0780ea6396b",
+    "31b990464f9369d6",
+    "8a5406402512599e"
+   ]
   },
   {
    "i": 104,
@@ -2788,7 +4577,24 @@
     "fiben.INDUSTRYSECTORCLASSIFIER",
     "fiben.FINANCIALREPORT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "3f9f122a6c985183",
+    "32513157434bc6c5",
+    "ae71ac52d5db14f9",
+    "8966be3a36df9578",
+    "2b7606b9bf43abdc",
+    "68dfc7f111b891e3",
+    "934881c00093dfea",
+    "6889fbdab46c15b3",
+    "066d90cba1b5337f",
+    "a271606ef2730416",
+    "54d5783f0a4a4d3c",
+    "5230d2251a8a9838",
+    "fa10d3e36852ddc1",
+    "ee8e2125081c74b7",
+    "e877e2af845492e2"
+   ]
   },
   {
    "i": 105,
@@ -2816,7 +4622,24 @@
     "fiben.COUNTRY",
     "fiben.ELEMENTSOFFINANCIALREPORT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "e246c7c5a332c6a2",
+    "d627b5e80bf1a648",
+    "db7446730a9ee8a7",
+    "764c543129516a6e",
+    "bfc04de9ad1dd197",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "0a9c118462882911",
+    "1348c8459decd323",
+    "b3c32d0e0e2f38b7",
+    "d99cea34b34c1fb5",
+    "c4d6bafa3e6f9d54",
+    "69d502c0e851e2c3",
+    "95f6b3ede1800e0d"
+   ]
   },
   {
    "i": 106,
@@ -2843,7 +4666,24 @@
     "fiben.COUNTRY",
     "fiben.STOCKHOLDERSEQUITY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1348c8459decd323",
+    "d627b5e80bf1a648",
+    "d27d70d2c483591b",
+    "bfc04de9ad1dd197",
+    "51f6456aaedf32f6",
+    "4ca88f1a93bd3554",
+    "1f88a469adc8b8fb",
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "60ec8f32da8947ad",
+    "0a9c118462882911",
+    "1c6988534fab59d7",
+    "4f4e8c13c3a5e78e",
+    "8a5da30605546a98",
+    "9236b134fe57a0d7"
+   ]
   },
   {
    "i": 107,
@@ -2868,7 +4708,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "b3c32d0e0e2f38b7",
+    "4f4e8c13c3a5e78e",
+    "9bd03a25e8f026df",
+    "4ca88f1a93bd3554",
+    "1f88a469adc8b8fb",
+    "01874b89027f3495",
+    "a4eee242e2944ae5",
+    "a31256c245fa82b2",
+    "043502ffb00dff04",
+    "d27d70d2c483591b",
+    "9236b134fe57a0d7",
+    "8a5da30605546a98",
+    "8dac5ebcd24070a3"
+   ]
   },
   {
    "i": 108,
@@ -2893,7 +4750,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "4f4e8c13c3a5e78e",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "d27d70d2c483591b",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "bec6195b3e1bc592",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 109,
@@ -2921,7 +4795,24 @@
     "fiben.AUTONOMOUSAGENT",
     "fiben.SECURITY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "cde1d4ddcf43942d",
+    "d25e586a727fe5a7",
+    "9c5c5ad8294ba063",
+    "95f6b3ede1800e0d",
+    "121dcc8fe13f15e7",
+    "9bd03a25e8f026df",
+    "532b4360a7fa04a6",
+    "429a581b66f07a19",
+    "db7446730a9ee8a7",
+    "ea23f3c863187b8f",
+    "25c9f89589c15898",
+    "06626db4f9fe45c7",
+    "acb3fb8af8956d5e",
+    "94094a3b75381f06"
+   ]
   },
   {
    "i": 110,
@@ -2948,7 +4839,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "1f88a469adc8b8fb",
+    "db7446730a9ee8a7",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "1348c8459decd323",
+    "9bd03a25e8f026df",
+    "95f6b3ede1800e0d",
+    "01874b89027f3495",
+    "d627b5e80bf1a648",
+    "d25e586a727fe5a7",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 111,
@@ -2973,7 +4881,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "b0edaf62db255fd2",
+    "c6c262245ba24ab5",
+    "fe416fd78401c0ef",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "c4d6bafa3e6f9d54",
+    "d27d70d2c483591b",
+    "0465092b9362c45d",
+    "bec6195b3e1bc592",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 112,
@@ -2998,7 +4923,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "bfc04de9ad1dd197",
+    "1f88a469adc8b8fb",
+    "8a5da30605546a98",
+    "c4d6bafa3e6f9d54",
+    "d27d70d2c483591b",
+    "1348c8459decd323",
+    "01874b89027f3495",
+    "a31256c245fa82b2",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "8cb3a2c42a1b18e8"
+   ]
   },
   {
    "i": 113,
@@ -3025,7 +4967,24 @@
     "fiben.SECURITIESTRANSACTION",
     "fiben.HOLDING"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "8966be3a36df9578",
+    "3f9f122a6c985183",
+    "32513157434bc6c5",
+    "e9243f992f053e6f",
+    "e877e2af845492e2",
+    "72ddc85fb68630cc",
+    "fabb825224a00ff1",
+    "5230d2251a8a9838",
+    "52082c83342a8369",
+    "6db81298006e371d",
+    "35cbb4f55703254d",
+    "72f33f26c961d8fa",
+    "2e16512f83454ea6",
+    "ee8e2125081c74b7",
+    "ac7b60bf8b617914"
+   ]
   },
   {
    "i": 114,
@@ -3050,7 +5009,24 @@
     "fiben.CORPORATION",
     "fiben.FINANCIALMARKET"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "a4eee242e2944ae5",
+    "01874b89027f3495",
+    "fe416fd78401c0ef",
+    "d627b5e80bf1a648",
+    "b3c32d0e0e2f38b7",
+    "043502ffb00dff04",
+    "bec6195b3e1bc592",
+    "9bd03a25e8f026df",
+    "c6c262245ba24ab5",
+    "1c6988534fab59d7",
+    "d27d70d2c483591b",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 115,
@@ -3075,7 +5051,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b3c32d0e0e2f38b7",
+    "b0edaf62db255fd2",
+    "c6c262245ba24ab5",
+    "01874b89027f3495",
+    "fe416fd78401c0ef",
+    "4ca88f1a93bd3554",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "d27d70d2c483591b",
+    "c4d6bafa3e6f9d54",
+    "0a9c118462882911",
+    "d25e586a727fe5a7"
+   ]
   },
   {
    "i": 116,
@@ -3100,7 +5093,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.ASSET"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "c6c262245ba24ab5",
+    "01874b89027f3495",
+    "5133ce14d0c4c5f7",
+    "8a5da30605546a98",
+    "fe416fd78401c0ef",
+    "45906a6a74570c80",
+    "c4d6bafa3e6f9d54",
+    "98426731c7cd1df9",
+    "69d502c0e851e2c3",
+    "d27d70d2c483591b",
+    "1fd401420ac1b29e",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 117,
@@ -3127,7 +5137,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "b3c32d0e0e2f38b7",
+    "d27d70d2c483591b",
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "8a5da30605546a98",
+    "9236b134fe57a0d7",
+    "a31256c245fa82b2",
+    "724d54e90a8db9f9",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 118,
@@ -3155,7 +5182,24 @@
     "fiben.DISTRIBUTIONTOOWNER",
     "fiben.EXPENSE"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "cde1d4ddcf43942d",
+    "db7446730a9ee8a7",
+    "d25e586a727fe5a7",
+    "bb21af1e75d8dca7",
+    "9bd03a25e8f026df",
+    "a330b7ad9e63eeec",
+    "95f6b3ede1800e0d",
+    "a7aa1e87b685cad6",
+    "532b4360a7fa04a6",
+    "5133ce14d0c4c5f7",
+    "429a581b66f07a19",
+    "bec6195b3e1bc592",
+    "08791775c2b52d10",
+    "b3c32d0e0e2f38b7",
+    "25c9f89589c15898"
+   ]
   },
   {
    "i": 119,
@@ -3180,7 +5224,24 @@
     "fiben.CASHCASHEQUIVALENTSANDSHORTTERMINVESTMENTS",
     "fiben.REALIZEDGAINLOSSONINVESTMENTS"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "b5d5fc1a5c581446",
+    "60ec8f32da8947ad",
+    "db7446730a9ee8a7",
+    "a17ce9c62c1a90cd",
+    "f47fc121e9cf29b1",
+    "51f6456aaedf32f6",
+    "0e6aa44515168352",
+    "95f6b3ede1800e0d",
+    "5a2de30a09cded07",
+    "4ca88f1a93bd3554",
+    "79558c8330e02145"
+   ]
   },
   {
    "i": 120,
@@ -3207,7 +5268,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "51f6456aaedf32f6",
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "bfc04de9ad1dd197",
+    "79558c8330e02145",
+    "1348c8459decd323",
+    "4ca88f1a93bd3554",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "60ec8f32da8947ad",
+    "bec6195b3e1bc592",
+    "d27d70d2c483591b",
+    "0465092b9362c45d",
+    "8a5da30605546a98",
+    "b5d5fc1a5c581446"
+   ]
   },
   {
    "i": 121,
@@ -3232,7 +5310,24 @@
     "fiben.EQUITYMETHODINVESTMENTS",
     "fiben.RENTEXPENSE"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "fda5c349c58ac47e",
+    "79558c8330e02145",
+    "092684b0920e4ae6",
+    "a503bf78aba3fa21",
+    "a7a83e0dd2f00566",
+    "1700fd3cc187ecd8",
+    "7facc9a30ec85748",
+    "95f6b3ede1800e0d",
+    "540138dded2d6546",
+    "63112904ac8c9b42",
+    "51f6456aaedf32f6",
+    "8ef4c07639f83830",
+    "30d6fa86ed99f61f",
+    "b5d5fc1a5c581446",
+    "f5784b3d99d107dd"
+   ]
   },
   {
    "i": 122,
@@ -3260,7 +5355,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.COMPREHENSIVEINCOME"
    ],
-   "n_ranked": 151
+   "n_ranked": 151,
+   "ranked_columns": [
+    "3f9f122a6c985183",
+    "26f83ade10efe987",
+    "37f901ec3acbf398",
+    "bb21af1e75d8dca7",
+    "a7a83e0dd2f00566",
+    "32513157434bc6c5",
+    "f779219aaea7ce89",
+    "ae71ac52d5db14f9",
+    "31b990464f9369d6",
+    "2b7606b9bf43abdc",
+    "8966be3a36df9578",
+    "68dfc7f111b891e3",
+    "23de3fdfac869c7f",
+    "3523aabab882f937",
+    "3db988597cfc35a0"
+   ]
   },
   {
    "i": 123,
@@ -3288,7 +5400,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.CONTRACTPARTY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "3f9f122a6c985183",
+    "08791775c2b52d10",
+    "105e58e1a48ff47a",
+    "5230d2251a8a9838",
+    "7a6186ba496401cd",
+    "164d5f7a5682905f",
+    "f779219aaea7ce89",
+    "72ddc85fb68630cc",
+    "61fe3ec8999d2a45",
+    "86139c94c9f58017",
+    "2b7606b9bf43abdc",
+    "4dc24196b6e4dad7",
+    "a271606ef2730416",
+    "68dfc7f111b891e3",
+    "8966be3a36df9578"
+   ]
   },
   {
    "i": 124,
@@ -3313,7 +5442,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.CONTRACTPARTY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "4d5211090d9bb17a",
+    "01874b89027f3495",
+    "fc5eed00e46b3498",
+    "ea1b6656ab06f368",
+    "cd9138a5fd24bb70",
+    "92073132ba4bd6e6",
+    "fe416fd78401c0ef",
+    "f779219aaea7ce89",
+    "d45cb47931613fd0",
+    "7cf04867e5dea1a0",
+    "043502ffb00dff04",
+    "3523aabab882f937",
+    "82de6f7fc8247231",
+    "5eea6bc2a176df40",
+    "c6c262245ba24ab5"
+   ]
   },
   {
    "i": 125,
@@ -3338,7 +5484,24 @@
     "fiben.CONTRACTPARTY",
     "fiben.ADDRESS"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "f779219aaea7ce89",
+    "4d5211090d9bb17a",
+    "7cf04867e5dea1a0",
+    "d45cb47931613fd0",
+    "fc5eed00e46b3498",
+    "043502ffb00dff04",
+    "ea1b6656ab06f368",
+    "01874b89027f3495",
+    "fe416fd78401c0ef",
+    "cd9138a5fd24bb70",
+    "3db988597cfc35a0",
+    "82de6f7fc8247231",
+    "5eea6bc2a176df40",
+    "3523aabab882f937",
+    "50ebea2186ad0df5"
+   ]
   },
   {
    "i": 126,
@@ -3363,7 +5526,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.CONTRACTPARTY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "3db988597cfc35a0",
+    "f779219aaea7ce89",
+    "3523aabab882f937",
+    "7d01f8c8574d9982",
+    "a7a83e0dd2f00566",
+    "30e386c1909b788a",
+    "50ebea2186ad0df5",
+    "043502ffb00dff04",
+    "1ea6c1c009fc1080",
+    "8a5406402512599e",
+    "72ddc85fb68630cc",
+    "0877c177fa050b36",
+    "68f5c903683dc8df",
+    "7991c01866fc044e",
+    "7f385bf4124337e3"
+   ]
   },
   {
    "i": 127,
@@ -3388,7 +5568,24 @@
     "fiben.AUTONOMOUSAGENT",
     "fiben.CONTRACT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "bfc04de9ad1dd197",
+    "0465092b9362c45d",
+    "ea1b6656ab06f368",
+    "bec6195b3e1bc592",
+    "1348c8459decd323",
+    "c4d6bafa3e6f9d54",
+    "c6c262245ba24ab5",
+    "0a9c118462882911",
+    "fe416fd78401c0ef",
+    "f779219aaea7ce89",
+    "9236b134fe57a0d7",
+    "01874b89027f3495"
+   ]
   },
   {
    "i": 128,
@@ -3413,7 +5610,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "d27d70d2c483591b",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "8a5da30605546a98",
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "01874b89027f3495",
+    "0a9c118462882911",
+    "bec6195b3e1bc592",
+    "fe416fd78401c0ef",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "d627b5e80bf1a648",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 129,
@@ -3440,7 +5654,24 @@
     "fiben.COUNTRY",
     "fiben.ELEMENTSOFFINANCIALREPORT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "0465092b9362c45d",
+    "63112904ac8c9b42",
+    "f9040bcb65af9997",
+    "8a5da30605546a98",
+    "9bd03a25e8f026df",
+    "d27d70d2c483591b",
+    "105e58e1a48ff47a",
+    "588d1782f1f3cb60",
+    "a270f09be69202ec",
+    "8939719d9d1eedd5",
+    "38d8c43ac5538154",
+    "b3c32d0e0e2f38b7",
+    "6cd6c2981d93c231",
+    "c4d6bafa3e6f9d54",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 130,
@@ -3465,7 +5696,24 @@
     "fiben.UNREALIZEDGAINLOSSONINVESTMENTS",
     "fiben.ACCOUNTSPAYABLEANDACCRUEDLIABILITIES"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "30e386c1909b788a",
+    "fda5c349c58ac47e",
+    "a7a83e0dd2f00566",
+    "79558c8330e02145",
+    "92073132ba4bd6e6",
+    "ff39ede397bb5738",
+    "a503bf78aba3fa21",
+    "1ea21ee72a35d853",
+    "65ee145f2ed99af8",
+    "092684b0920e4ae6",
+    "1ca0e3e0ffbc3d08",
+    "d4a857a9851f0785",
+    "540138dded2d6546",
+    "8350bd925c2ff7a0",
+    "30d6fa86ed99f61f"
+   ]
   },
   {
    "i": 131,
@@ -3490,7 +5738,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.PERSON"
    ],
-   "n_ranked": 149
+   "n_ranked": 149,
+   "ranked_columns": [
+    "30e386c1909b788a",
+    "d4a857a9851f0785",
+    "4d5211090d9bb17a",
+    "92073132ba4bd6e6",
+    "0f40dc0f56d51b05",
+    "365b44f189d1e0d1",
+    "7cf04867e5dea1a0",
+    "cd9138a5fd24bb70",
+    "d45cb47931613fd0",
+    "a23ebe54b8363d50",
+    "3523aabab882f937",
+    "043502ffb00dff04",
+    "3db988597cfc35a0",
+    "8350bd925c2ff7a0",
+    "2ebca4ca0f63a75e"
+   ]
   },
   {
    "i": 132,
@@ -3517,7 +5782,24 @@
     "fiben.SHAREBASEDCOMPENSATIONRESTRICTEDSTOCKUNITSAWARDACTIVITY",
     "fiben.EQUITYMETHODINVESTMENTS"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "79558c8330e02145",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "540138dded2d6546",
+    "4ca88f1a93bd3554",
+    "f9040bcb65af9997",
+    "f0b6e8cc17a71b9e",
+    "d627b5e80bf1a648",
+    "6923505e7970e0c8",
+    "51f6456aaedf32f6",
+    "1700fd3cc187ecd8",
+    "8ef4c07639f83830",
+    "105e58e1a48ff47a",
+    "b5d5fc1a5c581446",
+    "ea1b6656ab06f368"
+   ]
   },
   {
    "i": 133,
@@ -3543,7 +5825,24 @@
     "fiben.LONGLIVEDASSETSHELDFORSALE",
     "fiben.ELEMENTSOFFINANCIALREPORT"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "79558c8330e02145",
+    "105e58e1a48ff47a",
+    "a7a83e0dd2f00566",
+    "1ca0e3e0ffbc3d08",
+    "f9040bcb65af9997",
+    "6923505e7970e0c8",
+    "540138dded2d6546",
+    "63112904ac8c9b42",
+    "ff39ede397bb5738",
+    "fda5c349c58ac47e",
+    "1bd2758d03b89b27",
+    "092684b0920e4ae6",
+    "e246c7c5a332c6a2",
+    "b5d5fc1a5c581446",
+    "0a0e44b072e241ea"
+   ]
   },
   {
    "i": 134,
@@ -3568,7 +5867,24 @@
     "fiben.CONTRACTPARTY",
     "fiben.CORPORATION"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "a7a83e0dd2f00566",
+    "8a5406402512599e",
+    "532b4360a7fa04a6",
+    "092684b0920e4ae6",
+    "92073132ba4bd6e6",
+    "30d6fa86ed99f61f",
+    "fda5c349c58ac47e",
+    "f1d3665960cfcdb6",
+    "60ce494a0def6286",
+    "e1a61ff176d280c8",
+    "429a581b66f07a19",
+    "3db988597cfc35a0",
+    "06626db4f9fe45c7",
+    "121dcc8fe13f15e7",
+    "8051651f1090e2dc"
+   ]
   },
   {
    "i": 135,
@@ -3596,7 +5912,24 @@
     "fiben.CONTRACTPARTY",
     "fiben.ADDRESS"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "cd9138a5fd24bb70",
+    "4d5211090d9bb17a",
+    "f779219aaea7ce89",
+    "7cf04867e5dea1a0",
+    "fc5eed00e46b3498",
+    "d45cb47931613fd0",
+    "365b44f189d1e0d1",
+    "5eea6bc2a176df40",
+    "92073132ba4bd6e6",
+    "a7a83e0dd2f00566",
+    "82de6f7fc8247231",
+    "a23ebe54b8363d50",
+    "3523aabab882f937",
+    "3db988597cfc35a0",
+    "50ebea2186ad0df5"
+   ]
   },
   {
    "i": 136,
@@ -3623,7 +5956,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "fe416fd78401c0ef",
+    "b0edaf62db255fd2",
+    "b3c32d0e0e2f38b7",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "c6c262245ba24ab5",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "a31256c245fa82b2",
+    "0a9c118462882911",
+    "8dac5ebcd24070a3",
+    "f779219aaea7ce89",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 137,
@@ -3650,7 +6000,24 @@
     "fiben.LOSS",
     "fiben.COMPREHENSIVEINCOME"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "b0edaf62db255fd2",
+    "45906a6a74570c80",
+    "ea1b6656ab06f368",
+    "1700fd3cc187ecd8",
+    "5133ce14d0c4c5f7",
+    "b859afc1a184b89a",
+    "bb21af1e75d8dca7",
+    "49ef31becfd1d4a2",
+    "78690acbe9a7442b",
+    "164d5f7a5682905f",
+    "7739966b94d797ed"
+   ]
   },
   {
    "i": 138,
@@ -3677,7 +6044,24 @@
     "fiben.DIVIDENDSPAYABLE",
     "fiben.INTERESTCOSTSINCURRED"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "bfc04de9ad1dd197",
+    "60ec8f32da8947ad",
+    "b0edaf62db255fd2",
+    "5248ac10f2fb3e40",
+    "51f6456aaedf32f6",
+    "ea1b6656ab06f368",
+    "1348c8459decd323",
+    "db7446730a9ee8a7",
+    "a17ce9c62c1a90cd",
+    "4ca88f1a93bd3554",
+    "fe416fd78401c0ef",
+    "8ef4c07639f83830",
+    "c6c262245ba24ab5"
+   ]
   },
   {
    "i": 139,
@@ -3704,7 +6088,24 @@
     "fiben.DIVIDENDSPAYABLE",
     "fiben.SHAREBASEDCOMPENSATIONRESTRICTEDSTOCKUNITSAWARDACTIVITY"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "60ec8f32da8947ad",
+    "4f4e8c13c3a5e78e",
+    "bfc04de9ad1dd197",
+    "51f6456aaedf32f6",
+    "b0edaf62db255fd2",
+    "ea1b6656ab06f368",
+    "5248ac10f2fb3e40",
+    "a17ce9c62c1a90cd",
+    "db7446730a9ee8a7",
+    "1348c8459decd323",
+    "4ca88f1a93bd3554",
+    "8ef4c07639f83830",
+    "d627b5e80bf1a648",
+    "79558c8330e02145"
+   ]
   },
   {
    "i": 140,
@@ -3731,7 +6132,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "b0edaf62db255fd2",
+    "4f4e8c13c3a5e78e",
+    "4ca88f1a93bd3554",
+    "d627b5e80bf1a648",
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "01874b89027f3495",
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "0a9c118462882911",
+    "d27d70d2c483591b",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 141,
@@ -3758,7 +6176,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "bfc04de9ad1dd197",
+    "60ec8f32da8947ad",
+    "4ca88f1a93bd3554",
+    "51f6456aaedf32f6",
+    "9bd03a25e8f026df",
+    "d627b5e80bf1a648",
+    "1348c8459decd323",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "1c6988534fab59d7",
+    "0a9c118462882911",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 142,
@@ -3785,7 +6220,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "9bd03a25e8f026df",
+    "51f6456aaedf32f6",
+    "60ec8f32da8947ad",
+    "4ca88f1a93bd3554",
+    "bfc04de9ad1dd197",
+    "d627b5e80bf1a648",
+    "d27d70d2c483591b",
+    "1348c8459decd323",
+    "8a5da30605546a98",
+    "1c6988534fab59d7",
+    "0a9c118462882911",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 143,
@@ -3812,7 +6264,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.FINANCIALREPORT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "79558c8330e02145",
+    "51f6456aaedf32f6",
+    "1f88a469adc8b8fb",
+    "8ef4c07639f83830",
+    "8dac5ebcd24070a3",
+    "a17ce9c62c1a90cd",
+    "9bd03a25e8f026df",
+    "043502ffb00dff04",
+    "60ec8f32da8947ad",
+    "b5d5fc1a5c581446",
+    "3523aabab882f937",
+    "3db988597cfc35a0",
+    "4f4e8c13c3a5e78e",
+    "0a9c118462882911",
+    "d27d70d2c483591b"
+   ]
   },
   {
    "i": 144,
@@ -3839,7 +6308,24 @@
     "fiben.REALIZEDGAINLOSSONINVESTMENTS",
     "fiben.SALELEASEBACKTRANSACTION"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "79558c8330e02145",
+    "51f6456aaedf32f6",
+    "fe416fd78401c0ef",
+    "1f88a469adc8b8fb",
+    "8ef4c07639f83830",
+    "f0b6e8cc17a71b9e",
+    "540138dded2d6546",
+    "01874b89027f3495",
+    "f9040bcb65af9997",
+    "7facc9a30ec85748",
+    "d627b5e80bf1a648",
+    "4ca88f1a93bd3554",
+    "6923505e7970e0c8",
+    "1348c8459decd323",
+    "b5d5fc1a5c581446"
+   ]
   },
   {
    "i": 145,
@@ -3867,7 +6353,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "fe416fd78401c0ef",
+    "1f88a469adc8b8fb",
+    "bec6195b3e1bc592",
+    "79558c8330e02145",
+    "c6c262245ba24ab5",
+    "51f6456aaedf32f6",
+    "01874b89027f3495",
+    "ea1b6656ab06f368",
+    "b5d5fc1a5c581446",
+    "4f4e8c13c3a5e78e",
+    "8a5da30605546a98",
+    "0a9c118462882911",
+    "b3c32d0e0e2f38b7",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 146,
@@ -3895,7 +6398,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "fe416fd78401c0ef",
+    "f9040bcb65af9997",
+    "d27d70d2c483591b",
+    "e246c7c5a332c6a2",
+    "1f88a469adc8b8fb",
+    "01874b89027f3495",
+    "ea1b6656ab06f368",
+    "bec6195b3e1bc592",
+    "c6c262245ba24ab5",
+    "764c543129516a6e",
+    "4f4e8c13c3a5e78e",
+    "8a5da30605546a98",
+    "0a9c118462882911",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 147,
@@ -3922,7 +6442,24 @@
     "fiben.INVESTMENTINCOME",
     "fiben.INVENTORYNONCURRENT"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "79558c8330e02145",
+    "1f88a469adc8b8fb",
+    "01874b89027f3495",
+    "d627b5e80bf1a648",
+    "f9040bcb65af9997",
+    "4ca88f1a93bd3554",
+    "540138dded2d6546",
+    "51f6456aaedf32f6",
+    "f0b6e8cc17a71b9e",
+    "1700fd3cc187ecd8",
+    "6923505e7970e0c8",
+    "8ef4c07639f83830",
+    "1ea21ee72a35d853",
+    "ea1b6656ab06f368",
+    "b5d5fc1a5c581446"
+   ]
   },
   {
    "i": 148,
@@ -3949,7 +6486,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "79558c8330e02145",
+    "1f88a469adc8b8fb",
+    "540138dded2d6546",
+    "51f6456aaedf32f6",
+    "95f6b3ede1800e0d",
+    "fe416fd78401c0ef",
+    "01874b89027f3495",
+    "6923505e7970e0c8",
+    "b5d5fc1a5c581446",
+    "d627b5e80bf1a648",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "8ef4c07639f83830",
+    "4ca88f1a93bd3554",
+    "7facc9a30ec85748"
+   ]
   },
   {
    "i": 149,
@@ -3976,7 +6530,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "79558c8330e02145",
+    "540138dded2d6546",
+    "95f6b3ede1800e0d",
+    "b5d5fc1a5c581446",
+    "6923505e7970e0c8",
+    "1f88a469adc8b8fb",
+    "8ef4c07639f83830",
+    "f0b6e8cc17a71b9e",
+    "51f6456aaedf32f6",
+    "256375ded4eab77e",
+    "1b4b177dd9f8e897",
+    "db7446730a9ee8a7",
+    "7facc9a30ec85748",
+    "fe416fd78401c0ef",
+    "5248ac10f2fb3e40"
+   ]
   },
   {
    "i": 150,
@@ -4003,7 +6574,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "51f6456aaedf32f6",
+    "1f88a469adc8b8fb",
+    "60ec8f32da8947ad",
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592",
+    "79558c8330e02145",
+    "95f6b3ede1800e0d",
+    "db7446730a9ee8a7",
+    "b0edaf62db255fd2",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "0465092b9362c45d",
+    "4ca88f1a93bd3554",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 151,
@@ -4029,7 +6617,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "b3c32d0e0e2f38b7",
+    "c6c262245ba24ab5",
+    "1f88a469adc8b8fb",
+    "fe416fd78401c0ef",
+    "bec6195b3e1bc592",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "a31256c245fa82b2",
+    "d25e586a727fe5a7",
+    "f779219aaea7ce89",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 152,
@@ -4059,7 +6664,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.CONTRACTPARTY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "f779219aaea7ce89",
+    "01874b89027f3495",
+    "3db988597cfc35a0",
+    "a7a83e0dd2f00566",
+    "1348c8459decd323",
+    "3523aabab882f937",
+    "bfc04de9ad1dd197",
+    "8a5406402512599e",
+    "cd9138a5fd24bb70",
+    "50ebea2186ad0df5",
+    "72ddc85fb68630cc",
+    "043502ffb00dff04"
+   ]
   },
   {
    "i": 153,
@@ -4093,7 +6715,24 @@
     "fiben.CONTRACT",
     "fiben.FINANCIALREPORT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "066d90cba1b5337f",
+    "ae71ac52d5db14f9",
+    "32513157434bc6c5",
+    "3f9f122a6c985183",
+    "2b7606b9bf43abdc",
+    "8966be3a36df9578",
+    "68dfc7f111b891e3",
+    "54d5783f0a4a4d3c",
+    "6889fbdab46c15b3",
+    "1700fd3cc187ecd8",
+    "934881c00093dfea",
+    "3523aabab882f937",
+    "6db81298006e371d",
+    "31b990464f9369d6",
+    "043502ffb00dff04"
+   ]
   },
   {
    "i": 154,
@@ -4121,7 +6760,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "bfc04de9ad1dd197",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592",
+    "db7446730a9ee8a7",
+    "b0edaf62db255fd2",
+    "1348c8459decd323",
+    "ea1b6656ab06f368",
+    "95f6b3ede1800e0d",
+    "8cb3a2c42a1b18e8",
+    "8a5da30605546a98",
+    "4ca88f1a93bd3554",
+    "ec1d5c5086259295"
+   ]
   },
   {
    "i": 155,
@@ -4148,7 +6804,24 @@
     "fiben.CONTRACT",
     "fiben.SECURITY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "3f9f122a6c985183",
+    "5230d2251a8a9838",
+    "ae71ac52d5db14f9",
+    "a7a83e0dd2f00566",
+    "72ddc85fb68630cc",
+    "365b44f189d1e0d1",
+    "2b7606b9bf43abdc",
+    "f779219aaea7ce89",
+    "68dfc7f111b891e3",
+    "8966be3a36df9578",
+    "e877e2af845492e2",
+    "32513157434bc6c5",
+    "8a5406402512599e",
+    "72f33f26c961d8fa",
+    "fabb825224a00ff1"
+   ]
   },
   {
    "i": 156,
@@ -4182,7 +6855,24 @@
     "fiben.GAINLOSSONINVESTMENTS",
     "fiben.DIVIDENDSPAYABLE"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "1700fd3cc187ecd8",
+    "1348c8459decd323",
+    "51f6456aaedf32f6",
+    "b859afc1a184b89a",
+    "8ef4c07639f83830",
+    "79558c8330e02145",
+    "bfc04de9ad1dd197",
+    "a17ce9c62c1a90cd",
+    "4ca88f1a93bd3554",
+    "1f88a469adc8b8fb",
+    "a7a83e0dd2f00566",
+    "fe416fd78401c0ef",
+    "b0edaf62db255fd2",
+    "4f4e8c13c3a5e78e",
+    "01874b89027f3495"
+   ]
   },
   {
    "i": 157,
@@ -4209,7 +6899,24 @@
     "fiben.AUTONOMOUSAGENT",
     "fiben.CONTRACT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "8e4f3fb38c87bdaf",
+    "25c9f89589c15898",
+    "a7aa1e87b685cad6",
+    "294b54b3dbd5355d",
+    "f779219aaea7ce89",
+    "d25e586a727fe5a7",
+    "06626db4f9fe45c7",
+    "9236b134fe57a0d7",
+    "8a5406402512599e",
+    "838d55b084bf31e8",
+    "acb3fb8af8956d5e",
+    "a7a83e0dd2f00566",
+    "3db988597cfc35a0",
+    "830e69d78a49ef76",
+    "d27d70d2c483591b"
+   ]
   },
   {
    "i": 158,
@@ -4237,7 +6944,24 @@
     "fiben.EQUITY",
     "fiben.EXPENSE"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "cde1d4ddcf43942d",
+    "9c5c5ad8294ba063",
+    "bb21af1e75d8dca7",
+    "50ebea2186ad0df5",
+    "f779219aaea7ce89",
+    "d25e586a727fe5a7",
+    "db7446730a9ee8a7",
+    "3db988597cfc35a0",
+    "7218c0cebdf80712",
+    "25c9f89589c15898",
+    "a7aa1e87b685cad6",
+    "5133ce14d0c4c5f7",
+    "82de6f7fc8247231",
+    "b34360dfede1ce0b",
+    "5eea6bc2a176df40"
+   ]
   },
   {
    "i": 159,
@@ -4265,7 +6989,24 @@
     "fiben.EXPENSE",
     "fiben.EQUITY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "cde1d4ddcf43942d",
+    "50ebea2186ad0df5",
+    "f779219aaea7ce89",
+    "bb21af1e75d8dca7",
+    "9c5c5ad8294ba063",
+    "3db988597cfc35a0",
+    "d25e586a727fe5a7",
+    "db7446730a9ee8a7",
+    "25c9f89589c15898",
+    "7218c0cebdf80712",
+    "a7aa1e87b685cad6",
+    "3523aabab882f937",
+    "043502ffb00dff04",
+    "5133ce14d0c4c5f7",
+    "8e4f3fb38c87bdaf"
+   ]
   },
   {
    "i": 160,
@@ -4321,7 +7062,24 @@
     "fiben.DISTRIBUTIONTOOWNER",
     "fiben.INVESTMENTINCOME"
    ],
-   "n_ranked": 144
+   "n_ranked": 144,
+   "ranked_columns": [
+    "b34360dfede1ce0b",
+    "7739966b94d797ed",
+    "d39881868cababe3",
+    "0bf5d38301b65515",
+    "26f83ade10efe987",
+    "d25e586a727fe5a7",
+    "6bceeeb8899ce2f8",
+    "2bd9214c988c808a",
+    "a17ce9c62c1a90cd",
+    "25c9f89589c15898",
+    "6eb1bb3a91f869bb",
+    "a7aa1e87b685cad6",
+    "cde1d4ddcf43942d",
+    "8e4f3fb38c87bdaf",
+    "df381122caac9848"
+   ]
   },
   {
    "i": 162,
@@ -4349,7 +7107,24 @@
     "fiben.HOLDING",
     "fiben.CONTRACT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "b34360dfede1ce0b",
+    "9c5c5ad8294ba063",
+    "7739966b94d797ed",
+    "f779219aaea7ce89",
+    "2bd9214c988c808a",
+    "532b4360a7fa04a6",
+    "50ebea2186ad0df5",
+    "3db988597cfc35a0",
+    "0bf5d38301b65515",
+    "d25e586a727fe5a7",
+    "429a581b66f07a19",
+    "25c9f89589c15898",
+    "3523aabab882f937",
+    "7218c0cebdf80712",
+    "a7aa1e87b685cad6"
+   ]
   },
   {
    "i": 163,
@@ -4377,7 +7152,24 @@
     "fiben.DISTRIBUTIONTOOWNER",
     "fiben.SECURITY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "26f83ade10efe987",
+    "9c5c5ad8294ba063",
+    "d25e586a727fe5a7",
+    "ea23f3c863187b8f",
+    "b34360dfede1ce0b",
+    "d39881868cababe3",
+    "a7aa1e87b685cad6",
+    "7739966b94d797ed",
+    "50ebea2186ad0df5",
+    "f779219aaea7ce89",
+    "7218c0cebdf80712",
+    "3db988597cfc35a0",
+    "25c9f89589c15898",
+    "06626db4f9fe45c7",
+    "6e089b9cf7e0737d"
+   ]
   },
   {
    "i": 164,
@@ -4405,7 +7197,24 @@
     "fiben.ASSET",
     "fiben.DISTRIBUTIONTOOWNER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "26f83ade10efe987",
+    "9c5c5ad8294ba063",
+    "2bd9214c988c808a",
+    "d39881868cababe3",
+    "b34360dfede1ce0b",
+    "d25e586a727fe5a7",
+    "7739966b94d797ed",
+    "ea23f3c863187b8f",
+    "0bf5d38301b65515",
+    "a7aa1e87b685cad6",
+    "06626db4f9fe45c7",
+    "25c9f89589c15898",
+    "f779219aaea7ce89",
+    "7218c0cebdf80712",
+    "3db988597cfc35a0"
+   ]
   },
   {
    "i": 165,
@@ -4433,7 +7242,24 @@
     "fiben.DISTRIBUTIONTOOWNER",
     "fiben.LOSS"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "9c5c5ad8294ba063",
+    "2bd9214c988c808a",
+    "79558c8330e02145",
+    "7739966b94d797ed",
+    "d25e586a727fe5a7",
+    "b34360dfede1ce0b",
+    "b5d5fc1a5c581446",
+    "0bf5d38301b65515",
+    "25c9f89589c15898",
+    "a7aa1e87b685cad6",
+    "ea23f3c863187b8f",
+    "f779219aaea7ce89",
+    "3db988597cfc35a0",
+    "bb21af1e75d8dca7",
+    "50ebea2186ad0df5"
+   ]
   },
   {
    "i": 166,
@@ -4461,7 +7287,24 @@
     "fiben.EQUITY",
     "fiben.EXPENSE"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "cde1d4ddcf43942d",
+    "50ebea2186ad0df5",
+    "f779219aaea7ce89",
+    "bb21af1e75d8dca7",
+    "9c5c5ad8294ba063",
+    "d25e586a727fe5a7",
+    "3db988597cfc35a0",
+    "944738363d698d22",
+    "7218c0cebdf80712",
+    "25c9f89589c15898",
+    "a7aa1e87b685cad6",
+    "ea23f3c863187b8f",
+    "5133ce14d0c4c5f7",
+    "3523aabab882f937",
+    "b34360dfede1ce0b"
+   ]
   },
   {
    "i": 167,
@@ -4489,7 +7332,24 @@
     "fiben.HOLDING",
     "fiben.INDUSTRYSECTORCLASSIFIER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "cde1d4ddcf43942d",
+    "f779219aaea7ce89",
+    "9c5c5ad8294ba063",
+    "bb21af1e75d8dca7",
+    "50ebea2186ad0df5",
+    "d25e586a727fe5a7",
+    "3db988597cfc35a0",
+    "532b4360a7fa04a6",
+    "429a581b66f07a19",
+    "25c9f89589c15898",
+    "7218c0cebdf80712",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592",
+    "9bd03a25e8f026df",
+    "a7aa1e87b685cad6"
+   ]
   },
   {
    "i": 168,
@@ -4515,7 +7375,24 @@
     "fiben.COUNTRY",
     "fiben.ELEMENTSOFFINANCIALREPORT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "4f4e8c13c3a5e78e",
+    "01874b89027f3495",
+    "d627b5e80bf1a648",
+    "8a5da30605546a98",
+    "1c6988534fab59d7",
+    "0465092b9362c45d",
+    "0a9c118462882911",
+    "bec6195b3e1bc592",
+    "d27d70d2c483591b",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 169,
@@ -4541,7 +7418,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "01874b89027f3495",
+    "79558c8330e02145",
+    "4ca88f1a93bd3554",
+    "b0edaf62db255fd2",
+    "b5d5fc1a5c581446",
+    "0a9c118462882911",
+    "8a5da30605546a98",
+    "0465092b9362c45d",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 170,
@@ -4567,7 +7461,24 @@
     "fiben.COUNTRY",
     "fiben.LONGTERMPURCHASECOMMITMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "1f88a469adc8b8fb",
+    "b0edaf62db255fd2",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "105e58e1a48ff47a",
+    "8a5da30605546a98",
+    "6cd6c2981d93c231",
+    "0465092b9362c45d",
+    "0a9c118462882911",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 171,
@@ -4593,7 +7504,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "d27d70d2c483591b",
+    "ea1b6656ab06f368",
+    "8a5da30605546a98",
+    "0465092b9362c45d",
+    "1348c8459decd323",
+    "01874b89027f3495",
+    "c6c262245ba24ab5",
+    "bec6195b3e1bc592",
+    "0a9c118462882911",
+    "fe416fd78401c0ef",
+    "c4d6bafa3e6f9d54",
+    "b3c32d0e0e2f38b7",
+    "a31256c245fa82b2"
+   ]
   },
   {
    "i": 172,
@@ -4619,7 +7547,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "0465092b9362c45d",
+    "8a5da30605546a98",
+    "bfc04de9ad1dd197",
+    "d27d70d2c483591b",
+    "c4d6bafa3e6f9d54",
+    "bec6195b3e1bc592",
+    "c6c262245ba24ab5",
+    "4f4e8c13c3a5e78e",
+    "0a9c118462882911",
+    "1348c8459decd323",
+    "01874b89027f3495",
+    "b3c32d0e0e2f38b7",
+    "1c6988534fab59d7"
+   ]
   },
   {
    "i": 173,
@@ -4645,7 +7590,24 @@
     "fiben.COUNTRY",
     "fiben.ELEMENTSOFFINANCIALREPORT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "8a5da30605546a98",
+    "0465092b9362c45d",
+    "ea1b6656ab06f368",
+    "d27d70d2c483591b",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "c6c262245ba24ab5",
+    "c4d6bafa3e6f9d54",
+    "1f88a469adc8b8fb",
+    "0a9c118462882911",
+    "01874b89027f3495",
+    "bec6195b3e1bc592",
+    "fe416fd78401c0ef"
+   ]
   },
   {
    "i": 174,
@@ -4671,7 +7633,24 @@
     "fiben.COUNTRY",
     "fiben.ELEMENTSOFFINANCIALREPORT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "fe416fd78401c0ef",
+    "d627b5e80bf1a648",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592",
+    "d27d70d2c483591b",
+    "4f4e8c13c3a5e78e",
+    "0a9c118462882911",
+    "0465092b9362c45d",
+    "c6c262245ba24ab5",
+    "1c6988534fab59d7",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 175,
@@ -4697,7 +7676,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "01874b89027f3495",
+    "ea1b6656ab06f368",
+    "4ca88f1a93bd3554",
+    "1f88a469adc8b8fb",
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "d27d70d2c483591b",
+    "b0edaf62db255fd2",
+    "8a5da30605546a98",
+    "d627b5e80bf1a648",
+    "0465092b9362c45d",
+    "0a9c118462882911",
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 176,
@@ -4723,7 +7719,24 @@
     "fiben.COUNTRY",
     "fiben.LONGTERMPURCHASECOMMITMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "d27d70d2c483591b",
+    "8a5da30605546a98",
+    "bfc04de9ad1dd197",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "ea1b6656ab06f368",
+    "5248ac10f2fb3e40",
+    "8939719d9d1eedd5",
+    "c4d6bafa3e6f9d54",
+    "f9040bcb65af9997",
+    "6cd6c2981d93c231",
+    "105e58e1a48ff47a",
+    "1348c8459decd323",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 177,
@@ -4749,7 +7762,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "d27d70d2c483591b",
+    "ea1b6656ab06f368",
+    "f9040bcb65af9997",
+    "bfc04de9ad1dd197",
+    "105e58e1a48ff47a",
+    "8a5da30605546a98",
+    "1348c8459decd323",
+    "0465092b9362c45d",
+    "bec6195b3e1bc592",
+    "01874b89027f3495",
+    "b3c32d0e0e2f38b7",
+    "8939719d9d1eedd5",
+    "b0edaf62db255fd2",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 178,
@@ -4774,7 +7804,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "d27d70d2c483591b",
+    "a31256c245fa82b2",
+    "4ca88f1a93bd3554",
+    "8a5da30605546a98",
+    "9236b134fe57a0d7",
+    "bec6195b3e1bc592",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 179,
@@ -4799,7 +7846,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "b3c32d0e0e2f38b7",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "c6c262245ba24ab5",
+    "b0edaf62db255fd2",
+    "fe416fd78401c0ef",
+    "d27d70d2c483591b",
+    "a31256c245fa82b2",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "4ca88f1a93bd3554",
+    "8dac5ebcd24070a3",
+    "c4d6bafa3e6f9d54",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 180,
@@ -4824,7 +7888,24 @@
     "fiben.CORPORATION",
     "fiben.FINANCIALMARKET"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "fe416fd78401c0ef",
+    "ea1b6656ab06f368",
+    "a4eee242e2944ae5",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "043502ffb00dff04",
+    "b0edaf62db255fd2",
+    "c6c262245ba24ab5",
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "d27d70d2c483591b",
+    "8dac5ebcd24070a3",
+    "a31256c245fa82b2"
+   ]
   },
   {
    "i": 181,
@@ -4849,7 +7930,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "fe416fd78401c0ef",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "9bd03a25e8f026df",
+    "b3c32d0e0e2f38b7",
+    "b0edaf62db255fd2",
+    "a4eee242e2944ae5",
+    "d27d70d2c483591b",
+    "d627b5e80bf1a648",
+    "c6c262245ba24ab5",
+    "0a9c118462882911",
+    "1c6988534fab59d7"
+   ]
   },
   {
    "i": 182,
@@ -4875,7 +7973,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "8a5da30605546a98",
+    "b0edaf62db255fd2",
+    "c4d6bafa3e6f9d54",
+    "4f4e8c13c3a5e78e",
+    "c6c262245ba24ab5",
+    "1f88a469adc8b8fb",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "0465092b9362c45d",
+    "fe416fd78401c0ef",
+    "1c6988534fab59d7",
+    "0a9c118462882911",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 183,
@@ -4901,7 +8016,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "8a5da30605546a98",
+    "ea1b6656ab06f368",
+    "c4d6bafa3e6f9d54",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "6cd6c2981d93c231",
+    "0465092b9362c45d",
+    "bfc04de9ad1dd197",
+    "bec6195b3e1bc592",
+    "d27d70d2c483591b",
+    "a4eee242e2944ae5",
+    "b3c32d0e0e2f38b7",
+    "105e58e1a48ff47a",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 184,
@@ -4927,7 +8059,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "d27d70d2c483591b",
+    "105e58e1a48ff47a",
+    "f9040bcb65af9997",
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "5248ac10f2fb3e40",
+    "8a5da30605546a98",
+    "ea1b6656ab06f368",
+    "6cd6c2981d93c231",
+    "bec6195b3e1bc592",
+    "8939719d9d1eedd5",
+    "0a9c118462882911",
+    "01874b89027f3495",
+    "f0b6e8cc17a71b9e"
+   ]
   },
   {
    "i": 185,
@@ -4953,7 +8102,24 @@
     "fiben.COUNTRY",
     "fiben.LONGTERMPURCHASECOMMITMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "1348c8459decd323",
+    "105e58e1a48ff47a",
+    "bfc04de9ad1dd197",
+    "d27d70d2c483591b",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "4f4e8c13c3a5e78e",
+    "0a9c118462882911",
+    "8a5da30605546a98",
+    "6cd6c2981d93c231",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 186,
@@ -4979,7 +8145,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4ca88f1a93bd3554",
+    "9bd03a25e8f026df",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "e246c7c5a332c6a2",
+    "b0edaf62db255fd2",
+    "d627b5e80bf1a648",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "d27d70d2c483591b",
+    "764c543129516a6e",
+    "0a9c118462882911",
+    "b3c32d0e0e2f38b7",
+    "1c6988534fab59d7",
+    "8a5da30605546a98"
+   ]
   },
   {
    "i": 187,
@@ -5005,7 +8188,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "ea1b6656ab06f368",
+    "bfc04de9ad1dd197",
+    "4ca88f1a93bd3554",
+    "fe416fd78401c0ef",
+    "1348c8459decd323",
+    "c6c262245ba24ab5",
+    "1c6988534fab59d7",
+    "d627b5e80bf1a648",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "b3c32d0e0e2f38b7",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 188,
@@ -5031,7 +8231,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "db7446730a9ee8a7",
+    "a17ce9c62c1a90cd",
+    "b5d5fc1a5c581446",
+    "d25e586a727fe5a7",
+    "b0edaf62db255fd2",
+    "b3c32d0e0e2f38b7",
+    "25c9f89589c15898",
+    "79558c8330e02145",
+    "d27d70d2c483591b",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "95f6b3ede1800e0d",
+    "8ef4c07639f83830"
+   ]
   },
   {
    "i": 189,
@@ -5059,7 +8276,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "4ca88f1a93bd3554",
+    "60ec8f32da8947ad",
+    "51f6456aaedf32f6",
+    "bfc04de9ad1dd197",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "ec1d5c5086259295",
+    "bec6195b3e1bc592",
+    "1348c8459decd323",
+    "8cb3a2c42a1b18e8"
+   ]
   },
   {
    "i": 190,
@@ -5087,7 +8321,24 @@
     "fiben.SHAREBASEDCOMPENSATIONRESTRICTEDSTOCKUNITSAWARDACTIVITY",
     "fiben.INVESTMENTSANDOTHERNONCURRENTASSETS"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "60ec8f32da8947ad",
+    "51f6456aaedf32f6",
+    "db7446730a9ee8a7",
+    "4ca88f1a93bd3554",
+    "764c543129516a6e",
+    "01874b89027f3495",
+    "1348c8459decd323",
+    "b1d38e40f69a26f6",
+    "e246c7c5a332c6a2",
+    "5a2de30a09cded07"
+   ]
   },
   {
    "i": 191,
@@ -5115,7 +8366,24 @@
     "fiben.SHAREBASEDCOMPENSATIONRESTRICTEDSTOCKUNITSAWARDACTIVITY",
     "fiben.VALUATIONANDQUALIFYINGACCOUNTSDISCLOSURE"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "bfc04de9ad1dd197",
+    "b0edaf62db255fd2",
+    "ea1b6656ab06f368",
+    "764c543129516a6e",
+    "1348c8459decd323",
+    "4ca88f1a93bd3554",
+    "60ec8f32da8947ad",
+    "01874b89027f3495",
+    "e246c7c5a332c6a2",
+    "db7446730a9ee8a7",
+    "51f6456aaedf32f6",
+    "5a2de30a09cded07",
+    "b1d38e40f69a26f6"
+   ]
   },
   {
    "i": 192,
@@ -5143,7 +8411,24 @@
     "fiben.COUNTRY",
     "fiben.UNREALIZEDGAINLOSSONINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "79558c8330e02145",
+    "51f6456aaedf32f6",
+    "95f6b3ede1800e0d",
+    "4f4e8c13c3a5e78e",
+    "db7446730a9ee8a7",
+    "9bd03a25e8f026df",
+    "b5d5fc1a5c581446",
+    "540138dded2d6546",
+    "1b4b177dd9f8e897",
+    "60ec8f32da8947ad",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "ec1d5c5086259295",
+    "d27d70d2c483591b"
+   ]
   },
   {
    "i": 193,
@@ -5170,7 +8455,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "4f4e8c13c3a5e78e",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "db7446730a9ee8a7",
+    "bfc04de9ad1dd197",
+    "1f88a469adc8b8fb",
+    "8a5da30605546a98",
+    "724d54e90a8db9f9",
+    "8cb3a2c42a1b18e8",
+    "0465092b9362c45d",
+    "c4d6bafa3e6f9d54",
+    "ec1d5c5086259295",
+    "95f6b3ede1800e0d"
+   ]
   },
   {
    "i": 194,
@@ -5197,7 +8499,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "db7446730a9ee8a7",
+    "bfc04de9ad1dd197",
+    "1f88a469adc8b8fb",
+    "b0edaf62db255fd2",
+    "8a5da30605546a98",
+    "724d54e90a8db9f9",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d",
+    "532b4360a7fa04a6",
+    "8cb3a2c42a1b18e8",
+    "60ce494a0def6286"
+   ]
   },
   {
    "i": 195,
@@ -5224,7 +8543,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "1f88a469adc8b8fb",
+    "db7446730a9ee8a7",
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "8a5da30605546a98",
+    "724d54e90a8db9f9",
+    "8cb3a2c42a1b18e8",
+    "ec1d5c5086259295",
+    "01874b89027f3495",
+    "532b4360a7fa04a6",
+    "95f6b3ede1800e0d"
+   ]
   },
   {
    "i": 196,
@@ -5251,7 +8587,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "db7446730a9ee8a7",
+    "724d54e90a8db9f9",
+    "bfc04de9ad1dd197",
+    "01874b89027f3495",
+    "9bd03a25e8f026df",
+    "1348c8459decd323",
+    "95f6b3ede1800e0d",
+    "60ce494a0def6286",
+    "4ca88f1a93bd3554",
+    "8cb3a2c42a1b18e8"
+   ]
   },
   {
    "i": 197,
@@ -5278,7 +8631,24 @@
     "fiben.CORPORATION",
     "fiben.CONTRACTPARTY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "724d54e90a8db9f9",
+    "01874b89027f3495",
+    "9bd03a25e8f026df",
+    "4ca88f1a93bd3554",
+    "8a5da30605546a98",
+    "ec1d5c5086259295",
+    "8cb3a2c42a1b18e8",
+    "b3c32d0e0e2f38b7",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 198,
@@ -5305,7 +8675,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "1f88a469adc8b8fb",
+    "b0edaf62db255fd2",
+    "db7446730a9ee8a7",
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "8a5da30605546a98",
+    "724d54e90a8db9f9",
+    "8cb3a2c42a1b18e8",
+    "ec1d5c5086259295",
+    "01874b89027f3495",
+    "95f6b3ede1800e0d",
+    "1348c8459decd323"
+   ]
   },
   {
    "i": 199,
@@ -5333,7 +8720,24 @@
     "fiben.DISTRIBUTIONTOOWNER",
     "fiben.COMPREHENSIVEINCOME"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "cde1d4ddcf43942d",
+    "bb21af1e75d8dca7",
+    "9c5c5ad8294ba063",
+    "d25e586a727fe5a7",
+    "f779219aaea7ce89",
+    "50ebea2186ad0df5",
+    "25c9f89589c15898",
+    "a7aa1e87b685cad6",
+    "3db988597cfc35a0",
+    "ea23f3c863187b8f",
+    "7218c0cebdf80712",
+    "043502ffb00dff04",
+    "3523aabab882f937",
+    "5133ce14d0c4c5f7",
+    "8e4f3fb38c87bdaf"
+   ]
   },
   {
    "i": 200,
@@ -5361,7 +8765,24 @@
     "fiben.DISTRIBUTIONTOOWNER",
     "fiben.COMPREHENSIVEINCOME"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "cde1d4ddcf43942d",
+    "bb21af1e75d8dca7",
+    "d25e586a727fe5a7",
+    "50ebea2186ad0df5",
+    "9c5c5ad8294ba063",
+    "3db988597cfc35a0",
+    "f779219aaea7ce89",
+    "25c9f89589c15898",
+    "7218c0cebdf80712",
+    "ea23f3c863187b8f",
+    "a7aa1e87b685cad6",
+    "043502ffb00dff04",
+    "3523aabab882f937",
+    "8e4f3fb38c87bdaf",
+    "5133ce14d0c4c5f7"
+   ]
   },
   {
    "i": 201,
@@ -5389,7 +8810,24 @@
     "fiben.LIABILITY",
     "fiben.COMPREHENSIVEINCOME"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "540138dded2d6546",
+    "65ee145f2ed99af8",
+    "79558c8330e02145",
+    "e11c4cf1b6ecacf1",
+    "cde1d4ddcf43942d",
+    "45906a6a74570c80",
+    "7739966b94d797ed",
+    "1b4b177dd9f8e897",
+    "c8488581b7513c27",
+    "94094a3b75381f06",
+    "df0bba1da1dcd212",
+    "06626db4f9fe45c7",
+    "830e69d78a49ef76",
+    "d25e586a727fe5a7"
+   ]
   },
   {
    "i": 202,
@@ -5417,7 +8855,24 @@
     "fiben.COMPREHENSIVEINCOME",
     "fiben.ASSET"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "540138dded2d6546",
+    "65ee145f2ed99af8",
+    "6923505e7970e0c8",
+    "79558c8330e02145",
+    "cde1d4ddcf43942d",
+    "06626db4f9fe45c7",
+    "7739966b94d797ed",
+    "45906a6a74570c80",
+    "94094a3b75381f06",
+    "cd3ebca5b9c6d2fd",
+    "d25e586a727fe5a7",
+    "1b4b177dd9f8e897",
+    "25c9f89589c15898",
+    "acb3fb8af8956d5e"
+   ]
   },
   {
    "i": 203,
@@ -5445,7 +8900,24 @@
     "fiben.COMPREHENSIVEINCOME",
     "fiben.ASSET"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "d25e586a727fe5a7",
+    "9c5c5ad8294ba063",
+    "65ee145f2ed99af8",
+    "540138dded2d6546",
+    "cde1d4ddcf43942d",
+    "a7aa1e87b685cad6",
+    "ea23f3c863187b8f",
+    "06626db4f9fe45c7",
+    "25c9f89589c15898",
+    "94094a3b75381f06",
+    "7218c0cebdf80712",
+    "45906a6a74570c80",
+    "830e69d78a49ef76",
+    "8e4f3fb38c87bdaf"
+   ]
   },
   {
    "i": 204,
@@ -5473,7 +8945,24 @@
     "fiben.LIABILITY",
     "fiben.ASSET"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "9c5c5ad8294ba063",
+    "d25e586a727fe5a7",
+    "65ee145f2ed99af8",
+    "540138dded2d6546",
+    "f779219aaea7ce89",
+    "3523aabab882f937",
+    "ea23f3c863187b8f",
+    "06626db4f9fe45c7",
+    "a7aa1e87b685cad6",
+    "043502ffb00dff04",
+    "25c9f89589c15898",
+    "50ebea2186ad0df5",
+    "cde1d4ddcf43942d",
+    "3db988597cfc35a0"
+   ]
   },
   {
    "i": 205,
@@ -5501,7 +8990,24 @@
     "fiben.EQUITY",
     "fiben.EXPENSE"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "9c5c5ad8294ba063",
+    "cde1d4ddcf43942d",
+    "d25e586a727fe5a7",
+    "540138dded2d6546",
+    "ea23f3c863187b8f",
+    "50ebea2186ad0df5",
+    "25c9f89589c15898",
+    "7218c0cebdf80712",
+    "94094a3b75381f06",
+    "043502ffb00dff04",
+    "1b4b177dd9f8e897",
+    "3db988597cfc35a0",
+    "a7aa1e87b685cad6",
+    "06626db4f9fe45c7"
+   ]
   },
   {
    "i": 206,
@@ -5529,7 +9035,24 @@
     "fiben.EQUITY",
     "fiben.EXPENSE"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "cde1d4ddcf43942d",
+    "d25e586a727fe5a7",
+    "3db988597cfc35a0",
+    "9c5c5ad8294ba063",
+    "50ebea2186ad0df5",
+    "25c9f89589c15898",
+    "65ee145f2ed99af8",
+    "043502ffb00dff04",
+    "a7aa1e87b685cad6",
+    "f779219aaea7ce89",
+    "3523aabab882f937",
+    "94094a3b75381f06",
+    "06626db4f9fe45c7",
+    "7218c0cebdf80712"
+   ]
   },
   {
    "i": 207,
@@ -5557,7 +9080,24 @@
     "fiben.FINANCIALREPORT",
     "fiben.DIVIDENDPAYMENTRESTRICTIONS"
    ],
-   "n_ranked": 144
+   "n_ranked": 144,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "bfc04de9ad1dd197",
+    "d25e586a727fe5a7",
+    "cde1d4ddcf43942d",
+    "a7aa1e87b685cad6",
+    "65ee145f2ed99af8",
+    "256375ded4eab77e",
+    "7e0b7c3df8c2440e",
+    "df0bba1da1dcd212",
+    "9c5c5ad8294ba063",
+    "1348c8459decd323",
+    "25c9f89589c15898",
+    "8e4f3fb38c87bdaf",
+    "45906a6a74570c80",
+    "5133ce14d0c4c5f7"
+   ]
   },
   {
    "i": 208,
@@ -5585,7 +9125,24 @@
     "fiben.DISTRIBUTIONTOOWNER",
     "fiben.COMPREHENSIVEINCOME"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "9c5c5ad8294ba063",
+    "540138dded2d6546",
+    "cde1d4ddcf43942d",
+    "6923505e7970e0c8",
+    "79558c8330e02145",
+    "a7aa1e87b685cad6",
+    "7940d0af6443bf08",
+    "d25e586a727fe5a7",
+    "043502ffb00dff04",
+    "45906a6a74570c80",
+    "8e4f3fb38c87bdaf",
+    "f779219aaea7ce89",
+    "830e69d78a49ef76",
+    "294b54b3dbd5355d"
+   ]
   },
   {
    "i": 209,
@@ -5613,7 +9170,24 @@
     "fiben.ASSET",
     "fiben.DISTRIBUTIONTOOWNER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "9c5c5ad8294ba063",
+    "d25e586a727fe5a7",
+    "a7aa1e87b685cad6",
+    "cde1d4ddcf43942d",
+    "06626db4f9fe45c7",
+    "25c9f89589c15898",
+    "f779219aaea7ce89",
+    "ea23f3c863187b8f",
+    "8e4f3fb38c87bdaf",
+    "acb3fb8af8956d5e",
+    "294b54b3dbd5355d",
+    "830e69d78a49ef76",
+    "94094a3b75381f06",
+    "d45cb47931613fd0"
+   ]
   },
   {
    "i": 210,
@@ -5641,7 +9215,24 @@
     "fiben.EXPENSE",
     "fiben.DISTRIBUTIONTOOWNER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "9c5c5ad8294ba063",
+    "256375ded4eab77e",
+    "bb21af1e75d8dca7",
+    "cde1d4ddcf43942d",
+    "d25e586a727fe5a7",
+    "7e0b7c3df8c2440e",
+    "ea23f3c863187b8f",
+    "f779219aaea7ce89",
+    "a7aa1e87b685cad6",
+    "25c9f89589c15898",
+    "3db988597cfc35a0",
+    "06626db4f9fe45c7",
+    "7218c0cebdf80712",
+    "8e4f3fb38c87bdaf",
+    "acb3fb8af8956d5e"
+   ]
   },
   {
    "i": 211,
@@ -5669,7 +9260,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "bfc04de9ad1dd197",
+    "4f4e8c13c3a5e78e",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "1f88a469adc8b8fb",
+    "1348c8459decd323",
+    "0465092b9362c45d",
+    "c4d6bafa3e6f9d54",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "d627b5e80bf1a648",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 212,
@@ -5722,7 +9330,24 @@
     "fiben.FINANCIALINSTRUMENT",
     "fiben.COUNTRY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "d25e586a727fe5a7",
+    "8a5da30605546a98",
+    "b3c32d0e0e2f38b7",
+    "25c9f89589c15898",
+    "c6c262245ba24ab5",
+    "d27d70d2c483591b",
+    "8939719d9d1eedd5",
+    "0465092b9362c45d",
+    "bec6195b3e1bc592",
+    "c4d6bafa3e6f9d54",
+    "9236b134fe57a0d7",
+    "f9040bcb65af9997",
+    "fe416fd78401c0ef",
+    "f779219aaea7ce89"
+   ]
   },
   {
    "i": 214,
@@ -5749,7 +9374,24 @@
     "fiben.INDUSTRYSECTORCLASSIFIER",
     "fiben.CONTRACT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "51f6456aaedf32f6",
+    "9bd03a25e8f026df",
+    "bec6195b3e1bc592",
+    "ea1b6656ab06f368",
+    "60ec8f32da8947ad",
+    "01874b89027f3495",
+    "043502ffb00dff04",
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "8a5da30605546a98",
+    "a4eee242e2944ae5",
+    "0465092b9362c45d",
+    "3db988597cfc35a0",
+    "0a9c118462882911",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 215,
@@ -5776,7 +9418,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "51f6456aaedf32f6",
+    "ea1b6656ab06f368",
+    "60ec8f32da8947ad",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "b0edaf62db255fd2",
+    "9bd03a25e8f026df",
+    "a17ce9c62c1a90cd",
+    "8ef4c07639f83830",
+    "bfc04de9ad1dd197",
+    "8a5da30605546a98",
+    "0465092b9362c45d",
+    "bec6195b3e1bc592",
+    "1348c8459decd323",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 216,
@@ -5803,7 +9462,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.SHAREBASEDCOMPENSATIONRESTRICTEDSTOCKUNITSAWARDACTIVITY"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "51f6456aaedf32f6",
+    "60ec8f32da8947ad",
+    "ea1b6656ab06f368",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "79558c8330e02145",
+    "a17ce9c62c1a90cd",
+    "b0edaf62db255fd2",
+    "8ef4c07639f83830",
+    "db7446730a9ee8a7",
+    "95f6b3ede1800e0d",
+    "b5d5fc1a5c581446",
+    "fe416fd78401c0ef",
+    "5248ac10f2fb3e40",
+    "1f88a469adc8b8fb"
+   ]
   },
   {
    "i": 217,
@@ -5830,7 +9506,24 @@
     "fiben.CONTRACTPARTY",
     "fiben.AUTONOMOUSAGENT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "60ce494a0def6286",
+    "1348c8459decd323",
+    "8a5da30605546a98",
+    "bfc04de9ad1dd197",
+    "429a581b66f07a19",
+    "01874b89027f3495",
+    "532b4360a7fa04a6",
+    "4f4e8c13c3a5e78e",
+    "0a9c118462882911",
+    "c4d6bafa3e6f9d54",
+    "724d54e90a8db9f9"
+   ]
   },
   {
    "i": 218,
@@ -5858,7 +9551,24 @@
     "fiben.INDUSTRYSECTORCLASSIFIER",
     "fiben.AUTONOMOUSAGENT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "f779219aaea7ce89",
+    "bb21af1e75d8dca7",
+    "cde1d4ddcf43942d",
+    "d25e586a727fe5a7",
+    "9c5c5ad8294ba063",
+    "3db988597cfc35a0",
+    "25c9f89589c15898",
+    "50ebea2186ad0df5",
+    "9bd03a25e8f026df",
+    "06626db4f9fe45c7",
+    "a7aa1e87b685cad6",
+    "043502ffb00dff04",
+    "8e4f3fb38c87bdaf",
+    "532b4360a7fa04a6",
+    "acb3fb8af8956d5e"
+   ]
   },
   {
    "i": 219,
@@ -5886,7 +9596,24 @@
     "fiben.EQUITY",
     "fiben.EXPENSE"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "cde1d4ddcf43942d",
+    "d25e586a727fe5a7",
+    "25c9f89589c15898",
+    "9c5c5ad8294ba063",
+    "f779219aaea7ce89",
+    "50ebea2186ad0df5",
+    "1b4b177dd9f8e897",
+    "3db988597cfc35a0",
+    "a7aa1e87b685cad6",
+    "06626db4f9fe45c7",
+    "8e4f3fb38c87bdaf",
+    "94094a3b75381f06",
+    "540138dded2d6546",
+    "acb3fb8af8956d5e"
+   ]
   },
   {
    "i": 220,
@@ -5914,7 +9641,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "b0edaf62db255fd2",
+    "4ca88f1a93bd3554",
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "4f4e8c13c3a5e78e",
+    "d627b5e80bf1a648",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "0a9c118462882911",
+    "1c6988534fab59d7",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 221,
@@ -5942,7 +9686,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "1f88a469adc8b8fb",
+    "60ec8f32da8947ad",
+    "bfc04de9ad1dd197",
+    "8a5da30605546a98",
+    "01874b89027f3495",
+    "51f6456aaedf32f6",
+    "4ca88f1a93bd3554",
+    "d27d70d2c483591b",
+    "1348c8459decd323",
+    "c4d6bafa3e6f9d54",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 222,
@@ -5969,7 +9730,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "d27d70d2c483591b",
+    "b0edaf62db255fd2",
+    "bec6195b3e1bc592",
+    "4f4e8c13c3a5e78e",
+    "bfc04de9ad1dd197",
+    "8939719d9d1eedd5",
+    "ea1b6656ab06f368",
+    "8a5da30605546a98",
+    "1f88a469adc8b8fb",
+    "f9040bcb65af9997",
+    "1348c8459decd323",
+    "4ca88f1a93bd3554",
+    "b3c32d0e0e2f38b7",
+    "25c9f89589c15898"
+   ]
   },
   {
    "i": 223,
@@ -5996,7 +9774,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "9bd03a25e8f026df",
+    "d27d70d2c483591b",
+    "db7446730a9ee8a7",
+    "bfc04de9ad1dd197",
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "5248ac10f2fb3e40",
+    "b0edaf62db255fd2",
+    "1348c8459decd323",
+    "8a5da30605546a98",
+    "95f6b3ede1800e0d",
+    "d25e586a727fe5a7",
+    "25c9f89589c15898",
+    "121dcc8fe13f15e7"
+   ]
   },
   {
    "i": 224,
@@ -6023,7 +9818,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "4f4e8c13c3a5e78e",
+    "db7446730a9ee8a7",
+    "b0edaf62db255fd2",
+    "1f88a469adc8b8fb",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592",
+    "c6c262245ba24ab5",
+    "ea1b6656ab06f368",
+    "fe416fd78401c0ef",
+    "95f6b3ede1800e0d",
+    "d25e586a727fe5a7",
+    "4ca88f1a93bd3554",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 225,
@@ -6050,7 +9862,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "bec6195b3e1bc592",
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "db7446730a9ee8a7",
+    "d27d70d2c483591b",
+    "b0edaf62db255fd2",
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "95f6b3ede1800e0d",
+    "9236b134fe57a0d7",
+    "b3c32d0e0e2f38b7",
+    "4ca88f1a93bd3554",
+    "8a5da30605546a98"
+   ]
   },
   {
    "i": 226,
@@ -6077,7 +9906,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "d27d70d2c483591b",
+    "b0edaf62db255fd2",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "fe416fd78401c0ef",
+    "9bd03a25e8f026df",
+    "bec6195b3e1bc592",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "9236b134fe57a0d7",
+    "c6c262245ba24ab5",
+    "d627b5e80bf1a648",
+    "06626db4f9fe45c7",
+    "1c6988534fab59d7"
+   ]
   },
   {
    "i": 227,
@@ -6103,7 +9949,24 @@
     "fiben.AUTONOMOUSAGENT",
     "fiben.CONTRACTPARTY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "fe416fd78401c0ef",
+    "bec6195b3e1bc592",
+    "79558c8330e02145",
+    "d27d70d2c483591b",
+    "9bd03a25e8f026df",
+    "f9040bcb65af9997",
+    "c6c262245ba24ab5",
+    "121dcc8fe13f15e7",
+    "8a5da30605546a98",
+    "b5d5fc1a5c581446",
+    "429a581b66f07a19",
+    "9236b134fe57a0d7",
+    "8939719d9d1eedd5",
+    "60ce494a0def6286",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 228,
@@ -6129,7 +9992,24 @@
     "fiben.AUTONOMOUSAGENT",
     "fiben.CONTRACTPARTY"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "d27d70d2c483591b",
+    "121dcc8fe13f15e7",
+    "1348c8459decd323",
+    "429a581b66f07a19",
+    "bec6195b3e1bc592",
+    "fe416fd78401c0ef",
+    "9236b134fe57a0d7",
+    "60ce494a0def6286",
+    "bfc04de9ad1dd197",
+    "0a9c118462882911",
+    "532b4360a7fa04a6",
+    "9bd03a25e8f026df",
+    "8a5da30605546a98",
+    "c6c262245ba24ab5",
+    "94094a3b75381f06"
+   ]
   },
   {
    "i": 229,
@@ -6156,7 +10036,24 @@
     "fiben.INDUSTRYSECTORCLASSIFIER",
     "fiben.CONTRACT"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "8a5406402512599e",
+    "a7a83e0dd2f00566",
+    "4f4e8c13c3a5e78e",
+    "db7446730a9ee8a7",
+    "3db988597cfc35a0",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "f779219aaea7ce89",
+    "1f88a469adc8b8fb",
+    "95f6b3ede1800e0d",
+    "0465092b9362c45d",
+    "c4d6bafa3e6f9d54",
+    "d27d70d2c483591b",
+    "429a581b66f07a19"
+   ]
   },
   {
    "i": 230,
@@ -6183,7 +10080,24 @@
     "fiben.COUNTRY",
     "fiben.EQUITYMETHODINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "9bd03a25e8f026df",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "f9040bcb65af9997",
+    "a503bf78aba3fa21",
+    "0e6aa44515168352",
+    "60ec8f32da8947ad",
+    "8a5da30605546a98",
+    "51f6456aaedf32f6",
+    "0465092b9362c45d",
+    "8939719d9d1eedd5",
+    "bec6195b3e1bc592",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 231,
@@ -6210,7 +10124,24 @@
     "fiben.COUNTRY",
     "fiben.STOCKHOLDERSEQUITY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "92073132ba4bd6e6",
+    "51f6456aaedf32f6",
+    "a7a83e0dd2f00566",
+    "f9040bcb65af9997",
+    "60ec8f32da8947ad",
+    "8a5406402512599e",
+    "e1a61ff176d280c8",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "8939719d9d1eedd5",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 232,
@@ -6238,7 +10169,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "db7446730a9ee8a7",
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "1f88a469adc8b8fb",
+    "1348c8459decd323",
+    "95f6b3ede1800e0d",
+    "8a5da30605546a98",
+    "0465092b9362c45d",
+    "b3c32d0e0e2f38b7",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592",
+    "d25e586a727fe5a7"
+   ]
   },
   {
    "i": 233,
@@ -6266,7 +10214,24 @@
     "fiben.COUNTRY",
     "fiben.GAINLOSSONINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "d27d70d2c483591b",
+    "b0edaf62db255fd2",
+    "ea1b6656ab06f368",
+    "db7446730a9ee8a7",
+    "95f6b3ede1800e0d",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "b3c32d0e0e2f38b7",
+    "d25e586a727fe5a7",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 234,
@@ -6294,7 +10259,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "9bd03a25e8f026df",
+    "db7446730a9ee8a7",
+    "b0edaf62db255fd2",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "bfc04de9ad1dd197",
+    "95f6b3ede1800e0d",
+    "1348c8459decd323",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "0465092b9362c45d",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 235,
@@ -6322,7 +10304,24 @@
     "fiben.COUNTRY",
     "fiben.EQUITYMETHODINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "db7446730a9ee8a7",
+    "4f4e8c13c3a5e78e",
+    "95f6b3ede1800e0d",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "60ec8f32da8947ad",
+    "bec6195b3e1bc592",
+    "51f6456aaedf32f6",
+    "d27d70d2c483591b",
+    "8a5da30605546a98",
+    "60ce494a0def6286",
+    "01874b89027f3495",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 236,
@@ -6350,7 +10349,24 @@
     "fiben.COUNTRY",
     "fiben.STOCKHOLDERSEQUITY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "db7446730a9ee8a7",
+    "b0edaf62db255fd2",
+    "bfc04de9ad1dd197",
+    "95f6b3ede1800e0d",
+    "ea1b6656ab06f368",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "1348c8459decd323",
+    "d27d70d2c483591b",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "8a5da30605546a98",
+    "b3c32d0e0e2f38b7",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 237,
@@ -6378,7 +10394,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "ea1b6656ab06f368",
+    "bfc04de9ad1dd197",
+    "b0edaf62db255fd2",
+    "1348c8459decd323",
+    "8a5da30605546a98",
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "4ca88f1a93bd3554",
+    "bec6195b3e1bc592",
+    "d627b5e80bf1a648",
+    "0465092b9362c45d",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 238,
@@ -6406,7 +10439,24 @@
     "fiben.COUNTRY",
     "fiben.STOCKHOLDERSEQUITY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "ea1b6656ab06f368",
+    "bfc04de9ad1dd197",
+    "db7446730a9ee8a7",
+    "1348c8459decd323",
+    "8a5da30605546a98",
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "bec6195b3e1bc592",
+    "4ca88f1a93bd3554",
+    "95f6b3ede1800e0d",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "b3c32d0e0e2f38b7"
+   ]
   },
   {
    "i": 239,
@@ -6434,7 +10484,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "9bd03a25e8f026df",
+    "51f6456aaedf32f6",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "1348c8459decd323",
+    "b0edaf62db255fd2",
+    "60ec8f32da8947ad",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "8a5da30605546a98",
+    "4ca88f1a93bd3554",
+    "0465092b9362c45d",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 240,
@@ -6462,7 +10529,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "1348c8459decd323",
+    "51f6456aaedf32f6",
+    "b0edaf62db255fd2",
+    "4ca88f1a93bd3554",
+    "d627b5e80bf1a648",
+    "60ec8f32da8947ad",
+    "d27d70d2c483591b",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "1c6988534fab59d7"
+   ]
   },
   {
    "i": 241,
@@ -6490,7 +10574,24 @@
     "fiben.COUNTRY",
     "fiben.STOCKHOLDERSEQUITY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "db7446730a9ee8a7",
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "a17ce9c62c1a90cd",
+    "95f6b3ede1800e0d",
+    "60ec8f32da8947ad",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "8a5da30605546a98",
+    "51f6456aaedf32f6",
+    "8ef4c07639f83830",
+    "d25e586a727fe5a7",
+    "4ca88f1a93bd3554",
+    "b3c32d0e0e2f38b7",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 242,
@@ -6516,7 +10617,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "db7446730a9ee8a7",
+    "1348c8459decd323",
+    "1c6988534fab59d7",
+    "b3c32d0e0e2f38b7",
+    "8a5da30605546a98",
+    "0465092b9362c45d",
+    "d627b5e80bf1a648",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "95f6b3ede1800e0d",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 243,
@@ -6542,7 +10660,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "f9040bcb65af9997",
+    "d627b5e80bf1a648",
+    "1c6988534fab59d7",
+    "1348c8459decd323",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "8939719d9d1eedd5",
+    "b3c32d0e0e2f38b7",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98"
+   ]
   },
   {
    "i": 244,
@@ -6568,7 +10703,24 @@
     "fiben.FINANCIALMARKET",
     "fiben.FINANCIALINSTRUMENT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "b3c32d0e0e2f38b7",
+    "1348c8459decd323",
+    "a31256c245fa82b2",
+    "8a5da30605546a98",
+    "01874b89027f3495",
+    "0465092b9362c45d",
+    "4ca88f1a93bd3554",
+    "d27d70d2c483591b",
+    "c4d6bafa3e6f9d54",
+    "0a9c118462882911",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 245,
@@ -6594,7 +10746,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "f9040bcb65af9997",
+    "ea1b6656ab06f368",
+    "1c6988534fab59d7",
+    "b0edaf62db255fd2",
+    "1348c8459decd323",
+    "d627b5e80bf1a648",
+    "8939719d9d1eedd5",
+    "b3c32d0e0e2f38b7",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "4ca88f1a93bd3554",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 246,
@@ -6620,7 +10789,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "f9040bcb65af9997",
+    "1c6988534fab59d7",
+    "b0edaf62db255fd2",
+    "8939719d9d1eedd5",
+    "d627b5e80bf1a648",
+    "1348c8459decd323",
+    "b3c32d0e0e2f38b7",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "4ca88f1a93bd3554",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 247,
@@ -6647,7 +10833,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "f9040bcb65af9997",
+    "d27d70d2c483591b",
+    "9bd03a25e8f026df",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "1f88a469adc8b8fb",
+    "e246c7c5a332c6a2",
+    "8939719d9d1eedd5",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592",
+    "d627b5e80bf1a648",
+    "4ca88f1a93bd3554",
+    "1c6988534fab59d7",
+    "764c543129516a6e",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 248,
@@ -6675,7 +10878,24 @@
     "fiben.CONTRACT",
     "fiben.DISTRIBUTIONTOOWNER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "72ddc85fb68630cc",
+    "3f9f122a6c985183",
+    "e877e2af845492e2",
+    "5230d2251a8a9838",
+    "a7a83e0dd2f00566",
+    "72f33f26c961d8fa",
+    "5dd10f2a46ec5a2f",
+    "7991c01866fc044e",
+    "fabb825224a00ff1",
+    "31b990464f9369d6",
+    "4dc24196b6e4dad7",
+    "ac7b60bf8b617914",
+    "215ac0780ea6396b",
+    "8a5406402512599e",
+    "68f5c903683dc8df"
+   ]
   },
   {
    "i": 249,
@@ -6703,7 +10923,24 @@
     "fiben.CONTRACT",
     "fiben.DISTRIBUTIONTOOWNER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "72ddc85fb68630cc",
+    "3f9f122a6c985183",
+    "72f33f26c961d8fa",
+    "5230d2251a8a9838",
+    "e877e2af845492e2",
+    "ac7b60bf8b617914",
+    "fabb825224a00ff1",
+    "7991c01866fc044e",
+    "215ac0780ea6396b",
+    "31b990464f9369d6",
+    "6db81298006e371d",
+    "5dd10f2a46ec5a2f",
+    "a7a83e0dd2f00566",
+    "4dc24196b6e4dad7",
+    "e1f025c5987c889d"
+   ]
   },
   {
    "i": 250,
@@ -6734,7 +10971,24 @@
     "fiben.DIVIDENDPAYMENTRESTRICTIONS",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "a17ce9c62c1a90cd",
+    "79558c8330e02145",
+    "95f6b3ede1800e0d",
+    "b5d5fc1a5c581446",
+    "4f4e8c13c3a5e78e",
+    "db7446730a9ee8a7",
+    "1f88a469adc8b8fb",
+    "8ef4c07639f83830",
+    "51f6456aaedf32f6",
+    "60ec8f32da8947ad",
+    "5248ac10f2fb3e40",
+    "a7a83e0dd2f00566",
+    "2bd9214c988c808a",
+    "8a5406402512599e",
+    "f0b6e8cc17a71b9e"
+   ]
   },
   {
    "i": 251,
@@ -6765,7 +11019,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.INDUSTRYSECTORCLASSIFICATIONSCHEME"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "a7a83e0dd2f00566",
+    "1f88a469adc8b8fb",
+    "92073132ba4bd6e6",
+    "8a5406402512599e",
+    "3523aabab882f937",
+    "3db988597cfc35a0",
+    "69b93501e1ab11d2",
+    "6b5ff70912738e4e",
+    "4f4e8c13c3a5e78e",
+    "70d4ace193475fd0",
+    "1eaacae5d12bfdea",
+    "f779219aaea7ce89",
+    "043502ffb00dff04",
+    "0877c177fa050b36",
+    "9c5c5ad8294ba063"
+   ]
   },
   {
    "i": 252,
@@ -6796,7 +11067,24 @@
     "fiben.ELEMENTSOFFINANCIALREPORT",
     "fiben.INDUSTRYSECTORCLASSIFICATIONSCHEME"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "a7a83e0dd2f00566",
+    "1f88a469adc8b8fb",
+    "92073132ba4bd6e6",
+    "3db988597cfc35a0",
+    "8a5406402512599e",
+    "3523aabab882f937",
+    "69b93501e1ab11d2",
+    "4f4e8c13c3a5e78e",
+    "70d4ace193475fd0",
+    "6b5ff70912738e4e",
+    "f779219aaea7ce89",
+    "043502ffb00dff04",
+    "1eaacae5d12bfdea",
+    "0877c177fa050b36",
+    "9c5c5ad8294ba063"
+   ]
   },
   {
    "i": 253,
@@ -6827,7 +11115,24 @@
     "fiben.SHAREBASEDCOMPENSATIONRESTRICTEDSTOCKUNITSAWARDACTIVITY",
     "fiben.OTHERASSETSDISCLOSURE"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "b0edaf62db255fd2",
+    "bfc04de9ad1dd197",
+    "a7a83e0dd2f00566",
+    "ea1b6656ab06f368",
+    "1348c8459decd323",
+    "8a5406402512599e",
+    "4ca88f1a93bd3554",
+    "51f6456aaedf32f6",
+    "60ec8f32da8947ad",
+    "256375ded4eab77e",
+    "7e0b7c3df8c2440e",
+    "5a2de30a09cded07",
+    "b5d5fc1a5c581446"
+   ]
   },
   {
    "i": 254,
@@ -6855,7 +11160,24 @@
     "fiben.FINANCIALREPORT",
     "fiben.VALUATIONANDQUALIFYINGACCOUNTSDISCLOSURE"
    ],
-   "n_ranked": 144
+   "n_ranked": 144,
+   "ranked_columns": [
+    "e7da672a4e1f2789",
+    "65ee145f2ed99af8",
+    "3f5cd4f267551138",
+    "b1d38e40f69a26f6",
+    "bb21af1e75d8dca7",
+    "d25e586a727fe5a7",
+    "71b539cac5d515b2",
+    "a503bf78aba3fa21",
+    "06626db4f9fe45c7",
+    "9c5c5ad8294ba063",
+    "ea23f3c863187b8f",
+    "0e6aa44515168352",
+    "25c9f89589c15898",
+    "cde1d4ddcf43942d",
+    "df0bba1da1dcd212"
+   ]
   },
   {
    "i": 255,
@@ -6883,7 +11205,24 @@
     "fiben.LOSS",
     "fiben.INDUSTRYSECTORCLASSIFIER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "d25e586a727fe5a7",
+    "cde1d4ddcf43942d",
+    "9c5c5ad8294ba063",
+    "bb21af1e75d8dca7",
+    "25c9f89589c15898",
+    "06626db4f9fe45c7",
+    "ea23f3c863187b8f",
+    "94094a3b75381f06",
+    "a7aa1e87b685cad6",
+    "db7446730a9ee8a7",
+    "7218c0cebdf80712",
+    "acb3fb8af8956d5e",
+    "f779219aaea7ce89",
+    "6e089b9cf7e0737d",
+    "50ebea2186ad0df5"
+   ]
   },
   {
    "i": 256,
@@ -6911,7 +11250,24 @@
     "fiben.ASSET",
     "fiben.INDUSTRYSECTORCLASSIFIER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "3f5cd4f267551138",
+    "bb21af1e75d8dca7",
+    "d25e586a727fe5a7",
+    "9c5c5ad8294ba063",
+    "cde1d4ddcf43942d",
+    "71b539cac5d515b2",
+    "e7da672a4e1f2789",
+    "25c9f89589c15898",
+    "b1d38e40f69a26f6",
+    "f779219aaea7ce89",
+    "a7aa1e87b685cad6",
+    "ea23f3c863187b8f",
+    "06626db4f9fe45c7",
+    "3db988597cfc35a0",
+    "043502ffb00dff04"
+   ]
   },
   {
    "i": 257,
@@ -6939,7 +11295,24 @@
     "fiben.COMPREHENSIVEINCOME",
     "fiben.ASSET"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "3f5cd4f267551138",
+    "bb21af1e75d8dca7",
+    "9c5c5ad8294ba063",
+    "71b539cac5d515b2",
+    "e7da672a4e1f2789",
+    "65ee145f2ed99af8",
+    "d25e586a727fe5a7",
+    "cde1d4ddcf43942d",
+    "b1d38e40f69a26f6",
+    "06626db4f9fe45c7",
+    "f779219aaea7ce89",
+    "25c9f89589c15898",
+    "acb3fb8af8956d5e",
+    "ea23f3c863187b8f",
+    "df0bba1da1dcd212"
+   ]
   },
   {
    "i": 258,
@@ -6967,7 +11340,24 @@
     "fiben.ASSET",
     "fiben.COMPREHENSIVEINCOME"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "3f5cd4f267551138",
+    "71b539cac5d515b2",
+    "bb21af1e75d8dca7",
+    "e7da672a4e1f2789",
+    "65ee145f2ed99af8",
+    "9c5c5ad8294ba063",
+    "b1d38e40f69a26f6",
+    "ea23f3c863187b8f",
+    "06626db4f9fe45c7",
+    "cde1d4ddcf43942d",
+    "f779219aaea7ce89",
+    "45906a6a74570c80",
+    "df0bba1da1dcd212",
+    "d25e586a727fe5a7",
+    "6e089b9cf7e0737d"
+   ]
   },
   {
    "i": 259,
@@ -6995,7 +11385,24 @@
     "fiben.FINANCIALREPORT",
     "fiben.GAINLOSSONINVESTMENTS"
    ],
-   "n_ranked": 144
+   "n_ranked": 144,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "3f5cd4f267551138",
+    "71b539cac5d515b2",
+    "e7da672a4e1f2789",
+    "65ee145f2ed99af8",
+    "cde1d4ddcf43942d",
+    "d25e586a727fe5a7",
+    "ea23f3c863187b8f",
+    "9c5c5ad8294ba063",
+    "95f6b3ede1800e0d",
+    "25c9f89589c15898",
+    "7739966b94d797ed",
+    "b1d38e40f69a26f6",
+    "06626db4f9fe45c7",
+    "db7446730a9ee8a7"
+   ]
   },
   {
    "i": 260,
@@ -7023,7 +11430,24 @@
     "fiben.COUNTRY",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "ea1b6656ab06f368",
+    "db7446730a9ee8a7",
+    "bfc04de9ad1dd197",
+    "4ca88f1a93bd3554",
+    "1348c8459decd323",
+    "01874b89027f3495",
+    "95f6b3ede1800e0d",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592",
+    "d27d70d2c483591b",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 261,
@@ -7051,7 +11475,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "db7446730a9ee8a7",
+    "ea1b6656ab06f368",
+    "c6c262245ba24ab5",
+    "60ec8f32da8947ad",
+    "8a5da30605546a98",
+    "b0edaf62db255fd2",
+    "fe416fd78401c0ef",
+    "95f6b3ede1800e0d",
+    "d25e586a727fe5a7",
+    "51f6456aaedf32f6",
+    "0465092b9362c45d",
+    "01874b89027f3495",
+    "d27d70d2c483591b",
+    "25c9f89589c15898"
+   ]
   },
   {
    "i": 262,
@@ -7078,7 +11519,24 @@
     "fiben.LIABILITY",
     "fiben.LOSS"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "bfc04de9ad1dd197",
+    "45906a6a74570c80",
+    "5133ce14d0c4c5f7",
+    "1348c8459decd323",
+    "d25e586a727fe5a7",
+    "bb21af1e75d8dca7",
+    "08791775c2b52d10",
+    "25a31245d65109e3",
+    "25c9f89589c15898"
+   ]
   },
   {
    "i": 263,
@@ -7105,7 +11563,24 @@
     "fiben.COUNTRY",
     "fiben.CONVERSIONOFSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "9bd03a25e8f026df",
+    "01874b89027f3495",
+    "51f6456aaedf32f6",
+    "b0edaf62db255fd2",
+    "4ca88f1a93bd3554",
+    "60ec8f32da8947ad",
+    "bec6195b3e1bc592",
+    "d627b5e80bf1a648",
+    "8a5da30605546a98",
+    "1c6988534fab59d7",
+    "a4eee242e2944ae5",
+    "0465092b9362c45d"
+   ]
   },
   {
    "i": 264,
@@ -7132,7 +11607,24 @@
     "fiben.REVENUE",
     "fiben.ASSET"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "9bd03a25e8f026df",
+    "45906a6a74570c80",
+    "5133ce14d0c4c5f7",
+    "8a5da30605546a98",
+    "bec6195b3e1bc592",
+    "c4d6bafa3e6f9d54",
+    "0465092b9362c45d",
+    "8cb3a2c42a1b18e8",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 265,
@@ -7159,7 +11651,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "db7446730a9ee8a7",
+    "9bd03a25e8f026df",
+    "60ec8f32da8947ad",
+    "bec6195b3e1bc592",
+    "95f6b3ede1800e0d",
+    "51f6456aaedf32f6",
+    "4f4e8c13c3a5e78e",
+    "a17ce9c62c1a90cd",
+    "d25e586a727fe5a7",
+    "b0edaf62db255fd2",
+    "25c9f89589c15898",
+    "1f88a469adc8b8fb",
+    "8a5da30605546a98",
+    "0465092b9362c45d",
+    "06626db4f9fe45c7"
+   ]
   },
   {
    "i": 266,
@@ -7186,7 +11695,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "db7446730a9ee8a7",
+    "60ec8f32da8947ad",
+    "4f4e8c13c3a5e78e",
+    "51f6456aaedf32f6",
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "bfc04de9ad1dd197",
+    "95f6b3ede1800e0d",
+    "b0edaf62db255fd2",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "1348c8459decd323",
+    "8a5da30605546a98",
+    "4ca88f1a93bd3554",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 267,
@@ -7213,7 +11739,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "db7446730a9ee8a7",
+    "60ec8f32da8947ad",
+    "9bd03a25e8f026df",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "51f6456aaedf32f6",
+    "95f6b3ede1800e0d",
+    "b0edaf62db255fd2",
+    "bec6195b3e1bc592",
+    "1348c8459decd323",
+    "0465092b9362c45d",
+    "4ca88f1a93bd3554",
+    "d25e586a727fe5a7",
+    "25c9f89589c15898"
+   ]
   },
   {
    "i": 268,
@@ -7241,7 +11784,24 @@
     "fiben.COUNTRY",
     "fiben.INVESTMENTINCOME"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "51f6456aaedf32f6",
+    "01874b89027f3495",
+    "79558c8330e02145",
+    "1348c8459decd323",
+    "a17ce9c62c1a90cd",
+    "ea1b6656ab06f368",
+    "60ec8f32da8947ad",
+    "8ef4c07639f83830",
+    "b5d5fc1a5c581446",
+    "8a5da30605546a98",
+    "0465092b9362c45d",
+    "0a9c118462882911",
+    "a4eee242e2944ae5"
+   ]
   },
   {
    "i": 269,
@@ -7269,7 +11829,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "4f4e8c13c3a5e78e",
+    "60ec8f32da8947ad",
+    "db7446730a9ee8a7",
+    "b0edaf62db255fd2",
+    "8a5da30605546a98",
+    "1348c8459decd323",
+    "1f88a469adc8b8fb",
+    "51f6456aaedf32f6",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "c4d6bafa3e6f9d54",
+    "4ca88f1a93bd3554",
+    "95f6b3ede1800e0d"
+   ]
   },
   {
    "i": 270,
@@ -7296,7 +11873,24 @@
     "fiben.COUNTRY",
     "fiben.EQUITYMETHODINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "9bd03a25e8f026df",
+    "db7446730a9ee8a7",
+    "60ec8f32da8947ad",
+    "bec6195b3e1bc592",
+    "51f6456aaedf32f6",
+    "532b4360a7fa04a6",
+    "01874b89027f3495",
+    "95f6b3ede1800e0d",
+    "4ca88f1a93bd3554",
+    "ec1d5c5086259295",
+    "8a5da30605546a98"
+   ]
   },
   {
    "i": 271,
@@ -7323,7 +11917,24 @@
     "fiben.CASHCASHEQUIVALENTSANDSHORTTERMINVESTMENTS",
     "fiben.REALIZEDGAINLOSSONINVESTMENTS"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "ea1b6656ab06f368",
+    "a7a83e0dd2f00566",
+    "b0edaf62db255fd2",
+    "bfc04de9ad1dd197",
+    "01874b89027f3495",
+    "51f6456aaedf32f6",
+    "4ca88f1a93bd3554",
+    "79558c8330e02145",
+    "fe416fd78401c0ef",
+    "60ec8f32da8947ad",
+    "a503bf78aba3fa21",
+    "95f6b3ede1800e0d"
+   ]
   },
   {
    "i": 272,
@@ -7351,7 +11962,24 @@
     "fiben.COUNTRY",
     "fiben.STOCKHOLDERSEQUITY"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "51f6456aaedf32f6",
+    "1348c8459decd323",
+    "01874b89027f3495",
+    "79558c8330e02145",
+    "ea1b6656ab06f368",
+    "1f88a469adc8b8fb",
+    "60ec8f32da8947ad",
+    "0465092b9362c45d",
+    "4f4e8c13c3a5e78e",
+    "8a5da30605546a98",
+    "0a9c118462882911",
+    "b5d5fc1a5c581446",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 273,
@@ -7378,7 +12006,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "bfc04de9ad1dd197",
+    "60ec8f32da8947ad",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "bec6195b3e1bc592",
+    "8a5da30605546a98",
+    "51f6456aaedf32f6",
+    "1348c8459decd323",
+    "0465092b9362c45d",
+    "01874b89027f3495",
+    "c4d6bafa3e6f9d54",
+    "4ca88f1a93bd3554"
+   ]
   },
   {
    "i": 274,
@@ -7405,7 +12050,24 @@
     "fiben.COUNTRY",
     "fiben.EQUITYMETHODINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "4f4e8c13c3a5e78e",
+    "1f88a469adc8b8fb",
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "db7446730a9ee8a7",
+    "bfc04de9ad1dd197",
+    "60ec8f32da8947ad",
+    "bec6195b3e1bc592",
+    "51f6456aaedf32f6",
+    "8a5da30605546a98",
+    "95f6b3ede1800e0d",
+    "4ca88f1a93bd3554",
+    "1348c8459decd323",
+    "0465092b9362c45d",
+    "d27d70d2c483591b"
+   ]
   },
   {
    "i": 275,
@@ -7432,7 +12094,24 @@
     "fiben.LIABILITY",
     "fiben.COMPREHENSIVEINCOME"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "1348c8459decd323",
+    "4f4e8c13c3a5e78e",
+    "45906a6a74570c80",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "b0edaf62db255fd2",
+    "5133ce14d0c4c5f7",
+    "bb21af1e75d8dca7",
+    "78690acbe9a7442b",
+    "7739966b94d797ed",
+    "164d5f7a5682905f",
+    "6e089b9cf7e0737d"
+   ]
   },
   {
    "i": 276,
@@ -7459,7 +12138,24 @@
     "fiben.COUNTRY",
     "fiben.GAINLOSSONINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "79558c8330e02145",
+    "51f6456aaedf32f6",
+    "bec6195b3e1bc592",
+    "01874b89027f3495",
+    "95f6b3ede1800e0d",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "db7446730a9ee8a7",
+    "60ec8f32da8947ad",
+    "9bd03a25e8f026df",
+    "b5d5fc1a5c581446",
+    "0a9c118462882911",
+    "8a5da30605546a98",
+    "60ce494a0def6286"
+   ]
   },
   {
    "i": 277,
@@ -7486,7 +12182,24 @@
     "fiben.COUNTRY",
     "fiben.EQUITYMETHODINVESTMENTS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "b0edaf62db255fd2",
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "db7446730a9ee8a7",
+    "95f6b3ede1800e0d",
+    "bec6195b3e1bc592",
+    "d25e586a727fe5a7",
+    "51f6456aaedf32f6",
+    "1348c8459decd323",
+    "4ca88f1a93bd3554",
+    "60ec8f32da8947ad",
+    "25c9f89589c15898",
+    "d27d70d2c483591b"
+   ]
   },
   {
    "i": 278,
@@ -7513,7 +12226,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bec6195b3e1bc592",
+    "1f88a469adc8b8fb",
+    "8a5da30605546a98",
+    "ea1b6656ab06f368",
+    "a7a83e0dd2f00566",
+    "d627b5e80bf1a648",
+    "b0edaf62db255fd2",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "0465092b9362c45d",
+    "4f4e8c13c3a5e78e",
+    "1c6988534fab59d7",
+    "8a5406402512599e",
+    "532b4360a7fa04a6"
+   ]
   },
   {
    "i": 279,
@@ -7540,7 +12270,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "51f6456aaedf32f6",
+    "1f88a469adc8b8fb",
+    "60ec8f32da8947ad",
+    "b0edaf62db255fd2",
+    "db7446730a9ee8a7",
+    "0465092b9362c45d",
+    "8a5da30605546a98",
+    "ea1b6656ab06f368",
+    "95f6b3ede1800e0d",
+    "4ca88f1a93bd3554",
+    "bec6195b3e1bc592",
+    "4f4e8c13c3a5e78e",
+    "01874b89027f3495",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 280,
@@ -7567,7 +12314,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "60ec8f32da8947ad",
+    "bfc04de9ad1dd197",
+    "bec6195b3e1bc592",
+    "db7446730a9ee8a7",
+    "51f6456aaedf32f6",
+    "0465092b9362c45d",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "1f88a469adc8b8fb",
+    "95f6b3ede1800e0d",
+    "1348c8459decd323",
+    "d25e586a727fe5a7",
+    "d27d70d2c483591b",
+    "8a5da30605546a98"
+   ]
   },
   {
    "i": 281,
@@ -7594,7 +12358,24 @@
     "fiben.REALIZEDGAINLOSSONINVESTMENTS",
     "fiben.ASSETRETIREMENTOBLIGATIONDISCLOSURE"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4f4e8c13c3a5e78e",
+    "51f6456aaedf32f6",
+    "bfc04de9ad1dd197",
+    "b0edaf62db255fd2",
+    "95f6b3ede1800e0d",
+    "d25e586a727fe5a7",
+    "1348c8459decd323",
+    "db7446730a9ee8a7",
+    "79558c8330e02145",
+    "60ec8f32da8947ad",
+    "ea1b6656ab06f368",
+    "540138dded2d6546",
+    "4ca88f1a93bd3554",
+    "1b4b177dd9f8e897"
+   ]
   },
   {
    "i": 282,
@@ -7622,7 +12403,24 @@
     "fiben.COUNTRY",
     "fiben.ELEMENTSOFFINANCIALREPORT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "8a5da30605546a98",
+    "b5d5fc1a5c581446",
+    "c6c262245ba24ab5",
+    "8a5406402512599e",
+    "bfc04de9ad1dd197",
+    "b3c32d0e0e2f38b7",
+    "0465092b9362c45d",
+    "d25e586a727fe5a7",
+    "79558c8330e02145",
+    "98426731c7cd1df9",
+    "bec6195b3e1bc592",
+    "a7a83e0dd2f00566",
+    "25c9f89589c15898",
+    "51f8815359ac8c25"
+   ]
   },
   {
    "i": 283,
@@ -7650,7 +12448,24 @@
     "fiben.LIABILITY",
     "fiben.LOSS"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "cde1d4ddcf43942d",
+    "9c5c5ad8294ba063",
+    "d25e586a727fe5a7",
+    "94094a3b75381f06",
+    "25c9f89589c15898",
+    "95f6b3ede1800e0d",
+    "105e58e1a48ff47a",
+    "06626db4f9fe45c7",
+    "a7aa1e87b685cad6",
+    "db7446730a9ee8a7",
+    "830e69d78a49ef76",
+    "8e4f3fb38c87bdaf",
+    "ea23f3c863187b8f",
+    "043502ffb00dff04"
+   ]
   },
   {
    "i": 284,
@@ -7678,7 +12493,24 @@
     "fiben.ASSET",
     "fiben.LOSS"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "7739966b94d797ed",
+    "26f83ade10efe987",
+    "b34360dfede1ce0b",
+    "9c5c5ad8294ba063",
+    "2bd9214c988c808a",
+    "ea23f3c863187b8f",
+    "79558c8330e02145",
+    "94094a3b75381f06",
+    "d25e586a727fe5a7",
+    "06626db4f9fe45c7",
+    "25c9f89589c15898",
+    "d39881868cababe3",
+    "bb21af1e75d8dca7",
+    "7218c0cebdf80712",
+    "0bf5d38301b65515"
+   ]
   },
   {
    "i": 285,
@@ -7705,7 +12537,24 @@
     "fiben.VALUATIONANDQUALIFYINGACCOUNTSDISCLOSURE",
     "fiben.OTHERASSETSNONCURRENT"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "1f88a469adc8b8fb",
+    "4ca88f1a93bd3554",
+    "b0edaf62db255fd2",
+    "79558c8330e02145",
+    "01874b89027f3495",
+    "bfc04de9ad1dd197",
+    "4f4e8c13c3a5e78e",
+    "ea1b6656ab06f368",
+    "51f6456aaedf32f6",
+    "1700fd3cc187ecd8",
+    "92073132ba4bd6e6",
+    "1348c8459decd323",
+    "fe416fd78401c0ef",
+    "a17ce9c62c1a90cd",
+    "60ec8f32da8947ad"
+   ]
   },
   {
    "i": 286,
@@ -7736,7 +12585,24 @@
     "fiben.LONGLIVEDASSETSHELDFORSALE",
     "fiben.LONGTERMPURCHASECOMMITMENT"
    ],
-   "n_ranked": 136
+   "n_ranked": 136,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "1f88a469adc8b8fb",
+    "51f6456aaedf32f6",
+    "1700fd3cc187ecd8",
+    "60ec8f32da8947ad",
+    "b0edaf62db255fd2",
+    "db7446730a9ee8a7",
+    "fe416fd78401c0ef",
+    "95f6b3ede1800e0d",
+    "a7a83e0dd2f00566",
+    "e246c7c5a332c6a2",
+    "8a5406402512599e",
+    "ea1b6656ab06f368"
+   ]
   },
   {
    "i": 287,
@@ -7763,7 +12629,24 @@
     "fiben.COUNTRY",
     "fiben.INVESTMENTSANDOTHERNONCURRENTASSETS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "bfc04de9ad1dd197",
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "1348c8459decd323",
+    "51f6456aaedf32f6",
+    "95f6b3ede1800e0d",
+    "4f4e8c13c3a5e78e",
+    "0465092b9362c45d",
+    "79558c8330e02145",
+    "db7446730a9ee8a7",
+    "60ec8f32da8947ad",
+    "b5d5fc1a5c581446",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 288,
@@ -7790,7 +12673,24 @@
     "fiben.COUNTRY",
     "fiben.ELEMENTSOFFINANCIALREPORT"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "51f6456aaedf32f6",
+    "9bd03a25e8f026df",
+    "4ca88f1a93bd3554",
+    "01874b89027f3495",
+    "1f88a469adc8b8fb",
+    "ea1b6656ab06f368",
+    "60ec8f32da8947ad",
+    "b0edaf62db255fd2",
+    "bec6195b3e1bc592",
+    "0465092b9362c45d",
+    "8a5da30605546a98",
+    "532b4360a7fa04a6",
+    "06626db4f9fe45c7",
+    "4f4e8c13c3a5e78e",
+    "0a9c118462882911"
+   ]
   },
   {
    "i": 289,
@@ -7818,7 +12718,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "1f88a469adc8b8fb",
+    "bfc04de9ad1dd197",
+    "f9040bcb65af9997",
+    "4f4e8c13c3a5e78e",
+    "1348c8459decd323",
+    "ea1b6656ab06f368",
+    "d27d70d2c483591b",
+    "b0edaf62db255fd2",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "bec6195b3e1bc592",
+    "06626db4f9fe45c7",
+    "8939719d9d1eedd5",
+    "8a5da30605546a98"
+   ]
   },
   {
    "i": 290,
@@ -7846,7 +12763,24 @@
     "fiben.COUNTRY",
     "fiben.PREFERREDSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "bfc04de9ad1dd197",
+    "db7446730a9ee8a7",
+    "ea1b6656ab06f368",
+    "60ec8f32da8947ad",
+    "b0edaf62db255fd2",
+    "1348c8459decd323",
+    "0465092b9362c45d",
+    "51f6456aaedf32f6",
+    "8a5da30605546a98",
+    "95f6b3ede1800e0d",
+    "01874b89027f3495",
+    "4ca88f1a93bd3554",
+    "d25e586a727fe5a7",
+    "c4d6bafa3e6f9d54"
+   ]
   },
   {
    "i": 291,
@@ -7872,7 +12806,24 @@
     "fiben.CONVERSIONOFSTOCK",
     "fiben.SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "ea1b6656ab06f368",
+    "d25e586a727fe5a7",
+    "4f4e8c13c3a5e78e",
+    "bfc04de9ad1dd197",
+    "1f88a469adc8b8fb",
+    "25c9f89589c15898",
+    "4ca88f1a93bd3554",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "d27d70d2c483591b",
+    "01874b89027f3495",
+    "b3c32d0e0e2f38b7",
+    "d627b5e80bf1a648"
+   ]
   },
   {
    "i": 292,
@@ -7898,7 +12849,24 @@
     "fiben.CONVERSIONOFSTOCK",
     "fiben.TRADINGSECURITIESANDOTHERTRADINGASSETS"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "d25e586a727fe5a7",
+    "25c9f89589c15898",
+    "b0edaf62db255fd2",
+    "bfc04de9ad1dd197",
+    "ea1b6656ab06f368",
+    "c6c262245ba24ab5",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "fe416fd78401c0ef",
+    "b3c32d0e0e2f38b7",
+    "d27d70d2c483591b",
+    "1348c8459decd323",
+    "d627b5e80bf1a648",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 293,
@@ -7924,7 +12892,24 @@
     "fiben.COUNTRY",
     "fiben.TREASURYSTOCK"
    ],
-   "n_ranked": 150
+   "n_ranked": 150,
+   "ranked_columns": [
+    "9bd03a25e8f026df",
+    "b0edaf62db255fd2",
+    "bfc04de9ad1dd197",
+    "1c6988534fab59d7",
+    "8a5da30605546a98",
+    "c6c262245ba24ab5",
+    "d25e586a727fe5a7",
+    "ea1b6656ab06f368",
+    "d627b5e80bf1a648",
+    "25c9f89589c15898",
+    "1348c8459decd323",
+    "fe416fd78401c0ef",
+    "d27d70d2c483591b",
+    "b3c32d0e0e2f38b7",
+    "bec6195b3e1bc592"
+   ]
   },
   {
    "i": 294,
@@ -7953,7 +12938,24 @@
     "fiben.CONTRACT",
     "fiben.INDUSTRYSECTORCLASSIFIER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "9c5c5ad8294ba063",
+    "532b4360a7fa04a6",
+    "cde1d4ddcf43942d",
+    "25c9f89589c15898",
+    "f779219aaea7ce89",
+    "d25e586a727fe5a7",
+    "429a581b66f07a19",
+    "121dcc8fe13f15e7",
+    "9bd03a25e8f026df",
+    "8e4f3fb38c87bdaf",
+    "60ce494a0def6286",
+    "bb21af1e75d8dca7",
+    "06626db4f9fe45c7",
+    "a7aa1e87b685cad6",
+    "acb3fb8af8956d5e"
+   ]
   },
   {
    "i": 295,
@@ -7982,7 +12984,24 @@
     "fiben.COMPREHENSIVEINCOME",
     "fiben.INDUSTRYSECTORCLASSIFIER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "bb21af1e75d8dca7",
+    "d25e586a727fe5a7",
+    "cde1d4ddcf43942d",
+    "9c5c5ad8294ba063",
+    "25c9f89589c15898",
+    "06626db4f9fe45c7",
+    "a7aa1e87b685cad6",
+    "256375ded4eab77e",
+    "8e4f3fb38c87bdaf",
+    "acb3fb8af8956d5e",
+    "d45cb47931613fd0",
+    "94094a3b75381f06",
+    "7e0b7c3df8c2440e",
+    "ea23f3c863187b8f",
+    "294b54b3dbd5355d"
+   ]
   },
   {
    "i": 296,
@@ -8011,7 +13030,24 @@
     "fiben.LOSS",
     "fiben.DISTRIBUTIONTOOWNER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "b34360dfede1ce0b",
+    "9c5c5ad8294ba063",
+    "7739966b94d797ed",
+    "d25e586a727fe5a7",
+    "26f83ade10efe987",
+    "2bd9214c988c808a",
+    "25c9f89589c15898",
+    "0bf5d38301b65515",
+    "94094a3b75381f06",
+    "d39881868cababe3",
+    "3db988597cfc35a0",
+    "ea23f3c863187b8f",
+    "a7aa1e87b685cad6",
+    "7218c0cebdf80712",
+    "f779219aaea7ce89"
+   ]
   },
   {
    "i": 297,
@@ -8039,7 +13075,24 @@
     "fiben.LOSS",
     "fiben.DISTRIBUTIONTOOWNER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "7739966b94d797ed",
+    "b34360dfede1ce0b",
+    "26f83ade10efe987",
+    "9c5c5ad8294ba063",
+    "d25e586a727fe5a7",
+    "25c9f89589c15898",
+    "2bd9214c988c808a",
+    "d39881868cababe3",
+    "06626db4f9fe45c7",
+    "ea23f3c863187b8f",
+    "94094a3b75381f06",
+    "0bf5d38301b65515",
+    "a7aa1e87b685cad6",
+    "acb3fb8af8956d5e",
+    "3db988597cfc35a0"
+   ]
   },
   {
    "i": 298,
@@ -8067,7 +13120,24 @@
     "fiben.ASSET",
     "fiben.DISTRIBUTIONTOOWNER"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "b34360dfede1ce0b",
+    "26f83ade10efe987",
+    "7739966b94d797ed",
+    "9c5c5ad8294ba063",
+    "d25e586a727fe5a7",
+    "d39881868cababe3",
+    "2bd9214c988c808a",
+    "25c9f89589c15898",
+    "0bf5d38301b65515",
+    "3db988597cfc35a0",
+    "94094a3b75381f06",
+    "a7aa1e87b685cad6",
+    "f779219aaea7ce89",
+    "50ebea2186ad0df5",
+    "06626db4f9fe45c7"
+   ]
   },
   {
    "i": 299,
@@ -8092,7 +13162,24 @@
     "fiben.CONTRACTPARTY",
     "fiben.ADDRESS"
    ],
-   "n_ranked": 152
+   "n_ranked": 152,
+   "ranked_columns": [
+    "3db988597cfc35a0",
+    "50ebea2186ad0df5",
+    "1f88a469adc8b8fb",
+    "fc5eed00e46b3498",
+    "f779219aaea7ce89",
+    "4f4e8c13c3a5e78e",
+    "d45cb47931613fd0",
+    "5eea6bc2a176df40",
+    "cd9138a5fd24bb70",
+    "043502ffb00dff04",
+    "4d5211090d9bb17a",
+    "3523aabab882f937",
+    "82de6f7fc8247231",
+    "7cf04867e5dea1a0",
+    "a7a83e0dd2f00566"
+   ]
   }
  ]
 }
