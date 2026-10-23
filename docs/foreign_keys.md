@@ -76,7 +76,7 @@ Checked in this order. The first one that fires rejects the pair as `rejected_ga
 |---|---|---|---|
 | 1 | Source and target in the same table, unless `--self-refs` | `same table` | [Ours] |
 | 2 | **G8:** the source is its table's chosen primary key (no PK → PK) | `G8` | [Paper], [Report] |
-| 3 | **G1:** the target was hard-rejected by Stage 2a (nulls, mostly empty/zero, blacklisted name, not fully unique, empty table). It does *not* have to be the chosen key | `G1` | [Paper] |
+| 3 | **G1:** the target was hard-rejected by Stage 2a (empty table, nulls, mostly empty/zero, or a blacklisted name when names are used). Uniqueness is already guaranteed, because Stage 1 only makes pairs for fully unique targets. The target does *not* have to be the chosen key | `G1` | [Paper] |
 | 4 | **G3:** the target column is named `rowguid` (only when names are used) | `G3` | [Paper] |
 | 5 | Source role is boolean, free text or float | `prefilter: source role` | [Paper] tier 1 |
 | 6 | Source has fewer than 2 distinct values | `prefilter: fewer than 2` | [Ours] |
@@ -125,7 +125,7 @@ Applied in this order:
 
 The result is `score`; `score_before_fan_out` is kept as well.
 
-Note that ψ applies the same factor to all kept targets of a source, so a clearly correct pair is demoted together with weak ones whenever its source has several surviving targets (see the worked example).
+Note that ψ applies the same factor to all kept targets of a source, so a clearly correct pair is demoted together with weak ones whenever its source has several surviving targets (see the worked example). **Decision (team, 2026-10-24): keep ψ exactly as the paper has it.** A pair that drops into the band is not lost; deciding the ambiguous ones is the LLM's job in Stage 3.
 
 ---
 
@@ -204,6 +204,7 @@ Decided together with the team unless marked otherwise.
 | Adaptive-weight scope | One database *(our choice, not asked)* |
 | No names and adaptive together | Both moves go to overlap *(our choice, not asked)* |
 | Email/URL prefilter (paper tier 2) | Not applied: it needs a full-column share that Stage 1 does not compute; only the average-length rule is used |
+| Fan-out ψ | Kept exactly as in the paper, even though it can push a clear winner into the band (decided 2026-10-24) |
 | Coverage as an extra signal | Not used. Stage 1 stores `coverage`, but it is not in the paper or the proposal |
 
 ---
@@ -213,7 +214,7 @@ Decided together with the team unless marked otherwise.
 - **Strict G8:** a primary key that is also a foreign key (1:1 extension tables) is not found.
 - **Containment is not enough on its own.** Small integer columns overlap by chance with a large id range; the gates, the name and cardinality terms and the fan-out penalty are what keep these down. Expect statistics alone to be noisy, and many borderline records to reach the band.
 - **No names:** with the 20 name points moved to overlap, most candidates clear 70 and the band nearly empties (§11).
-- **Fan-out** demotes a correct pair whenever its source has several surviving targets (§6).
+- **Fan-out** demotes a correct pair whenever its source has several surviving targets (§6). Kept on purpose; the LLM band absorbs it.
 - **Empty tables** (e.g. FIBEN) have no values to compare, so they produce no candidates.
 - The score depends on Stage 2a's choices: a wrong primary key changes `k` for every pair into that table.
 
