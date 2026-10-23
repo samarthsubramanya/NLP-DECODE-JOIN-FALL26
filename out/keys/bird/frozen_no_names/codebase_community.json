@@ -1,0 +1,798 @@
+{
+ "accept": 70,
+ "db_id": "codebase_community",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "badges": {
+   "candidate_keys": [
+    {
+     "column": "Id",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "Date": {
+     "base": 53.651,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.6784156324487692,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8213547732652065
+     },
+     "phi": 0.55,
+     "score": 29.508
+    },
+    "Id": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "postLinks.LinkTypeId",
+       "posts.PostTypeId",
+       "tags.Count"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "Name": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0019160686779126123
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "UserId": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.31405993663197707
+     },
+     "phi": 0.85,
+     "score": 15.938
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Id"
+  },
+  "comments": {
+   "candidate_keys": [
+    {
+     "column": "Id",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "CreationDate": {
+     "base": 73.684,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9989385202398371,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9989385202398371
+     },
+     "phi": 0.55,
+     "score": 40.526
+    },
+    "Id": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "postLinks.LinkTypeId",
+       "posts.PostTypeId"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "PostId": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.3064865019938606
+     },
+     "phi": 0.85,
+     "score": 15.938
+    },
+    "Score": {
+     "rejected": "mostly empty or zero"
+    },
+    "Text": {
+     "base": 73.52,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9963221160742463,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9963221160742463
+     },
+     "phi": 0.55,
+     "score": 40.436
+    },
+    "UserDisplayName": {
+     "rejected": "has nulls"
+    },
+    "UserId": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Id"
+  },
+  "postHistory": {
+   "candidate_keys": [
+    {
+     "column": "Id",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "Comment": {
+     "rejected": "mostly empty or zero"
+    },
+    "CreationDate": {
+     "base": 27.955,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.26728113048147367,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.626606851280698
+     },
+     "phi": 0.55,
+     "score": 15.375
+    },
+    "Id": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "comments.Score",
+       "postHistory.PostHistoryTypeId",
+       "postLinks.LinkTypeId",
+       "posts.PostTypeId",
+       "posts.AnswerCount",
+       "posts.CommentCount",
+       "posts.FavoriteCount",
+       "tags.Count",
+       "users.Views",
+       "users.UpVotes",
+       "users.DownVotes",
+       "users.Age",
+       "votes.VoteTypeId"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "PostHistoryTypeId": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 8.246606521416437e-05
+     },
+     "phi": 0.85,
+     "score": 15.938
+    },
+    "PostId": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.30339595256551927
+     },
+     "phi": 0.7,
+     "score": 13.125
+    },
+    "RevisionGUID": {
+     "base": 48.443,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.295080624323091,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.6397750325740957
+     },
+     "phi": 0.55,
+     "score": 26.643
+    },
+    "Text": {
+     "base": 56.074,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7171774981261878,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8397156570071416
+     },
+     "phi": 0.55,
+     "score": 30.84
+    },
+    "UserDisplayName": {
+     "rejected": "mostly empty or zero"
+    },
+    "UserId": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Id"
+  },
+  "postLinks": {
+   "candidate_keys": [
+    {
+     "column": "Id",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "CreationDate": {
+     "base": 57.589,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7414179627294383,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8511979823455234
+     },
+     "phi": 0.85,
+     "score": 48.95
+    },
+    "Id": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "LinkTypeId": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0001801477211313277
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "PostId": {
+     "base": 43.149,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.3903901198983165,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6849216357413078
+     },
+     "phi": 0.7,
+     "score": 30.205
+    },
+    "RelatedPostId": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.46631237614844173
+     },
+     "phi": 0.55,
+     "score": 10.312
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Id"
+  },
+  "posts": {
+   "candidate_keys": [
+    {
+     "column": "Id",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "AcceptedAnswerId": {
+     "rejected": "has nulls"
+    },
+    "AnswerCount": {
+     "rejected": "has nulls"
+    },
+    "Body": {
+     "rejected": "has nulls"
+    },
+    "ClosedDate": {
+     "rejected": "has nulls"
+    },
+    "CommentCount": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00042406976491312005
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "CommunityOwnedDate": {
+     "rejected": "has nulls"
+    },
+    "CreaionDate": {
+     "base": 73.267,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9922688819781224,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9922688819781224
+     },
+     "phi": 0.55,
+     "score": 40.297
+    },
+    "FavoriteCount": {
+     "rejected": "has nulls"
+    },
+    "Id": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "comments.PostId",
+       "comments.Score",
+       "postHistory.PostHistoryTypeId",
+       "postHistory.PostId",
+       "postLinks.PostId",
+       "postLinks.RelatedPostId",
+       "postLinks.LinkTypeId",
+       "posts.PostTypeId",
+       "posts.AcceptedAnswerId",
+       "posts.ParentId",
+       "tags.ExcerptPostId",
+       "tags.WikiPostId",
+       "votes.PostId",
+       "votes.VoteTypeId"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "LasActivityDate": {
+     "base": 49.505,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.612081276413747,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.7899332361959854
+     },
+     "phi": 0.55,
+     "score": 27.228
+    },
+    "LastEditDate": {
+     "rejected": "has nulls"
+    },
+    "LastEditorDisplayName": {
+     "rejected": "has nulls"
+    },
+    "LastEditorUserId": {
+     "rejected": "has nulls"
+    },
+    "OwnerDisplayName": {
+     "rejected": "has nulls"
+    },
+    "OwnerUserId": {
+     "rejected": "has nulls"
+    },
+    "ParentId": {
+     "rejected": "has nulls"
+    },
+    "PostTypeId": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 7.611508601004719e-05
+     },
+     "phi": 0.85,
+     "score": 31.875
+    },
+    "Score": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0014135658830437335
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "Tags": {
+     "rejected": "has nulls"
+    },
+    "Title": {
+     "rejected": "has nulls"
+    },
+    "ViewCount": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Id"
+  },
+  "tags": {
+   "candidate_keys": [
+    {
+     "column": "Id",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "Count": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.26356589147286824
+     },
+     "phi": 0.7,
+     "score": 13.125
+    },
+    "ExcerptPostId": {
+     "rejected": "has nulls"
+    },
+    "Id": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "postLinks.LinkTypeId"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "TagName": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    },
+    "WikiPostId": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Id"
+  },
+  "users": {
+   "candidate_keys": [
+    {
+     "column": "Id",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "AboutMe": {
+     "rejected": "has nulls"
+    },
+    "AccountId": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "postLinks.LinkTypeId"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 55.688
+    },
+    "Age": {
+     "rejected": "has nulls"
+    },
+    "CreationDate": {
+     "base": 73.735,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9997520148791073,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9997520148791073
+     },
+     "phi": 0.7,
+     "score": 51.614
+    },
+    "DisplayName": {
+     "base": 61.906,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.8104939036991116,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8839181649101054
+     },
+     "phi": 0.55,
+     "score": 34.048
+    },
+    "DownVotes": {
+     "rejected": "mostly empty or zero"
+    },
+    "Id": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "badges.UserId",
+       "comments.UserId",
+       "postHistory.UserId",
+       "posts.OwnerUserId",
+       "posts.LastEditorUserId",
+       "votes.UserId"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "LastAccessDate": {
+     "base": 73.691,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9990576565406075,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9990576565406075
+     },
+     "phi": 0.55,
+     "score": 40.53
+    },
+    "Location": {
+     "rejected": "has nulls"
+    },
+    "ProfileImageUrl": {
+     "rejected": "has nulls"
+    },
+    "Reputation": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.023930564166150033
+     },
+     "phi": 0.85,
+     "score": 15.938
+    },
+    "UpVotes": {
+     "rejected": "mostly empty or zero"
+    },
+    "Views": {
+     "rejected": "mostly empty or zero"
+    },
+    "WebsiteUrl": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Id"
+  },
+  "votes": {
+   "candidate_keys": [
+    {
+     "column": "Id",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "BountyAmount": {
+     "rejected": "has nulls"
+    },
+    "CreationDate": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00737220652453121
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "Id": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "postLinks.LinkTypeId",
+       "posts.PostTypeId",
+       "users.Age"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "PostId": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.2204983303365014
+     },
+     "phi": 0.85,
+     "score": 15.938
+    },
+    "UserId": {
+     "rejected": "has nulls"
+    },
+    "VoteTypeId": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00025687130747495504
+     },
+     "phi": 0.7,
+     "score": 13.125
+    }
+   },
+   "evidence": "score",
+   "primary_key": "Id"
+  }
+ },
+ "use_names": false
+}

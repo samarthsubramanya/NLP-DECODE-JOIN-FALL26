@@ -1,0 +1,705 @@
+{
+ "accept": 70,
+ "db_id": "student_club",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "attendance": {
+   "candidate_keys": [],
+   "columns": {
+    "link_to_event": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.05214723926380368
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "link_to_member": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.09202453987730061
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "budget": {
+   "candidate_keys": [
+    {
+     "column": "budget_id",
+     "score": 93.75
+    }
+   ],
+   "columns": {
+    "amount": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.17307692307692307
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "budget_id": {
+     "base": 73.75,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "expense.link_to_budget"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 93.75
+    },
+    "category": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.09615384615384616
+     },
+     "phi": 0.85,
+     "score": 9.562
+    },
+    "event_status": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.057692307692307696
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "link_to_event": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.4423076923076923
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "remaining": {
+     "base": 11.875,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.4230769230769231
+     },
+     "phi": 0.55,
+     "score": 6.531
+    },
+    "spent": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "budget_id"
+  },
+  "event": {
+   "candidate_keys": [
+    {
+     "column": "event_id",
+     "score": 93.75
+    }
+   ],
+   "columns": {
+    "event_date": {
+     "base": 72.262,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9761904761904762,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9761904761904762
+     },
+     "phi": 0.7,
+     "score": 50.583
+    },
+    "event_id": {
+     "base": 73.75,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "attendance.link_to_event",
+       "budget.link_to_event"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 93.75
+    },
+    "event_name": {
+     "base": 67.798,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9047619047619049,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9285714285714286
+     },
+     "phi": 0.85,
+     "score": 57.628
+    },
+    "location": {
+     "rejected": "has nulls"
+    },
+    "notes": {
+     "rejected": "has nulls"
+    },
+    "status": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.07142857142857142
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "type": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.19047619047619047
+     },
+     "phi": 0.55,
+     "score": 6.188
+    }
+   },
+   "evidence": "score",
+   "primary_key": "event_id"
+  },
+  "expense": {
+   "candidate_keys": [
+    {
+     "column": "expense_id",
+     "score": 73.75
+    }
+   ],
+   "columns": {
+    "approved": {
+     "rejected": "has nulls"
+    },
+    "cost": {
+     "base": 32.491,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.32986111111111116,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.65625
+     },
+     "phi": 0.55,
+     "score": 17.87
+    },
+    "expense_date": {
+     "base": 15.373,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.06597222222222222,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.53125
+     },
+     "phi": 0.7,
+     "score": 10.761
+    },
+    "expense_description": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.375
+     },
+     "phi": 0.85,
+     "score": 9.562
+    },
+    "expense_id": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 73.75
+    },
+    "link_to_budget": {
+     "base": 44.236,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.5277777777777778,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.75
+     },
+     "phi": 0.55,
+     "score": 24.33
+    },
+    "link_to_member": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.09375
+     },
+     "phi": 0.55,
+     "score": 6.188
+    }
+   },
+   "evidence": "score",
+   "primary_key": "expense_id"
+  },
+  "income": {
+   "candidate_keys": [
+    {
+     "column": "income_id",
+     "score": 73.75
+    }
+   ],
+   "columns": {
+    "amount": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1111111111111111
+     },
+     "phi": 0.7,
+     "score": 13.125
+    },
+    "date_received": {
+     "base": 51.566,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.6450617283950618,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8055555555555556
+     },
+     "phi": 0.85,
+     "score": 43.831
+    },
+    "income_id": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 73.75
+    },
+    "link_to_member": {
+     "rejected": "has nulls"
+    },
+    "notes": {
+     "rejected": "has nulls"
+    },
+    "source": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1111111111111111
+     },
+     "phi": 0.55,
+     "score": 6.188
+    }
+   },
+   "evidence": "score",
+   "primary_key": "income_id"
+  },
+  "major": {
+   "candidate_keys": [
+    {
+     "column": "major_id",
+     "score": 93.75
+    }
+   ],
+   "columns": {
+    "college": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.07079646017699115
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "department": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.415929203539823
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "major_id": {
+     "base": 73.75,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "member.link_to_major"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 93.75
+    },
+    "major_name": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "major_id"
+  },
+  "member": {
+   "candidate_keys": [
+    {
+     "column": "member_id",
+     "score": 93.75
+    }
+   ],
+   "columns": {
+    "email": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 40.562
+    },
+    "first_name": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    },
+    "last_name": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 51.625
+    },
+    "link_to_major": {
+     "rejected": "has nulls"
+    },
+    "member_id": {
+     "base": 73.75,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "attendance.link_to_member",
+       "expense.link_to_member",
+       "income.link_to_member"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 93.75
+    },
+    "phone": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.0
+    },
+    "position": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.18181818181818182
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "t_shirt_size": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.12121212121212122
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "zip": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "member_id"
+  },
+  "zip_code": {
+   "candidate_keys": [
+    {
+     "column": "zip_code",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "city": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.4472383408553621
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "county": {
+     "rejected": "has nulls"
+    },
+    "short_state": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.001241731738185639
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "state": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.001241731738185639
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "type": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 7.163836951070993e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    },
+    "zip_code": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "member.zip"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    }
+   },
+   "evidence": "score",
+   "primary_key": "zip_code"
+  }
+ },
+ "use_names": false
+}

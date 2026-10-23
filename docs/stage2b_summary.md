@@ -1,6 +1,6 @@
 # Stage 2b: foreign keys and the join graph — summary and handover
 
-This covers what Stage 2b does, how to run it, and what is still open. For Stages 1 and 2a see [stage1_stage2a_summary.md](stage1_stage2a_summary.md); for Stage 3 see [stage3_summary.md](stage3_summary.md).
+This covers what Stage 2b does, how to run it, and what is still open. **The full reference (every rule, its source paper, output fields, worked example, results) is [foreign_keys.md](foreign_keys.md).** For Stages 1 and 2a see [stage1_stage2a_summary.md](stage1_stage2a_summary.md); for Stage 3 see [stage3_summary.md](stage3_summary.md).
 
 ---
 
@@ -70,7 +70,7 @@ Same shape the PoC's export, describe and eval code read (`candidates`, `graphs`
 - Top level: `db_id`, `use_names`, `keys_run`, `weights` (the weights actually used), `adaptive`, `k_zero_share`, `config`, `counts`.
 - Each candidate: `source`, `target`, `target_is_pk`, **`target_pk_score`** (the 2a score, for the LLM prompt), `containment`, `coverage`, `cardinality`, `parts` (the five terms), `penalties`, `fan_out`, `score`, `decision`, and `reason` when gated out.
 
-The names setting is inherited from the keys run: `--keys-run no_names` gives the no-names scoring.
+The names setting is inherited from the keys run: a keys run made with `--no-names` gives the no-names scoring. (Do not reuse the committed `out/keys/bird/no_names` run for this: it is the old baseline without the key rules, kept for reference.)
 
 ---
 
@@ -80,7 +80,8 @@ The names setting is inherited from the keys run: `--keys-run no_names` gives th
 python src/primary_keys.py --dataset bird --run frozen        # Stage 2a, if out/keys/bird/frozen is missing
 python src/foreign_keys.py --dataset bird                      # Stage 2b
 python src/foreign_keys.py --dataset bird --databases financial --run try
-python src/foreign_keys.py --dataset bird --keys-run no_names --run no_names   # obfuscated simulation
+python src/primary_keys.py --dataset bird --run frozen_no_names --no-names                       # 2a with names off
+python src/foreign_keys.py --dataset bird --keys-run frozen_no_names --run frozen_no_names     # obfuscated simulation
 python -m pytest tests/test_foreign_keys.py                   # unit tests on hand-made profiles
 ```
 
@@ -95,7 +96,7 @@ Counts only; gold labels are used for evaluation after Stage 3, never here.
 | Run | Candidates | accepted | band | below 60 | gated out |
 |---|---|---|---|---|---|
 | names (`frozen` keys) | 1,502 | 145 | 459 | 86 | 812 |
-| no names (`no_names` keys) | 1,502 | 581 | 97 | 7 | 817 |
+| no names (`frozen_no_names` keys) | 1,502 | 581 | 97 | 7 | 817 |
 
 Two things to know before Stage 3:
 - **LLM load:** with names the band is 459 records on BIRD dev (270 of them in `european_football_2`).
@@ -112,4 +113,4 @@ Two things to know before Stage 3:
 
 ## 7. Changelog
 
-- **2026-10-24** First version of Stage 2b (`src/foreign_keys.py`, `tests/test_foreign_keys.py`).
+- **2026-10-24** First version of Stage 2b (`src/foreign_keys.py`, `tests/test_foreign_keys.py`, `docs/foreign_keys.md`). Ran the whole chain on BIRD dev; outputs in `out/joins/bird/default` and `out/joins/bird/frozen_no_names`.
