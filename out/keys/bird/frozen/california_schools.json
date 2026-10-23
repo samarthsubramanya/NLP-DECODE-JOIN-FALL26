@@ -1,0 +1,618 @@
+{
+ "accept": 70,
+ "db_id": "california_schools",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "frpm": {
+   "candidate_keys": [
+    {
+     "column": "CDSCode",
+     "score": 89.0
+    }
+   ],
+   "columns": {
+    "2013-14 CALPADS Fall 1 Certification Status": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0001001401962747847
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "Academic Year": {
+     "rejected": "blacklist: date/time (year)"
+    },
+    "CDSCode": {
+     "base": 89.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 89.0
+    },
+    "Charter Funding Type": {
+     "rejected": "has nulls"
+    },
+    "Charter School (Y/N)": {
+     "rejected": "has nulls"
+    },
+    "Charter School Number": {
+     "rejected": "has nulls"
+    },
+    "County Code": {
+     "base": 44.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.005808131383937512
+     },
+     "phi": 0.7,
+     "score": 30.8
+    },
+    "County Name": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.005808131383937512
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "District Code": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.10134187863008212
+     },
+     "phi": 0.55,
+     "score": 19.25
+    },
+    "District Name": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1001401962747847
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "District Type": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0008011215701982776
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "Educational Option Type": {
+     "rejected": "has nulls"
+    },
+    "Enrollment (Ages 5-17)": {
+     "rejected": "has nulls"
+    },
+    "Enrollment (K-12)": {
+     "base": 14.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.18846384938914482
+     },
+     "phi": 0.55,
+     "score": 7.975
+    },
+    "FRPM Count (Ages 5-17)": {
+     "rejected": "has nulls"
+    },
+    "FRPM Count (K-12)": {
+     "rejected": "has nulls"
+    },
+    "Free Meal Count (Ages 5-17)": {
+     "rejected": "has nulls"
+    },
+    "Free Meal Count (K-12)": {
+     "rejected": "has nulls"
+    },
+    "High Grade": {
+     "base": 24.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.00170238333667134
+     },
+     "phi": 0.55,
+     "score": 13.2
+    },
+    "IRC": {
+     "rejected": "has nulls"
+    },
+    "Low Grade": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0015021029441217705
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "NSLP Provision Status": {
+     "rejected": "has nulls"
+    },
+    "Percent (%) Eligible FRPM (Ages 5-17)": {
+     "rejected": "has nulls"
+    },
+    "Percent (%) Eligible FRPM (K-12)": {
+     "rejected": "has nulls"
+    },
+    "Percent (%) Eligible Free (Ages 5-17)": {
+     "rejected": "has nulls"
+    },
+    "Percent (%) Eligible Free (K-12)": {
+     "rejected": "has nulls"
+    },
+    "School Code": {
+     "base": 88.78,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9955938313639094,
+      "name": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.9955938313639094
+     },
+     "phi": 0.55,
+     "score": 19.532
+    },
+    "School Name": {
+     "base": 47.677,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.773538509468812,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8664129781694372
+     },
+     "phi": 0.55,
+     "score": 26.222
+    },
+    "School Type": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "CDSCode"
+  },
+  "satscores": {
+   "candidate_keys": [],
+   "columns": {
+    "AvgScrMath": {
+     "rejected": "has nulls"
+    },
+    "AvgScrRead": {
+     "rejected": "has nulls"
+    },
+    "AvgScrWrite": {
+     "rejected": "has nulls"
+    },
+    "NumGE1500": {
+     "rejected": "has nulls"
+    },
+    "NumTstTakr": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.24107536359629794
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "cds": {
+     "base": 69.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 34.5
+    },
+    "cname": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0251211987659762
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "dname": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.22917584839136185
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "enroll12": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.36800352578228296
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "rtype": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0008814455707360071
+     },
+     "phi": 0.85,
+     "score": 16.15
+    },
+    "sname": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "schools": {
+   "candidate_keys": [
+    {
+     "column": "CDSCode",
+     "score": 109.0
+    }
+   ],
+   "columns": {
+    "AdmEmail1": {
+     "rejected": "has nulls"
+    },
+    "AdmEmail2": {
+     "rejected": "has nulls"
+    },
+    "AdmEmail3": {
+     "rejected": "has nulls"
+    },
+    "AdmFName1": {
+     "rejected": "has nulls"
+    },
+    "AdmFName2": {
+     "rejected": "has nulls"
+    },
+    "AdmFName3": {
+     "rejected": "has nulls"
+    },
+    "AdmLName1": {
+     "rejected": "has nulls"
+    },
+    "AdmLName2": {
+     "rejected": "has nulls"
+    },
+    "AdmLName3": {
+     "rejected": "has nulls"
+    },
+    "CDSCode": {
+     "base": 89.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "frpm.CDSCode",
+       "satscores.cds"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 109.0
+    },
+    "Charter": {
+     "rejected": "has nulls"
+    },
+    "CharterNum": {
+     "rejected": "has nulls"
+    },
+    "City": {
+     "rejected": "has nulls"
+    },
+    "ClosedDate": {
+     "rejected": "has nulls"
+    },
+    "County": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0032794300576727354
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "DOC": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0006785027705529798
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "DOCType": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0006785027705529798
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "District": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0797806174375212
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "EILCode": {
+     "rejected": "has nulls"
+    },
+    "EILName": {
+     "rejected": "has nulls"
+    },
+    "EdOpsCode": {
+     "rejected": "has nulls"
+    },
+    "EdOpsName": {
+     "rejected": "has nulls"
+    },
+    "Ext": {
+     "rejected": "has nulls"
+    },
+    "FundingType": {
+     "rejected": "has nulls"
+    },
+    "GSoffered": {
+     "rejected": "has nulls"
+    },
+    "GSserved": {
+     "rejected": "has nulls"
+    },
+    "LastUpdate": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.04280221644238381
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "Latitude": {
+     "rejected": "has nulls"
+    },
+    "Longitude": {
+     "rejected": "has nulls"
+    },
+    "Magnet": {
+     "rejected": "has nulls"
+    },
+    "MailCity": {
+     "rejected": "has nulls"
+    },
+    "MailState": {
+     "rejected": "has nulls"
+    },
+    "MailStrAbr": {
+     "rejected": "has nulls"
+    },
+    "MailStreet": {
+     "rejected": "has nulls"
+    },
+    "MailZip": {
+     "rejected": "has nulls"
+    },
+    "NCESDist": {
+     "rejected": "has nulls"
+    },
+    "NCESSchool": {
+     "rejected": "has nulls"
+    },
+    "OpenDate": {
+     "rejected": "has nulls"
+    },
+    "Phone": {
+     "rejected": "has nulls"
+    },
+    "SOC": {
+     "rejected": "has nulls"
+    },
+    "SOCType": {
+     "rejected": "has nulls"
+    },
+    "School": {
+     "rejected": "has nulls"
+    },
+    "State": {
+     "rejected": "has nulls"
+    },
+    "StatusType": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00022616759018432659
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "Street": {
+     "rejected": "has nulls"
+    },
+    "StreetAbr": {
+     "rejected": "has nulls"
+    },
+    "Virtual": {
+     "rejected": "has nulls"
+    },
+    "Website": {
+     "rejected": "has nulls"
+    },
+    "Zip": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "CDSCode"
+  }
+ },
+ "use_names": true
+}

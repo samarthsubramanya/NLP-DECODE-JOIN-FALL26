@@ -1,0 +1,444 @@
+{
+ "accept": 70,
+ "db_id": "real_estate_properties",
+ "rules": [
+  "R1",
+  "R3",
+  "R4"
+ ],
+ "tables": {
+  "Other_Available_Features": {
+   "candidate_keys": [
+    {
+     "column": "feature_id",
+     "score": 100.0
+    }
+   ],
+   "columns": {
+    "feature_description": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "feature_id": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "feature_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 20.65
+    },
+    "feature_type_code": {
+     "base": 46.593,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.3518518518518518,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.85,
+     "score": 39.604
+    }
+   },
+   "evidence": "score",
+   "primary_key": "feature_id"
+  },
+  "Other_Property_Features": {
+   "candidate_keys": [],
+   "columns": {
+    "feature_id": {
+     "base": 50.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.2
+     },
+     "phi": 0.85,
+     "score": 42.5
+    },
+    "property_feature_description": {
+     "base": 54.741,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.914814814814815,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9333333333333333
+     },
+     "phi": 0.7,
+     "score": 38.319
+    },
+    "property_id": {
+     "base": 59.63,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.49259259259259247,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.7333333333333333
+     },
+     "phi": 1.0,
+     "score": 23.852
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "Properties": {
+   "candidate_keys": [
+    {
+     "column": "property_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "agreed_selling_price": {
+     "base": 60.241,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.914814814814815,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.9333333333333333
+     },
+     "phi": 0.55,
+     "score": 33.132
+    },
+    "apt_feature_1": {
+     "base": 40.667,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.6333333333333334,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8
+     },
+     "phi": 0.55,
+     "score": 22.367
+    },
+    "apt_feature_2": {
+     "base": 47.704,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7740740740740741,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8666666666666667
+     },
+     "phi": 0.55,
+     "score": 26.237
+    },
+    "apt_feature_3": {
+     "rejected": "has nulls"
+    },
+    "buyer_offered_price": {
+     "base": 53.204,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.7740740740740741,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.8666666666666667
+     },
+     "phi": 0.55,
+     "score": 29.262
+    },
+    "date_on_market": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "date_sold": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "fld_feature_1": {
+     "rejected": "has nulls"
+    },
+    "fld_feature_2": {
+     "rejected": "has nulls"
+    },
+    "fld_feature_3": {
+     "rejected": "has nulls"
+    },
+    "hse_feature_1": {
+     "rejected": "has nulls"
+    },
+    "hse_feature_2": {
+     "rejected": "has nulls"
+    },
+    "hse_feature_3": {
+     "rejected": "has nulls"
+    },
+    "oth_feature_1": {
+     "rejected": "has nulls"
+    },
+    "oth_feature_2": {
+     "rejected": "has nulls"
+    },
+    "oth_feature_3": {
+     "rejected": "has nulls"
+    },
+    "other_property_details": {
+     "rejected": "has nulls"
+    },
+    "property_address": {
+     "rejected": "blacklist: descriptive text (address)"
+    },
+    "property_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Other_Available_Features.feature_id",
+       "Other_Property_Features.property_id",
+       "Other_Property_Features.feature_id",
+       "Properties.room_count"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "property_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "property_type_code": {
+     "base": 29.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.3333333333333333
+     },
+     "phi": 0.85,
+     "score": 24.65
+    },
+    "room_count": {
+     "base": 18.519,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.07037037037037035,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5333333333333333
+     },
+     "phi": 0.55,
+     "score": 10.185
+    },
+    "shp_feature_1": {
+     "rejected": "has nulls"
+    },
+    "shp_feature_2": {
+     "rejected": "has nulls"
+    },
+    "shp_feature_3": {
+     "rejected": "has nulls"
+    },
+    "vendor_requested_price": {
+     "base": 64.5,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 17.738
+    }
+   },
+   "evidence": "score",
+   "primary_key": "property_id"
+  },
+  "Ref_Feature_Types": {
+   "candidate_keys": [
+    {
+     "column": "feature_type_code",
+     "score": 99.0
+    }
+   ],
+   "columns": {
+    "feature_type_code": {
+     "base": 79.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Other_Available_Features.feature_type_code"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 99.0
+    },
+    "feature_type_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    }
+   },
+   "evidence": "score",
+   "primary_key": "feature_type_code"
+  },
+  "Ref_Property_Types": {
+   "candidate_keys": [
+    {
+     "column": "property_type_code",
+     "score": 99.0
+    }
+   ],
+   "columns": {
+    "property_type_code": {
+     "base": 79.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Properties.property_type_code"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 99.0
+    },
+    "property_type_description": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    }
+   },
+   "evidence": "score",
+   "primary_key": "property_type_code"
+  }
+ },
+ "use_names": true
+}

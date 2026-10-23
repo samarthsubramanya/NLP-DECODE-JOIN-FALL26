@@ -1,0 +1,579 @@
+{
+ "accept": 70,
+ "db_id": "wta_1",
+ "rules": [
+  "R1"
+ ],
+ "tables": {
+  "matches": {
+   "candidate_keys": [],
+   "columns": {
+    "best_of": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0035971223021582736
+     },
+     "phi": 1.0,
+     "score": 30.0
+    },
+    "draw_size": {
+     "rejected": "blacklist: quantity (size)"
+    },
+    "loser_age": {
+     "rejected": "blacklist: quantity (age)"
+    },
+    "loser_entry": {
+     "rejected": "mostly empty or zero"
+    },
+    "loser_hand": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.007194244604316547
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "loser_ht": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.08633093525179857
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "loser_id": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.17625899280575538
+     },
+     "phi": 0.55,
+     "score": 19.25
+    },
+    "loser_ioc": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.08273381294964029
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "loser_name": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.17625899280575538
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "loser_rank": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.18705035971223022
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "loser_rank_points": {
+     "base": 52.97,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.7593924860111911,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8597122302158273
+     },
+     "phi": 0.55,
+     "score": 29.133
+    },
+    "loser_seed": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.11510791366906475
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "match_num": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.2302158273381295
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "minutes": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.4064748201438849
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "round": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.025179856115107913
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "score": {
+     "base": 15.835,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.13669064748201448,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.564748201438849
+     },
+     "phi": 0.55,
+     "score": 8.709
+    },
+    "surface": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.01079136690647482
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "tourney_date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "tourney_id": {
+     "base": 34.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.2517985611510791
+     },
+     "phi": 0.55,
+     "score": 18.7
+    },
+    "tourney_level": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.014388489208633094
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "tourney_name": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1906474820143885
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "winner_age": {
+     "rejected": "blacklist: quantity (age)"
+    },
+    "winner_entry": {
+     "rejected": "mostly empty or zero"
+    },
+    "winner_hand": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.007194244604316547
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "winner_ht": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.07553956834532374
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "winner_id": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1366906474820144
+     },
+     "phi": 0.55,
+     "score": 19.25
+    },
+    "winner_ioc": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.07553956834532374
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "winner_name": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1366906474820144
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "winner_rank": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.16546762589928057
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "winner_rank_points": {
+     "base": 27.53,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.25059952038369315,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6187050359712231
+     },
+     "phi": 0.55,
+     "score": 15.141
+    },
+    "winner_seed": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.08992805755395683
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "year": {
+     "rejected": "blacklist: date/time (year)"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "players": {
+   "candidate_keys": [
+    {
+     "column": "player_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "birth_date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "country_code": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.007404897880166489
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "first_name": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.3275578356403059
+     },
+     "phi": 0.85,
+     "score": 7.65
+    },
+    "hand": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.00019359210144226117
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "last_name": {
+     "base": 37.593,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.5718656901020661,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.7708837479430839
+     },
+     "phi": 0.7,
+     "score": 26.315
+    },
+    "player_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "matches.loser_id",
+       "matches.winner_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "player_id"
+  },
+  "rankings": {
+   "candidate_keys": [],
+   "columns": {
+    "player_id": {
+     "base": 34.5,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.005438477226376614
+     },
+     "phi": 0.7,
+     "score": 9.66
+    },
+    "ranking": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.002921026492985422
+     },
+     "phi": 0.85,
+     "score": 25.5
+    },
+    "ranking_date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "ranking_points": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.007327055052827283
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "tours": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 8.228243642212458e-05
+     },
+     "phi": 0.55,
+     "score": 16.5
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  }
+ },
+ "use_names": true
+}

@@ -1,0 +1,2058 @@
+{
+ "containment": [
+  {
+   "containment": 0.518369489153254,
+   "coverage": 0.09127876528757586,
+   "intersection": 2963,
+   "source": [
+    "gasstations",
+    "GasStationID"
+   ],
+   "source_distinct": 5716,
+   "source_unique": true,
+   "target": [
+    "customers",
+    "CustomerID"
+   ],
+   "target_distinct": 32461
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.01592680447305998,
+   "intersection": 517,
+   "source": [
+    "transactions_1k",
+    "CustomerID"
+   ],
+   "source_distinct": 517,
+   "source_unique": false,
+   "target": [
+    "customers",
+    "CustomerID"
+   ],
+   "target_distinct": 32461
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.9416222543975848,
+   "intersection": 30566,
+   "source": [
+    "yearmonth",
+    "CustomerID"
+   ],
+   "source_distinct": 30566,
+   "source_unique": false,
+   "target": [
+    "customers",
+    "CustomerID"
+   ],
+   "target_distinct": 32461
+  },
+  {
+   "containment": 0.8197424892703863,
+   "coverage": 0.033414975507347795,
+   "intersection": 191,
+   "source": [
+    "gasstations",
+    "ChainID"
+   ],
+   "source_distinct": 233,
+   "source_unique": false,
+   "target": [
+    "gasstations",
+    "GasStationID"
+   ],
+   "target_distinct": 5716
+  },
+  {
+   "containment": 0.9255499153976311,
+   "coverage": 0.0956962911126662,
+   "intersection": 547,
+   "source": [
+    "products",
+    "ProductID"
+   ],
+   "source_distinct": 591,
+   "source_unique": true,
+   "target": [
+    "gasstations",
+    "GasStationID"
+   ],
+   "target_distinct": 5716
+  },
+  {
+   "containment": 0.956,
+   "coverage": 0.16724982505248426,
+   "intersection": 956,
+   "source": [
+    "transactions_1k",
+    "TransactionID"
+   ],
+   "source_distinct": 1000,
+   "source_unique": true,
+   "target": [
+    "gasstations",
+    "GasStationID"
+   ],
+   "target_distinct": 5716
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.07645206438068579,
+   "intersection": 437,
+   "source": [
+    "transactions_1k",
+    "GasStationID"
+   ],
+   "source_distinct": 437,
+   "source_unique": false,
+   "target": [
+    "gasstations",
+    "GasStationID"
+   ],
+   "target_distinct": 5716
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.3942470389170897,
+   "intersection": 233,
+   "source": [
+    "gasstations",
+    "ChainID"
+   ],
+   "source_distinct": 233,
+   "source_unique": false,
+   "target": [
+    "products",
+    "ProductID"
+   ],
+   "target_distinct": 591
+  },
+  {
+   "containment": 0.591,
+   "coverage": 1.0,
+   "intersection": 591,
+   "source": [
+    "transactions_1k",
+    "TransactionID"
+   ],
+   "source_distinct": 1000,
+   "source_unique": true,
+   "target": [
+    "products",
+    "ProductID"
+   ],
+   "target_distinct": 591
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.047377326565143825,
+   "intersection": 28,
+   "source": [
+    "transactions_1k",
+    "ProductID"
+   ],
+   "source_distinct": 28,
+   "source_unique": false,
+   "target": [
+    "products",
+    "ProductID"
+   ],
+   "target_distinct": 591
+  },
+  {
+   "containment": 0.9879518072289156,
+   "coverage": 0.13874788494077833,
+   "intersection": 82,
+   "source": [
+    "transactions_1k",
+    "Amount"
+   ],
+   "source_distinct": 83,
+   "source_unique": false,
+   "target": [
+    "products",
+    "ProductID"
+   ],
+   "target_distinct": 591
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.233,
+   "intersection": 233,
+   "source": [
+    "gasstations",
+    "ChainID"
+   ],
+   "source_distinct": 233,
+   "source_unique": false,
+   "target": [
+    "transactions_1k",
+    "TransactionID"
+   ],
+   "target_distinct": 1000
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.591,
+   "intersection": 591,
+   "source": [
+    "products",
+    "ProductID"
+   ],
+   "source_distinct": 591,
+   "source_unique": true,
+   "target": [
+    "transactions_1k",
+    "TransactionID"
+   ],
+   "target_distinct": 1000
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.028,
+   "intersection": 28,
+   "source": [
+    "transactions_1k",
+    "ProductID"
+   ],
+   "source_distinct": 28,
+   "source_unique": false,
+   "target": [
+    "transactions_1k",
+    "TransactionID"
+   ],
+   "target_distinct": 1000
+  },
+  {
+   "containment": 0.9879518072289156,
+   "coverage": 0.082,
+   "intersection": 82,
+   "source": [
+    "transactions_1k",
+    "Amount"
+   ],
+   "source_distinct": 83,
+   "source_unique": false,
+   "target": [
+    "transactions_1k",
+    "TransactionID"
+   ],
+   "target_distinct": 1000
+  }
+ ],
+ "dataset": "bird",
+ "db_id": "debit_card_specializing",
+ "duckdb_file": "decode_join_bird_dev.duckdb",
+ "duckdb_schema": "bird_debit_card_specializing",
+ "seed": 42,
+ "tables": {
+  "customers": {
+   "columns": {
+    "Currency": {
+     "declared_type": "VARCHAR",
+     "distinct": 2,
+     "family": "text",
+     "name": "Currency",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "code",
+     "rows": 32461,
+     "sample_values": [
+      "CZK",
+      "EUR"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "CZK",
+       30459
+      ],
+      [
+       "EUR",
+       2002
+      ]
+     ],
+     "uniqueness": 6.161239641415853e-05,
+     "zero_rate": 0.0
+    },
+    "CustomerID": {
+     "declared_type": "BIGINT",
+     "distinct": 32461,
+     "family": "int",
+     "name": "CustomerID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.6088873049219687,
+      "max": 53314.0,
+      "mean": 27888.17510243061,
+      "min": 3.0,
+      "p25": 14287.0,
+      "p50": 28608.0,
+      "p75": 41670.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 32461,
+     "sample_values": [
+      "39332",
+      "13975",
+      "14886",
+      "26549",
+      "15264",
+      "52383",
+      "27409",
+      "44270",
+      "35042",
+      "25062"
+     ],
+     "text": {
+      "avg_len": 4.812267028126059,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "10",
+       1
+      ],
+      [
+       "100",
+       1
+      ],
+      [
+       "1000",
+       1
+      ],
+      [
+       "10001",
+       1
+      ],
+      [
+       "10003",
+       1
+      ],
+      [
+       "10004",
+       1
+      ],
+      [
+       "10005",
+       1
+      ],
+      [
+       "10006",
+       1
+      ],
+      [
+       "10007",
+       1
+      ],
+      [
+       "10010",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Segment": {
+     "declared_type": "VARCHAR",
+     "distinct": 3,
+     "family": "text",
+     "name": "Segment",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "code",
+     "rows": 32461,
+     "sample_values": [
+      "SME",
+      "LAM",
+      "KAM"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "SME",
+       26763
+      ],
+      [
+       "LAM",
+       3658
+      ],
+      [
+       "KAM",
+       2040
+      ]
+     ],
+     "uniqueness": 9.24185946212378e-05,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 32461,
+   "sample_rows": [
+    {
+     "Currency": "CZK",
+     "CustomerID": 1947,
+     "Segment": "SME"
+    },
+    {
+     "Currency": "EUR",
+     "CustomerID": 3641,
+     "Segment": "LAM"
+    },
+    {
+     "Currency": "CZK",
+     "CustomerID": 27095,
+     "Segment": "SME"
+    },
+    {
+     "Currency": "CZK",
+     "CustomerID": 31065,
+     "Segment": "SME"
+    },
+    {
+     "Currency": "CZK",
+     "CustomerID": 34252,
+     "Segment": "SME"
+    }
+   ]
+  },
+  "gasstations": {
+   "columns": {
+    "ChainID": {
+     "declared_type": "BIGINT",
+     "distinct": 233,
+     "family": "int",
+     "name": "ChainID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.803448275862069,
+      "max": 290.0,
+      "mean": 27.527991602519243,
+      "min": 1.0,
+      "p25": 3.0,
+      "p50": 6.0,
+      "p75": 33.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "int",
+     "rows": 5716,
+     "sample_values": [
+      "153",
+      "40",
+      "159",
+      "29",
+      "33",
+      "122",
+      "237",
+      "176",
+      "175",
+      "2"
+     ],
+     "text": {
+      "avg_len": 1.4886284114765571,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "3",
+       1462
+      ],
+      [
+       "2",
+       853
+      ],
+      [
+       "33",
+       340
+      ],
+      [
+       "1",
+       285
+      ],
+      [
+       "4",
+       227
+      ],
+      [
+       "6",
+       212
+      ],
+      [
+       "9",
+       196
+      ],
+      [
+       "51",
+       146
+      ],
+      [
+       "13",
+       132
+      ],
+      [
+       "16",
+       130
+      ]
+     ],
+     "uniqueness": 0.0407627711686494,
+     "zero_rate": 0.0
+    },
+    "Country": {
+     "declared_type": "VARCHAR",
+     "distinct": 2,
+     "family": "text",
+     "name": "Country",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "code",
+     "rows": 5716,
+     "sample_values": [
+      "CZE",
+      "SVK"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "CZE",
+       4836
+      ],
+      [
+       "SVK",
+       880
+      ]
+     ],
+     "uniqueness": 0.0003498950314905528,
+     "zero_rate": 0.0
+    },
+    "GasStationID": {
+     "declared_type": "BIGINT",
+     "distinct": 5716,
+     "family": "int",
+     "name": "GasStationID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.9977308430790713,
+      "max": 5772.0,
+      "mean": 2905.2846396081177,
+      "min": 44.0,
+      "p25": 1473.75,
+      "p50": 2903.5,
+      "p75": 4336.25
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 5716,
+     "sample_values": [
+      "4900",
+      "2881",
+      "3773",
+      "4970",
+      "4071",
+      "2982",
+      "153",
+      "1470",
+      "3125",
+      "2538"
+     ],
+     "text": {
+      "avg_len": 3.8231280615815257,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "100",
+       1
+      ],
+      [
+       "1000",
+       1
+      ],
+      [
+       "1001",
+       1
+      ],
+      [
+       "1002",
+       1
+      ],
+      [
+       "1003",
+       1
+      ],
+      [
+       "1004",
+       1
+      ],
+      [
+       "1005",
+       1
+      ],
+      [
+       "1006",
+       1
+      ],
+      [
+       "1007",
+       1
+      ],
+      [
+       "1008",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Segment": {
+     "declared_type": "VARCHAR",
+     "distinct": 5,
+     "family": "text",
+     "name": "Segment",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "text",
+     "rows": 5716,
+     "sample_values": [
+      "Premium",
+      "Value for money",
+      "Other",
+      "Discount",
+      "Noname"
+     ],
+     "text": {
+      "avg_len": 6.874212736179146,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 15,
+      "min_len": 5,
+      "space_share": 0.10444366689993002,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Other",
+       2392
+      ],
+      [
+       "Premium",
+       1428
+      ],
+      [
+       "Noname",
+       1005
+      ],
+      [
+       "Value for money",
+       597
+      ],
+      [
+       "Discount",
+       294
+      ]
+     ],
+     "uniqueness": 0.0008747375787263821,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 5716,
+   "sample_rows": [
+    {
+     "ChainID": 3,
+     "Country": "CZE",
+     "GasStationID": 1757,
+     "Segment": "Other"
+    },
+    {
+     "ChainID": 2,
+     "Country": "CZE",
+     "GasStationID": 2212,
+     "Segment": "Noname"
+    },
+    {
+     "ChainID": 16,
+     "Country": "CZE",
+     "GasStationID": 2446,
+     "Segment": "Other"
+    },
+    {
+     "ChainID": 1,
+     "Country": "CZE",
+     "GasStationID": 3536,
+     "Segment": "Premium"
+    },
+    {
+     "ChainID": 3,
+     "Country": "CZE",
+     "GasStationID": 5525,
+     "Segment": "Other"
+    }
+   ]
+  },
+  "products": {
+   "columns": {
+    "Description": {
+     "declared_type": "VARCHAR",
+     "distinct": 529,
+     "family": "text",
+     "name": "Description",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 591,
+     "sample_values": [
+      "AdBlue (jerrycan)",
+      "Vyd\u00e1n\u00ed karty",
+      "Toll DEU Correction Prepayment",
+      "\u00dactovn\u00e9 sl.",
+      "Vy\u00fact.p.n\u00e1kl. stred.",
+      "Plyn VZV",
+      "Repair/Breakdowns",
+      "FeeProd-63-CZ",
+      "Super-Plus",
+      "Miscellaneous/service station(red.VAT)"
+     ],
+     "text": {
+      "avg_len": 17.380710659898476,
+      "code_share": 0.00676818950930626,
+      "composite_share": 0.05583756345177665,
+      "date_shape_share": 0.0,
+      "max_len": 47,
+      "min_len": 3,
+      "space_share": 0.754653130287648,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Ostatni zbozi",
+       4
+      ],
+      [
+       "Servisn\u00ed poplatek",
+       4
+      ],
+      [
+       "Katalyz\u00e1tor",
+       3
+      ],
+      [
+       "Ostatn\u00e9 sl.",
+       3
+      ],
+      [
+       "Potraviny",
+       3
+      ],
+      [
+       "Provozn\u00ed poplatek",
+       3
+      ],
+      [
+       "Service charge",
+       3
+      ],
+      [
+       "Tisk reportu",
+       3
+      ],
+      [
+       "Vratn\u00e9 obaly",
+       3
+      ],
+      [
+       "Barvy,laky",
+       2
+      ]
+     ],
+     "uniqueness": 0.8950930626057529,
+     "zero_rate": 0.0
+    },
+    "ProductID": {
+     "declared_type": "BIGINT",
+     "distinct": 591,
+     "family": "int",
+     "name": "ProductID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.9380952380952381,
+      "max": 630.0,
+      "mean": 298.3062605752961,
+      "min": 1.0,
+      "p25": 148.5,
+      "p50": 296.0,
+      "p75": 450.5
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 591,
+     "sample_values": [
+      "153",
+      "40",
+      "308",
+      "307",
+      "406",
+      "159",
+      "275",
+      "555",
+      "310",
+      "532"
+     ],
+     "text": {
+      "avg_len": 2.817258883248731,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1",
+       1
+      ],
+      [
+       "10",
+       1
+      ],
+      [
+       "100",
+       1
+      ],
+      [
+       "101",
+       1
+      ],
+      [
+       "102",
+       1
+      ],
+      [
+       "103",
+       1
+      ],
+      [
+       "104",
+       1
+      ],
+      [
+       "105",
+       1
+      ],
+      [
+       "106",
+       1
+      ],
+      [
+       "107",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 591,
+   "sample_rows": [
+    {
+     "Description": "Toll access-Austria",
+     "ProductID": 245
+    },
+    {
+     "Description": "TIS PL (operational return)",
+     "ProductID": 288
+    },
+    {
+     "Description": "**Acquirer Simple Fee**",
+     "ProductID": 479
+    },
+    {
+     "Description": "N\u00e1jem termin\u00e1lu",
+     "ProductID": 503
+    },
+    {
+     "Description": "Zprostredk.nakupu",
+     "ProductID": 604
+    }
+   ]
+  },
+  "transactions_1k": {
+   "columns": {
+    "Amount": {
+     "declared_type": "BIGINT",
+     "distinct": 83,
+     "family": "int",
+     "name": "Amount",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.3132075471698113,
+      "max": 264.0,
+      "mean": 19.678,
+      "min": 0.0,
+      "p25": 5.0,
+      "p50": 19.0,
+      "p75": 27.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 7,
+     "role": "int",
+     "rows": 1000,
+     "sample_values": [
+      "40",
+      "154",
+      "69",
+      "29",
+      "33",
+      "122",
+      "2",
+      "17",
+      "10",
+      "65"
+     ],
+     "text": {
+      "avg_len": 1.626,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0",
+       91
+      ],
+      [
+       "5",
+       78
+      ],
+      [
+       "25",
+       56
+      ],
+      [
+       "1",
+       51
+      ],
+      [
+       "4",
+       48
+      ],
+      [
+       "6",
+       42
+      ],
+      [
+       "27",
+       36
+      ],
+      [
+       "24",
+       33
+      ],
+      [
+       "22",
+       32
+      ],
+      [
+       "23",
+       31
+      ]
+     ],
+     "uniqueness": 0.083,
+     "zero_rate": 0.091
+    },
+    "CardID": {
+     "declared_type": "BIGINT",
+     "distinct": 902,
+     "family": "int",
+     "name": "CardID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.001203078921710506,
+      "max": 775970.0,
+      "mean": 560899.967,
+      "min": 26228.0,
+      "p25": 509899.75,
+      "p50": 597139.5,
+      "p75": 675816.25
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "int",
+     "rows": 1000,
+     "sample_values": [
+      "568324",
+      "531277",
+      "543556",
+      "716461",
+      "735485",
+      "472098",
+      "602281",
+      "623400",
+      "481368",
+      "545633"
+     ],
+     "text": {
+      "avg_len": 5.962,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "568944",
+       4
+      ],
+      [
+       "732572",
+       4
+      ],
+      [
+       "199529",
+       3
+      ],
+      [
+       "519534",
+       3
+      ],
+      [
+       "526291",
+       3
+      ],
+      [
+       "531051",
+       3
+      ],
+      [
+       "585106",
+       3
+      ],
+      [
+       "606328",
+       3
+      ],
+      [
+       "648900",
+       3
+      ],
+      [
+       "680551",
+       3
+      ]
+     ],
+     "uniqueness": 0.902,
+     "zero_rate": 0.0
+    },
+    "CustomerID": {
+     "declared_type": "BIGINT",
+     "distinct": 517,
+     "family": "int",
+     "name": "CustomerID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.010393422190056893,
+      "max": 49838.0,
+      "mean": 21975.394,
+      "min": 96.0,
+      "p25": 8507.0,
+      "p50": 19182.0,
+      "p75": 32381.25
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "int",
+     "rows": 1000,
+     "sample_values": [
+      "3125",
+      "18010",
+      "7061",
+      "7881",
+      "38508",
+      "24455",
+      "3954",
+      "47918",
+      "2839",
+      "3991"
+     ],
+     "text": {
+      "avg_len": 4.707,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "19182",
+       19
+      ],
+      [
+       "31543",
+       18
+      ],
+      [
+       "7626",
+       14
+      ],
+      [
+       "33094",
+       11
+      ],
+      [
+       "12459",
+       10
+      ],
+      [
+       "19907",
+       10
+      ],
+      [
+       "30895",
+       10
+      ],
+      [
+       "5381",
+       10
+      ],
+      [
+       "6266",
+       10
+      ],
+      [
+       "24700",
+       9
+      ]
+     ],
+     "uniqueness": 0.517,
+     "zero_rate": 0.0
+    },
+    "Date": {
+     "date_range": [
+      "2012-08-23 00:00:00",
+      "2012-08-26 00:00:00"
+     ],
+     "declared_type": "VARCHAR",
+     "distinct": 4,
+     "family": "date",
+     "name": "Date",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "date",
+     "rows": 1000,
+     "sample_values": [
+      "2012-08-25",
+      "2012-08-24",
+      "2012-08-26",
+      "2012-08-23"
+     ],
+     "text": {
+      "avg_len": 10.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 10,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2012-08-24",
+       492
+      ],
+      [
+       "2012-08-25",
+       425
+      ],
+      [
+       "2012-08-26",
+       73
+      ],
+      [
+       "2012-08-23",
+       10
+      ]
+     ],
+     "uniqueness": 0.004,
+     "zero_rate": 0.0
+    },
+    "GasStationID": {
+     "declared_type": "BIGINT",
+     "distinct": 437,
+     "family": "int",
+     "name": "GasStationID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.08041958041958042,
+      "max": 5481.0,
+      "mean": 2290.528,
+      "min": 48.0,
+      "p25": 834.0,
+      "p50": 2440.0,
+      "p75": 3542.25
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "int",
+     "rows": 1000,
+     "sample_values": [
+      "755",
+      "1539",
+      "1440",
+      "3807",
+      "3611",
+      "3877",
+      "1161",
+      "2718",
+      "3788",
+      "555"
+     ],
+     "text": {
+      "avg_len": 3.681,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1155",
+       12
+      ],
+      [
+       "448",
+       12
+      ],
+      [
+       "48",
+       11
+      ],
+      [
+       "3621",
+       10
+      ],
+      [
+       "3748",
+       10
+      ],
+      [
+       "636",
+       10
+      ],
+      [
+       "345",
+       9
+      ],
+      [
+       "4431",
+       9
+      ],
+      [
+       "1107",
+       8
+      ],
+      [
+       "3319",
+       8
+      ]
+     ],
+     "uniqueness": 0.437,
+     "zero_rate": 0.0
+    },
+    "Price": {
+     "declared_type": "DOUBLE",
+     "distinct": 930,
+     "family": "float",
+     "name": "Price",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 5762.49,
+      "mean": 425.5761600000001,
+      "min": 1.76,
+      "p25": 96.67999999999999,
+      "p50": 354.03499999999997,
+      "p75": 615.1275
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 8,
+     "role": "float",
+     "rows": 1000,
+     "sample_values": [
+      "836.34",
+      "624.45",
+      "96.84",
+      "66.11",
+      "156.81",
+      "670.3",
+      "199.11",
+      "566.49",
+      "16.43",
+      "721.72"
+     ],
+     "text": {
+      "avg_len": 5.674,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 7,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "123.91",
+       8
+      ],
+      [
+       "43.56",
+       8
+      ],
+      [
+       "53.29",
+       5
+      ],
+      [
+       "38.69",
+       4
+      ],
+      [
+       "72.76",
+       4
+      ],
+      [
+       "124.05",
+       3
+      ],
+      [
+       "24.09",
+       3
+      ],
+      [
+       "28.96",
+       3
+      ],
+      [
+       "35.98",
+       3
+      ],
+      [
+       "36.26",
+       3
+      ]
+     ],
+     "uniqueness": 0.93,
+     "zero_rate": 0.0
+    },
+    "ProductID": {
+     "declared_type": "BIGINT",
+     "distinct": 28,
+     "family": "int",
+     "name": "ProductID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.07977207977207977,
+      "max": 352.0,
+      "mean": 26.878,
+      "min": 2.0,
+      "p25": 2.0,
+      "p50": 2.0,
+      "p75": 5.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 6,
+     "role": "int",
+     "rows": 1000,
+     "sample_values": [
+      "40",
+      "2",
+      "72",
+      "44",
+      "9",
+      "23",
+      "25",
+      "31",
+      "7",
+      "19"
+     ],
+     "text": {
+      "avg_len": 1.268,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2",
+       523
+      ],
+      [
+       "5",
+       239
+      ],
+      [
+       "317",
+       43
+      ],
+      [
+       "15",
+       41
+      ],
+      [
+       "9",
+       27
+      ],
+      [
+       "11",
+       18
+      ],
+      [
+       "23",
+       14
+      ],
+      [
+       "20",
+       12
+      ],
+      [
+       "322",
+       12
+      ],
+      [
+       "12",
+       7
+      ]
+     ],
+     "uniqueness": 0.028,
+     "zero_rate": 0.0
+    },
+    "Time": {
+     "declared_type": "VARCHAR",
+     "distinct": 599,
+     "family": "text",
+     "name": "Time",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "text",
+     "rows": 1000,
+     "sample_values": [
+      "08:41:00",
+      "14:14:00",
+      "10:51:00",
+      "17:54:00",
+      "05:55:00",
+      "22:42:00",
+      "16:20:00",
+      "18:44:00",
+      "03:31:00",
+      "11:01:00"
+     ],
+     "text": {
+      "avg_len": 8.0,
+      "code_share": 0.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 8,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "08:57:00",
+       8
+      ],
+      [
+       "06:17:00",
+       5
+      ],
+      [
+       "08:24:00",
+       5
+      ],
+      [
+       "08:26:00",
+       5
+      ],
+      [
+       "09:50:00",
+       5
+      ],
+      [
+       "11:55:00",
+       5
+      ],
+      [
+       "15:23:00",
+       5
+      ],
+      [
+       "16:04:00",
+       5
+      ],
+      [
+       "16:20:00",
+       5
+      ],
+      [
+       "04:49:00",
+       4
+      ]
+     ],
+     "uniqueness": 0.599,
+     "zero_rate": 0.0
+    },
+    "TransactionID": {
+     "declared_type": "BIGINT",
+     "distinct": 1000,
+     "family": "int",
+     "name": "TransactionID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 1000.0,
+      "mean": 500.5,
+      "min": 1.0,
+      "p25": 250.75,
+      "p50": 500.5,
+      "p75": 750.25
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 1000,
+     "sample_values": [
+      "153",
+      "40",
+      "755",
+      "308",
+      "610",
+      "307",
+      "406",
+      "770",
+      "159",
+      "928"
+     ],
+     "text": {
+      "avg_len": 2.893,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1",
+       1
+      ],
+      [
+       "10",
+       1
+      ],
+      [
+       "100",
+       1
+      ],
+      [
+       "1000",
+       1
+      ],
+      [
+       "101",
+       1
+      ],
+      [
+       "102",
+       1
+      ],
+      [
+       "103",
+       1
+      ],
+      [
+       "104",
+       1
+      ],
+      [
+       "105",
+       1
+      ],
+      [
+       "106",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 1000,
+   "sample_rows": [
+    {
+     "Amount": 4,
+     "CardID": 597507,
+     "CustomerID": 3014,
+     "Date": "2012-08-24",
+     "GasStationID": 5298,
+     "Price": 3.64,
+     "ProductID": 317,
+     "Time": "14:40:00",
+     "TransactionID": 413
+    },
+    {
+     "Amount": 63,
+     "CardID": 644928,
+     "CustomerID": 33964,
+     "Date": "2012-08-25",
+     "GasStationID": 1682,
+     "Price": 1445.97,
+     "ProductID": 9,
+     "Time": "07:23:00",
+     "TransactionID": 485
+    },
+    {
+     "Amount": 24,
+     "CardID": 673638,
+     "CustomerID": 7471,
+     "Date": "2012-08-25",
+     "GasStationID": 2728,
+     "Price": 524.6,
+     "ProductID": 20,
+     "Time": "09:11:00",
+     "TransactionID": 798
+    },
+    {
+     "Amount": 39,
+     "CardID": 671515,
+     "CustomerID": 17163,
+     "Date": "2012-08-25",
+     "GasStationID": 5338,
+     "Price": 872.93,
+     "ProductID": 2,
+     "Time": "12:38:00",
+     "TransactionID": 837
+    },
+    {
+     "Amount": 29,
+     "CardID": 602037,
+     "CustomerID": 15618,
+     "Date": "2012-08-26",
+     "GasStationID": 438,
+     "Price": 635.22,
+     "ProductID": 2,
+     "Time": "11:52:00",
+     "TransactionID": 997
+    }
+   ]
+  },
+  "yearmonth": {
+   "columns": {
+    "Consumption": {
+     "declared_type": "DOUBLE",
+     "distinct": 279091,
+     "family": "float",
+     "name": "Consumption",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 2052187.11,
+      "mean": 8911.14147215372,
+      "min": -582092.86,
+      "p25": 556.1324999999999,
+      "p50": 1766.37,
+      "p75": 5755.1075
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "float",
+     "rows": 383282,
+     "sample_values": [
+      "47202.26",
+      "489.54",
+      "6396.95",
+      "2550.93",
+      "6029.65",
+      "540.39",
+      "2215.63",
+      "2719.18",
+      "9404.98",
+      "185.79"
+     ],
+     "text": {
+      "avg_len": 6.623744397075782,
+      "code_share": 1.0,
+      "composite_share": 0.999603425154325,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "33.22",
+       572
+      ],
+      [
+       "0.75",
+       254
+      ],
+      [
+       "683.57",
+       239
+      ],
+      [
+       "26.04",
+       222
+      ],
+      [
+       "43.56",
+       185
+      ],
+      [
+       "312.16",
+       182
+      ],
+      [
+       "64.99",
+       173
+      ],
+      [
+       "38.69",
+       157
+      ],
+      [
+       "82.47",
+       155
+      ],
+      [
+       "1.58",
+       149
+      ]
+     ],
+     "uniqueness": 0.7281609885149838,
+     "zero_rate": 7.305326104539216e-05
+    },
+    "CustomerID": {
+     "declared_type": "BIGINT",
+     "distinct": 30566,
+     "family": "int",
+     "name": "CustomerID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.5838888995014231,
+      "max": 52353.0,
+      "mean": 25793.030596271154,
+      "min": 5.0,
+      "p25": 12930.0,
+      "p50": 26181.0,
+      "p75": 38184.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 383282,
+     "sample_values": [
+      "39332",
+      "13975",
+      "14886",
+      "26549",
+      "15264",
+      "44270",
+      "35042",
+      "25062",
+      "31497",
+      "13359"
+     ],
+     "text": {
+      "avg_len": 4.797311118184522,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "12504",
+       20
+      ],
+      [
+       "12702",
+       20
+      ],
+      [
+       "12776",
+       20
+      ],
+      [
+       "14349",
+       20
+      ],
+      [
+       "14626",
+       20
+      ],
+      [
+       "15283",
+       20
+      ],
+      [
+       "15692",
+       20
+      ],
+      [
+       "1595",
+       20
+      ],
+      [
+       "1673",
+       20
+      ],
+      [
+       "19182",
+       20
+      ]
+     ],
+     "uniqueness": 0.07974807061119489,
+     "zero_rate": 0.0
+    },
+    "Date": {
+     "declared_type": "VARCHAR",
+     "distinct": 21,
+     "family": "int",
+     "name": "Date",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.105,
+      "max": 201311.0,
+      "mean": 201264.58388079796,
+      "min": 201112.0,
+      "p25": 201206.0,
+      "p50": 201304.0,
+      "p75": 201307.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "int",
+     "rows": 383282,
+     "sample_values": [
+      "201203",
+      "201206",
+      "201304",
+      "201208",
+      "201311",
+      "201201",
+      "201202",
+      "201112",
+      "201310",
+      "201305"
+     ],
+     "text": {
+      "avg_len": 6.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 6,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "201305",
+       25506
+      ],
+      [
+       "201304",
+       25487
+      ],
+      [
+       "201306",
+       25378
+      ],
+      [
+       "201307",
+       25239
+      ],
+      [
+       "201303",
+       25054
+      ],
+      [
+       "201308",
+       25052
+      ],
+      [
+       "201309",
+       24985
+      ],
+      [
+       "201310",
+       24488
+      ],
+      [
+       "201311",
+       20723
+      ],
+      [
+       "201203",
+       18866
+      ]
+     ],
+     "uniqueness": 5.4789945784044127e-05,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 383282,
+   "sample_rows": [
+    {
+     "Consumption": 160.78,
+     "CustomerID": 285,
+     "Date": "201205"
+    },
+    {
+     "Consumption": 5577.82,
+     "CustomerID": 600,
+     "Date": "201310"
+    },
+    {
+     "Consumption": 857.15,
+     "CustomerID": 3044,
+     "Date": "201305"
+    },
+    {
+     "Consumption": 457.6,
+     "CustomerID": 3437,
+     "Date": "201307"
+    },
+    {
+     "Consumption": 50.11,
+     "CustomerID": 3719,
+     "Date": "201206"
+    }
+   ]
+  }
+ }
+}

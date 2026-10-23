@@ -1,0 +1,195 @@
+{
+ "accept": 70,
+ "db_id": "toxicology",
+ "tables": {
+  "atom": {
+   "candidate_keys": [
+    {
+     "column": "atom_id",
+     "score": 84.0
+    }
+   ],
+   "columns": {
+    "atom_id": {
+     "base": 84.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 84.0
+    },
+    "element": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0017027487229384578
+     },
+     "phi": 0.7,
+     "score": 6.3
+    },
+    "molecule_id": {
+     "base": 39.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.03600097299927025
+     },
+     "phi": 0.85,
+     "score": 13.26
+    }
+   },
+   "primary_key": "atom_id"
+  },
+  "bond": {
+   "candidate_keys": [
+    {
+     "column": "bond_id",
+     "score": 84.0
+    }
+   ],
+   "columns": {
+    "bond_id": {
+     "base": 84.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 84.0
+    },
+    "bond_type": {
+     "rejected": "has nulls"
+    },
+    "molecule_id": {
+     "base": 39.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0358671944422005
+     },
+     "phi": 0.85,
+     "score": 13.26
+    }
+   },
+   "primary_key": "bond_id"
+  },
+  "connected": {
+   "candidate_keys": [],
+   "columns": {
+    "atom_id": {
+     "base": 34.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.4961628564504403
+     },
+     "phi": 1.0,
+     "score": 13.6
+    },
+    "atom_id2": {
+     "base": 14.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.4961628564504403
+     },
+     "phi": 0.85,
+     "score": 11.9
+    },
+    "bond_id": {
+     "base": 34.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.5
+     },
+     "phi": 0.7,
+     "score": 9.52
+    }
+   },
+   "primary_key": null
+  },
+  "molecule": {
+   "candidate_keys": [
+    {
+     "column": "molecule_id",
+     "score": 89.0
+    }
+   ],
+   "columns": {
+    "label": {
+     "rejected": "mostly empty or zero"
+    },
+    "molecule_id": {
+     "base": 89.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 89.0
+    }
+   },
+   "primary_key": "molecule_id"
+  }
+ },
+ "use_names": true
+}

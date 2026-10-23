@@ -1,0 +1,366 @@
+{
+ "accept": 70,
+ "db_id": "orchestra",
+ "tables": {
+  "conductor": {
+   "candidate_keys": [
+    {
+     "column": "Conductor_ID",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "Age": {
+     "rejected": "blacklist: quantity (age)"
+    },
+    "Conductor_ID": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "Name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    },
+    "Nationality": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.25
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "Year_of_Work": {
+     "rejected": "blacklist: date/time (year)"
+    }
+   },
+   "primary_key": "Conductor_ID"
+  },
+  "orchestra": {
+   "candidate_keys": [
+    {
+     "column": "Orchestra_ID",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "Conductor_ID": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 28.0
+    },
+    "Major_Record_Format": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.25
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "Orchestra": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    },
+    "Orchestra_ID": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "Record_Company": {
+     "base": 52.981,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.8796296296296295,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9166666666666666
+     },
+     "phi": 0.55,
+     "score": 29.14
+    },
+    "Year_of_Founded": {
+     "rejected": "blacklist: date/time (year)"
+    }
+   },
+   "primary_key": "Orchestra_ID"
+  },
+  "performance": {
+   "candidate_keys": [
+    {
+     "column": "Performance_ID",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "Date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "Official_ratings_(millions)": {
+     "base": 59.5,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.363
+    },
+    "Orchestra_ID": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 34.0
+    },
+    "Performance_ID": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "Share": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "Type": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 20.65
+    },
+    "Weekly_rank": {
+     "base": 62.182,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.8636363636363636,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.9090909090909091
+     },
+     "phi": 0.55,
+     "score": 34.2
+    }
+   },
+   "primary_key": "Performance_ID"
+  },
+  "show": {
+   "candidate_keys": [
+    {
+     "column": "Show_ID",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "Attendance": {
+     "base": 64.5,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 17.738
+    },
+    "If_first_show": {
+     "base": 40.667,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.6333333333333334,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8
+     },
+     "phi": 0.7,
+     "score": 28.467
+    },
+    "Performance_ID": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 34.0
+    },
+    "Result": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.4
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "Show_ID": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    }
+   },
+   "primary_key": "Show_ID"
+  }
+ },
+ "use_names": true
+}
