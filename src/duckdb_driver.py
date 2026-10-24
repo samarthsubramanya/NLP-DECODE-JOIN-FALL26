@@ -1,6 +1,7 @@
 import csv
+import os
 from functools import lru_cache
-from pathlib import PurePosixPath
+from pathlib import Path, PurePosixPath
 
 import duckdb
 import pandas as pd
@@ -10,7 +11,10 @@ REPO = "SuhxsReddy/decode-join-duckdb"
 
 @lru_cache(maxsize=None)   # one connection per file, shared across calls
 def open_db(filename: str) -> duckdb.DuckDBPyConnection:
-    path = hf_hub_download(repo_id=REPO, filename=filename, repo_type="dataset")
+    # a local copy in $DECODE_JOIN_DUCKDB_DIR wins (e.g. a file not on the Hub yet); else the Hub repo
+    local = Path(os.environ.get("DECODE_JOIN_DUCKDB_DIR", "")) / filename
+    path = str(local) if os.environ.get("DECODE_JOIN_DUCKDB_DIR") and local.is_file() else \
+        hf_hub_download(repo_id=REPO, filename=filename, repo_type="dataset")
     return duckdb.connect(path, read_only=True)   # read-only: safe for several processes
 
 def schema_for(mapping_csv: str, database: str) -> str:

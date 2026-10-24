@@ -1,0 +1,1008 @@
+{
+ "containment": [
+  {
+   "containment": 1.0,
+   "coverage": 0.9960269196464769,
+   "intersection": 12284,
+   "source": [
+    "connected",
+    "col_001"
+   ],
+   "source_distinct": 12284,
+   "source_unique": false,
+   "target": [
+    "atom",
+    "col_001"
+   ],
+   "target_distinct": 12333
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.9960269196464769,
+   "intersection": 12284,
+   "source": [
+    "connected",
+    "col_002"
+   ],
+   "source_distinct": 12284,
+   "source_unique": false,
+   "target": [
+    "atom",
+    "col_001"
+   ],
+   "target_distinct": 12333
+  },
+  {
+   "containment": 1.0,
+   "coverage": 1.0,
+   "intersection": 12379,
+   "source": [
+    "connected",
+    "col_003"
+   ],
+   "source_distinct": 12379,
+   "source_unique": false,
+   "target": [
+    "bond",
+    "col_001"
+   ],
+   "target_distinct": 12379
+  },
+  {
+   "containment": 0.7725225225225225,
+   "coverage": 1.0,
+   "intersection": 343,
+   "source": [
+    "atom",
+    "col_002"
+   ],
+   "source_distinct": 444,
+   "source_unique": false,
+   "target": [
+    "molecule",
+    "col_001"
+   ],
+   "target_distinct": 343
+  },
+  {
+   "containment": 0.7725225225225225,
+   "coverage": 1.0,
+   "intersection": 343,
+   "source": [
+    "bond",
+    "col_002"
+   ],
+   "source_distinct": 444,
+   "source_unique": false,
+   "target": [
+    "molecule",
+    "col_001"
+   ],
+   "target_distinct": 343
+  }
+ ],
+ "dataset": "bird_obfuscated",
+ "db_id": "toxicology",
+ "duckdb_file": "bird_dev_obfuscated.duckdb",
+ "duckdb_schema": "bird_toxicology",
+ "seed": 42,
+ "tables": {
+  "atom": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 12333,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "code",
+     "rows": 12333,
+     "sample_values": [
+      "TR024_11",
+      "TR257_24",
+      "TR077_2",
+      "TR181_11",
+      "TR390_5",
+      "TR175_41",
+      "TR053_8",
+      "TR056_35",
+      "TR051_13",
+      "TR449_12"
+     ],
+     "text": {
+      "avg_len": 7.69188356442066,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 9,
+      "min_len": 7,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "TR000_1",
+       1
+      ],
+      [
+       "TR000_2",
+       1
+      ],
+      [
+       "TR000_3",
+       1
+      ],
+      [
+       "TR000_4",
+       1
+      ],
+      [
+       "TR000_5",
+       1
+      ],
+      [
+       "TR001_1",
+       1
+      ],
+      [
+       "TR001_10",
+       1
+      ],
+      [
+       "TR001_11",
+       1
+      ],
+      [
+       "TR001_12",
+       1
+      ],
+      [
+       "TR001_13",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 444,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "code",
+     "rows": 12333,
+     "sample_values": [
+      "TR094",
+      "TR051",
+      "TR477",
+      "TR141",
+      "TR106",
+      "TR004",
+      "TR165",
+      "TR056",
+      "TR130",
+      "TR045"
+     ],
+     "text": {
+      "avg_len": 5.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "TR338",
+       174
+      ],
+      [
+       "TR496",
+       109
+      ],
+      [
+       "TR060",
+       103
+      ],
+      [
+       "TR059",
+       102
+      ],
+      [
+       "TR397",
+       88
+      ],
+      [
+       "TR430",
+       86
+      ],
+      [
+       "TR193",
+       84
+      ],
+      [
+       "TR405",
+       84
+      ],
+      [
+       "TR426",
+       83
+      ],
+      [
+       "TR131",
+       82
+      ]
+     ],
+     "uniqueness": 0.03600097299927025,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "declared_type": "VARCHAR",
+     "distinct": 21,
+     "family": "text",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "text",
+     "rows": 12333,
+     "sample_values": [
+      "p",
+      "zn",
+      "c",
+      "br",
+      "si",
+      "k",
+      "sn",
+      "o",
+      "i",
+      "cl"
+     ],
+     "text": {
+      "avg_len": 1.0424065515284198,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "h",
+       5518
+      ],
+      [
+       "c",
+       4605
+      ],
+      [
+       "o",
+       1043
+      ],
+      [
+       "n",
+       480
+      ],
+      [
+       "cl",
+       429
+      ],
+      [
+       "s",
+       113
+      ],
+      [
+       "br",
+       47
+      ],
+      [
+       "na",
+       35
+      ],
+      [
+       "p",
+       31
+      ],
+      [
+       "f",
+       11
+      ]
+     ],
+     "uniqueness": 0.0017027487229384578,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 12333,
+   "sample_rows": [
+    {
+     "col_001": "TR031_31",
+     "col_002": "TR031",
+     "col_003": "h"
+    },
+    {
+     "col_001": "TR060_39",
+     "col_002": "TR060",
+     "col_003": "c"
+    },
+    {
+     "col_001": "TR305_66",
+     "col_002": "TR305",
+     "col_003": "h"
+    },
+    {
+     "col_001": "TR374_8",
+     "col_002": "TR374",
+     "col_003": "h"
+    },
+    {
+     "col_001": "TR426_48",
+     "col_002": "TR426",
+     "col_003": "h"
+    }
+   ]
+  },
+  "bond": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 12379,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "code",
+     "rows": 12379,
+     "sample_values": [
+      "TR365_13_14",
+      "TR007_11_13",
+      "TR017_5_22",
+      "TR401_1_2",
+      "TR463_4_5",
+      "TR124_15_37",
+      "TR285_12_13",
+      "TR239_4_12",
+      "TR324_1_5",
+      "TR213_23_43"
+     ],
+     "text": {
+      "avg_len": 10.145407545035948,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 13,
+      "min_len": 9,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "TR000_1_2",
+       1
+      ],
+      [
+       "TR000_2_3",
+       1
+      ],
+      [
+       "TR000_2_4",
+       1
+      ],
+      [
+       "TR000_2_5",
+       1
+      ],
+      [
+       "TR001_10_11",
+       1
+      ],
+      [
+       "TR001_1_12",
+       1
+      ],
+      [
+       "TR001_1_2",
+       1
+      ],
+      [
+       "TR001_1_7",
+       1
+      ],
+      [
+       "TR001_1_8",
+       1
+      ],
+      [
+       "TR001_2_14",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 444,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "code",
+     "rows": 12379,
+     "sample_values": [
+      "TR094",
+      "TR051",
+      "TR477",
+      "TR141",
+      "TR106",
+      "TR004",
+      "TR165",
+      "TR056",
+      "TR130",
+      "TR045"
+     ],
+     "text": {
+      "avg_len": 5.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "TR338",
+       175
+      ],
+      [
+       "TR496",
+       108
+      ],
+      [
+       "TR059",
+       107
+      ],
+      [
+       "TR060",
+       107
+      ],
+      [
+       "TR193",
+       89
+      ],
+      [
+       "TR397",
+       89
+      ],
+      [
+       "TR405",
+       87
+      ],
+      [
+       "TR131",
+       85
+      ],
+      [
+       "TR430",
+       85
+      ],
+      [
+       "TR426",
+       82
+      ]
+     ],
+     "uniqueness": 0.0358671944422005,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "declared_type": "VARCHAR",
+     "distinct": 3,
+     "family": "text",
+     "name": "col_003",
+     "null_rate": 8.078196946441554e-05,
+     "nulls": 1,
+     "pattern": "other",
+     "placeholder_rate": 0.8504725745213668,
+     "position": 2,
+     "role": "text",
+     "rows": 12379,
+     "sample_values": [
+      "#",
+      "-",
+      "="
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "-",
+       10528
+      ],
+      [
+       "=",
+       1844
+      ],
+      [
+       "#",
+       6
+      ]
+     ],
+     "uniqueness": 0.0002423654871546292,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 12379,
+   "sample_rows": [
+    {
+     "col_001": "TR031_18_36",
+     "col_002": "TR031",
+     "col_003": "-"
+    },
+    {
+     "col_001": "TR060_11_15",
+     "col_002": "TR060",
+     "col_003": "-"
+    },
+    {
+     "col_001": "TR305_20_64",
+     "col_002": "TR305",
+     "col_003": "-"
+    },
+    {
+     "col_001": "TR372_3_4",
+     "col_002": "TR372",
+     "col_003": "-"
+    },
+    {
+     "col_001": "TR426_12_17",
+     "col_002": "TR426",
+     "col_003": "-"
+    }
+   ]
+  },
+  "connected": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 12284,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "code",
+     "rows": 24758,
+     "sample_values": [
+      "TR024_11",
+      "TR257_24",
+      "TR077_2",
+      "TR181_11",
+      "TR390_5",
+      "TR175_41",
+      "TR053_8",
+      "TR056_35",
+      "TR051_13",
+      "TR449_12"
+     ],
+     "text": {
+      "avg_len": 7.572703772517974,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 9,
+      "min_len": 7,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "TR000_2",
+       4
+      ],
+      [
+       "TR001_1",
+       4
+      ],
+      [
+       "TR001_2",
+       4
+      ],
+      [
+       "TR001_3",
+       4
+      ],
+      [
+       "TR001_4",
+       4
+      ],
+      [
+       "TR001_5",
+       4
+      ],
+      [
+       "TR001_6",
+       4
+      ],
+      [
+       "TR001_7",
+       4
+      ],
+      [
+       "TR001_8",
+       4
+      ],
+      [
+       "TR001_9",
+       4
+      ]
+     ],
+     "uniqueness": 0.4961628564504403,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 12284,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "code",
+     "rows": 24758,
+     "sample_values": [
+      "TR024_11",
+      "TR257_24",
+      "TR077_2",
+      "TR181_11",
+      "TR390_5",
+      "TR175_41",
+      "TR053_8",
+      "TR056_35",
+      "TR051_13",
+      "TR449_12"
+     ],
+     "text": {
+      "avg_len": 7.572703772517974,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 9,
+      "min_len": 7,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "TR000_2",
+       4
+      ],
+      [
+       "TR001_1",
+       4
+      ],
+      [
+       "TR001_2",
+       4
+      ],
+      [
+       "TR001_3",
+       4
+      ],
+      [
+       "TR001_4",
+       4
+      ],
+      [
+       "TR001_5",
+       4
+      ],
+      [
+       "TR001_6",
+       4
+      ],
+      [
+       "TR001_7",
+       4
+      ],
+      [
+       "TR001_8",
+       4
+      ],
+      [
+       "TR001_9",
+       4
+      ]
+     ],
+     "uniqueness": 0.4961628564504403,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "declared_type": "VARCHAR",
+     "distinct": 12379,
+     "family": "text",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "code",
+     "rows": 24758,
+     "sample_values": [
+      "TR365_13_14",
+      "TR007_11_13",
+      "TR017_5_22",
+      "TR401_1_2",
+      "TR463_4_5",
+      "TR124_15_37",
+      "TR285_12_13",
+      "TR239_4_12",
+      "TR324_1_5",
+      "TR213_23_43"
+     ],
+     "text": {
+      "avg_len": 10.145407545035948,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 13,
+      "min_len": 9,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "TR000_1_2",
+       2
+      ],
+      [
+       "TR000_2_3",
+       2
+      ],
+      [
+       "TR000_2_4",
+       2
+      ],
+      [
+       "TR000_2_5",
+       2
+      ],
+      [
+       "TR001_10_11",
+       2
+      ],
+      [
+       "TR001_1_12",
+       2
+      ],
+      [
+       "TR001_1_2",
+       2
+      ],
+      [
+       "TR001_1_7",
+       2
+      ],
+      [
+       "TR001_1_8",
+       2
+      ],
+      [
+       "TR001_2_14",
+       2
+      ]
+     ],
+     "uniqueness": 0.5,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 24758,
+   "sample_rows": [
+    {
+     "col_001": "TR018_11",
+     "col_002": "TR018_12",
+     "col_003": "TR018_11_12"
+    },
+    {
+     "col_001": "TR031_7",
+     "col_002": "TR031_8",
+     "col_003": "TR031_7_8"
+    },
+    {
+     "col_001": "TR313_3",
+     "col_002": "TR313_7",
+     "col_003": "TR313_3_7"
+    },
+    {
+     "col_001": "TR357_13",
+     "col_002": "TR357_17",
+     "col_003": "TR357_13_17"
+    },
+    {
+     "col_001": "TR399_15",
+     "col_002": "TR399_5",
+     "col_003": "TR399_5_15"
+    }
+   ]
+  },
+  "molecule": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 343,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "code",
+     "rows": 343,
+     "sample_values": [
+      "TR094",
+      "TR051",
+      "TR477",
+      "TR141",
+      "TR004",
+      "TR165",
+      "TR056",
+      "TR130",
+      "TR045",
+      "TR180"
+     ],
+     "text": {
+      "avg_len": 5.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "TR000",
+       1
+      ],
+      [
+       "TR001",
+       1
+      ],
+      [
+       "TR002",
+       1
+      ],
+      [
+       "TR004",
+       1
+      ],
+      [
+       "TR006",
+       1
+      ],
+      [
+       "TR007",
+       1
+      ],
+      [
+       "TR008",
+       1
+      ],
+      [
+       "TR009",
+       1
+      ],
+      [
+       "TR010",
+       1
+      ],
+      [
+       "TR011",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 2,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.5568513119533528,
+     "position": 1,
+     "role": "text",
+     "rows": 343,
+     "sample_values": [
+      "-",
+      "+"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "-",
+       191
+      ],
+      [
+       "+",
+       152
+      ]
+     ],
+     "uniqueness": 0.0058309037900874635,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 343,
+   "sample_rows": [
+    {
+     "col_001": "TR174",
+     "col_002": "-"
+    },
+    {
+     "col_001": "TR209",
+     "col_002": "+"
+    },
+    {
+     "col_001": "TR390",
+     "col_002": "+"
+    },
+    {
+     "col_001": "TR407",
+     "col_002": "+"
+    },
+    {
+     "col_001": "TR499",
+     "col_002": "+"
+    }
+   ]
+  }
+ }
+}

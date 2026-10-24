@@ -1,0 +1,191 @@
+{
+ "label": "names_4db",
+ "primary_keys": {
+  "tp": 20,
+  "predicted": 20,
+  "gold": 21,
+  "precision": 1.0,
+  "recall": 0.9524,
+  "f1": 0.9756
+ },
+ "joins": {
+  "direct": {
+   "tp": 14,
+   "predicted": 43,
+   "gold": 20,
+   "precision": 0.3256,
+   "recall": 0.7,
+   "f1": 0.4444
+  },
+  "stats": {
+   "tp": 18,
+   "predicted": 122,
+   "gold": 20,
+   "precision": 0.1475,
+   "recall": 0.9,
+   "f1": 0.2535
+  },
+  "llm": {
+   "tp": 18,
+   "predicted": 48,
+   "gold": 20,
+   "precision": 0.375,
+   "recall": 0.9,
+   "f1": 0.5294
+  }
+ },
+ "band_verdicts": {
+  "llm_accept|not_gold": 1,
+  "llm_accept|gold": 4,
+  "llm_reject|not_gold": 74
+ },
+ "per_db": {
+  "california_schools": {
+   "joins": {
+    "direct": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    },
+    "stats": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    },
+    "llm": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    }
+   },
+   "gold_fks": 2
+  },
+  "card_games": {
+   "joins": {
+    "direct": {
+     "tp": 4,
+     "predicted": 14,
+     "gold": 4,
+     "precision": 0.2857,
+     "recall": 1.0,
+     "f1": 0.4444
+    },
+    "stats": {
+     "tp": 4,
+     "predicted": 44,
+     "gold": 4,
+     "precision": 0.0909,
+     "recall": 1.0,
+     "f1": 0.1667
+    },
+    "llm": {
+     "tp": 4,
+     "predicted": 14,
+     "gold": 4,
+     "precision": 0.2857,
+     "recall": 1.0,
+     "f1": 0.4444
+    }
+   },
+   "gold_fks": 4
+  },
+  "codebase_community": {
+   "joins": {
+    "direct": {
+     "tp": 8,
+     "predicted": 21,
+     "gold": 13,
+     "precision": 0.381,
+     "recall": 0.6154,
+     "f1": 0.4706
+    },
+    "stats": {
+     "tp": 12,
+     "predicted": 70,
+     "gold": 13,
+     "precision": 0.1714,
+     "recall": 0.9231,
+     "f1": 0.2892
+    },
+    "llm": {
+     "tp": 12,
+     "predicted": 26,
+     "gold": 13,
+     "precision": 0.4615,
+     "recall": 0.9231,
+     "f1": 0.6154
+    }
+   },
+   "gold_fks": 13
+  },
+  "debit_card_specializing": {
+   "joins": {
+    "direct": {
+     "tp": 1,
+     "predicted": 7,
+     "gold": 1,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "f1": 0.25
+    },
+    "stats": {
+     "tp": 1,
+     "predicted": 7,
+     "gold": 1,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "f1": 0.25
+    },
+    "llm": {
+     "tp": 1,
+     "predicted": 7,
+     "gold": 1,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "f1": 0.25
+    }
+   },
+   "gold_fks": 1
+  }
+ },
+ "descriptions": {
+  "columns": 296,
+  "with_reference": 284,
+  "status": {
+   "resolved": 218,
+   "tentative": 4,
+   "unresolved": 74
+  },
+  "failed_table_columns": 74,
+  "mean_cosine_described": 0.7192,
+  "mean_token_f1_described": 0.2095,
+  "mean_cosine_other_column": 0.5883,
+  "own_reference_ranked_first": 0.5403,
+  "by_status": {
+   "resolved": {
+    "columns": 207,
+    "mean_cosine": 0.7216,
+    "mean_token_f1": 0.2122
+   },
+   "tentative": {
+    "columns": 4,
+    "mean_cosine": 0.5929,
+    "mean_token_f1": 0.0667
+   },
+   "unresolved": {
+    "columns": 73,
+    "mean_cosine": null,
+    "mean_token_f1": null
+   }
+  }
+ }
+}

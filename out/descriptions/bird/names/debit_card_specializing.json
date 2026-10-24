@@ -1,0 +1,183 @@
+{
+ "db_id": "debit_card_specializing",
+ "model": "glm-5-3",
+ "reasoning_effort": "medium",
+ "use_values": true,
+ "joins_run": "default",
+ "keys_run": "frozen",
+ "graph": "llm",
+ "edges": 7,
+ "tables": {
+  "customers": {
+   "table": {
+    "name": "customers",
+    "purpose": "One row per customer account (CustomerID is unique, 32,461 rows). The joins and sibling tables (gasstations, products, transactions_1k, yearmonth) indicate a fuel-retail / fleet-card business: customers are accounts that buy at gas stations, their individual purchases are in transactions_1k and their per-month aggregates in yearmonth, both keyed by CustomerID. Customers appear to be businesses rather than individuals, given the segment codes (SME/LAM/KAM). Each row records the account's billing currency and its market segment."
+   },
+   "columns": {
+    "Currency": {
+     "role": "code",
+     "name": "billing_currency",
+     "description": "ISO 4217 currency code of the customer's account/billing currency. Only two values, no nulls: 'CZK' (Czech koruna, 30,459 customers, ~93.8%) and 'EUR' (euro, 2,002 customers, ~6.2%). The EUR minority plausibly reflects customers billed in the eurozone (e.g. Slovakia), but the table itself gives no location evidence, so only the currency meaning is asserted.",
+     "status": "resolved"
+    },
+    "CustomerID": {
+     "role": "identifier",
+     "name": "customer_id",
+     "description": "Unique surrogate primary key identifying a customer account; one row per customer (distinct = row count, uniqueness 1.0). Integer values from 3 to 53,314 with gaps, consistent with an ID sequence after deletions. It is the join key for the rest of the database: transactions_1k.CustomerID (individual purchases) and yearmonth.CustomerID (monthly per-customer aggregates) both reference it many-to-one.",
+     "status": "resolved"
+    },
+    "Segment": {
+     "role": "code",
+     "name": "customer_segment",
+     "description": "Three-valued customer classification code, no nulls: 'SME' (26,763, ~82.5%), 'LAM' (3,658, ~11.3%), 'KAM' (2,040, ~6.3%). The most plausible reading is a B2B account tier by size/strategic importance: SME = small and medium enterprises, LAM = large accounts (large account management), KAM = key accounts (key account management); the heavily skewed distribution (mostly SME, few key accounts) fits a tiered customer base. An alternative reading that also fits the data is that the codes denote the sales coverage model, i.e. which kind of account manager (large account manager vs. key account manager vs. SME desk) owns the relationship, rather than the customer's size. There is no lookup table or label column to disambiguate the exact expansion, so the specific acronym meanings remain unverified.",
+     "status": "tentative"
+    }
+   },
+   "ok": true
+  },
+  "gasstations": {
+   "table": {
+    "name": "gasstations",
+    "purpose": "Dimension/master table with one row per gas station (5,716 stations). Each station is described by the retail chain it belongs to, its country (Czech Republic or Slovakia), and its market segment. It is referenced by transactions_1k.GasStationID, which records per-station sales transactions, so this table supplies the station attributes for those transactions."
+   },
+   "columns": {
+    "ChainID": {
+     "role": "foreign_key",
+     "name": "ChainID",
+     "description": "Identifier of the retail chain/brand that operates the gas station. 233 distinct chains with a heavily skewed distribution (chain 3: 1,462 stations; chain 2: 853; chain 33: 340; chain 1: 285), consistent with a few large chains and many small ones. No chain lookup table exists in this database, so the names behind the IDs are unknown. Note: the statistically accepted joins to transactions_1k.TransactionID and products.ProductID are spurious numeric coincidences (overlapping integer ranges), not real relationships.",
+     "status": "resolved"
+    },
+    "Country": {
+     "role": "category",
+     "name": "Country",
+     "description": "ISO 3166-1 alpha-3 code of the country where the gas station is located: 'CZE' = Czech Republic (4,836 stations, ~85%), 'SVK' = Slovakia (880 stations, ~15%).",
+     "status": "resolved"
+    },
+    "GasStationID": {
+     "role": "foreign_key",
+     "name": "GasStationID",
+     "description": "Surrogate primary key uniquely identifying one gas station (all 5,716 values distinct, no nulls, range 44–5772). Referenced by transactions_1k.GasStationID, linking each sales transaction to the station where it occurred.",
+     "status": "resolved"
+    },
+    "Segment": {
+     "role": "category",
+     "name": "Segment",
+     "description": "Market/positioning segment of the gas station, one of five categories: 'Premium' (1,428), 'Value for money' (597), 'Discount' (294), 'Noname' (1,005, presumably unbranded/independent stations), and 'Other' (2,392).",
+     "status": "resolved"
+    }
+   },
+   "ok": true
+  },
+  "products": {
+   "table": {
+    "name": "products",
+    "purpose": "Product/service catalog for a fleet fuel-card system (Czech-language data). Each row is one billable product or service item that can be charged to a fuel card: fuels and consumables (AdBlue), road-toll charges (Toll access-Austria, Toll DEU), fees (Servisní poplatek, Acquirer Simple Fee), card issuance (Vydání karty), groceries (Potraviny), vehicle parts (Katalyzátor), and generic categories (Ostatní zboží = other goods, Ostatní sl. = other services). The catalog is looked up from transactions_1k via ProductID. The 591 rows vs. max ID 630 means some IDs are unused (gaps in the numbering)."
+   },
+   "columns": {
+    "Description": {
+     "role": "free_text",
+     "name": "Description",
+     "description": "Human-readable name/label of the product or service, predominantly Czech with some English/German entries for tolls and fees. It is a label, not a key: 529 distinct values across 591 rows, so some names repeat (e.g. 'Ostatní zboží' = other goods, 'Servisní poplatek' = service fee, 'Potraviny' = foodstuffs, 'Vydání karty' = card issuance, 'Výúčt.p.nákl. stred.' ≈ settlement of fuel costs per cost center). No units or codes beyond the literal text.",
+     "status": "resolved"
+    },
+    "ProductID": {
+     "role": "identifier",
+     "name": "ProductID",
+     "description": "Primary key: unique numeric identifier of a product/service item in the catalog (values 1–630, 591 distinct, so some IDs are unused). It is the meaningful foreign-key target for transactions_1k.ProductID — each transaction line references the product purchased here. The additional statistical joins to transactions_1k.Amount and gasstations.ChainID are numeric coincidences (overlapping integer ranges), not semantic relationships.",
+     "status": "resolved"
+    }
+   },
+   "ok": true
+  },
+  "transactions_1k": {
+   "table": {
+    "name": "transactions_1k",
+    "purpose": "Point-of-sale fuel/shop purchases at gas stations (1,000-row sample of a larger transactions table, per the _1k suffix). Each row records who bought (CustomerID -> customers, plus the CardID used), where (GasStationID -> gasstations), what and how much (ProductID -> products, Amount), when (Date + Time), and the total charged (Price). The companion yearmonth table presumably aggregates dates by month for the full dataset."
+   },
+   "columns": {
+    "Amount": {
+     "role": "foreign_key",
+     "name": "Quantity purchased",
+     "description": "Quantity of the product bought, in the product's natural unit; for the dominant fuel products this is presumably volume in liters (integer, 0-264, median 19), though the unit is not directly evidenced. 91 rows (9.1%) have Amount = 0, likely non-fuel purchases or services with no measured quantity. The detected join to products.ProductID is spurious: Amount's 0-264 range merely overlaps ProductID's 2-352 values; a quantity does not reference a product.",
+     "status": "resolved"
+    },
+    "CardID": {
+     "role": "identifier",
+     "name": "Card identifier",
+     "description": "Identifier of the card used to pay for the transaction (numeric IDs roughly 26,000-776,000). 902 distinct values in 1,000 rows, reused up to 4 times, so it identifies a reusable card rather than a one-off authorization code; with 902 distinct cards vs 517 distinct customers, a customer can apparently use more than one card. No table joins to it, so the card type/issuer (loyalty, fleet, payment) is unconfirmed.",
+     "status": "resolved"
+    },
+    "CustomerID": {
+     "role": "foreign_key",
+     "name": "Customer identifier",
+     "description": "Foreign key to customers.CustomerID; the customer associated with the purchase (517 distinct customers in this sample).",
+     "status": "resolved"
+    },
+    "Date": {
+     "role": "date",
+     "name": "Transaction date",
+     "description": "Calendar date of the transaction, stored as ISO 'YYYY-MM-DD' text. This 1,000-row sample covers only four consecutive days, 2012-08-23 to 2012-08-26 (492 rows on Aug 24, 425 on Aug 25).",
+     "status": "resolved"
+    },
+    "GasStationID": {
+     "role": "foreign_key",
+     "name": "Gas station identifier",
+     "description": "Foreign key to gasstations.GasStationID; the gas station where the transaction took place (437 distinct stations appear in the sample).",
+     "status": "resolved"
+    },
+    "Price": {
+     "role": "numeric",
+     "name": "Total transaction price",
+     "description": "Total monetary amount charged for the transaction, not a unit price: two-decimal values from 1.76 to 5,762.49, and Price/Amount yields an approximately constant per-unit price per product (e.g., 3.64/4 = 0.91; 1,445.97/63 = 22.95; 524.60/24 = 21.86). The currency cannot be determined from the data.",
+     "status": "resolved"
+    },
+    "ProductID": {
+     "role": "foreign_key",
+     "name": "Product identifier",
+     "description": "Foreign key to products.ProductID; the product purchased. 28 distinct products, with IDs 2 and 5 accounting for ~76% of rows, consistent with a couple of dominant fuel grades. No key->label pairs from the products table were provided, so which product each ID denotes is unknown.",
+     "status": "resolved"
+    },
+    "Time": {
+     "role": "numeric",
+     "name": "Transaction time of day",
+     "description": "Time of day of the transaction, stored as 'HH:MM:SS' text; seconds are always 00, so the effective resolution is one minute.",
+     "status": "resolved"
+    },
+    "TransactionID": {
+     "role": "identifier",
+     "name": "Transaction identifier (surrogate key)",
+     "description": "Surrogate primary key for the transaction; unique sequential integers 1-1000, one per row. The detected 'referenced_by' join from gasstations.ChainID is spurious: ChainID is a small station-chain code whose values merely fall inside the 1-1000 range, and a chain code cannot semantically reference individual transactions.",
+     "status": "resolved"
+    }
+   },
+   "ok": true
+  },
+  "yearmonth": {
+   "table": {
+    "name": "yearmonth",
+    "purpose": "Monthly per-customer consumption summary: one row per customer per year-month, aggregating that customer's activity (presumably from the gas-station transaction data) into a single Consumption figure. The logical primary key is the pair (CustomerID, Date)."
+   },
+   "columns": {
+    "Consumption": {
+     "role": "numeric",
+     "name": "Monthly consumption total per customer",
+     "description": "Aggregated consumption figure for one customer in one year-month. Strongly right-skewed (median ~1,766, mean ~8,911, range -582,092.86 to 2,052,187.11); the negative values indicate refunds, credits or corrections rather than physical consumption. The unit cannot be determined from the available evidence: the magnitudes fit equally well a fuel volume (e.g. litres) or a monetary amount (e.g. euros spent at the gas stations), so the unit remains unresolved. It is also not directly verifiable whether the value is a plain monthly sum or some normalized/averaged figure, though a monthly total is the natural reading of the values and column name.",
+     "status": "tentative"
+    },
+    "CustomerID": {
+     "role": "foreign_key",
+     "name": "Customer ID",
+     "description": "Foreign key to customers.CustomerID (many-to-one) identifying the customer the row belongs to. 30,566 distinct customers (IDs 5-52,353), each appearing in up to ~21 rows (one per month). Together with Date it forms the row's identity: one consumption value per customer per month.",
+     "status": "resolved"
+    },
+    "Date": {
+     "role": "date",
+     "name": "Year-month (YYYYMM)",
+     "description": "Year-month period code in YYYYMM format stored as text (e.g. 201305 = May 2013); despite the column name there is no day component. 21 distinct values spanning 201112 (Dec 2011) to 201311 (Nov 2013), each month holding ~25,000-25,500 rows, i.e. most customers have one row per month. Second component of the customer+month identity of each row.",
+     "status": "resolved"
+    }
+   },
+   "ok": true
+  }
+ }
+}
