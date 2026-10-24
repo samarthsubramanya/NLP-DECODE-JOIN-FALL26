@@ -68,6 +68,9 @@ DEFAULTS = {
     "api_key_env": "VOYAGER_API_KEY",
     "temperature": 0,
     "reasoning_effort": "medium",   # thinking comes out of max_tokens, so keep that large
+    # a reply with no content means the thinking used all of max_tokens (seen on glm-5-3, ~1% of
+    # calls, 11-16 min each); it is asked once more with this effort, and the effort used is recorded
+    "fallback_effort": "none",
     "max_tokens": 32000,
     "timeout_s": 1800,              # the gateway queues up to 5 min and runs up to 60
     "workers": 4,                   # the gateway docs suggest 4-8 per model
@@ -173,10 +176,11 @@ VERDICT_SCHEMA = {"name": "join_verdict", "strict": True, "schema": {
 
 def judge(llm, rec, profile, joins, cfg):
     tag = f"{rec['source']['table']}.{rec['source']['column']}->{rec['target']['table']}.{rec['target']['column']}"
-    reply = llm.complete("adjudicate", tag, ADJUDICATE,
-                         json.dumps(adjudication_payload(rec, profile, joins, cfg), default=str), VERDICT_SCHEMA) or {}
+    reply, effort = llm.complete("adjudicate", tag, ADJUDICATE,
+                                 json.dumps(adjudication_payload(rec, profile, joins, cfg), default=str), VERDICT_SCHEMA)
+    reply = reply or {}
     verdict = reply.get("decision") if reply.get("decision") in VERDICTS else "abstain"
-    return {"decision": verdict, "reason": reply.get("reason", "unparsable reply")}
+    return {"decision": verdict, "reason": reply.get("reason", "unparsable reply"), "reasoning_effort": effort}
 
 
 def adjudicate(llm, profile, joins, cfg):
@@ -252,18 +256,21 @@ def description_schema(columns):
 def describe_table(llm, profile, keys, links, table, cfg, use_values):
     cols = list(profile["tables"][table]["columns"])
     payload = description_payload(profile, keys, links, table, cfg, use_values)
-    reply = llm.complete("describe", table, DESCRIBE, json.dumps(payload, default=str), description_schema(cols)) or {}
+    reply, effort = llm.complete("describe", table, DESCRIBE, json.dumps(payload, default=str), description_schema(cols))
+    reply = reply or {}
     got = reply.get("columns") or {}
     columns = {}
     for name in cols:
         c = got.get(name) or {}
         status = c.get("status") if c.get("status") in STATUSES else "unresolved"
+        if not (c.get("description") or "").strip():   # a status without a description says nothing
+            status = "unresolved"
         keep = status != "unresolved"
         columns[name] = {"role": c.get("role", ""), "name": c.get("name", "") if keep else "",
                          "description": c.get("description", "") if keep else "", "status": status}
     t = reply.get("table") or {}
     return {"table": {"name": t.get("name", ""), "purpose": t.get("purpose", "")}, "columns": columns,
-            "ok": bool(reply)}
+            "ok": bool(reply), "reasoning_effort": effort}
 
 
 def describe(llm, profile, keys, joins, cfg, use_values):
@@ -276,7 +283,7 @@ def describe(llm, profile, keys, joins, cfg, use_values):
 
 # ------------------------------------------------------------------ LLM
 class Voyager:
-    """OpenAI-compatible chat call with a disk cache, retries and a call log."""
+    """OpenAI-compatible chat call with a disk cache, retries and a call log. complete() -> (parsed, effort used)."""
 
     def __init__(self, cfg, log_path):
         self.cfg, self.log_path = cfg, log_path
@@ -290,19 +297,26 @@ class Voyager:
                 "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
         h = hashlib.sha256(json.dumps(body, sort_keys=True).encode()).hexdigest()
         cached, start, usage = self.cache_dir / f"{h}.json", time.perf_counter(), None
+        effort = body["reasoning_effort"]
         if cached.exists():
-            text, source = json.loads(cached.read_text())["text"], "cache"
+            hit = json.loads(cached.read_text())
+            text, source, effort = hit["text"], "cache", hit.get("reasoning_effort", effort)
         else:
             text, usage = self._post(body)
             source = "api"
-            if text:
+            if not text and self.cfg["fallback_effort"] != effort:
+                effort = self.cfg["fallback_effort"]
+                text, usage = self._post({**body, "reasoning_effort": effort})
+                source = "api_fallback"
+            if text:   # stored under the first request's hash, so a rerun replays the same answer
                 self.cache_dir.mkdir(parents=True, exist_ok=True)
-                cached.write_text(json.dumps({"model": self.cfg["model"], "text": text}))
+                cached.write_text(json.dumps({"model": self.cfg["model"], "reasoning_effort": effort, "text": text}))
         parsed = parse_json(text)
         with self.log_path.open("a") as f:   # one short line per call; appends from threads don't interleave
-            f.write(json.dumps({"step": step, "item": tag, "key": h, "source": source, "usage": usage,
-                                "seconds": round(time.perf_counter() - start, 1), "ok": parsed is not None}) + "\n")
-        return parsed
+            f.write(json.dumps({"step": step, "item": tag, "key": h, "source": source, "reasoning_effort": effort,
+                                "usage": usage, "seconds": round(time.perf_counter() - start, 1),
+                                "ok": parsed is not None}) + "\n")
+        return parsed, effort
 
     def _post(self, body):
         self.key = self.key or api_key_from(self.cfg["api_key_env"])
