@@ -1,16 +1,31 @@
 """
-Stage 3: a readable name and a one-line description for every column, from the Stage 1
-profile and the Stage 2a keys, by a frozen LLM on ASU Research Computing's Voyager gateway.
+Stage 3: the LLM step. First it judges the ambiguous Stage 2b joins, then it writes a readable
+name and a one-line description for every column, from the final join graph. A frozen LLM on
+ASU Research Computing's Voyager gateway; nothing is trained.
 
-One call per table. The model sees, per column: its name, declared and value-inferred
-type, null rate, distinct count, top and sample values, numeric/date ranges, whether
-Stage 2a picked it as the primary key, and value overlap with other tables' keys
-(Stage 1 containment). Plus a few sample rows and the other table names. It answers in
-a JSON schema built from the table's exact column names, so no column can be dropped,
-and marks each one resolved / tentative / unresolved instead of guessing.
+Step 1, adjudication (one call per band record). Stage 2b scores every candidate join and
+labels the weakest accepted ones, score in [accept, accept + delta), as "band". Each band
+record goes to the LLM with both columns' profiles, sample rows of both tables, the other
+columns of each table, the Stage 2a score of the target and the Stage 2b score with its
+parts, weights, penalties and fan-out. The LLM may accept, reject or abstain on that one
+record; it cannot propose a join. An unreadable reply counts as abstain. Verdicts are written
+on the records as llm_accept / llm_reject / llm_abstain with the model's reason, and
+    graphs.llm = accepted + llm_accept
+is built with Stage 2b's own greedy assembly. Rejected and abstained records stay in the file
+with their reason but are not in graphs.llm, so they are never exported.
 
-Same information boundary as Stages 1-2a: no declared keys, no *_metadata, no gold SQL,
-no shipped descriptions (BIRD's database_description/ is an evaluation label).
+Step 2, descriptions (one call per table). The model sees, per column: its name, declared
+and value-inferred type, null rate, distinct count, top and sample values, numeric/date
+ranges, whether Stage 2a picked it as the primary key, and its joins in graphs.llm. When a
+column references a small lookup table (<= lookup_max_rows rows) through such a join, a few
+key -> label pairs from that table's sample rows are added. Plus sample rows and the other
+table names. It answers in a JSON schema built from the table's exact column names, so no
+column can be dropped, and marks each one resolved / tentative / unresolved instead of
+guessing. Descriptions never change the graph.
+
+Same information boundary as Stages 1-2b: only out/profiles, out/keys and out/joins. No
+declared keys, no *_metadata, no gold SQL, no shipped descriptions (BIRD's
+database_description/ is an evaluation label).
 
 Model: glm-5-3 by default, the largest general model on the gateway; any chat model id
 from GET /v1/models works with --model (e.g. qwen36-27b, gemma4-31b-it). Temperature 0,
@@ -20,12 +35,16 @@ Key: VOYAGER_API_KEY in the environment or in the repo's .env (Voyager portal > 
 
 Usage:
     python src/describe_columns.py --dataset bird
-    python src/describe_columns.py --dataset spider --databases concert_singer --run try
-    python src/describe_columns.py --dataset bird --names-only --run names_only   # RQ2 ablation
+    python src/describe_columns.py --dataset bird --databases financial --run try
+    python src/describe_columns.py --dataset bird --names-only --run names_only        # RQ2 ablation
+    python src/describe_columns.py --dataset bird --joins-run no_names --run no_names  # obfuscated simulation
 
-Input:  out/profiles/<dataset>/<db_id>.json, out/keys/<dataset>/<keys-run>/<db_id>.json
-Output: out/descriptions/<dataset>/<run>/<db_id>.json, llm_calls.jsonl
-        out/llm_cache/<hash>.json
+Input:  out/profiles/<dataset>/<db_id>.json
+        out/joins/<dataset>/<joins-run>/<db_id>.json   (src/foreign_keys.py)
+        out/keys/<dataset>/<keys_run of that joins file>/<db_id>.json
+Output: out/descriptions/<dataset>/<run>/<db_id>.json         descriptions
+        out/descriptions/<dataset>/<run>/joins/<db_id>.json   the Stage 2b file + verdicts + graphs.llm
+        out/descriptions/<dataset>/<run>/llm_calls.jsonl, out/llm_cache/<hash>.json
 """
 import argparse
 import hashlib
@@ -37,6 +56,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
+from foreign_keys import assemble
 from primary_keys import ROOT, load_profile, work_list
 
 sys.path.insert(0, str(ROOT))
@@ -52,25 +72,44 @@ DEFAULTS = {
     "timeout_s": 1800,              # the gateway queues up to 5 min and runs up to 60
     "workers": 4,                   # the gateway docs suggest 4-8 per model
     "retry_waits": [5, 10, 20, 40],
-    "keys_run": "frozen",
-    "link_min_containment": 0.95,   # same cut as Stage 2a R1
+    "joins_run": "default",
     "top_values": 5,
     "sample_values": 5,
     "sample_rows": 3,
     "max_value_len": 80,
+    "lookup_max_rows": 100,         # a join target this small is treated as a code -> label lookup
+    "lookup_label_roles": ["text", "code", "free_text"],
 }
 
+VERDICTS = ("accept", "reject", "abstain")
 STATUSES = ("resolved", "tentative", "unresolved")
 ROLES = ("identifier", "foreign_key", "date", "numeric", "category", "code", "free_text", "boolean")
 
-SYSTEM = """You document one table of a database that has no documentation.
+ADJUDICATE = """You review one candidate join between two columns of a database you have never seen.
+Statistics already scored it just above the acceptance cutoff, so the call is uncertain.
+
+Decide whether the source column really references the target column, i.e. whether each
+source value names the same real-world entity as the matching target value. You get both
+columns' profiles, sample rows of both tables, the other columns of each table, the target's
+primary-key score and the join score with its parts.
+
+Overlapping values alone are not enough: small integers, years and codes often overlap by
+chance. Matching names alone are not enough either. You may only judge this candidate; do
+not suggest other joins.
+
+accept   the evidence shows a real reference
+reject   the evidence shows the overlap is coincidental or the columns mean different things
+abstain  the evidence is too thin to tell
+
+Answer with JSON only: {"decision": "accept" | "reject" | "abstain", "reason": "<one sentence>"}"""
+
+DESCRIBE = """You document one table of a database that has no documentation.
 For each column you get what the data shows: its name, declared and inferred type, null rate,
 distinct values, top and sample values, value ranges, whether it was detected as the table's
-primary key, and other tables' key columns that contain its values ("values_found_in", a
-possible foreign key) or whose values it contains ("referenced_by"). These overlaps come from
-values only: small integers often overlap by chance, so trust them only when the rest of the
-evidence agrees. You also get sample rows
-and the names of the other tables in the database. Names may be abbreviated, coded or opaque.
+primary key, and its accepted joins to other tables ("references" or "referenced_by"). When a
+column references a small lookup table, a few of that table's key -> label pairs are included.
+You also get sample rows and the names of the other tables in the database. Names may be
+abbreviated, coded or opaque.
 
 Infer what the table and each column mean. Read the values, not just the name: units, code
 meanings, what a row represents. Do not guess. If the evidence does not support a meaning,
@@ -88,43 +127,115 @@ def clip(v, n):
     return v[:n] + "…" if isinstance(v, str) and len(v) > n else v
 
 
-def links(profile, keys, cfg):
-    """{(table, column): {"values_found_in": [...], "referenced_by": [...]}} toward predicted keys."""
-    pks = {(t, k["primary_key"]) for t, k in keys["tables"].items() if k["primary_key"]}
+def rows_of(table_profile, cfg, use_values=True):
+    n = cfg["max_value_len"]
+    return [{k: clip(v, n) for k, v in r.items()} for r in table_profile["sample_rows"][:cfg["sample_rows"]]] \
+        if use_values else []
+
+
+def column_evidence(p, cfg, use_values=True):
+    n = cfg["max_value_len"]
+    c = {"declared_type": p["declared_type"], "inferred_type": p["family"], "role_guess": p["role"],
+         "null_rate": round(p["null_rate"], 3), "distinct": p["distinct"], "uniqueness": round(p["uniqueness"], 3)}
+    if use_values:
+        c["top_values"] = [[clip(v, n), k] for v, k in p["top_values"][:cfg["top_values"]]]
+        c["sample_values"] = [clip(v, n) for v in p["sample_values"][:cfg["sample_values"]]]
+        if p.get("numeric"):
+            c["numeric"] = {k: round(v, 3) if isinstance(v, float) else v for k, v in p["numeric"].items()
+                            if k in ("min", "p25", "p50", "p75", "max", "mean")}
+        if p.get("date_range"):
+            c["date_range"] = p["date_range"]
+    return c
+
+
+# ------------------------------------------------------------------ step 1: adjudicate band joins
+def adjudication_payload(rec, profile, joins, cfg):
+    side = {}
+    for role in ("source", "target"):
+        t, c = rec[role]["table"], rec[role]["column"]
+        tp = profile["tables"][t]
+        side[role] = {"table": t, "column": c, "table_rows": tp["rows"],
+                      "profile": column_evidence(tp["columns"][c], cfg),
+                      "other_columns": [x for x in tp["columns"] if x != c], "sample_rows": rows_of(tp, cfg)}
+    return {**side,
+            "target_is_primary_key": rec["target_is_pk"], "target_pk_score": rec["target_pk_score"],
+            "containment": round(rec["containment"], 3), "coverage": round(rec["coverage"], 3),
+            "cardinality": rec["cardinality"], "join_score": round(rec["score"], 1),
+            "join_score_parts": rec["parts"], "weights": joins["weights"], "penalties": rec["penalties"],
+            "fan_out": rec["fan_out"], "acceptance_cutoff": joins["config"]["accept"],
+            "band": [joins["config"]["accept"], joins["config"]["accept"] + joins["config"]["delta"]]}
+
+
+VERDICT_SCHEMA = {"name": "join_verdict", "strict": True, "schema": {
+    "type": "object", "additionalProperties": False, "required": ["decision", "reason"],
+    "properties": {"decision": {"type": "string", "enum": list(VERDICTS)}, "reason": {"type": "string"}}}}
+
+
+def judge(llm, rec, profile, joins, cfg):
+    tag = f"{rec['source']['table']}.{rec['source']['column']}->{rec['target']['table']}.{rec['target']['column']}"
+    reply = llm.complete("adjudicate", tag, ADJUDICATE,
+                         json.dumps(adjudication_payload(rec, profile, joins, cfg), default=str), VERDICT_SCHEMA) or {}
+    verdict = reply.get("decision") if reply.get("decision") in VERDICTS else "abstain"
+    return {"decision": verdict, "reason": reply.get("reason", "unparsable reply")}
+
+
+def adjudicate(llm, profile, joins, cfg):
+    """Verdicts on the band records (in place), then graphs.llm. Returns the verdict counts."""
+    # records judged by an earlier Stage 3 run are judged again, so a model or prompt change takes effect
+    band = [r for r in joins["candidates"] if r["decision"] == "band" or r["decision"].startswith("llm_")]
+    with ThreadPoolExecutor(cfg["workers"]) as pool:
+        verdicts = list(pool.map(lambda r: judge(llm, r, profile, joins, cfg), band))
+    for rec, v in zip(band, verdicts):
+        rec["llm"] = {**v, "model": cfg["model"]}
+        rec["decision"] = f"llm_{v['decision']}"
+    joins["graphs"]["llm"] = assemble(joins["candidates"], {"accepted", "llm_accept"}, joins["config"])
+    return {v: sum(r["decision"] == f"llm_{v}" for r in band) for v in VERDICTS}
+
+
+# ------------------------------------------------------------------ step 2: describe columns
+def lookup_pairs(profile, target, cfg):
+    """Up to sample_rows (key, label) pairs when the join target is a small table with a label column."""
+    tp = profile["tables"][target["table"]]
+    if tp["rows"] > cfg["lookup_max_rows"]:
+        return None
+    labels = sorted((c for c, p in tp["columns"].items()
+                     if c != target["column"] and p["role"] in cfg["lookup_label_roles"]),
+                    key=lambda c: cfg["lookup_label_roles"].index(tp["columns"][c]["role"]))
+    if not labels:
+        return None
+    n = cfg["max_value_len"]
+    return {"label_column": labels[0], "pairs": [[r[target["column"]], clip(r[labels[0]], n)] for r in tp["sample_rows"]
+                                                 if r.get(target["column"]) is not None]}
+
+
+def column_joins(profile, edges, cfg, use_values=True):
+    """{(table, column): [join, ...]} from the final graph, both directions. Lookup labels are values."""
     out = {}
-    for pair in profile.get("containment", []):
-        src, tgt = tuple(pair["source"]), tuple(pair["target"])
-        if pair["containment"] < cfg["link_min_containment"] or tgt not in pks or src[0] == tgt[0]:
-            continue
-        out.setdefault(src, {}).setdefault("values_found_in", []).append(".".join(tgt))
-        out.setdefault(tgt, {}).setdefault("referenced_by", []).append(".".join(src))
+    for e in edges:
+        via = "llm" if e["decision"] == "llm_accept" else "statistics"
+        s, t = e["source"], e["target"]
+        ref = {"to": f"{t['table']}.{t['column']}", "direction": "references", "cardinality": e["cardinality"],
+               "accepted_by": via}
+        pairs = use_values and lookup_pairs(profile, t, cfg)
+        if pairs:
+            ref["lookup"] = pairs
+        out.setdefault((s["table"], s["column"]), []).append(ref)
+        out.setdefault((t["table"], t["column"]), []).append(
+            {"to": f"{s['table']}.{s['column']}", "direction": "referenced_by", "cardinality": e["cardinality"],
+             "accepted_by": via})
     return out
 
 
-def payload(profile, keys, table, cfg, use_values):
+def description_payload(profile, keys, links, table, cfg, use_values):
     t, pk = profile["tables"][table], keys["tables"][table]["primary_key"]
-    lk, n = links(profile, keys, cfg), cfg["max_value_len"]
-    columns = {}
-    for name, p in t["columns"].items():
-        c = {"declared_type": p["declared_type"], "inferred_type": p["family"], "role_guess": p["role"],
-             "null_rate": round(p["null_rate"], 3), "distinct": p["distinct"],
-             "uniqueness": round(p["uniqueness"], 3), "is_primary_key": name == pk,
-             **lk.get((table, name), {})}
-        if use_values:
-            c["top_values"] = [[clip(v, n), k] for v, k in p["top_values"][:cfg["top_values"]]]
-            c["sample_values"] = [clip(v, n) for v in p["sample_values"][:cfg["sample_values"]]]
-            if p.get("numeric"):
-                c["numeric"] = {k: round(v, 3) if isinstance(v, float) else v for k, v in p["numeric"].items()
-                                if k in ("min", "p25", "p50", "p75", "max", "mean")}
-            if p.get("date_range"):
-                c["date_range"] = p["date_range"]
-        columns[name] = c
-    rows = [{k: clip(v, n) for k, v in r.items()} for r in t["sample_rows"][:cfg["sample_rows"]]] if use_values else []
+    columns = {name: {**column_evidence(p, cfg, use_values), "is_primary_key": name == pk,
+                      "joins": links.get((table, name), [])}
+               for name, p in t["columns"].items()}
     return {"table": table, "rows": t["rows"], "other_tables": [o for o in profile["tables"] if o != table],
-            "columns": columns, "sample_rows": rows}
+            "columns": columns, "sample_rows": rows_of(t, cfg, use_values)}
 
 
-def schema(columns):
+def description_schema(columns):
     col = {"type": "object", "additionalProperties": False,
            "required": ["role", "name", "description", "status"],
            "properties": {"role": {"type": "string", "enum": list(ROLES)}, "name": {"type": "string"},
@@ -138,6 +249,32 @@ def schema(columns):
                         "properties": {c: col for c in columns}}}}}
 
 
+def describe_table(llm, profile, keys, links, table, cfg, use_values):
+    cols = list(profile["tables"][table]["columns"])
+    payload = description_payload(profile, keys, links, table, cfg, use_values)
+    reply = llm.complete("describe", table, DESCRIBE, json.dumps(payload, default=str), description_schema(cols)) or {}
+    got = reply.get("columns") or {}
+    columns = {}
+    for name in cols:
+        c = got.get(name) or {}
+        status = c.get("status") if c.get("status") in STATUSES else "unresolved"
+        keep = status != "unresolved"
+        columns[name] = {"role": c.get("role", ""), "name": c.get("name", "") if keep else "",
+                         "description": c.get("description", "") if keep else "", "status": status}
+    t = reply.get("table") or {}
+    return {"table": {"name": t.get("name", ""), "purpose": t.get("purpose", "")}, "columns": columns,
+            "ok": bool(reply)}
+
+
+def describe(llm, profile, keys, joins, cfg, use_values):
+    links = column_joins(profile, joins["graphs"]["llm"], cfg, use_values)
+    with ThreadPoolExecutor(cfg["workers"]) as pool:
+        futures = {t: pool.submit(describe_table, llm, profile, keys, links, t, cfg, use_values)
+                   for t in profile["tables"]}
+        return {t: f.result() for t, f in futures.items()}
+
+
+# ------------------------------------------------------------------ LLM
 class Voyager:
     """OpenAI-compatible chat call with a disk cache, retries and a call log."""
 
@@ -146,11 +283,11 @@ class Voyager:
         self.cache_dir = ROOT / "out" / "llm_cache"
         self.key = None
 
-    def complete(self, table, user, json_schema):
+    def complete(self, step, tag, system, user, json_schema):
         body = {"model": self.cfg["model"], "temperature": self.cfg["temperature"],
                 "max_tokens": self.cfg["max_tokens"], "reasoning_effort": self.cfg["reasoning_effort"],
                 "response_format": {"type": "json_schema", "json_schema": json_schema},
-                "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}]}
+                "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
         h = hashlib.sha256(json.dumps(body, sort_keys=True).encode()).hexdigest()
         cached, start, usage = self.cache_dir / f"{h}.json", time.perf_counter(), None
         if cached.exists():
@@ -163,7 +300,7 @@ class Voyager:
                 cached.write_text(json.dumps({"model": self.cfg["model"], "text": text}))
         parsed = parse_json(text)
         with self.log_path.open("a") as f:   # one short line per call; appends from threads don't interleave
-            f.write(json.dumps({"table": table, "key": h, "source": source, "usage": usage,
+            f.write(json.dumps({"step": step, "item": tag, "key": h, "source": source, "usage": usage,
                                 "seconds": round(time.perf_counter() - start, 1), "ok": parsed is not None}) + "\n")
         return parsed
 
@@ -189,61 +326,52 @@ class Voyager:
                 time.sleep(waits.pop(0))
 
 
-def describe_table(llm, profile, keys, table, cfg, use_values):
-    cols = list(profile["tables"][table]["columns"])
-    reply = llm.complete(table, json.dumps(payload(profile, keys, table, cfg, use_values), default=str),
-                         schema(cols)) or {}
-    got = reply.get("columns") or {}
-    columns = {}
-    for name in cols:
-        c = got.get(name) or {}
-        status = c.get("status") if c.get("status") in STATUSES else "unresolved"
-        keep = status != "unresolved"
-        columns[name] = {"role": c.get("role", ""), "name": c.get("name", "") if keep else "",
-                         "description": c.get("description", "") if keep else "", "status": status}
-    t = reply.get("table") or {}
-    return {"table": {"name": t.get("name", ""), "purpose": t.get("purpose", "")}, "columns": columns,
-            "ok": bool(reply)}
-
-
-def describe_database(llm, profile, keys, cfg, use_values):
-    with ThreadPoolExecutor(cfg["workers"]) as pool:
-        futures = {t: pool.submit(describe_table, llm, profile, keys, t, cfg, use_values) for t in profile["tables"]}
-        tables = {t: f.result() for t, f in futures.items()}
-    return {"db_id": profile["db_id"], "model": cfg["model"], "reasoning_effort": cfg["reasoning_effort"],
-            "use_values": use_values, "keys_run": cfg["keys_run"], "tables": tables}
-
-
+# ------------------------------------------------------------------ command line
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dataset", required=True)
     ap.add_argument("--databases", nargs="*", help="only these db_ids")
     ap.add_argument("--run", default="default", help="output sub-folder, name it after what you changed")
-    ap.add_argument("--keys-run", default=DEFAULTS["keys_run"], help="Stage 2a run to read primary keys from")
+    ap.add_argument("--joins-run", default=DEFAULTS["joins_run"],
+                    help="Stage 2b run to read; its keys_run says which Stage 2a keys are used")
     ap.add_argument("--model", default=DEFAULTS["model"])
     ap.add_argument("--reasoning-effort", default=DEFAULTS["reasoning_effort"],
                     choices=["none", "low", "medium", "high"])
     ap.add_argument("--workers", type=int, default=DEFAULTS["workers"])
-    ap.add_argument("--names-only", action="store_true", help="hide values and sample rows (RQ2 ablation)")
+    ap.add_argument("--names-only", action="store_true",
+                    help="descriptions without values, sample rows or lookup labels (RQ2 ablation); "
+                         "adjudication is unchanged")
     args = ap.parse_args()
     cfg = {**DEFAULTS, "model": args.model, "reasoning_effort": args.reasoning_effort,
-           "workers": args.workers, "keys_run": args.keys_run}
+           "workers": args.workers, "joins_run": args.joins_run}
 
     out_dir = ROOT / "out" / "descriptions" / args.dataset / args.run
-    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "joins").mkdir(parents=True, exist_ok=True)
     llm = Voyager(cfg, out_dir / "llm_calls.jsonl")
-    keys_dir = ROOT / "out" / "keys" / args.dataset / args.keys_run
+    joins_dir = ROOT / "out" / "joins" / args.dataset / args.joins_run
     for db in work_list(args):
-        keys_path = keys_dir / f"{db['db_id']}.json"
+        joins_path = joins_dir / f"{db['db_id']}.json"
+        if not joins_path.exists():
+            sys.exit(f"{joins_path.relative_to(ROOT)} is missing; run src/foreign_keys.py --run {args.joins_run} first")
+        joins = json.loads(joins_path.read_text())
+        keys_path = ROOT / "out" / "keys" / args.dataset / joins["keys_run"] / f"{db['db_id']}.json"
         if not keys_path.exists():
-            sys.exit(f"{keys_path.relative_to(ROOT)} is missing; run src/primary_keys.py --run {args.keys_run} first")
-        out = describe_database(llm, load_profile(args.dataset, db), json.loads(keys_path.read_text()),
-                                cfg, not args.names_only)
-        counts = {s: sum(c["status"] == s for t in out["tables"].values() for c in t["columns"].values())
-                  for s in STATUSES}
-        failed = [t for t, v in out["tables"].items() if not v["ok"]]
-        print(f"  describe {db['db_id']}: {counts}" + (f"  no reply for {failed}" if failed else ""))
+            sys.exit(f"{keys_path.relative_to(ROOT)} is missing; run src/primary_keys.py --run {joins['keys_run']} first")
+        profile, keys = load_profile(args.dataset, db), json.loads(keys_path.read_text())
+
+        verdicts = adjudicate(llm, profile, joins, cfg)
+        (out_dir / "joins" / f"{db['db_id']}.json").write_text(json.dumps(joins, indent=1, sort_keys=True))
+        tables = describe(llm, profile, keys, joins, cfg, not args.names_only)
+        out = {"db_id": db["db_id"], "model": cfg["model"], "reasoning_effort": cfg["reasoning_effort"],
+               "use_values": not args.names_only, "joins_run": args.joins_run, "keys_run": joins["keys_run"],
+               "graph": "llm", "edges": len(joins["graphs"]["llm"]), "tables": tables}
         (out_dir / f"{db['db_id']}.json").write_text(json.dumps(out, indent=1, ensure_ascii=False))
+
+        counts = {s: sum(c["status"] == s for t in tables.values() for c in t["columns"].values()) for s in STATUSES}
+        failed = [t for t, v in tables.items() if not v["ok"]]
+        print(f"  {db['db_id']}: band {sum(verdicts.values())} -> {verdicts}, "
+              f"{len(joins['graphs']['direct'])} direct + LLM = {len(joins['graphs']['llm'])} edges; "
+              f"describe {counts}" + (f"  no reply for {failed}" if failed else ""))
 
 
 if __name__ == "__main__":
