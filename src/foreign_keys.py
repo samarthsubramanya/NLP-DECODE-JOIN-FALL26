@@ -1,0 +1,355 @@
+"""
+Stage 2b: foreign keys and the join graph from the Stage 1 profiles and the Stage 2a keys.
+No LLM, no declared keys, no gold SQL, no database access: only out/profiles and out/keys.
+
+DBAutoDoc foreign-key scoring on whole columns. The tags say where each rule comes from:
+[Paper] DBAutoDoc, [Report] our proposal, [Team] the formulas written down for the poc config,
+[Ours] an interpretation or an addition.
+
+Candidates are the Stage 1 containment pairs (exact over the full columns, so no 500-value
+sample): source a -> target b, with I(a->b) = |Va ∩ Vb| / |Va|.
+
+Gates and prefilters, in this order; the first one that fires rejects the pair ("rejected_gate"):
+    same table       excluded unless --self-refs                                      [Ours, answered]
+    G8               a table's chosen primary key is never a source                   [Paper, Report]
+    G1               the target must have survived 2a's hard rejections; it need not be
+                     the chosen key, so k can be 0                                    [Paper, answered]
+    G3               a column named rowguid is never a target (only when names are used)   [Paper]
+    prefilters       source role boolean / free text / float; fewer than 2 distinct values;
+                     average length over 64 characters                                [Paper tier 2, Team]
+    G6               containment >= 0.75, exact                                       [Paper, Report]
+
+Score of a candidate that passes (points out of 100), then the penalties:
+    s_FK = 40·v + 20·s + 15·r + 15·k + 10·nu
+      v  containment I(a->b)
+      s  name similarity: best of source name vs b, "{b_table}_{b}", "{b_table}_id" (lower-case,
+         letters and digits only): 1.0 equal, 0.8 one contains the other, else 1 - Levenshtein/longest
+      r  min(rho, 2) / 2, rho = rows(source table) / distinct(source column)
+      k  1 if b is its table's chosen primary key (2a), else 0
+      nu null share of the source: below 30% 1.0, below 70% 0.5, else 0
+    no names (obfuscated):  the 20 name points go to overlap, 60·v + 15·r + 15·k + 10·nu     [Report]
+    adaptive:               if more than 40% of the candidates that passed the gates have k = 0,
+                            the 15 points of k go to overlap (40 -> 55)       [Paper; scope: one database]
+    x 0.7  orphan rate 1 - v above 0.2                                                       [Paper]
+    x 0.5  incompatible types; inert here, Stage 1 pairs are always the same family          [Paper]
+    G4     source table far smaller than the target: the paper gives no multiplier, so it is a
+           knob that is OFF (g4_ratio / g4_multiplier)                                       [Paper, answered]
+    G5     each source keeps its 3 best targets, the rest are rejected                       [Paper]
+    x psi(n)  n = targets kept for the source after G5: 1.0 / 0.85 / 0.75 / 0.65 for 1 / 2 / 3 / 4+
+                                                                                   [Paper; counting answered]
+
+Decision on the final score (cutoff = accept, band width = delta):
+    below 60        rejected_score
+    60 to below 70  band: the weakest accepted records; Stage 3's LLM accepts, rejects or abstains
+    70 and above    accepted
+
+Graph, built greedily like HoPF [Report]: highest score first, one edge per column pair
+(the graph is undirected), at most 3 edges per source. Cycles are kept.
+    graphs.direct   accepted records only (the base the LLM's accepts are added to)
+    graphs.stats    accepted + band records: what statistics alone would export (RQ1, variant 2)
+Stage 3 adds graphs.llm = accepted + llm_accept. Every candidate keeps its score parts, weights,
+penalties and the target's 2a score, so any edge, and the LLM prompt for a band record, can be traced.
+
+Choices the sources leave open (all in DEFAULTS):
+  - the name comparison uses the same lower-case, letters-and-digits form as Stage 2a;
+  - when names are off and the adaptive shift fires, both moves go to overlap (40 + 20 + 15);
+  - the email/URL prefilter of the paper's tier 2 is not applied: it needs a full-column share
+    that Stage 1 does not compute yet (only the average-length rule is).
+
+Usage:
+    python src/foreign_keys.py --dataset bird
+    python src/foreign_keys.py --dataset bird --databases financial --run try
+    python src/foreign_keys.py --dataset bird --keys-run no_names --run no_names   # obfuscated simulation
+
+Input:  out/profiles/<dataset>/<db_id>.json   (src/profile_columns.py; made here if missing)
+        out/keys/<dataset>/<keys-run>/<db_id>.json   (src/primary_keys.py or evals/eval_primary_keys.py)
+Output: out/joins/<dataset>/<run>/<db_id>.json
+"""
+import argparse
+import json
+import sys
+from collections import defaultdict
+from pathlib import Path
+
+from primary_keys import ROOT, load_profile, norm, work_list
+
+DEFAULTS = {
+    "accept": 60,                     # cutoff on the final score
+    "delta": 10,                      # band width: [accept, accept + delta) goes to the LLM
+    "containment_min": 0.75,          # G6, tau
+    "max_targets": 3,                 # G5
+    "weights": {"overlap": 40, "name": 20, "cardinality": 15, "target_key": 15, "nulls": 10},
+    "adaptive_k_zero_share": 0.4,     # more candidates than this with k = 0 -> k's points go to overlap
+    "r_cap": 2,
+    "null_low": 0.3,
+    "null_high": 0.7,
+    "name_contains": 0.8,
+    "orphan_max": 0.2,
+    "orphan_penalty": 0.7,
+    "incompatible_penalty": 0.5,
+    "fan_out": [1.0, 0.85, 0.75, 0.65],   # psi for 1, 2, 3, 4+ kept targets
+    "min_source_distinct": 2,
+    "long_text_len": 64,
+    "never_source_roles": ["boolean", "free_text", "float"],
+    "self_refs": False,
+    "g4_ratio": None,                 # G4 off: source rows < ratio * target rows ...
+    "g4_multiplier": None,            # ... multiplies the score by this
+    "keys_run": "frozen",
+}
+
+ORDER = {"accepted": 0, "band": 1, "rejected_score": 2, "rejected_gate": 3}
+
+
+# ------------------------------------------------------------------ scoring pieces
+def levenshtein(a, b):
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        cur = [i]
+        for j, cb in enumerate(b, 1):
+            cur.append(min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (ca != cb)))
+        prev = cur
+    return prev[-1]
+
+
+def name_similarity(source_col, target_table, target_col, cfg):
+    """(similarity, which target string matched best). Lower-case letters and digits only."""
+    a = norm(source_col)
+    best, via = 0.0, None
+    for label, text in (("column", target_col), ("table_column", f"{target_table}_{target_col}"),
+                        ("table_id", f"{target_table}_id")):
+        b = norm(text)
+        if not a or not b:
+            continue
+        if a == b:
+            s = 1.0
+        elif a in b or b in a:
+            s = cfg["name_contains"]
+        else:
+            s = 1 - levenshtein(a, b) / max(len(a), len(b))
+        if s > best:
+            best, via = s, label
+    return best, via
+
+
+def null_term(rate, cfg):
+    return 1.0 if rate < cfg["null_low"] else 0.5 if rate < cfg["null_high"] else 0.0
+
+
+def fan_out_factor(n, cfg):
+    return cfg["fan_out"][min(n, len(cfg["fan_out"])) - 1]
+
+
+def weights(cfg, use_names, adaptive):
+    w = dict(cfg["weights"])
+    if not use_names:
+        w["overlap"] += w.pop("name")
+    if adaptive:
+        w["overlap"] += w["target_key"]
+        w["target_key"] = 0
+    return w
+
+
+# ------------------------------------------------------------------ candidates
+def gate(pair, profile, keys, cfg, use_names):
+    """Reason the pair is rejected by a gate or prefilter, or None. Also returns the profiles."""
+    (st, sc), (tt, tc) = pair["source"], pair["target"]
+    tables = profile["tables"]
+    a, b = tables[st]["columns"][sc], tables[tt]["columns"][tc]
+    if st == tt and not cfg["self_refs"]:
+        return "same table"
+    if keys["tables"][st]["primary_key"] == sc:
+        return "G8: the source is its table's primary key"
+    rejected = keys["tables"][tt]["columns"][tc].get("rejected")
+    if rejected:
+        return f"G1: target not eligible ({rejected})"
+    if use_names and tc.lower() == "rowguid":
+        return "G3: rowguid target"
+    if a["role"] in cfg["never_source_roles"]:
+        return f"prefilter: source role {a['role']}"
+    if a["distinct"] < cfg["min_source_distinct"]:
+        return "prefilter: fewer than 2 distinct values"
+    if (a.get("text") or {}).get("avg_len", 0) > cfg["long_text_len"]:
+        return f"prefilter: average length over {cfg['long_text_len']}"
+    if pair["containment"] < cfg["containment_min"]:
+        return f"G6: containment {pair['containment']:.3f} < {cfg['containment_min']}"
+    return None
+
+
+def make_record(pair, profile, keys, use_names):
+    (st, sc), (tt, tc) = pair["source"], pair["target"]
+    a = profile["tables"][st]["columns"][sc]
+    target_key = keys["tables"][tt]["columns"][tc]
+    return {
+        "source": {"table": st, "column": sc},
+        "target": {"table": tt, "column": tc},
+        "target_is_pk": keys["tables"][tt]["primary_key"] == tc,
+        "target_pk_score": target_key.get("score"),          # Stage 2a score, for the LLM prompt
+        "containment": pair["containment"],
+        "coverage": pair["coverage"],
+        "cardinality": "one_to_one" if pair["source_unique"] else "many_to_one",
+    }
+
+
+def score_candidates(records, profile, cfg, use_names):
+    """Fills parts, weights, penalties and a score on every record that passed the gates."""
+    tables = profile["tables"]
+    k_zero = sum(not r["target_is_pk"] for r in records) / len(records) if records else 0.0
+    adaptive = k_zero > cfg["adaptive_k_zero_share"]
+    w = weights(cfg, use_names, adaptive)
+    for r in records:
+        st, sc, tt = r["source"]["table"], r["source"]["column"], r["target"]["table"]
+        a = tables[st]["columns"][sc]
+        rho = tables[st]["rows"] / a["distinct"]
+        parts = {
+            "overlap": r["containment"],
+            "cardinality": min(rho, cfg["r_cap"]) / cfg["r_cap"],
+            "target_key": 1.0 if r["target_is_pk"] else 0.0,
+            "nulls": null_term(a["null_rate"], cfg),
+        }
+        if use_names:
+            parts["name"], r["name_via"] = name_similarity(sc, tt, r["target"]["column"], cfg)
+        r["parts"] = {k: round(v, 4) for k, v in parts.items()}
+        raw = sum(w[k] * v for k, v in parts.items())
+        penalties = {}
+        if 1 - r["containment"] > cfg["orphan_max"]:
+            penalties["orphan"] = cfg["orphan_penalty"]
+        if a["family"] != tables[tt]["columns"][r["target"]["column"]]["family"]:
+            penalties["incompatible_types"] = cfg["incompatible_penalty"]
+        if cfg["g4_ratio"] is not None and cfg["g4_multiplier"] is not None:
+            if tables[st]["rows"] < cfg["g4_ratio"] * tables[tt]["rows"]:
+                penalties["g4_row_ratio"] = cfg["g4_multiplier"]
+        score = raw
+        for m in penalties.values():
+            score *= m
+        r["score_before_fan_out"] = round(score, 4)
+        r["penalties"] = penalties
+    return w, adaptive, k_zero
+
+
+def cap_and_fan_out(records, cfg):
+    """G5 (best max_targets per source), then psi(n); the rest are rejected_gate."""
+    by_source = defaultdict(list)
+    for r in records:
+        by_source[(r["source"]["table"], r["source"]["column"])].append(r)
+    for recs in by_source.values():
+        recs.sort(key=lambda r: (-r["score_before_fan_out"], r["target"]["table"], r["target"]["column"]))
+        for r in recs[cfg["max_targets"]:]:
+            r["decision"], r["reason"] = "rejected_gate", f"G5: more than {cfg['max_targets']} targets"
+        kept = recs[:cfg["max_targets"]]
+        psi = fan_out_factor(len(kept), cfg)
+        for r in kept:
+            r["fan_out"] = psi
+            r["score"] = round(r["score_before_fan_out"] * psi, 4)
+
+
+def decide(score, cfg):
+    if score < cfg["accept"]:
+        return "rejected_score"
+    return "band" if score < cfg["accept"] + cfg["delta"] else "accepted"
+
+
+def assemble(records, include, cfg):
+    """Greedy, HoPF-style: highest score first, one edge per column pair, max_targets per source."""
+    chosen = [r for r in records if r["decision"] in include]
+    edges, pairs, per_source = [], set(), defaultdict(int)
+    for r in sorted(chosen, key=lambda r: (-r["score"], r["source"]["table"], r["source"]["column"],
+                                           r["target"]["table"], r["target"]["column"])):
+        src = (r["source"]["table"], r["source"]["column"])
+        dst = (r["target"]["table"], r["target"]["column"])
+        pair = frozenset((src, dst))
+        if pair in pairs or per_source[src] >= cfg["max_targets"]:
+            continue
+        pairs.add(pair)
+        per_source[src] += 1
+        edges.append({k: r[k] for k in ("source", "target", "containment", "coverage", "cardinality", "score", "decision")})
+    return edges
+
+
+def score_database(profile, keys, cfg=DEFAULTS):
+    use_names = keys["use_names"]
+    records, passed = [], []
+    for pair in profile.get("containment", []):
+        reason = gate(pair, profile, keys, cfg, use_names)
+        rec = make_record(pair, profile, keys, use_names)
+        if reason:
+            rec.update(decision="rejected_gate", reason=reason)
+        else:
+            passed.append(rec)
+        records.append(rec)
+    w, adaptive, k_zero = score_candidates(passed, profile, cfg, use_names)
+    cap_and_fan_out(passed, cfg)
+    for r in passed:
+        if "score" in r:
+            r["decision"] = decide(r["score"], cfg)
+    for r in records:
+        r.setdefault("decision", "rejected_gate")
+    records.sort(key=lambda r: (ORDER[r["decision"]], -r.get("score", 0), r["source"]["table"], r["source"]["column"],
+                                r["target"]["table"], r["target"]["column"]))
+    counts = defaultdict(int)
+    for r in records:
+        counts[r["decision"]] += 1
+    return {
+        "db_id": profile["db_id"],
+        "use_names": use_names,
+        "keys_run": cfg["keys_run"],
+        "weights": w,
+        "adaptive": adaptive,
+        "k_zero_share": round(k_zero, 4),
+        "config": {k: v for k, v in cfg.items() if k != "weights"},
+        "counts": dict(counts),
+        "candidates": records,
+        "graphs": {
+            "direct": assemble(records, {"accepted"}, cfg),
+            "stats": assemble(records, {"accepted", "band"}, cfg),
+        },
+    }
+
+
+# ------------------------------------------------------------------ command line
+def add_args(ap):
+    ap.add_argument("--dataset", required=True)
+    ap.add_argument("--databases", nargs="*", help="only these db_ids")
+    ap.add_argument("--run", default="default", help="output sub-folder, name it after what you changed")
+    ap.add_argument("--keys-run", default=DEFAULTS["keys_run"],
+                    help="Stage 2a run to read the keys from; its use_names setting is inherited")
+    ap.add_argument("--accept", type=float, default=DEFAULTS["accept"], help="cutoff on the final score")
+    ap.add_argument("--delta", type=float, default=DEFAULTS["delta"], help="width of the LLM band above the cutoff")
+    ap.add_argument("--containment-min", type=float, default=DEFAULTS["containment_min"], help="G6, tau")
+    ap.add_argument("--max-targets", type=int, default=DEFAULTS["max_targets"], help="G5")
+    ap.add_argument("--self-refs", action="store_true", help="also consider source and target in one table")
+    ap.add_argument("--g4-ratio", type=float, help="G4 on: source rows < ratio x target rows ...")
+    ap.add_argument("--g4-multiplier", type=float, help="... multiplies the score by this (needs --g4-ratio)")
+    ap.add_argument("--reprofile", action="store_true", help="recompute Stage 1 profiles")
+
+
+def config_from(args):
+    return {**DEFAULTS, "accept": args.accept, "delta": args.delta, "containment_min": args.containment_min,
+            "max_targets": args.max_targets, "self_refs": args.self_refs, "keys_run": args.keys_run,
+            "g4_ratio": args.g4_ratio, "g4_multiplier": args.g4_multiplier}
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    add_args(ap)
+    args = ap.parse_args()
+    if (args.g4_ratio is None) != (args.g4_multiplier is None):
+        ap.error("--g4-ratio and --g4-multiplier go together")
+    cfg = config_from(args)
+    keys_dir = ROOT / "out" / "keys" / args.dataset / args.keys_run
+    out_dir = ROOT / "out" / "joins" / args.dataset / args.run
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for db in work_list(args):
+        keys_path = keys_dir / f"{db['db_id']}.json"
+        if not keys_path.exists():
+            sys.exit(f"{keys_path.relative_to(ROOT)} is missing; run src/primary_keys.py --dataset {args.dataset} "
+                     f"--run {args.keys_run} first")
+        joins = score_database(load_profile(args.dataset, db, args.reprofile), json.loads(keys_path.read_text()), cfg)
+        c = joins["counts"]
+        print(f"  joins {db['db_id']}: {c.get('accepted', 0)} accepted, {c.get('band', 0)} in the LLM band, "
+              f"{c.get('rejected_score', 0)} below {cfg['accept']:g}, {c.get('rejected_gate', 0)} gated out; "
+              f"{len(joins['graphs']['stats'])} edges (stats){' [adaptive weights]' if joins['adaptive'] else ''}")
+        (out_dir / f"{db['db_id']}.json").write_text(json.dumps(joins, indent=1, sort_keys=True))
+
+
+if __name__ == "__main__":
+    main()
