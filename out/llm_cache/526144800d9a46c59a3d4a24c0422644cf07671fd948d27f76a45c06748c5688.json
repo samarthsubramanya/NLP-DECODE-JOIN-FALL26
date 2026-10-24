@@ -1,0 +1,1 @@
+{"model": "glm-5-3", "text": "{\"decision\": \"reject\", \"reason\": \"users.UpVotes is a per-user aggregate counter (mostly small integers 0\u20134) whose values coincidentally fall inside the dense 1\u201343538 range of the votes.Id primary key, and semantically a vote count cannot reference an individual vote row (the real link would be votes.UserId \u2192 users.Id).\"}"}

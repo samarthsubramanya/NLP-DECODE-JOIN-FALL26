@@ -1,0 +1,1 @@
+{"model": "glm-5-3", "text": "{\"decision\": \"reject\", \"reason\": \"rulings.id is a sequential surrogate row key (1\u201387769, perfectly uniform) whose range trivially contains every mtgArenaId value, giving containment 1.0 by chance with only 6.4% coverage, while rulings actually reference cards via the uuid column, so the columns mean different things.\"}"}

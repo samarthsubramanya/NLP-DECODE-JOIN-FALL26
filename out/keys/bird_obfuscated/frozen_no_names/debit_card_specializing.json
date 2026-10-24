@@ -1,0 +1,380 @@
+{
+ "accept": 70,
+ "db_id": "debit_card_specializing",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "customers": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "transactions_1k.col_004",
+       "yearmonth.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 9.24185946212378e-05
+     },
+     "phi": 0.85,
+     "score": 20.188
+    },
+    "col_003": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 6.161239641415853e-05
+     },
+     "phi": 0.7,
+     "score": 16.625
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "gasstations": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "transactions_1k.col_001",
+       "transactions_1k.col_006"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0407627711686494
+     },
+     "phi": 0.85,
+     "score": 15.938
+    },
+    "col_003": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0003498950314905528
+     },
+     "phi": 0.7,
+     "score": 16.625
+    },
+    "col_004": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0008747375787263821
+     },
+     "phi": 0.55,
+     "score": 6.188
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "products": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "gasstations.col_002",
+       "transactions_1k.col_007",
+       "transactions_1k.col_008"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 63.38,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.8340853543899229,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8950930626057529
+     },
+     "phi": 0.85,
+     "score": 53.873
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "transactions_1k": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "gasstations.col_002",
+       "products.col_001",
+       "transactions_1k.col_007",
+       "transactions_1k.col_008"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.004
+     },
+     "phi": 0.85,
+     "score": 9.562
+    },
+    "col_003": {
+     "base": 30.562,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.20899999999999994,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.599
+     },
+     "phi": 0.7,
+     "score": 21.394
+    },
+    "col_004": {
+     "base": 20.993,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.03588888888888893,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.517
+     },
+     "phi": 0.55,
+     "score": 11.546
+    },
+    "col_005": {
+     "base": 71.792,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.8486666666666668,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.902
+     },
+     "phi": 0.55,
+     "score": 39.485
+    },
+    "col_006": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.437
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_007": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.028
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_008": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.083
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_009": {
+     "base": 68.611,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.9077777777777779,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.93
+     },
+     "phi": 0.55,
+     "score": 37.736
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "yearmonth": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.07974807061119489
+     },
+     "phi": 1.0,
+     "score": 18.75
+    },
+    "col_002": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 5.4789945784044127e-05
+     },
+     "phi": 0.85,
+     "score": 20.188
+    },
+    "col_003": {
+     "base": 41.98,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.48167319797607694,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.7281609885149838
+     },
+     "phi": 0.7,
+     "score": 29.386
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  }
+ },
+ "use_names": false
+}
