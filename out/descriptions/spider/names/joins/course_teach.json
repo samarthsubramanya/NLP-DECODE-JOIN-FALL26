@@ -1,0 +1,436 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.5,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.6,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 79.9,
+   "score_before_fan_out": 94.0,
+   "source": {
+    "column": "Course_ID",
+    "table": "course_arrange"
+   },
+   "target": {
+    "column": "Course_ID",
+    "table": "course"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.7142857142857143,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.6,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 79.9,
+   "score_before_fan_out": 94.0,
+   "source": {
+    "column": "Teacher_ID",
+    "table": "course_arrange"
+   },
+   "target": {
+    "column": "Teacher_ID",
+    "table": "teacher"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.5,
+   "decision": "llm_reject",
+   "fan_out": 0.85,
+   "llm": {
+    "decision": "reject",
+    "model": "glm-5-3",
+    "reason": "The source column is named Teacher_ID in a course_arrange table and semantically references teachers, not courses; the overlap with course.Course_ID is coincidental small-integer overlap with no semantic connection.",
+    "reasoning_effort": "low"
+   },
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.6,
+    "name": 0.3333,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 68.5667,
+   "score_before_fan_out": 80.6667,
+   "source": {
+    "column": "Teacher_ID",
+    "table": "course_arrange"
+   },
+   "target": {
+    "column": "Course_ID",
+    "table": "course"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.7142857142857143,
+   "decision": "llm_reject",
+   "fan_out": 0.85,
+   "llm": {
+    "decision": "reject",
+    "model": "glm-5-3",
+    "reason": "The source column 'Grade' in course_arrange denotes a grade level (values 1\u20137), not a teacher reference, so its overlap with the small-integer primary key Teacher_ID is coincidental despite full containment.",
+    "reasoning_effort": "low"
+   },
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.6,
+    "name": 0.2222,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 66.6777,
+   "score_before_fan_out": 78.4444,
+   "source": {
+    "column": "Grade",
+    "table": "course_arrange"
+   },
+   "target": {
+    "column": "Teacher_ID",
+    "table": "teacher"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.5,
+   "decision": "llm_reject",
+   "fan_out": 0.85,
+   "llm": {
+    "decision": "reject",
+    "model": "glm-5-3",
+    "reason": "The source column is a grade level (values 1\u20137 in a course_arrange table that already has its own Course_ID column), so its overlap with Course_ID is coincidental small-integer overlap, not a real reference.",
+    "reasoning_effort": "low"
+   },
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 0.6,
+    "name": 0.1429,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 65.3285,
+   "score_before_fan_out": 76.8571,
+   "source": {
+    "column": "Grade",
+    "table": "course_arrange"
+   },
+   "target": {
+    "column": "Course_ID",
+    "table": "course"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8,
+   "coverage": 0.5714285714285714,
+   "decision": "llm_reject",
+   "fan_out": 0.85,
+   "llm": {
+    "decision": "reject",
+    "model": "glm-5-3",
+    "reason": "The source column is named Course_ID and semantically identifies courses, not teachers \u2014 the course_arrange table already has its own Teacher_ID column \u2014 so the integer overlap with teacher's primary key is coincidental.",
+    "reasoning_effort": "low"
+   },
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.6,
+    "name": 0.3333,
+    "nulls": 1.0,
+    "overlap": 0.8,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 61.7667,
+   "score_before_fan_out": 72.6667,
+   "source": {
+    "column": "Course_ID",
+    "table": "course_arrange"
+   },
+   "target": {
+    "column": "Teacher_ID",
+    "table": "teacher"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.7,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's primary key",
+   "source": {
+    "column": "Course_ID",
+    "table": "course"
+   },
+   "target": {
+    "column": "Teacher_ID",
+    "table": "teacher"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.7,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's primary key",
+   "source": {
+    "column": "Teacher_ID",
+    "table": "teacher"
+   },
+   "target": {
+    "column": "Course_ID",
+    "table": "course"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "frozen",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "r_cap": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 2,
+  "band": 4,
+  "rejected_gate": 2
+ },
+ "db_id": "course_teach",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5,
+    "decision": "accepted",
+    "score": 79.9,
+    "source": {
+     "column": "Course_ID",
+     "table": "course_arrange"
+    },
+    "target": {
+     "column": "Course_ID",
+     "table": "course"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.7142857142857143,
+    "decision": "accepted",
+    "score": 79.9,
+    "source": {
+     "column": "Teacher_ID",
+     "table": "course_arrange"
+    },
+    "target": {
+     "column": "Teacher_ID",
+     "table": "teacher"
+    }
+   }
+  ],
+  "llm": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5,
+    "decision": "accepted",
+    "score": 79.9,
+    "source": {
+     "column": "Course_ID",
+     "table": "course_arrange"
+    },
+    "target": {
+     "column": "Course_ID",
+     "table": "course"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.7142857142857143,
+    "decision": "accepted",
+    "score": 79.9,
+    "source": {
+     "column": "Teacher_ID",
+     "table": "course_arrange"
+    },
+    "target": {
+     "column": "Teacher_ID",
+     "table": "teacher"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5,
+    "decision": "accepted",
+    "score": 79.9,
+    "source": {
+     "column": "Course_ID",
+     "table": "course_arrange"
+    },
+    "target": {
+     "column": "Course_ID",
+     "table": "course"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.7142857142857143,
+    "decision": "accepted",
+    "score": 79.9,
+    "source": {
+     "column": "Teacher_ID",
+     "table": "course_arrange"
+    },
+    "target": {
+     "column": "Teacher_ID",
+     "table": "teacher"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5,
+    "decision": "band",
+    "score": 68.5667,
+    "source": {
+     "column": "Teacher_ID",
+     "table": "course_arrange"
+    },
+    "target": {
+     "column": "Course_ID",
+     "table": "course"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.7142857142857143,
+    "decision": "band",
+    "score": 66.6777,
+    "source": {
+     "column": "Grade",
+     "table": "course_arrange"
+    },
+    "target": {
+     "column": "Teacher_ID",
+     "table": "teacher"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5,
+    "decision": "band",
+    "score": 65.3285,
+    "source": {
+     "column": "Grade",
+     "table": "course_arrange"
+    },
+    "target": {
+     "column": "Course_ID",
+     "table": "course"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8,
+    "coverage": 0.5714285714285714,
+    "decision": "band",
+    "score": 61.7667,
+    "source": {
+     "column": "Course_ID",
+     "table": "course_arrange"
+    },
+    "target": {
+     "column": "Teacher_ID",
+     "table": "teacher"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.0,
+ "keys_run": "frozen",
+ "use_names": true,
+ "weights": {
+  "cardinality": 15,
+  "name": 20,
+  "nulls": 10,
+  "overlap": 40,
+  "target_key": 15
+ }
+}

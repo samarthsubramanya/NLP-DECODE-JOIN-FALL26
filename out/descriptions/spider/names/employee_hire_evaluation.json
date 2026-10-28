@@ -1,0 +1,154 @@
+{
+ "db_id": "employee_hire_evaluation",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "default",
+ "keys_run": "frozen",
+ "graph": "llm",
+ "edges": 3,
+ "tables": {
+  "employee": {
+   "table": {
+    "name": "employee",
+    "purpose": "One row per person (nominally an employee), keyed by Employee_ID, with name, age, and city/club. The names and city values strongly indicate these are English rugby union players and that 'City' is their club, so the table likely models players of a rugby squad rather than ordinary staff. It is the parent of hiring (one-to-one) and evaluation (one-to-many) records."
+   },
+   "columns": {
+    "Age": {
+     "role": "numeric",
+     "name": "Age",
+     "description": "Age of the person in years (range 23–43, mean ~32).",
+     "status": "resolved"
+    },
+    "City": {
+     "role": "category",
+     "name": "City",
+     "description": "City/club the person is associated with. Values (Bath, Bristol, Wasps, Leicester, Sale) are all English Premiership rugby clubs, so despite the column name this likely denotes the club/team rather than a residence city.",
+     "status": "tentative"
+    },
+    "Employee_ID": {
+     "role": "identifier",
+     "name": "Employee_ID",
+     "description": "Primary key of the table; unique identifier 1–10 for each person. Referenced one-to-one by hiring.Employee_ID and one-to-many by evaluation.Employee_ID (each person can have multiple evaluations).",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "identifier",
+     "name": "Name",
+     "description": "Full name of the person. All sampled names (Phil Vickery, Steve Borthwick, Lee Mears, etc.) are well-known English rugby union players, suggesting the 'employee' table actually records players, not generic employees.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "evaluation": {
+   "table": {
+    "name": "evaluation",
+    "purpose": "Records annual bonus awards per employee: which employee received a bonus, the amount, and the year awarded. One row per employee-year award; employees can have multiple awards across years. No single-column primary key; likely keyed on (Employee_ID, Year_awarded)."
+   },
+   "columns": {
+    "Bonus": {
+     "role": "numeric",
+     "name": "Bonus",
+     "description": "Bonus amount awarded to the employee, in currency units (likely GBP given UK cities in employee table).",
+     "status": "resolved"
+    },
+    "Employee_ID": {
+     "role": "foreign_key",
+     "name": "Employee_ID",
+     "description": "Identifier of the employee who received the evaluation/bonus; references employee.Employee_ID (many-to-one). An employee can appear in multiple years.",
+     "status": "resolved"
+    },
+    "Year_awarded": {
+     "role": "category",
+     "name": "Year_awarded",
+     "description": "Calendar year in which the bonus/evaluation was awarded (2011-2018).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "hiring": {
+   "table": {
+    "name": "hiring",
+    "purpose": "One row per employee's hiring assignment: which shop they were hired at, whether the position is full-time, and the year they started. Links employees to shops."
+   },
+   "columns": {
+    "Employee_ID": {
+     "role": "foreign_key",
+     "name": "Employee_ID",
+     "description": "Identifier of the employee this hiring record belongs to; references employee.Employee_ID (one-to-one here, so each employee has at most one hiring record).",
+     "status": "resolved"
+    },
+    "Is_full_time": {
+     "role": "boolean",
+     "name": "Is_full_time",
+     "description": "Whether the employee's hiring is full-time; stored as text 'T' (true, 5 rows) or 'F' (false, 2 rows).",
+     "status": "resolved"
+    },
+    "Shop_ID": {
+     "role": "foreign_key",
+     "name": "Shop_ID",
+     "description": "Identifier of the shop where the employee was hired; references shop.Shop_ID (many-to-one).",
+     "status": "resolved"
+    },
+    "Start_from": {
+     "role": "date",
+     "name": "Start_from",
+     "description": "Year the employee started working at the shop, stored as a 4-character string (values 2003–2013).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "shop": {
+   "table": {
+    "name": "club",
+    "purpose": "Despite the table name 'shop', each row is a Finnish football club (Veikkausliiga-era teams such as HJK, FC Honka, FC Inter Turku, KuPS, IFK Mariehamn) with its stadium, home city, manager, and an unidentified numeric attribute. The table is referenced by 'hiring' via Shop_ID, which likely records player/staff signings per club; 'employee' and 'evaluation' plausibly relate to players and their assessments."
+   },
+   "columns": {
+    "District": {
+     "role": "category",
+     "name": "Stadium",
+     "description": "Home stadium / ground of the club (e.g. Finnair Stadium, Veritas Stadion, Tehtaan kenttä). The column name 'District' is misleading; values are Finnish football venues, not districts.",
+     "status": "resolved"
+    },
+    "Location": {
+     "role": "category",
+     "name": "Location",
+     "description": "Finnish city where the club is based (Helsinki, Espoo, Turku, Lahti, etc.).",
+     "status": "resolved"
+    },
+    "Manager_name": {
+     "role": "category",
+     "name": "Manager_name",
+     "description": "Name of the club's head coach/manager (e.g. Antti Muurinen, Mika Lehkosuo, Job Dragtsma).",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Club_name",
+     "description": "Name of the football club (HJK, FC Honka, FC Inter, KuPS, IFK Mariehamn, etc.). Despite the table being called 'shop', rows are Finnish football clubs, not shops.",
+     "status": "resolved"
+    },
+    "Number_products": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "Shop_ID": {
+     "role": "identifier",
+     "name": "Club_ID",
+     "description": "Primary key of the table; a surrogate identifier 1–9, one per club. Referenced by hiring.Shop_ID (many-to-one), so it identifies the club in hiring records.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

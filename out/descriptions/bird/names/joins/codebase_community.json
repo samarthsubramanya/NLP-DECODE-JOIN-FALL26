@@ -598,7 +598,8 @@
    "llm": {
     "decision": "accept",
     "model": "glm-5-3",
-    "reason": "In a Stack Exchange-style schema, postLinks is a link table whose PostId column (name matching posts.Id, 100% containment of large non-generic IDs into the posts primary key, many-to-one cardinality) clearly references posts.Id."
+    "reason": "This is the standard Stack Exchange schema where PostLinks.PostId references Posts.Id: full containment of PostId in the unique Posts.Id primary key, matching ID ranges, and the sibling RelatedPostId column confirms post-to-post link semantics.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -631,7 +632,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "PostHistoryTypeId is a low-cardinality event-type enumeration (25 distinct codes, values 1\u201338) for post revision history, while badges.Id is a surrogate primary key for badge-award rows (1\u201392240), so the 0.92 containment is just small integers coincidentally falling inside a dense integer key range, with no semantic reference between history event types and badge awards."
+    "reason": "PostHistoryTypeId is a small categorical event-type code (values 1\u201338, e.g. 2=initial body edit) while badges.Id is a unique badge-award primary key; the overlap is just small integers coinciding, and coverage is 0.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -664,7 +666,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "PostHistoryTypeId is a categorical type code with only 25 distinct small values (1-38) that trivially overlap the comments.Id primary key range (1-221292) by chance\u2014coverage is 0.0 and the column semantically encodes post-history event types, not references to comments."
+    "reason": "PostHistoryTypeId is a small categorical type code (values 1\u201338, only 25 distinct, heavily repeated) that classifies post-history events, while comments.Id is a unique row identifier up to 221292, so the overlap is coincidental and the columns mean different things.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -697,7 +700,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "postHistory.Id is a dense per-revision-event identifier (1\u2013386848) that trivially contains almost any small integer, so the 0.916 containment of votes.PostId (max 16921) is chance overlap, and the postHistory table's own PostId column shows that revision-event Ids name different entities (history events) than the posts that votes.PostId references."
+    "reason": "votes.PostId references posts, not postHistory.Id \u2014 postHistory has its own PostId column, and the overlap is only coincidental small-integer IDs (coverage 0.026, source max 16921 vs target range up to 386848).",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -730,7 +734,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "badges.UserId semantically references users (postHistory even has its own UserId column for that), while postHistory.Id is a dense sequential primary key for revision events whose 1..386848 range mechanically covers ~90% of any small-integer column, so the 0.9 containment is exactly what chance predicts."
+    "reason": "badges.UserId is a user identifier (it should reference a users table), while postHistory.Id is a revision-event primary key with its own separate UserId column, so the 90% containment is coincidental integer overlap between user IDs and event IDs, not a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -763,7 +768,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "VoteTypeId is a small categorical code (10 distinct values 1-16, dominated by 2=upvote) whose overlap with badges.Id is purely coincidental \u2014 it matches only the first ~16 badge surrogate keys (coverage 0.0) and a vote type has no semantic relationship to a badge row."
+    "reason": "VoteTypeId is a small vote-type code (values 1\u201316, e.g. 2=upvote) while badges.Id is a surrogate primary key spanning 1\u201392240, so the overlap of small integers is coincidental and the columns mean different things.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -796,7 +802,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "comments.UserId references users (a person entity), while postHistory.Id is a surrogate primary key for post-history revision events, and the 89.9% containment is chance overlap of small integers within postHistory's dense 1\u2013386,848 id range (only 4% coverage), especially since postHistory has its own UserId column for the real user reference."
+    "reason": "comments.UserId is a user identifier (many comments per user, low uniqueness) while postHistory.Id is a unique revision primary key, so the ~90% containment is coincidental integer overlap between user IDs and revision IDs, not a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -829,7 +836,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "posts.OwnerUserId references users (note the -1 sentinel and OwnerDisplayName sibling), while postHistory.Id is the primary key of revision-history events, and the 0.898 containment is chance overlap because postHistory.Id densely spans 1\u2013386848, covering the entire user-ID range; the real references would be postHistory.UserId or postHistory.PostId, not this pairing."
+    "reason": "posts.OwnerUserId is a user identifier (referencing users), while postHistory.Id is the primary key of revision-history rows; the ~90% containment is coincidental overlap of small integer IDs, and coverage is only 6.5%.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -862,7 +870,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "votes.PostId semantically references posts (a Stack-Exchange-style votes table), not badge awards, and the 0.895 containment merely matches the chance density of badges' dense integer IDs (79851/92240 \u2248 0.87) over the small 1\u201316921 range of PostId, so the overlap is coincidental."
+    "reason": "In the Stack Exchange schema, votes.PostId references posts (questions/answers), while badges.Id is a per-user badge award row; the numeric overlap is coincidental since both are small sequential integers, and badges' semantics (Name, UserId, Date) have nothing to do with posts.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -895,7 +904,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "postLinks.RelatedPostId names a post (it should reference posts.Id), while postHistory.Id is a surrogate key for revision-history events \u2014 the 88% containment is chance overlap between two dense integer ID ranges (postHistory's own PostId column is the real post reference), and the columns denote different entities."
+    "reason": "RelatedPostId in postLinks references post IDs (posts.Id), while postHistory.Id is a revision-history primary key; the 88% containment is coincidental since post IDs fall within the same numeric range as history IDs, and the near-zero coverage (0.015) plus the presence of a PostId column in postHistory confirm the columns denote different entities.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -928,7 +938,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "posts.AcceptedAnswerId semantically references the answer post's Id in the posts table (which has its own Id column), while postHistory.Id is a surrogate key for revision-history events (postHistory references posts via its PostId column), so the 86% containment is just chance overlap between two dense sequential integer ID spaces from the same dump, corroborated by the very low 4.2% coverage."
+    "reason": "AcceptedAnswerId semantically references posts.Id (the accepted answer post), not postHistory.Id; the overlap is coincidental because both are sequential BIGINT ids from the same Stack Exchange dump whose ranges happen to intersect.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -961,7 +972,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "postHistory.UserId semantically references users, while badges.Id is the badge-award primary key (the badges table has its own UserId column for the user), and the 0.875 containment is coincidental because badges.Id densely covers integers 1\u201392240 so any similar-range integer column would overlap heavily."
+    "reason": "postHistory.UserId references users, while badges.Id is the primary key of badge-award rows (badges has its own UserId column), so the integer overlap is coincidental.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -994,7 +1006,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "posts.OwnerUserId semantically references a user (it should match a users table, and badges has its own UserId for that), while badges.Id is a dense sequential badge-award identifier spanning 1\u201392240, so the 0.875 containment (~79851/92240 \u2248 0.866 expected by chance for integers in that range) is coincidental, not a real reference."
+    "reason": "posts.OwnerUserId is a user identifier (it should reference a users table), while badges.Id is the primary key of individual badge-award rows (badges has its own UserId column), so the integer overlap is coincidental.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1027,7 +1040,8 @@
    "llm": {
     "decision": "accept",
     "model": "glm-5-3",
-    "reason": "The column name LastEditorUserId explicitly denotes a user reference, the target is the users table's primary key Id with perfect containment (1.0) including the shared -1 sentinel, and the many-to-one cardinality with ~51% nulls (posts never edited) is exactly the expected semantics of a Stack Exchange post-editor foreign key."
+    "reason": "LastEditorUserId in a Stack-Exchange-style posts table clearly references users.Id (the primary key), with full containment of source values in the target key and a many-to-one editor-to-user relationship.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1060,7 +1074,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "badges.UserId semantically identifies users (badges are awarded to users), while comments.Id is the primary key identifying comments \u2014 the 87% containment is coincidental overlap of small integer IDs within comments' dense 1\u2013221292 Id range (coverage only 12.6%), and the comments table itself has a separate UserId column for user references."
+    "reason": "Badges.UserId is a user identifier (many badges per user, fan-out 0.75) while comments.Id is a comment primary key; the comments table itself has a UserId column, so the integer overlap between badge user IDs and comment IDs is coincidental.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1093,7 +1108,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "comments.UserId semantically identifies users (the badges table itself has a UserId column for that), while badges.Id is a surrogate row key for badge awards, and the 0.872 containment merely matches the ~0.87 chance density of badges.Id values across the shared integer range, so the overlap is coincidental."
+    "reason": "comments.UserId is a user identifier (many comments per user, matching a users table), while badges.Id is the primary key of individual badge-award rows (unique, one per row) and badges even has its own UserId column, so the integer overlap is coincidental.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1126,7 +1142,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "postHistory.UserId identifies site users (a foreign key to a users table), while comments.Id is the comment's own primary key, and the high containment is merely chance overlap of dense integer ID ranges (user IDs up to ~56k fall inside the 1\u2013221k comment ID space, with only 11% coverage and a separate comments.UserId column confirming Id is not a user reference)."
+    "reason": "postHistory.UserId is a user identifier (comments table has its own UserId column), so its overlap with the comment primary key comments.Id is coincidental integer overlap, not a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1159,7 +1176,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "RelatedPostId semantically references posts (its name and the postLinks schema point to posts.Id), while comments.Id is a comment identifier, and the 0.838 containment is fully explained by chance: comments.Id densely covers ~0.8 of the integer range spanned by RelatedPostId (1\u2013115k), with only 2.5% coverage of the target."
+    "reason": "In the Stack Overflow schema, postLinks.RelatedPostId references posts.Id (a related post), not comments.Id; the overlap with comment IDs is coincidental since both are generic integer identifiers, and the low coverage (0.025) plus skewed distributions confirm no real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1192,7 +1210,8 @@
    "llm": {
     "decision": "accept",
     "model": "glm-5-3",
-    "reason": "The column name WikiPostId semantically references posts.Id, containment of source values in the target primary key is 1.0 with one-to-one cardinality, and WikiPostId values sit adjacent to ExcerptPostId values (e.g., 65333/65334, 62342/62343) within the posts Id range, all consistent with a genuine foreign key to the posts table in a Stack Exchange-style schema."
+    "reason": "This is the standard Stack Exchange schema where tags.WikiPostId points to the wiki post in posts (sample rows show WikiPostId adjacent to ExcerptPostId, both post IDs), and all 596 non-null source values are contained in posts.Id, a primary key, with one-to-one cardinality.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1225,7 +1244,8 @@
    "llm": {
     "decision": "accept",
     "model": "glm-5-3",
-    "reason": "ExcerptPostId semantically names a post (name score 0.8), 99.8% of its non-null values match the posts primary key\u2014well above the ~80% chance level given the target's density\u2014and the paired WikiPostId values (65333/65334, 62342/62343) show the consecutive wiki/excerpt post pattern characteristic of a genuine foreign key in this Stack Exchange-style schema."
+    "reason": "This is the standard Stack Exchange schema where tags.ExcerptPostId stores the Id of the post containing the tag's excerpt, corroborated by 99.8% containment, a paired WikiPostId column, and the target being the posts primary key.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1258,7 +1278,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "AcceptedAnswerId in a Stack Exchange-style posts table semantically references posts.Id (the accepted answer post), and its 0.811 containment in comments.Id matches the ~0.79 density of comment IDs in the overlapping integer range, indicating the overlap is coincidental rather than a real reference."
+    "reason": "AcceptedAnswerId in a StackExchange-style posts table semantically references posts.Id (answers are posts), not comments.Id; the overlap with comment IDs is coincidental since both are generic auto-increment integers, and the low coverage (6.8%) with one-to-one cardinality is inconsistent with a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1291,7 +1312,8 @@
    "llm": {
     "decision": "accept",
     "model": "glm-5-3",
-    "reason": "votes.UserId semantically matches the users.Id primary key with perfect containment of all non-null values, many-to-one cardinality, and a high null rate explained by anonymous voting (only bounty-type votes record the voter), matching the canonical StackExchange votes-to-users reference."
+    "reason": "This is the classic Stack Overflow schema: votes.UserId (populated only for bounty/close/moderation votes, hence 91% nulls) references users.Id, a primary key with full containment and many-to-one cardinality, and the name match UserId\u2192users.Id is semantically exact.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1324,7 +1346,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "posts.LastEditorUserId is a user identifier (note the -1 community placeholder and the users it implies), while postHistory.Id is the primary key of revision-event rows, and the high containment is coincidental because postHistory.Id densely covers integers 1\u2013386,848, which happens to include nearly all user IDs up to ~55,733 (coverage is only 1.9%, and postHistory has its own UserId column for user references)."
+    "reason": "LastEditorUserId is a user identifier (it should reference a users table), while postHistory.Id is a revision-history primary key; the high containment is coincidental since both are generic integer IDs, and the near-zero coverage plus the presence of a UserId column in postHistory confirm the columns denote different entities.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1357,7 +1380,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "CommentCount is an aggregate counter (values 0\u201345, mean ~1.9) whose small integers overlap comments.Id purely by chance \u2014 coverage is 0.0, many posts share each value, and the real relationship is comments.PostId \u2192 posts.Id, not this pair."
+    "reason": "CommentCount is a small count (0\u201345) while comments.Id is a unique primary key spanning 1\u2013221292; the overlap is just small integers matching by chance, and semantically a count of comments cannot reference a comment's identifier.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1390,7 +1414,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "postLinks.PostId semantically references a post (the posts table), while postHistory.Id is the primary key of individual revision-history entries \u2014 postHistory even has its own PostId column for the real post reference \u2014 so the 0.858 containment is just chance overlap of dense integer ID ranges (target Ids run 1\u2013386,848 covering the source's 4\u2013115,360 range, with only 2.2% coverage), and a many-to-one link from post links to single history entries makes no real-world sense."
+    "reason": "postLinks.PostId references post IDs, while postHistory.Id is the primary key of individual revision-history rows (postHistory has its own PostId column), so the 85.8% containment is coincidental overlap of integer IDs across ranges, not a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1423,7 +1448,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "posts.LastEditorUserId semantically references users (it coexists with OwnerUserId and the comments table has its own UserId column), while comments.Id is the comment's own primary key, so the 87% containment is chance overlap between dense integer ID ranges (comments.Id densely spans 1\u2013221292 covering nearly all values up to the source's max of 55733) with only 3.3% coverage of the target."
+    "reason": "LastEditorUserId semantically references user accounts (it pairs with OwnerUserId and LastEditorDisplayName), while comments.Id is a comment primary key; the integer overlap is coincidental since both are just sequential IDs in a Stack Exchange dump.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1456,7 +1482,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "users.UpVotes is a per-user aggregate counter (mostly small integers 0\u20134) whose values coincidentally fall inside the dense 1\u201343538 range of the votes.Id primary key, and semantically a vote count cannot reference an individual vote row (the real link would be votes.UserId \u2192 users.Id)."
+    "reason": "users.UpVotes is a small count of upvotes (mostly 0\u20134) while votes.Id is a unique vote-row primary key; the overlap is coincidental small-integer collision with near-zero coverage, not a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1489,7 +1516,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "ExcerptPostId is a post identifier (paired with WikiPostId, e.g. 65333/65334, referencing posts), while postHistory.Id is a revision-event surrogate key (sample rows show Id 898 \u2192 PostId 416, a separate denser ID space), and the 88.6% containment matches the ~87% chance overlap expected from postHistory.Id's density in the ExcerptPostId value range, with only 0.2% of the target covered."
+    "reason": "ExcerptPostId in the Stack Exchange schema references posts.Id (the tag excerpt post), and while 88.6% of its values fall inside postHistory.Id's range, that is coincidental since postHistory.Id is a global revision counter spanning nearly all post ids (coverage only 0.002), so the columns denote different entities.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1522,7 +1550,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "postLinks.PostId semantically references posts (the comments table itself has a separate PostId column for that), and the 0.804 containment exactly matches chance overlap between dense integer ID ranges (comment Id density is 174285/221292 \u2248 0.79), so comments.Id\u2014a comment's own primary key\u2014names a different entity than a post ID."
+    "reason": "postLinks.PostId references posts (Stack Overflow schema), not comments.Id; the overlap is coincidental between two unrelated integer ID spaces, with only 3.5% coverage and comments.Id being a comment key rather than a post key.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1555,7 +1584,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "WikiPostId is a post identifier (paired with ExcerptPostId for each tag's wiki/excerpt posts), while postHistory.Id is a surrogate key for revision-history events; the 0.866 containment is what chance predicts since postHistory.Id densely covers 1\u2013386848, so the overlap is coincidental and the columns denote different entities."
+    "reason": "In the Stack Exchange schema, tags.WikiPostId references a post in the posts table, not a postHistory revision-event Id; the 86.6% containment is coincidental overlap of integer IDs within overlapping ranges, and the one-to-one cardinality with near-zero coverage is inconsistent with a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1588,7 +1618,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "comments.Score is a comment vote count with only 36 distinct small non-negative integers (mostly 0), and its near-perfect containment in postHistory.Id is pure chance since any small integer falls inside the target's dense 1\u2013386848 primary-key range (coverage is 0.0), so a comment's score does not reference a post-history row."
+    "reason": "comments.Score is a vote score (mostly 0\u20134, max 90) while postHistory.Id is a unique revision primary key; the overlap is coincidental small-integer matching with near-zero coverage, and comments already has PostId/UserId for real references.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1621,7 +1652,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "votes.UserId is a user identifier (small ints 5\u201311954) while postHistory.Id is a dense event primary key spanning 1\u2013386848, so the 92.5% containment is chance overlap of small integers with a dense ID range, and the target table's own UserId column confirms the two columns denote different entities."
+    "reason": "votes.UserId is a user identifier (mostly null, small values) while postHistory.Id is a revision primary key; the 92.5% containment covers only 0.2% of the target and is coincidental overlap of small integers, and the true referent of votes.UserId is a users table, not postHistory.Id.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1654,7 +1686,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "votes.UserId denotes the user who cast the vote (its small-integer values only fall inside posts.Id because that dense surrogate key spans 1\u2013115378), the votes table already has PostId as its real post reference, and the 91.7% containment with 0.5% coverage plus the 'UserId' name indicates the true target is a users table, not posts."
+    "reason": "votes.UserId is a user identifier (mostly null, small values, references users not posts), and its overlap with posts.Id is coincidental small-integer overlap with coverage of only 0.5%.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1687,7 +1720,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "ExcerptPostId semantically references a tag-excerpt post (its values pair consecutively with WikiPostId, e.g. 65334/65333, as posts do), and the 0.829 containment is indistinguishable from the ~0.79 chance overlap expected for arbitrary integers in comments' dense 1\u2013221292 ID space, with only 0.3% coverage of comments."
+    "reason": "ExcerptPostId in the tags table references a post (the tag's excerpt wiki post), not a comment; the overlap with comments.Id is coincidental since both are just sequential integer IDs, and the target's PostId column confirms comments reference posts rather than being referenced by tag excerpts.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1720,7 +1754,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "users.Views is a skewed count measure (profile view counts, mostly 0\u20134) whose small integers coincidentally fall inside postHistory.Id's dense 1\u2013386848 surrogate-key range (coverage 0.001, name score 0.2), so the columns denote entirely different things rather than a real reference."
+    "reason": "users.Views is a small profile-view counter (mostly 0\u20134, max ~20k) while postHistory.Id is a unique event ID up to ~387k; the overlap is just small integers colliding, and coverage is essentially zero, so the columns mean different things.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1753,7 +1788,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "posts.CommentCount is a small count (0\u201345, mostly 0\u20134) whose values coincidentally fall inside postHistory.Id's surrogate-key range (1\u2013386848) \u2014 a count of comments denotes a different real-world thing than a post-history record identifier, and coverage of the target is essentially zero."
+    "reason": "posts.CommentCount is a small count (0\u201345) while postHistory.Id is a unique surrogate key spanning 1\u2013386848; the overlap is just chance collision of small integers, and coverage is 0.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1786,7 +1822,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "users.DownVotes is a per-user vote count (mostly 0, max 1920) whose small integer values coincidentally fall inside the dense 1\u2013386848 primary-key range of postHistory.Id, with zero coverage of the target and no semantic or name relationship, so the overlap is chance, not a reference."
+    "reason": "users.DownVotes is a vote count (mostly 0, max 1920) while postHistory.Id is a unique surrogate key spanning 1\u2013386848; the overlap is just small integers matching by chance, and coverage is 0.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1819,7 +1856,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "users.DownVotes is a per-user aggregate count (98% zeros, small integers up to 1920) whose values overlap the dense surrogate key votes.Id (1\u201343538) purely by chance, so joining a vote count to an individual vote's identifier is semantically meaningless."
+    "reason": "DownVotes is a small count of downvotes per user (mostly 0), while votes.Id is a unique vote identifier; the overlap is coincidental small-integer collision with negligible coverage (0.002).",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1852,7 +1890,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "comments.Score is a comment vote count (36 distinct values, mostly 0-4, max 90) whose small integers coincidentally match posts.Id (coverage 0.0), and the actual post reference is the separate comments.PostId column, so the columns mean different things."
+    "reason": "comments.Score is a comment vote score (mostly 0\u20134, max 90), not a post reference \u2014 the real FK is comments.PostId \u2014 so its overlap with posts.Id is coincidental small-integer matching.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1885,7 +1924,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "tags.Count is a usage-count measure (small integers 1\u20137244) whose 84% containment in the dense comments.Id key (174k of 222k values present) is exactly what random small-integer overlap predicts, and semantically a tag frequency count cannot reference a comment."
+    "reason": "tags.Count is a tag usage count (small integers 1\u20137244) while comments.Id is a unique comment identifier; the overlap is coincidental small-integer collision with near-zero coverage (0.001), not a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1918,7 +1958,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "users.Views is a profile-view count measure (mostly small integers 0-4, max ~21k) whose values coincidentally fall inside the dense posts.Id primary-key range, giving high containment but no semantic reference \u2014 a user's view count cannot name a post."
+    "reason": "users.Views is a small profile-view counter (half the rows are 0-3) while posts.Id is a unique post identifier, so the numeric overlap is coincidental and the columns denote different things.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1951,7 +1992,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "tags.Count is a tag-usage count (small integers 1\u20137244) whose 96% containment in the dense sequential primary key postHistory.Id (1\u2013386848, coverage only 0.001) is pure chance overlap of integer ranges, with no semantic or name evidence of a reference \u2014 the tags table's actual references are ExcerptPostId/WikiPostId."
+    "reason": "tags.Count is a usage count of each tag (small integers 1\u20137244), not a reference to postHistory.Id; the high containment is coincidental overlap of small integers against a dense 1..386848 primary key, with negligible coverage (0.001).",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1984,7 +2026,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "users.Reputation is a point-score attribute (values like 1, 101, 6 with max 87393), not an identifier, and its high containment in posts.Id is coincidental overlap of small-to-mid integers, with the real user reference being users.Id/posts.OwnerUserId."
+    "reason": "Reputation is a user's Stack Exchange reputation score, not a reference to post Ids; the overlap is coincidental since both are small-to-medium integers, and coverage is only 1% with many-to-one fan-out.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -2017,7 +2060,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "The 81% containment is exactly chance level given that comments.Id is a dense integer sequence (174,285 of 221,292 values present, ~79% density) fully spanning the WikiPostId range, and semantically WikiPostId (paired with ExcerptPostId on consecutive values like 65333/65334) denotes a tag-wiki post, not a comment."
+    "reason": "WikiPostId in the tags table references a post (wiki body) in the posts table, not a comment; the overlap with comments.Id is coincidental since both are sequential Stack Exchange IDs in overlapping ranges, and the near-one-to-one cardinality with 0.003 coverage reflects chance ID collision rather than a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -2050,7 +2094,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "users.UpVotes is a per-user vote counter whose small integer values (mostly 0\u20134, max 11442) coincidentally fall inside the dense 1\u2013386848 range of the postHistory.Id surrogate primary key, so the 95.5% containment is chance overlap with no semantic reference (coverage is only 0.001 and the natural key users.Id \u2192 postHistory.UserId exists separately)."
+    "reason": "users.UpVotes is a small vote-count integer (mostly 0\u20134) while postHistory.Id is a unique revision-row primary key; the overlap is coincidental numeric collision with no semantic reference, and coverage is essentially zero.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -2083,7 +2128,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "users.Views is a profile-view count metric whose small integer values (mostly 0\u20134, max 20932) coincidentally fall inside the dense 1\u201343538 range of the votes.Id primary key \u2014 88% containment but only 0.8% coverage and no semantic relationship between a view count and a vote identifier \u2014 so the overlap is chance, not a real reference."
+    "reason": "users.Views is a small count of profile views (mostly 0\u20134, max ~21k) with no semantic relation to votes.Id, a surrogate primary key; the overlap is coincidental small-integer matching with near-zero coverage.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -2116,7 +2162,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "tags.Count is a tag-usage count measure whose heavily small values (1, 2, 3, ...) coincidentally match low post IDs (coverage only 0.3%), while the tags table's genuine references to posts.Id are its ExcerptPostId/WikiPostId columns, so the columns denote different real-world things."
+    "reason": "tags.Count is a tag usage count (small integers like 1, 2, 3 with max 7244), not a post identifier; its overlap with posts.Id is coincidental since the tags table already has explicit ExcerptPostId/WikiPostId columns for post references.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -2149,7 +2196,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "users.UpVotes is a per-user vote counter (mostly small integers 0\u20134) whose values coincidentally fall inside the posts.Id integer sequence, and a vote count semantically cannot reference a post, so the 0.946 containment is chance overlap between small counts and sequential IDs."
+    "reason": "users.UpVotes is a small count of upvotes (mostly 0\u20134, max 11442) while posts.Id is a primary key spanning 1\u2013115378; the overlap is coincidental small-integer collision with near-zero coverage, not a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -2182,7 +2230,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "users.DownVotes is a per-user count of downvotes (98% zeros, small integers 0\u20131920) whose values only overlap posts.Id by chance because the dense integer primary key spans 1\u2013115378, with near-zero coverage (0.001) and no semantic connection between a vote tally and a post identifier."
+    "reason": "users.DownVotes is a small nonnegative vote count (98% zeros, max 1920) that merely overlaps posts.Id numerically by chance, with no semantic relationship to post identifiers.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
