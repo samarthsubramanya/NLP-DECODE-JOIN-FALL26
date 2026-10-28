@@ -38,6 +38,8 @@ Usage:
     python src/describe_columns.py --dataset bird --databases financial --run try
     python src/describe_columns.py --dataset bird --names-only --run names_only        # RQ2 ablation
     python src/describe_columns.py --dataset bird --joins-run no_names --run no_names  # obfuscated simulation
+    python src/describe_columns.py --dataset bird_stripped --reasoning-effort low --run ""  # stripped file
+--run "" writes straight into out/descriptions/<dataset>/ (one run per setting, no sub-folder).
 
 Input:  out/profiles/<dataset>/<db_id>.json
         out/joins/<dataset>/<joins-run>/<db_id>.json   (src/foreign_keys.py)
@@ -345,7 +347,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dataset", required=True)
     ap.add_argument("--databases", nargs="*", help="only these db_ids")
-    ap.add_argument("--run", default="default", help="output sub-folder, name it after what you changed")
+    ap.add_argument("--run", default="default",
+                    help='output sub-folder, name it after what you changed; "" = out/descriptions/<dataset>/ itself')
     ap.add_argument("--joins-run", default=DEFAULTS["joins_run"],
                     help="Stage 2b run to read; its keys_run says which Stage 2a keys are used")
     ap.add_argument("--model", default=DEFAULTS["model"])
