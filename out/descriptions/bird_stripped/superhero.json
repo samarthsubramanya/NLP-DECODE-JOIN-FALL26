@@ -1,0 +1,298 @@
+{
+ "db_id": "superhero",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "default",
+ "keys_run": "frozen",
+ "graph": "llm",
+ "edges": 27,
+ "tables": {
+  "alignment": {
+   "table": {
+    "name": "alignment",
+    "purpose": "Lookup table mapping alignment IDs to moral alignment labels (Good/Bad/Neutral/N-A) for superheroes, referenced by the superhero table."
+   },
+   "columns": {
+    "alignment": {
+     "role": "category",
+     "name": "alignment",
+     "description": "Moral alignment label of a superhero: Good, Bad, Neutral, or N/A (unknown).",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the alignment lookup table; referenced by superhero.alignment_id (the gender_id join is spurious).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "attribute": {
+   "table": {
+    "name": "attribute",
+    "purpose": "Lookup table of the six superhero attribute/statistic categories (Intelligence, Strength, Speed, Durability, Power, Combat) used to score superheroes via the hero_attribute junction table."
+   },
+   "columns": {
+    "attribute_name": {
+     "role": "category",
+     "name": "attribute_name",
+     "description": "Name of a superhero attribute/statistic (e.g. Intelligence, Speed, Durability, Power, Combat, Strength).",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the attribute lookup table; referenced by hero_attribute.attribute_id to link superheroes to their attribute scores. The joins to superhero.alignment_id and superhero.gender_id are likely coincidental (small integer ID ranges overlap) rather than real relationships.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "colour": {
+   "table": {
+    "name": "colour",
+    "purpose": "Lookup table of 35 colours used to normalize colour references in the superhero database, particularly superhero eye_colour_id, hair_colour_id, and skin_colour_id. Each row is one colour with its surrogate key. The database appears to be a superhero/superpower catalog (superhero, superpower, publisher, alignment, race, gender, attribute, hero_attribute, hero_power)."
+   },
+   "columns": {
+    "colour": {
+     "role": "code",
+     "name": "colour",
+     "description": "Name of a colour, used as a lookup label (e.g. for superhero eye, hair, and skin colour). Values include basic colours (Black, Yellow, Pink) and compound/shade names (Black/Blue, Strawberry Blond, Silver).",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the colour lookup table; surrogate integer identifier (1-35, one per colour). Referenced by superhero.eye_colour_id, superhero.hair_colour_id, and superhero.skin_colour_id. The reported joins to superhero.alignment_id and superhero.publisher_id are almost certainly spurious coincidences of overlapping small integer ID ranges (alignment and publisher are separate lookup tables), and hero_attribute.attribute_id more plausibly references the attribute table; these should not be treated as genuine colour references.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "gender": {
+   "table": {
+    "name": "gender",
+    "purpose": "Lookup table of gender categories (Male, Female, N/A) referenced by the superhero table via gender_id."
+   },
+   "columns": {
+    "gender": {
+     "role": "category",
+     "name": "gender",
+     "description": "Gender label for a superhero: 'Male', 'Female', or 'N/A' for unknown/not applicable.",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the gender lookup table; referenced by superhero.gender_id to assign a gender to each superhero.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "hero_attribute": {
+   "table": {
+    "name": "hero_attribute",
+    "purpose": "Junction/detail table storing one attribute rating per superhero: each of 623 heroes has six rows, one for each of the six attributes (Intelligence, Strength, Speed, Durability, Power, Combat), with a 0-100 score. Likely from the SuperHeroDB dataset. Primary key is presumably the pair (hero_id, attribute_id)."
+   },
+   "columns": {
+    "attribute_id": {
+     "role": "foreign_key",
+     "name": "attribute_id",
+     "description": "Foreign key to attribute.id identifying which of the six superhero attributes (Intelligence, Strength, Speed, Durability, Power, Combat) this row scores. The joins to colour.id and publisher.id are spurious coincidences of small integer ids.",
+     "status": "resolved"
+    },
+    "attribute_value": {
+     "role": "numeric",
+     "name": "attribute_value",
+     "description": "Numeric rating of the hero on that attribute, on a 0-100 scale (observed 5-100, in steps of 5).",
+     "status": "resolved"
+    },
+    "hero_id": {
+     "role": "foreign_key",
+     "name": "hero_id",
+     "description": "Foreign key to superhero.id identifying the hero this attribute score belongs to. Each hero has one row per attribute (623 heroes x 6 attributes = 3738 rows).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "hero_power": {
+   "table": {
+    "name": "hero_power",
+    "purpose": "Many-to-many junction table linking superheroes (superhero.id) to their superpowers (superpower.id). Each row states that a given hero has a given power; 5,825 rows over 652 heroes and 167 powers. The composite (hero_id, power_id) is the natural primary key, though the profiler did not detect one."
+   },
+   "columns": {
+    "hero_id": {
+     "role": "foreign_key",
+     "name": "hero_id",
+     "description": "Foreign key to superhero.id — the superhero possessing the power. Part of the composite key of this junction table.",
+     "status": "resolved"
+    },
+    "power_id": {
+     "role": "foreign_key",
+     "name": "power_id",
+     "description": "Foreign key to superpower.id — the superpower possessed by the hero. The join to superhero.id is spurious (both are integer ids); the superpower join is the meaningful one. Part of the composite key.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "publisher": {
+   "table": {
+    "name": "publisher",
+    "purpose": "Lookup table of publishers/creators of superheroes. Each row is one publisher (25 total), referenced by the superhero table via publisher_id. Values include comic-book publishers (DC Comics, Dark Horse, Wildstorm), media companies (Sony Pictures, SyFy, Microsoft, George Lucas), and individual authors (J. K. Rowling), so 'publisher' is used broadly as the character's owner/originator."
+   },
+   "columns": {
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the publisher lookup table; unique integer identifier for each publisher. Referenced by superhero.publisher_id (each superhero belongs to one publisher). The join to hero_attribute.attribute_id is likely a coincidental numeric match, not a real relationship.",
+     "status": "resolved"
+    },
+    "publisher_name": {
+     "role": "category",
+     "name": "publisher_name",
+     "description": "Name of the company or creator that publishes/owns the superhero character (e.g. DC Comics, Marvel, Shueisha, Microsoft, J. K. Rowling). One row per publisher; one value is an empty string, meaning an unknown/blank publisher.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "race": {
+   "table": {
+    "name": "race",
+    "purpose": "Lookup table of superhero races/species. Each row is one distinct race; the superhero table references it via race_id to categorize characters by their species (Human, Mutant, Alien, Android, etc.). The '-' value likely encodes 'unknown'. The joins to eye_colour_id, hair_colour_id, publisher_id and skin_colour_id are almost certainly coincidental statistical matches, not real relationships, since those columns reference other lookup tables (colour, publisher)."
+   },
+   "columns": {
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the race lookup table; unique identifier for each race entry. Referenced by superhero.race_id (and, statistically, by the superhero colour/publisher foreign keys, though those are likely spurious statistical matches rather than true relationships).",
+     "status": "resolved"
+    },
+    "race": {
+     "role": "category",
+     "name": "race",
+     "description": "Name of the fictional species/race of a superhero (e.g. Human / Radiation, Inhuman, Spartoi, Mutant, Demi-God, Vampire, Android, Alien). '-' appears to denote unknown/absent race. One row per distinct race.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "superhero": {
+   "table": {
+    "name": "superhero",
+    "purpose": "One row per superhero/comic-book character: its alias, real name, physical attributes (height, weight, eye/hair/skin colour), gender, race, moral alignment, and publisher. Attribute scores and superpowers are stored in the linked hero_attribute and hero_power junction tables."
+   },
+   "columns": {
+    "alignment_id": {
+     "role": "foreign_key",
+     "name": "alignment_id",
+     "description": "Foreign key to alignment.id: the hero's moral alignment (1=Good, 2=Bad, 3=Neutral).",
+     "status": "resolved"
+    },
+    "eye_colour_id": {
+     "role": "foreign_key",
+     "name": "eye_colour_id",
+     "description": "Foreign key to colour.id: the hero's eye colour.",
+     "status": "resolved"
+    },
+    "full_name": {
+     "role": "free_text",
+     "name": "full_name",
+     "description": "The hero's civilian/real full name (e.g. 'Bartholomew Allen II'). '-' (125 rows) and nulls indicate unknown real names.",
+     "status": "resolved"
+    },
+    "gender_id": {
+     "role": "foreign_key",
+     "name": "gender_id",
+     "description": "Foreign key to gender.id: the hero's gender (1=Male, 2=Female, 3=N/A).",
+     "status": "resolved"
+    },
+    "hair_colour_id": {
+     "role": "foreign_key",
+     "name": "hair_colour_id",
+     "description": "Foreign key to colour.id: the hero's hair colour.",
+     "status": "resolved"
+    },
+    "height_cm": {
+     "role": "numeric",
+     "name": "height_cm",
+     "description": "The hero's height in centimetres. 0 (155 rows) marks unknown/missing values; extreme values (e.g. 10800, max 30480) reflect non-human characters.",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "foreign_key",
+     "name": "id",
+     "description": "Primary key of the superhero table; unique identifier for each character, referenced by hero_attribute and hero_power.",
+     "status": "resolved"
+    },
+    "publisher_id": {
+     "role": "foreign_key",
+     "name": "publisher_id",
+     "description": "Foreign key to publisher.id: the comic publisher/creator of the character (e.g. 4=DC Comics; 13 is likely Marvel Comics given its dominance alongside DC).",
+     "status": "resolved"
+    },
+    "race_id": {
+     "role": "foreign_key",
+     "name": "race_id",
+     "description": "Foreign key to race.id: the hero's species/race (e.g. 1 likely Human, 24 likely a common human variant given its frequency).",
+     "status": "resolved"
+    },
+    "skin_colour_id": {
+     "role": "foreign_key",
+     "name": "skin_colour_id",
+     "description": "Foreign key to colour.id: the hero's skin colour (1, the dominant value, is most likely a normal/white or default tone).",
+     "status": "resolved"
+    },
+    "superhero_name": {
+     "role": "free_text",
+     "name": "superhero_name",
+     "description": "The hero's alias/costume name (e.g. 'Green Lantern V', 'Iceman'). Nearly unique; a few names are shared by different characters.",
+     "status": "resolved"
+    },
+    "weight_kg": {
+     "role": "numeric",
+     "name": "weight_kg",
+     "description": "The hero's weight in kilograms. 0 (172 rows) marks unknown/missing values; extreme values (e.g. 90000000) reflect non-human characters.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "superpower": {
+   "table": {
+    "name": "superpower",
+    "purpose": "Lookup table of superpowers/superhuman abilities. Each row is one distinct power with an id and a human-readable name. Heroes are linked to powers via the hero_power association table (hero_power.power_id -> superpower.id). Part of a superhero database alongside superhero, publisher, alignment, race, gender, colour, attribute, hero_attribute and hero_power tables."
+   },
+   "columns": {
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the superpower lookup table; unique identifier for each superpower. Referenced by hero_power.power_id (the hero-to-power association table). The other listed joins (superhero.race_id, eye_colour_id, etc.) are spurious: those columns reference other lookup tables whose ids happen to overlap numerically, so the statistics accept them coincidentally.",
+     "status": "resolved"
+    },
+    "power_name": {
+     "role": "category",
+     "name": "power_name",
+     "description": "Name of the superpower (e.g. 'Accelerated Healing', 'Invisibility', 'Animal Control'). One row per distinct power; 167 unique names.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

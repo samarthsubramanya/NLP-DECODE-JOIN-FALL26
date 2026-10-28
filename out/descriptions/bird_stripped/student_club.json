@@ -1,0 +1,380 @@
+{
+ "db_id": "student_club",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "default",
+ "keys_run": "frozen",
+ "graph": "llm",
+ "edges": 8,
+ "tables": {
+  "attendance": {
+   "table": {
+    "name": "attendance",
+    "purpose": "Junction/association table recording which member attended which event (many-to-many between member and event, likely for a student organization given events like 'Habitat for Humanity' and 'Food Bank'). Each row is one member's attendance at one event. No primary key column was detected; the pair (link_to_event, link_to_member) presumably identifies a row."
+   },
+   "columns": {
+    "link_to_event": {
+     "role": "foreign_key",
+     "name": "link_to_event",
+     "description": "Foreign key to event.event_id identifying which event the attendance record is for. Values are Airtable-style record IDs (rec...).",
+     "status": "resolved"
+    },
+    "link_to_member": {
+     "role": "foreign_key",
+     "name": "link_to_member",
+     "description": "Foreign key to member.member_id identifying which member attended the event. Values are Airtable-style record IDs (rec...).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "budget": {
+   "table": {
+    "name": "budget",
+    "purpose": "Budget line items for club/organization events: each row allocates a dollar amount to one expense category (Food, Advertisement, Parking, Speaker Gifts, Club T-Shirts) for a specific event, and tracks how much has been spent and how much remains. Expenses in the expense table are charged against these lines via budget_id."
+   },
+   "columns": {
+    "amount": {
+     "role": "numeric",
+     "name": "amount",
+     "description": "Planned budget amount for the line item, in whole dollars (BIGINT, values 10–350).",
+     "status": "resolved"
+    },
+    "budget_id": {
+     "role": "identifier",
+     "name": "budget_id",
+     "description": "Primary key of the budget line item; Airtable-style record id (prefix 'rec'). Referenced by expense.link_to_budget, so each budget row can have multiple expenses charged against it.",
+     "status": "resolved"
+    },
+    "category": {
+     "role": "category",
+     "name": "category",
+     "description": "Expense category of the budget line: Food, Advertisement, Parking, Speaker Gifts, Club T-Shirts.",
+     "status": "resolved"
+    },
+    "event_status": {
+     "role": "category",
+     "name": "event_status",
+     "description": "Status of the associated event: Open, Closed, or Planning. Likely a denormalized copy of the event's status (the event table is joined via link_to_event); tentative because it could instead be the budget line's own status, though the values match a typical event lifecycle.",
+     "status": "tentative"
+    },
+    "link_to_event": {
+     "role": "foreign_key",
+     "name": "link_to_event",
+     "description": "Foreign key to event.event_id; the event this budget line belongs to (e.g. 'Officers meeting - March', 'Habitat for Humanity', 'Lacrosse game'). Each event has up to ~4 budget lines.",
+     "status": "resolved"
+    },
+    "remaining": {
+     "role": "numeric",
+     "name": "remaining",
+     "description": "Amount of the budget line still unspent, in dollars; equals amount minus spent (can go negative, min -24.25, when expenses exceeded the budget).",
+     "status": "resolved"
+    },
+    "spent": {
+     "role": "numeric",
+     "name": "spent",
+     "description": "Amount already spent against this budget line, in dollars (0.0 for lines with no expenses yet; max 327.07).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "event": {
+   "table": {
+    "name": "event",
+    "purpose": "One row per event held by a student organization (club) during the 2019–2020 academic year: meetings, guest speakers, sports games attended as a group, community service, socials, elections, and budget reviews. Attendance (per member) and budget records link to each event via event_id. The frequent location 'MU 215' suggests a campus Memorial Union room used for regular meetings."
+   },
+   "columns": {
+    "event_date": {
+     "role": "date",
+     "name": "event_date",
+     "description": "Date and time when the event takes place (stored as text but parseable as a datetime). Range spans the 2019–2020 academic year.",
+     "status": "resolved"
+    },
+    "event_id": {
+     "role": "identifier",
+     "name": "event_id",
+     "description": "Primary key of the event table; opaque Airtable-style record ID ('rec' + 14 chars). Referenced by attendance.link_to_event and budget.link_to_event.",
+     "status": "resolved"
+    },
+    "event_name": {
+     "role": "category",
+     "name": "event_name",
+     "description": "Human-readable title of the event (e.g. 'Officers meeting - March', 'Habitat for Humanity'). Slight duplicates exist for recurring events.",
+     "status": "resolved"
+    },
+    "location": {
+     "role": "category",
+     "name": "location",
+     "description": "Where the event is held: campus room numbers (e.g. 'MU 215'), campus sports stadiums, or street addresses for off-site/community service events. Null for ~14% of rows (likely meetings with an implied or unconfirmed location).",
+     "status": "resolved"
+    },
+    "notes": {
+     "role": "free_text",
+     "name": "notes",
+     "description": "Free-text description of the event: attendance rules, eligibility (e.g. 'Officers and Budget Committee only'), or activity details (volunteer work, group game attendance). Null for about half the rows.",
+     "status": "resolved"
+    },
+    "status": {
+     "role": "category",
+     "name": "status",
+     "description": "Event lifecycle stage: 'Planning', 'Open', or 'Closed'.",
+     "status": "resolved"
+    },
+    "type": {
+     "role": "category",
+     "name": "type",
+     "description": "Category of event: Meeting, Guest Speaker, Game, Community Service, Social, Budget, Election, and one more (8 distinct values).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "expense": {
+   "table": {
+    "name": "expense",
+    "purpose": "Expense ledger for a student club/organization: each row is one approved expense with its cost, date, description, the budget category it draws from, and the member who incurred it. Dates fall in the 2019 fall semester (Aug–Nov 2019)."
+   },
+   "columns": {
+    "approved": {
+     "role": "boolean",
+     "name": "approved",
+     "description": "Boolean flag (stored as text) indicating whether the expense was approved; 'true' for 31 of 32 rows, one null.",
+     "status": "resolved"
+    },
+    "cost": {
+     "role": "numeric",
+     "name": "cost",
+     "description": "Monetary amount of the expense in dollars (range 6.00–295.12, median ~54).",
+     "status": "resolved"
+    },
+    "expense_date": {
+     "role": "date",
+     "name": "expense_date",
+     "description": "Date the expense was incurred (ISO date string), spanning 2019-08-20 to 2019-11-19.",
+     "status": "resolved"
+    },
+    "expense_description": {
+     "role": "free_text",
+     "name": "expense_description",
+     "description": "Free-text description of what was purchased (e.g., 'Pizza', 'Posters', 'Club shirts', 'Parking').",
+     "status": "resolved"
+    },
+    "expense_id": {
+     "role": "identifier",
+     "name": "expense_id",
+     "description": "Primary key; unique record identifier (Airtable-style 'rec...' ID) for the expense row.",
+     "status": "resolved"
+    },
+    "link_to_budget": {
+     "role": "foreign_key",
+     "name": "link_to_budget",
+     "description": "Foreign key to budget.budget_id, assigning the expense to a budget category (e.g., Advertisement, Food, Parking).",
+     "status": "resolved"
+    },
+    "link_to_member": {
+     "role": "foreign_key",
+     "name": "link_to_member",
+     "description": "Foreign key to member.member_id, identifying the member (by email) who submitted or incurred the expense; only 3 distinct members.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "income": {
+   "table": {
+    "name": "income",
+    "purpose": "Ledger of income received by a student organization (likely a club at a university, given member emails on lpu.edu). Each row is one income receipt: mostly $50 membership dues collected from individual members during fall 2019, plus a few larger one-time receipts (fundraising, sponsorship, annual Student Government funding). Links to the member table for dues payments and to the budget/expense tables for the organization's finances."
+   },
+   "columns": {
+    "amount": {
+     "role": "numeric",
+     "name": "amount",
+     "description": "Monetary amount of the income entry, in whole dollars (BIGINT). Most rows are 50 (membership dues); larger one-off amounts (200, 1000, 3000) correspond to fundraising, sponsorship, and school appropriation entries.",
+     "status": "resolved"
+    },
+    "date_received": {
+     "role": "date",
+     "name": "date_received",
+     "description": "Date the income was received, stored as a date string (YYYY-MM-DD). All entries fall between 2019-09-01 and 2019-10-31, consistent with a fall semester.",
+     "status": "resolved"
+    },
+    "income_id": {
+     "role": "identifier",
+     "name": "income_id",
+     "description": "Primary key of the income table; unique Airtable-style record identifier (rec-prefixed string).",
+     "status": "resolved"
+    },
+    "link_to_member": {
+     "role": "foreign_key",
+     "name": "link_to_member",
+     "description": "Foreign key to member.member_id identifying the member associated with the income (e.g., the member who paid dues or secured the donation). Nullable — the three non-dues entries (fundraising, sponsorship, appropriation) have no member.",
+     "status": "resolved"
+    },
+    "notes": {
+     "role": "free_text",
+     "name": "notes",
+     "description": "Optional free-text description of the income, present only on the three non-dues entries (e.g., 'Annual funding from Student Government.').",
+     "status": "resolved"
+    },
+    "source": {
+     "role": "category",
+     "name": "source",
+     "description": "Category of the income: 'Dues' (33 rows), plus one each of 'Fundraising', 'Sponsorship', and 'School Appropration' (sic — misspelled 'Appropriation' in the data).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "major": {
+   "table": {
+    "name": "major",
+    "purpose": "Lookup/reference table of academic majors offered at a university (values suggest Utah State University's college/department structure). Each row is one major, identified by an opaque record ID, with its name, department, and college. Members (in the member table) link to a major via member.link_to_major, presumably to record each member's field of study; the surrounding tables (attendance, budget, event, expense, income) suggest this database tracks a student organization's members, events, and finances."
+   },
+   "columns": {
+    "college": {
+     "role": "category",
+     "name": "college",
+     "description": "Name of the college (academic division) within the university that houses the major, e.g. 'College of Agriculture and Applied Sciences'. One of 8 colleges.",
+     "status": "resolved"
+    },
+    "department": {
+     "role": "category",
+     "name": "department",
+     "description": "Name of the academic department or school within the college that administers the major, e.g. 'History Department', 'School of Accountancy'.",
+     "status": "resolved"
+    },
+    "major_id": {
+     "role": "identifier",
+     "name": "major_id",
+     "description": "Primary key; opaque record identifier (Airtable-style 'rec...' ID) for the major. Referenced by member.link_to_major, so each member is associated with one major.",
+     "status": "resolved"
+    },
+    "major_name": {
+     "role": "category",
+     "name": "major_name",
+     "description": "Name of the academic major/degree program, e.g. 'History', 'Environmental Engineering'. Unique per row.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "member": {
+   "table": {
+    "name": "member",
+    "purpose": "Roster of members of a student organization (likely at LPU university), one row per member. Members are linked to their academic major, home ZIP code, and are referenced by attendance (event participation), expense, and income (financial transactions) tables. Tracks contact info, officer positions, membership status, and t-shirt sizes."
+   },
+   "columns": {
+    "email": {
+     "role": "identifier",
+     "name": "email",
+     "description": "Member's email address; all at lpu.edu, consistent with a university student organization. Uniquely identifies each member alongside member_id.",
+     "status": "resolved"
+    },
+    "first_name": {
+     "role": "identifier",
+     "name": "first_name",
+     "description": "Member's given name.",
+     "status": "resolved"
+    },
+    "last_name": {
+     "role": "identifier",
+     "name": "last_name",
+     "description": "Member's family name.",
+     "status": "resolved"
+    },
+    "link_to_major": {
+     "role": "foreign_key",
+     "name": "link_to_major",
+     "description": "Foreign key to major.major_id (Airtable-style 'rec...' record id) indicating the member's academic major. Nullable: some members (e.g. inactive ones) have no major recorded.",
+     "status": "resolved"
+    },
+    "member_id": {
+     "role": "identifier",
+     "name": "member_id",
+     "description": "Primary key of the member table (Airtable-style 'rec...' record id). Referenced by attendance, expense, and income tables to attribute event attendance and financial transactions to a member.",
+     "status": "resolved"
+    },
+    "phone": {
+     "role": "identifier",
+     "name": "phone",
+     "description": "Member's phone number, stored as text in mixed formats (e.g. '(651) 928-4507', '109-555-7016'); many are clearly fictional 555 numbers.",
+     "status": "resolved"
+    },
+    "position": {
+     "role": "category",
+     "name": "position",
+     "description": "Member's role/status in the organization: 'Member' (26), 'Inactive' (3), and one each of 'President', 'Secretary', 'Treasurer' (officers). Note it mixes membership status (Inactive) with officer titles.",
+     "status": "resolved"
+    },
+    "t_shirt_size": {
+     "role": "category",
+     "name": "t_shirt_size",
+     "description": "Member's t-shirt size: Small, Medium, Large, or X-Large.",
+     "status": "resolved"
+    },
+    "zip": {
+     "role": "foreign_key",
+     "name": "zip",
+     "description": "Member's home ZIP code (US postal code), referencing zip_code.zip_code. Stored as an integer, so leading zeros are lost (e.g. 1020 is likely 01020, 8021 likely 08021).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "zip_code": {
+   "table": {
+    "name": "zip_code",
+    "purpose": "Reference/lookup table of US 5-digit ZIP codes with their city, county, state (full name and abbreviation), and USPS ZIP type. Used to resolve member ZIP codes (member.zip) to geographic locations."
+   },
+   "columns": {
+    "city": {
+     "role": "free_text",
+     "name": "city",
+     "description": "Primary city or town name associated with the ZIP code.",
+     "status": "resolved"
+    },
+    "county": {
+     "role": "free_text",
+     "name": "county",
+     "description": "County (or county-equivalent such as borough, municipio, or census area) containing the ZIP code.",
+     "status": "resolved"
+    },
+    "short_state": {
+     "role": "code",
+     "name": "short_state",
+     "description": "Two-letter USPS state abbreviation (includes DC and PR; 52 distinct values).",
+     "status": "resolved"
+    },
+    "state": {
+     "role": "free_text",
+     "name": "state",
+     "description": "Full state name corresponding to short_state.",
+     "status": "resolved"
+    },
+    "type": {
+     "role": "category",
+     "name": "type",
+     "description": "USPS ZIP code classification: Standard (general delivery area), PO Box (post-office-box-only ZIP), Unique (single high-volume address such as a company or government building).",
+     "status": "resolved"
+    },
+    "zip_code": {
+     "role": "identifier",
+     "name": "zip_code",
+     "description": "US 5-digit ZIP code; primary key of the table, referenced by member.zip.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

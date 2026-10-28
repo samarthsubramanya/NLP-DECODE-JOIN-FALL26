@@ -1,0 +1,1751 @@
+{
+ "accept": 70,
+ "db_id": "european_football_2",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "Country": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 125.0
+    }
+   ],
+   "columns": {
+    "id": {
+     "base": 85.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "League.id",
+       "League.country_id",
+       "Match.country_id",
+       "Match.league_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 125.0
+    },
+    "name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    }
+   },
+   "evidence": "score",
+   "primary_key": "id"
+  },
+  "League": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 125.0
+    }
+   ],
+   "columns": {
+    "country_id": {
+     "base": 85.0,
+     "boost": 20,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Country.id",
+       "League.id",
+       "Match.country_id",
+       "Match.league_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 45.9
+    },
+    "id": {
+     "base": 85.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Country.id",
+       "League.country_id",
+       "Match.country_id",
+       "Match.league_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 125.0
+    },
+    "name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 20.65
+    }
+   },
+   "evidence": "score",
+   "primary_key": "id"
+  },
+  "Match": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "B365A": {
+     "rejected": "has nulls"
+    },
+    "B365D": {
+     "rejected": "has nulls"
+    },
+    "B365H": {
+     "rejected": "has nulls"
+    },
+    "BSA": {
+     "rejected": "has nulls"
+    },
+    "BSD": {
+     "rejected": "has nulls"
+    },
+    "BSH": {
+     "rejected": "has nulls"
+    },
+    "BWA": {
+     "rejected": "has nulls"
+    },
+    "BWD": {
+     "rejected": "has nulls"
+    },
+    "BWH": {
+     "rejected": "has nulls"
+    },
+    "GBA": {
+     "rejected": "has nulls"
+    },
+    "GBD": {
+     "rejected": "has nulls"
+    },
+    "GBH": {
+     "rejected": "has nulls"
+    },
+    "IWA": {
+     "rejected": "has nulls"
+    },
+    "IWD": {
+     "rejected": "has nulls"
+    },
+    "IWH": {
+     "rejected": "has nulls"
+    },
+    "LBA": {
+     "rejected": "has nulls"
+    },
+    "LBD": {
+     "rejected": "has nulls"
+    },
+    "LBH": {
+     "rejected": "has nulls"
+    },
+    "PSA": {
+     "rejected": "has nulls"
+    },
+    "PSD": {
+     "rejected": "has nulls"
+    },
+    "PSH": {
+     "rejected": "has nulls"
+    },
+    "SJA": {
+     "rejected": "has nulls"
+    },
+    "SJD": {
+     "rejected": "has nulls"
+    },
+    "SJH": {
+     "rejected": "has nulls"
+    },
+    "VCA": {
+     "rejected": "has nulls"
+    },
+    "VCD": {
+     "rejected": "has nulls"
+    },
+    "VCH": {
+     "rejected": "has nulls"
+    },
+    "WHA": {
+     "rejected": "has nulls"
+    },
+    "WHD": {
+     "rejected": "has nulls"
+    },
+    "WHH": {
+     "rejected": "has nulls"
+    },
+    "away_player_1": {
+     "rejected": "has nulls"
+    },
+    "away_player_10": {
+     "rejected": "has nulls"
+    },
+    "away_player_11": {
+     "rejected": "has nulls"
+    },
+    "away_player_2": {
+     "rejected": "has nulls"
+    },
+    "away_player_3": {
+     "rejected": "has nulls"
+    },
+    "away_player_4": {
+     "rejected": "has nulls"
+    },
+    "away_player_5": {
+     "rejected": "has nulls"
+    },
+    "away_player_6": {
+     "rejected": "has nulls"
+    },
+    "away_player_7": {
+     "rejected": "has nulls"
+    },
+    "away_player_8": {
+     "rejected": "has nulls"
+    },
+    "away_player_9": {
+     "rejected": "has nulls"
+    },
+    "away_player_X1": {
+     "rejected": "has nulls"
+    },
+    "away_player_X10": {
+     "rejected": "has nulls"
+    },
+    "away_player_X11": {
+     "rejected": "has nulls"
+    },
+    "away_player_X2": {
+     "rejected": "has nulls"
+    },
+    "away_player_X3": {
+     "rejected": "has nulls"
+    },
+    "away_player_X4": {
+     "rejected": "has nulls"
+    },
+    "away_player_X5": {
+     "rejected": "has nulls"
+    },
+    "away_player_X6": {
+     "rejected": "has nulls"
+    },
+    "away_player_X7": {
+     "rejected": "has nulls"
+    },
+    "away_player_X8": {
+     "rejected": "has nulls"
+    },
+    "away_player_X9": {
+     "rejected": "has nulls"
+    },
+    "away_player_Y1": {
+     "rejected": "has nulls"
+    },
+    "away_player_Y10": {
+     "rejected": "has nulls"
+    },
+    "away_player_Y11": {
+     "rejected": "has nulls"
+    },
+    "away_player_Y2": {
+     "rejected": "has nulls"
+    },
+    "away_player_Y3": {
+     "rejected": "has nulls"
+    },
+    "away_player_Y4": {
+     "rejected": "has nulls"
+    },
+    "away_player_Y5": {
+     "rejected": "has nulls"
+    },
+    "away_player_Y6": {
+     "rejected": "has nulls"
+    },
+    "away_player_Y7": {
+     "rejected": "has nulls"
+    },
+    "away_player_Y8": {
+     "rejected": "has nulls"
+    },
+    "away_player_Y9": {
+     "rejected": "has nulls"
+    },
+    "away_team_api_id": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.01150929596982178
+     },
+     "phi": 0.55,
+     "score": 19.25
+    },
+    "away_team_goal": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.000384926286616113
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "card": {
+     "rejected": "has nulls"
+    },
+    "corner": {
+     "rejected": "has nulls"
+    },
+    "country_id": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00042341891527772433
+     },
+     "phi": 0.85,
+     "score": 11.9
+    },
+    "cross": {
+     "rejected": "has nulls"
+    },
+    "date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "foulcommit": {
+     "rejected": "has nulls"
+    },
+    "goal": {
+     "rejected": "has nulls"
+    },
+    "home_player_1": {
+     "rejected": "has nulls"
+    },
+    "home_player_10": {
+     "rejected": "has nulls"
+    },
+    "home_player_11": {
+     "rejected": "has nulls"
+    },
+    "home_player_2": {
+     "rejected": "has nulls"
+    },
+    "home_player_3": {
+     "rejected": "has nulls"
+    },
+    "home_player_4": {
+     "rejected": "has nulls"
+    },
+    "home_player_5": {
+     "rejected": "has nulls"
+    },
+    "home_player_6": {
+     "rejected": "has nulls"
+    },
+    "home_player_7": {
+     "rejected": "has nulls"
+    },
+    "home_player_8": {
+     "rejected": "has nulls"
+    },
+    "home_player_9": {
+     "rejected": "has nulls"
+    },
+    "home_player_X1": {
+     "rejected": "has nulls"
+    },
+    "home_player_X10": {
+     "rejected": "has nulls"
+    },
+    "home_player_X11": {
+     "rejected": "has nulls"
+    },
+    "home_player_X2": {
+     "rejected": "has nulls"
+    },
+    "home_player_X3": {
+     "rejected": "has nulls"
+    },
+    "home_player_X4": {
+     "rejected": "has nulls"
+    },
+    "home_player_X5": {
+     "rejected": "has nulls"
+    },
+    "home_player_X6": {
+     "rejected": "has nulls"
+    },
+    "home_player_X7": {
+     "rejected": "has nulls"
+    },
+    "home_player_X8": {
+     "rejected": "has nulls"
+    },
+    "home_player_X9": {
+     "rejected": "has nulls"
+    },
+    "home_player_Y1": {
+     "rejected": "has nulls"
+    },
+    "home_player_Y10": {
+     "rejected": "has nulls"
+    },
+    "home_player_Y11": {
+     "rejected": "has nulls"
+    },
+    "home_player_Y2": {
+     "rejected": "has nulls"
+    },
+    "home_player_Y3": {
+     "rejected": "has nulls"
+    },
+    "home_player_Y4": {
+     "rejected": "has nulls"
+    },
+    "home_player_Y5": {
+     "rejected": "has nulls"
+    },
+    "home_player_Y6": {
+     "rejected": "has nulls"
+    },
+    "home_player_Y7": {
+     "rejected": "has nulls"
+    },
+    "home_player_Y8": {
+     "rejected": "has nulls"
+    },
+    "home_player_Y9": {
+     "rejected": "has nulls"
+    },
+    "home_team_api_id": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.01150929596982178
+     },
+     "phi": 0.55,
+     "score": 19.25
+    },
+    "home_team_goal": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.00042341891527772433
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Country.id",
+       "League.id",
+       "League.country_id",
+       "Match.country_id",
+       "Match.league_id",
+       "Match.stage",
+       "Match.home_team_api_id",
+       "Match.away_team_api_id",
+       "Match.home_player_X3",
+       "Match.home_player_X4",
+       "Match.home_player_X5",
+       "Match.home_player_X6",
+       "Match.home_player_X7",
+       "Match.home_player_X8",
+       "Match.home_player_X9",
+       "Match.home_player_X10",
+       "Match.home_player_X11",
+       "Match.away_player_X1",
+       "Match.away_player_X2",
+       "Match.away_player_X3",
+       "Match.away_player_X4",
+       "Match.away_player_X5",
+       "Match.away_player_X6",
+       "Match.away_player_X7",
+       "Match.away_player_X8",
+       "Match.away_player_X9",
+       "Match.away_player_X10",
+       "Match.away_player_X11",
+       "Match.home_player_Y3",
+       "Match.home_player_Y4",
+       "Match.home_player_Y5",
+       "Match.home_player_Y6",
+       "Match.home_player_Y7",
+       "Match.home_player_Y8",
+       "Match.home_player_Y9",
+       "Match.home_player_Y10",
+       "Match.home_player_Y11",
+       "Match.away_player_Y1",
+       "Match.away_player_Y2",
+       "Match.away_player_Y3",
+       "Match.away_player_Y4",
+       "Match.away_player_Y5",
+       "Match.away_player_Y6",
+       "Match.away_player_Y7",
+       "Match.away_player_Y8",
+       "Match.away_player_Y9",
+       "Match.away_player_Y10",
+       "Match.away_player_Y11",
+       "Player.id",
+       "Player.weight",
+       "Player_Attributes.overall_rating",
+       "Player_Attributes.potential",
+       "Player_Attributes.crossing",
+       "Player_Attributes.finishing",
+       "Player_Attributes.heading_accuracy",
+       "Player_Attributes.short_passing",
+       "Player_Attributes.volleys",
+       "Player_Attributes.dribbling",
+       "Player_Attributes.curve",
+       "Player_Attributes.free_kick_accuracy",
+       "Player_Attributes.long_passing",
+       "Player_Attributes.ball_control",
+       "Player_Attributes.acceleration",
+       "Player_Attributes.sprint_speed",
+       "Player_Attributes.agility",
+       "Player_Attributes.reactions",
+       "Player_Attributes.balance",
+       "Player_Attributes.shot_power",
+       "Player_Attributes.jumping",
+       "Player_Attributes.stamina",
+       "Player_Attributes.strength",
+       "Player_Attributes.long_shots",
+       "Player_Attributes.aggression",
+       "Player_Attributes.interceptions",
+       "Player_Attributes.positioning",
+       "Player_Attributes.vision",
+       "Player_Attributes.penalties",
+       "Player_Attributes.marking",
+       "Player_Attributes.standing_tackle",
+       "Player_Attributes.sliding_tackle",
+       "Player_Attributes.gk_diving",
+       "Player_Attributes.gk_handling",
+       "Player_Attributes.gk_kicking",
+       "Player_Attributes.gk_positioning",
+       "Player_Attributes.gk_reflexes",
+       "Team.team_api_id",
+       "Team_Attributes.id",
+       "Team_Attributes.team_api_id",
+       "Team_Attributes.buildUpPlaySpeed",
+       "Team_Attributes.buildUpPlayDribbling",
+       "Team_Attributes.buildUpPlayPassing",
+       "Team_Attributes.chanceCreationPassing",
+       "Team_Attributes.chanceCreationCrossing",
+       "Team_Attributes.chanceCreationShooting",
+       "Team_Attributes.defencePressure",
+       "Team_Attributes.defenceAggression",
+       "Team_Attributes.defenceTeamWidth"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "league_id": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00042341891527772433
+     },
+     "phi": 0.7,
+     "score": 9.8
+    },
+    "match_api_id": {
+     "base": 85.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 46.75
+    },
+    "possession": {
+     "rejected": "has nulls"
+    },
+    "season": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00030794102929289043
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "shotoff": {
+     "rejected": "has nulls"
+    },
+    "shoton": {
+     "rejected": "has nulls"
+    },
+    "stage": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0014627198891412295
+     },
+     "phi": 0.55,
+     "score": 16.5
+    }
+   },
+   "evidence": "score",
+   "primary_key": "id"
+  },
+  "Player": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 140.0
+    },
+    {
+     "column": "player_api_id",
+     "score": 89.25
+    }
+   ],
+   "columns": {
+    "birthday": {
+     "rejected": "blacklist: date/time (birthday)"
+    },
+    "height": {
+     "rejected": "blacklist: quantity (height)"
+    },
+    "id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Match.stage",
+       "Match.home_team_api_id",
+       "Match.away_team_api_id",
+       "Match.home_player_X3",
+       "Match.home_player_X4",
+       "Match.home_player_X5",
+       "Match.home_player_X6",
+       "Match.home_player_X7",
+       "Match.home_player_X8",
+       "Match.home_player_X9",
+       "Match.home_player_X10",
+       "Match.home_player_X11",
+       "Match.away_player_X1",
+       "Match.away_player_X2",
+       "Match.away_player_X3",
+       "Match.away_player_X4",
+       "Match.away_player_X5",
+       "Match.away_player_X6",
+       "Match.away_player_X7",
+       "Match.away_player_X8",
+       "Match.away_player_X9",
+       "Match.away_player_X10",
+       "Match.away_player_X11",
+       "Match.home_player_Y3",
+       "Match.home_player_Y4",
+       "Match.home_player_Y5",
+       "Match.home_player_Y6",
+       "Match.home_player_Y7",
+       "Match.home_player_Y8",
+       "Match.home_player_Y9",
+       "Match.home_player_Y10",
+       "Match.home_player_Y11",
+       "Match.away_player_Y1",
+       "Match.away_player_Y2",
+       "Match.away_player_Y3",
+       "Match.away_player_Y4",
+       "Match.away_player_Y5",
+       "Match.away_player_Y6",
+       "Match.away_player_Y7",
+       "Match.away_player_Y8",
+       "Match.away_player_Y9",
+       "Match.away_player_Y10",
+       "Match.away_player_Y11",
+       "Player.weight",
+       "Player_Attributes.overall_rating",
+       "Player_Attributes.potential",
+       "Player_Attributes.crossing",
+       "Player_Attributes.finishing",
+       "Player_Attributes.heading_accuracy",
+       "Player_Attributes.short_passing",
+       "Player_Attributes.volleys",
+       "Player_Attributes.dribbling",
+       "Player_Attributes.curve",
+       "Player_Attributes.free_kick_accuracy",
+       "Player_Attributes.long_passing",
+       "Player_Attributes.ball_control",
+       "Player_Attributes.acceleration",
+       "Player_Attributes.sprint_speed",
+       "Player_Attributes.agility",
+       "Player_Attributes.reactions",
+       "Player_Attributes.balance",
+       "Player_Attributes.shot_power",
+       "Player_Attributes.jumping",
+       "Player_Attributes.stamina",
+       "Player_Attributes.strength",
+       "Player_Attributes.long_shots",
+       "Player_Attributes.aggression",
+       "Player_Attributes.interceptions",
+       "Player_Attributes.positioning",
+       "Player_Attributes.vision",
+       "Player_Attributes.penalties",
+       "Player_Attributes.marking",
+       "Player_Attributes.standing_tackle",
+       "Player_Attributes.sliding_tackle",
+       "Player_Attributes.gk_diving",
+       "Player_Attributes.gk_handling",
+       "Player_Attributes.gk_kicking",
+       "Player_Attributes.gk_positioning",
+       "Player_Attributes.gk_reflexes",
+       "Team.team_api_id",
+       "Team_Attributes.id",
+       "Team_Attributes.team_api_id",
+       "Team_Attributes.buildUpPlaySpeed",
+       "Team_Attributes.buildUpPlayDribbling",
+       "Team_Attributes.buildUpPlayPassing",
+       "Team_Attributes.chanceCreationPassing",
+       "Team_Attributes.chanceCreationCrossing",
+       "Team_Attributes.chanceCreationShooting",
+       "Team_Attributes.defencePressure",
+       "Team_Attributes.defenceAggression",
+       "Team_Attributes.defenceTeamWidth"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "player_api_id": {
+     "base": 85.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Match.home_player_1",
+       "Match.home_player_2",
+       "Match.home_player_3",
+       "Match.home_player_4",
+       "Match.home_player_5",
+       "Match.home_player_6",
+       "Match.home_player_7",
+       "Match.home_player_8",
+       "Match.home_player_9",
+       "Match.home_player_10",
+       "Match.home_player_11",
+       "Match.away_player_1",
+       "Match.away_player_2",
+       "Match.away_player_3",
+       "Match.away_player_4",
+       "Match.away_player_5",
+       "Match.away_player_6",
+       "Match.away_player_7",
+       "Match.away_player_8",
+       "Match.away_player_9",
+       "Match.away_player_10",
+       "Match.away_player_11",
+       "Player_Attributes.player_api_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 89.25
+    },
+    "player_fifa_api_id": {
+     "base": 85.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Player_Attributes.player_fifa_api_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 57.75
+    },
+    "player_name": {
+     "base": 58.042,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9808318264014466,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9808318264014466
+     },
+     "phi": 0.7,
+     "score": 40.629
+    },
+    "weight": {
+     "rejected": "blacklist: quantity (weight)"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "id"
+  },
+  "Player_Attributes": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "acceleration": {
+     "rejected": "has nulls"
+    },
+    "aggression": {
+     "rejected": "has nulls"
+    },
+    "agility": {
+     "rejected": "has nulls"
+    },
+    "attacking_work_rate": {
+     "rejected": "has nulls"
+    },
+    "balance": {
+     "rejected": "has nulls"
+    },
+    "ball_control": {
+     "rejected": "has nulls"
+    },
+    "crossing": {
+     "rejected": "has nulls"
+    },
+    "curve": {
+     "rejected": "has nulls"
+    },
+    "date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "defensive_work_rate": {
+     "rejected": "has nulls"
+    },
+    "dribbling": {
+     "rejected": "has nulls"
+    },
+    "finishing": {
+     "rejected": "has nulls"
+    },
+    "free_kick_accuracy": {
+     "rejected": "has nulls"
+    },
+    "gk_diving": {
+     "rejected": "has nulls"
+    },
+    "gk_handling": {
+     "rejected": "has nulls"
+    },
+    "gk_kicking": {
+     "rejected": "has nulls"
+    },
+    "gk_positioning": {
+     "rejected": "has nulls"
+    },
+    "gk_reflexes": {
+     "rejected": "has nulls"
+    },
+    "heading_accuracy": {
+     "rejected": "has nulls"
+    },
+    "id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Country.id",
+       "League.id",
+       "League.country_id",
+       "Match.id",
+       "Match.country_id",
+       "Match.league_id",
+       "Match.stage",
+       "Match.home_team_api_id",
+       "Match.away_team_api_id",
+       "Match.home_player_X3",
+       "Match.home_player_X4",
+       "Match.home_player_X5",
+       "Match.home_player_X6",
+       "Match.home_player_X7",
+       "Match.home_player_X8",
+       "Match.home_player_X9",
+       "Match.home_player_X10",
+       "Match.home_player_X11",
+       "Match.away_player_X1",
+       "Match.away_player_X2",
+       "Match.away_player_X3",
+       "Match.away_player_X4",
+       "Match.away_player_X5",
+       "Match.away_player_X6",
+       "Match.away_player_X7",
+       "Match.away_player_X8",
+       "Match.away_player_X9",
+       "Match.away_player_X10",
+       "Match.away_player_X11",
+       "Match.home_player_Y3",
+       "Match.home_player_Y4",
+       "Match.home_player_Y5",
+       "Match.home_player_Y6",
+       "Match.home_player_Y7",
+       "Match.home_player_Y8",
+       "Match.home_player_Y9",
+       "Match.home_player_Y10",
+       "Match.home_player_Y11",
+       "Match.away_player_Y1",
+       "Match.away_player_Y2",
+       "Match.away_player_Y3",
+       "Match.away_player_Y4",
+       "Match.away_player_Y5",
+       "Match.away_player_Y6",
+       "Match.away_player_Y7",
+       "Match.away_player_Y8",
+       "Match.away_player_Y9",
+       "Match.away_player_Y10",
+       "Match.away_player_Y11",
+       "Player.id",
+       "Player.weight",
+       "Player_Attributes.overall_rating",
+       "Player_Attributes.potential",
+       "Player_Attributes.crossing",
+       "Player_Attributes.finishing",
+       "Player_Attributes.heading_accuracy",
+       "Player_Attributes.short_passing",
+       "Player_Attributes.volleys",
+       "Player_Attributes.dribbling",
+       "Player_Attributes.curve",
+       "Player_Attributes.free_kick_accuracy",
+       "Player_Attributes.long_passing",
+       "Player_Attributes.ball_control",
+       "Player_Attributes.acceleration",
+       "Player_Attributes.sprint_speed",
+       "Player_Attributes.agility",
+       "Player_Attributes.reactions",
+       "Player_Attributes.balance",
+       "Player_Attributes.shot_power",
+       "Player_Attributes.jumping",
+       "Player_Attributes.stamina",
+       "Player_Attributes.strength",
+       "Player_Attributes.long_shots",
+       "Player_Attributes.aggression",
+       "Player_Attributes.interceptions",
+       "Player_Attributes.positioning",
+       "Player_Attributes.vision",
+       "Player_Attributes.penalties",
+       "Player_Attributes.marking",
+       "Player_Attributes.standing_tackle",
+       "Player_Attributes.sliding_tackle",
+       "Player_Attributes.gk_diving",
+       "Player_Attributes.gk_handling",
+       "Player_Attributes.gk_kicking",
+       "Player_Attributes.gk_positioning",
+       "Player_Attributes.gk_reflexes",
+       "Team.id",
+       "Team.team_api_id",
+       "Team.team_fifa_api_id",
+       "Team_Attributes.id",
+       "Team_Attributes.team_fifa_api_id",
+       "Team_Attributes.team_api_id",
+       "Team_Attributes.buildUpPlaySpeed",
+       "Team_Attributes.buildUpPlayDribbling",
+       "Team_Attributes.buildUpPlayPassing",
+       "Team_Attributes.chanceCreationPassing",
+       "Team_Attributes.chanceCreationCrossing",
+       "Team_Attributes.chanceCreationShooting",
+       "Team_Attributes.defencePressure",
+       "Team_Attributes.defenceAggression",
+       "Team_Attributes.defenceTeamWidth"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "interceptions": {
+     "rejected": "has nulls"
+    },
+    "jumping": {
+     "rejected": "has nulls"
+    },
+    "long_passing": {
+     "rejected": "has nulls"
+    },
+    "long_shots": {
+     "rejected": "has nulls"
+    },
+    "marking": {
+     "rejected": "has nulls"
+    },
+    "overall_rating": {
+     "rejected": "has nulls"
+    },
+    "penalties": {
+     "rejected": "has nulls"
+    },
+    "player_api_id": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0601158834208438
+     },
+     "phi": 0.7,
+     "score": 24.5
+    },
+    "player_fifa_api_id": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.060126754285838524
+     },
+     "phi": 0.85,
+     "score": 29.75
+    },
+    "positioning": {
+     "rejected": "has nulls"
+    },
+    "potential": {
+     "rejected": "has nulls"
+    },
+    "preferred_foot": {
+     "rejected": "has nulls"
+    },
+    "reactions": {
+     "rejected": "has nulls"
+    },
+    "short_passing": {
+     "rejected": "has nulls"
+    },
+    "shot_power": {
+     "rejected": "has nulls"
+    },
+    "sliding_tackle": {
+     "rejected": "has nulls"
+    },
+    "sprint_speed": {
+     "rejected": "has nulls"
+    },
+    "stamina": {
+     "rejected": "has nulls"
+    },
+    "standing_tackle": {
+     "rejected": "has nulls"
+    },
+    "strength": {
+     "rejected": "has nulls"
+    },
+    "vision": {
+     "rejected": "has nulls"
+    },
+    "volleys": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "id"
+  },
+  "Team": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 125.0
+    },
+    {
+     "column": "team_api_id",
+     "score": 89.25
+    }
+   ],
+   "columns": {
+    "id": {
+     "base": 85.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Match.home_player_X3",
+       "Match.home_player_X4",
+       "Match.home_player_X5",
+       "Match.home_player_X6",
+       "Match.home_player_X7",
+       "Match.home_player_X8",
+       "Match.home_player_X9",
+       "Match.home_player_X10",
+       "Match.home_player_X11",
+       "Match.away_player_X1",
+       "Match.away_player_X2",
+       "Match.away_player_X3",
+       "Match.away_player_X4",
+       "Match.away_player_X5",
+       "Match.away_player_X6",
+       "Match.away_player_X7",
+       "Match.away_player_X8",
+       "Match.away_player_X9",
+       "Match.away_player_X10",
+       "Match.away_player_X11",
+       "Match.home_player_Y3",
+       "Match.home_player_Y4",
+       "Match.home_player_Y5",
+       "Match.home_player_Y6",
+       "Match.home_player_Y7",
+       "Match.home_player_Y8",
+       "Match.home_player_Y9",
+       "Match.home_player_Y10",
+       "Match.home_player_Y11",
+       "Match.away_player_Y1",
+       "Match.away_player_Y2",
+       "Match.away_player_Y3",
+       "Match.away_player_Y4",
+       "Match.away_player_Y5",
+       "Match.away_player_Y6",
+       "Match.away_player_Y7",
+       "Match.away_player_Y8",
+       "Match.away_player_Y9",
+       "Match.away_player_Y10",
+       "Match.away_player_Y11"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 125.0
+    },
+    "team_api_id": {
+     "base": 85.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Match.home_team_api_id",
+       "Match.away_team_api_id",
+       "Team_Attributes.team_api_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 89.25
+    },
+    "team_fifa_api_id": {
+     "rejected": "has nulls"
+    },
+    "team_long_name": {
+     "base": 58.498,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9899665551839465,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9899665551839465
+     },
+     "phi": 0.55,
+     "score": 32.174
+    },
+    "team_short_name": {
+     "base": 57.657,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7731326644370122,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.8662207357859532
+     },
+     "phi": 0.55,
+     "score": 31.711
+    }
+   },
+   "evidence": "score",
+   "primary_key": "id"
+  },
+  "Team_Attributes": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "buildUpPlayDribbling": {
+     "rejected": "has nulls"
+    },
+    "buildUpPlayDribblingClass": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "buildUpPlayPassing": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.039780521262002745
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "buildUpPlayPassingClass": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "buildUpPlayPositioningClass": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0013717421124828531
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "buildUpPlaySpeed": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.03909465020576132
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "buildUpPlaySpeedClass": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "chanceCreationCrossing": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.038408779149519894
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "chanceCreationCrossingClass": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "chanceCreationPassing": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.03429355281207133
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "chanceCreationPassingClass": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "chanceCreationPositioningClass": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0013717421124828531
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "chanceCreationShooting": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.03909465020576132
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "chanceCreationShootingClass": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "defenceAggression": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.03223593964334705
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "defenceAggressionClass": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "defenceDefenderLineClass": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0013717421124828531
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "defencePressure": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.03292181069958848
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "defencePressureClass": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "defenceTeamWidth": {
+     "rejected": "blacklist: quantity (width)"
+    },
+    "defenceTeamWidthClass": {
+     "rejected": "blacklist: quantity (width)"
+    },
+    "id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Match.stage",
+       "Match.home_player_X3",
+       "Match.home_player_X4",
+       "Match.home_player_X5",
+       "Match.home_player_X6",
+       "Match.home_player_X7",
+       "Match.home_player_X8",
+       "Match.home_player_X9",
+       "Match.home_player_X10",
+       "Match.home_player_X11",
+       "Match.away_player_X1",
+       "Match.away_player_X2",
+       "Match.away_player_X3",
+       "Match.away_player_X4",
+       "Match.away_player_X5",
+       "Match.away_player_X6",
+       "Match.away_player_X7",
+       "Match.away_player_X8",
+       "Match.away_player_X9",
+       "Match.away_player_X10",
+       "Match.away_player_X11",
+       "Match.home_player_Y3",
+       "Match.home_player_Y4",
+       "Match.home_player_Y5",
+       "Match.home_player_Y6",
+       "Match.home_player_Y7",
+       "Match.home_player_Y8",
+       "Match.home_player_Y9",
+       "Match.home_player_Y10",
+       "Match.home_player_Y11",
+       "Match.away_player_Y1",
+       "Match.away_player_Y2",
+       "Match.away_player_Y3",
+       "Match.away_player_Y4",
+       "Match.away_player_Y5",
+       "Match.away_player_Y6",
+       "Match.away_player_Y7",
+       "Match.away_player_Y8",
+       "Match.away_player_Y9",
+       "Match.away_player_Y10",
+       "Match.away_player_Y11",
+       "Player.weight",
+       "Player_Attributes.overall_rating",
+       "Player_Attributes.potential",
+       "Player_Attributes.crossing",
+       "Player_Attributes.finishing",
+       "Player_Attributes.heading_accuracy",
+       "Player_Attributes.short_passing",
+       "Player_Attributes.volleys",
+       "Player_Attributes.dribbling",
+       "Player_Attributes.curve",
+       "Player_Attributes.free_kick_accuracy",
+       "Player_Attributes.long_passing",
+       "Player_Attributes.ball_control",
+       "Player_Attributes.acceleration",
+       "Player_Attributes.sprint_speed",
+       "Player_Attributes.agility",
+       "Player_Attributes.reactions",
+       "Player_Attributes.balance",
+       "Player_Attributes.shot_power",
+       "Player_Attributes.jumping",
+       "Player_Attributes.stamina",
+       "Player_Attributes.strength",
+       "Player_Attributes.long_shots",
+       "Player_Attributes.aggression",
+       "Player_Attributes.interceptions",
+       "Player_Attributes.positioning",
+       "Player_Attributes.vision",
+       "Player_Attributes.penalties",
+       "Player_Attributes.marking",
+       "Player_Attributes.standing_tackle",
+       "Player_Attributes.sliding_tackle",
+       "Player_Attributes.gk_diving",
+       "Player_Attributes.gk_handling",
+       "Player_Attributes.gk_kicking",
+       "Player_Attributes.gk_positioning",
+       "Player_Attributes.gk_reflexes",
+       "Team_Attributes.buildUpPlaySpeed",
+       "Team_Attributes.buildUpPlayDribbling",
+       "Team_Attributes.buildUpPlayPassing",
+       "Team_Attributes.chanceCreationPassing",
+       "Team_Attributes.chanceCreationCrossing",
+       "Team_Attributes.chanceCreationShooting",
+       "Team_Attributes.defencePressure",
+       "Team_Attributes.defenceAggression",
+       "Team_Attributes.defenceTeamWidth"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "team_api_id": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.19753086419753085
+     },
+     "phi": 0.7,
+     "score": 24.5
+    },
+    "team_fifa_api_id": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.19547325102880658
+     },
+     "phi": 0.85,
+     "score": 29.75
+    }
+   },
+   "evidence": "score",
+   "primary_key": "id"
+  }
+ },
+ "use_names": true
+}
