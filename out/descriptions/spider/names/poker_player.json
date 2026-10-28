@@ -1,0 +1,98 @@
+{
+ "db_id": "poker_player",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "default",
+ "keys_run": "frozen",
+ "graph": "llm",
+ "edges": 2,
+ "tables": {
+  "people": {
+   "table": {
+    "name": "people",
+    "purpose": "Registry of individuals (people) with their personal attributes: name, birth date, height, and nationality. Each person is referenced one-to-one by a row in poker_player, which extends this table with poker-specific data. The names (e.g. Aleksey Ostapenko, Roman Bragin, Sergey Grankin) and heights (~182–207 cm) match professional volleyball players, suggesting the dataset was seeded with athlete biographical data, but the table itself is a generic people table."
+   },
+   "columns": {
+    "Birth_Date": {
+     "role": "date",
+     "name": "Birth_Date",
+     "description": "Person's date of birth, stored as formatted text (e.g. 'May 26, 1986') rather than a date type.",
+     "status": "resolved"
+    },
+    "Height": {
+     "role": "numeric",
+     "name": "Height",
+     "description": "Person's height in centimeters (range 182–207, mean ~195, consistent with athletes such as volleyball players).",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Name",
+     "description": "Person's full name (given name + surname).",
+     "status": "resolved"
+    },
+    "Nationality": {
+     "role": "category",
+     "name": "Nationality",
+     "description": "Person's country of nationality (e.g. Russia, Bulgaria).",
+     "status": "resolved"
+    },
+    "People_ID": {
+     "role": "identifier",
+     "name": "People_ID",
+     "description": "Primary key identifying each person; referenced one-to-one by poker_player.People_ID, so this table holds shared personal attributes while poker_player holds poker-specific ones.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "poker_player": {
+   "table": {
+    "name": "poker_player",
+    "purpose": "One row per poker player, holding poker-specific career statistics (earnings, money rank, final tables, best finish) and a link to the person's core biographical record in the people table."
+   },
+   "columns": {
+    "Best_Finish": {
+     "role": "category",
+     "name": "Best_Finish",
+     "description": "Player's best finishing position in a tournament (1 = first place / champion); values 1-3 in this data.",
+     "status": "resolved"
+    },
+    "Earnings": {
+     "role": "numeric",
+     "name": "Earnings",
+     "description": "Total tournament prize money earned by the player, in US dollars (range ~104,871 to ~596,462).",
+     "status": "resolved"
+    },
+    "Final_Table_Made": {
+     "role": "numeric",
+     "name": "Final_Table_Made",
+     "description": "Number of final tables the player has reached (count, 10-42 in this data).",
+     "status": "resolved"
+    },
+    "Money_Rank": {
+     "role": "numeric",
+     "name": "Money_Rank",
+     "description": "Player's ranking on the all-time money list (lower is better; 58-166 in this data).",
+     "status": "resolved"
+    },
+    "People_ID": {
+     "role": "foreign_key",
+     "name": "People_ID",
+     "description": "Foreign key to people.People_ID, identifying the person record for this poker player; one-to-one with the people table.",
+     "status": "resolved"
+    },
+    "Poker_Player_ID": {
+     "role": "identifier",
+     "name": "Poker_Player_ID",
+     "description": "Primary key of the poker_player table; unique identifier for each poker player record.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

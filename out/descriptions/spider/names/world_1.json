@@ -1,0 +1,186 @@
+{
+ "db_id": "world_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "default",
+ "keys_run": "frozen",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "city": {
+   "table": {
+    "name": "city",
+    "purpose": "Catalog of world cities (the MySQL 'world' sample database): one row per city, with its name, the country it is in (ISO alpha-3 code), its first-level administrative district, and its population. The country table points to this table via country.Capital to identify each country's capital city, and countrylanguage is keyed by the same country codes."
+   },
+   "columns": {
+    "CountryCode": {
+     "role": "foreign_key",
+     "name": "CountryCode",
+     "description": "ISO 3166-1 alpha-3 country code identifying the country the city belongs to; foreign key to country.Code (many cities per country).",
+     "status": "resolved"
+    },
+    "District": {
+     "role": "category",
+     "name": "District",
+     "description": "Name of the first-level administrative subdivision (state, province, region) within the country where the city is located, e.g. 'California', 'England', 'Nagano'.",
+     "status": "resolved"
+    },
+    "ID": {
+     "role": "identifier",
+     "name": "ID",
+     "description": "Surrogate primary key uniquely identifying each city row (1..4079). Referenced by country.Capital (a country's capital city) and coincidentally by country.IndepYear via statistics only, which is spurious.",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Name",
+     "description": "Name of the city. Not unique across rows (e.g. 'Cambridge', 'Córdoba' appear in multiple countries).",
+     "status": "resolved"
+    },
+    "Population": {
+     "role": "numeric",
+     "name": "Population",
+     "description": "Number of inhabitants of the city (persons), ranging from 42 to 10,500,000.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "country": {
+   "table": {
+    "name": "country",
+    "purpose": "Reference table of the world's countries and territories (239 rows, one per country/territory), with ISO codes, geography (continent, region, surface area), demographics (population, life expectancy), economy (GNP, old GNP), and politics (independence year, government form, head of state, capital city). This is the classic MySQL 'world' sample database; capital cities link to city.ID and languages to countrylanguage via country_code."
+   },
+   "columns": {
+    "Capital": {
+     "role": "foreign_key",
+     "name": "capital_city_id",
+     "description": "Identifier of the country's capital city; foreign key to city.ID (one-to-one). Null for territories without a capital city in the city table (e.g. British Indian Ocean Territory).",
+     "status": "resolved"
+    },
+    "Code": {
+     "role": "foreign_key",
+     "name": "country_code",
+     "description": "Primary key: three-letter ISO 3166-1 alpha-3 country code (e.g. ABW, GBR, TWN). Referenced by city.CountryCode and countrylanguage.CountryCode.",
+     "status": "resolved"
+    },
+    "Code2": {
+     "role": "code",
+     "name": "country_code_iso2",
+     "description": "Two-letter ISO 3166-1 alpha-2 country code (e.g. AF, GB, US), used e.g. for top-level domains.",
+     "status": "resolved"
+    },
+    "Continent": {
+     "role": "category",
+     "name": "continent",
+     "description": "Continent the country lies on; one of 7 values (Africa, Asia, Europe, North America, South America, Oceania, Antarctica).",
+     "status": "resolved"
+    },
+    "GNP": {
+     "role": "numeric",
+     "name": "gnp_musd",
+     "description": "Gross National Product of the country, in millions of US dollars (max 8,510,700 ≈ US GNP in $M). 0.0 for territories without data.",
+     "status": "resolved"
+    },
+    "GNPOld": {
+     "role": "numeric",
+     "name": "gnp_old_musd",
+     "description": "Gross National Product of an earlier reference year, in millions of US dollars; null for ~25% of countries (mostly territories and countries lacking older data).",
+     "status": "resolved"
+    },
+    "GovernmentForm": {
+     "role": "category",
+     "name": "government_form",
+     "description": "Form of government of the country, e.g. Republic, Constitutional Monarchy, Federal Republic, Dependent Territory of the UK.",
+     "status": "resolved"
+    },
+    "HeadOfState": {
+     "role": "category",
+     "name": "head_of_state",
+     "description": "Name of the head of state (data circa 2000s: Elisabeth II, George W. Bush, Jacques Chirac). Shared values reflect common monarchs/colonial powers.",
+     "status": "resolved"
+    },
+    "IndepYear": {
+     "role": "numeric",
+     "name": "independence_year",
+     "description": "Year the country became independent; null for dependent territories. Negative values denote BCE (e.g. -1523, likely China's traditional founding date).",
+     "status": "resolved"
+    },
+    "LifeExpectancy": {
+     "role": "numeric",
+     "name": "life_expectancy_years",
+     "description": "Average life expectancy at birth, in years (range 37.2–83.5); null for ~7% of countries.",
+     "status": "resolved"
+    },
+    "LocalName": {
+     "role": "category",
+     "name": "local_name",
+     "description": "Country name in its local/official language(s) (e.g. 'Lao', 'Al-Bahrayn', 'Uzbekiston').",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "country_name",
+     "description": "Country name in English (e.g. Afghanistan, Laos, Sierra Leone).",
+     "status": "resolved"
+    },
+    "Population": {
+     "role": "numeric",
+     "name": "population",
+     "description": "Country population, in persons (max ~1.28 billion, China); 0 for uninhabited territories.",
+     "status": "resolved"
+    },
+    "Region": {
+     "role": "category",
+     "name": "region",
+     "description": "Geographic sub-region within the continent (25 values, e.g. Caribbean, Eastern Africa, Middle East, Southeast Asia).",
+     "status": "resolved"
+    },
+    "SurfaceArea": {
+     "role": "numeric",
+     "name": "surface_area_km2",
+     "description": "Land surface area of the country, in square kilometers (max 17,075,400 = Russia).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "countrylanguage": {
+   "table": {
+    "name": "countrylanguage",
+    "purpose": "Lists the languages spoken in each country, whether each is official, and the percentage of the population speaking it (the MySQL 'world' sample database's countrylanguage table). One row = one (country, language) pair; 984 rows covering 233 countries, joined to country via CountryCode -> country.Code and indirectly to city via the country table."
+   },
+   "columns": {
+    "CountryCode": {
+     "role": "foreign_key",
+     "name": "CountryCode",
+     "description": "ISO 3166-1 alpha-3 country code identifying the country where the language is spoken; foreign key to country.Code (many languages per country).",
+     "status": "resolved"
+    },
+    "IsOfficial": {
+     "role": "boolean",
+     "name": "IsOfficial",
+     "description": "Whether the language is an official language of the country; 'T' = true (238 rows), 'F' = false (746 rows).",
+     "status": "resolved"
+    },
+    "Language": {
+     "role": "category",
+     "name": "Language",
+     "description": "Name of a language spoken in the country (e.g. English, Arabic, Urdu); part of the row's identity together with CountryCode.",
+     "status": "resolved"
+    },
+    "Percentage": {
+     "role": "numeric",
+     "name": "Percentage",
+     "description": "Share of the country's population speaking this language, in percent (0.0–100.0; 0.0 likely means a very small/unknown share).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

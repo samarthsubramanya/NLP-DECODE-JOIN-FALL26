@@ -402,8 +402,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "The target is a dense surrogate auto-increment key (every integer 1\u2013229,205), so any integer column in range like mtgoFoilId (an MTGO foil catalog ID, 57% null) achieves full containment by chance, and semantically a Magic Online foil ID has no relationship to foreign-language card data rows, which link to cards via multiverseid/uuid instead.",
-    "reasoning_effort": "medium"
+    "reason": "mtgoFoilId is a Magic Online catalog identifier for foil cards, while foreign_data.id is a surrogate primary key for foreign-language card printings; the numeric overlap is coincidental range overlap between unrelated ID spaces, and the sample matches (e.g. 39332, 62930) pair a foil MTGO ID with an arbitrary foreign-data row, not the same entity.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -436,8 +436,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "legalities.id is a dense surrogate auto-increment key (sequential 1\u2013427907) whose integer range trivially contains every mtgoFoilId value (303\u201370586), so the perfect containment is a numeric-range artifact, not a real reference \u2014 an MTGO foil catalog ID has no semantic connection to a legality row's row number, and legalities actually relates to cards via uuid.",
-    "reasoning_effort": "medium"
+    "reason": "mtgoFoilId is a Magic Online catalog identifier for foil cards, while legalities.id is a surrogate primary key for legality rows; the numeric overlap is coincidental since both are arbitrary integers, and legalities actually references cards via its uuid column, not any MTGO id.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -470,8 +470,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "rulings.id is a dense surrogate key spanning 1\u201387769, so containment of 1.0 for any in-range integer is trivially guaranteed, and an external MTGO foil catalog identifier has no semantic relationship to a ruling's row number \u2014 the overlap is coincidental.",
-    "reasoning_effort": "medium"
+    "reason": "mtgoFoilId is a Magic Online catalog identifier for foil cards while rulings.id is a surrogate primary key for ruling rows; the numeric overlap is coincidental since rulings reference cards via uuid, not via MTGO IDs.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -504,8 +504,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "sets.mcmId is an external CardMarket vendor ID for MTG sets (sibling columns mcmIdExtras/mcmName/tcgplayerGroupId confirm this), while cards.id is an internal surrogate primary key for card printings (sequential 1\u201356832); the full containment with coverage of only 0.004 is just small integers (4\u20133660) falling trivially inside the target's range, so the overlap is coincidental and the columns denote different entities.",
-    "reasoning_effort": "medium"
+    "reason": "sets.mcmId is a Cardmarket (MCM) set identifier while cards.id is the internal primary key of individual card printings \u2014 different real-world entities, and the small-integer overlap (coverage 0.004) is coincidental.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -538,8 +538,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "sets.mcmId is an external Magic Card Market set identifier (sibling of mcmName/mcmIdExtras), while foreign_data.id is a dense surrogate row key (1..229186) for per-card foreign text rows, so the perfect containment of small mcmId values is pure chance and the columns denote different entities.",
-    "reasoning_effort": "medium"
+    "reason": "sets.mcmId is a Cardmarket (MCM) set identifier while foreign_data.id is just a surrogate row ID for foreign-language card printings; the full containment with near-zero coverage is coincidental overlap of small integers, not a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -572,8 +572,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "legalities.id is a dense auto-increment surrogate key (sequential 1..427907) that trivially contains any small integer, while sets.mcmId is an external Magic Card Market set ID (with sibling mcmName/mcmIdExtras columns), so the perfect containment is pure coincidence between semantically unrelated columns.",
-    "reasoning_effort": "medium"
+    "reason": "sets.mcmId is a Cardmarket (MCM) set identifier while legalities.id is a surrogate auto-increment primary key for card-format legality rows; the small-integer overlap is coincidental and the two columns denote different entities.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -606,8 +606,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "The target is a dense surrogate primary key (sequential ids 1\u2013229205 for foreign-language card data rows), so the source's small-range external TCGplayer set-group IDs (1\u20132778) are fully contained purely by chance, and the two columns denote entirely different real-world entities.",
-    "reasoning_effort": "medium"
+    "reason": "tcgplayerGroupId is a TCGplayer set/group identifier while foreign_data.id is a surrogate row ID for foreign-language card printings; the full containment with near-zero coverage is coincidental overlap of small integers, not a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -640,8 +640,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "The target is a dense surrogate auto-increment primary key (ids 1\u2013427907) for card-format legality rows, so containment of the small TCGPlayer set-group ids (1\u20132778) is pure chance, and the two columns denote entirely different real-world things (marketplace set identifiers vs. meaningless legality row numbers).",
-    "reasoning_effort": "medium"
+    "reason": "The target is a synthetic per-row primary key of a legality table (format/status/uuid), while tcgplayerGroupId is an external TCGplayer group identifier; the small-integer overlap is coincidental with coverage of only 0.001.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -674,8 +674,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "The source is TCGPlayer's external group ID for Magic sets (small integers up to 2778) while the target is a dense sequential surrogate key (1\u201387769) for ruling rows, so the perfect containment is just small integers falling inside a contiguous ID range (coverage 0.003) and the columns reference entirely different real-world entities.",
-    "reasoning_effort": "medium"
+    "reason": "sets.tcgplayerGroupId is an external TCGplayer group identifier while rulings.id is a surrogate primary key for ruling rows; the small-integer overlap is coincidental and the columns denote different entities.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -708,8 +708,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "foreign_data.id is a sequential surrogate primary key (1..229186) that trivially contains every integer mtgoId (max 87921), so the perfect containment is a range artifact, and a Magic Online catalog ID semantically has no relation to the row ID of a foreign-language printing record (which links to cards via multiverseid/uuid).",
-    "reasoning_effort": "medium"
+    "reason": "foreign_data.id is a surrogate primary key for foreign-language card printings (its rows have their own multiverseid/uuid), not MTGO catalog IDs, so the integer overlap with cards.mtgoId is coincidental.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -742,8 +742,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "legalities.id is a dense surrogate auto-increment key (sequential 1..427907) that trivially contains every mtgoId value (max 87921) by chance, and semantically mtgoId is an external Magic Online catalog identifier while legalities rows actually reference cards via the uuid column, so the overlap is coincidental.",
-    "reasoning_effort": "medium"
+    "reason": "legalities.id is a sequential surrogate primary key (1..427907) for format-legality rows, while cards.mtgoId is Magic Online catalog identifiers, so the numeric overlap is coincidental; the real link would be via uuid, and the low coverage (0.074) with random integer overlap confirms no semantic reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -776,8 +776,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "rulings.id is a dense surrogate auto-increment primary key (sequential 1\u201387769) with no semantic relationship to Magic Online card catalog IDs, so the near-total containment is just chance overlap of integers falling in the same numeric range.",
-    "reasoning_effort": "medium"
+    "reason": "rulings.id is a surrogate primary key for ruling rows while cards.mtgoId is a Magic Online catalog identifier; the numeric overlap is coincidental since both are dense integers in overlapping ranges, and rulings reference cards via uuid, not mtgoId.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -810,8 +810,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "foreign_data.id is a dense surrogate auto-increment key (1\u2013229205) that trivially contains every integer in mtgArenaId's range (6993\u201376889), so the perfect containment is pure chance, and Arena IDs semantically identify cards on the MTG Arena platform, not rows of foreign-language card data (which would join via multiverseid/uuid).",
-    "reasoning_effort": "medium"
+    "reason": "The source is MTG Arena card IDs (sparse, ~66k\u201377k, 90% null) while the target is a sequential surrogate primary key (1\u2013229186) for foreign-language card printings; the numeric overlap is coincidental and the columns denote different identifiers.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -844,8 +844,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "legalities.id is a dense sequential surrogate key (1\u2013427907) whose range trivially contains every mtgArenaId value (6993\u201376889), so the perfect containment is pure chance, and an Arena card identifier semantically references a card in the MTG Arena game, not a legality row (the real link would be via uuid).",
-    "reasoning_effort": "medium"
+    "reason": "mtgArenaId is an external Arena card identifier (values ~66000\u201376000, 90% null) while legalities.id is a surrogate primary key 1\u2013427907 with no semantic link to Arena IDs, so the overlap is coincidental.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -878,8 +878,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "rulings.id is a sequential surrogate row key (1\u201387769, perfectly uniform) whose range trivially contains every mtgArenaId value, giving containment 1.0 by chance with only 6.4% coverage, while rulings actually reference cards via the uuid column, so the columns mean different things.",
-    "reasoning_effort": "medium"
+    "reason": "mtgArenaId is an external Arena card identifier (values clustered ~66000-77000, 90% null) while rulings.id is a sequential internal primary key 1-87769; the numeric overlap is coincidental and the columns reference different entities.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -912,8 +912,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "sets.mcmIdExtras is a Cardmarket (MCM) set ID (its sibling columns mcmId/mcmName confirm this), while cards.id is a dense internal surrogate key spanning 1\u201356832, so any 4-digit integer like 2371\u20133680 is contained by chance, making the 10-value overlap coincidental rather than a real reference (the semantically related target would be cards.mcmMetaId, not cards.id).",
-    "reasoning_effort": "medium"
+    "reason": "sets.mcmIdExtras is a Cardmarket set/expansion ID (companion to mcmId/mcmName), not a reference to individual cards, so its 10 overlapping small integers with cards.id are coincidental.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -946,8 +946,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "sets.mcmIdExtras stores Magic Card Market set IDs for a set's 'extras' edition (its siblings mcmId/mcmName confirm this), while foreign_data.id is a surrogate auto-increment primary key for foreign-language card printings, so the 10 small integers (2371\u20133680) falling inside the target's 1\u2013229186 range is pure chance overlap, not a real reference.",
-    "reasoning_effort": "medium"
+    "reason": "mcmIdExtras is a Magic Card Market set identifier (mostly null, only 10 values) while foreign_data.id is a synthetic row primary key for foreign-language card printings, so the small-integer overlap is coincidental.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -980,8 +980,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "mcmIdExtras is an external Magic Card Market set identifier (98% null, only 10 values) while legalities.id is a dense surrogate auto-increment key of 427,907 rows, so the full containment of these few integers is coincidental and the columns denote unrelated entities.",
-    "reasoning_effort": "medium"
+    "reason": "mcmIdExtras holds Magic Card Market set IDs while legalities.id is just a surrogate row primary key for card-format legality rows, so the 10-value overlap is coincidental.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1014,8 +1014,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "sets.totalSetSize is a card-count measure whose small integer values (mostly \u22641210) coincidentally fall inside the surrogate sequential primary-key range of set_translations.id, and a quantity attribute cannot semantically reference a translation row's auto-generated id.",
-    "reasoning_effort": "medium"
+    "reason": "sets.totalSetSize is a card-count quantity, not a reference to set_translations.id (a surrogate primary key for translation rows); the high containment is coincidental overlap of small integers, and the target rows are per-language translations with no semantic link to set sizes.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1048,8 +1048,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "sets.baseSetSize is a card-count attribute (values 0\u20131694, paralleling totalSetSize) whose overlap with the dense surrogate key cards.id (1\u201356832) is pure small-integer coincidence\u2014coverage is only 0.003 and the semantics are unrelated, so no real reference exists.",
-    "reasoning_effort": "medium"
+    "reason": "sets.baseSetSize is a count of cards in a set (small integers like 1, 5, 8), not a reference to cards.id; the overlap with the primary key is coincidental numeric collision with near-zero coverage.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1082,8 +1082,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "cards.frameVersion holds frame-style years (1993/1997/2003/2015 plus the non-numeric 'future') that merely fall inside rulings.id's sequential 1\u201387769 key range, so the perfect containment is coincidental and the columns denote different things (card frame version vs. ruling surrogate key).",
-    "reasoning_effort": "medium"
+    "reason": "frameVersion is a card frame style year (1993\u20132015) while rulings.id is a surrogate primary key; the numeric overlap is coincidental (rulings.id actually matches cards.id, e.g. 841 and 1713 appear in both sample rows), and the semantic meanings differ.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1116,8 +1116,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "totalSetSize is a count of cards in a set (values 0\u20131694), and its near-total containment in cards.id is pure chance since the sequential primary key 1\u201356832 covers every small integer; a set's size attribute semantically cannot reference an individual card, and the real sets\u2192cards link is via setCode.",
-    "reasoning_effort": "medium"
+    "reason": "totalSetSize is a count of cards in a set, not a reference to a card id; the overlap with cards.id is coincidental small-integer matching with near-zero coverage.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1150,8 +1150,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "totalSetSize is a card-count measure per MTG set (values 0-1694) while legalities.id is a surrogate primary key spanning 1-427907, so the 99.4% containment is just small integers matching arbitrary IDs by chance, with near-zero coverage and no semantic relationship.",
-    "reasoning_effort": "medium"
+    "reason": "sets.totalSetSize is a card-count attribute of Magic sets, while legalities.id is a surrogate primary key for legality rows; the numeric overlap is coincidental since small integers overlap by chance and coverage is essentially zero.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1184,8 +1184,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "sets.baseSetSize is a card-count measure whose small integer values (mostly 1\u20131694) trivially overlap the sequential surrogate key rulings.id (1\u201387769), and the near-total containment with negligible coverage (0.002) plus unrelated semantics (a quantity vs. a row identifier) shows the overlap is coincidental.",
-    "reasoning_effort": "medium"
+    "reason": "baseSetSize is a card-count attribute of Magic sets while rulings.id is a surrogate primary key for ruling texts; the numeric overlap is coincidental (coverage 0.002, small integers), so the columns mean different things.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1218,8 +1218,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "cards.frameVersion is a categorical attribute naming card frame styles by year (1993/1997/2003/2015/'future'), and its values only overlap legalities.id because those years happen to fall inside the 1\u2013427,907 range of a sequential surrogate primary key, so the match is coincidental rather than a real reference.",
-    "reasoning_effort": "medium"
+    "reason": "frameVersion is a card frame style year (1993\u20132015) while legalities.id is a surrogate primary key spanning 1\u2013427907; the year values merely fall inside the id range, so the overlap is coincidental and the columns mean different things.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1252,8 +1252,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "sets.baseSetSize is a card-count measure (small integers 0\u20131694) whose values trivially appear inside legalities.id's dense 1\u2013427907 surrogate-key sequence (containment 0.994 but coverage 0.0), and a set's size has no semantic relationship to a legality row's ID, so the overlap is coincidental.",
-    "reasoning_effort": "medium"
+    "reason": "baseSetSize is a card-count quantity for Magic sets, not a reference to legalities.id (a row primary key); the overlap is coincidental small-integer matching with near-zero coverage.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1286,8 +1286,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "cards.edhrecRank is a popularity ranking (1\u201320900, shared by many cards) whose integer values merely fall inside the surrogate primary-key range of foreign_data.id (1\u2013229205), so the perfect containment is a chance artifact of overlapping small integers rather than a real reference to foreign-language printing rows.",
-    "reasoning_effort": "medium"
+    "reason": "edhrecRank is a popularity ranking (1\u201320900) on cards, not a reference to foreign_data's surrogate id; the full containment is coincidental small-integer overlap, and matched rows pair unrelated cards (e.g. Stoneforge Mystic's rank 807 vs. a German Zyklop row), with no semantic or name-based link.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1320,8 +1320,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "cards.frameVersion is a 5-value categorical attribute denoting the Magic card frame style (years 1993/1997/2003/2015 plus 'future'), while foreign_data.id is a unique surrogate primary key for foreign-language card entries, so the overlap is merely the chance coincidence of a few year values falling within the 1\u2013229205 ID range (near-zero target coverage, no semantic or name affinity).",
-    "reasoning_effort": "medium"
+    "reason": "frameVersion holds card frame years (1993\u20132015) while foreign_data.id is a surrogate primary key; the overlap is coincidental numeric collision between years and small integer IDs, not a real reference.",
+    "reasoning_effort": "low"
    },
    "name_via": "table_column",
    "parts": {
@@ -1354,8 +1354,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "cards.edhrecRank is a popularity ranking (1\u201320900) for Commander format, not a reference, and its full containment in legalities.id is coincidental since the surrogate primary key spans all integers 1\u2013427907, so any small rank value trivially matches; the two columns denote entirely different things (a rank vs. a row identifier for format-legality records keyed by card uuid).",
-    "reasoning_effort": "medium"
+    "reason": "edhrecRank is a popularity ranking (1\u201320900) on cards, not a reference to legalities.id; the overlap with the surrogate primary key of legalities is coincidental small-integer overlap with only 4.8% coverage.",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {
@@ -1388,8 +1388,8 @@
    "llm": {
     "decision": "reject",
     "model": "glm-5-3",
-    "reason": "cards.edhrecRank is a popularity ranking (1\u201320900) for the Commander format, not a reference to rulings.id, which is a surrogate primary key (1\u201387769); the perfect containment is just small-integer range overlap, and rulings actually link to cards via the uuid column, so the match is coincidental.",
-    "reasoning_effort": "medium"
+    "reason": "edhrecRank is a card's EDHREC popularity ranking, not a reference to rulings' primary key; the integer overlap is coincidental (name score 0.1, coverage 0.235, and the target is just a surrogate id).",
+    "reasoning_effort": "low"
    },
    "name_via": "column",
    "parts": {

@@ -1,7 +1,7 @@
 {
  "db_id": "california_schools",
  "model": "glm-5-3",
- "reasoning_effort": "medium",
+ "reasoning_effort": "low",
  "use_values": true,
  "joins_run": "default",
  "keys_run": "frozen",
@@ -10,567 +10,567 @@
  "tables": {
   "frpm": {
    "table": {
-    "name": "Free or Reduced Price Meals (FRPM) eligibility data for California public schools, 2014-15",
-    "purpose": "California Department of Education FRPM file: one row per public school (plus 45 district-office rows), keyed by the 14-digit CDS (County-District-School) code. For each school it reports enrollment and the counts and shares of students eligible for free meals and for free or reduced-price meals under the National School Lunch Program, on two reporting bases (grades K-12 and ages 5-17), along with school attributes: county/district/school identification, district type, grade span, educational option type, school type, charter status/number/funding type, NSLP provision status, and a CALPADS Fall 1 certification flag. All rows are academic year 2014-2015. The CDSCode is the natural key to the companion tables (schools, satscores)."
+    "name": "frpm",
+    "purpose": "California Department of Education Free or Reduced-Price Meals (FRPM) / National School Lunch Program eligibility data for the 2014-2015 academic year, one row per California public school (identified by its 14-digit CDS code). For each school it records enrollment, counts and percentages of students eligible for free meals and free/reduced-price meals (both for K-12 and for ages 5-17), plus school, district, and county identification and charter/NSLP-provision attributes. The CDSCode links to the schools and satscores tables."
    },
    "columns": {
     "2013-14 CALPADS Fall 1 Certification Status": {
      "role": "boolean",
-     "name": "2013-14 CALPADS Fall 1 certification status",
-     "description": "Certification status of the school's 2013-14 CALPADS Fall 1 submission (Fall 1 is the October enrollment census in CALPADS, California's longitudinal student data system). Constant value 1 for all 9,986 rows; 1 presumably means the submission was certified. Because the column never varies, the exact encoding of the value cannot be verified from the data alone.",
+     "name": "calpads_fall1_certified",
+     "description": "Flag indicating the school's CALPADS Fall 1 enrollment submission was certified (1 = certified) for the 2013-14 reporting year. Constant value 1 across all rows, so it carries no discriminating information here.",
      "status": "resolved"
     },
     "Academic Year": {
-     "role": "date",
-     "name": "Academic year",
-     "description": "School year the record covers, formatted 'YYYY-YYYY'. Constant '2014-2015' - this file contains only 2014-15 data.",
+     "role": "category",
+     "name": "academic_year",
+     "description": "Academic year of the FRPM data; constant '2014-2015' for all rows.",
      "status": "resolved"
     },
     "CDSCode": {
      "role": "identifier",
-     "name": "CDS code (County-District-School identifier)",
-     "description": "Unique 14-digit CDS code identifying the school: 2-digit County Code + 5-digit District Code + 7-digit School Code (verified in sample rows, e.g. 09|61853|0934554 = El Dorado County, El Dorado Union High district, Independence Continuation). Primary key of the table; one row per school (or district office).",
+     "name": "cds_code",
+     "description": "California Department of Education 14-digit County-District-School (CDS) code, the unique identifier for each school record; primary key of this table and the natural join key to the schools and satscores tables.",
      "status": "resolved"
     },
     "Charter Funding Type": {
      "role": "category",
-     "name": "Charter school funding type",
-     "description": "How a charter school receives state funding: 'Directly funded' (funds flow directly from the state to the charter, 838 rows) or 'Locally funded' (funds flow through the authorizing district, 328 rows); 'Not in CS funding model' for the single charter outside the charter-school funding model. Null for the ~88% of rows that are not charter schools.",
+     "name": "charter_funding_type",
+     "description": "Funding model for charter schools: 'Directly funded' (receives state funds directly) or 'Locally funded' (funds flow through the district). Null for non-charter schools (~88% of rows); 'Not in CS funding model' for one anomalous record.",
      "status": "resolved"
     },
     "Charter School (Y/N)": {
      "role": "boolean",
-     "name": "Charter school indicator",
-     "description": "Binary flag: 1 = the school is a charter school (1,167 rows), 0 = not a charter (8,774 rows); a handful of rows are null.",
+     "name": "is_charter",
+     "description": "Boolean flag: 1 if the school is a charter school, 0 otherwise (about 12% are charters).",
      "status": "resolved"
     },
     "Charter School Number": {
      "role": "identifier",
-     "name": "Charter school number",
-     "description": "State-assigned charter school number (4 characters, numeric or alphanumeric, e.g. '0756', '00D2'). Populated only for charter schools; null for non-charters (null rate 0.883 matches the non-charter share).",
+     "name": "charter_school_number",
+     "description": "State-assigned charter school number (4-character code, e.g. '00D2', '0756'). Populated only for charter schools; null otherwise.",
      "status": "resolved"
     },
     "County Code": {
-     "role": "identifier",
-     "name": "County code",
-     "description": "Two-digit California county code (01-58), the first two digits of the CDS code; e.g. 19 = Los Angeles, 37 = San Diego, 30 = Orange, 36 = San Bernardino, 33 = Riverside.",
+     "role": "code",
+     "name": "county_code",
+     "description": "Two-digit California county code (1-58), the first component of the CDS code; e.g. 19 = Los Angeles, 37 = San Diego.",
      "status": "resolved"
     },
     "County Name": {
      "role": "category",
-     "name": "County name",
-     "description": "Name of the California county in which the school/district is located; pairs with County Code (58 counties).",
+     "name": "county_name",
+     "description": "Name of the California county in which the school's district is located.",
      "status": "resolved"
     },
     "District Code": {
-     "role": "identifier",
-     "name": "District code",
-     "description": "Five-digit district (local educational agency) code, digits 3-7 of the CDS code; e.g. 64733 = Los Angeles Unified, 68338 = San Diego Unified.",
+     "role": "code",
+     "name": "district_code",
+     "description": "Five-digit code of the school district (LEA), the second component of the CDS code.",
      "status": "resolved"
     },
     "District Name": {
      "role": "category",
-     "name": "District name",
-     "description": "Name of the school district / local educational agency the school belongs to; pairs with District Code (1,012 distinct codes vs 1,000 distinct names, so a few districts share a name or have multiple codes).",
+     "name": "district_name",
+     "description": "Name of the school district / local educational agency (e.g. 'Los Angeles Unified').",
      "status": "resolved"
     },
     "District Type": {
      "role": "category",
-     "name": "District type",
-     "description": "Type of the district/local educational agency: Unified School District, Elementary School District, High School District, County Office of Education (COE), State Board of Education, Non-School Locations, etc.",
+     "name": "district_type",
+     "description": "Type of local educational agency: Unified School District, Elementary School District, High School District, County Office of Education, State Board of Education, etc.",
      "status": "resolved"
     },
     "Educational Option Type": {
      "role": "category",
-     "name": "Educational option type",
-     "description": "CDE educational option/program type of the school: Traditional, Continuation School, Alternative School of Choice, Community Day School, Special Education School, Juvenile Court School, Home and Hospital, Opportunity School, State Special School, etc.",
+     "name": "educational_option_type",
+     "description": "Program/educational option served by the school: Traditional, Continuation School, Alternative School of Choice, Community Day School, Special Education School, Juvenile Court School, Home and Hospital, etc.",
      "status": "resolved"
     },
     "Enrollment (Ages 5-17)": {
      "role": "numeric",
-     "name": "Enrollment, ages 5-17",
-     "description": "Number of students enrolled at the school who are aged 5-17; the age-based denominator for the ages-5-17 meal-eligibility figures.",
+     "name": "enrollment_ages_5_17",
+     "description": "Number of students enrolled at the school aged 5-17 (the age range used for some FRPM funding calculations).",
      "status": "resolved"
     },
     "Enrollment (K-12)": {
      "role": "numeric",
-     "name": "Enrollment, grades K-12",
-     "description": "Number of students enrolled in grades K-12 at the school; the grade-based denominator for the K-12 meal-eligibility figures.",
+     "name": "enrollment_k_12",
+     "description": "Total kindergarten-through-grade-12 enrollment at the school.",
      "status": "resolved"
     },
     "FRPM Count (Ages 5-17)": {
      "role": "numeric",
-     "name": "Free/reduced-price meal eligible count, ages 5-17",
-     "description": "Number of enrolled students aged 5-17 eligible for free or reduced-price meals under the National School Lunch Program; equals the free-meal count plus reduced-price-eligible students (e.g. row 1: 63 FRPM vs 54 free).",
+     "name": "frpm_count_ages_5_17",
+     "description": "Number of enrolled students aged 5-17 eligible for Free or Reduced-Price Meals (FRPM) under the National School Lunch Program.",
      "status": "resolved"
     },
     "FRPM Count (K-12)": {
      "role": "numeric",
-     "name": "Free/reduced-price meal eligible count, grades K-12",
-     "description": "Number of enrolled K-12 students eligible for free or reduced-price meals under the NSLP (free-meal count plus reduced-price-eligible students).",
+     "name": "frpm_count_k_12",
+     "description": "Number of K-12 students eligible for Free or Reduced-Price Meals.",
      "status": "resolved"
     },
     "Free Meal Count (Ages 5-17)": {
      "role": "numeric",
-     "name": "Free meal eligible count, ages 5-17",
-     "description": "Number of enrolled students aged 5-17 eligible for free meals under the NSLP (family income within the free-meal threshold); a subset of the FRPM count.",
+     "name": "free_meal_count_ages_5_17",
+     "description": "Number of enrolled students aged 5-17 eligible for free meals (a subset of FRPM eligibility, excluding reduced-price-only students).",
      "status": "resolved"
     },
     "Free Meal Count (K-12)": {
      "role": "numeric",
-     "name": "Free meal eligible count, grades K-12",
-     "description": "Number of enrolled K-12 students eligible for free meals under the NSLP; a subset of the K-12 FRPM count.",
+     "name": "free_meal_count_k_12",
+     "description": "Number of K-12 students eligible for free meals (subset of FRPM count).",
      "status": "resolved"
     },
     "High Grade": {
-     "role": "category",
-     "name": "Highest grade offered",
-     "description": "Highest grade level served by the school: K or 1-12 (12 is most common). The rare value 13 most likely denotes ungraded/adult-level programs in the CDE grade coding; this cannot be confirmed from the data alone.",
+     "role": "code",
+     "name": "high_grade",
+     "description": "Highest grade level offered at the school ('K', '1'-'12', '13' for ungraded/adult).",
      "status": "resolved"
     },
     "IRC": {
      "role": "boolean",
-     "name": "Independently reporting charter flag",
-     "description": "Binary flag (0/1), 1 for 729 schools. In the CDE FRPM file layout IRC stands for 'Independently Reporting Charter' - 1 would mark charter schools that report their data separately from their authorizing district rather than through it. The data is consistent with this reading (a 0/1 flag whose null pattern matches the charter-indicator column, set on a subset smaller than the 1,167 charter schools), but the acronym is not explained anywhere in the data, so it cannot be confirmed here.",
+     "name": "irc_flag",
+     "description": "Boolean flag, likely 'Is Residential Child-Care institution' (or similar IRC designation relevant to NSLP meal programs); 1 for about 7% of schools. Exact expansion of the acronym is not evidenced in the data.",
      "status": "tentative"
     },
     "Low Grade": {
-     "role": "category",
-     "name": "Lowest grade offered",
-     "description": "Lowest grade level served by the school: P = preschool, K = kindergarten, 1-12 = first through twelfth grade.",
+     "role": "code",
+     "name": "low_grade",
+     "description": "Lowest grade level offered at the school: 'P' (preschool/pre-K), 'K', or '1'-'12'.",
      "status": "resolved"
     },
     "NSLP Provision Status": {
      "role": "category",
-     "name": "National School Lunch Program provision status",
-     "description": "Special NSLP meal-counting provision the school operates under: Provision 1, Provision 2, Provision 3, Breakfast Provision 2, CEP (Community Eligibility Provision), or Multiple Provision Types. Null for the ~82% of schools not operating under a special provision.",
+     "name": "nslp_provision_status",
+     "description": "National School Lunch Program provision status of the school: Provision 1/2/3, Breakfast Provision 2, or CEP (Community Eligibility Provision) — alternative meal-counting rules that allow serving free meals to all students. Null for schools not under a special provision.",
      "status": "resolved"
     },
     "Percent (%) Eligible FRPM (Ages 5-17)": {
      "role": "numeric",
-     "name": "Share of students eligible for free/reduced-price meals, ages 5-17",
-     "description": "FRPM Count (Ages 5-17) divided by Enrollment (Ages 5-17), stored as a fraction between 0 and 1 (e.g. 46/73 = 0.6301) despite the '%' in the column name.",
+     "name": "pct_eligible_frpm_ages_5_17",
+     "description": "Share of enrolled students aged 5-17 eligible for free or reduced-price meals, stored as a fraction (0-1) despite the '%' in the column name; equals FRPM Count (Ages 5-17) / Enrollment (Ages 5-17).",
      "status": "resolved"
     },
     "Percent (%) Eligible FRPM (K-12)": {
      "role": "numeric",
-     "name": "Share of students eligible for free/reduced-price meals, grades K-12",
-     "description": "FRPM Count (K-12) divided by Enrollment (K-12), stored as a fraction between 0 and 1 (e.g. 63/102 = 0.6176).",
+     "name": "pct_eligible_frpm_k_12",
+     "description": "Share of K-12 enrollment eligible for free or reduced-price meals, stored as a fraction (0-1); equals FRPM Count (K-12) / Enrollment (K-12).",
      "status": "resolved"
     },
     "Percent (%) Eligible Free (Ages 5-17)": {
      "role": "numeric",
-     "name": "Share of students eligible for free meals, ages 5-17",
-     "description": "Free Meal Count (Ages 5-17) divided by Enrollment (Ages 5-17), stored as a fraction between 0 and 1 (e.g. 40/73 = 0.5479).",
+     "name": "pct_eligible_free_ages_5_17",
+     "description": "Share of enrolled students aged 5-17 eligible for free meals, stored as a fraction (0-1); equals Free Meal Count (Ages 5-17) / Enrollment (Ages 5-17).",
      "status": "resolved"
     },
     "Percent (%) Eligible Free (K-12)": {
      "role": "numeric",
-     "name": "Share of students eligible for free meals, grades K-12",
-     "description": "Free Meal Count (K-12) divided by Enrollment (K-12), stored as a fraction between 0 and 1 (e.g. 54/102 = 0.5294).",
+     "name": "pct_eligible_free_k_12",
+     "description": "Share of K-12 enrollment eligible for free meals, stored as a fraction (0-1); equals Free Meal Count (K-12) / Enrollment (K-12).",
      "status": "resolved"
     },
     "School Code": {
-     "role": "identifier",
-     "name": "School code",
-     "description": "Seven-digit school code, the last seven digits of the CDS code; '0000000' marks the 45 district-office rows that have no school.",
+     "role": "code",
+     "name": "school_code",
+     "description": "Seven-digit school code, the third component of the CDS code; '0000000' for non-school locations such as district offices.",
      "status": "resolved"
     },
     "School Name": {
      "role": "category",
-     "name": "School name",
-     "description": "Name of the school (e.g. 'Monterey Trail High', 'Independence Continuation'); 'District Office' for the 45 district-level rows. Names are not unique statewide (33 'Lincoln Elementary', 28 'Washington Elementary').",
+     "name": "school_name",
+     "description": "Name of the school (or 'District Office' for district-level records).",
      "status": "resolved"
     },
     "School Type": {
      "role": "category",
-     "name": "School type",
-     "description": "CDE school level/type category: Elementary Schools (Public), High Schools (Public), Intermediate/Middle Schools (Public), Continuation High Schools, Alternative Schools of Choice, K-12 Schools (Public), Junior High Schools (Public), etc.",
+     "name": "school_type",
+     "description": "CDE school type classification: Elementary Schools (Public), High Schools (Public), Intermediate/Middle Schools (Public), Continuation High Schools, Alternative Schools of Choice, etc.",
      "status": "resolved"
     }
    },
    "ok": true,
-   "reasoning_effort": "medium"
+   "reasoning_effort": "low"
   },
   "satscores": {
    "table": {
-    "name": "California SAT results by school and district",
-    "purpose": "SAT test results for California grade-12 students, one row per school (rtype='S') or school district (rtype='D'), keyed by the 14-digit CDS code. For each record it reports grade-12 enrollment, the number of SAT takers, the average score for each of the three sections (Reading, Math, Writing, each on the 200-800 scale of the pre-2016 SAT with a 2400-point total), and the number of test takers whose total score was at least 1500. Score fields are null where results are not reported (records with zero or very few test takers). School-level rows link to the schools table via cds -> schools.CDSCode; county, district and school names are denormalized onto each row. The presence of a Writing section and a 1500-of-2400 threshold dates the data to the 2005-early 2016 SAT administration era."
+    "name": "satscores",
+    "purpose": "California SAT results (old 3-section SAT, 2400 scale) per school and district: grade-12 enrollment, number of test takers, average section scores, and count of test takers scoring 1500+. Each row is a school (rtype='S') or district (rtype='D') identified by its CDS code, which links to the schools table. Score columns are null when no scores were reported (e.g., too few test takers)."
    },
    "columns": {
     "AvgScrMath": {
      "role": "numeric",
-     "name": "Average SAT Math score",
-     "description": "Mean SAT Math section score of the record's grade-12 test takers, on the 200-800 section scale (observed 289-699, mean ~484). Null in 26.3% of rows - the same rows as the other score columns, where results are not reported because there were zero or very few test takers (e.g. a row with NumTstTakr=3 has null scores).",
+     "name": "AvgScrMath",
+     "description": "Average SAT mathematics section score for the entity's test takers (old 3-section SAT, scale 200–800). Null when no scores reported (e.g., too few test takers or rtype=D rows without data).",
      "status": "resolved"
     },
     "AvgScrRead": {
      "role": "numeric",
-     "name": "Average SAT Reading (Critical Reading) score",
-     "description": "Mean SAT Critical Reading section score of the record's grade-12 test takers, on the 200-800 scale (observed 308-653, mean ~480). Null in 26.3% of rows where results are not reported (see AvgScrMath).",
+     "name": "AvgScrRead",
+     "description": "Average SAT critical reading section score (scale 200–800) for the entity's test takers; null when not reported.",
      "status": "resolved"
     },
     "AvgScrWrite": {
      "role": "numeric",
-     "name": "Average SAT Writing score",
-     "description": "Mean SAT Writing section score of the record's grade-12 test takers, on the 200-800 scale (observed 312-671, mean ~473). The existence of a separate Writing section indicates the pre-2016 three-section SAT (total 2400). Null in 26.3% of rows where results are not reported (see AvgScrMath).",
+     "name": "AvgScrWrite",
+     "description": "Average SAT writing section score (scale 200–800) for the entity's test takers; null when not reported.",
      "status": "resolved"
     },
     "NumGE1500": {
      "role": "numeric",
-     "name": "Number of test takers scoring 1500 or above",
-     "description": "Count of the record's SAT test takers whose total score (Reading + Math + Writing, maximum 2400) was 1500 or greater (observed 0-5837). Null on the same 26.3% of rows where the score averages are not reported.",
+     "name": "NumGE1500",
+     "description": "Number of test takers whose combined SAT score met or exceeded 1500 (out of 2400 on the old 3-section SAT). Null when scores not reported.",
      "status": "resolved"
     },
     "NumTstTakr": {
      "role": "numeric",
-     "name": "Number of SAT test takers",
-     "description": "Number of grade-12 students at the school (rtype='S') or district (rtype='D') who took the SAT (observed 0-24305; 218 records report 0 test takers, and records with no or very few takers have null score averages). Always populated.",
+     "name": "NumTstTakr",
+     "description": "Number of SAT test takers at the school/district. Zero often means no grade-12 test takers; never null.",
      "status": "resolved"
     },
     "cds": {
      "role": "identifier",
-     "name": "CDS code (County-District-School identifier)",
-     "description": "14-digit California County-District-School code: 2-digit county code + 5-digit district code + 7-digit school code. District-level rows (rtype='D') carry the district code with the school portion zeroed (e.g. 19650520000000 = county 19 Los Angeles, district 65252 Temple City Unified; 37683383734431 = San Diego county, San Diego Unified, Mission Bay High). Unique across all 2269 rows, so it identifies the row even though not flagged as the primary key. References schools.CDSCode (one-to-one). Stored as text and should be treated as an identifier, not a number (leading zeros are possible).",
+     "name": "cds",
+     "description": "CDS code (County-District-School), the California 14-digit identifier for the school or district; unique per row and joins one-to-one to schools.CDSCode.",
      "status": "resolved"
     },
     "cname": {
      "role": "category",
-     "name": "County name",
-     "description": "Name of the California county of the school/district (e.g. Los Angeles, San Diego, Merced, Lassen); 57 distinct values, matching California's 58 counties. Repeated because each county contains many schools and districts.",
+     "name": "cname",
+     "description": "County name (California county, e.g., Los Angeles, San Diego).",
      "status": "resolved"
     },
     "dname": {
      "role": "category",
-     "name": "District name",
-     "description": "Name of the school district or county office of education (e.g. 'Los Angeles Unified', 'Kern High', 'Nevada County Office of Education'). Repeated across rows: each district appears once as its own rtype='D' aggregate row and once per school (rtype='S') within it.",
+     "name": "dname",
+     "description": "District name (school district or county office of education).",
      "status": "resolved"
     },
     "enroll12": {
      "role": "numeric",
-     "name": "Grade 12 enrollment",
-     "description": "Number of students enrolled in grade 12 at the school (rtype='S') or in the whole district (rtype='D'); observed 0-43324, with the largest values corresponding to big districts such as Los Angeles Unified.",
+     "name": "enroll12",
+     "description": "Grade-12 enrollment at the school/district.",
      "status": "resolved"
     },
     "rtype": {
      "role": "code",
-     "name": "Record type (school vs. district)",
-     "description": "Level of the row: 'S' = school-level record (1749 rows; sname populated, cds has a non-zero 7-digit school portion), 'D' = district-level aggregate (520 rows; sname null, cds ends in 0000000).",
+     "name": "rtype",
+     "description": "Record type: 'S' = school-level record (sname populated), 'D' = district-level aggregate (sname null).",
      "status": "resolved"
     },
     "sname": {
      "role": "category",
-     "name": "School name",
-     "description": "Name of the school (e.g. 'Mission Bay High'). Null exactly on the district-level rows (rtype='D', 520 of 2269 = 23%). Not unique - common names such as 'Middle College High' or 'Foothill High' occur in several different districts.",
+     "name": "sname",
+     "description": "School name; null for district-level (rtype='D') rows.",
      "status": "resolved"
     }
    },
    "ok": true,
-   "reasoning_effort": "medium"
+   "reasoning_effort": "low"
   },
   "schools": {
    "table": {
     "name": "schools",
-    "purpose": "California Department of Education public schools directory: one row per school/site (active, closed, merged and pending), plus a small number of district-level records (CDSCode ending in 0000000, which have null school-level fields). Keyed by the 14-digit CDS (County-District-School) code and referenced by satscores.cds (per-school SAT scores); frpm (free/reduced-price meal data) presumably joins on the same code. Holds location and mailing addresses, contacts, administrator names/emails, grade spans, CDE type/program codes, charter/magnet/virtual flags, NCES IDs and open/close dates."
+    "purpose": "Directory of California public schools (including closed and merged ones), one row per school, keyed by the 14-digit CDE CDS code. Contains location and mailing addresses, district and county, school type/grade-span codes, charter and magnet flags, administrator contact details, and open/close dates. Referenced by satscores (per-school SAT results) and related to frpm (free/reduced-price meal data)."
    },
    "columns": {
     "AdmEmail1": {
      "role": "identifier",
-     "name": "Administrator 1 email",
-     "description": "Email address of the school's first listed administrator (e.g., principal/director); ~34% null, mostly records with no administrator listed.",
+     "name": "Administrator 1 Email",
+     "description": "Email address of the school's first administrator (principal/director) on record",
      "status": "resolved"
     },
     "AdmEmail2": {
      "role": "identifier",
-     "name": "Administrator 2 email",
-     "description": "Email address of the school's second listed administrator; populated for only ~2.4% of rows.",
+     "name": "Administrator 2 Email",
+     "description": "Email address of the school's second administrator on record",
      "status": "resolved"
     },
     "AdmEmail3": {
      "role": "identifier",
-     "name": "Administrator 3 email",
-     "description": "Email address of the school's third listed administrator; almost never populated (0.2% non-null).",
+     "name": "Administrator 3 Email",
+     "description": "Email address of the school's third administrator on record",
      "status": "resolved"
     },
     "AdmFName1": {
      "role": "identifier",
-     "name": "Administrator 1 first name",
-     "description": "First name of the school's first listed administrator; null pattern matches AdmEmail1/AdmLName1.",
+     "name": "Administrator 1 First Name",
+     "description": "First name of the school's first administrator",
      "status": "resolved"
     },
     "AdmFName2": {
      "role": "identifier",
-     "name": "Administrator 2 first name",
-     "description": "First name of the school's second listed administrator.",
+     "name": "Administrator 2 First Name",
+     "description": "First name of the school's second administrator",
      "status": "resolved"
     },
     "AdmFName3": {
      "role": "identifier",
-     "name": "Administrator 3 first name",
-     "description": "First name of the school's third listed administrator.",
+     "name": "Administrator 3 First Name",
+     "description": "First name of the school's third administrator",
      "status": "resolved"
     },
     "AdmLName1": {
      "role": "identifier",
-     "name": "Administrator 1 last name",
-     "description": "Last name of the school's first listed administrator.",
+     "name": "Administrator 1 Last Name",
+     "description": "Last name of the school's first administrator",
      "status": "resolved"
     },
     "AdmLName2": {
      "role": "identifier",
-     "name": "Administrator 2 last name",
-     "description": "Last name of the school's second listed administrator.",
+     "name": "Administrator 2 Last Name",
+     "description": "Last name of the school's second administrator",
      "status": "resolved"
     },
     "AdmLName3": {
      "role": "identifier",
-     "name": "Administrator 3 last name",
-     "description": "Last name of the school's third listed administrator.",
+     "name": "Administrator 3 Last Name",
+     "description": "Last name of the school's third administrator",
      "status": "resolved"
     },
     "CDSCode": {
      "role": "identifier",
-     "name": "CDS code (primary key)",
-     "description": "14-digit California County-District-School code: 2-digit county + 5-digit district + 7-digit school (trailing 0000000 marks a district-level record). Unique across all 17,686 rows; primary key; referenced one-to-one by satscores.cds.",
+     "name": "CDS Code",
+     "description": "California Department of Education 14-digit County-District-School code; unique identifier for the school, primary key of this table. Joins one-to-one to satscores.cds",
      "status": "resolved"
     },
     "Charter": {
-     "role": "identifier",
-     "name": "Charter school flag",
-     "description": "1 = the school is a charter school, 0 = not; null for ~8% of rows (non-school/district-level records).",
+     "role": "category",
+     "name": "Charter School Flag",
+     "description": "Boolean flag indicating whether the school is a charter school (1 = yes, 0 = no)",
      "status": "resolved"
     },
     "CharterNum": {
      "role": "identifier",
-     "name": "Charter school number",
-     "description": "State-assigned charter school number (4-character code, may contain letters, e.g. '00D2'); populated only for charter schools (~10% of rows), matching the Charter=1 count.",
+     "name": "Charter Number",
+     "description": "State-assigned charter school number (4-digit, zero-padded); populated only for charter schools",
      "status": "resolved"
     },
     "City": {
      "role": "identifier",
-     "name": "Physical address city",
-     "description": "City of the school's physical location (pairs with Street/State/Zip).",
+     "name": "City",
+     "description": "City in which the school's physical site is located",
      "status": "resolved"
     },
     "ClosedDate": {
-     "role": "identifier",
-     "name": "Closure date",
-     "description": "Date the school was closed; null for active/pending schools. The 1989-06-30 spike (2,009 rows) looks like a batch/default closure date.",
+     "role": "date",
+     "name": "Closed Date",
+     "description": "Date the school closed (or was merged); null for active schools. Range 1980-2016",
      "status": "resolved"
     },
     "County": {
-     "role": "identifier",
+     "role": "category",
      "name": "County",
-     "description": "Name of the California county (58 counties) in which the school is located.",
+     "description": "California county in which the school is located (58 counties)",
      "status": "resolved"
     },
     "DOC": {
-     "role": "identifier",
-     "name": "District type code (DOC)",
-     "description": "Two-digit CDE code for the type of district/agency that operates the school; pairs 1:1 with DOCType (54 = Unified School District, 52 = Elementary School District, 00 = County Office of Education, 56 = High School District, 98 = Regional Occupation Center/Program).",
+     "role": "code",
+     "name": "District Ownership Code",
+     "description": "District Ownership Code: 2-digit code for the type of district operating the school (e.g. 54 = unified, 52 = elementary, 00 = county office)",
      "status": "resolved"
     },
     "DOCType": {
-     "role": "identifier",
-     "name": "District type",
-     "description": "Label for DOC: the type of district/agency operating the school (Unified School District, Elementary School District, County Office of Education, High School District, ROC/P, JPA, Community College District, Non-School Locations, etc.).",
+     "role": "category",
+     "name": "District Ownership Type",
+     "description": "Plain-text label for DOC, e.g. 'Unified School District', 'County Office of Education (COE)'",
      "status": "resolved"
     },
     "District": {
-     "role": "identifier",
-     "name": "District name",
-     "description": "Name of the district or administering agency (district, county office of education, JPA, etc.) that operates the school.",
+     "role": "category",
+     "name": "District Name",
+     "description": "Name of the school district (or county office of education / charter authorizer) operating the school",
      "status": "resolved"
     },
     "EILCode": {
-     "role": "identifier",
-     "name": "Instructional level code (EIL)",
-     "description": "CDE Educational Instruction Level code for the school; pairs 1:1 with EILName (ELEM = Elementary, HS = High School, UG = Ungraded, INTMIDJR = Intermediate/Middle/Junior High, ELEMHIGH = Elementary-High Combination, A = Adult, PS = Preschool).",
+     "role": "code",
+     "name": "Educational Instruction Level Code",
+     "description": "Educational Instruction Level code: the grade-level span category of the school (ELEM, HS, UG, INTMIDJR, ELEMHIGH, A, PS)",
      "status": "resolved"
     },
     "EILName": {
-     "role": "identifier",
-     "name": "Instructional level",
-     "description": "Label for EILCode: the school's instructional level (Elementary, High School, Ungraded, Intermediate/Middle/Junior High, Elementary-High Combination, Adult, Preschool).",
+     "role": "category",
+     "name": "Educational Instruction Level Name",
+     "description": "Plain-text label for EILCode, e.g. 'Elementary', 'High School', 'Ungraded'",
      "status": "resolved"
     },
     "EdOpsCode": {
-     "role": "identifier",
-     "name": "Educational options code",
-     "description": "CDE Educational Options code: the school's program type; pairs 1:1 with EdOpsName (TRAD = Traditional, CON = Continuation School, COMMDAY = Community Day School, ALTSOC = Alternative School of Choice, SPEC = Special Education School, ROP = Regional Occupational Program, YTH = Youth Authority, HOMHOS = Home & Hospital, JUV = Juvenile Court School). Null for ~32% of rows.",
+     "role": "code",
+     "name": "Educational Options Code",
+     "description": "Educational Options code: type of educational program (TRAD = traditional, CON = continuation, COMMDAY = community day, ALTSOC, SPEC, ROP, YTH, HOMHOS, JUV, etc.)",
      "status": "resolved"
     },
     "EdOpsName": {
-     "role": "identifier",
-     "name": "Educational options type",
-     "description": "Label for EdOpsCode (Traditional, Continuation School, Community Day School, Alternative School of Choice, Special Education School, Opportunity School, Juvenile Court School, State Special School, Home and Hospital, etc.).",
+     "role": "category",
+     "name": "Educational Options Name",
+     "description": "Plain-text label for EdOpsCode, e.g. 'Traditional', 'Continuation School', 'Juvenile Court School'",
      "status": "resolved"
     },
     "Ext": {
      "role": "identifier",
-     "name": "Phone extension",
-     "description": "Telephone extension for the school's main phone number (Phone); mostly 3-4 digit values, null for ~97% of rows. A few outliers (e.g. 630100) look like data-entry errors.",
-     "status": "resolved"
+     "name": "Phone Extension",
+     "description": "Telephone extension for the school's main phone number; some values appear to be full numbers or malformed entries",
+     "status": "tentative"
     },
     "FundingType": {
-     "role": "identifier",
-     "name": "Charter funding type",
-     "description": "How a charter school is funded: 'Directly funded' (receives state funds directly) vs 'Locally funded' (funded through its authorizing district); 'Not in CS funding model' for rows outside the charter-school funding model. Populated only for charter schools.",
+     "role": "category",
+     "name": "Charter Funding Type",
+     "description": "Charter school funding model: 'Directly funded' or 'Locally funded' by the sponsoring district; 'Not in CS funding model' for non-charters",
      "status": "resolved"
     },
     "GSoffered": {
-     "role": "identifier",
-     "name": "Grades offered",
-     "description": "Span of grade levels the school offers, as lowest-highest (e.g. K-5, 9-12, K-8); single grades (e.g. '10') and 'P' (preschool) also occur. Null for ~22% of rows.",
+     "role": "category",
+     "name": "Grades Offered",
+     "description": "Range of grade levels offered by the school, e.g. 'K-5', '9-12', 'K-8'; single values like '10' or 'P' (preschool) also occur",
      "status": "resolved"
     },
     "GSserved": {
-     "role": "identifier",
-     "name": "Grades served",
-     "description": "Span of grade levels the school actually serves (lowest-highest, e.g. K-5, 6-8); can differ from GSoffered. Null for ~33% of rows.",
+     "role": "category",
+     "name": "Grades Served",
+     "description": "Range of grade levels actually served by the school (may differ slightly from grades offered)",
      "status": "resolved"
     },
     "LastUpdate": {
-     "role": "identifier",
-     "name": "Last update date",
-     "description": "Date the directory record was last updated (1999-06-24 to 2016-10-12); the 1999-06-24 spike (3,201 rows) reflects a bulk load of older records.",
+     "role": "date",
+     "name": "Last Update Date",
+     "description": "Date the school's directory record was last updated (1999-2016)",
      "status": "resolved"
     },
     "Latitude": {
-     "role": "identifier",
+     "role": "numeric",
      "name": "Latitude",
-     "description": "Latitude of the school's physical location in decimal degrees (all values within California, ~32.5 to 44.2 N); null for ~27% of rows.",
+     "description": "Geographic latitude of the school site (decimal degrees, WGS84); range 32.5-44.2 consistent with California",
      "status": "resolved"
     },
     "Longitude": {
-     "role": "identifier",
+     "role": "numeric",
      "name": "Longitude",
-     "description": "Longitude of the school's physical location in decimal degrees (negative, ~-124.3 to -83.8); null for ~27% of rows.",
+     "description": "Geographic longitude of the school site (decimal degrees, negative = west); range -124.3 to -83.8, mostly within California",
      "status": "resolved"
     },
     "Magnet": {
-     "role": "identifier",
-     "name": "Magnet school flag",
-     "description": "1 = the school is a magnet school, 0 = not; null (~40%) where not reported.",
+     "role": "category",
+     "name": "Magnet School Flag",
+     "description": "Boolean flag indicating whether the school is a magnet school (1 = yes, 0 = no)",
      "status": "resolved"
     },
     "MailCity": {
      "role": "identifier",
-     "name": "Mailing address city",
-     "description": "City of the school's mailing address (pairs with MailStreet/MailState/MailZip).",
+     "name": "Mailing City",
+     "description": "City of the school's mailing address",
      "status": "resolved"
     },
     "MailState": {
-     "role": "identifier",
-     "name": "Mailing address state",
-     "description": "State of the mailing address; always 'CA'.",
+     "role": "category",
+     "name": "Mailing State",
+     "description": "State of the school's mailing address; always 'CA'",
      "status": "resolved"
     },
     "MailStrAbr": {
      "role": "identifier",
-     "name": "Mailing street (abbreviated)",
-     "description": "Mailing street address with abbreviated street/suite designations ('Ave.', 'Dr.', 'Ste.'); same address as MailStreet.",
+     "name": "Mailing Street (Abbreviated)",
+     "description": "Street portion of the school's mailing address, with abbreviated street types ('Dr.', 'St.', 'Ave.')",
      "status": "resolved"
     },
     "MailStreet": {
      "role": "identifier",
-     "name": "Mailing street",
-     "description": "Mailing street address with spelled-out designations ('Avenue', 'Drive', 'Suite').",
+     "name": "Mailing Street",
+     "description": "Street portion of the school's mailing address, spelled out in full",
      "status": "resolved"
     },
     "MailZip": {
      "role": "identifier",
-     "name": "Mailing ZIP code",
-     "description": "ZIP code (often ZIP+4) of the school's mailing address.",
+     "name": "Mailing ZIP Code",
+     "description": "ZIP code (sometimes ZIP+4) of the school's mailing address",
      "status": "resolved"
     },
     "NCESDist": {
      "role": "identifier",
-     "name": "NCES district ID",
-     "description": "7-digit federal NCES local education agency (district) identifier: '06' (California FIPS code) + 5-digit district number; shared by all schools in a district (e.g. 0622710 = Los Angeles Unified, 1,342 rows).",
+     "name": "NCES District ID",
+     "description": "7-digit NCES (National Center for Education Statistics) district ID; leading '06' is California's FIPS state code",
      "status": "resolved"
     },
     "NCESSchool": {
      "role": "identifier",
-     "name": "NCES school ID",
-     "description": "5-digit NCES school identifier (unique within a district); null for ~29% of rows (district-level or unassigned records).",
+     "name": "NCES School ID",
+     "description": "5-digit NCES school ID within its district; combined with NCESDist forms the federal school identifier",
      "status": "resolved"
     },
     "OpenDate": {
-     "role": "identifier",
-     "name": "Opening date",
-     "description": "Date the school opened (1850 to 2017); 1980-07-01 for 10,679 rows appears to be a default for schools predating the directory's records.",
+     "role": "date",
+     "name": "Open Date",
+     "description": "Date the school opened; 1980-07-01 is a default/placeholder for older schools. Range 1850-2017",
      "status": "resolved"
     },
     "Phone": {
      "role": "identifier",
-     "name": "Phone number",
-     "description": "School's main phone number, formatted '(XXX) XXX-XXXX'; null for ~34% of rows.",
+     "name": "Phone Number",
+     "description": "School's main telephone number in '(area) NNN-NNNN' format",
      "status": "resolved"
     },
     "SOC": {
-     "role": "identifier",
-     "name": "School type code (SOC)",
-     "description": "Two-digit CDE code classifying the school's type/category; pairs 1:1 with SOCType (60 = Elementary Schools (Public), 66 = High Schools (Public), 62 = Intermediate/Middle Schools (Public), 68 = Continuation High Schools, 09 = Special Education Schools (Public), 08 = Preschool, 70 = Adult Education Centers).",
+     "role": "code",
+     "name": "School Type Code (SOC)",
+     "description": "School Ownership Code: 2-digit code for the type of school (60 = elementary public, 66 = high school, 62 = middle school, 09 = special education, 70 = adult education, etc.)",
      "status": "resolved"
     },
     "SOCType": {
-     "role": "identifier",
-     "name": "School type",
-     "description": "Label for SOC: the school's category (Elementary Schools (Public), High Schools (Public), Intermediate/Middle Schools (Public), Continuation High Schools, Special Education Schools (Public), Adult Education Centers, Alternative Schools of Choice, Junior High Schools (Public), etc.).",
+     "role": "category",
+     "name": "School Type Name",
+     "description": "Plain-text label for SOC, e.g. 'Elementary Schools (Public)', 'Continuation High Schools'",
      "status": "resolved"
     },
     "School": {
      "role": "identifier",
-     "name": "School name",
-     "description": "Name of the school (e.g. 'Lincoln Elementary'); null for ~8% of rows (district-level records).",
+     "name": "School Name",
+     "description": "Name of the school (not unique; many 'Lincoln Elementary' etc.)",
      "status": "resolved"
     },
     "State": {
-     "role": "identifier",
-     "name": "Physical address state",
-     "description": "State of the school's physical location; always 'CA' (California).",
+     "role": "category",
+     "name": "State",
+     "description": "State of the school's physical location; always 'CA'",
      "status": "resolved"
     },
     "StatusType": {
-     "role": "identifier",
-     "name": "Administrative status",
-     "description": "CDE administrative status of the school: Active (11,708), Closed (4,518), Merged (1,448) or Pending (12).",
+     "role": "category",
+     "name": "Status Type",
+     "description": "Administrative status of the school: Active, Closed, Merged, or Pending",
      "status": "resolved"
     },
     "Street": {
      "role": "identifier",
-     "name": "Physical street address",
-     "description": "Street of the school's physical location with spelled-out street types ('Road', 'Street').",
+     "name": "Street Address",
+     "description": "Street portion of the school's physical location address, spelled out in full",
      "status": "resolved"
     },
     "StreetAbr": {
      "role": "identifier",
-     "name": "Physical street address (abbreviated)",
-     "description": "Street of the school's physical location with abbreviated street types ('Rd.', 'St.'); same address as Street.",
+     "name": "Street Address (Abbreviated)",
+     "description": "Street portion of the school's physical location address, with abbreviated street types",
      "status": "resolved"
     },
     "Virtual": {
-     "role": "identifier",
-     "name": "Virtual instruction flag",
-     "description": "Three-valued flag that appears to indicate virtual/online schooling: N = not virtual (9,703), P = partially/primarily virtual (1,046), F = fully virtual (69); null for ~39% of rows. The name and value pattern support this reading, but the exact code definitions are unverified - an alternative would be that P and F distinguish the degree of online instruction differently (e.g. 'primarily' vs 'fully' face-to-face vs online).",
+     "role": "category",
+     "name": "Virtual School Indicator",
+     "description": "Whether the school offers virtual/online instruction: N = not virtual, P = primarily virtual (or partially), F = fully virtual. Exact CDE coding of P vs F is not verifiable from the data alone",
      "status": "tentative"
     },
     "Website": {
      "role": "identifier",
      "name": "Website URL",
-     "description": "School's or its district's website URL (frequently the district site, e.g. www.fusd.net); null for ~61% of rows.",
+     "description": "School or district website URL",
      "status": "resolved"
     },
     "Zip": {
      "role": "identifier",
-     "name": "Physical address ZIP code",
-     "description": "ZIP code (often ZIP+4) of the school's physical location.",
+     "name": "ZIP Code",
+     "description": "ZIP code (sometimes ZIP+4) of the school's physical location",
      "status": "resolved"
     }
    },
    "ok": true,
-   "reasoning_effort": "medium"
+   "reasoning_effort": "low"
   }
  }
 }
