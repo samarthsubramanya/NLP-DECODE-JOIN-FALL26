@@ -40,7 +40,10 @@ from pathlib import Path
 
 import duckdb
 
-ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+import labels
+from labels import label_source, load_mapping
+
+ap =argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 for name in ("repo", "dbfile", "label", "keys_dir", "joins_dir", "stage3_dir"):
     ap.add_argument(name)
 ap.add_argument("--dataset", default="bird")
@@ -55,54 +58,22 @@ if os.environ.get("ONLY_DONE"):   # grade only databases this Stage 3 run has fi
     dbs = [d for d in dbs if (s3_dir / f"{d}.json").exists()]
 
 
-def position_mapping():
-    """{db: {"tables": {t: t}, "columns": {t: {real: col_NNN}}}} from the documented file's column order."""
-    out = {}
-    for db in dbs:
-        cols = defaultdict(dict)
-        for t, c, pos in con.execute("SELECT table_name, column_name, ordinal_position FROM information_schema.columns "
-                                     "WHERE table_schema = ? ORDER BY table_name, ordinal_position", [f"bird_{db}"]).fetchall():
-            cols[t][c] = f"col_{pos:03d}"
-        out[db] = {"tables": {t: t for t in cols}, "columns": dict(cols)}
-    return out
-
-
+meta, schemas = label_source(repo, args.dataset)
+mapping = load_mapping(args.mapping, con, {db: schemas[db] for db in dbs})
 if args.mapping == "position":
-    mapping = position_mapping()
     s3_dir.mkdir(parents=True, exist_ok=True)
     (s3_dir / "mapping.json").write_text(json.dumps(mapping, indent=1))
-else:
-    mapping = json.loads(Path(args.mapping).read_text()) if args.mapping else None
 
 
 def back(db, t, c=None):
-    """obfuscated -> real name (identity without a mapping)."""
-    if not mapping:
-        return (t, c) if c is not None else t
-    m = mapping[db]
-    rt = {v: k for k, v in m["tables"].items()}[t]
-    return (rt, {v: k for k, v in m["columns"][rt].items()}[c]) if c is not None else rt
+    return labels.back(mapping, db, t, c)
+
+
+def gold(db):
+    return labels.gold(con, meta, schemas[db])
 
 
 # ------------------------------------------------------------------ gold
-def gold(db):
-    pks, fks = {}, set()
-    rows = con.execute("SELECT t.table_name, t.metadata_json FROM bird_metadata.table_info t "
-                       "JOIN bird_metadata.files f USING (source_path) WHERE f.duckdb_schema = ?", [f"bird_{db}"]).fetchall()
-    xinfo = {t.lower(): json.loads(m) for t, m in rows}
-    for t, m in xinfo.items():
-        pks[t] = [c["name"].lower() for c in sorted((c for c in m["table_xinfo"] if c["pk"]), key=lambda c: c["pk"])]
-    for t, m in xinfo.items():
-        for fk in m["foreign_key_list"]:
-            tt = fk["table"].lower()
-            to = (fk["to"] or "").lower()
-            if not to and len(pks.get(tt, [])) > fk["seq"]:   # "references t" without a column = t's key
-                to = pks[tt][fk["seq"]]
-            if to:
-                fks.add(((t, fk["from"].lower()), (tt, to)))
-    return pks, fks
-
-
 def ref_descriptions(db):
     out = {}
     for path, b in con.execute("SELECT source_path, original_bytes FROM bird_metadata.files WHERE source_path LIKE ?",
@@ -208,8 +179,7 @@ for db in dbs:
     und_gold = {frozenset(p) for p in fks}
 
     def norm_edge(e):
-        s, t = back(db, e["source"]["table"], e["source"]["column"]), back(db, e["target"]["table"], e["target"]["column"])
-        return frozenset(((s[0].lower(), s[1].lower()), (t[0].lower(), t[1].lower())))
+        return labels.norm_edge(mapping, db, e)
 
     db_g = {}
     for name in ("direct", "stats", "llm"):
