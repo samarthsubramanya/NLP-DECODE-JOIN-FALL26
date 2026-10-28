@@ -339,7 +339,7 @@ The metrics are:
 - **Spider dev is the only tuning set.** Every rule and threshold is decided there.
 - **BIRD dev and FIBEN are held out.** They're run once with the frozen config, and nothing is changed after seeing their numbers.
 - **Keep a rule only if it raises Spider F1** on top of the rules already kept, without dropping precision below 0.965.
-- **Each rule needs a values-only part,** so it can carry over to the stripped and obfuscated settings, which haven't been run yet.
+- **Each rule needs a values-only part,** so it can carry over to the stripped and obfuscated settings.
 
 ### Spider dev ablation (tuning set, 2026-10-23)
 
@@ -365,10 +365,13 @@ The metrics are:
 | | | **frozen** | **0.970** | **0.985** | **0.977** | 0.985 |
 | BIRD dev | 75 (66 / 6 / 3) | baseline | 1.000 | 0.924 | 0.961 | 0.924 |
 | | | **frozen** | **1.000** | **0.970** | **0.985** | 0.970 |
+| BIRD dev, stripped file | 75 (66 / 6 / 3) | frozen | 1.000 | 0.970 | 0.985 | 0.970 |
 | FIBEN | 152 (150 / 0 / 2) | baseline | 0.951 | 0.260 | 0.408 | 1.000 (39 tables) |
 | | | **frozen** | 0.951 | 0.260 | 0.408 | 1.000 (39 tables) |
 
 On FIBEN, R5's name-only guesses get **111/111** empty tables right. They aren't counted in the table above.
+
+**Settings.** The stripped file (`decode_join_bird_dev_stripped.duckdb`, `--dataset bird_stripped`) has the same tables, columns, column order, types and rows as the documented one; only `bird_metadata` and the declared constraints are gone. The pipeline never reads either, so its profiles and keys are identical to the documented run's, and so are the metrics. Labels always come from the documented file. The obfuscated file (`bird_dev_obfuscated.duckdb`, `--dataset bird_obfuscated`, columns `col_NNN` by position) is graded with `evals/grade_bird.py --mapping position`, because `eval_primary_keys.py` compares real column names.
 
 **Frozen-config misses still open:**
 - **BIRD `satscores.cds`.** Nothing references it: it points *to* `schools`. It's capped by the atypical-name penalty.
@@ -406,7 +409,7 @@ What the baseline errors showed (this is what led to the rules above):
 - **Composite keys:** 13 of 14 tables abstain correctly. The one exception is Spider `network_1.Likes`, where `student_id` was predicted.
 
 ### Open experiments
-- Run the frozen config on the stripped and obfuscated settings once they exist, with no retuning.
+- Stripped and obfuscated BIRD: done with the frozen config, no retuning (stripped above; obfuscated in `out/descriptions/bird_obfuscated/obfuscated_low/grade.json`). Spider and FIBEN have no stripped or obfuscated files yet.
 - Spot-check BEAVER's predictions by hand on about 30 tables, since it declares no keys.
 - Get `out/filtered/kaggledbqa/` (run the filter with `--preset kaggledbqa`), then profile BEAVER and KaggleDBQA. Neither has gold keys, so they are profiled but not graded.
 
@@ -436,3 +439,7 @@ Add a line per change: the date, what changed, and which results it moved.
     - Spider (tuning set) F1 0.894 → 0.977.
     - FIBEN unchanged in the main metrics, with R5 getting 111/111 empty tables.
 - **2026-10-23** Moved the grader from `src/eval_primary_keys.py` to `evals/eval_primary_keys.py`. It adds `src/` to its import path, so it runs from any directory. No change in behaviour.
+- **2026-10-28** BIRD settings as datasets.
+  - `filter_for_multitable_datasets.py` presets `bird_stripped` and `bird_obfuscated`. Neither file has `bird_metadata`, so `--questions-db-file` reads `dev.json` from the documented file. The `bird_obfuscated` preset reproduces the earlier hand-made `out/filtered/bird_obfuscated/databases.json` exactly.
+  - `eval_primary_keys.py` reads gold keys from the documented file (`labels.documented`), not the run's file, and refuses `*_obfuscated`.
+  - Stripped run: profiles, `frozen` keys and `default` joins identical to the documented run, so PK P/R/F1 is unchanged (1.000 / 0.970 / 0.985).

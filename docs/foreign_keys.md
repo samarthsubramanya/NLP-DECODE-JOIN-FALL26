@@ -233,6 +233,12 @@ python src/foreign_keys.py      --dataset bird --run default
 python src/primary_keys.py      --dataset bird --run frozen_no_names --no-names
 python src/foreign_keys.py      --dataset bird --keys-run frozen_no_names --run frozen_no_names
 
+# the stripped and obfuscated files: the setting is the dataset name (bird_stripped, bird_obfuscated)
+python src/filter_for_multitable_datasets.py --preset bird_stripped --out out/filtered/bird_stripped
+python src/profile_columns.py   --dataset bird_stripped
+python src/primary_keys.py      --dataset bird_stripped --run frozen
+python src/foreign_keys.py      --dataset bird_stripped --keys-run frozen --run default
+
 python -m pytest tests/test_foreign_keys.py
 ```
 
@@ -286,7 +292,8 @@ Counts only. Gold labels are used for evaluation after Stage 3, never here. 1,50
 - 13 unit tests pass.
 - Stage 2b also ran without errors on Spider dev (20 databases) and FIBEN (1 database), from the committed Stage 1 and 2a outputs.
 - The output feeds the PoC's JoinGR export unchanged (BIRD `financial`: 55 nodes, 23 join edges, 90 intra-table edges), and Stage 3's prompt builder accepts the Stage 1 and 2a files it shares with this stage.
-- Not run: the stripped and obfuscated DuckDB files (the output paths have no setting folder yet), KaggleDBQA and BEAVER (no Stage 1 or 2a outputs), Stage 3 with the joins.
+- The stripped and obfuscated BIRD files run as datasets `bird_stripped` and `bird_obfuscated` (2026-10-28). The stripped joins are identical to `out/joins/bird/default`.
+- Not run: KaggleDBQA and BEAVER (no Stage 1 or 2a outputs).
 
 ---
 
