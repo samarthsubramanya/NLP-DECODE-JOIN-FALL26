@@ -2,7 +2,8 @@
 probe_join_recall.py. Labels come from the documented DuckDB file only (<dataset>_metadata.table_info,
 SQLite's table_xinfo and foreign_key_list), never from a run's inputs. BIRD and Spider ship the same format.
 
-    label_source  an obfuscated dataset (bird_obfuscated) is graded on its documented one (bird)
+    label_source  a stripped or obfuscated dataset (bird_stripped, bird_obfuscated) is graded on its
+                  documented one (bird)
     mapping       {db: {"tables": {real: shown}, "columns": {real_table: {real: shown}}}}, or None when the
                   run shows real names
 """
@@ -11,9 +12,14 @@ from collections import defaultdict
 from pathlib import Path
 
 
+def documented(dataset):
+    """bird_stripped / bird_obfuscated -> bird; any other dataset is its own documented one."""
+    return dataset.removesuffix("_obfuscated").removesuffix("_stripped")
+
+
 def label_source(repo, dataset):
     """(metadata schema, {db_id: documented data schema}) for a dataset's labels."""
-    base = dataset.removesuffix("_obfuscated")
+    base = documented(dataset)
     dbs = json.loads((Path(repo) / f"out/filtered/{base}/databases.json").read_text())
     return f"{base}_metadata", {d["db_id"]: d["duckdb_schema"] for d in dbs}
 
