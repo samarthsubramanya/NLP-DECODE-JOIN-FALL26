@@ -108,7 +108,7 @@ Two things to know before Stage 3:
 
 - Email/URL prefilter (paper tier 2) is not applied: it needs a full-column share that Stage 1 does not compute.
 - G4 is off until someone chooses a multiplier.
-- Output paths have no setting folder yet; running stripped or obfuscated databases needs one (also for Stages 1, 2a and 3).
+- The setting is the dataset name: `bird` (documented file), `bird_stripped`, `bird_obfuscated`, each with its own `out/filtered/`, `out/profiles/`, `out/keys/`, `out/joins/` and `out/descriptions/` folder. Grading always reads labels from the documented file.
 - Stage 3 still builds its own overlap hints; it should read `out/joins` and run the band adjudication.
 
 ## 7. Changelog
