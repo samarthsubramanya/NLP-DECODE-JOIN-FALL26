@@ -5,6 +5,8 @@ The declared keys are evaluation labels only; this is the one script that reads 
     bird, spider   <dataset>_metadata.table_info: SQLite's table_xinfo, `pk` = position in the key
     fiben          duckdb_constraints() of the FIBEN schema
     beaver, kaggledbqa declare no primary keys, so there is nothing to grade
+A stripped dataset (bird_stripped) is graded on its documented file (bird), as in grade_bird.py.
+Obfuscated datasets predict col_NNN names: grade those with grade_bird.py --mapping position.
 
 Each table falls in one bucket by its gold key:
     single     one-column key: correct / wrong column / missed (no prediction)
@@ -30,6 +32,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))   # pipeline modules live in src/
 
 from duckdb_driver import open_db
+from labels import documented
 from primary_keys import ROOT, add_args, config_from, load_profile, score_database, work_list
 
 
@@ -146,6 +149,10 @@ def main():
     add_args(ap)
     args = ap.parse_args()
     cfg = config_from(args)
+    if args.dataset.endswith("_obfuscated"):
+        sys.exit(f"{args.dataset}: predictions use col_NNN names; grade with evals/grade_bird.py --mapping position")
+    base = documented(args.dataset)   # labels come from the documented file only
+    label_dbs = {d["db_id"]: d for d in json.loads((ROOT / f"out/filtered/{base}/databases.json").read_text())}
     out_dir = ROOT / "out" / "keys" / args.dataset / args.run
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -153,7 +160,8 @@ def main():
     for db in work_list(args):
         keys = score_database(load_profile(args.dataset, db, args.reprofile), cfg)
         (out_dir / f"{db['db_id']}.json").write_text(json.dumps(keys, indent=1, sort_keys=True))
-        gold = gold_keys(open_db(db["duckdb_file"]), args.dataset, db["duckdb_schema"])
+        label = label_dbs[db["db_id"]]
+        gold = gold_keys(open_db(label["duckdb_file"]), base, label["duckdb_schema"])
         if not gold:
             print(f"  {db['db_id']}: no declared primary keys, not graded")
             continue
