@@ -63,6 +63,18 @@ def test_g8_primary_key_is_never_a_source():
     assert r["decision"] == "rejected_gate" and r["reason"].startswith("G8")
 
 
+def test_g8_spares_a_sparse_integer_key_unless_absolute():
+    """A subclass table reusing its parent's key: scattered values (density 0.01) pass G8; numbered 1..n do not."""
+    for density, gated in ((0.01, False), (0.5, False), (0.9, True)):
+        profile, keys = shop([pair(("orders", "order_id"), ("customers", "customer_id"), source_unique=True)])
+        profile["tables"]["orders"]["columns"]["order_id"]["numeric"] = {"density": density}
+        r = one(run(profile, keys), ("orders", "order_id"), ("customers", "customer_id"))
+        assert (r["decision"] == "rejected_gate" and r["reason"].startswith("G8")) == gated, density
+    profile["tables"]["orders"]["columns"]["order_id"]["numeric"] = {"density": 0.01}
+    r = one(run(profile, keys, pk_source_max_density=None), ("orders", "order_id"), ("customers", "customer_id"))
+    assert r["reason"].startswith("G8")
+
+
 def test_g1_target_rejected_by_2a_is_gated_out():
     profile, keys = shop([pair(("customers", "region_id"), ("orders", "customer_id"))])
     profile["tables"]["customers"]["columns"]["region_id"] = col("region_id", position=1)

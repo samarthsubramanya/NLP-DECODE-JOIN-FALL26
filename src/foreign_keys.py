@@ -12,6 +12,11 @@ sample): source a -> target b, with I(a->b) = |Va ∩ Vb| / |Va|.
 Gates and prefilters, in this order; the first one that fires rejects the pair ("rejected_gate"):
     same table       excluded unless --self-refs                                      [Ours, answered]
     G8               a table's chosen primary key is never a source                   [Paper, Report]
+                     unless it is a sparse integer key: density (distinct / (max - min + 1))
+                     at most 0.5. Subclass tables reuse their parent's key (FIBEN: a
+                     corporation is an agent), drawing scattered values from one shared ID
+                     pool; dense 1..n keys overlap other 1..n keys by chance, so they stay
+                     gated. pk_source_max_density = None keeps G8 absolute                     [Ours]
     G1               the target must have survived 2a's hard rejections; it need not be
                      the chosen key, so k can be 0                                    [Paper, answered]
     G3               a column named rowguid is never a target (only when names are used)   [Paper]
@@ -92,6 +97,7 @@ DEFAULTS = {
     "long_text_len": 64,
     "never_source_roles": ["boolean", "free_text", "float"],
     "self_refs": False,
+    "pk_source_max_density": 0.5,     # G8 spares primary keys this sparse (int only); None: G8 absolute
     "g4_ratio": None,                 # G4 off: source rows < ratio * target rows ...
     "g4_multiplier": None,            # ... multiplies the score by this
     "keys_run": "frozen",
@@ -150,6 +156,13 @@ def weights(cfg, use_names, adaptive):
 
 
 # ------------------------------------------------------------------ candidates
+def sparse_key(p, cfg):
+    """An integer key whose values are scattered over its range (a shared ID pool), not numbered 1..n."""
+    density = (p.get("numeric") or {}).get("density")
+    return cfg["pk_source_max_density"] is not None and p["family"] == "int" and density is not None \
+        and density <= cfg["pk_source_max_density"]
+
+
 def gate(pair, profile, keys, cfg, use_names):
     """Reason the pair is rejected by a gate or prefilter, or None. Also returns the profiles."""
     (st, sc), (tt, tc) = pair["source"], pair["target"]
@@ -157,8 +170,8 @@ def gate(pair, profile, keys, cfg, use_names):
     a, b = tables[st]["columns"][sc], tables[tt]["columns"][tc]
     if st == tt and not cfg["self_refs"]:
         return "same table"
-    if keys["tables"][st]["primary_key"] == sc:
-        return "G8: the source is its table's primary key"
+    if keys["tables"][st]["primary_key"] == sc and not sparse_key(a, cfg):
+        return "G8: the source is its table's dense primary key"
     rejected = keys["tables"][tt]["columns"][tc].get("rejected")
     if rejected:
         return f"G1: target not eligible ({rejected})"
@@ -317,6 +330,8 @@ def add_args(ap):
     ap.add_argument("--containment-min", type=float, default=DEFAULTS["containment_min"], help="G6, tau")
     ap.add_argument("--max-targets", type=int, default=DEFAULTS["max_targets"], help="G5")
     ap.add_argument("--self-refs", action="store_true", help="also consider source and target in one table")
+    ap.add_argument("--pk-source-max-density", type=float, default=DEFAULTS["pk_source_max_density"],
+                    help="G8 spares integer primary keys at most this dense; a negative value keeps G8 absolute")
     ap.add_argument("--g4-ratio", type=float, help="G4 on: source rows < ratio x target rows ...")
     ap.add_argument("--g4-multiplier", type=float, help="... multiplies the score by this (needs --g4-ratio)")
     ap.add_argument("--reprofile", action="store_true", help="recompute Stage 1 profiles")
@@ -325,6 +340,7 @@ def add_args(ap):
 def config_from(args):
     return {**DEFAULTS, "accept": args.accept, "delta": args.delta, "containment_min": args.containment_min,
             "max_targets": args.max_targets, "self_refs": args.self_refs, "keys_run": args.keys_run,
+            "pk_source_max_density": None if args.pk_source_max_density < 0 else args.pk_source_max_density,
             "g4_ratio": args.g4_ratio, "g4_multiplier": args.g4_multiplier}
 
 
