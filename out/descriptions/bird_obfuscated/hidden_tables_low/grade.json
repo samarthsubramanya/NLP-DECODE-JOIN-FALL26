@@ -1,0 +1,396 @@
+{
+ "label": "hidden_tables_low",
+ "primary_keys": {
+  "tp": 66,
+  "predicted": 66,
+  "gold": 66,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0
+ },
+ "joins": {
+  "direct": {
+   "tp": 86,
+   "predicted": 581,
+   "gold": 104,
+   "precision": 0.148,
+   "recall": 0.8269,
+   "f1": 0.2511
+  },
+  "stats": {
+   "tp": 94,
+   "predicted": 678,
+   "gold": 104,
+   "precision": 0.1386,
+   "recall": 0.9038,
+   "f1": 0.2404
+  },
+  "llm": {
+   "tp": 93,
+   "predicted": 605,
+   "gold": 104,
+   "precision": 0.1537,
+   "recall": 0.8942,
+   "f1": 0.2623
+  }
+ },
+ "band_verdicts": {
+  "llm_abstain|not_gold": 5,
+  "llm_accept|not_gold": 17,
+  "llm_accept|gold": 7,
+  "llm_reject|not_gold": 67,
+  "llm_reject|gold": 1
+ },
+ "per_db": {
+  "california_schools": {
+   "joins": {
+    "direct": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "stats": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "llm": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    }
+   },
+   "gold_fks": 2
+  },
+  "card_games": {
+   "joins": {
+    "direct": {
+     "tp": 4,
+     "predicted": 37,
+     "gold": 4,
+     "precision": 0.1081,
+     "recall": 1.0,
+     "f1": 0.1951
+    },
+    "stats": {
+     "tp": 4,
+     "predicted": 56,
+     "gold": 4,
+     "precision": 0.0714,
+     "recall": 1.0,
+     "f1": 0.1333
+    },
+    "llm": {
+     "tp": 4,
+     "predicted": 38,
+     "gold": 4,
+     "precision": 0.1053,
+     "recall": 1.0,
+     "f1": 0.1905
+    }
+   },
+   "gold_fks": 4
+  },
+  "codebase_community": {
+   "joins": {
+    "direct": {
+     "tp": 10,
+     "predicted": 52,
+     "gold": 13,
+     "precision": 0.1923,
+     "recall": 0.7692,
+     "f1": 0.3077
+    },
+    "stats": {
+     "tp": 12,
+     "predicted": 92,
+     "gold": 13,
+     "precision": 0.1304,
+     "recall": 0.9231,
+     "f1": 0.2286
+    },
+    "llm": {
+     "tp": 11,
+     "predicted": 64,
+     "gold": 13,
+     "precision": 0.1719,
+     "recall": 0.8462,
+     "f1": 0.2857
+    }
+   },
+   "gold_fks": 13
+  },
+  "debit_card_specializing": {
+   "joins": {
+    "direct": {
+     "tp": 1,
+     "predicted": 7,
+     "gold": 1,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "f1": 0.25
+    },
+    "stats": {
+     "tp": 1,
+     "predicted": 7,
+     "gold": 1,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "f1": 0.25
+    },
+    "llm": {
+     "tp": 1,
+     "predicted": 7,
+     "gold": 1,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "f1": 0.25
+    }
+   },
+   "gold_fks": 1
+  },
+  "european_football_2": {
+   "joins": {
+    "direct": {
+     "tp": 26,
+     "predicted": 302,
+     "gold": 31,
+     "precision": 0.0861,
+     "recall": 0.8387,
+     "f1": 0.1562
+    },
+    "stats": {
+     "tp": 29,
+     "predicted": 315,
+     "gold": 31,
+     "precision": 0.0921,
+     "recall": 0.9355,
+     "f1": 0.1676
+    },
+    "llm": {
+     "tp": 29,
+     "predicted": 305,
+     "gold": 31,
+     "precision": 0.0951,
+     "recall": 0.9355,
+     "f1": 0.1726
+    }
+   },
+   "gold_fks": 31
+  },
+  "financial": {
+   "joins": {
+    "direct": {
+     "tp": 7,
+     "predicted": 28,
+     "gold": 8,
+     "precision": 0.25,
+     "recall": 0.875,
+     "f1": 0.3889
+    },
+    "stats": {
+     "tp": 8,
+     "predicted": 39,
+     "gold": 8,
+     "precision": 0.2051,
+     "recall": 1.0,
+     "f1": 0.3404
+    },
+    "llm": {
+     "tp": 8,
+     "predicted": 34,
+     "gold": 8,
+     "precision": 0.2353,
+     "recall": 1.0,
+     "f1": 0.381
+    }
+   },
+   "gold_fks": 8
+  },
+  "formula_1": {
+   "joins": {
+    "direct": {
+     "tp": 16,
+     "predicted": 114,
+     "gold": 19,
+     "precision": 0.1404,
+     "recall": 0.8421,
+     "f1": 0.2406
+    },
+    "stats": {
+     "tp": 16,
+     "predicted": 126,
+     "gold": 19,
+     "precision": 0.127,
+     "recall": 0.8421,
+     "f1": 0.2207
+    },
+    "llm": {
+     "tp": 16,
+     "predicted": 114,
+     "gold": 19,
+     "precision": 0.1404,
+     "recall": 0.8421,
+     "f1": 0.2406
+    }
+   },
+   "gold_fks": 19
+  },
+  "student_club": {
+   "joins": {
+    "direct": {
+     "tp": 8,
+     "predicted": 8,
+     "gold": 8,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "stats": {
+     "tp": 8,
+     "predicted": 8,
+     "gold": 8,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "llm": {
+     "tp": 8,
+     "predicted": 8,
+     "gold": 8,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "gold_fks": 8
+  },
+  "superhero": {
+   "joins": {
+    "direct": {
+     "tp": 10,
+     "predicted": 29,
+     "gold": 11,
+     "precision": 0.3448,
+     "recall": 0.9091,
+     "f1": 0.5
+    },
+    "stats": {
+     "tp": 10,
+     "predicted": 29,
+     "gold": 11,
+     "precision": 0.3448,
+     "recall": 0.9091,
+     "f1": 0.5
+    },
+    "llm": {
+     "tp": 10,
+     "predicted": 29,
+     "gold": 11,
+     "precision": 0.3448,
+     "recall": 0.9091,
+     "f1": 0.5
+    }
+   },
+   "gold_fks": 11
+  },
+  "thrombosis_prediction": {
+   "joins": {
+    "direct": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    },
+    "stats": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    },
+    "llm": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    }
+   },
+   "gold_fks": 2
+  },
+  "toxicology": {
+   "joins": {
+    "direct": {
+     "tp": 3,
+     "predicted": 3,
+     "gold": 5,
+     "precision": 1.0,
+     "recall": 0.6,
+     "f1": 0.75
+    },
+    "stats": {
+     "tp": 5,
+     "predicted": 5,
+     "gold": 5,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "llm": {
+     "tp": 5,
+     "predicted": 5,
+     "gold": 5,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "gold_fks": 5
+  }
+ },
+ "descriptions": {
+  "columns": 798,
+  "with_reference": 686,
+  "status": {
+   "resolved": 455,
+   "tentative": 244,
+   "unresolved": 99
+  },
+  "failed_table_columns": 0,
+  "mean_cosine_described": 0.67,
+  "mean_token_f1_described": 0.1961,
+  "mean_cosine_other_column": 0.5819,
+  "own_reference_ranked_first": 0.4703,
+  "by_status": {
+   "resolved": {
+    "columns": 383,
+    "mean_cosine": 0.7211,
+    "mean_token_f1": 0.2362
+   },
+   "tentative": {
+    "columns": 207,
+    "mean_cosine": 0.5753,
+    "mean_token_f1": 0.122
+   },
+   "unresolved": {
+    "columns": 96,
+    "mean_cosine": null,
+    "mean_token_f1": null
+   }
+  }
+ }
+}

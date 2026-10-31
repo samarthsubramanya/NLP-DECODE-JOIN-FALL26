@@ -1,0 +1,576 @@
+{
+ "db_id": "california_schools",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 0,
+ "tables": {
+  "frpm": {
+   "table": {
+    "name": "california_schools_2014_2015",
+    "purpose": "One row per California public school for the 2014-2015 academic year, combining CDS identifying codes, school/district attributes (type, grade span, charter status, NSLP provision) and enrollment/demographic counts with rates. Structure matches a California Department of Education school-level file (CDS code, county/district/school codes, Educational Options, charter fields)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "cds_code",
+     "description": "14-digit County-District-School (CDS) code uniquely identifying each school; primary key. Concatenation of county code (2 digits), district code (5 digits), school code (7 digits), matching col_003/col_004/col_005.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "academic_year",
+     "description": "Academic year the record refers to; constant '2014-2015' in this table.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "county_code",
+     "description": "Two-digit California county code (e.g. 19 = Los Angeles, 37 = San Diego); pairs with county name in col_006.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "district_code",
+     "description": "Five-digit district code component of the CDS code (e.g. 64733 = Los Angeles Unified).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "school_code",
+     "description": "Seven-digit school code component of the CDS code; '0000000' (45 rows) likely district-level/office records rather than schools.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "county_name",
+     "description": "Name of the California county (Los Angeles, San Diego, El Dorado, Kings, Sacramento, ...).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "district_name",
+     "description": "Name of the school district or administrative body (e.g. 'Los Angeles Unified', 'Elk Grove Unified', county offices of education).",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "school_name",
+     "description": "Name of the school (or 'District Office' for district-level rows).",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "category",
+     "name": "district_type",
+     "description": "Type of the administrative body: Unified School District, Elementary School District, High School District, County Office of Education, State Board of Education, Non-School Locations.",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "category",
+     "name": "educational_option_type",
+     "description": "CDE 'Educational Options' category of the school: Elementary Schools (Public), High Schools (Public), Intermediate/Middle, Continuation High Schools, Alternative Schools of Choice, etc.",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "category",
+     "name": "school_type",
+     "description": "Low-level school type: Traditional, Continuation School, Alternative School of Choice, Community Day School, Special Education School, Juvenile Court School, etc.",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "category",
+     "name": "nslp_provision_type",
+     "description": "National School Lunch Program provision status (Provision 1/2/3, Breakfast Provision 2, CEP = Community Eligibility Provision); null for most schools (no special provision).",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "boolean",
+     "name": "is_charter",
+     "description": "Flag indicating the school is a charter school (1 = yes, ~11.7%); consistent with col_014/col_015 being populated only for these rows.",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "code",
+     "name": "charter_number",
+     "description": "Charter school number (CDE charter ID); populated only for charter schools (null rate 0.883 matches the charter flag).",
+     "status": "resolved"
+    },
+    "col_015": {
+     "role": "category",
+     "name": "charter_funding_type",
+     "description": "Charter funding model: 'Directly funded' or 'Locally funded'; populated only for charter schools.",
+     "status": "resolved"
+    },
+    "col_016": {
+     "role": "boolean",
+     "name": "dass_flag",
+     "description": "0/1 flag set for ~7.3% of schools. Plausibly the DASS (Dashboard Alternative School Status) flag given the many continuation/alternative schools present, but the data alone does not confirm which flag it is.",
+     "status": "tentative"
+    },
+    "col_017": {
+     "role": "category",
+     "name": "lowest_grade_offered",
+     "description": "Lowest grade level offered by the school ('K' = kindergarten, 'P' = preschool/pre-K, else numeric grade).",
+     "status": "resolved"
+    },
+    "col_018": {
+     "role": "category",
+     "name": "highest_grade_offered",
+     "description": "Highest grade level offered (values 1-13 plus 'K'; 13 likely denotes ungraded/adult or transitional programs).",
+     "status": "resolved"
+    },
+    "col_019": {
+     "role": "numeric",
+     "name": "enrollment_total",
+     "description": "Total enrollment of the school (e.g. 102, 4, 2190). Denominator for the rates in col_021 and col_023.",
+     "status": "resolved"
+    },
+    "col_020": {
+     "role": "numeric",
+     "name": "subgroup_a_count",
+     "description": "Count of a student subgroup over total enrollment (col_019); col_021 = col_020/col_019. The specific subgroup (e.g. free/reduced-price meal eligible, an ethnicity, or gender) cannot be determined from the data alone.",
+     "status": "tentative"
+    },
+    "col_021": {
+     "role": "numeric",
+     "name": "subgroup_a_rate",
+     "description": "Proportion col_020/col_019 (0-1); subgroup identity unresolved, same as col_020.",
+     "status": "tentative"
+    },
+    "col_022": {
+     "role": "numeric",
+     "name": "subgroup_b_count",
+     "description": "Count of a second student subgroup over total enrollment (col_019); col_023 = col_022/col_019. Subgroup identity unresolved.",
+     "status": "tentative"
+    },
+    "col_023": {
+     "role": "numeric",
+     "name": "subgroup_b_rate",
+     "description": "Proportion col_022/col_019 (0-1); subgroup identity unresolved.",
+     "status": "tentative"
+    },
+    "col_024": {
+     "role": "numeric",
+     "name": "enrollment_adjusted",
+     "description": "A second, slightly smaller enrollment figure (e.g. 73 vs 102, 2132 vs 2190), likely enrollment excluding some grades/students (e.g. kindergarten or ungraded); denominator for col_026 and col_028.",
+     "status": "tentative"
+    },
+    "col_025": {
+     "role": "numeric",
+     "name": "subgroup_a_count_adjusted",
+     "description": "Count of the same subgroup as col_020 but against the adjusted enrollment (col_024); col_026 = col_025/col_024.",
+     "status": "tentative"
+    },
+    "col_026": {
+     "role": "numeric",
+     "name": "subgroup_a_rate_adjusted",
+     "description": "Proportion col_025/col_024 (0-1).",
+     "status": "tentative"
+    },
+    "col_027": {
+     "role": "numeric",
+     "name": "subgroup_b_count_adjusted",
+     "description": "Count of the same subgroup as col_022 but against the adjusted enrollment (col_024); col_028 = col_027/col_024.",
+     "status": "tentative"
+    },
+    "col_028": {
+     "role": "numeric",
+     "name": "subgroup_b_rate_adjusted",
+     "description": "Proportion col_027/col_024 (0-1).",
+     "status": "tentative"
+    },
+    "col_029": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "satscores": {
+   "table": {
+    "name": "satscores",
+    "purpose": "California schools/districts SAT (or similar standardized test) results: one row per school or district (CDS code), with enrollment, number of test takers, and average section scores. County, district names, and 14-digit CDS codes strongly indicate California Department of Education data. The exact test/subject labels for the score columns cannot be confirmed from values alone, so those remain tentative."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "cds_code",
+     "description": "14-digit CDS (County-District-School) code uniquely identifying each school or district; primary key of the table.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "record_type",
+     "description": "Record level: 'S' = school, 'D' = district. Consistent with rows where col_003 (school name) is null being 'D'.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "school_name",
+     "description": "Name of the school; null for district-level ('D') rows.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "district_name",
+     "description": "Name of the school district (or county office of education) the record belongs to.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "county",
+     "description": "California county name (Los Angeles, San Diego, Humboldt, etc.).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "enrollment",
+     "description": "Enrollment count (likely grade-12 enrollment) for the school/district; always populated, wide range 0-43324.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "test_takers",
+     "description": "Number of students taking the test; heavily skewed toward small counts (0, 1, 2...) and always <= col_006, consistent with a count of examinees.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "numeric",
+     "name": "avg_score_section_1",
+     "description": "Average score on the first test section (e.g. SAT critical reading/verbal). Range 308-653 with mean ~480 fits SAT section means; null when no scores reported. Exact section identity unconfirmed.",
+     "status": "tentative"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "avg_score_section_2",
+     "description": "Average score on the second test section (e.g. SAT math). Range 289-699, mean ~484; null pattern identical to col_008/col_010. Exact section identity unconfirmed.",
+     "status": "tentative"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "avg_score_section_3",
+     "description": "Average score on the third test section (e.g. SAT writing). Range 312-671, mean ~473; null pattern identical to col_008/col_009. Exact section identity unconfirmed.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "schools": {
+   "table": {
+    "name": "california_public_schools_directory",
+    "purpose": "Directory of California public schools and educational agencies (CDE-style): one row per school/site with CDS code, location, contacts, type, grade span, open/close dates and status."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "cds_code",
+     "description": "14-digit CDS (County-District-School) code, unique identifier for the school/site; primary key.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "district_code",
+     "description": "7-digit district (LEA) code; first two digits match the county FIPS code (e.g. 06xxxxx).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "school_code",
+     "description": "5-digit school code within the district (part of the CDS code); null for district-level/COE rows.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "status",
+     "description": "Administrative status of the school: Active, Closed, Merged, or Pending.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "county",
+     "description": "County name (California counties).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "district_name",
+     "description": "Name of the district or responsible educational agency (e.g. 'Los Angeles Unified', county offices of education).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "school_name",
+     "description": "Name of the school/site.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "mailing_street_long",
+     "description": "Mailing street address, full street-word form (e.g. 'Road', 'Street').",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "category",
+     "name": "mailing_street_abbrev",
+     "description": "Mailing street address, abbreviated form (e.g. 'Rd.', 'St.'); same address as col_008.",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "category",
+     "name": "mailing_city",
+     "description": "Mailing address city.",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "code",
+     "name": "mailing_zip",
+     "description": "Mailing ZIP code (5-digit or ZIP+4).",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "code",
+     "name": "mailing_state",
+     "description": "Mailing address state; always 'CA'.",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "category",
+     "name": "physical_street_long",
+     "description": "Physical/location street address, full street-word form.",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "category",
+     "name": "physical_street_abbrev",
+     "description": "Physical street address, abbreviated form; same address as col_013.",
+     "status": "resolved"
+    },
+    "col_015": {
+     "role": "category",
+     "name": "physical_city",
+     "description": "Physical address city.",
+     "status": "resolved"
+    },
+    "col_016": {
+     "role": "code",
+     "name": "physical_zip",
+     "description": "Physical address ZIP code (5-digit or ZIP+4).",
+     "status": "resolved"
+    },
+    "col_017": {
+     "role": "code",
+     "name": "physical_state",
+     "description": "Physical address state; always 'CA'.",
+     "status": "resolved"
+    },
+    "col_018": {
+     "role": "category",
+     "name": "phone",
+     "description": "School main phone number, formatted (area code) NNN-NNNN.",
+     "status": "resolved"
+    },
+    "col_019": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_020": {
+     "role": "category",
+     "name": "website",
+     "description": "School or district website URL.",
+     "status": "resolved"
+    },
+    "col_021": {
+     "role": "date",
+     "name": "date_opened",
+     "description": "Date the school opened / first became operational (mode 1980-07-01 is a default/legacy date).",
+     "status": "resolved"
+    },
+    "col_022": {
+     "role": "date",
+     "name": "date_closed",
+     "description": "Date the school closed; null for open schools. Common values like 1989-06-30 and 2015-06-30 (end of school year) support this.",
+     "status": "resolved"
+    },
+    "col_023": {
+     "role": "boolean",
+     "name": "is_charter",
+     "description": "Flag indicating the school is a charter school (1 = yes). Supported by the charter funding-type column (col_025) being populated only for these rows.",
+     "status": "tentative"
+    },
+    "col_024": {
+     "role": "code",
+     "name": "charter_number",
+     "description": "Charter school number (4-digit code), populated only for charter schools (~10% of rows).",
+     "status": "tentative"
+    },
+    "col_025": {
+     "role": "category",
+     "name": "charter_funding_type",
+     "description": "Charter funding model: 'Directly funded', 'Locally funded', or 'Not in CS funding model'.",
+     "status": "resolved"
+    },
+    "col_026": {
+     "role": "code",
+     "name": "district_type_code",
+     "description": "Code for the type of responsible agency/district (e.g. 54 = Unified School District, 00 = COE); pairs with col_027.",
+     "status": "resolved"
+    },
+    "col_027": {
+     "role": "category",
+     "name": "district_type",
+     "description": "Description of the responsible agency type: Unified/Elementary/High School District, County Office of Education, ROC/P, JPA, etc.",
+     "status": "resolved"
+    },
+    "col_028": {
+     "role": "code",
+     "name": "school_type_code",
+     "description": "Code for the school type/educational level (e.g. 60 = Elementary, 66 = High School); pairs with col_029.",
+     "status": "resolved"
+    },
+    "col_029": {
+     "role": "category",
+     "name": "school_type",
+     "description": "School type description: Elementary, High, Middle, Continuation, Special Education, etc.",
+     "status": "resolved"
+    },
+    "col_030": {
+     "role": "code",
+     "name": "education_type_code",
+     "description": "Abbreviated code for educational option type (TRAD = Traditional, CON = Continuation, COMMDAY = Community Day, etc.); pairs with col_031.",
+     "status": "resolved"
+    },
+    "col_031": {
+     "role": "category",
+     "name": "education_type",
+     "description": "Educational option type description (Traditional, Continuation School, Community Day School, Juvenile Court School, etc.).",
+     "status": "resolved"
+    },
+    "col_032": {
+     "role": "code",
+     "name": "grade_span_category_code",
+     "description": "Code for grade-span category (ELEM, HS, UG = ungraded, INTMIDJR, ELEMHIGH, A = adult, PS = preschool); pairs with col_033.",
+     "status": "resolved"
+    },
+    "col_033": {
+     "role": "category",
+     "name": "grade_span_category",
+     "description": "Grade-span category description (Elementary, High School, Ungraded, Intermediate/Middle/Junior High, etc.).",
+     "status": "resolved"
+    },
+    "col_034": {
+     "role": "code",
+     "name": "low_grade",
+     "description": "Lowest grade served (e.g. 'K-5' low end 'K'; single values like '10' for ungraded-high schools).",
+     "status": "resolved"
+    },
+    "col_035": {
+     "role": "code",
+     "name": "high_grade",
+     "description": "Highest grade served (e.g. 'K-5' high end '5'; 'P'/'K' for preschool).",
+     "status": "resolved"
+    },
+    "col_036": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_037": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_038": {
+     "role": "numeric",
+     "name": "latitude",
+     "description": "Latitude of the school location (decimal degrees; range fits California).",
+     "status": "resolved"
+    },
+    "col_039": {
+     "role": "numeric",
+     "name": "longitude",
+     "description": "Longitude of the school location (decimal degrees, negative; range fits California).",
+     "status": "resolved"
+    },
+    "col_040": {
+     "role": "category",
+     "name": "contact1_first_name",
+     "description": "First name of the primary administrative contact (likely principal or administrator).",
+     "status": "tentative"
+    },
+    "col_041": {
+     "role": "category",
+     "name": "contact1_last_name",
+     "description": "Last name of the primary administrative contact.",
+     "status": "tentative"
+    },
+    "col_042": {
+     "role": "category",
+     "name": "contact1_email",
+     "description": "Email of the primary administrative contact.",
+     "status": "resolved"
+    },
+    "col_043": {
+     "role": "category",
+     "name": "contact2_first_name",
+     "description": "First name of a secondary contact (populated for ~2% of rows); exact role (e.g. assistant principal) unknown.",
+     "status": "tentative"
+    },
+    "col_044": {
+     "role": "category",
+     "name": "contact2_last_name",
+     "description": "Last name of the secondary contact.",
+     "status": "tentative"
+    },
+    "col_045": {
+     "role": "category",
+     "name": "contact2_email",
+     "description": "Email of the secondary contact.",
+     "status": "tentative"
+    },
+    "col_046": {
+     "role": "category",
+     "name": "contact3_first_name",
+     "description": "First name of a third, very sparsely populated contact; role unknown.",
+     "status": "tentative"
+    },
+    "col_047": {
+     "role": "category",
+     "name": "contact3_last_name",
+     "description": "Last name of the third contact.",
+     "status": "tentative"
+    },
+    "col_048": {
+     "role": "category",
+     "name": "contact3_email",
+     "description": "Email of the third contact.",
+     "status": "tentative"
+    },
+    "col_049": {
+     "role": "date",
+     "name": "last_update_date",
+     "description": "Date the directory record was last updated (bulk values 1999-06-24 and 2015-06-18 suggest batch updates).",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

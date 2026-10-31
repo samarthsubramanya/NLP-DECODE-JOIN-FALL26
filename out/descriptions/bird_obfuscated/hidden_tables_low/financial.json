@@ -1,0 +1,422 @@
+{
+ "db_id": "financial",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 34,
+ "tables": {
+  "account": {
+   "table": {
+    "name": "account",
+    "purpose": "Bank accounts: one row per account, with its home district, statement issuance frequency, and opening date (Czech bank data, labels in Czech)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "account_id",
+     "description": "Primary key; unique account identifier. Referenced by transaction, order, credit card, loan, client and disposition tables.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "district_id",
+     "description": "Foreign key to the district lookup table (t05), which maps ids to Czech district names (e.g. 35 = Jablonec n. Nisou, 77 = Vsetin).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "statement_issuance_frequency",
+     "description": "Frequency of statement issuance: POPLATEK MESICNE = monthly, POPLATEK TYDNE = weekly, POPLATEK PO OBRATU = after each transaction.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "account_opened_date",
+     "description": "Date the account was opened, ranging from 1993-01-01 to 1997-12-29.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "card": {
+   "table": {
+    "name": "customers",
+    "purpose": "Customer master table (one row per customer, 892 rows). Referenced by order/transaction tables (t01, t03, t05, t06). Holds a customer tier and an enrollment/registration date. Likely a bank or loyalty program (classic/junior/gold tiers)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "customer_id",
+     "description": "Primary key, surrogate customer identifier (1-1247, unique per row). Referenced by foreign keys in t01, t03, t05, t06.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "account_number",
+     "description": "Unique customer/account number (9-13660), one-to-one with keys in t03 and t04, so it identifies the same customer in those tables. Could be an external account number rather than a surrogate id.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "customer_segment",
+     "description": "Customer tier/segment: 'classic' (659), 'junior' (145), 'gold' (88). Suggests a banking or loyalty membership level.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "enrollment_date",
+     "description": "Customer since / account opening date, 1993-11-07 to 1998-12-29. Could alternatively be date of birth, but the range (all customers within ~5 years) fits a registration date better.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "client": {
+   "table": {
+    "name": "client",
+    "purpose": "Persons/clients registry: one row per person with a unique ID, sex, birth date, and district (Czech district codes, e.g. Vyskov, Zdar nad Sazavou). Referenced by many other tables, so it is the central entity of the database."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "person_id",
+     "description": "Primary key; unique person identifier. Referenced by many other tables (accounts, cards, loans, orders, etc.).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "sex",
+     "description": "Sex of the person: M = male, F = female.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "birth_date",
+     "description": "Date of birth (range 1911-1987, consistent with birth dates of adults).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "district_id",
+     "description": "Foreign key to district lookup table (t05), values 1-77 matching Czech districts (e.g. 63 = Vyskov, 66 = Zdar nad Sazavou). District where the person lives.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "disp": {
+   "table": {
+    "name": "disposition",
+    "purpose": "Links clients to bank accounts, specifying each client's role on the account (owner or authorized user/disponent). One row per client-account relationship. This matches the classic Berka/PKDD'99 Czech bank 'disp' table: 5369 rows, 4500 OWNER and 869 DISPONENT relationships, with a client_id referencing a clients table (t01) and an account_id referencing an accounts table (t03)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "disp_id",
+     "description": "Primary key of the disposition record; unique surrogate identifier for each client-account relationship.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "client_id",
+     "description": "Reference to the client (t01.col_001, clients table). 4500 distinct clients, each typically owning one account; some clients appear twice (owner of one account, disponent on another).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "type",
+     "description": "The client's role on the account: 'OWNER' (account holder, 4500 rows) or 'DISPONENT' (authorized disponent/user with access to the account, 869 rows).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "district": {
+   "table": {
+    "name": "districts_czechia",
+    "purpose": "One row per Czech district (okres). 77 rows matches the 77 Czech districts (excluding Prague as separate? no, Prague included with ~1.2M). Columns hold district-level demographic and socio-economic indicators. Names like 'Brno - mesto', 'Havlickuv Brod', 'Jablonec n. Nisou' and regions like 'north Bohemia', 'south Moravia' confirm this is Czech district statistics (likely the well-known 'czechia' practice database)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "district_id",
+     "description": "Synthetic primary key, sequential 1-77, one per district.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "district_name",
+     "description": "Name of the Czech district (okres), e.g. 'Benesov', 'Brno - mesto', 'Jablonec n. Nisou'.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "region",
+     "description": "Name of the Czech region (kraj / historical region grouping) the district belongs to, e.g. 'south Moravia', 'central Bohemia', 'Prague'.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "population",
+     "description": "District population. Range 42,821 to 1,204,953; the maximum is Prague's population, and mid-values (~86k-139k) match typical Czech district sizes.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_008": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "percentage_indicator",
+     "description": "Float 33.9-100.0, looks like a percentage or index bounded by 100. Could be e.g. urbanization rate or a quality-of-life index; the exact quantity is not determinable.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "average_salary",
+     "description": "Values 8,110-12,541 CZK-like range with mean ~9,032; matches Czech district average monthly wage figures (in CZK hundreds, likely monthly gross wage). Prague highest.",
+     "status": "tentative"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "unemployment_rate",
+     "description": "Float 0.2-7.3 with a few nulls, typical of Czech district unemployment rates in percent. Alternative: some other small percentage rate.",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "crime_rate",
+     "description": "Float 0.43-9.4, plausibly crimes per 1,000 inhabitants by district. Another small-rate indicator would also fit.",
+     "status": "tentative"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "population_density",
+     "description": "Integers 81-167; sample values (Jablonec 130, Havlickuv Brod 87, Vyskov 110) match typical Czech district population densities in inhabitants/km2. Alternative: some other bounded index.",
+     "status": "tentative"
+    },
+    "col_015": {
+     "role": "numeric",
+     "name": "business_entities_count",
+     "description": "Counts 818-85,677 (max likely Prague). Plausibly number of self-employed persons or business entities in the district; exact entity type unresolved.",
+     "status": "tentative"
+    },
+    "col_016": {
+     "role": "numeric",
+     "name": "companies_count",
+     "description": "Counts 888-99,107, closely tracking col_015 per row. Plausibly number of companies/legal entities in the district; exact entity type unresolved.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "loan": {
+   "table": {
+    "name": "loan",
+    "purpose": "Loan accounts: one row per loan with origination date, principal amount, term in months, monthly payment, and a letter grade (likely credit/risk grade). col_002 links each loan one-to-one to a customer record in t01."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "loan_id",
+     "description": "Primary key; unique identifier of the loan record.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "customer_id",
+     "description": "Reference to t01.col_001 (one-to-one), identifying the customer/borrower associated with this loan.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "origination_date",
+     "description": "Date the loan was opened/originated, ranging 1993-07-05 to 1998-12-08.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "loan_amount",
+     "description": "Principal amount of the loan, apparently in cents (values 4,980 to 590,820, i.e. ~$49.80 to ~$5,908.20). Consistent with col_006 monthly payment and col_005 term: e.g. 76080 cents / 12 months ≈ 6340 cents payment.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "term_months",
+     "description": "Loan term in months; only values 12, 24, 36, 48, 60 occur. Also matches lookup tables t02/t03/t04 (likely term lookup tables).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "monthly_payment",
+     "description": "Scheduled monthly payment amount in cents (304 to 9,910, i.e. ~$3.04 to ~$99.10); roughly loan_amount / term_months in the sample rows.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "code",
+     "name": "grade",
+     "description": "Single-letter grade A, B, C, D (C most common, then A, D, B). Most plausibly a credit/risk grade of the loan; the specific code meanings are not independently confirmed, so an alternative categorical code cannot be fully excluded.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "order": {
+   "table": {
+    "name": "orders",
+    "purpose": "Permanent/standing payment orders (the classic Berka Czech bank dataset 'order' table): each row is a recurring payment order from a bank account to a recipient account, with amount and payment type symbol."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "order_id",
+     "description": "Primary key of the payment order; unique sequential integer.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "account_id",
+     "description": "Owning bank account the order is charged to; references the accounts table (t01.col_001), many orders per account.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "recipient_bank_code",
+     "description": "Two-letter code of the recipient bank (13 distinct banks, roughly uniform). Opaque anonymized bank codes.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "recipient_account_number",
+     "description": "Account number of the payment recipient; nearly unique per row, large numeric values consistent with anonymized account numbers.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "amount",
+     "description": "Payment amount, presumably in Czech koruna (CZK); ranges 1 to 14,882, median ~2,596.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "code",
+     "name": "payment_symbol",
+     "description": "Czech payment type symbol (k_symbol): SIPO = household/utility payment, POJISTNE = insurance, UVER = loan repayment, LEASING = leasing payment; empty string = unspecified/other.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "trans": {
+   "table": {
+    "name": "trans",
+    "purpose": "Bank account transactions (Czech bank dataset): one row per transaction on an account, with date, type, operation, balance after transaction, amount, and characterization codes."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "trans_id",
+     "description": "Primary key; unique transaction identifier.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "account_id",
+     "description": "Identifier of the account the transaction belongs to; references t01.col_001 (accounts). 4500 distinct accounts.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "date",
+     "description": "Transaction date (1993-01-01 to 1998-12-31).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "type",
+     "description": "Transaction type in Czech: PRIJEM = credit/income, VYDAJ = debit/expense, VYBER = cash withdrawal.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "operation",
+     "description": "Transaction operation mode in Czech: VYBER = cash withdrawal, VKLAD = cash deposit, PREVOD NA UCET = transfer to another account, PREVOD Z UCTU = transfer from another account, VYBER KARTOU = card withdrawal. Null when type is VYBER (redundant).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "balance",
+     "description": "Account balance after the transaction, in Czech koruna (CZK).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "amount",
+     "description": "Transaction amount in CZK; can be negative (min -41126), likely for reversals/fees.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "code",
+     "name": "k_symbol",
+     "description": "Characterization of the transaction in Czech: UROK = interest credited, SLUZBY = services/payment for statement, SIPO = household payments, DUCHOD = pension, SANKC. UROK = sanction interest, POJISTNE = insurance, UVER = loan payment, etc. Blank/null when not applicable.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "code",
+     "name": "bank",
+     "description": "Code of the other bank in inter-bank transfers (two-letter codes); null for non-transfer transactions.",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "account",
+     "description": "Account number at the other bank for inter-bank transfers; null for non-transfer transactions. 0 appears as a placeholder.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

@@ -4,6 +4,34 @@
   {
    "cardinality": "one_to_one",
    "containment": 1.0,
+   "coverage": 0.5646273888951713,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 92.5,
+   "score_before_fan_out": 92.5,
+   "source": {
+    "column": "CDSCode",
+    "table": "frpm"
+   },
+   "target": {
+    "column": "CDSCode",
+    "table": "schools"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 109.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
    "coverage": 0.12829356553205926,
    "decision": "accepted",
    "fan_out": 0.85,
@@ -61,27 +89,10 @@
   },
   {
    "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 0.5646273888951713,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "CDSCode",
-    "table": "frpm"
-   },
-   "target": {
-    "column": "CDSCode",
-    "table": "schools"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 109.0
-  },
-  {
-   "cardinality": "one_to_one",
    "containment": 0.5646273888951713,
    "coverage": 1.0,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G6: containment 0.565 < 0.75",
    "source": {
     "column": "CDSCode",
     "table": "schools"
@@ -122,17 +133,33 @@
   "null_low": 0.3,
   "orphan_max": 0.2,
   "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
   "r_cap": 2,
   "self_refs": false
  },
  "counts": {
-  "accepted": 1,
-  "rejected_gate": 2,
+  "accepted": 2,
+  "rejected_gate": 1,
   "rejected_score": 1
  },
  "db_id": "california_schools",
  "graphs": {
   "direct": [
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.5646273888951713,
+    "decision": "accepted",
+    "score": 92.5,
+    "source": {
+     "column": "CDSCode",
+     "table": "frpm"
+    },
+    "target": {
+     "column": "CDSCode",
+     "table": "schools"
+    }
+   },
    {
     "cardinality": "one_to_one",
     "containment": 1.0,
@@ -150,6 +177,21 @@
    }
   ],
   "stats": [
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.5646273888951713,
+    "decision": "accepted",
+    "score": 92.5,
+    "source": {
+     "column": "CDSCode",
+     "table": "frpm"
+    },
+    "target": {
+     "column": "CDSCode",
+     "table": "schools"
+    }
+   },
    {
     "cardinality": "one_to_one",
     "containment": 1.0,

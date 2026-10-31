@@ -1679,7 +1679,7 @@
    "containment": 1.0,
    "coverage": 0.24792962920946304,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "cards"
@@ -1696,7 +1696,7 @@
    "containment": 1.0,
    "coverage": 0.1327905362613839,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "cards"
@@ -1713,7 +1713,7 @@
    "containment": 1.0,
    "coverage": 0.6474039809044195,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "cards"
@@ -2164,7 +2164,7 @@
    "containment": 1.0,
    "coverage": 0.5355976882827344,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "foreign_data"
@@ -2198,7 +2198,7 @@
    "containment": 0.5355976882827344,
    "coverage": 1.0,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "legalities"
@@ -2215,7 +2215,7 @@
    "containment": 0.6474039809044195,
    "coverage": 1.0,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "rulings"
@@ -2232,7 +2232,7 @@
    "containment": 1.0,
    "coverage": 0.3829596921277914,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "rulings"
@@ -2249,7 +2249,7 @@
    "containment": 1.0,
    "coverage": 0.20511232580911273,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "rulings"
@@ -2266,7 +2266,7 @@
    "containment": 1.0,
    "coverage": 0.021294569004962866,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "set_translations"
@@ -2283,7 +2283,7 @@
    "containment": 1.0,
    "coverage": 0.005279554597575768,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "set_translations"
@@ -2300,7 +2300,7 @@
    "containment": 1.0,
    "coverage": 0.002827717237624063,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "set_translations"
@@ -2317,7 +2317,7 @@
    "containment": 1.0,
    "coverage": 0.013786188745456824,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "set_translations"
@@ -2422,7 +2422,7 @@
    "containment": 1.0,
    "coverage": 0.009696948365069867,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "sets"
@@ -2439,7 +2439,7 @@
    "containment": 1.0,
    "coverage": 0.0024041608126150814,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "sets"
@@ -2456,7 +2456,7 @@
    "containment": 1.0,
    "coverage": 0.0012876629734965776,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "sets"
@@ -2473,7 +2473,7 @@
    "containment": 1.0,
    "coverage": 0.006277842974170835,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "sets"
@@ -2490,7 +2490,7 @@
    "containment": 1.0,
    "coverage": 0.4553719008264463,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "sets"
@@ -2768,6 +2768,7 @@
   "null_low": 0.3,
   "orphan_max": 0.2,
   "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
   "r_cap": 2,
   "self_refs": false
  },

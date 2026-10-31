@@ -54,6 +54,32 @@
    "target_pk_score": 101.25
   },
   {
+   "cardinality": "one_to_one",
+   "containment": 0.9348109517601043,
+   "coverage": 0.9348109517601043,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 0.5,
+    "nulls": 1.0,
+    "overlap": 0.9348,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 88.5887,
+   "score_before_fan_out": 88.5887,
+   "source": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
    "cardinality": "many_to_one",
    "containment": 1.0,
    "coverage": 1.0,
@@ -75,6 +101,32 @@
    "target": {
     "column": "col_001",
     "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9348109517601043,
+   "coverage": 0.9348109517601043,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 0.5,
+    "nulls": 1.0,
+    "overlap": 0.9348,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 75.3004,
+   "score_before_fan_out": 88.5887,
+   "source": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -991,6 +1043,32 @@
   },
   {
    "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "band",
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 0.5,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "score": 65.875,
+   "score_before_fan_out": 77.5,
+   "source": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062
+  },
+  {
+   "cardinality": "one_to_one",
    "containment": 0.9204035874439462,
    "coverage": 0.15291488172844106,
    "decision": "band",
@@ -1011,6 +1089,58 @@
    "target": {
     "column": "col_001",
     "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.8508888888888889,
+   "coverage": 0.7131681877444589,
+   "decision": "band",
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.5,
+    "nulls": 1.0,
+    "overlap": 0.8509,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 62.665,
+   "score_before_fan_out": 83.5533,
+   "source": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.8506666666666667,
+   "coverage": 0.7129819333209164,
+   "decision": "band",
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.5,
+    "nulls": 1.0,
+    "overlap": 0.8507,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 62.655,
+   "score_before_fan_out": 83.54,
+   "source": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -1045,42 +1175,17 @@
    "cardinality": "one_to_one",
    "containment": 0.8508888888888889,
    "coverage": 0.7131681877444589,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "col_001",
-    "table": "account"
+   "decision": "rejected_score",
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.5,
+    "nulls": 1.0,
+    "overlap": 0.8509,
+    "target_key": 0.0
    },
-   "target": {
-    "column": "col_001",
-    "table": "client"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 0.8506666666666667,
-   "coverage": 0.7129819333209164,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "col_001",
-    "table": "account"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "disp"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 0.8508888888888889,
-   "coverage": 0.7131681877444589,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "penalties": {},
+   "score": 51.415,
+   "score_before_fan_out": 68.5533,
    "source": {
     "column": "col_001",
     "table": "account"
@@ -1097,7 +1202,7 @@
    "containment": 0.6424444444444445,
    "coverage": 0.0027368600424113906,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G6: containment 0.642 < 0.75",
    "source": {
     "column": "col_001",
     "table": "account"
@@ -1206,7 +1311,7 @@
    "containment": 0.952914798206278,
    "coverage": 0.18888888888888888,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "col_001",
     "table": "card"
@@ -1223,7 +1328,7 @@
    "containment": 0.9540358744394619,
    "coverage": 0.15850251443471783,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "col_001",
     "table": "card"
@@ -1240,7 +1345,7 @@
    "containment": 0.9540358744394619,
    "coverage": 0.15850251443471783,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "col_001",
     "table": "card"
@@ -1257,7 +1362,7 @@
    "containment": 0.9540358744394619,
    "coverage": 0.15850251443471783,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "col_001",
     "table": "card"
@@ -1274,7 +1379,7 @@
    "containment": 0.7320627802690582,
    "coverage": 0.0006181838836716146,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "col_001",
     "table": "card"
@@ -1325,7 +1430,7 @@
    "containment": 0.7131681877444589,
    "coverage": 0.8508888888888889,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G6: containment 0.713 < 0.75",
    "source": {
     "column": "col_001",
     "table": "client"
@@ -1339,44 +1444,10 @@
   },
   {
    "cardinality": "one_to_one",
-   "containment": 0.9348109517601043,
-   "coverage": 0.9348109517601043,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "col_001",
-    "table": "client"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "disp"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 1.0,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "col_001",
-    "table": "client"
-   },
-   "target": {
-    "column": "col_002",
-    "table": "disp"
-   },
-   "target_is_pk": false,
-   "target_pk_score": 86.062
-  },
-  {
-   "cardinality": "one_to_one",
    "containment": 0.6420189979512013,
    "coverage": 0.0032632156922144805,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G6: containment 0.642 < 0.75",
    "source": {
     "column": "col_001",
     "table": "client"
@@ -1485,7 +1556,7 @@
    "containment": 0.7129819333209164,
    "coverage": 0.8506666666666667,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G6: containment 0.713 < 0.75",
    "source": {
     "column": "col_001",
     "table": "disp"
@@ -1493,23 +1564,6 @@
    "target": {
     "column": "col_001",
     "table": "account"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 0.9348109517601043,
-   "coverage": 0.9348109517601043,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "col_001",
-    "table": "disp"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "client"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -1536,7 +1590,7 @@
    "containment": 0.643881542186627,
    "coverage": 0.003272682520448349,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G6: containment 0.644 < 0.75",
    "source": {
     "column": "col_001",
     "table": "disp"
@@ -1655,7 +1709,7 @@
    "containment": 0.948051948051948,
    "coverage": 0.01622222222222222,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "col_001",
     "table": "district"
@@ -1672,7 +1726,7 @@
    "containment": 0.974025974025974,
    "coverage": 0.08408071748878924,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "col_001",
     "table": "district"
@@ -1689,7 +1743,7 @@
    "containment": 0.948051948051948,
    "coverage": 0.013596572918606817,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "col_001",
     "table": "district"
@@ -1706,7 +1760,7 @@
    "containment": 0.948051948051948,
    "coverage": 0.013596572918606817,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "col_001",
     "table": "district"
@@ -1723,7 +1777,7 @@
    "containment": 0.948051948051948,
    "coverage": 0.013596572918606817,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "col_001",
     "table": "district"
@@ -1740,7 +1794,7 @@
    "containment": 0.8571428571428571,
    "coverage": 6.248106634353226e-05,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "col_001",
     "table": "district"
@@ -2457,7 +2511,7 @@
    "containment": 0.6774193548387096,
    "coverage": 0.00043736746440472586,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G6: containment 0.677 < 0.75",
    "source": {
     "column": "col_001",
     "table": "loan"
@@ -2693,7 +2747,7 @@
    "containment": 0.6128882707464071,
    "coverage": 0.003754544077552257,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G6: containment 0.613 < 0.75",
    "source": {
     "column": "col_001",
     "table": "order"
@@ -2852,14 +2906,15 @@
   "null_low": 0.3,
   "orphan_max": 0.2,
   "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
   "r_cap": 2,
   "self_refs": false
  },
  "counts": {
-  "accepted": 28,
-  "band": 11,
-  "rejected_gate": 92,
-  "rejected_score": 1
+  "accepted": 30,
+  "band": 14,
+  "rejected_gate": 86,
+  "rejected_score": 2
  },
  "db_id": "financial",
  "graphs": {
@@ -2892,6 +2947,21 @@
     "target": {
      "column": "col_001",
      "table": "account"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 0.9348109517601043,
+    "coverage": 0.9348109517601043,
+    "decision": "accepted",
+    "score": 88.5887,
+    "source": {
+     "column": "col_001",
+     "table": "disp"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
     }
    },
    {
@@ -3314,6 +3384,21 @@
     "target": {
      "column": "col_001",
      "table": "account"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 0.9348109517601043,
+    "coverage": 0.9348109517601043,
+    "decision": "accepted",
+    "score": 88.5887,
+    "source": {
+     "column": "col_001",
+     "table": "disp"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
     }
    },
    {
@@ -3870,10 +3955,40 @@
      "column": "col_001",
      "table": "client"
     }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 0.8508888888888889,
+    "coverage": 0.7131681877444589,
+    "decision": "band",
+    "score": 62.665,
+    "source": {
+     "column": "col_001",
+     "table": "account"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 0.8506666666666667,
+    "coverage": 0.7129819333209164,
+    "decision": "band",
+    "score": 62.655,
+    "source": {
+     "column": "col_001",
+     "table": "account"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "disp"
+    }
    }
   ]
  },
- "k_zero_share": 0.1791,
+ "k_zero_share": 0.1918,
  "keys_run": "frozen_no_names",
  "use_names": false,
  "weights": {

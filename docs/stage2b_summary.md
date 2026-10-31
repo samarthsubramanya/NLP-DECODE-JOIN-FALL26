@@ -29,7 +29,7 @@ Candidates are the Stage 1 containment pairs, source `a` → target `b`, `I(a→
 | Rule | Meaning |
 |---|---|
 | same table | excluded unless `--self-refs` |
-| G8 | a table's chosen primary key is never a source (strict: no PK → PK) |
+| G8 | a table's chosen primary key is not a source, unless it is a **sparse integer key**: density (distinct ÷ (max − min + 1)) ≤ 0.5 (`pk_source_max_density`). Subclass tables reuse their parent's key with scattered values from one shared ID pool; keys numbered 1..n overlap other 1..n keys by chance, so they stay gated |
 | G1 | the target must have survived 2a's hard rejections. It need not be the chosen key, so `k` can be 0 |
 | G3 | a column named `rowguid` is never a target (names only) |
 | prefilters | source role boolean / free text / float; fewer than 2 distinct values; average length over 64 |
@@ -85,7 +85,7 @@ python src/foreign_keys.py --dataset bird --keys-run frozen_no_names --run froze
 python -m pytest tests/test_foreign_keys.py                   # unit tests on hand-made profiles
 ```
 
-Flags: `--accept`, `--delta`, `--containment-min`, `--max-targets`, `--self-refs`, `--g4-ratio` / `--g4-multiplier`, `--keys-run`, `--reprofile`.
+Flags: `--accept`, `--delta`, `--containment-min`, `--max-targets`, `--self-refs`, `--pk-source-max-density` (negative = strict G8), `--g4-ratio` / `--g4-multiplier`, `--keys-run`, `--reprofile`.
 
 ---
 
@@ -95,11 +95,13 @@ Counts only; gold labels are used for evaluation after Stage 3, never here.
 
 | Run | Candidates | accepted | band | below 60 | gated out |
 |---|---|---|---|---|---|
-| names (`frozen` keys) | 1,502 | 145 | 459 | 86 | 812 |
-| no names (`frozen_no_names` keys) | 1,502 | 581 | 97 | 7 | 817 |
+| names (`frozen` keys) | 1,502 | 148 | 467 | 90 | 797 |
+| no names (`frozen_no_names` keys) | 1,502 | 586 | 106 | 10 | 800 |
+
+(Strict G8, before 2026-10-31: 145 / 459 / 86 / 812 with names, 581 / 97 / 7 / 817 without.)
 
 Two things to know before Stage 3:
-- **LLM load:** with names the band is 459 records on BIRD dev (270 of them in `european_football_2`).
+- **LLM load:** with names the band is 467 records on BIRD dev (276 of them in `european_football_2`).
 - **No names:** the 60-point overlap weight pushes most candidates over 70, so far more are accepted outright and the band nearly empties. This is the scoring as specified; it is a result to report, not something tuned here.
 
 ---
@@ -109,8 +111,9 @@ Two things to know before Stage 3:
 - Email/URL prefilter (paper tier 2) is not applied: it needs a full-column share that Stage 1 does not compute.
 - G4 is off until someone chooses a multiplier.
 - The setting is the dataset name: `bird` (documented file), `bird_stripped`, `bird_obfuscated`, each with its own `out/filtered/`, `out/profiles/`, `out/keys/`, `out/joins/` and `out/descriptions/` folder. Grading always reads labels from the documented file.
-- Stage 3 still builds its own overlap hints; it should read `out/joins` and run the band adjudication.
+- The G8 density threshold (0.5) was chosen after looking at FIBEN and BIRD; Spider dev and BEAVER confirm it does no harm, but it has not been tested on a second class-hierarchy schema. Non-integer keys keep strict G8 (untested).
 
 ## 7. Changelog
 
+- **2026-10-31** G8 spares sparse integer keys (`pk_source_max_density`, 0.5): finds subclass links (FIBEN: a child table's key references its parent's key; 135 of FIBEN's 159 declared FKs) and 1:1 extension tables (BIRD `frpm.CDSCode → schools.CDSCode`). Regenerated `out/joins/{bird,beaver,fiben,spider}/default` and `out/joins/{bird,bird_obfuscated}/frozen_no_names`. Joins graph F1 after Stage 3 (strict G8 → density rule): FIBEN vs its 159 declared FKs .196 → .306, BIRD named .737 → .733, BIRD obfuscated .271 → .275, BEAVER unchanged; Spider dev, statistics only, .824 → .833. Unit test added (14 pass).
 - **2026-10-24** First version of Stage 2b (`src/foreign_keys.py`, `tests/test_foreign_keys.py`, `docs/foreign_keys.md`). Ran the whole chain on BIRD dev; outputs in `out/joins/bird/default` and `out/joins/bird/frozen_no_names`.

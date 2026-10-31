@@ -5,8 +5,17 @@
    "cardinality": "one_to_one",
    "containment": 1.0,
    "coverage": 0.5646273888951713,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 0.5,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 92.5,
+   "score_before_fan_out": 92.5,
    "source": {
     "column": "col_001",
     "table": "frpm"
@@ -20,10 +29,47 @@
   },
   {
    "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.12829356553205926,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 0.5,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 78.625,
+   "score_before_fan_out": 92.5,
+   "source": {
+    "column": "col_001",
+    "table": "satscores"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "schools"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 106.25
+  },
+  {
+   "cardinality": "one_to_one",
    "containment": 0.7853680035257823,
    "coverage": 0.17844982976166635,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "decision": "rejected_score",
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 0.5,
+    "nulls": 1.0,
+    "overlap": 0.7854,
+    "target_key": 1.0
+   },
+   "penalties": {
+    "orphan": 0.7
+   },
+   "score": 47.3752,
+   "score_before_fan_out": 55.7355,
    "source": {
     "column": "col_001",
     "table": "satscores"
@@ -37,27 +83,10 @@
   },
   {
    "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 0.12829356553205926,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "col_001",
-    "table": "satscores"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "schools"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 106.25
-  },
-  {
-   "cardinality": "one_to_one",
    "containment": 0.5646273888951713,
    "coverage": 1.0,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G6: containment 0.565 < 0.75",
    "source": {
     "column": "col_001",
     "table": "schools"
@@ -98,16 +127,81 @@
   "null_low": 0.3,
   "orphan_max": 0.2,
   "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
   "r_cap": 2,
   "self_refs": false
  },
  "counts": {
-  "rejected_gate": 4
+  "accepted": 2,
+  "rejected_gate": 1,
+  "rejected_score": 1
  },
  "db_id": "california_schools",
  "graphs": {
-  "direct": [],
-  "stats": []
+  "direct": [
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.5646273888951713,
+    "decision": "accepted",
+    "score": 92.5,
+    "source": {
+     "column": "col_001",
+     "table": "frpm"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "schools"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.12829356553205926,
+    "decision": "accepted",
+    "score": 78.625,
+    "source": {
+     "column": "col_001",
+     "table": "satscores"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "schools"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.5646273888951713,
+    "decision": "accepted",
+    "score": 92.5,
+    "source": {
+     "column": "col_001",
+     "table": "frpm"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "schools"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.12829356553205926,
+    "decision": "accepted",
+    "score": 78.625,
+    "source": {
+     "column": "col_001",
+     "table": "satscores"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "schools"
+    }
+   }
+  ]
  },
  "k_zero_share": 0.0,
  "keys_run": "frozen_no_names",

@@ -1,0 +1,518 @@
+{
+ "db_id": "codebase_community",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 64,
+ "tables": {
+  "badges": {
+   "table": {
+    "name": "user_badge_awards",
+    "purpose": "One row per badge awarded to a user (Stack Overflow-style badge events): which user earned which badge and when. Referenced by many other tables as the central user/badge entity."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "award_id",
+     "description": "Primary key; unique surrogate id of the badge-award row (1..92240, no gaps pattern, unique across all 79851 rows).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "user_id",
+     "description": "Id of the user who received the badge; references t07.col_001 and t03.col_001. Repeats (up to ~456 times), consistent with users earning many badges.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "badge_name",
+     "description": "Name of the badge awarded (e.g. 'Student', 'Supporter', 'Editor', 'Scholar', 'Teacher', 'Autobiographer', 'Analytical'). Some sample values ('correlation', 'pca', 'modeling') look like topic tags rather than badge names, so the exact semantics of those rows is uncertain, but the dominant values are clearly badge names.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "awarded_at",
+     "description": "Timestamp when the badge was awarded, ranging 2010-07-19 to 2014-09-14.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "comments": {
+   "table": {
+    "name": "comments",
+    "purpose": "Comments posted on a Q&A site (Stack Exchange-style, likely Cross Validated / stats.stackexchange.com). Each row is one comment: its text, the post it belongs to, its author, creation timestamp, and upvote score. Referenced by other tables (t03, t04, t05) that link comments to posts/users/votes."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "comment_id",
+     "description": "Primary key: unique identifier of the comment (surrogate integer id).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "post_id",
+     "description": "Identifier of the post (question or answer) the comment was made on; references t05.col_001 (posts).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "score",
+     "description": "Upvote count of the comment: mostly 0, long-tailed up to 90. Matches Stack Exchange comment score semantics.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "free_text",
+     "name": "comment_text",
+     "description": "Body text of the comment, including @user mentions and markdown; near-unique per row.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "created_at",
+     "description": "Creation timestamp of the comment (2009-02 to 2014-09).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "user_id",
+     "description": "Identifier of the comment's author; references t07.col_001 (users). Null for ~1.6% of comments (deleted/anonymous users).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "free_text",
+     "name": "user_display_name",
+     "description": "Display name of the comment author, populated only when the user account no longer exists (98.4% null; values like 'user10525' are Stack Exchange anonymized names of deleted accounts, plus a few real names).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "postHistory": {
+   "table": {
+    "name": "posts",
+    "purpose": "One row per post (question, answer, or other post type) on a Q&A forum (content strongly suggests Cross Validated / stats.stackexchange.com). This is the central posts table referenced by many other tables (comments, votes, revisions, badges, etc.)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "post_id",
+     "description": "Primary key: unique numeric identifier of the post. Referenced by many other tables (comments, votes, revisions, links, etc.).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "post_type_id",
+     "description": "Foreign key to a small lookup table (t01/t02/t05) identifying the post type. Value distribution matches Stack Exchange conventions: 1=question, 2=answer (most common), 4/5=tag wiki/favorite, plus rarer types up to 38.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "parent_id",
+     "description": "For answers and other child posts, the post_id of the parent question; null/absent semantics unclear since null rate is 0 but only ~30% unique. Only meaningful for non-question post types.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "post_uuid",
+     "description": "UUID identifier for the post (all-zero UUID appears 169 times, likely a placeholder/default).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "creation_date",
+     "description": "Timestamp when the post was created, ranging 2009-02-02 to 2014-09-14.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "owner_user_id",
+     "description": "User id of the post's owner, referencing the users table (t07). 7% null (posts by deleted/anonymous users); value -1 appears as a sentinel. When null, col_009 holds a display name instead.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "free_text",
+     "name": "body",
+     "description": "Full text/markdown body of the post. Contains tags like <regression>, <r>, <probability> (Stack Exchange tag markup) and JSON snippets, confirming Q&A forum content.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "free_text",
+     "name": "edit_comment",
+     "description": "Comment describing the last edit, e.g. 'edited title', 'added 1 characters in body'. Empty when the post was never edited.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "free_text",
+     "name": "owner_display_name",
+     "description": "Display name of the post owner when no user account is linked (deleted or unregistered users), e.g. 'user10525'. Empty when owner_user_id is set.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "postLinks": {
+   "table": {
+    "name": "",
+    "purpose": "t04 is a transactional/event table (11,102 rows) where each row records an event at a timestamp, linking two entities (col_003 and col_004, both referencing t05/t03) and a status/type flag (col_005). The exact business domain cannot be determined from the data alone; the specific meaning of the referenced entities is unresolved."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of t04; unique integer identifier for each row (surrogate key, no inherent meaning).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "event_timestamp",
+     "description": "Timestamp of the event/transaction, ranging 2010-07-21 to 2014-09-13. The spike at 2013-02-18 03:03:17 (234 rows) suggests a bulk load or batch event on that date.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "entity_a_id",
+     "description": "Foreign key to t05.col_001 (also matching t03/t02 primary keys). Identifies one of the two entities involved in the event; which entity (e.g. account, customer, product) is unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "entity_b_id",
+     "description": "Foreign key to t05.col_001 (also matching t03). Identifies the second entity in the event; in sample rows it is often numerically close to col_003, suggesting a related/paired entity (e.g. source and target of a transfer). Exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "posts": {
+   "table": {
+    "name": "posts",
+    "purpose": "This is a Stack Exchange-style Q&A posts table (content strongly suggests Cross Validated / stats.stackexchange.com): each row is a post, either a question or an answer, with body, title, tags, scores, view/answer/comment counts, owner and editor info, and lifecycle timestamps. The referenced tables t01/t02/t03/t07/t08 are likely users, votes, comments, post history and similar entities."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "post_id",
+     "description": "Primary key of the post; unique integer identifier (1..115378). Referenced by many other tables (comments, votes, history, etc.).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "post_type_id",
+     "description": "Post type code joining a small lookup (t01/t02/t03 col_001). Distribution (1 ~47k, 2 ~43k, small counts of 4-7) matches Stack Exchange post types: 1=question, 2=answer, 4-7=tag wiki / moderator nomination / wiki placeholder types.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "parent_id",
+     "description": "For answers (post_type 2), the id of the parent question; null for the ~53% of rows that are questions. One-to-one join to t03.col_001 (posts) supports this.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "creation_date",
+     "description": "Timestamp when the post was created (2009-2014, never null, near-unique).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "score",
+     "description": "Net vote score of the post (upvotes minus downvotes); mostly small non-negative integers, a few negatives (min -19) and outliers up to 192.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "view_count",
+     "description": "Number of views; null for answers (53% null matches answer share), heavy right skew (median 128, max 175,495) typical of view counts.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "free_text",
+     "name": "body",
+     "description": "Post body in HTML (Stack Exchange markup), containing the question/answer text.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "foreign_key",
+     "name": "owner_user_id",
+     "description": "Id of the user who created the post; -1 denotes the community/system user. Joins to t07.col_001 (users).",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "date",
+     "name": "last_activity_date",
+     "description": "Timestamp of the last activity on the post (edit, answer, comment); always >= creation_date.",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "free_text",
+     "name": "title",
+     "description": "Title of the post; null for answers (53% null), populated only for questions.",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "code",
+     "name": "tags",
+     "description": "Question tags in angle-bracket format (e.g. <regression><r>); null for answers.",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "answer_count",
+     "description": "Number of answers on the question; null for answers, small counts (0-4 typical, max 136).",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "comment_count",
+     "description": "Number of comments on the post; never null, small counts (0-3 typical, max 45).",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "favorite_count",
+     "description": "Number of times the question was favorited/starred; null for answers and unfavorited questions (86% null), small counts.",
+     "status": "resolved"
+    },
+    "col_015": {
+     "role": "foreign_key",
+     "name": "last_editor_user_id",
+     "description": "Id of the user who last edited the post (-1 = community user); null when never edited. Joins to t07.col_001 (users).",
+     "status": "resolved"
+    },
+    "col_016": {
+     "role": "date",
+     "name": "last_edit_date",
+     "description": "Timestamp of the last edit; null when the post was never edited (51% null).",
+     "status": "resolved"
+    },
+    "col_017": {
+     "role": "date",
+     "name": "community_owned_date",
+     "description": "Date the post became community wiki; null for the vast majority (97%).",
+     "status": "tentative"
+    },
+    "col_018": {
+     "role": "foreign_key",
+     "name": "accepted_answer_id",
+     "description": "For questions, the id of the accepted answer (joins to posts); null for answers and for questions with no accepted answer. The ~48% null rate (slightly below the 53% question share) fits: most but not all questions have an accepted answer. Top value 726 repeated 136 times is odd for an accepted-answer id but could be a highly reused/merged answer.",
+     "status": "tentative"
+    },
+    "col_019": {
+     "role": "date",
+     "name": "closed_date",
+     "description": "Date the question was closed; null for ~98% of posts (only closed questions have it).",
+     "status": "resolved"
+    },
+    "col_020": {
+     "role": "free_text",
+     "name": "owner_display_name",
+     "description": "A user display name (e.g. 'user28', 'tdc'), populated on only ~2.7% of rows. Likely the display name of the post owner when the account was deleted/anonymous, but the exact semantics are not certain.",
+     "status": "tentative"
+    },
+    "col_021": {
+     "role": "free_text",
+     "name": "last_editor_display_name",
+     "description": "A user display name populated on only ~0.5% of rows; plausibly the display name of the last editor (e.g. for deleted users), but evidence is insufficient to be sure.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "tags": {
+   "table": {
+    "name": "tags",
+    "purpose": "A glossary/tag dictionary of statistics and machine-learning terms (e.g. \"2sls\", \"ab-test\", \"glmm\", \"stratification\", \"overdispersion\"). Each row is one term/tag, with an id, the term itself, a link to some parent/category entity, and optional paired identifiers (likely wiki/excerpt page ids) present only for terms that have an associated wiki entry. The vocabulary strongly suggests a Stack-Exchange-style site (e.g. Cross Validated) tag table, but the exact source is not provable from the data alone."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "tag_id",
+     "description": "Primary key; unique integer identifier for each term/tag row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "tag_name",
+     "description": "Unique, lowercase, hyphenated name of a statistics/ML term or tag (e.g. \"2sls\", \"ab-test\", \"glmm\", \"stratification\", \"joint-distribution\").",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "wiki_page_id",
+     "description": "Unique integer, null for ~42% of rows, one-to-one with t05.col_001. In each sample row it is exactly col_005 + 1, suggesting a pair of adjacent ids (e.g. wiki body and wiki excerpt post ids, as in Stack Exchange tag wikis). Present only for terms that have a wiki entry. The precise meaning (which of the pair it is) is tentative.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "wiki_excerpt_page_id",
+     "description": "Unique integer, null for ~42% of rows, one-to-one with t05.col_001, and always exactly one less than col_004 when both are present. Likely the companion id of col_004 (e.g. excerpt vs. full wiki post). Which of the two ids is the excerpt versus the body cannot be determined from the data.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "users": {
+   "table": {
+    "name": "users",
+    "purpose": "User accounts/profiles of a Q&A community (Stack Overflow-style): one row per registered user, with profile fields (display name, website, location, bio, avatar) and activity counters (views, up/down votes). Dates span 2010-2014 and profile-image URLs point to gravatar/facebook/google, consistent with a Stack Exchange data dump's Users table."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "user_id",
+     "description": "Primary key of the user row; unique integer identifier (includes a -1 sentinel row, typical of the community 'anonymous' user in Stack Exchange dumps).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "external_ref_id",
+     "description": "Integer key referencing rows in t01, t03 and t05 (many-to-one). 965 distinct values with heavy skew (1, 101, 6, 11, 16...). It links each user to some parent entity in those tables, but the evidence does not establish what that entity is (e.g. account, site, or group).",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "created_at",
+     "description": "Timestamp when the user account was created (earliest date in the row's lifecycle, 2010-2014).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "display_name",
+     "description": "User's public display name / handle (e.g. 'robDean', 'wildpeaks', 'Chris', 'user34964').",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "last_access_at",
+     "description": "Timestamp of the user's last site access/activity; always >= col_003 and extends slightly past it in range.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "website_url",
+     "description": "Personal website URL from the user's profile; ~80% empty, with placeholders like 'http://none'/'http://N/A' for missing values.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "location",
+     "description": "Free-text location from the profile ('United States', 'London, United Kingdom', 'Washington DC, United States', even timezone strings like 'UTC -6').",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "free_text",
+     "name": "about_me",
+     "description": "HTML-formatted 'About me' biography from the profile; ~77% empty, values wrapped in <p> tags.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "view_count",
+     "description": "Count of profile views (or similar activity counter): non-negative, mostly 0, long tail up to ~21k. Exact counter type is plausible but not certain; could also be another activity count.",
+     "status": "tentative"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "upvote_count",
+     "description": "Count of upvotes cast by the user: non-negative, mostly 0, long tail up to ~11k. Reading as upvotes fits the Stack Exchange Users schema, but the data alone doesn't distinguish it from other counters.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "downvote_count",
+     "description": "Count of downvotes cast by the user: non-negative, almost always 0, max ~1920. Same caveat as col_010.",
+     "status": "tentative"
+    },
+    "col_012": {
+     "role": "identifier",
+     "name": "network_account_id",
+     "description": "A second unique per-user identifier in a different numeric range (up to ~5M, with -1 sentinel), likely the cross-site network account id in a Stack Exchange-style dump; no joins detected, so its target is unconfirmed.",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "age",
+     "description": "Self-reported age in years: only ~20% populated, values 13-94, centered around 30 - consistent with an age field.",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "category",
+     "name": "profile_image_url",
+     "description": "URL of the user's avatar/profile image (gravatar, googleusercontent, facebook graph endpoints); ~59% empty, default gravatar identicon URL most common.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "votes": {
+   "table": {
+    "name": "",
+    "purpose": "A transactional/fact table (t08) with ~38,930 rows, each row an event or record dated between 2010-07-19 and 2011-05-01, linking to entities in t01/t03/t05 via a shared id column. Exact business meaning is opaque from the data alone; the structure (surrogate PK, many-to-one entity reference, small status code, date, sparse optional fields) strongly suggests an orders/transactions-style fact table, but this is tentative."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of t08; unique integer identifier for each row (surrogate key, values 1..43538 with gaps). Referenced by t05.col_013.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "entity_id",
+     "description": "Many-to-one reference to an entity table (joins to t05.col_001, t03.col_001, t01.col_001, which appear to share the same id space). Most likely the customer/party/account the row belongs to. The specific entity type is unresolved; 'customer_id' is the most common reading for this pattern but cannot be confirmed.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "status_code",
+     "description": "Small categorical code with 10 distinct values (1..16), heavily skewed to value 2 (~86%). Joins to the same id space as col_002, suggesting it references a lookup/enum table (t01/t03/t05). Likely a status or type code for the row; the meaning of individual values is unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "transaction_date",
+     "description": "Date of the record, ranging 2010-07-19 to 2011-05-01, with clustering in late July 2010. Most plausibly the order/transaction date; could also be a registration or effective date.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}
