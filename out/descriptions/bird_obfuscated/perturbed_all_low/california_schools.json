@@ -1,0 +1,576 @@
+{
+ "db_id": "california_schools",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 2,
+ "tables": {
+  "frpm": {
+   "table": {
+    "name": "frpm",
+    "purpose": "Register of schools (one row per school) with location, classification and a block of performance counts and rates. Text values appear obfuscated by a letter-substitution cipher (e.g. 'Qdwfwgs Zxkrrc Swzpjwxp' decodes consistently to 'Country High School', 'Gcgvgdpojy' to 'Primary'), but the structure is clearly a school directory with attached performance statistics."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "school_id",
+     "description": "14-digit unique record identifier, primary key of the table. Its digits embed the other ID parts: first 2 digits = col_003, next 5 = col_004, last 7 = col_005. Joins one-to-one to t03.col_001.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "region_code",
+     "description": "Two-digit area/region code (1-58, 58 distinct values). Equals the first two digits of col_001 and maps one-to-one with the 58 district names in col_006.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "local_authority_code",
+     "description": "Five-digit authority/district code (1012 distinct). Equals digits 3-7 of col_001 and corresponds to the authority names in col_007.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "school_serial_number",
+     "description": "Seven-digit serial number, nearly unique per row. Equals the last 7 digits of col_001; '0000000' appears 45 times (likely placeholder/unknown).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "district_name",
+     "description": "Name of the district/region (58 distinct values, matching col_003), e.g. 'Crz Odhgcgz' = 'Old Township' style names.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "local_authority_name",
+     "description": "Name of the local authority (1000 distinct values, matching col_004's code), e.g. 'Crz Odhgcgz Qdwfwgs' = 'Old Township Country'.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "school_name",
+     "description": "Name of the school (8652 distinct, near one per row), e.g. '...Gcgvgdpojy' = '...Primary'.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "category",
+     "name": "school_type",
+     "description": "Broad school type/phase, 8 values, e.g. 'Qdwfwgs Zxkrrc Swzpjwxp' = 'Country High School', 'Gcgvgdpojy Zxkrrc Swzpjwxp' = 'Primary High School', 'Kwhk Zxkrrc Swzpjwxp' = 'High High School' (likely 'City/Urban High School').",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "category",
+     "name": "school_category",
+     "description": "More detailed school category (17 values), e.g. 'Gcgvgdpojy Zxkrrcz (Lqacwx)' = 'Primary Schools (Boarding?)', 'Xrdpwdqopwrd Kwhk Zxkrrcz' = 'International High Schools'.",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "category",
+     "name": "governance_type",
+     "description": "Governance/ownership classification (12 values), dominated by 'Pjoswpwrdoc' = 'Independent'; others like 'Xrdpwdqopwrd Zxkrrc' = 'International School', 'Ocpgjdopwig Zxkrrc rf Xkrwxg' = 'Departmental School of Science'.",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "category",
+     "name": "religious_affiliation",
+     "description": "Religious character/denomination, null for 81.5% (secular schools). Values like 'Ajgoefozp Ljriwzwrd 9' = 'Catholic Voluntary 9', 'XGL' likely 'CoE' (Church of England).",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_014": {
+     "role": "code",
+     "name": "religious_character_code",
+     "description": "Four-character code (e.g. '00D2', '0756'), null for 88.3% of rows — exactly the same rows as col_015, so it is the code counterpart of the religious/ethos status in col_015. Exact coding scheme unknown.",
+     "status": "tentative"
+    },
+    "col_015": {
+     "role": "category",
+     "name": "religious_status",
+     "description": "Religious/ethos status, null for 88.3% of rows: 'Swjgxpcy fqdsgs' = 'Minority status', 'Crxoccy fqdsgs' = 'Catholic status', one row 'Drp wd XZ fqdswdh vrsgc' = 'Not in ... faith school'.",
+     "status": "tentative"
+    },
+    "col_016": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_017": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_018": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_019": {
+     "role": "numeric",
+     "name": "count_measure_1",
+     "description": "Integer count, 1-5333, median ~528. Part of the first count/rate pair (with col_020/col_021). Likely a pupil/exam count for one measure (e.g. total entries or pupils in a subject), but the exact measure is not determinable.",
+     "status": "tentative"
+    },
+    "col_020": {
+     "role": "numeric",
+     "name": "count_measure_1_subset",
+     "description": "Integer count, 1-3927, always <= col_019 in samples. Likely the successful/subset count corresponding to col_019.",
+     "status": "tentative"
+    },
+    "col_021": {
+     "role": "numeric",
+     "name": "rate_measure_1",
+     "description": "Proportion in (0,1], consistent with col_020/col_019 (e.g. 54/102 = 0.529 = col_021 in row 1). Rate/proportion for the first measure pair.",
+     "status": "resolved"
+    },
+    "col_022": {
+     "role": "numeric",
+     "name": "count_measure_2",
+     "description": "Integer count, 1-4419, second count/rate pair (with col_023). Likely another subject/measure count.",
+     "status": "tentative"
+    },
+    "col_023": {
+     "role": "numeric",
+     "name": "rate_measure_2",
+     "description": "Proportion in (0,1], consistent with col_022/col_019 (e.g. 63/102 = 0.6176 = col_023 in row 1). Rate for the second measure pair.",
+     "status": "resolved"
+    },
+    "col_024": {
+     "role": "numeric",
+     "name": "count_measure_3",
+     "description": "Integer count, 1-5271, third count/rate pair (with col_025/col_026).",
+     "status": "tentative"
+    },
+    "col_025": {
+     "role": "numeric",
+     "name": "count_measure_3_subset",
+     "description": "Integer count, 1-3864, subset count corresponding to col_024 (e.g. 40/73 = 0.5479 = col_026 in row 1).",
+     "status": "tentative"
+    },
+    "col_026": {
+     "role": "numeric",
+     "name": "rate_measure_3",
+     "description": "Proportion in (0,1], equal to col_025/col_024 in samples. Rate for the third measure pair.",
+     "status": "resolved"
+    },
+    "col_027": {
+     "role": "numeric",
+     "name": "count_measure_4_subset",
+     "description": "Integer count, 1-4347, fourth measure pair (with col_028); in samples equals col_025 or close to it (e.g. 46/73 = 0.6301 = col_028 in row 1).",
+     "status": "tentative"
+    },
+    "col_028": {
+     "role": "numeric",
+     "name": "rate_measure_4",
+     "description": "Proportion in (0,1], equal to col_027/col_024 in samples. Rate for the fourth measure pair.",
+     "status": "resolved"
+    },
+    "col_029": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "satscores": {
+   "table": {
+    "name": "satscores",
+    "purpose": "A registry of financial institutions (banks): one row per institution, keyed by a 14-digit identifier that joins one-to-one to t03. Contains anonymized institution and contact names, a country/region field, a two-value code, and several numeric metrics (large counts and mid-range scores). Text values appear to be cipher/anonymized, so exact real-world labels cannot be recovered, but the structural roles are clear."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "institution_id",
+     "description": "14-digit unique identifier for each institution (primary key of the table). All values distinct, no nulls. Joins one-to-one to t03.col_001, so t03 carries per-institution detail keyed by this ID. The specific coding scheme (e.g., national bank code vs. internal ID) is not determinable.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_003": {
+     "role": "free_text",
+     "name": "contact_person_name",
+     "description": "Anonymized person names (mostly 2-3 tokens, some with initials and middle tokens, a few with parenthesized acronyms), 23% null, near-unique. Likely the name of a person associated with the institution (e.g., director, manager, or registered agent). The ciphered text prevents confirming the exact role.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "free_text",
+     "name": "institution_name",
+     "description": "Anonymized institution names. 520 distinct values; the most frequent values end with the same token seen in col_003 names (likely 'Bank'), and several values are longer descriptive names ('... Rffwxg rf Gsqxopwrd' resembles '... Company of ...'). Almost certainly the legal/registered name of the institution.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "country_or_region",
+     "description": "Anonymized geographic label with 57 distinct values; the top value ('Crz Odhgcgz', 467 rows) is also the prefix of the most frequent institution name in col_004, indicating a country/region name (e.g., 'Germany' / 'German ...'). Low-cardinality geographic categorization of the institutions.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_008": {
+     "role": "numeric",
+     "name": "score_1",
+     "description": "Integer in a narrow 308-653 band (mean ~480), null for 26% of rows (the same rows missing col_009-col_011). The 300-700 range is typical of credit/rating scores, and the shared null pattern suggests these columns come from a secondary source populated only for a subset of institutions. Exact scale unknown.",
+     "status": "tentative"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "score_2",
+     "description": "Integer in 289-699 (mean ~484), null on exactly the same 26% of rows as col_008/col_010/col_011. A second score on a similar scale; likely paired with col_008 (e.g., two rating dimensions or min/max of a score). Meaning not confirmable.",
+     "status": "tentative"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "score_3",
+     "description": "Integer in 312-671 (mean ~473), null on the same 26% of rows as col_008/col_009. Third score in the same family; values track col_008/col_009 closely. Likely another rating/score component for the same subset of institutions.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "schools": {
+   "table": {
+    "name": "schools",
+    "purpose": "Directory of California public schools and districts (CDE-style schools directory): one row per school/site, keyed by a 14-digit CDS code, with location, contact, grade-span, and administrative attributes. Text values appear obfuscated/letter-substituted, but structure (CDS codes, 'XO'=state code, county/district/school hierarchy, grade spans, CA lat/long) is clear."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "cds_code",
+     "description": "14-digit CDS (County-District-School) code; unique primary key, referenced one-to-one by t01 and t02. First 2 digits county, next 5 district, last 7 school.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "county_district_code",
+     "description": "7-digit county+district code (first 7 digits of the CDS code); identifies the LEA the school belongs to.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "school_code",
+     "description": "School-level code (last digits of CDS), unique within a district; null for district/office rows.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "status_type",
+     "description": "Entity status with 4 values (dominant value ~66%); likely Active/Closed/Merged/Pending status of the record. Exact code meanings unresolved due to obfuscation.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "county_name",
+     "description": "County name (58 distinct values, matching California's 58 counties; top value ~ Los Angeles).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "district_name",
+     "description": "District (LEA) name, e.g. '... Unified'; ~1411 districts.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "school_name",
+     "description": "School/site name; highly unique, includes type suffixes like 'Elementary', 'High School'.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "free_text",
+     "name": "street_address",
+     "description": "Physical street address (full form, e.g. '1234 Main Street').",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "free_text",
+     "name": "street_address_abbrev",
+     "description": "Physical street address with abbreviated suffixes (St., Ave., Blvd.); abbreviated variant of col_008.",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "category",
+     "name": "city",
+     "description": "Physical address city.",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "code",
+     "name": "zip_code",
+     "description": "Physical address ZIP code, 5-digit or ZIP+9 format.",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "code",
+     "name": "state_code",
+     "description": "Physical address state; constant 'XO' (obfuscated two-letter state code, i.e. CA).",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "free_text",
+     "name": "mailing_street_address",
+     "description": "Mailing street address (full form); near-duplicate of physical address for most rows.",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "free_text",
+     "name": "mailing_street_address_abbrev",
+     "description": "Mailing street address with abbreviated suffixes.",
+     "status": "resolved"
+    },
+    "col_015": {
+     "role": "category",
+     "name": "mailing_city",
+     "description": "Mailing address city.",
+     "status": "resolved"
+    },
+    "col_016": {
+     "role": "code",
+     "name": "mailing_zip_code",
+     "description": "Mailing address ZIP code (5-digit or ZIP+9).",
+     "status": "resolved"
+    },
+    "col_017": {
+     "role": "code",
+     "name": "mailing_state_code",
+     "description": "Mailing address state; constant 'XO' (CA).",
+     "status": "resolved"
+    },
+    "col_018": {
+     "role": "free_text",
+     "name": "phone_number",
+     "description": "Contact phone number in '(XXX) XXX-XXXX' format; null for ~34% of rows.",
+     "status": "resolved"
+    },
+    "col_019": {
+     "role": "numeric",
+     "name": "phone_extension",
+     "description": "Sparse numeric field associated with phone contact; plausibly a phone extension or secondary number, but values (0–630100) are too varied to confirm.",
+     "status": "tentative"
+    },
+    "col_020": {
+     "role": "free_text",
+     "name": "website_url",
+     "description": "Website URL (obfuscated domain, 'kppl://' = http://, '.rjh'/'.dgp' = .org/.net); null for ~61%.",
+     "status": "resolved"
+    },
+    "col_021": {
+     "role": "date",
+     "name": "open_date",
+     "description": "Date the school opened/record established; dominant default value 2036-07-01 (obfuscated placeholder), range 1906–2073. Could alternatively be a 'status change date'.",
+     "status": "tentative"
+    },
+    "col_022": {
+     "role": "date",
+     "name": "closed_date",
+     "description": "Date the school closed (null for ~68% of rows, i.e. still open); dominant value 2045-06-30 suggests a batch closure date.",
+     "status": "tentative"
+    },
+    "col_023": {
+     "role": "boolean",
+     "name": "charter_flag",
+     "description": "0/1 flag, ~10.6% true — consistent with the share of charter schools in California; plausibly a charter school indicator.",
+     "status": "tentative"
+    },
+    "col_024": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_025": {
+     "role": "category",
+     "name": "charter_funding_type",
+     "description": "Applies to charter rows only: values decode to 'Direct funded', 'Locally funded', and a third 'not applicable' variant — charter funding type.",
+     "status": "tentative"
+    },
+    "col_026": {
+     "role": "code",
+     "name": "educational_level_code",
+     "description": "Code for the entity's educational level/type (54=Unified School District, 52=Elementary School District, 00=County Office of Education, 56=Middle School District, etc.); pairs with col_027.",
+     "status": "resolved"
+    },
+    "col_027": {
+     "role": "category",
+     "name": "educational_level_label",
+     "description": "Label for col_026: 'Unified School District', 'Elementary School District', 'County Office of Education (COE)', 'Middle School District', 'Juvenile Court School (JCS)' etc.",
+     "status": "resolved"
+    },
+    "col_028": {
+     "role": "code",
+     "name": "school_type_code",
+     "description": "Code for school type (60=Elementary Schools (Public), 66=Middle Schools, 62=Junior High, 68=K-12, etc.); pairs with col_029.",
+     "status": "resolved"
+    },
+    "col_029": {
+     "role": "category",
+     "name": "school_type_label",
+     "description": "Label for col_028: 'Elementary Schools (Public)', 'Middle Schools (Public)', 'Junior High Schools', 'County Office of Education schools', etc.",
+     "status": "resolved"
+    },
+    "col_030": {
+     "role": "code",
+     "name": "school_category_code",
+     "description": "Short code (e.g. 'PJOS' covering ~57% of non-null rows) for the school's category/type; pairs with col_031. Exact code meanings unresolved due to obfuscation.",
+     "status": "tentative"
+    },
+    "col_031": {
+     "role": "category",
+     "name": "school_category_label",
+     "description": "Label for col_030 (e.g. most common value is the main 'regular school' category; others include 'County Community School', 'Community Day School', 'County Office of Education School').",
+     "status": "tentative"
+    },
+    "col_032": {
+     "role": "code",
+     "name": "grade_span_served_code",
+     "description": "Code for grade span served (GCGV='Elementary', KZ='Middle School', GCGVKWHK='Elementary-Middle', QH='Charters', etc.); pairs with col_033.",
+     "status": "resolved"
+    },
+    "col_033": {
+     "role": "category",
+     "name": "grade_span_served_label",
+     "description": "Label for col_032: 'Elementary', 'Middle School', 'Charters', 'Intermediate/Junior/Middle Middle', 'Elementary-Middle Combination'.",
+     "status": "resolved"
+    },
+    "col_034": {
+     "role": "code",
+     "name": "low_grade",
+     "description": "Lowest grade served, using codes where 'E' = elementary/pre-K and digits are grade levels ('1-89' likely grades 1 through 8/9 combined coding).",
+     "status": "tentative"
+    },
+    "col_035": {
+     "role": "code",
+     "name": "high_grade",
+     "description": "Highest grade served, same coding scheme as col_034 ('E-0', 'E-4', '1-89', '86-89').",
+     "status": "tentative"
+    },
+    "col_036": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_037": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_038": {
+     "role": "numeric",
+     "name": "latitude",
+     "description": "Latitude in decimal degrees (32.5–44.2, consistent with California).",
+     "status": "resolved"
+    },
+    "col_039": {
+     "role": "numeric",
+     "name": "longitude",
+     "description": "Longitude in decimal degrees (-124.3 to -83.8, mostly -117 to -122, consistent with California).",
+     "status": "resolved"
+    },
+    "col_040": {
+     "role": "category",
+     "name": "location_county",
+     "description": "County name of the geocoded location (same vocabulary as col_005); null where lat/long missing.",
+     "status": "resolved"
+    },
+    "col_041": {
+     "role": "category",
+     "name": "location_city",
+     "description": "City of the geocoded location; null where lat/long missing.",
+     "status": "resolved"
+    },
+    "col_042": {
+     "role": "free_text",
+     "name": "school_email",
+     "description": "School/office contact email address (obfuscated domains).",
+     "status": "resolved"
+    },
+    "col_043": {
+     "role": "free_text",
+     "name": "contact_first_name",
+     "description": "First name of an administrative contact (sparse, ~2.4% populated).",
+     "status": "tentative"
+    },
+    "col_044": {
+     "role": "free_text",
+     "name": "contact_last_name",
+     "description": "Last name of an administrative contact (sparse).",
+     "status": "tentative"
+    },
+    "col_045": {
+     "role": "free_text",
+     "name": "contact_email",
+     "description": "Email of the administrative contact (sparse); pairs with col_043/col_044.",
+     "status": "tentative"
+    },
+    "col_046": {
+     "role": "free_text",
+     "name": "alt_contact_first_name",
+     "description": "First name of a second/rare contact (only ~40 rows); likely another administrator contact.",
+     "status": "tentative"
+    },
+    "col_047": {
+     "role": "free_text",
+     "name": "alt_contact_last_name",
+     "description": "Last name of the second/rare contact.",
+     "status": "tentative"
+    },
+    "col_048": {
+     "role": "free_text",
+     "name": "alt_contact_email",
+     "description": "Email of the second/rare contact.",
+     "status": "tentative"
+    },
+    "col_049": {
+     "role": "date",
+     "name": "last_update_date",
+     "description": "Record update/revision date; two dominant batch dates (2071-06-18 and 2055-06-24) suggest bulk updates rather than open/close dates.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

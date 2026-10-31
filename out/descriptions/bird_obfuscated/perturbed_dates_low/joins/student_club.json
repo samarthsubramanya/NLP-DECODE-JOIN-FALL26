@@ -1,0 +1,626 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.40476190476190477,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 100.0,
+   "score_before_fan_out": 100.0,
+   "source": {
+    "column": "col_001",
+    "table": "attendance"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "event"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 93.75
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.9090909090909091,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 100.0,
+   "score_before_fan_out": 100.0,
+   "source": {
+    "column": "col_002",
+    "table": "attendance"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "member"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 93.75
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.5476190476190477,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 100.0,
+   "score_before_fan_out": 100.0,
+   "source": {
+    "column": "col_007",
+    "table": "budget"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "event"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 93.75
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.09090909090909091,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 100.0,
+   "score_before_fan_out": 100.0,
+   "source": {
+    "column": "col_006",
+    "table": "expense"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "member"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 93.75
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.46153846153846156,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 0.6667,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 95.0,
+   "score_before_fan_out": 95.0,
+   "source": {
+    "column": "col_007",
+    "table": "expense"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "budget"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 93.75
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.23008849557522124,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 0.6346,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 94.5192,
+   "score_before_fan_out": 94.5192,
+   "source": {
+    "column": "col_009",
+    "table": "member"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "major"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 93.75
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.9393939393939394,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 0.5806,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 93.7097,
+   "score_before_fan_out": 93.7097,
+   "source": {
+    "column": "col_006",
+    "table": "income"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "member"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 93.75
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.0007880220646178094,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 0.5,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 92.5,
+   "score_before_fan_out": 92.5,
+   "source": {
+    "column": "col_008",
+    "table": "member"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "zip_code"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "frozen_no_names",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
+  "r_cap": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 8
+ },
+ "db_id": "student_club",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.40476190476190477,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_001",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9090909090909091,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_002",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5476190476190477,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_007",
+     "table": "budget"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.09090909090909091,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_006",
+     "table": "expense"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.46153846153846156,
+    "decision": "accepted",
+    "score": 95.0,
+    "source": {
+     "column": "col_007",
+     "table": "expense"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "budget"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.23008849557522124,
+    "decision": "accepted",
+    "score": 94.5192,
+    "source": {
+     "column": "col_009",
+     "table": "member"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "major"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9393939393939394,
+    "decision": "accepted",
+    "score": 93.7097,
+    "source": {
+     "column": "col_006",
+     "table": "income"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.0007880220646178094,
+    "decision": "accepted",
+    "score": 92.5,
+    "source": {
+     "column": "col_008",
+     "table": "member"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "zip_code"
+    }
+   }
+  ],
+  "llm": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.40476190476190477,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_001",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9090909090909091,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_002",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5476190476190477,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_007",
+     "table": "budget"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.09090909090909091,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_006",
+     "table": "expense"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.46153846153846156,
+    "decision": "accepted",
+    "score": 95.0,
+    "source": {
+     "column": "col_007",
+     "table": "expense"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "budget"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.23008849557522124,
+    "decision": "accepted",
+    "score": 94.5192,
+    "source": {
+     "column": "col_009",
+     "table": "member"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "major"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9393939393939394,
+    "decision": "accepted",
+    "score": 93.7097,
+    "source": {
+     "column": "col_006",
+     "table": "income"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.0007880220646178094,
+    "decision": "accepted",
+    "score": 92.5,
+    "source": {
+     "column": "col_008",
+     "table": "member"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "zip_code"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.40476190476190477,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_001",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9090909090909091,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_002",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5476190476190477,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_007",
+     "table": "budget"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.09090909090909091,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_006",
+     "table": "expense"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.46153846153846156,
+    "decision": "accepted",
+    "score": 95.0,
+    "source": {
+     "column": "col_007",
+     "table": "expense"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "budget"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.23008849557522124,
+    "decision": "accepted",
+    "score": 94.5192,
+    "source": {
+     "column": "col_009",
+     "table": "member"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "major"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9393939393939394,
+    "decision": "accepted",
+    "score": 93.7097,
+    "source": {
+     "column": "col_006",
+     "table": "income"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.0007880220646178094,
+    "decision": "accepted",
+    "score": 92.5,
+    "source": {
+     "column": "col_008",
+     "table": "member"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "zip_code"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.0,
+ "keys_run": "frozen_no_names",
+ "use_names": false,
+ "weights": {
+  "cardinality": 15,
+  "nulls": 10,
+  "overlap": 60,
+  "target_key": 15
+ }
+}

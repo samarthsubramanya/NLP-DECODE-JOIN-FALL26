@@ -1,0 +1,706 @@
+{
+ "db_id": "formula_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 114,
+ "tables": {
+  "circuits": {
+   "table": {
+    "name": "circuits",
+    "purpose": "A catalog of mountains/peaks (72 rows). Text values appear obfuscated by a letter-substitution cipher (e.g. \"Rvwrbva\" = \"Mountain\", \"uaak://ft.pvdvkfxvj.mwq\" = \"https://en.wikipedia.org\"). Each row is one mountain with its names, location (country, range, coordinates) and a Wikipedia URL. col_006/col_007 ranges (-34.9..57.3 and -118.2..138.9) match latitude/longitude of world mountains."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key; sequential integer identifier for each mountain (2-73, 72 distinct values).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "slug",
+     "description": "URL slug / short name for the mountain (lowercase, hyphenated), matching the last path segment of col_009.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "name",
+     "description": "Display name of the mountain (title case, e.g. 'Rvwrbva Kjbh Wvrjwx' = 'Mount ...' pattern; unique per row).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "country",
+     "description": "Country (or region) where the mountain is located; 69 distinct values with a few repeats (e.g. 'Njwrfhmtj', 'Rjhvomwtvj' appear twice), consistent with country names.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "mountain_range",
+     "description": "Mountain range the peak belongs to (32 distinct values, e.g. 'BEJ' 11 times, 'Owjtrf' 7 times) — a grouping attribute, most plausibly the range/massif. Could alternatively be a broader region, but range fits the cardinality best.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "latitude",
+     "description": "Latitude in decimal degrees (-34.93 to 57.27); pairs with col_007 to give the peak's coordinates.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "longitude",
+     "description": "Longitude in decimal degrees (-118.19 to 138.93); pairs with col_006 to give the peak's coordinates.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "identifier",
+     "name": "wikipedia_url",
+     "description": "Wikipedia article URL for the mountain ('uaak://ft.pvdvkfxvj.mwq/pvdv/...' = 'https://en.wikipedia.org/wiki/...'), unique per row and derived from col_003.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "constructorResults": {
+   "table": {
+    "name": "",
+    "purpose": "Unresolved: a fact/detail table keyed by a surrogate id (col_001), each row referencing a parent entity (col_002) and a category (col_003) with a small numeric measure (col_004). The specific domain cannot be determined from the data alone; many other tables reference this table's primary key, suggesting it is a central entity (e.g. an order/transaction line) that detail tables (t03, t05, t07–t11) hang off of, while it itself references lookup/parent tables (t09/t10/t11 via col_002 and t04/t05/t06 via col_003)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key: unique surrogate identifier for each row of t02, ranging 1–11082. Referenced by many columns in t03, t05, t07, t08, t09, t10, t11, so it is the foreign key target for child/detail tables.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "parent_id",
+     "description": "Foreign key to a parent entity (t09.col_001, also matching t10.col_001 and t11.col_001, which appear to share the same key domain). 907 distinct values, each appearing ~12 times, so each parent has on average about 12 t02 rows. The exact entity (e.g. customer, account, order header) is unresolved.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "category_id",
+     "description": "Foreign key to a lookup/categorization table (t04.col_001, also matching t05.col_001 and t06.col_001). 172 distinct values with skewed distribution (top value 6 accounts for ~8% of rows). Likely a type/category/classification code; the specific meaning is unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "constructorStandings": {
+   "table": {
+    "name": "",
+    "purpose": "t03 is a transactional fact table (one row per event/line item, ~11.8k rows). Its surrogate key col_001 is referenced by many other tables (t05, t07–t11), so it is the central entity of the database — likely orders/order lines. It references dimension tables t02/t09/t10 (via col_002) and t02/t04/t05 (via col_003, col_005, col_006, col_007). Exact business domain is unresolved from the data alone."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "transaction_id",
+     "description": "Primary key of t03; unique surrogate identifier for each row (1–26872, no gaps pattern guaranteed). Referenced as foreign key by t05, t07, t08, t09, t10, t11, confirming t03 is the central fact table.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "party_id",
+     "description": "Foreign key to a party/customer dimension (t02, t09 or t10 — all share the same key space). 906 distinct values, each appearing ~13 times on average, consistent with a customer or account identifier repeated across transactions.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "category_id",
+     "description": "Foreign key to a small dimension (156 distinct values, joins to t02/t04/t05 key space). Skewed distribution (values 6, 1, 3 dominate) suggests a product/category/type code. Could alternatively be a location or item identifier.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "amount",
+     "description": "Continuous measure, 0–765 with 0 as the most common value (3800 rows, 32%). Values include halves (27.5, 72.5), suggesting a monetary amount, quantity, or duration. Most rows are small (median 6). Exact unit unresolved.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "period_id",
+     "description": "Small categorical code with 22 distinct values, each occurring ~906 times — an almost perfectly uniform distribution typical of a time period (e.g., month or week index 1–22) or another balanced grouping. Joins to the t02/t04/t05 key space.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "period_id_text",
+     "description": "Text-typed duplicate of col_005: identical value distribution (22 values, ~906 each) and same joins. Same meaning as col_005, stored as VARCHAR.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "count",
+     "description": "Small non-negative count, 0–19, heavily skewed to 0 (78% of rows). Joins to the t02/t04/t05 key space, so it may be a code/lookup id rather than a measure; but the strong zero-inflation also fits a count of related items (e.g., items, children, retries).",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "constructors": {
+   "table": {
+    "name": "constructors",
+    "purpose": "Constructors (racing teams, primarily Formula One) — one row per constructor. The text values are encoded with a letter-substitution cipher; decoded examples include 'Cooper Car Company', 'Brabham-Repco', 'Zakspeed', 'Penske', 'Tyrrell', 'Larrousse', 'Ferguson', 'Tec-Mec', and Wikipedia URLs like 'http://en.wikipedia.org/wiki/Cooper_Car_Company' and '.../Protos_(constructor)'. The 208 rows and the '(constructor)' URL suffixes match the set of Formula One constructors. It is referenced by many other tables (t02, t03, t05, t07–t11), consistent with it being the constructor dimension/lookup table of a motor-racing database."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "constructor_id",
+     "description": "Primary key; sequential integer identifier (1–210) for the constructor. Referenced by many other tables (race results, qualifying, etc.).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "constructor_slug",
+     "description": "Unique lowercase slug/short name of the constructor, e.g. 'zakspeed' (Zakspeed), 'kftedf'→'penske' (Penske), 'aswwfhh'→'tyrrell' (Tyrrell), 'ofwqbemt'→'ferguson' (Ferguson), 'afr-yfr'→'tec-mec' (Tec-Mec).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "free_text",
+     "name": "constructor_name",
+     "description": "Unique display name of the constructor in title case, e.g. 'Hjwwmbeef'→'Larrousse', 'Nwjnujy-Wfkrm'→'Brabham-Repco', 'Xf Amyjem-Ofwwjwv'→'De Tomaso-Ferrari', 'Ommapmwd'→'Footwork'.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "nationality",
+     "description": "Constructor's nationality (24 distinct values), e.g. 'Nwvaveu'→'British' (85 rows), 'Jyfwvrjt'→'American' (39), 'Vajhvjt'→'Italian' (29), 'Owftru'→'French' (12), 'Qfwyjt'→'German' (10); also 'Jbeawvjt'→'Austrian', 'Yfcvrjt'→'Mexican', 'Gjkjtfef'→'Japanese', 'Embau Jowvrjt'→'South African', 'Nwjzvhvjt'→'Brazilian'.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "free_text",
+     "name": "wikipedia_url",
+     "description": "Wikipedia article URL for the constructor, e.g. 'uaak://ft.pvdvkfxvj.mwq/pvdv/...' → 'http://en.wikipedia.org/wiki/...', with page titles such as 'Cooper_Car_Company', 'Ensign_(racing_team)', 'Jaguar_Racing', 'Walter_Wolfe_Racing', 'BMW'. Some URLs repeat (171 distinct over 208 rows), e.g. shared pages like 'Cooper_Car_Company' covering several constructor entries.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "driverStandings": {
+   "table": {
+    "name": "",
+    "purpose": "t05 appears to be a transactional/fact table (one row per event or line item), with a surrogate primary key (col_001) referenced by many other tables (t02, t03, t07–t11), and several foreign keys to dimension-like tables (t02, t03, t06, t09, t10). The exact business domain cannot be determined from the data alone; names are opaque and no lookup labels are provided. The fact that t02.col_001, t03.col_001, t06.col_001 etc. all accept the same integer ranges suggests either shared/overlapping key domains or a generic ID space, so specific dimension meanings are not provable."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "row_id",
+     "description": "Primary key / surrogate identifier of the row. Unique across all 31,578 rows, no nulls, integer 1–68,460 (not fully contiguous, so likely a global sequence shared with other tables). Referenced by many other tables (t02, t03, t07–t11), which points to child/detail tables hanging off this one.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "Integer foreign key, 970 distinct values (1–982), each appearing ~30–110 times. References t02.col_001, t09.col_001, t10.col_001. Likely a grouping/dimension key (e.g. customer, account, or organization). The specific dimension cannot be identified because no lookup labels are available.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "Integer foreign key, 833 distinct values (1–841), skewed toward low values (top values 30, 18, 22, 4, 13 with ~270–310 rows each). References t02.col_001, t06.col_001, t09.col_001. Likely another dimension key (e.g. product, category, or location). Specific meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "Integer foreign key with exactly 108 distinct values (1–108), each appearing exactly 970 times — a perfectly uniform distribution, suggesting a balanced design (e.g. 108 groups of 970 rows each, possibly a period/batch/sequence number). References t02.col_001, t03.col_001, t06.col_001. Duplicates col_006 exactly (same values stored as VARCHAR).",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "VARCHAR column whose contents are integers 1–108, exactly mirroring col_005 (same top values, same 970-per-value distribution, same joins). It is a duplicate of col_005 stored as text — either a denormalized copy or a type-inconsistency artifact. Same tentative meaning as col_005.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "drivers": {
+   "table": {
+    "name": "people",
+    "purpose": "A table of persons (840 rows, one per person). Each row has a personal name, a birth date, a nationality-like attribute, and a unique external profile/wiki-style URL. The text values appear obfuscated/letter-substituted, but the structure (First_Last URL slugs, name fields, dates) clearly describes people. Referenced by many other tables via col_001, so it is the central entity of the database."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "person_id",
+     "description": "Surrogate primary key, sequential integers 1-840, unique, no nulls. Referenced (many_to_one) by t02, t05, t07, t08, t09 and t11, so it is the identifier other tables use to point at a person.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "username_slug",
+     "description": "Unique, non-null text, one per row; in samples it matches the lowercase form of the person's last name (e.g. 'nmttvfw' vs col_006 'Nmttvfw'). Looks like a username or URL slug derived from the name.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "country_code",
+     "description": "Three-letter uppercase codes, ~80 distinct, ~90% null. Consistent with an ISO 3166-1 alpha-3 country code, but there is no join to a lookup table and no decoded evidence, so this reading is uncertain.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "first_name",
+     "description": "Given/first name. In sample rows it matches the first token of the URL slug (e.g. 'Amts' -> '.../Amts_Yjqqe'), 465 distinct values with repeats typical of first names.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "last_name",
+     "description": "Family/last name, 784 distinct with few repeats; matches the second token of the URL slug and col_002 in samples. One value contains a particle ('xf ...', likely 'of ...' in the obfuscated text).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "date",
+     "name": "birth_date",
+     "description": "Date, mostly 1950s-1990s with a few outliers up to 2054 (likely data errors). Given a persons table, a birth date is the natural reading; a 'date of first publication' or similar is also conceivable.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "nationality",
+     "description": "Low-cardinality text (41 distinct, top values covering most rows), including compound values like 'Jyfwvrjt-Vajhvjt' (looks like a two-part nationality, e.g. 'X-Y'). Reads as nationality/country of origin; an alternative reading is place of residence.",
+     "status": "tentative"
+    },
+    "col_009": {
+     "role": "identifier",
+     "name": "profile_url",
+     "description": "Unique URL per row with a scheme ('uaak://' decodes like 'https://'), a fixed domain, a fixed path segment ('pvdv', analogous to 'wiki'/'page'), and a First_Last slug identifying the person. An external profile/encyclopedia page URL for each person.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "lapTimes": {
+   "table": {
+    "name": "",
+    "purpose": "Each row appears to be an event/result record (possibly a timed performance, e.g. a race lap or split time) keyed by four low-cardinality identifiers that reference other tables (t02, t03, t04, t05, t06, t09, t10) plus a formatted duration and a numeric duration-like value. The exact domain cannot be determined from the data alone; the table itself is unresolved beyond this structural reading."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "",
+     "description": "Small integer 1-24 with almost perfectly uniform frequencies (~23.9k rows each), referencing t02, t03 and t04. Could be a sequence/round number (e.g. lap or stage 1-24) or a small lookup key; the uniform distribution suggests an ordered cycle, but this is only plausible, not confirmed.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "formatted_duration",
+     "description": "Text value in the pattern 'H:SS.mmm' (e.g. '0:80.433', '4:72.429'), i.e. a duration with a leading unit (likely minutes or hours), seconds, and milliseconds. Strongly resembles a formatted elapsed/split time. The leading unit is ambiguous (0-4 range suggests minutes or hours); the exact unit is not confirmed.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "pitStops": {
+   "table": {
+    "name": "",
+    "purpose": "Unresolved. The table has 6070 rows and 7 columns; several columns are integer codes referencing other tables (t02, t03, t05, t06, t09, t10), suggesting a fact/transaction table keyed by coded identifiers, but the domain cannot be determined from the evidence. The only clear internal relationship is that col_007 is col_006 scaled by 1000 (e.g. 30.888 -> 30888), i.e. the same quantity expressed with and without decimal formatting. No column is a primary key, so the grain of a row is also unclear (col_005/col_006/col_007 are near-unique but not unique)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "Integer identifier in the range 841-982 (131 distinct values), referencing t02, t09 and t10. Likely a coded entity key (e.g. a person, account or product ID), but the specific entity cannot be determined.",
+     "status": "tentative"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "",
+     "description": "Small ordinal code 1-6 with a strongly skewed distribution (1 most common, 6 rarest). Could be a rank, rating, priority level or category code; the specific meaning is not determinable from the data.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "qualifying": {
+   "table": {
+    "name": "",
+    "purpose": "Likely a results/performances table (e.g., race or competition results): each row is one competitor's entry in one event, with a unique result ID, references to event/competitor/category entities, and up to three recorded times in minutes:seconds.milliseconds format. The exact domain (sport, competition) is not determinable from the data alone, so this reading is tentative."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "result_id",
+     "description": "Primary key of the table; a surrogate integer identifier (1..7419) unique per row. Referenced by many other tables (t02, t03, t05, t07, t08, t10, t11), which likely hold detail/child records keyed to this result.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "event_id",
+     "description": "Foreign key to an event/competition entity (t02, t10, or t11). 339 distinct values, each appearing ~20-28 times, consistent with grouping results into events. Which of the three referenced tables is the true target cannot be distinguished from the statistics alone.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "competitor_id",
+     "description": "Foreign key to a person/competitor entity (t02, t06, or t11). 151 distinct values with moderate repetition, consistent with individual competitors appearing in multiple events. Alternative reading: a team or club ID.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "category_id",
+     "description": "Foreign key to a small lookup (t02, t04, or t05). 41 distinct values, roughly uniform counts (~500-680 each), consistent with a classification such as age group, class, or discipline. Exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "group_id",
+     "description": "Foreign key to a small lookup (t02, t03, or t04). 48 distinct values including 0, near-uniform counts (~337 each), suggesting another classification dimension (e.g., division, heat, or region). Exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "round_id",
+     "description": "Foreign key to a small lookup (t02, t03, or t04). 28 distinct values with exactly 339 rows each for the top values — 339 equals the distinct count of col_002, suggesting this attribute is constant per event (e.g., round/stage number or event-level attribute). Exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "code",
+     "name": "time_1",
+     "description": "A duration formatted as M:SS.mmm (minutes:seconds.milliseconds), e.g., '0:47.555'. Present for ~98% of rows, so it is the primary recorded time (e.g., final/total time).",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "code",
+     "name": "time_2",
+     "description": "A second duration in M:SS.mmm format, populated for only ~48% of rows. Likely an intermediate/split or secondary time (e.g., qualifying time), but the specific meaning is not determinable.",
+     "status": "tentative"
+    },
+    "col_009": {
+     "role": "code",
+     "name": "time_3",
+     "description": "A third duration in M:SS.mmm format, populated for only ~29% of rows. Likely another optional split or secondary time; specific meaning unresolved.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "races": {
+   "table": {
+    "name": "races",
+    "purpose": "Movies/films table (IMDb-like). Each row is one movie with its title, release year and date, and a link to its page on a movie website. Column names and text values are obfuscated/encoded, but the structure (id, year, date, title, per-movie URL) strongly indicates a film catalog referenced by many other tables (cast, crew, ratings, etc.)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "movie_id",
+     "description": "Primary key of the table; a surrogate integer id for each movie. Referenced by many other tables (t02, t03, t05, t07, t08, t09, t11), which appear to hold per-movie details such as cast, crew, ratings or keywords.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "release_year",
+     "description": "Year the movie was released, ranging 1950-2017. References lookup tables t02, t09, t11 keyed by year.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "movie_title",
+     "description": "The movie's title (obfuscated text). Values are name-like strings, mostly ending in the same suffix ('Qwjtx Kwvc'), consistent with translated/encoded titles such as '... Movie'. 42 distinct titles, some shared by many rows (remakes/re-entries).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "release_date",
+     "description": "Full release date of the movie (YYYY-MM-DD), unique per row, spanning 2006 to 2073. The future dates suggest synthetic/generated data, but the format is clearly a date.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "runtime",
+     "description": "Sparse (75% null) time-like string, e.g. '04:77:77', '09:77:77'. The H:MM:SS-like pattern suggests a duration/runtime field (values appear obfuscated, so exact units are unclear). Alternative reading: a timestamp of some event; the repeated '77' segments make this tentative.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "movie_url",
+     "description": "Unique per-movie URL (obfuscated scheme/host, e.g. 'uaak://ft.pvdvkfxvj.mwq/pvdv/...') pointing to the movie's page on a website (pattern resembles 'https://www.imdb.com/title/...'). The path embeds the movie id and title.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "results": {
+   "table": {
+    "name": "",
+    "purpose": "Unresolved. The table has 23,657 rows, each identified by a surrogate key, with many small-integer categorical codes joining to lookup tables (t02–t06) and a block of sparsely populated (~75–78% null) numeric/text fields that look like measurements (times, ratings, amounts). The structure is consistent with an event/performance fact table (e.g. sports results or similar), but the evidence does not identify the domain. The ~25% of rows that populate col_012–col_017 appear to be a special subset (e.g. a particular outcome class), while the rest leave those fields null. No definitive meaning can be assigned without the lookup tables' contents or more context."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "row_id",
+     "description": "Surrogate primary key; unique integer 1–23,661 with no semantic content. Referenced by t02, t09 and t10 as a foreign key.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "entity_a_id",
+     "description": "Foreign key to a lookup/master table (t02, t09 or t10), 970 distinct values, many rows per value. Likely identifies a primary entity of the row (e.g. a participant, horse, or team), but which entity cannot be determined from the evidence.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_008": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_011": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "signed_measure_text",
+     "description": "Text values always starting with '+', e.g. '+5:44.06', '+49.027', '+0:46.2', '+92.4' — a signed quantity in mixed formats (some with a colon, some decimal). Null in 74.8% of rows. Plausibly a positive margin/odds/time-difference recorded only for a subset of rows, but the format is ambiguous.",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "amount",
+     "description": "Large integer 1,474,899–15,090,540 (median ~5.87M), null in 74.8% of rows, same null pattern as col_012. Magnitude is consistent with a monetary amount in minor units (e.g. cents) such as earnings/prize/payout, but this is not confirmed.",
+     "status": "tentative"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_015": {
+     "role": "numeric",
+     "name": "rank_or_index",
+     "description": "Integer 0–24 with almost perfectly uniform frequencies (256 each for values 1–5), null in 77.1% of rows. The uniformity suggests a sequential index or rank (e.g. position 0–24) rather than a natural measurement, but this is unconfirmed.",
+     "status": "tentative"
+    },
+    "col_016": {
+     "role": "numeric",
+     "name": "time_value",
+     "description": "Text in a 'M:SS.mmm' pattern, e.g. '0:89.760', '0:40.089', '0:02.772' — clearly a time/duration in minutes:seconds.milliseconds, null in 77.7% of rows. The seconds component exceeding 59 (e.g. 89.760) suggests a non-standard encoding, possibly centiseconds or a cumulative split; unit interpretation uncertain.",
+     "status": "tentative"
+    },
+    "col_017": {
+     "role": "numeric",
+     "name": "rating",
+     "description": "Decimal values 89.54–257.32 (median ~202), stored as text, null in 77.7% of rows, same null pattern as col_014/col_016. The narrow, high-centered range is consistent with a performance rating or speed figure, but this is not confirmed.",
+     "status": "tentative"
+    },
+    "col_018": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "seasons": {
+   "table": {
+    "name": "seasons",
+    "purpose": "One row per year (1950–2017, 68 rows). Each row pairs a year with a URL (decodes to a Wikipedia \"List of countries by ...\" page, e.g. https://en.wikipedia.org/wiki/List_of_countries_by_..._year). Appears to be an index of per-year Wikipedia source pages, likely for a country-level time series (e.g. GDP or similar statistics by year). The exact statistic the pages list is not recoverable from the obfuscated URL text, so the table's precise subject remains unresolved."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "year",
+     "description": "Calendar year, 1950–2017, one row per year; primary key of the table.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "source_url",
+     "description": "Unique URL per year. The obfuscated text decodes to a Wikipedia URL of the form https://en.wikipedia.org/wiki/List_of_countries_by_..._year (host 'en.wikipedia.org', path 'wiki', page 'List_of_countries_by_...'). Serves as the source/reference page for that year's data. The specific topic of the listed statistic cannot be determined from the encoded string.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "status": {
+   "table": {
+    "name": "games",
+    "purpose": "A lookup list of games/activities (134 rows). The text values are encoded with a Caesar cipher shifted by one letter (e.g. 'Hjke' -> 'Guide', 'Ftqvtf' -> 'Sports', 'Obfh kvkf' -> 'Name game', 'Pjafw kvkf' -> 'Movie game'), so the decoded content is a catalog of game or activity names, likely for a youth/camp/activity program."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "game_id",
+     "description": "Primary key; sequential integer identifier (1-136) for each game/activity row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "game_name",
+     "description": "Unique name of the game/activity, stored Caesar-shifted by +1 (e.g. '+07 Hjke' -> '+07 Guide', 'Ftqvtf' -> 'Sports', 'Obfh kvkf' -> 'Name game', 'Pjafw kvkf' -> 'Movie game', 'Mba mo obfh' -> 'Lan to name'). Decoded, these are game/activity titles.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

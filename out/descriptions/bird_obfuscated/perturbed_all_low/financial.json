@@ -1,0 +1,422 @@
+{
+ "db_id": "financial",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 37,
+ "tables": {
+  "account": {
+   "table": {
+    "name": "",
+    "purpose": "t01 is a central entity table (4500 rows, one per record) referenced by many other tables via its primary key col_001. Its exact business meaning is unresolved: it links to a lookup table t05 (77 entries, likely people/parties) and carries a 3-value status/category text and a date. The data appears anonymized or obfuscated (ciphertext-like labels, future dates 2049-2053), so the real-world semantics cannot be determined from the evidence alone. It is plausibly an orders/transactions/cases table where each row is one transaction belonging to one of 77 parties, with a status and a date, but this is speculative."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of t01; unique integer identifier (1-11382) for each row. Referenced by many other tables (t02-t08) as a foreign key, so it identifies the central entity of this table.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "party_id",
+     "description": "Foreign key to t05.col_001, a lookup table of 77 entities whose labels look like person/organization names (e.g. 'Yckdvpje p. Psovq'). Each t01 row belongs to one of these entities; value 1 dominates (554 rows). Also matches t02.col_001 and t03.col_001. The exact nature of the referenced entity (customer, person, account) is unresolved due to obfuscated labels.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "status",
+     "description": "Three-valued categorical text field, all values sharing the prefix 'FVFDCAJG' followed by one of: 'RJOSEPJ' (92.6%), 'AIMPJ' (5.3%), 'FV VKHCAQ' (2.1%). Likely a status/type code with a constant qualifier; the strings appear encoded/anonymized so the actual meanings cannot be decoded. Could alternatively be a record type or document category.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "date",
+     "description": "A date between 2049-01-01 and 2053-12-29, one per row, fairly spread out (1535 distinct dates). Given the future range, this is likely synthetic or shifted data; it represents the row's associated date (e.g. transaction/record date), but the specific semantic (creation date vs. due date vs. event date) is unresolved.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "card": {
+   "table": {
+    "name": "card",
+    "purpose": "Unresolved. The table has 892 rows, each identified by a unique surrogate key (col_001) and a second unique identifier (col_002) that maps one-to-one into t03 and t04. It carries a 3-value categorical code and a date. The opaque names and coded values prevent determining the real-world subject of the table; it is referenced by t01, t03, t05, and t06, suggesting it is a parent/master entity in this schema."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of t02. Unique integer surrogate identifier (1–1247, no gaps implied by range), referenced by t01, t03, t05, and t06 as a foreign key, so it identifies the row's entity across the database.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "external_id",
+     "description": "Second unique identifier for the row (values 9–13660, all distinct). It joins one-to-one to t03.col_001 and t04.col_001, so it appears to be an alternate/external identifier of the same entity in those tables. Its real-world meaning (e.g., a business or source-system ID) is unresolved.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "date",
+     "description": "A date associated with each row, spanning 2049-11-07 to 2054-12-29 (future-dated, likely synthetic or shifted data). Most likely a creation, effective, or due date, but the specific semantics are not determinable from the evidence.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "client": {
+   "table": {
+    "name": "",
+    "purpose": "Unresolved. The table has a surrogate primary key (col_001), a two-value flag (col_002), a date (col_003), and a foreign key to a 77-row lookup table (col_004). The date range (1967–2043) is implausibly wide for a real event date, suggesting synthetic or anonymized data. The overall entity cannot be determined from the evidence."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Surrogate primary key; unique integer identifier for each row of t03. Referenced by several other tables (t04, t05, t06, t01, etc.), so it acts as the entity id other tables link to.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "date",
+     "description": "A date value, mostly distinct per row, spanning 1967 to 2043. The very wide range including future dates suggests either synthetic/anonymized data or a non-event meaning (e.g. an expiry or planned date). Likely a per-row date attribute, but its semantic meaning (birth date, event date, due date) is unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "lookup_id",
+     "description": "Foreign key to a small lookup table (t05.col_001, 77 rows) whose labels (col_002) look like person/party names (e.g. 'Yckdvpje p. Psovq', 'Wcudsegqu Khvm' — apparently obfuscated). So col_004 references a 77-entry entity list, plausibly people/parties; value 1 is heavily over-represented (663 rows). Also matches t02.col_001 and t01.col_001. The exact nature of the referenced entity is unresolved, but the reference relationship itself is clear.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "disp": {
+   "table": {
+    "name": "",
+    "purpose": "Each row appears to be an entity instance keyed by a unique integer id (col_001), linked one-to-one to a row in t03 and referenced by rows in t05, t06, t02, t08, t07 and t01. The table's real-world meaning cannot be determined from the available evidence; names and values are opaque codes. It is likely a central/parent table in the schema (e.g. an order, transaction, or case entity) with t03 as a one-to-one detail/companion table, but this is speculation without further data."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of t04. Unique integer identifier for each row (1 to 13690, 5369 distinct values, no nulls). Referenced by several other tables (t05, t06, t02, t08, t07, t01) and has a one-to-one relationship with t03.col_001, suggesting t03 holds a companion record per t04 row. The underlying business meaning of the id is unknown.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "id_alt",
+     "description": "Unique integer, one per row, with a distribution almost identical to col_001 (min 1, max 13998) and a one-to-one join to t03.col_001. It looks like a second/parallel surrogate id for the same entity (possibly from a different source system or a re-numbered key). In sample rows it equals col_001, but its max (13998) exceeds col_001's (13690), so they are not identical everywhere. Exact relationship to col_001 is unresolved.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "parent_id",
+     "description": "Integer foreign key referencing t01.col_001 (many-to-one) and also matching t03.col_001 values. Not unique (4500 distinct over 5369 rows, some values appear twice), so multiple t04 rows can point to the same t01 row. Likely a grouping/parent reference (e.g. category, customer, or header id). The business meaning of the referenced entity is unknown.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "district": {
+   "table": {
+    "name": "district",
+    "purpose": "One row per entity (77 rows) with a unique name, an encoded category, several identifier/count/measure columns, and rating-like floats. The text values appear to be encoded/anonymized (simple substitution-like cipher), so semantic labels of the text columns cannot be recovered. The many integer joins to t01/t03/t04 col_001 are likely spurious (overlapping small integer ranges), except the t02.col_001 references which repeat consistently across columns and may be genuine."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "row_id",
+     "description": "Surrogate primary key; sequential integers 1-77, one per row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "name",
+     "description": "Unique text value per row, mostly two words, sometimes with a middle initial ('Yckdvpje p. Psovq'). Looks like a full name of a person or place, but the text is encoded/anonymized so the exact nature is unverifiable.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "external_code",
+     "description": "Unique 5-6 digit numeric string stored as text (42821-1204953, mostly ~43k-140k). Pattern resembles a postal/ZIP code or external identifier, but no join validates this.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "count_a",
+     "description": "Non-negative integer 0-151 with repeats; references t02.col_001. Likely a count/quantity. The t02 join is accepted statistically and may be genuine, but the target's meaning is unknown.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "count_b",
+     "description": "Non-negative integer 0-70, moderate repeats. Likely a count/quantity. Its joins to t01/t03 col_001 are probably spurious (overlapping small-int ranges).",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "count_c",
+     "description": "Small non-negative integer 0-20 (mode 4-7). Likely a count or small ordinal score. Joins to t01/t03/t04 col_001 likely spurious.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "small_code",
+     "description": "Very small integer 0-5, heavily concentrated on 1 and 2. Reads as an ordinal code or low-range rating rather than a measured quantity.",
+     "status": "tentative"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "rating_small",
+     "description": "Integer 1-11, centered around 6. Consistent with a rating/count on a roughly 0-10 scale. Joins likely spurious.",
+     "status": "tentative"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "percentage_score",
+     "description": "Float bounded 33.9-100.0 with 100.0 occurring as a value; strongly suggests a percentage or 0-100 score.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "rating_low",
+     "description": "Float 0.2-7.3 with occasional nulls (1.3%). Looks like a rating on a ~0-5 or 0-10 scale (values exceed 5, so likely 0-10).",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "rating_high",
+     "description": "Near-unique float 0.43-9.4, median 3.6. Consistent with a rating on a 0-10 scale.",
+     "status": "tentative"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_015": {
+     "role": "numeric",
+     "name": "total_a",
+     "description": "Near-unique right-skewed integer 818-85677, median ~2932. Reads as a per-row total (e.g., a count of events/items), but the unit is unknown.",
+     "status": "tentative"
+    },
+    "col_016": {
+     "role": "numeric",
+     "name": "total_b",
+     "description": "Near-unique right-skewed integer 888-99107, median ~3040, distribution nearly identical to col_015 and consistently slightly larger in samples — likely a related total of the same kind as col_015 (e.g., a superset count).",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "loan": {
+   "table": {
+    "name": "loans",
+    "purpose": "One row per loan/credit account: links a borrower (t01) to a loan with a start date, term in months, total repayment amount (in cents), monthly installment, and a single-letter status/grade code. The arithmetic is consistent: col_004 / col_006 equals col_005 (the term) in the samples, confirming total = installment x term."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "loan_id",
+     "description": "Primary key of the table; unique integer identifier for each loan record.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "customer_id",
+     "description": "References t01.col_001 (one-to-one join accepted). Unique per row here, so it identifies the borrower/customer associated with the loan.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "loan_start_date",
+     "description": "Date associated with the loan (e.g. origination or start date), ranging 2049-07-05 to 2054-12-08. The exact semantic (start vs. due date) cannot be distinguished from the data alone.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "total_repayment_amount_cents",
+     "description": "Total amount to be repaid, stored in cents (range 49.80 to 5,908.20 in currency units). Confirmed by col_004 / col_006 = col_005 (term in months) in sample rows, i.e. total = monthly installment x term.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "term_months",
+     "description": "Loan term in months; only values 12, 24, 36, 48, 60 occur. Also joins to small lookup tables t02/t03/t04, which likely hold term-related reference data.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "monthly_installment",
+     "description": "Monthly payment amount in currency units (range 304 to 9,910). Consistent with col_004 / col_005.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "order": {
+   "table": {
+    "name": "",
+    "purpose": "Each row is an entity/transaction record keyed by col_001, linked many-to-one to a parent record in t01 (and possibly t03/t04) via col_002. The table's exact business meaning is unresolved: all non-key columns are opaque codes or unlabeled numbers with no readable values or lookup labels to anchor an interpretation."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of t07. Unique integer identifier for each row; values are sequential-looking integers in the range 29401-46338, suggesting an auto-increment or serial id.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "parent_id",
+     "description": "Foreign key referencing t01.col_001 (many-to-one, statistically accepted). Also accepted by LLM as a reference to t03.col_001 and t04.col_001, so the specific parent table is tentative; the statistical evidence favors t01. Each parent value appears up to ~5 times, so t07 holds multiple child records per parent.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "external_reference_number",
+     "description": "Near-unique large integer (399 to 99,994,199, uniformly distributed), not a key and not joined to any other table. Its high uniqueness and wide range suggest an externally assigned reference/serial number (e.g. document, account, or ticket number), but there is no evidence to pin down what it identifies.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "amount",
+     "description": "Positive numeric value, 1 to 14,882, right-skewed (median 2,596, mean 3,281). Plausibly a monetary amount or quantity associated with the row, but no unit or currency evidence exists.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "trans": {
+   "table": {
+    "name": "",
+    "purpose": "t08 is a large transactional/fact table (1,056,320 rows) keyed by a surrogate ID, with each row referencing a parent entity in t01 (and possibly t03/t04) via col_002 and carrying a date (col_003) plus several coded and numeric attributes. The exact business domain cannot be determined: the coded text values (e.g. 'UIMCY', 'FHSYJR') appear anonymized/obfuscated and the dates fall in 2049-2054, suggesting shifted or synthetic data. The structure (surrogate PK, many-to-one FK to t01, date, sparse coded fields, numeric amounts) is consistent with a line-item or event-level fact table, but the specific meaning is unresolved."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "row_id",
+     "description": "Surrogate primary key; unique integer 1..3,682,987 with no join relationships. Row identifier only, no business meaning detectable.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "parent_entity_id",
+     "description": "Foreign key to t01.col_001 (many-to-one, statistically accepted); also plausibly references t03.col_001 or t04.col_001. Identifies the t01 entity each row belongs to. Which of t01/t03/t04 is the true target (they may share an ID space) is tentative.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "record_date",
+     "description": "Date of the row, ranging 2049-01-01 to 2054-12-31 with heavy clustering on month-end dates (e.g. 2054-06-30, 2054-09-30). Likely a reporting/valuation/period-end date. The future-dated range suggests the data was date-shifted or is synthetic; the exact semantic (transaction date vs. period end) is tentative.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_008": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}
