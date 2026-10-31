@@ -1,0 +1,762 @@
+{
+ "db_id": "card_games",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 38,
+ "tables": {
+  "cards": {
+   "table": {
+    "name": "",
+    "purpose": "Core catalog of audiovisual titles (movies/TV episodes): each row is one title with its name, plot, genres, year, cast/crew references, category tags, boolean flags, and UUIDs used as cross-table keys. Text values appear obfuscated by a letter-substitution cipher, so literal strings are unreadable, but structure (plot synopses, image URLs, year, genre lists) is clear. Linked tables t02/t03/t04/t06 hold related entities (people/credits, lookup codes)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "row_id",
+     "description": "Auto-incrementing integer primary key for this table (1..56832, unique, no nulls).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "group_name",
+     "description": "Short name (991 distinct, each repeated up to ~1100 rows). Likely the name of a grouping entity such as a series/franchise or a common person name shared by many titles; the exact entity is not decidable from values.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "genres",
+     "description": "Comma-separated genre tags from a small closed set (9 distinct values/combinations, e.g. single tags and 2-3 tag combos).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "primary_type",
+     "description": "Single-valued attribute with 5 levels, one dominant (~87%). Could be a primary language, country, or title type; the dominant-vs-rare distribution fits a main type/medium code but the exact meaning is not decidable.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "identifier",
+     "name": "external_id_a",
+     "description": "Sparse (~49% null) unique integer ID in range 39000-241899 that joins one-to-one to keys in t02 and t03; an external identifier for the title in another dataset.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "identifier",
+     "name": "external_id_b",
+     "description": "Sparse (~24% null) unique integer ID (10000-241662) joining one-to-one to t02/t03 primary keys; a second external identifier.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "code",
+     "name": "cast_codes_a",
+     "description": "Comma-separated single letters from set {F,Y,M,P,I,...} (31 distinct combos). Same letter vocabulary as col_009/010/041, which look like encoded cast lists ({7}{I} patterns); likely an encoded cast/credit list, but the encoding is not decipherable.",
+     "status": "tentative"
+    },
+    "col_009": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_010": {
+     "role": "code",
+     "name": "cast_codes_b",
+     "description": "Another comma-separated letter-code list from the same {F,Y,M,P,I} vocabulary as col_008; likely an alternate encoded cast/credit field.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "small_count",
+     "description": "Small non-negative integer, mostly 0-14 with one outlier of 1000000 (likely a sentinel). Could be season/episode number or a count; not decidable.",
+     "status": "tentative"
+    },
+    "col_012": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_013": {
+     "role": "identifier",
+     "name": "related_id",
+     "description": "Integer ID (1-20900, ~8% null) referencing t02/t03/t04 primary keys many-to-one; a link to a related entity (e.g., person, credit, or parent record).",
+     "status": "tentative"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_015": {
+     "role": "category",
+     "name": "organization",
+     "description": "Rarely populated proper-name values (607 distinct, e.g. company-like names); plausibly a production company/distributor/award body, but not confirmable.",
+     "status": "tentative"
+    },
+    "col_016": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_017": {
+     "role": "free_text",
+     "name": "plot_synopsis",
+     "description": "Long free-text plot summaries/synopses of the title (sentences about characters and stories), ~46% populated.",
+     "status": "resolved"
+    },
+    "col_018": {
+     "role": "category",
+     "name": "keywords",
+     "description": "Rarely populated comma-separated keyword/tag list from a small vocabulary (36 distinct), e.g. theme tags.",
+     "status": "tentative"
+    },
+    "col_019": {
+     "role": "numeric",
+     "name": "release_year",
+     "description": "Year of release: values 1993, 1997, 2003, 2015 plus literal 'future' for unreleased titles.",
+     "status": "resolved"
+    },
+    "col_020": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_021": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_022": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_023": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_024": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_025": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_026": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_027": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_028": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_029": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_030": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_031": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_032": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_033": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_034": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_035": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_036": {
+     "role": "category",
+     "name": "region_list",
+     "description": "Comma-separated values from a name-like vocabulary (1157 distinct, top values repeated hundreds of times); plausibly countries or languages of release, but not confirmable.",
+     "status": "tentative"
+    },
+    "col_037": {
+     "role": "category",
+     "name": "status_code",
+     "description": "Single code from a 15-value closed set, one dominant value (97%). Likely a status/type/release-state code; exact meanings unknown.",
+     "status": "tentative"
+    },
+    "col_038": {
+     "role": "code",
+     "name": "feature_flags_json",
+     "description": "JSON object with three boolean-like keys (true/false values); a rarely populated set of feature flags for the title. Key meanings undecipherable.",
+     "status": "tentative"
+    },
+    "col_039": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_040": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_041": {
+     "role": "code",
+     "name": "encoded_cast_list",
+     "description": "Structured pattern like '{7}{I}' / '{2}{Y}{Y}{M}{M}' combining numbers with the same letter codes as col_008/010; an encoded cast/credit list (number + person code).",
+     "status": "tentative"
+    },
+    "col_042": {
+     "role": "identifier",
+     "name": "ref_id_1",
+     "description": "Large integer ID (up to 535593) referencing t03 primary key many-to-one; a foreign key to a related record (e.g., person/credit).",
+     "status": "tentative"
+    },
+    "col_043": {
+     "role": "identifier",
+     "name": "ref_id_2",
+     "description": "Integer ID referencing t03/t02 primary keys many-to-one; another foreign key to a related record.",
+     "status": "tentative"
+    },
+    "col_044": {
+     "role": "identifier",
+     "name": "ref_id_3",
+     "description": "Sparse integer ID (mostly 66000-77000 range) referencing t04 primary key; a foreign key to a t04 entity.",
+     "status": "tentative"
+    },
+    "col_045": {
+     "role": "identifier",
+     "name": "uuid_a",
+     "description": "Unique UUID-like string, one per row; an alternate unique identifier for the title.",
+     "status": "resolved"
+    },
+    "col_046": {
+     "role": "identifier",
+     "name": "ref_id_4",
+     "description": "Sparse integer ID (303-70586) referencing t02/t03/t04 keys many-to-one; a foreign key to a related record.",
+     "status": "tentative"
+    },
+    "col_047": {
+     "role": "identifier",
+     "name": "ref_id_5",
+     "description": "Sparse integer ID (9-87921) referencing t02/t03 keys many-to-one; a foreign key to a related record.",
+     "status": "tentative"
+    },
+    "col_048": {
+     "role": "identifier",
+     "name": "ref_id_6",
+     "description": "Sparse large integer ID (1-508409), nearly unique when present; likely another external/reference identifier, but no accepted join.",
+     "status": "tentative"
+    },
+    "col_049": {
+     "role": "free_text",
+     "name": "title",
+     "description": "Display title of the work (21738 distinct, name/title-like strings, e.g. 'Uvtaataf Izwwr'); the primary title field.",
+     "status": "resolved"
+    },
+    "col_050": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_051": {
+     "role": "date",
+     "name": "event_date",
+     "description": "Date values (YYYY/M/D) but the inferred range (2049-2077) is inconsistent with the sample years (2006-2021), suggesting a shifted or misparsed date; likely a release/event date. Treat with caution.",
+     "status": "tentative"
+    },
+    "col_052": {
+     "role": "free_text",
+     "name": "notes_rules",
+     "description": "Free-text notes/rules, sometimes prefixed with the letter codes from the cast vocabulary ({Y}: ...); appears to be game-like or review rules text attached to the title.",
+     "status": "tentative"
+    },
+    "col_053": {
+     "role": "category",
+     "name": "category_a",
+     "description": "Category/genre-like labels (2992 distinct, e.g. 'Tauoxao', 'Uhmlwms'), often with a dash-separated qualifier; a categorized label for the title.",
+     "status": "tentative"
+    },
+    "col_054": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_055": {
+     "role": "numeric",
+     "name": "count_with_notation",
+     "description": "Small count (mostly 1-5) with occasional notation values ('∞', '2+*'); likely a quantity such as a count of items/cast, stored loosely.",
+     "status": "tentative"
+    },
+    "col_056": {
+     "role": "code",
+     "name": "code_list",
+     "description": "Comma-separated list of short alphanumeric codes drawn from the same vocabulary as col_063 (which joins to lookup table t06); a list of lookup codes attached to the title.",
+     "status": "tentative"
+    },
+    "col_057": {
+     "role": "category",
+     "name": "theme_tags",
+     "description": "Comma-separated tag list from a 64-value vocabulary (e.g. 'qwktxtauwmo'); theme/attribute tags.",
+     "status": "tentative"
+    },
+    "col_058": {
+     "role": "code",
+     "name": "image_links_json",
+     "description": "JSON object containing image URLs (keys include a primary link, an alternate link, and a thumbnail); per-title artwork references.",
+     "status": "resolved"
+    },
+    "col_059": {
+     "role": "category",
+     "name": "medium_type",
+     "description": "Four-level code, dominant 'lhqqha' (='small' in the ciphered text, cf. 'lhqqha yhak' = 'small screen' in plot text) vs 'palhqqha' (='big screen'); likely distinguishes TV/small-screen vs theatrical/big-screen titles.",
+     "status": "tentative"
+    },
+    "col_060": {
+     "role": "identifier",
+     "name": "uuid_b",
+     "description": "UUID-like string, ~99% unique; an entity identifier (e.g., a linked record key), target meaning unknown.",
+     "status": "tentative"
+    },
+    "col_061": {
+     "role": "identifier",
+     "name": "uuid_c",
+     "description": "UUID-like string, 48% unique with repeats up to 35; an identifier for a shared/parent entity (e.g., series or group key).",
+     "status": "tentative"
+    },
+    "col_062": {
+     "role": "identifier",
+     "name": "uuid_d",
+     "description": "UUID-like string, 38% unique with repeats up to ~693; another shared-entity identifier, repeats align with the most common titles/names.",
+     "status": "tentative"
+    },
+    "col_063": {
+     "role": "code",
+     "name": "lookup_code",
+     "description": "Short alphanumeric code (536 distinct) that joins many-to-one to t06.col_005; a reference to a lookup entry in t06 (e.g., certificate/region/edition code).",
+     "status": "resolved"
+    },
+    "col_064": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_065": {
+     "role": "category",
+     "name": "name_list",
+     "description": "Comma-separated name-like values (1505 distinct, e.g. 'Xpmx', 'Zpqxa,Itexmk'); plausibly countries, languages, or role names; not confirmable.",
+     "status": "tentative"
+    },
+    "col_066": {
+     "role": "category",
+     "name": "tag_b",
+     "description": "Rarely populated tag from an 8-value vocabulary overlapping col_018 ('Rwfwakxms', 'Uahi'); a secondary tag/keyword field.",
+     "status": "tentative"
+    },
+    "col_067": {
+     "role": "identifier",
+     "name": "ref_id_7",
+     "description": "Integer ID (86-232634) referencing t03/t02 keys many-to-one; a foreign key to a related record.",
+     "status": "tentative"
+    },
+    "col_068": {
+     "role": "free_text",
+     "name": "notes_rules_b",
+     "description": "Free-text notes/rules, largely overlapping col_052 content (same sentences, plus templated '({O}: Xkk {F}.)' patterns); an alternate/expanded notes field.",
+     "status": "tentative"
+    },
+    "col_069": {
+     "role": "numeric",
+     "name": "count_with_notation_b",
+     "description": "Small count (mostly 1-5, up to 99) with notation values ('*+1'); same loose-count pattern as col_055.",
+     "status": "tentative"
+    },
+    "col_070": {
+     "role": "category",
+     "name": "category_b",
+     "description": "Category labels (2022 distinct) overlapping the col_053 vocabulary, often 'prefix — name' format; a categorized label, more populated than col_053.",
+     "status": "tentative"
+    },
+    "col_071": {
+     "role": "category",
+     "name": "primary_category",
+     "description": "Single (occasionally comma-separated) category from a 37-value set, dominant 'Lmwxopmw' (43%); the primary category/type of the title.",
+     "status": "tentative"
+    },
+    "col_072": {
+     "role": "identifier",
+     "name": "canonical_uuid",
+     "description": "Unique UUID per row, referenced by t02.col_008, t03.col_004 and t04.col_004; the canonical cross-table key for this title.",
+     "status": "resolved"
+    },
+    "col_073": {
+     "role": "identifier",
+     "name": "related_uuid_list",
+     "description": "Comma-separated list of UUIDs (mostly single), 96% unique; a list of related entity keys (e.g., linked titles/versions).",
+     "status": "tentative"
+    },
+    "col_074": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "foreign_data": {
+   "table": {
+    "name": "cards",
+    "purpose": "One row per card (per printed face) of a trading-card game (Magic: The Gathering–style). Text fields are stored in many languages (English, German, Japanese, Chinese, Korean, Russian), and Latin-script values appear obfuscated/enciphered, but structure (typelines like 'Instant — Arcane', token spawn rules, UUIDs, set-like references) clearly identifies a card/face table."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "card_id",
+     "description": "Synthetic primary key; unique integer 1..~229k, one per row (card face). Referenced by several columns in t01 and t06.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "free_text",
+     "name": "flavor_text",
+     "description": "Flavor text / italic quote on the card. Multilingual free text, often in quotation marks; empty for ~44% of cards (typical for flavor text).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "card_type",
+     "description": "Coarse card type/category with only 16 distinct values (e.g. values matching counts of Creature/Instant/Sorcery-like categories, one value resembling 'Planeswalker (…)'). Distribution (~30k per value) matches a type classification. Could alternatively be a layout/rarity grouping, but type is the best fit.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "multiverseid",
+     "description": "Mostly-unique integer in the 73k–508k range, null for ~17% of rows. Pattern fits a printing identifier such as MTG's multiverseid (null for tokens/some digital-only cards). Exact meaning not fully confirmed.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "free_text",
+     "name": "card_name",
+     "description": "Card name, stored per language (e.g. Japanese '霊程の振り子', Korean '제스카이 방어벽' = 'Jeskai Wall'). ~70% unique; duplicates come from reprints and shared names.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "free_text",
+     "name": "rules_text",
+     "description": "Rules/oracle text of the card, multilingual; includes game mechanics (e.g. token-spawn rules '7/7 white Soldier creature', keyword lines like 'Flying' / '飛行'). Empty for ~16% (basic lands, faces without text).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "type_line",
+     "description": "Full type line, e.g. 'Instant — Arcane' / 'Legendary Creature — …' patterns; ~16.6k distinct combinations, empty for ~14% of rows.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "identifier",
+     "name": "printing_uuid",
+     "description": "UUID (scryfall-style) identifying the card printing; references t01.col_072 many-to-one, linking each card face to its parent printing/set entry in t01.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "legalities": {
+   "table": {
+    "name": "",
+    "purpose": "t03 is a large fact/detail table (427,907 rows) whose rows each link to a single record in t01 via a UUID-style key; it carries a 15-value categorical code and a 3-value status flag. The exact business meaning cannot be determined from the obfuscated values, but the structure (child of t01, many rows per parent) suggests line items or events associated with t01 records."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Surrogate primary key; sequential integer 1..427907 with no nulls, unique across the table. Referenced by many columns in t01 and t06.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "",
+     "description": "A 15-level categorical code (obfuscated strings, roughly uniform frequencies ~55k each). Could be a type, region, or group code; the specific meaning of each value is not recoverable from the data.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "status",
+     "description": "A 3-value flag dominated by 'Rwfxr' (99.3%), with rare 'Yxaawk' (0.5%) and 'Mwuomtlowk' (0.15%). Reads like a status/state field with one default value and two exceptional states; the actual meanings of the codes are unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "t01_id",
+     "description": "UUID-formatted (obfuscated) foreign key referencing t01.col_072; many rows of t03 map to one t01 record (many_to_one). Not unique in t03 (max 15 repeats per value).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "rulings": {
+   "table": {
+    "name": "rulings",
+    "purpose": "Likely a notes/comments table: each row is a free-text note (col_003) attached to a parent record in t01 (via col_004) on a given date (col_002). The text appears to be obfuscated/scrambled English (letter-substituted), so exact content is unreadable, but the structure (long sentences, repeated phrases like 'Xkdwaopmw' = 'Management'?) suggests case/incident notes. Marked tentative because the text is encoded and cannot be read directly."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "note_id",
+     "description": "Primary key; sequential integer 1..87769 uniquely identifying each row (note).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "note_date",
+     "description": "Date of the note, stored as a string. Range 2060-10-04 to 2077-02-05; the future years suggest synthetic/anonymized data (possibly a shifted real date).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "free_text",
+     "name": "note_text",
+     "description": "Body text of the note. Content is character-substituted (obfuscated) English prose, so the actual meaning of the text cannot be verified; it is long free-form narrative text.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "parent_record_id",
+     "description": "UUID-like identifier (obfuscated characters) referencing a record in t01 (t01.col_072), many notes to one parent record.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "set_translations": {
+   "table": {
+    "name": "",
+    "purpose": "t05 appears to be a line-item or product-level table (1210 rows) with a category/type column, a code referencing t06, and a mostly-unique free-text title/name column. Exact domain is unresolved due to obfuscated values."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key; sequential integer 1-1210, one per row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "category",
+     "description": "Low-cardinality text (10 distinct values, evenly distributed ~121 each) acting as a category/type label. Values are obfuscated names; exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "reference_code",
+     "description": "3-character alphanumeric code (121 distinct, ~10 rows each) referencing t06.col_005 (many-to-one). Likely a foreign key to a lookup/entity table in t06; exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "free_text",
+     "name": "title",
+     "description": "Free-text title/name, multilingual (Korean, Russian, Japanese, transliterated text), ~19% null, roughly half unique. Plausibly a product/edition title or localized name; exact meaning unresolved.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "sets": {
+   "table": {
+    "name": "",
+    "purpose": "Each row appears to be a work item / task / project record: it has a unique ID, a unique short code, a title, a date, several boolean flags, an owner reference (col_002/col_020) into t01/t02/t03, and a status/category field (col_021). The exact domain cannot be confirmed because all text is obfuscated/encrypted, so most columns are only structurally characterized. Note: col_002 and col_020 are near-duplicates (same top values and range), suggesting redundant copies of the same foreign key. col_005 is referenced by t01.col_063 and t05.col_003, so t06 is a lookup/master table for other tables via this code. col_012 (one-to-one into t01/t02/t03) and col_014 (a unique name, same 36.5% fill rate as col_012) look like an optional linked record and its denormalized name. col_004 holds JSON-like structured payloads (obfuscated keys) in ~25% of rows. col_018 is a date (2049-2077, many Jan-1 values, suggesting planned/annual dates). The boolean columns col_006-col_010 are flags with unknown semantics (unresolved). col_021 is a low-cardinality status/category field (20 values, e.g. 'vmhqh' dominant). Text values appear to be encoded (possibly a substitution cipher), so exact meanings of names, titles and statuses cannot be recovered from the evidence alone."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key; sequential integer 1-551, one per row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "owner_id",
+     "description": "Foreign key referencing t01/t02/t03 primary keys (many-to-one). Duplicated by col_020 (same top values and range). Likely the person/team/department this record belongs to.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "free_text",
+     "name": "details_json",
+     "description": "JSON-formatted structured payload (obfuscated keys, nested objects with numeric fields), present in ~25% of rows. Looks like a serialized detail/configuration blob; exact schema unknown.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "code",
+     "description": "Unique short alphanumeric code per row (e.g. 'R78', 'VFMA'). Referenced by t01.col_063 and t05.col_003, so it acts as the external business key/identifier of this record used by other tables.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_008": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_010": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_011": {
+     "role": "code",
+     "name": "type_code",
+     "description": "Short code with a few dominant values (VQWT, KWBXPRO, KLT, VXMR) covering most rows plus a long tail; looks like a type/classification code. Exact meanings are obfuscated.",
+     "status": "tentative"
+    },
+    "col_012": {
+     "role": "foreign_key",
+     "name": "linked_record_id",
+     "description": "Optional integer, one-to-one join to t01/t02/t03 primary keys, filled in ~36% of rows. Appears to reference a specific record in another table; its display name is likely denormalized in col_014 (identical null rate and uniqueness).",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_014": {
+     "role": "free_text",
+     "name": "linked_record_name",
+     "description": "Unique name-like text filled in the same ~36% of rows as col_012; likely the denormalized name of the record referenced by col_012. Text is obfuscated.",
+     "status": "tentative"
+    },
+    "col_015": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_016": {
+     "role": "free_text",
+     "name": "title",
+     "description": "Unique non-null title/name of the record (e.g. 'Qxftl Vrxswm Mwixmku 2447'); often combines a name with a year-like number. Text is obfuscated.",
+     "status": "resolved"
+    },
+    "col_017": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_018": {
+     "role": "date",
+     "name": "date",
+     "description": "Non-null date between 2049 and 2077, with many January-1 values, suggesting a planned/target date (possibly fiscal-year or start date). Exact semantic (start vs due date) is unclear.",
+     "status": "tentative"
+    },
+    "col_019": {
+     "role": "foreign_key",
+     "name": "secondary_ref_id",
+     "description": "Optional integer referencing t02/t03/t04 primary keys (many-to-one), ~47% fill, with one dominant value 62 (21 rows). Likely a second foreign key to a different entity than col_002/col_020.",
+     "status": "tentative"
+    },
+    "col_020": {
+     "role": "foreign_key",
+     "name": "owner_id_copy",
+     "description": "Near-duplicate of col_002: same top values, range and joins into t01/t02/t03. Likely a redundant copy of the same owner foreign key (possibly a corrected/updated version).",
+     "status": "tentative"
+    },
+    "col_021": {
+     "role": "category",
+     "name": "status",
+     "description": "Non-null low-cardinality field with 20 values, dominated by 'vmhqh' (234 rows) followed by 'wcvxautha', 'qwqhmxytrtx', 'yhc', 'kpwr_kwlj'. Clearly a status/category field; the values are obfuscated so individual statuses cannot be decoded.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

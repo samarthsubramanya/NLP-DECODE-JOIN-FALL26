@@ -1,0 +1,426 @@
+{
+ "db_id": "thrombosis_prediction",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 1,
+ "tables": {
+  "Examination": {
+   "table": {
+    "name": "",
+    "purpose": "Unresolved. The table's contents are heavily coded/obfuscated (e.g. col_012 appears to be text encoded with a letter-substitution cipher, and most columns carry opaque short codes). The row count (806), a near-unique numeric identifier, a future-dated date column, several small numeric measures and +/- flag columns do not match any identifiable real-world schema, so the table's meaning cannot be determined from the evidence alone. Its relationship to t02 and t03 is also unknown: no column shows accepted joins, so no foreign-key structure can be confirmed."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "",
+     "description": "Near-unique integer (763 distinct in 806 rows, ~99% unique), no null-pattern structure and no joins to other tables. Plausibly a row identifier or an external reference number, but the values themselves carry no decodable meaning. Could also be a measured quantity (values 14,872–9,334,040) rather than an ID; the evidence does not distinguish these readings.",
+     "status": "tentative"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "",
+     "description": "A date between 2045-04-18 and 2054-04-17, i.e. strictly future-dated relative to any plausible collection date, spread over ~9 years. Likely a due/maturity/expiry/scheduled date rather than an event record date, but nothing in the data confirms which.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "",
+     "description": "Integer taking only the values 0, 4, 16, 64, 256, 1024, 4096 (and possibly 4094) — powers of two (plus one apparent 4094 outlier). This strongly suggests a bitmask/flag field or a size class encoded as powers of 2, but the individual bit meanings cannot be determined.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_008": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "boolean",
+     "name": "",
+     "description": "Binary flag taking only '+' or '-' (82% null, '-' more common). A yes/present ('+') vs absent ('-') indicator, but what condition it indicates is unknown.",
+     "status": "tentative"
+    },
+    "col_010": {
+     "role": "boolean",
+     "name": "",
+     "description": "Binary flag taking only '+' or '-' (82% null), with the same null rate as col_009, suggesting the two flags are recorded together. What it indicates is unknown.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "boolean",
+     "name": "",
+     "description": "Binary flag taking only '+' or '-' (73% null). Same +/- convention as col_009/col_010; meaning unknown.",
+     "status": "tentative"
+    },
+    "col_012": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Laboratory": {
+   "table": {
+    "name": "",
+    "purpose": "Per-observation or per-measurement records of astronomical objects (likely stars): each row references an object in t03 via col_001 and carries a date plus many mostly-null numeric measurement columns, several of which look like magnitudes (values ~4-13, some ~38) and censored text values like '<8.0'. The exact instrument/survey is unknown, and dates lie in 2037-2055, so the data may be synthetic or forecast-dated. Most columns cannot be pinned down beyond 'numeric measurement of the object'. The table is likely a child/detail table of t03 (objects) and possibly related to t01 via t03."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "object_id",
+     "description": "Identifier of the observed object; references t03.col_001 (many rows in t02 per object, ~302 distinct objects over 13908 rows).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "observation_date",
+     "description": "Date of the observation/measurement, ranging 2037-01-27 to 2055-03-04. Future dates suggest synthetic or forecast data; the column is clearly a date but what it dates is only tentatively the observation.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "magnitude_band_1",
+     "description": "Float concentrated 6.7-7.6 (range 0-9.9), one decimal; plausibly a magnitude in some photometric band, but the band is unknown.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "numeric",
+     "name": "magnitude_band_2",
+     "description": "Float concentrated ~4.0-4.5 (range 1-5.8); plausibly another magnitude/band value.",
+     "status": "tentative"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_015": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_016": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_017": {
+     "role": "numeric",
+     "name": "magnitude_band_3",
+     "description": "Float centered ~7.0 (0.9-35.2); plausibly a magnitude, but could be another physical quantity.",
+     "status": "tentative"
+    },
+    "col_018": {
+     "role": "numeric",
+     "name": "magnitude_band_4",
+     "description": "Float centered ~4.3 (0.4-6.6); plausibly a magnitude in another band.",
+     "status": "tentative"
+    },
+    "col_019": {
+     "role": "numeric",
+     "name": "magnitude_band_5",
+     "description": "Float centered ~12.5 (1.3-18.9); plausibly a fainter-band magnitude.",
+     "status": "tentative"
+    },
+    "col_020": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_021": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_022": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_023": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_024": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_025": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_026": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_027": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_028": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_029": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_030": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_031": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_032": {
+     "role": "numeric",
+     "name": "censored_measurement_1",
+     "description": "Text holding a number or a censored value ('<8.0', '<8.7', '-', '+', '7+'); i.e. a measurement with upper/lower limits. The underlying quantity (plausibly a magnitude ~7-8) is tentative.",
+     "status": "tentative"
+    },
+    "col_033": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_034": {
+     "role": "numeric",
+     "name": "censored_measurement_2",
+     "description": "Text holding a number or censored value ('<38', '<78.5', '<41.5'); a measurement with upper limits, plausibly ~38-78 in some unit. Underlying quantity unresolved.",
+     "status": "tentative"
+    },
+    "col_035": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_036": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_037": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_038": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_039": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_040": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_041": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_042": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_043": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_044": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Patient": {
+   "table": {
+    "name": "Patient",
+    "purpose": "One row per record (likely a person or case) identified by an ID that is referenced by t02; the row carries a type/status code, a start date, and two future-dated milestone dates, plus a sign/indicator flag and a free-text category/notes field. The exact domain is unresolved, but the structure suggests a lifecycle/contract or membership record with planned future events. The future-dated columns (2047-2054) suggest either planned dates or a data-quality offset (e.g., dates shifted forward), which cannot be confirmed from the data alone."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "record_id",
+     "description": "Primary key of t03; unique integer identifier for each row. Referenced by t02.col_001 (many rows in t02 point to one row here), so this is the parent/master record ID.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "record_type_code",
+     "description": "Single-letter code classifying the record: 'D' (dominant, ~83%), 'J' (~16%), or empty (13 rows). Likely a type/category flag (e.g., D = individual/standard, J = joint/other). Exact meanings of D and J are unresolved.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "start_date",
+     "description": "Date associated with the record's origin, spanning 1968-2063 (future values suggest data-entry errors or shifted dates). Mostly distinct, roughly one per record — plausibly the record's start/birth/registration date.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "planned_end_date",
+     "description": "Future date (2047-2054), null in ~17% of rows, with heavy repetition of a few values (e.g., 2053-08-20 appears 64 times). Looks like a scheduled/contractual end or maturity date, possibly a default expiry assigned in batches. The uniformly future range could also indicate a systematic date offset.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "event_date",
+     "description": "Second future date (2028-2054), null in ~20% of rows, mostly distinct. A per-record future event date (e.g., review, renewal, or termination). Relationship to col_004 unclear; could alternatively be an actual vs. planned date.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "code",
+     "name": "sign_indicator",
+     "description": "Short flag: '-' (~58%), '+' (~39%), empty, and '+(' (3 rows). Looks like a plus/minus indicator (e.g., credit/debit, active/inactive, or a sign of a quantity). Exact semantics unresolved.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

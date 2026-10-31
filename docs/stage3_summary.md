@@ -189,6 +189,8 @@ All runs: glm-5-3, `low` reasoning, grouped adjudication unless noted. Joins are
 | named (stripped) | real table and column names and values; descriptions and declared keys withheld (the pipeline never reads them) | `bird`, `fiben`, `beaver` |
 | obfuscated | columns renamed `col_NNN` by position, table names kept: the team's `bird_dev_obfuscated.duckdb` | `bird_obfuscated` |
 | obfuscated, tables hidden too | as above, tables renamed `t01`, `t02`, … (`evals/hide_tables.py`) | `bird_obfuscated/hidden_tables_low` |
+| + dates shifted | as above, dates moved 56 years forward (`evals/perturb_values.py --level dates`) | `bird_obfuscated/perturbed_dates_low` |
+| + dates and text scrambled | as above, every text value through one letter/digit substitution cipher per database (`--level all`); integers kept | `bird_obfuscated/perturbed_all_low` |
 
 ### Joins (final graph `graphs.llm`)
 
@@ -211,6 +213,8 @@ All runs: glm-5-3, `low` reasoning, grouped adjudication unless noted. Joins are
 |---|---|---|---|---|
 | obfuscated (`single`) | 568 / 189 / 41 | .745 | .635 | 52% |
 | obfuscated, tables hidden | 455 / 244 / 99 | .670 | .582 | 47% |
+| + dates shifted | 413 / 255 / 130 | .689 | .593 | 50% |
+| + dates and text scrambled | 212 / 320 / 266 | .580 | .518 | 37% |
 
 Cosine uses `qwen3-embedding-8b` on Voyager. The gateway occasionally returned another request's vectors, so the grader fetches every batch twice and keeps only matching results.
 
@@ -222,10 +226,16 @@ BIRD is public and the model knows it:
 |---|---|---|
 | obfuscated, table names kept | 513 / 755 (68%) | – |
 | obfuscated, tables hidden | 277 / 668 (41%) | 36 / 75 |
+| + dates shifted | 232 / 665 (35%) | 41 / 75 |
+| + dates and text scrambled | 59 / 516 (11%) | 28 / 75 |
 | FIBEN obfuscated | 0 / 107 non-id columns | – |
 
 - **What counts as recovery:** a column counts only if its name matches exactly, with BIRD's own casing and spacing (`Charter Funding Type`, `scryfallIllustrationId`). Only 52 of the 277 tables-hidden matches are generic names like `id` or `name`. So recovery means recognizing the source dataset, not inferring the meaning.
 - **Hiding table names reduces recovery but cannot remove it,** because the values themselves identify public datasets (school records, Magic: The Gathering cards).
+- **Value perturbation (`evals/perturb_values.py`) shows the cue is the text.** Shifting dates barely moves recovery (41% → 35%); scrambling text drops it to 11%, and distinctive matches from 225 to 29. Most of those 29 follow from the data's shape (`Latitude`/`Longitude` ranges, the untouched 14-digit `CDSCode`, HTML punctuation in `Body`/`Tags`, dates and counts); a few with exact casing (`PostTypeId`, `AnswerCount`, `multiverseid`) suggest the Stack Exchange and MTGJSON schemas are still recognized from structure.
+- **But the same text is the real evidence.** Scrambling it cuts description quality (cosine .670 → .580, gap over chance .088 → .062, own reference first 47% → 37%) and the model honestly marks 266 columns unresolved. So BIRD cannot give a memorization-free description score: removing what the model recognizes removes what it reads. A clean score needs unseen data (FIBEN, a synthetic or private database).
+- **Joins are unaffected** by perturbation (final F1 .262–.267 in every setting); scrambled text makes the judge accept a few more false joins (17 → 22).
+- The perturbation rewrites only the Stage 1 profiles of a scratch copy, the only place Stage 3 sees values, and keeps containment, uniqueness, distinct counts, density and lengths, so the Stage 2a and 2b outputs remain valid. Integers are not shifted: a consistent shift of key domains would also shift measures that fall inside key ranges, and choosing which overlaps are real joins would need gold labels.
 - **FIBEN shows no recovery,** so it is the clean benchmark for descriptions.
 - **Join verdicts barely depend on names** (the same band verdict in 46 vs 44 of 47 shared records). Hiding table names did let 17 false joins through instead of 6.
 
@@ -250,5 +260,5 @@ The obfuscated run (`bird_dev_obfuscated.duckdb`, columns `col_NNN`) still shows
 
 ## 7. Changelog
 
-- **2026-10-31** Prompts explain subtype links; band payloads carry `source_is_primary_key`; `--repeat` for variance runs. FIBEN graded against `FIBEN.sql`; BIRD tables-hidden run; 3-repeat variance check.
+- **2026-10-31** `evals/perturb_values.py`: date shift and text cipher on profiles; two BIRD perturbation runs graded. Prompts explain subtype links; band payloads carry `source_is_primary_key`; `--repeat` for variance runs. FIBEN graded against `FIBEN.sql`; BIRD tables-hidden run; 3-repeat variance check.
 - **Earlier** Grouped adjudication (default) beside `single`; `--no-describe`; empty-reply fallback without reasoning; empty description → `unresolved`; first Voyager runs on BIRD (named, obfuscated), BEAVER and FIBEN, graded by `evals/grade_*.py`.

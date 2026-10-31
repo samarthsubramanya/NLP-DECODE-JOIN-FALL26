@@ -1,0 +1,380 @@
+{
+ "db_id": "student_club",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 8,
+ "tables": {
+  "attendance": {
+   "table": {
+    "name": "",
+    "purpose": "t01 is a two-column link/join table: each row pairs an entity from t03 (col_001) with an entity from t07 (col_002). The values are opaque identifiers and no labels or semantic evidence are available, so the underlying domain (what t03 and t07 represent) cannot be determined. The table itself is best described as a many-to-many association table between t03 and t07, but its real-world meaning is unresolved."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "budget": {
+   "table": {
+    "name": "budget",
+    "purpose": "A 52-row detail table keyed by an opaque ID (col_001), referencing a parent/lookup table t03 (col_007) and referenced by t04. The numeric columns suggest a part/whole breakdown: col_003 + col_004 consistently equals col_005 (e.g. 67.81 + 7.19 = 75; 0 + 20 = 20; 0 + 75 = 75), so each row records two components and their total. The specific business domain cannot be determined from the coded values."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "row_id",
+     "description": "Primary key of t02. Opaque 17-character token prefixed 'lhw', unique across all 52 rows. Referenced by t04.col_007, so t02 is a parent of t04.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "category",
+     "description": "Low-cardinality text field with 5 values (e.g. 'Yaai', 'Jibhlrzdhphqr', 'Gjlnzqo', 'Dghjnhl Ozyrd', 'Wxcf R-Dtzlrd'). Acts as a grouping/classification attribute, but the coded strings give no evidence of what the categories mean.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "component_a",
+     "description": "Non-negative float (0 to 327.07, median 0, 28 rows are 0.0). Together with col_004 it sums to col_005 in every sample row, so it is one additive component of the total col_005. Its units/meaning are unknown.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "component_b",
+     "description": "Float ranging from -24.25 to 150.0 (can be negative, unlike col_003). Adds with col_003 to give col_005. Possibly an adjustment/remainder amount, but the meaning is not determinable from the data.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "total",
+     "description": "Integer 10 to 350. In all observed rows col_005 = col_003 + col_004, so it is the total of the two component amounts. Units unknown.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "code",
+     "name": "status_code",
+     "description": "Three-valued text code ('Aghq' 23, 'Wxadhi' 22, 'Gxjqqzqo' 7). Behaves like a status/type flag, but the coded values cannot be decoded.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "foreign_key",
+     "name": "t03_reference",
+     "description": "Foreign key to t03.col_001 (many-to-one). Each t03 row is referenced by up to ~4 t02 rows, so t02 is a detail/child table of t03. The lookup labels in t03.col_002 are also opaque.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "event": {
+   "table": {
+    "name": "event",
+    "purpose": "Events table: each row is a scheduled event with a title, date/time, category, optional description, venue, and status. Its ID is referenced by t01 and t02, suggesting those tables hold related detail (e.g., attendees, agenda items, or records linked to events). Note: all text values appear to be passed through a letter-substitution cipher (e.g. recurring tokens like \"Phhrzqo\", \"Ojph\", \"Wappcqzre\" behave like real words such as category and platform names), so exact wording cannot be recovered; meanings below are inferred from structure, value shapes, and join behavior."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "event_id",
+     "description": "Primary key of the table. Opaque 17-character token prefixed 'lhw', unique across all 42 rows. Referenced by t01.col_001 and t02.col_007 (many-to-one from those tables to this one), so it is the identifier other tables use to point at an event.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "event_title",
+     "description": "Human-readable event title/name. Nearly unique (39 distinct in 42 rows), short text, values look like proper-noun phrases (e.g. 'Xjcot Acr Xaci', \"Nzi'd Wjlh\"). Text is ciphered so exact wording is unreadable, but the shape (short, mostly-unique label per row) clearly supports 'title'.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "event_start_datetime",
+     "description": "Timestamp of the event, stored as text in ISO-8601 form (inferred type date). Range 2075-09-01 to 2076-05-05, nearly one value per row, times at whole/half hours — consistent with a scheduled start date and time. The far-future years suggest synthetic/sample data, but the column's meaning as the event date/time is clear.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "event_type",
+     "description": "Event category/type: only 8 distinct values, dominated by one value (16/42) that also appears inside many titles in col_002 (e.g. 'Ayyzwhld phhrzqo - ...'), plus values that look like format/platform names (one resembles a '… Spaces' style online format, another a broadcast/'live' format, another a campaign-style type). Ciphered text prevents naming the exact categories, but the low-cardinality, title-correlated pattern clearly indicates a type/category column.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "event_description",
+     "description": "Free-text description of the event. Null for ~52% of rows; the non-null values are long sentences (some truncated with an ellipsis) describing what the event involves, including references to the same category words found in col_004. Clearly a descriptive notes field; exact content unreadable due to the cipher.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "event_location",
+     "description": "Venue/location of the event. Null for ~14% of rows. Values are either street addresses ('255 U. Pjzq Drlhrr', '955 H. Ujdtzqoraq Dr.', '376 D. Pjgxh Dr.' — i.e. '<number> <street> <Street/Dr.>'), a room/building code ('PC 327', the most common value, 19 rows), or online-platform location names ('Wjpgcd … drjizcp' pattern, where the first word matches a platform-like token also seen in col_004). Mixed physical and virtual locations; exact names ciphered.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "event_status",
+     "description": "Event status: exactly 3 distinct values with no nulls, distributed 18/13/11 — the shape of a status enum (plausibly something like confirmed / tentative / cancelled, or in-person vs. remote vs. hybrid). The ciphered text makes it impossible to determine which three statuses these are, so the specific meanings are unresolved even though the column's role as a low-cardinality status flag is clear.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "expense": {
+   "table": {
+    "name": "expense",
+    "purpose": "A 32-row transactional/fact table. Each row references a record in t07 (3 distinct values) and a record in t02 (24 distinct values), carries a date, a monetary-looking amount, a category-like text, and a near-constant flag. The specific business domain cannot be determined from the data (all labels are opaque/coded strings)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key. Unique 17-character opaque identifier for each row of t04 (all values prefixed 'lhw').",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "category",
+     "description": "Free-text category or tag list. 12 distinct values, some comma-separated (e.g. 'Ujrhl, wtzgd, waanzhd'), suggesting multi-valued tags. Values are opaque coded strings; exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "date",
+     "description": "Date of the event/transaction, ranging 2075-08-20 to 2075-11-19 (roughly weekly/biweekly occurrences). The year 2075 suggests synthetic or shifted data.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "amount",
+     "description": "Positive numeric amount, 6.0 to 295.12, median ~54. Plausibly a monetary amount or quantity. Units unknown.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "boolean",
+     "name": "flag",
+     "description": "Near-constant single value 'rlch' (31 of 32 rows, one null). Likely a boolean/status flag where 'rlch' denotes the (only) observed state, e.g. 'active' or 'yes'. Exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "t07_id",
+     "description": "Foreign key to t07.col_001 (many-to-one). Only 3 distinct t07 records are referenced, so t07 is likely a small lookup/dimension table (e.g. type, status, or entity class).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "foreign_key",
+     "name": "t02_id",
+     "description": "Foreign key to t02.col_001 (many-to-one), 24 distinct referenced records. Likely the main entity/dimension of the transaction (e.g. account, person, or product).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "income": {
+   "table": {
+    "name": "",
+    "purpose": "Each row appears to be a dated transaction/event (Sep–Oct 2075) associated with an entity from t07 (via col_006), carrying a numeric amount (col_003), a category/status code (col_004), and an optional free-text note (col_005). The exact business domain cannot be determined from the data; text values appear coded/anonymized. The table's own name and the meaning of the amounts and codes remain unresolved."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key; unique 17-character identifier for each row (transaction/event).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "date",
+     "description": "Date of the event, ranging 2075-09-01 to 2075-10-31 (all within a two-month window).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "amount",
+     "description": "Numeric value, overwhelmingly 50 (33 of 36 rows) with outliers 200, 1000, 3000. Plausibly a fee, price, or charge amount, but the unit and exact meaning are not evidenced.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "free_text",
+     "name": "notes",
+     "description": "Optional free-text note, present in only 3 of 36 rows (91.7% null). The three sentences appear coded/obfuscated (e.g. 'Ji lhbhqch yal cdh aq yxehld...'), so their content cannot be interpreted; likely a remark or reason field.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "t07_id",
+     "description": "Foreign key to t07.col_001 (many-to-one), identifying the t07 entity (e.g. person/account with a label like 'Ljqie', 'Hpzxe') associated with each row.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "major": {
+   "table": {
+    "name": "major",
+    "purpose": "A directory of organizational units of a university (the structure matches a US university, e.g. Utah State: colleges → schools/departments → named units). Each row is one academic/administrative unit. Note: all text values are obfuscated with a monoalphabetic letter-substitution cipher, but they decode cleanly (e.g. \"Waxxhoh ay Hqozqhhlzqo\" = \"College of Engineering\", \"Ihgjlrphqr\" = \"Department\"), which is how the meanings below were established. Other tables (t01–t05, t07–t08) link to these units via t07.col_009."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "unit_id",
+     "description": "Primary key: opaque unique code (17-char string prefixed 'lhw') identifying one organizational unit. Referenced by t07.col_009 (many rows in t07 point to one unit), so t07 is a detail/fact table about these units.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "unit_name",
+     "description": "Unique display name of the unit (decodes to values like 'History', 'Art History', 'Accounting', 'Aerospace Studies', 'Environmental Engineering', 'Social Work', 'Environmental and Natural Resource Economics'). Values are cipher-obfuscated but are real unit names.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "parent_department",
+     "description": "The administrative department or school the unit belongs to (47 distinct values, so units are grouped). Decodes to values like 'Applied Economics Department', 'History Department', 'Civil and Environmental Engineering Department', 'School of Applied Sciences, Technology and Education', 'Watershed Sciences Department'. The most common value (21 rows) is 'School of Applied Sciences, Technology and Education'.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "college",
+     "description": "The college (highest-level grouping, only 8 distinct values) the unit rolls up to. Decodes to values like 'College of Agriculture and Applied Sciences' (36 rows), 'College of Humanities and Social Sciences' (24), 'College of Education & Human Services' (13), 'College of Science' (12), 'College of Natural Resources' (9), 'College of Engineering', 'School of Business'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "member": {
+   "table": {
+    "name": "member",
+    "purpose": "People/employees directory: one row per person with name, email, employer, department, phone, ZIP code, and an optional manager reference. Text values appear obfuscated/encoded (e.g. emails use a ciphered domain \"xgc.hic\"), but the structure is clear."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "person_id",
+     "description": "Primary key. Opaque unique token (17-char string prefixed 'lhw') identifying each person; referenced by t01, t04, t05.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "first_name",
+     "description": "Person's given name (encoded). Confirmed by email pattern: col_002.col_003@xgc.hic matches col_004 exactly in every sample row.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "last_name",
+     "description": "Person's family name (encoded); appears as the second component of the email address.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "email",
+     "description": "Email address, formed as first_name.last_name@xgc.hic (domain is an encoded stand-in, likely 'example.com'). Unique per row.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "company",
+     "description": "Employer/organization name (encoded), only 6 distinct values with one dominant (26/33). Plausibly a company/employer field; could alternatively be e.g. city or group, but employer fits a person directory best.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "department",
+     "description": "Small closed set of 4 encoded values (one prefixed 'M-', possibly a manager/senior variant). Likely department or job category; the exact meaning of each code is unresolved.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "identifier",
+     "name": "phone_number",
+     "description": "Phone number in US-style formats ((XXX) XXX-XXXX or XXX-XXX-XXXX); middle segment often '777', suggesting generated/fake data. Unique per row.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "foreign_key",
+     "name": "zip_code",
+     "description": "US ZIP code (range 1020-98290, matching valid 4-5 digit ZIPs). One-to-one join to t08.col_001, so t08 is likely a ZIP/location lookup table.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "foreign_key",
+     "name": "manager_id",
+     "description": "Optional (3% null) reference to t06.col_001, many-to-one, using the same 'lhw'-prefixed token format as col_001. Likely the person's manager/supervisor, with t06 being a related people table; the exact relationship is not fully provable from the data.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "zip_code": {
+   "table": {
+    "name": "zip_code",
+    "purpose": "Address/location records (one row per address or customer location), with street, city, and state name/code. Text values appear obfuscated/anonymized, but structure strongly resembles a standard address table."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "address_id",
+     "description": "Primary key; unique integer identifier for each row (address record). Referenced one-to-one by t07.col_008.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "record_type",
+     "description": "Three-valued category (Drjqijli ~71%, GA Fam ~23%, Cqzvch ~6%). Likely a record/address type or customer segment; exact meanings unresolved because values are obfuscated.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "city",
+     "description": "City name (18,729 distinct values, moderately repeated) — consistent with a city column of an address.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "street_address",
+     "description": "Street address line; many values end in the same token ('Wacqre', likely 'Street'), matching street names with suffixes.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "state_name",
+     "description": "State/region name; 52 distinct values, matching the 52 US states/territories.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "code",
+     "name": "state_code",
+     "description": "Two-letter state code; 52 distinct values that pair one-to-one with col_005 (e.g. 'RM'/'Rhmjd', 'WJ'/'Wjxzyalqzj'), i.e. the abbreviation of the state name.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

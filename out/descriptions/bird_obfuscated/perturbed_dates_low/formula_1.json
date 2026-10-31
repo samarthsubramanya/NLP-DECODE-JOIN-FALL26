@@ -1,0 +1,706 @@
+{
+ "db_id": "formula_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 114,
+ "tables": {
+  "circuits": {
+   "table": {
+    "name": "circuits",
+    "purpose": "One row per racing circuit (Formula 1 venues): its identifier, names, location, country, geographic coordinates, and Wikipedia link. This matches the classic F1 'circuits' table (72 circuits)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "category",
+     "name": "circuit_id",
+     "description": "Primary key; unique integer identifier for each circuit (values 2-73).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "circuit_ref",
+     "description": "Unique short slug/reference name of the circuit (e.g. 'interlagos', 'ricard', 'zolder'), used as a textual key.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "name",
+     "description": "Full official name of the circuit (e.g. 'Circuit Paul Ricard', 'Silverstone Circuit').",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "location",
+     "description": "Town/city or region where the circuit is located (e.g. 'Le Castellet', 'Heusden-Zolder', 'California').",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "country",
+     "description": "Country of the circuit (e.g. 'France', 'USA', 'Belgium').",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "latitude",
+     "description": "Latitude of the circuit in decimal degrees; range -34.9 to 57.3 is consistent with worldwide circuit locations.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "longitude",
+     "description": "Longitude of the circuit in decimal degrees; range -118.2 to 138.9 matches worldwide circuit locations (e.g. Riverside -117.27).",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "category",
+     "name": "url",
+     "description": "Wikipedia URL of the circuit's page.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "constructorResults": {
+   "table": {
+    "name": "",
+    "purpose": "Unresolved: t02 is a fact/detail table keyed by col_001, with each row referencing entities in t09/t10/t11 (via col_002) and t04/t05/t06 (via col_003), plus a mostly-null flag column. The domain cannot be determined from the given evidence; column names and values are opaque codes/ids with no labels from lookup tables provided. One row appears to represent an event or transaction involving two referenced entities and a small count/amount (col_004)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of t02; unique integer identifier (surrogate key) for each row, referenced by many other tables (t03, t05, t07, t08, t09, t10, t11) as a foreign key, so t02 is a central entity in this schema.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "parent_id",
+     "description": "Foreign key to t09.col_001, t10.col_001 and t11.col_001 (all three share the same key space, 1..982). Groups rows in runs of ~20 consecutive ids, suggesting a grouping/batch entity. Exact meaning of the referenced entity is unresolved.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "category_id",
+     "description": "Foreign key to t04.col_001, t05.col_001 and t06.col_001 (shared key space 1..210, 172 distinct values used). A second classification dimension of the row; the referenced entity's meaning is unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "quantity",
+     "description": "Small non-negative numeric value (0 to 66, median 0, 58% zeros). Likely a count or amount associated with the row (e.g. quantity, occurrences, or a score). Units and exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "constructorStandings": {
+   "table": {
+    "name": "constructorStandings",
+    "purpose": "A transactional fact table (one row per order/transaction). The primary key col_001 is an order id referenced by many other tables (t05, t07–t11), which look like line-item/detail tables. col_002 is a party/customer reference, col_003 an agent/employee reference, col_004 a monetary amount, and col_005/col_006 a small lookup code. The exact business domain cannot be confirmed from the data alone, so the table name is left empty and the reading is tentative."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "order_id",
+     "description": "Primary key of the table; a surrogate identifier (1–26872) for one order/transaction. Referenced by many other tables (t05, t07, t08, t09, t10, t11), which are likely detail/line-item tables pointing back to this order.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "customer_id",
+     "description": "Reference to a party table (t02, t09 or t10, all sharing the same key domain 1–~982). 906 distinct values with roughly uniform repetition (~13 orders per party) fits a customer/account id on an orders table. Could alternatively be a vendor or store id; the specific entity is tentative.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "agent_id",
+     "description": "Reference to a small dimension table (t02/t04/t05 key domain, 156 distinct values, 1–210). Fits an employee/sales-agent/branch id assigned to each order. The specific entity is not determinable from the data.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "freight_amount",
+     "description": "Continuous monetary amount per order: 0.0–765.0 with values like 27.5, 72.5, 163.0, heavily skewed toward 0 (median 6). Consistent with a freight/shipping/fee charge. Could also be a discount or tax amount; unit (currency) unknown.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "constructors": {
+   "table": {
+    "name": "constructors",
+    "purpose": "Formula 1 / motorsport racing constructors (teams). One row per constructor, referenced by many other tables (results, qualifying, etc.)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "constructor_id",
+     "description": "Primary key; surrogate identifier for the constructor, referenced by many other tables.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "constructor_ref",
+     "description": "Unique short slug/code for the constructor (e.g. 'tyrrell', 'cooper-borgward'), used as a stable reference key.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "name",
+     "description": "Full display name of the constructor (e.g. 'Alfa Romeo', 'Brabham-Repco').",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "nationality",
+     "description": "Constructor's nationality (British, American, Italian, ...).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "url",
+     "description": "Wikipedia URL for the constructor's page.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "driverStandings": {
+   "table": {
+    "name": "",
+    "purpose": "Each row appears to be an event/match-like record (31,578 rows) identified by a surrogate key that is referenced by many other tables (t02, t03, t07–t11), suggesting this is a central fact table. The exact domain cannot be determined from the data alone; the structure (two entity references, a mostly-zero numeric measure, a 1–108 periodic identifier duplicated in two columns, and a small 0–13 count) is consistent with a match/game fact table, but this remains tentative."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "record_id",
+     "description": "Surrogate primary key; unique integer 1–68,460 with no semantic pattern. Referenced by many other tables (t02, t03, t07, t08, t09, t10, t11), so it identifies the row of this table externally.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "entity_a_id",
+     "description": "Reference to an entity table (joins to t02, t09, t10 primary keys), 970 distinct values, 1–982. Likely identifies one of the two participants of the event (e.g., a team or player), but which entity cannot be confirmed.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "entity_b_id",
+     "description": "Reference to another entity (joins to t02, t06, t09 primary keys), 833 distinct values, 1–841. Plausibly the second participant (e.g., opposing team) or a related entity such as a venue/official; the exact meaning is not determinable.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "period_id",
+     "description": "Integer 1–108 where each value occurs exactly 970 times, i.e., a perfectly regular grouping of the rows — consistent with a season/round/matchday number. Joins to t02, t03, t06. Duplicated by col_006.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "period_id_text",
+     "description": "Exact duplicate of col_005 stored as VARCHAR (same distribution, same joins). Same tentative meaning: a periodic grouping identifier (season/round).",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "event_count",
+     "description": "Small non-negative integer 0–13, zero for ~88% of rows. Reads as a count of rare occurrences per record (e.g., goals, cards, fouls, or similar incidents). Joins to t02, t03, t04 suggest it may also function as a lookup code, but the specific counted thing is unknown.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "drivers": {
+   "table": {
+    "name": "drivers",
+    "purpose": "Formula 1 drivers reference table (one row per driver), with permanent driver number, code, name, date of birth, nationality and Wikipedia link. Referenced by many other tables (results, qualifying, etc.) via driver id."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "driver_id",
+     "description": "Primary key; unique surrogate id for each driver (1-840). Referenced by many other tables.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "driver_ref",
+     "description": "Unique driver reference slug (lowercase surname, e.g. 'bonnier', 'gilles_villeneuve'), used as a stable key.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "driver_number",
+     "description": "Permanent car/driver number. Null for ~96% of drivers (numbers only assigned in certain eras); values 2-99.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "driver_code",
+     "description": "Three-letter driver abbreviation shown in timing screens (e.g. BIA, MAG, VER, ROS). Null for ~90% of rows (introduced in modern era).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "forename",
+     "description": "Driver's first/given name (e.g. Jo, Tony, Onofre).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "surname",
+     "description": "Driver's last/family name (e.g. Bonnier, Maggs, Marimón).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "date_of_birth",
+     "description": "Driver's date of birth (YYYY-MM-DD). A few out-of-range values (e.g. 2054) are likely data errors.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "nationality",
+     "description": "Driver nationality as an adjective (British, American, Italian, ...), including hyphenated dual nationalities.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "wikipedia_url",
+     "description": "Wikipedia article URL for the driver; empty string when no article exists.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "lapTimes": {
+   "table": {
+    "name": "lap_times",
+    "purpose": "Per-lap timing records: one row per driver per lap of a race, giving the driver's position at that lap and the lap time (as text and in milliseconds)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "race_id",
+     "description": "Identifier of the race (foreign key to a races table, e.g. t02/t09/t10). 389 distinct races across 420k lap rows.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "driver_id",
+     "description": "Identifier of the driver recording the lap (foreign key to a drivers/participants table, e.g. t06). 121 distinct drivers.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "lap",
+     "description": "Lap number within the race, 1 to 78, roughly uniform — consistent with lap counts of circuit races. The accepted joins to other tables are likely spurious numeric coincidences.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "position",
+     "description": "Driver's running position at that lap, 1 to 24, with near-uniform counts (~23.9k each) as expected when ~24 drivers hold each position over many laps.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "lap_time",
+     "description": "Lap time formatted as m:ss.mmm (e.g. '1:31.255'), i.e. minutes:seconds.milliseconds. Values cluster around 1:15–2:10, typical lap durations.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "lap_time_ms",
+     "description": "The same lap time expressed in whole milliseconds; exactly matches col_005 (e.g. '1:31.255' -> 91255).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "pitStops": {
+   "table": {
+    "name": "",
+    "purpose": "Each row appears to be a scheduled event (e.g., a trip/departure) identified by several coded foreign keys, with a time of day and a decimal quantity also stored in scaled-integer form. The exact domain cannot be determined from the data alone; the many low-cardinality integer columns referencing other tables suggest a fact/detail table in a transport or scheduling database, but this is speculative."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "",
+     "description": "Small ordinal code 1-6 with a strongly skewed distribution (1 most common, 6 rare). Plausibly a class/category or day-of-week-like code, but the evidence does not distinguish between these readings.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "identifier",
+     "name": "time_of_day",
+     "description": "Time of day in HH:MM:SS format, mostly within daytime hours (top/sample values cluster between ~13:00 and ~20:30). Almost unique per row, so it behaves like a timestamp of the event rather than a category.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "qualifying": {
+   "table": {
+    "name": "qualifying",
+    "purpose": "Qualifying session results per driver per race. Each row is one driver's qualifying performance in one race, with three lap-time columns whose decreasing fill rates (1.6%, 51.5%, 71% null) match progressive elimination in Q1/Q2/Q3-style qualifying sessions. The time format \"m:ss.mmm\" (e.g. 1:31.470) is a lap time of 1 minute 31.470 seconds, typical of motorsport (e.g. Formula 1) qualifying laps. Referenced by many other tables via its primary key, so it is a central results fact table."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "qualifying_id",
+     "description": "Primary key of the table; unique surrogate identifier for one driver's qualifying result in one race. Referenced by many other tables (t02, t03, t05, t07, t08, t10, t11).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "race_id",
+     "description": "Identifier of the race (event) this qualifying result belongs to; references t02/t10/t11. 339 distinct races, each appearing ~22 times (one row per driver).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "driver_id",
+     "description": "Identifier of the driver; references t02/t06/t11. 151 distinct drivers.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "constructor_id",
+     "description": "Identifier of the team/constructor the driver drove for in this qualifying; references t02/t04/t05. 41 distinct values fits a constructor count better than a driver count.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "driver_number",
+     "description": "Driver's car/race number (0-99, 48 distinct values). Could alternatively be a position code, but the 0-99 range with many distinct values fits car numbers.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "code",
+     "name": "qualifying_position",
+     "description": "Final qualifying (grid) position, 1-28 with roughly uniform counts per value (~339 each, matching the number of races), consistent with one finishing position per driver per race. Alternative reading: lap number, but the near-uniform distribution over 28 values fits positions better.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "q1_time",
+     "description": "Fastest lap time in qualifying session 1, formatted as minutes:seconds.milliseconds (e.g. 1:31.470 = 1 min 31.470 s). Nearly always populated (1.6% null) since almost all drivers set a Q1 time.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "numeric",
+     "name": "q2_time",
+     "description": "Fastest lap time in qualifying session 2 (m:ss.mmm). 51.5% null, consistent with drivers eliminated after Q1 not having a Q2 time.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "q3_time",
+     "description": "Fastest lap time in qualifying session 3 (m:ss.mmm). 71% null, consistent with only the top-10 drivers advancing to Q3.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "races": {
+   "table": {
+    "name": "races",
+    "purpose": "One row per Formula 1 Grand Prix race (season, round, circuit, date, and Wikipedia link). Dates appear partly corrupted (many future years like 2043/2055), so the date column should be treated with caution."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "race_id",
+     "description": "Primary key; unique numeric identifier for each race. Referenced by results/related tables (t02, t03, t05, t07, t08, t09, t11).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "year",
+     "description": "Race season year (1950-2017); references a seasons table (t02/t09/t11 col_001).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "round",
+     "description": "Round number of the race within its season (1-21); each value appears ~68 times, consistent with one race per round per season. Also joins to t02/t03/t04 col_001, but the round interpretation fits the value distribution.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "circuit_id",
+     "description": "Identifier of the circuit where the race was held (1-73); references a circuits table (t02/t03/t05 col_001).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "race_name",
+     "description": "Official name of the Grand Prix, e.g. 'British Grand Prix', 'Italian Grand Prix'.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "date",
+     "name": "race_date",
+     "description": "Date of the race. Declared VARCHAR storing dates; many values are in the future (up to 2073) while col_002 years end at 2017, so the data appears corrupted or shifted for many rows. Interpretation as the race date is supported by the format and uniqueness, but individual values are unreliable.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "race_time",
+     "description": "Scheduled start time of the race (HH:MM:SS), null for ~75% of rows (mostly older races).",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "free_text",
+     "name": "wiki_url",
+     "description": "Wikipedia URL for the specific race edition, e.g. http://en.wikipedia.org/wiki/1987_Australian_Grand_Prix.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "results": {
+   "table": {
+    "name": "",
+    "purpose": "Unresolved. The table has one row per record keyed by col_001 and is referenced by t02, t09 and t10. Several columns look like race/event performance data (finishing-style codes, a duration in m:ss.mmm, a large monetary-looking amount, a ~200-point rating), suggesting results of timed competitive events (plausibly horse or greyhound racing), but the evidence is not conclusive enough to name it or its subject with confidence. The many low-cardinality integer columns (col_002–col_007, col_009, col_011, col_018) are foreign keys into other tables (t02–t06), i.e. categorical/dimension references, but their meanings cannot be determined from the values alone."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key; unique sequential integer identifier for each row (1–23661).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_008": {
+     "role": "code",
+     "name": "",
+     "description": "Short text code, 39 distinct values. Dominant value 'R' (8495 rows, ~36%); other values are numeric strings ('2','3','4','11',...) overlapping the domain of col_009. 'R' plausibly marks a special result/status (e.g. 'retired', 'removed', or a result flag) versus a numeric category, but this is unverified.",
+     "status": "tentative"
+    },
+    "col_009": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_011": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "time_offset",
+     "description": "Text value formatted as '+s.ms' or '+m:ss.ms' (e.g. '+0.668', '+8:22.19'), present on ~25% of rows. Reads as a positive time margin/deficit relative to something (e.g. time behind a reference). The two formats are inconsistent, so the exact unit is uncertain.",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "earnings_amount",
+     "description": "Large integer, 1.47M–15.09M, median ~5.87M, present on ~25% of rows. Magnitude is consistent with a monetary amount in whole currency units (e.g. career prize money/winnings), but there is no direct evidence of currency or semantics.",
+     "status": "tentative"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_015": {
+     "role": "numeric",
+     "name": "",
+     "description": "Integer 0–24 with each value appearing exactly 256 times, present on ~23% of rows. The perfect uniformity suggests a slot/position index (e.g. lane, gate, or round number) within a fixed-size grouping, but this is unverified.",
+     "status": "tentative"
+    },
+    "col_016": {
+     "role": "numeric",
+     "name": "duration",
+     "description": "Text in 'm:ss.mmm' format (e.g. '1:34.091'), present on ~22% of rows, values around 1:14–1:47. Clearly a duration/time of about 74–107 seconds, plausibly an event finish time. Exact semantics unknown.",
+     "status": "tentative"
+    },
+    "col_017": {
+     "role": "numeric",
+     "name": "rating",
+     "description": "Decimal 89.5–257.3, median ~202, present on ~22% of rows (same rows as col_016). Consistent with a performance rating/score on a ~100–250 scale, but the scale and meaning are unverified.",
+     "status": "tentative"
+    },
+    "col_018": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "seasons": {
+   "table": {
+    "name": "seasons",
+    "purpose": "One row per Formula One season year, with a link to its Wikipedia article. Covers 1950-2017 (68 seasons)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "year",
+     "description": "Formula One season year, 1950-2017; primary key, one row per season.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "url",
+     "description": "Wikipedia URL of the article for that season's Formula One championship.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "status": {
+   "table": {
+    "name": "status",
+    "purpose": "Lookup table of Formula 1 race non-finish classifications/status descriptions (e.g. mechanical failures, accidents, or laps behind the leader at finish). Each row is one distinct race result status code with its description. Likely referenced by a race-results table, though no joins were detected here."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "status_id",
+     "description": "Primary key; unique numeric identifier for each race result status (134 distinct statuses).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "status",
+     "description": "Description of the race outcome/status: either a finishing position relative to the winner ('+1 Lap', '+30 Laps') or a reason for not finishing ('Engine', 'Out of fuel', 'Fuel rig', 'Water pipe', 'Exhaust').",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

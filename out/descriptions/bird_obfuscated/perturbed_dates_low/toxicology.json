@@ -1,0 +1,118 @@
+{
+ "db_id": "toxicology",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 5,
+ "tables": {
+  "atom": {
+   "table": {
+    "name": "atom",
+    "purpose": "One row per atom in a set of molecular structures: each row pairs a molecule identifier (col_002) with an atom index (embedded in col_001) and a chemical element symbol (col_003). Likely the atom table of a molecular/chemistry database, referenced by t03 (e.g. bonds or measurements)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "atom_id",
+     "description": "Primary key. Composite code 'TRxxx_n' = molecule identifier TRxxx plus an atom index n within that molecule; unique per row (e.g. TR031_31 = molecule TR031, atom 31). Referenced by t03.col_001 and t03.col_002.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "molecule_id",
+     "description": "Identifier of the molecule this atom belongs to (TRxxx, 444 distinct molecules); matches the prefix of col_001. References t04.col_001, presumably a molecules table.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "element_symbol",
+     "description": "Chemical element symbol of the atom (h, c, o, n, cl, br, si, p, zn, ...). 21 distinct elements; hydrogen and carbon dominate, consistent with organic molecules.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "bond": {
+   "table": {
+    "name": "",
+    "purpose": "Rows keyed by a composite code (e.g. TR031_18_36) that pairs a parent entity TRxxx (matching t04) with two numbers, likely a segment/interval between two positions or stops. Referenced by t03. The exact domain (e.g. transport routes, transcripts) is unresolved from the data alone."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "segment_id",
+     "description": "Primary key. Composite code: parent entity code (TRxxx) plus two numbers (e.g. TR031_18_36), suggesting a segment/interval between two positions on the entity referenced by col_002. Referenced by t03.col_003.",
+     "status": "tentative"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "parent_id",
+     "description": "Code of the parent entity (TRxxx), matching t04.col_001. Many rows per parent (up to 175).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "connected": {
+   "table": {
+    "name": "trace_step_transitions",
+    "purpose": "Each row records a transition (directly-follows edge) between two steps within a trace: col_001 is the source step, col_002 the successor step, and col_003 the identifier of the step-pair/edge, which is also catalogued in t02. The TRxxx prefix groups rows by trace (matching t01, likely the trace or step table). This is consistent with a process/event-log style schema where t01 lists individual steps, t02 lists distinct step pairs, and t03 lists every observed occurrence of a pair in sequence. The exact domain (process mining, workflow, etc.) is inferred from the TR###_n pattern, not stated explicitly."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "from_step_id",
+     "description": "Identifier of the first (source) step of a consecutive step pair within a trace. Format TR<trace>_<step>, referencing t01.col_001 (many-to-one). Duplicated with col_002 in some rows only when a step follows itself.",
+     "status": "tentative"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "to_step_id",
+     "description": "Identifier of the second (target/successor) step of the pair, same format TR<trace>_<step>, referencing t01.col_001. In every sampled row it is the numerically next or later step number of the same trace as col_001.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "step_pair_id",
+     "description": "Identifier of the step pair/edge, formed by concatenating the two step ids: TR<trace>_<step1>_<step2>. References t02.col_001 (many-to-one), so t02 appears to be a catalog of distinct step pairs. Near-unique here (uniqueness 0.5) because most pairs occur once per trace.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "molecule": {
+   "table": {
+    "name": "molecule",
+    "purpose": "Unresolved. The table has only two columns: a unique transaction/record identifier (TRnnn) and a binary sign flag. It is referenced by t01 and t02, suggesting it is a lookup or header table for transactions, but the evidence is insufficient to determine its business meaning."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "transaction_id",
+     "description": "Primary key. Unique text identifier with pattern TRnnn (e.g. TR000, TR477), one per row. Referenced by t01.col_002 and t02.col_002, so it identifies a transaction/record that other tables link to. The 'TR' prefix suggests a transaction or trial number, but the exact entity is unresolved.",
+     "status": "tentative"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}
