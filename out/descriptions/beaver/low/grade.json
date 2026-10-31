@@ -1,0 +1,209 @@
+{
+ "keys_run": "frozen",
+ "joins_run": "default",
+ "stage3_run": "low",
+ "per_db": {
+  "dw": {
+   "primary_keys": {
+    "tp": 0,
+    "predicted": 58,
+    "gold": 0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "recall_tables_with_rows": null,
+    "single_key_tables_with_rows": 0,
+    "composite_key_tables": 0,
+    "empty_tables": 5,
+    "gold_lost_because": {}
+   },
+   "declared_fks": 0,
+   "query_join_pairs": 251,
+   "joins": {
+    "direct": {
+     "vs_declared_fks": {
+      "tp": 0,
+      "predicted": 292,
+      "gold": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "query_join_recall": 0.1992,
+     "query_join_recall_weighted": 0.2734
+    },
+    "stats": {
+     "vs_declared_fks": {
+      "tp": 0,
+      "predicted": 481,
+      "gold": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "query_join_recall": 0.2271,
+     "query_join_recall_weighted": 0.327
+    },
+    "llm": {
+     "vs_declared_fks": {
+      "tp": 0,
+      "predicted": 461,
+      "gold": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+     },
+     "query_join_recall": 0.2271,
+     "query_join_recall_weighted": 0.327
+    }
+   },
+   "band_verdicts": {
+    "llm_abstain|neither": 2,
+    "llm_accept|neither": 171,
+    "llm_accept|query_join": 7,
+    "llm_reject|neither": 18
+   },
+   "descriptions": {
+    "resolved": 1245,
+    "tentative": 176,
+    "unresolved": 109
+   }
+  },
+  "neutron": {
+   "primary_keys": {
+    "tp": 25,
+    "predicted": 32,
+    "gold": 121,
+    "precision": 0.7812,
+    "recall": 0.2066,
+    "f1": 0.3268,
+    "recall_tables_with_rows": 0.7353,
+    "single_key_tables_with_rows": 34,
+    "composite_key_tables": 49,
+    "empty_tables": 123,
+    "gold_lost_because": {
+     "empty table": 87,
+     "scored below accept": 8,
+     "blacklist": 1
+    }
+   },
+   "declared_fks": 163,
+   "query_join_pairs": 31,
+   "joins": {
+    "direct": {
+     "vs_declared_fks": {
+      "tp": 31,
+      "predicted": 78,
+      "gold": 163,
+      "precision": 0.3974,
+      "recall": 0.1902,
+      "f1": 0.2573
+     },
+     "query_join_recall": 0.3226,
+     "query_join_recall_weighted": 0.3858
+    },
+    "stats": {
+     "vs_declared_fks": {
+      "tp": 43,
+      "predicted": 119,
+      "gold": 163,
+      "precision": 0.3613,
+      "recall": 0.2638,
+      "f1": 0.305
+     },
+     "query_join_recall": 0.5161,
+     "query_join_recall_weighted": 0.8431
+    },
+    "llm": {
+     "vs_declared_fks": {
+      "tp": 43,
+      "predicted": 119,
+      "gold": 163,
+      "precision": 0.3613,
+      "recall": 0.2638,
+      "f1": 0.305
+     },
+     "query_join_recall": 0.5161,
+     "query_join_recall_weighted": 0.8431
+    }
+   },
+   "band_verdicts": {
+    "llm_accept|fk": 12,
+    "llm_accept|neither": 33
+   },
+   "descriptions": {
+    "tentative": 531,
+    "resolved": 281,
+    "unresolved": 7
+   }
+  },
+  "nova": {
+   "primary_keys": {
+    "tp": 26,
+    "predicted": 26,
+    "gold": 107,
+    "precision": 1.0,
+    "recall": 0.243,
+    "f1": 0.391,
+    "recall_tables_with_rows": 0.4062,
+    "single_key_tables_with_rows": 64,
+    "composite_key_tables": 2,
+    "empty_tables": 45,
+    "gold_lost_because": {
+     "empty table": 43,
+     "scored below accept": 38
+    }
+   },
+   "declared_fks": 25,
+   "query_join_pairs": 10,
+   "joins": {
+    "direct": {
+     "vs_declared_fks": {
+      "tp": 12,
+      "predicted": 117,
+      "gold": 25,
+      "precision": 0.1026,
+      "recall": 0.48,
+      "f1": 0.169
+     },
+     "query_join_recall": 0.4,
+     "query_join_recall_weighted": 0.7392
+    },
+    "stats": {
+     "vs_declared_fks": {
+      "tp": 16,
+      "predicted": 371,
+      "gold": 25,
+      "precision": 0.0431,
+      "recall": 0.64,
+      "f1": 0.0808
+     },
+     "query_join_recall": 0.5,
+     "query_join_recall_weighted": 0.9892
+    },
+    "llm": {
+     "vs_declared_fks": {
+      "tp": 16,
+      "predicted": 143,
+      "gold": 25,
+      "precision": 0.1119,
+      "recall": 0.64,
+      "f1": 0.1905
+     },
+     "query_join_recall": 0.5,
+     "query_join_recall_weighted": 0.9892
+    }
+   },
+   "band_verdicts": {
+    "llm_accept|fk": 4,
+    "llm_accept|neither": 22,
+    "llm_reject|neither": 228
+   },
+   "descriptions": {
+    "tentative": 442,
+    "resolved": 816,
+    "unresolved": 11
+   }
+  }
+ }
+}

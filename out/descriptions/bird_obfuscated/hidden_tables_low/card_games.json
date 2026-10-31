@@ -1,0 +1,762 @@
+{
+ "db_id": "card_games",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 38,
+ "tables": {
+  "cards": {
+   "table": {
+    "name": "cards",
+    "purpose": "One row per Magic: The Gathering card printing (MTGJSON-style card data): name, artist, set, rarity, mana cost, rules text, identifiers, and print/availability flags."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key; sequential integer row identifier for this card printing.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "artist",
+     "description": "Name of the card's illustrator (e.g. John Avon, Kev Walker).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "",
+     "description": "Card names (El-Hajjaj, Bosium Strip, Lim-Dul's High Guard), populated for only ~26 rows, mostly early Arabian Nights-style cards. Possibly an alternate/original name field, but the evidence does not clearly identify it.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "availability",
+     "description": "Comma-separated list of platforms the printing is available on: paper, mtgo, arena, shandalar.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "borderColor",
+     "description": "Card border color: black, white, gold, silver, borderless.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "identifier",
+     "name": "",
+     "description": "Numeric external card identifier (39000-241899), null for ~49% of rows; one-to-one match with rows in t02/t03. Likely a platform-specific card id (e.g. Arena or MTGO id), but which platform is unclear.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "identifier",
+     "name": "",
+     "description": "Numeric external card identifier (10000-241662), null for ~24% of rows; one-to-one match with rows in t02/t03. Likely a platform-specific card id (e.g. MTGO or Arena id), counterpart to col_006.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "colors",
+     "description": "Mana colors of the card as comma-separated W/U/B/R/G codes.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "category",
+     "name": "colorIndicator",
+     "description": "Color indicator (W/U/B/R/G codes) printed on the card face; present only on a few cards (e.g. back faces of double-faced cards).",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "category",
+     "name": "colorIdentity",
+     "description": "Color identity (W/U/B/R/G codes) used for deck-building rules (e.g. Commander); empty for most lands.",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "manaValue",
+     "description": "Converted mana cost / mana value; mostly 0-14, with an outlier of 1000000 (a joke card).",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "category",
+     "name": "duelDeck",
+     "description": "Duel Deck side marker: 'a' or 'b' for cards belonging to a Duel Deck pair.",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "identifier",
+     "name": "",
+     "description": "Integer id referencing rows in t02, t03 and t04 (many-to-one). Likely an internal foreign key (e.g. to a related entity such as rulings/tokens/sets), but the target meaning is unclear.",
+     "status": "tentative"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_015": {
+     "role": "category",
+     "name": "faceName",
+     "description": "Name of a specific face of a multi-face card (Fire/Ice, Nezumi Graverobber, Elbrus the Binding Blade).",
+     "status": "resolved"
+    },
+    "col_016": {
+     "role": "category",
+     "name": "flavorName",
+     "description": "Flavor/alternate display name, here the Godzilla-series alternate names (Godzilla, Rodan, Spacegodzilla, etc.).",
+     "status": "resolved"
+    },
+    "col_017": {
+     "role": "free_text",
+     "name": "flavorText",
+     "description": "Flavor text printed on the card.",
+     "status": "resolved"
+    },
+    "col_018": {
+     "role": "category",
+     "name": "frameEffects",
+     "description": "Comma-separated frame effect tags: legendary, extendedart, showcase, nyxtouched, miracle, snow, etc.",
+     "status": "resolved"
+    },
+    "col_019": {
+     "role": "category",
+     "name": "frameVersion",
+     "description": "Card frame version by year: 1993, 1997, 2003, 2015, or 'future'.",
+     "status": "resolved"
+    },
+    "col_020": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_021": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for only 12 rows. Candidate: isTextless, but not confirmable.",
+     "status": "tentative"
+    },
+    "col_022": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for 29 rows. Candidate: isOversized, but not confirmable.",
+     "status": "tentative"
+    },
+    "col_023": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for ~61% of rows. Candidate: foil availability (or a similar print-run flag); exact meaning unclear.",
+     "status": "tentative"
+    },
+    "col_024": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for ~90% of rows. Candidate: nonfoil availability; exact meaning unclear.",
+     "status": "tentative"
+    },
+    "col_025": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for 288 rows. Candidate: isFullArt; not confirmable.",
+     "status": "tentative"
+    },
+    "col_026": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for 486 rows. Candidate: isTimeshifted; not confirmable.",
+     "status": "tentative"
+    },
+    "col_027": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for ~4733 rows. Candidate: isPromo; not confirmable.",
+     "status": "tentative"
+    },
+    "col_028": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for 402 rows. Candidate: isStorySpotlight; not confirmable.",
+     "status": "tentative"
+    },
+    "col_029": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for ~5588 rows. Candidate: isReserved (Reserved List card); not confirmable.",
+     "status": "tentative"
+    },
+    "col_030": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for ~59% of rows. Candidate: isReprint or a foil-related flag; exact meaning unclear.",
+     "status": "tentative"
+    },
+    "col_031": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for 1333 rows. Candidate: isOnlineOnly; not confirmable.",
+     "status": "tentative"
+    },
+    "col_032": {
+     "role": "boolean",
+     "name": "",
+     "description": "Boolean flag, true for ~28% of rows. Candidate: isAlternative / alternate-art flag; not confirmable.",
+     "status": "tentative"
+    },
+    "col_033": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_034": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_035": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_036": {
+     "role": "category",
+     "name": "keywords",
+     "description": "Comma-separated keyword abilities: Flying, Trample, Cycling, Equip, etc.",
+     "status": "resolved"
+    },
+    "col_037": {
+     "role": "category",
+     "name": "layout",
+     "description": "Card layout: normal, transform, modal_dfc, split, adventure, leveler, scheme, augment, etc.",
+     "status": "resolved"
+    },
+    "col_038": {
+     "role": "category",
+     "name": "leadershipSkills",
+     "description": "Serialized dict of format legality as a commander: brawl / commander / oathbreaker booleans.",
+     "status": "resolved"
+    },
+    "col_039": {
+     "role": "numeric",
+     "name": "life",
+     "description": "Life modifier, likely for Vanguard cards (values -8..30, mostly negative); only populated on a tiny subset.",
+     "status": "tentative"
+    },
+    "col_040": {
+     "role": "numeric",
+     "name": "hand",
+     "description": "Hand-size modifier or similar stat (0-20, with dice-notation values like '1d4+1' and '*'), populated on ~1.5% of rows; likely a special-card stat field.",
+     "status": "tentative"
+    },
+    "col_041": {
+     "role": "category",
+     "name": "manaCost",
+     "description": "Mana cost in MTG symbol notation, e.g. {1}{W}, {R/G}{R/G}.",
+     "status": "resolved"
+    },
+    "col_042": {
+     "role": "identifier",
+     "name": "tcgplayerProductId",
+     "description": "Numeric product identifier (up to 535593) referencing t03; likely the TCGplayer product id.",
+     "status": "tentative"
+    },
+    "col_043": {
+     "role": "identifier",
+     "name": "",
+     "description": "Numeric identifier referencing t03/t02 (many-to-one); likely a store/product id (e.g. Cardmarket), exact source unclear.",
+     "status": "tentative"
+    },
+    "col_044": {
+     "role": "identifier",
+     "name": "",
+     "description": "Numeric identifier in the 6993-76889 range on ~10% of rows; likely a store-specific id (e.g. Cardmarket/CardKingdom), exact source unclear.",
+     "status": "tentative"
+    },
+    "col_045": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Unique UUID (version-5 style) per row; likely the card-level 'id' identifier (oracle-level UUID) distinct from the printing uuid in col_072.",
+     "status": "tentative"
+    },
+    "col_046": {
+     "role": "identifier",
+     "name": "",
+     "description": "Integer id referencing t02/t03/t04 (many-to-one); internal foreign key, target meaning unclear.",
+     "status": "tentative"
+    },
+    "col_047": {
+     "role": "identifier",
+     "name": "",
+     "description": "Integer id referencing t02/t03/t04 (many-to-one); internal foreign key, target meaning unclear.",
+     "status": "tentative"
+    },
+    "col_048": {
+     "role": "identifier",
+     "name": "",
+     "description": "Numeric identifier (up to 508409) on ~74% of rows; likely another store/product id, exact source unclear.",
+     "status": "tentative"
+    },
+    "col_049": {
+     "role": "category",
+     "name": "name",
+     "description": "Card name (e.g. Stoneforge Mystic, Plains, Mons's Goblin Raiders).",
+     "status": "resolved"
+    },
+    "col_050": {
+     "role": "category",
+     "name": "number",
+     "description": "Collector number within the set; includes alphanumeric codes like 'br79', 'jf324'.",
+     "status": "resolved"
+    },
+    "col_051": {
+     "role": "category",
+     "name": "releaseDate",
+     "description": "Specific release date (YYYY/M/D), populated mainly for promos/special printings outside set releases; range 1993-2021.",
+     "status": "tentative"
+    },
+    "col_052": {
+     "role": "free_text",
+     "name": "originalText",
+     "description": "Original (as-first-printed) rules text; includes old wording and single-letter color codes for old cards.",
+     "status": "resolved"
+    },
+    "col_053": {
+     "role": "category",
+     "name": "originalType",
+     "description": "Original (as-first-printed) type line, e.g. 'Summon - Fungus', 'Creature — Kor Artificer'.",
+     "status": "resolved"
+    },
+    "col_054": {
+     "role": "identifier",
+     "name": "",
+     "description": "UUIDs on ~2.4% of rows, near-unique; likely a Scryfall id for a related object (emblem/token/back), but not confirmable.",
+     "status": "tentative"
+    },
+    "col_055": {
+     "role": "numeric",
+     "name": "power",
+     "description": "Creature power; mostly small integers, with special values like '∞' and '2+*'.",
+     "status": "resolved"
+    },
+    "col_056": {
+     "role": "category",
+     "name": "printings",
+     "description": "Comma-separated list of set codes in which the card has been printed (e.g. 2XM, PRM, LEA).",
+     "status": "resolved"
+    },
+    "col_057": {
+     "role": "category",
+     "name": "promoTypes",
+     "description": "Promo type tags: prerelease, datestamped, setpromo, boxtopper, mediainsert, convention, etc.",
+     "status": "resolved"
+    },
+    "col_058": {
+     "role": "free_text",
+     "name": "purchaseUris",
+     "description": "Serialized dict of purchase links per store (cardKingdom, cardKingdomFoil, cardmarket, tcgplayer) via mtgjson.com redirect links.",
+     "status": "resolved"
+    },
+    "col_059": {
+     "role": "category",
+     "name": "rarity",
+     "description": "Printing rarity: common, uncommon, rare, mythic.",
+     "status": "resolved"
+    },
+    "col_060": {
+     "role": "identifier",
+     "name": "scryfallId",
+     "description": "Scryfall card id (UUID), nearly unique per printing (a few duplicates from multi-face cards).",
+     "status": "tentative"
+    },
+    "col_061": {
+     "role": "identifier",
+     "name": "scryfallIllustrationId",
+     "description": "Scryfall illustration id (UUID), shared across printings with the same art.",
+     "status": "tentative"
+    },
+    "col_062": {
+     "role": "identifier",
+     "name": "scryfallOracleId",
+     "description": "Scryfall oracle id (UUID), shared across all printings of the same card (e.g. 693 printings of a basic land share one id).",
+     "status": "tentative"
+    },
+    "col_063": {
+     "role": "category",
+     "name": "setCode",
+     "description": "Set code of this printing (MB1, PRM, 10E, TSP...); references t06.col_005.",
+     "status": "resolved"
+    },
+    "col_064": {
+     "role": "category",
+     "name": "side",
+     "description": "Face letter for multi-face cards: a, b, c, d, e.",
+     "status": "resolved"
+    },
+    "col_065": {
+     "role": "category",
+     "name": "subtypes",
+     "description": "Comma-separated creature/sub types: Kor, Artificer, Goblin, Forest, Aura, etc.",
+     "status": "resolved"
+    },
+    "col_066": {
+     "role": "category",
+     "name": "supertypes",
+     "description": "Supertypes: Legendary, Basic, Snow, World, Ongoing.",
+     "status": "resolved"
+    },
+    "col_067": {
+     "role": "identifier",
+     "name": "",
+     "description": "Integer id referencing t03/t02 (many-to-one); internal/external identifier, exact meaning unclear.",
+     "status": "tentative"
+    },
+    "col_068": {
+     "role": "free_text",
+     "name": "text",
+     "description": "Current rules text of the card (including reminder text and mana symbols).",
+     "status": "resolved"
+    },
+    "col_069": {
+     "role": "numeric",
+     "name": "toughness",
+     "description": "Creature toughness; mostly small integers, with special values like '*+1'.",
+     "status": "resolved"
+    },
+    "col_070": {
+     "role": "category",
+     "name": "type",
+     "description": "Full current type line, e.g. 'Creature — Kor Artificer', 'Basic Land — Plains'.",
+     "status": "resolved"
+    },
+    "col_071": {
+     "role": "category",
+     "name": "types",
+     "description": "Comma-separated main card types: Creature, Instant, Sorcery, Land, Artifact, Enchantment, Summon, Conspiracy.",
+     "status": "resolved"
+    },
+    "col_072": {
+     "role": "identifier",
+     "name": "uuid",
+     "description": "Unique per-printing UUID; referenced by t02, t03 and t04, i.e. the main printing identifier used as foreign key by other tables.",
+     "status": "resolved"
+    },
+    "col_073": {
+     "role": "identifier",
+     "name": "otherFaceIds",
+     "description": "Comma-separated UUIDs of the other faces of a multi-face card.",
+     "status": "resolved"
+    },
+    "col_074": {
+     "role": "category",
+     "name": "watermark",
+     "description": "Card watermark: faction names (mirran, phyrexian, golgari, dimir, izzet) or set-based watermarks like 'set (FEM)'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "foreign_data": {
+   "table": {
+    "name": "foreign_data",
+    "purpose": "Localized card text table (Magic: The Gathering style): one row per card printing per language, holding the card's name, rules text, type line, and flavor text translated into that language. Each row links to a base card record in t01 via a UUID."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Auto-incrementing primary key for this table; unique integer identifier of each localized card-text row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "free_text",
+     "name": "flavor_text",
+     "description": "Flavor text of the card in the row's language; empty string when the card has none. Values are quotes/lore sentences in many languages.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "language",
+     "description": "Language of this translation (e.g. Japanese, French, German, Italian, Spanish, Ancient Greek, Sanskrit, Latin, Hebrew, Portuguese (Brazil)).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "multiverseid",
+     "description": "Numeric card printing identifier (Gatherer multiverseid) linking this localized text to a specific printed card edition; null for printings without one. Range ~73k–507k, mostly unique per row.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "free_text",
+     "name": "card_name",
+     "description": "Localized name of the card (e.g. 'Pacifismo', '霊緒の振り子', 'Zyklop vom Blutfelsen').",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "free_text",
+     "name": "rules_text",
+     "description": "Localized rules/ability text of the card, including keyword abilities (Flying/Vol/Fliegend/飛行) and full rules paragraphs; empty for cards without rules text.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "type_line",
+     "description": "Localized card type line (e.g. 'Kreatur — Zyklop', 'Criatura Lendária — Guerreiro Goblin', 'Spontanzauber' = Instant); empty for some card types.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "identifier",
+     "name": "card_uuid",
+     "description": "UUID of the card (Scryfall-style deterministic UUID) that this localized text belongs to; references t01.col_072. Repeated ~10 times per UUID, once per language.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "legalities": {
+   "table": {
+    "name": "card_format_legality",
+    "purpose": "One row per (card, format) pair recording the card's legality status in that Magic: The Gathering format. The card UUID references a cards table (t01). Formats include commander, legacy, vintage, duel, modern, pauper, pioneer, premodern, penny, etc., with statuses Legal, Banned, Restricted."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "legality_id",
+     "description": "Synthetic primary key; sequential integer 1..427907 with no gaps, one per row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "format",
+     "description": "MTG tournament format name (commander, legacy, vintage, duel, modern, pauper, pioneer, premodern, penny, etc.). 15 distinct formats.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "legality_status",
+     "description": "Legality of the card in the given format: Legal, Banned, or Restricted (restricted applies to vintage-style formats where only one copy is allowed).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "card_uuid",
+     "description": "UUID (version 5 style) identifying the card; references t01.col_072 (the cards table). Each card appears once per format (top count 15 matches the 15 formats).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "rulings": {
+   "table": {
+    "name": "rulings",
+    "purpose": "Card rulings for a Magic: The Gathering card database: each row is one rules clarification/ruling text attached to a specific card, with the date the ruling was issued/made effective. Referenced by other tables (e.g. t01) via the ruling id."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "ruling_id",
+     "description": "Primary key; unique sequential integer id for each ruling (1 to 87769). Referenced by t01 and t06.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "ruling_date",
+     "description": "Date the ruling was published/issued, ranging from 2004-10-04 to 2021-02-05. The heavy concentration on 2004-10-04 (6334 rows) suggests a bulk import of older rulings on that date.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "free_text",
+     "name": "ruling_text",
+     "description": "The text of the rules ruling/clarification for a card (MTG oracle-style rulings explaining card interactions).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "card_uuid",
+     "description": "UUID of the card the ruling applies to; references t01.col_072 (the card table). Multiple rulings can share the same card UUID.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "set_translations": {
+   "table": {
+    "name": "set_name_translations",
+    "purpose": "Localized (translated) names of Magic: The Gathering sets/expansions, one row per set per language (121 sets x 10 languages = 1210 rows). Set codes like RTR (Return to Ravnica), EVE (Eventide), DDR (Duel Deck: Nissa vs Ob Nixilis) and names like 'Archenemy', 'Battle Royale', 'Beatdown' confirm MTG sets; col_004 holds the set name translated into the language in col_002 (e.g. 'Ritorno a Ravnica' is Italian for Return to Ravnica)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "translation_id",
+     "description": "Surrogate primary key, sequential integer 1-1210, one per row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "language",
+     "description": "Language of the translated set name; 10 distinct values (Chinese Simplified, Chinese Traditional, French, German, Italian, Japanese, Korean, Russian, etc.), each appearing 121 times (once per set).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "set_code",
+     "description": "Magic: The Gathering set/expansion code (e.g. RTR = Return to Ravnica, EVE = Eventide, DDR = a Duel Deck set); references the set lookup table t06.col_005.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "free_text",
+     "name": "translated_set_name",
+     "description": "Name of the MTG set translated into the language given in col_002 (e.g. 'Ritorno a Ravnica' = Italian 'Return to Ravnica', 'イーブンタイド' = Japanese 'Eventide'). Null for ~19% of rows, i.e. sets not released/translated in that language.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "sets": {
+   "table": {
+    "name": "sets",
+    "purpose": "One row per Magic: The Gathering card set/expansion/product release (Scryfall-style 'sets' table): set code, name, type, release date, block, booster contents, and flags. Referenced by card tables via the set code (col_005)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "set_id",
+     "description": "Primary key; sequential integer id of the set row (1-551).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "block_id",
+     "description": "Foreign key to a blocks/parent-entity table (t01/t02/t03); many sets share the same block (e.g. 43 sets in block 5). 0 for sets with no block.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "block_name",
+     "description": "Name of the block the set belongs to ('Theros', 'Kamigawa', 'Shadows over Innistrad') or a grouping label ('Core Set', 'Commander', 'Friday Night Magic'). Null for ~half the sets (those with no block).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "free_text",
+     "name": "booster_contents",
+     "description": "JSON description of booster pack contents (slot distribution: basic/common/uncommon/rare/rareMythic counts, per product variant such as 'default' or 'arena'). Null for non-booster products.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "identifier",
+     "name": "set_code",
+     "description": "Unique 2-5 character set code (e.g. '10E', 'TSP', 'PGRN', 'PWP09'). Referenced by card tables t01.col_063 and t05.col_003.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "boolean",
+     "name": "is_digital",
+     "description": "Boolean flag, true for ~30% of sets; plausibly 'digital-only set' (MTGO/Arena releases).",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_008": {
+     "role": "boolean",
+     "name": "is_foil_only",
+     "description": "Boolean flag, true for ~19% of sets; plausibly 'foil-only release' (e.g. premium/promo sets).",
+     "status": "tentative"
+    },
+    "col_009": {
+     "role": "boolean",
+     "name": "is_nonfoil_only",
+     "description": "Boolean flag, true for ~5% of sets; plausibly 'nonfoil-only release'.",
+     "status": "tentative"
+    },
+    "col_010": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_011": {
+     "role": "code",
+     "name": "mtgo_code",
+     "description": "Code used on Magic Online; 'DEFAULT'/'DCI'/'PMEI' appear for promo/memorabilia groups, otherwise mirrors the set code.",
+     "status": "tentative"
+    },
+    "col_012": {
+     "role": "foreign_key",
+     "name": "parent_set_id",
+     "description": "Integer id (4-3660) present for ~36% of sets, one-to-one with rows in t01/t02/t03; plausibly a link to a parent/master set (e.g. promo sets pointing to their source expansion).",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_014": {
+     "role": "free_text",
+     "name": "parent_set_name",
+     "description": "Human-readable name matching the parent set referenced by col_012 ('Aether Revolt', 'Ultimate Masters', ...); null when col_012 is null.",
+     "status": "tentative"
+    },
+    "col_015": {
+     "role": "code",
+     "name": "parent_set_code",
+     "description": "Set code of the parent set (mirrors col_012/col_014); null for ~71% of rows.",
+     "status": "tentative"
+    },
+    "col_016": {
+     "role": "free_text",
+     "name": "set_name",
+     "description": "Full unique name of the set/product ('Ultimate Masters', 'Magic 2010', 'Two-Headed Giant Tournament').",
+     "status": "resolved"
+    },
+    "col_017": {
+     "role": "code",
+     "name": "block_code",
+     "description": "Short code of the block the set belongs to (e.g. 'ZNR' shared by 6 sets of the Zendikar Rising block); null for most sets. Could alternatively be a reprint-base set code.",
+     "status": "tentative"
+    },
+    "col_018": {
+     "role": "date",
+     "name": "released_at",
+     "description": "Release date of the set, ranging 1993-08-05 (Alpha) to 2021-03-19; Jan-1 dates for undated promos.",
+     "status": "resolved"
+    },
+    "col_019": {
+     "role": "foreign_key",
+     "name": "card_count",
+     "description": "Integer present for ~47% of sets; top value 62 repeated 21 times suggests a count (plausibly number of cards in the set) rather than a true key, though it also matches ids in t02/t03/t04.",
+     "status": "tentative"
+    },
+    "col_020": {
+     "role": "foreign_key",
+     "name": "block_id_alt",
+     "description": "Near-duplicate of col_002 (same top values and range, 181 vs 166 distinct); likely a second/normalized block reference. Relationship to col_002 unclear.",
+     "status": "tentative"
+    },
+    "col_021": {
+     "role": "category",
+     "name": "set_type",
+     "description": "Type of the release: 'promo', 'expansion', 'memorabilia', 'box', 'duel_deck', 'draft_innovation', 'archenemy', 'spellbook', etc.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

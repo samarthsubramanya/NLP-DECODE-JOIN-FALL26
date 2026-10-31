@@ -2,6 +2,34 @@
  "adaptive": false,
  "candidates": [
   {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.0016251943167117807,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 92.5,
+   "score_before_fan_out": 92.5,
+   "source": {
+    "column": "id",
+    "table": "Team"
+   },
+   "target": {
+    "column": "id",
+    "table": "Player_Attributes"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
    "cardinality": "many_to_one",
    "containment": 1.0,
    "coverage": 1.0,
@@ -1071,6 +1099,90 @@
    "coverage": 1.0,
    "decision": "band",
    "fan_out": 0.75,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 69.375,
+   "score_before_fan_out": 92.5,
+   "source": {
+    "column": "id",
+    "table": "Country"
+   },
+   "target": {
+    "column": "id",
+    "table": "League"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.00042341891527772433,
+   "decision": "band",
+   "fan_out": 0.75,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 69.375,
+   "score_before_fan_out": 92.5,
+   "source": {
+    "column": "id",
+    "table": "Country"
+   },
+   "target": {
+    "column": "id",
+    "table": "Match"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 5.9789757471001964e-05,
+   "decision": "band",
+   "fan_out": 0.75,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 69.375,
+   "score_before_fan_out": 92.5,
+   "source": {
+    "column": "id",
+    "table": "Country"
+   },
+   "target": {
+    "column": "id",
+    "table": "Player_Attributes"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "band",
+   "fan_out": 0.75,
    "name_via": "table_column",
    "parts": {
     "cardinality": 0.5,
@@ -1092,6 +1204,90 @@
    },
    "target_is_pk": true,
    "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "band",
+   "fan_out": 0.75,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 69.375,
+   "score_before_fan_out": 92.5,
+   "source": {
+    "column": "id",
+    "table": "League"
+   },
+   "target": {
+    "column": "id",
+    "table": "Country"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.00042341891527772433,
+   "decision": "band",
+   "fan_out": 0.75,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 69.375,
+   "score_before_fan_out": 92.5,
+   "source": {
+    "column": "id",
+    "table": "League"
+   },
+   "target": {
+    "column": "id",
+    "table": "Match"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 5.9789757471001964e-05,
+   "decision": "band",
+   "fan_out": 0.75,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 69.375,
+   "score_before_fan_out": 92.5,
+   "source": {
+    "column": "id",
+    "table": "League"
+   },
+   "target": {
+    "column": "id",
+    "table": "Player_Attributes"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
   },
   {
    "cardinality": "many_to_one",
@@ -9006,7 +9202,17 @@
    "containment": 1.0,
    "coverage": 1.0,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 0.8,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 73.5,
    "source": {
     "column": "id",
     "table": "Country"
@@ -9017,57 +9223,6 @@
    },
    "target_is_pk": false,
    "target_pk_score": 45.9
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 1.0,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "id",
-    "table": "Country"
-   },
-   "target": {
-    "column": "id",
-    "table": "League"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 0.00042341891527772433,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "id",
-    "table": "Country"
-   },
-   "target": {
-    "column": "id",
-    "table": "Match"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 5.9789757471001964e-05,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "id",
-    "table": "Country"
-   },
-   "target": {
-    "column": "id",
-    "table": "Player_Attributes"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
   },
   {
    "cardinality": "one_to_one",
@@ -9091,23 +9246,6 @@
    "containment": 1.0,
    "coverage": 1.0,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "id",
-    "table": "League"
-   },
-   "target": {
-    "column": "id",
-    "table": "Country"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 1.0,
-   "decision": "rejected_gate",
    "reason": "same table",
    "source": {
     "column": "id",
@@ -9119,40 +9257,6 @@
    },
    "target_is_pk": false,
    "target_pk_score": 45.9
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 0.00042341891527772433,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "id",
-    "table": "League"
-   },
-   "target": {
-    "column": "id",
-    "table": "Match"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 5.9789757471001964e-05,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "id",
-    "table": "League"
-   },
-   "target": {
-    "column": "id",
-    "table": "Player_Attributes"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
   },
   {
    "cardinality": "many_to_one",
@@ -11765,7 +11869,7 @@
    "containment": 1.0,
    "coverage": 0.14120710084901456,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "Match"
@@ -11843,7 +11947,7 @@
    "containment": 1.0,
    "coverage": 0.425728472997421,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "Player"
@@ -11860,7 +11964,7 @@
    "containment": 1.0,
    "coverage": 0.0601158834208438,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "Player"
@@ -12523,7 +12627,7 @@
    "containment": 0.5217391304347826,
    "coverage": 0.006004850071211363,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G6: containment 0.522 < 0.75",
    "source": {
     "column": "id",
     "table": "Team"
@@ -12531,23 +12635,6 @@
    "target": {
     "column": "id",
     "table": "Match"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 0.0016251943167117807,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "id",
-    "table": "Team"
-   },
-   "target": {
-    "column": "id",
-    "table": "Player_Attributes"
    },
    "target_is_pk": true,
    "target_pk_score": 140.0
@@ -12727,7 +12814,7 @@
    "containment": 1.0,
    "coverage": 0.056122252588629275,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "Team_Attributes"
@@ -12744,7 +12831,7 @@
    "containment": 0.9986282578875172,
    "coverage": 0.13164556962025317,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "Team_Attributes"
@@ -12761,7 +12848,7 @@
    "containment": 1.0,
    "coverage": 0.007924860581156443,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "id",
     "table": "Team_Attributes"
@@ -12846,18 +12933,34 @@
   "null_low": 0.3,
   "orphan_max": 0.2,
   "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
   "r_cap": 2,
   "self_refs": false
  },
  "counts": {
-  "accepted": 38,
-  "band": 270,
-  "rejected_gate": 198,
+  "accepted": 39,
+  "band": 276,
+  "rejected_gate": 191,
   "rejected_score": 13
  },
  "db_id": "european_football_2",
  "graphs": {
   "direct": [
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.0016251943167117807,
+    "decision": "accepted",
+    "score": 92.5,
+    "source": {
+     "column": "id",
+     "table": "Team"
+    },
+    "target": {
+     "column": "id",
+     "table": "Player_Attributes"
+    }
+   },
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
@@ -13430,6 +13533,21 @@
    }
   ],
   "stats": [
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.0016251943167117807,
+    "decision": "accepted",
+    "score": 92.5,
+    "source": {
+     "column": "id",
+     "table": "Team"
+    },
+    "target": {
+     "column": "id",
+     "table": "Player_Attributes"
+    }
+   },
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
@@ -14007,12 +14125,87 @@
     "decision": "band",
     "score": 69.375,
     "source": {
+     "column": "id",
+     "table": "Country"
+    },
+    "target": {
+     "column": "id",
+     "table": "League"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.00042341891527772433,
+    "decision": "band",
+    "score": 69.375,
+    "source": {
+     "column": "id",
+     "table": "Country"
+    },
+    "target": {
+     "column": "id",
+     "table": "Match"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 5.9789757471001964e-05,
+    "decision": "band",
+    "score": 69.375,
+    "source": {
+     "column": "id",
+     "table": "Country"
+    },
+    "target": {
+     "column": "id",
+     "table": "Player_Attributes"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "band",
+    "score": 69.375,
+    "source": {
      "column": "country_id",
      "table": "League"
     },
     "target": {
      "column": "id",
      "table": "Country"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.00042341891527772433,
+    "decision": "band",
+    "score": 69.375,
+    "source": {
+     "column": "id",
+     "table": "League"
+    },
+    "target": {
+     "column": "id",
+     "table": "Match"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 5.9789757471001964e-05,
+    "decision": "band",
+    "score": 69.375,
+    "source": {
+     "column": "id",
+     "table": "League"
+    },
+    "target": {
+     "column": "id",
+     "table": "Player_Attributes"
     }
    },
    {
@@ -18052,7 +18245,7 @@
    }
   ]
  },
- "k_zero_share": 0.0792,
+ "k_zero_share": 0.0802,
  "keys_run": "frozen",
  "use_names": true,
  "weights": {

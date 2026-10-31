@@ -3615,10 +3615,40 @@
   },
   {
    "cardinality": "one_to_one",
+   "containment": 0.7840486650895573,
+   "coverage": 0.3922729001986727,
+   "decision": "rejected_score",
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 0.2727,
+    "nulls": 1.0,
+    "overlap": 0.784,
+    "target_key": 1.0
+   },
+   "penalties": {
+    "orphan": 0.7
+   },
+   "score": 48.5215,
+   "score_before_fan_out": 48.5215,
+   "source": {
+    "column": "constructorStandingsId",
+    "table": "constructorStandings"
+   },
+   "target": {
+    "column": "resultId",
+    "table": "results"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
    "containment": 1.0,
    "coverage": 0.006497022198159177,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "circuitId",
     "table": "circuits"
@@ -3635,7 +3665,7 @@
    "containment": 1.0,
    "coverage": 0.006083136194660358,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "circuitId",
     "table": "circuits"
@@ -3652,7 +3682,7 @@
    "containment": 0.9861111111111112,
    "coverage": 0.34134615384615385,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "circuitId",
     "table": "circuits"
@@ -3669,7 +3699,7 @@
    "containment": 1.0,
    "coverage": 0.0022800684020520615,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "circuitId",
     "table": "circuits"
@@ -3686,7 +3716,7 @@
    "containment": 1.0,
    "coverage": 0.08571428571428572,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "circuitId",
     "table": "circuits"
@@ -3703,7 +3733,7 @@
    "containment": 1.0,
    "coverage": 0.0097336758145194,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "circuitId",
     "table": "circuits"
@@ -3720,7 +3750,7 @@
    "containment": 1.0,
    "coverage": 0.07377049180327869,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "circuitId",
     "table": "circuits"
@@ -3737,7 +3767,7 @@
    "containment": 1.0,
    "coverage": 0.003043496639472461,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "circuitId",
     "table": "circuits"
@@ -3754,7 +3784,7 @@
    "containment": 0.9722222222222222,
    "coverage": 0.5223880597014925,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "circuitId",
     "table": "circuits"
@@ -3913,7 +3943,7 @@
    "containment": 0.5826565601876917,
    "coverage": 0.8729214546437745,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "constructorResultsId",
     "table": "constructorResults"
@@ -3930,7 +3960,7 @@
    "containment": 1.0,
    "coverage": 0.4684448577588029,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "constructorResultsId",
     "table": "constructorResults"
@@ -4124,23 +4154,6 @@
    "target": {
     "column": "statusId",
     "table": "status"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 0.7840486650895573,
-   "coverage": 0.3922729001986727,
-   "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
-   "source": {
-    "column": "constructorStandingsId",
-    "table": "constructorStandings"
-   },
-   "target": {
-    "column": "resultId",
-    "table": "results"
    },
    "target_is_pk": true,
    "target_pk_score": 140.0
@@ -4741,7 +4754,7 @@
    "containment": 1.0,
    "coverage": 0.018769175239126513,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "constructorId",
     "table": "constructors"
@@ -4758,7 +4771,7 @@
    "containment": 0.8653846153846154,
    "coverage": 0.015207840486650895,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "constructorId",
     "table": "constructors"
@@ -4775,7 +4788,7 @@
    "containment": 1.0,
    "coverage": 0.006586864272594845,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "constructorId",
     "table": "constructors"
@@ -4792,7 +4805,7 @@
    "containment": 1.0,
    "coverage": 0.24761904761904763,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "constructorId",
     "table": "constructors"
@@ -4809,7 +4822,7 @@
    "containment": 1.0,
    "coverage": 0.028119507908611598,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "constructorId",
     "table": "constructors"
@@ -4826,7 +4839,7 @@
    "containment": 1.0,
    "coverage": 0.21311475409836064,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "constructorId",
     "table": "constructors"
@@ -4843,7 +4856,7 @@
    "containment": 1.0,
    "coverage": 0.008792323625142665,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "constructorId",
     "table": "constructors"
@@ -4860,7 +4873,7 @@
    "containment": 0.6394230769230769,
    "coverage": 0.9925373134328358,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "constructorId",
     "table": "constructors"
@@ -5502,7 +5515,7 @@
    "containment": 1.0,
    "coverage": 0.07579859231185707,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "driverId",
     "table": "drivers"
@@ -5519,7 +5532,7 @@
    "containment": 1.0,
    "coverage": 0.113559551169393,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "driverId",
     "table": "drivers"
@@ -5536,7 +5549,7 @@
    "containment": 0.9988095238095238,
    "coverage": 0.8596311475409836,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "driverId",
     "table": "drivers"
@@ -5553,7 +5566,7 @@
    "containment": 1.0,
    "coverage": 0.035507460793845376,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "driverId",
     "table": "drivers"
@@ -7578,7 +7591,7 @@
    "containment": 0.8729214546437745,
    "coverage": 0.5826565601876917,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "qualifyId",
     "table": "qualifying"
@@ -7595,7 +7608,7 @@
    "containment": 1.0,
    "coverage": 0.31267700891913597,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "qualifyId",
     "table": "qualifying"
@@ -7842,7 +7855,7 @@
    "containment": 1.0,
    "coverage": 0.0880707453528244,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "raceId",
     "table": "races"
@@ -7859,7 +7872,7 @@
    "containment": 0.8596311475409836,
    "coverage": 0.9988095238095238,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "raceId",
     "table": "races"
@@ -7876,7 +7889,7 @@
    "containment": 1.0,
    "coverage": 0.1319453832634852,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "raceId",
     "table": "races"
@@ -7893,7 +7906,7 @@
    "containment": 1.0,
    "coverage": 0.04125628777951558,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "raceId",
     "table": "races"
@@ -9559,7 +9572,7 @@
    "containment": 0.5186625523100985,
    "coverage": 0.3885616568497055,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "resultId",
     "table": "results"
@@ -9745,7 +9758,7 @@
    "containment": 0.5223880597014925,
    "coverage": 0.9722222222222222,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "statusId",
     "table": "status"
@@ -9762,7 +9775,7 @@
    "containment": 1.0,
    "coverage": 0.01209168020212958,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "statusId",
     "table": "status"
@@ -9779,7 +9792,7 @@
    "containment": 1.0,
    "coverage": 0.011321392362284556,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "statusId",
     "table": "status"
@@ -9796,7 +9809,7 @@
    "containment": 0.9925373134328358,
    "coverage": 0.6394230769230769,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "statusId",
     "table": "status"
@@ -9813,7 +9826,7 @@
    "containment": 1.0,
    "coverage": 0.004243460637152448,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "statusId",
     "table": "status"
@@ -9830,7 +9843,7 @@
    "containment": 1.0,
    "coverage": 0.1595238095238095,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "statusId",
     "table": "status"
@@ -9847,7 +9860,7 @@
    "containment": 1.0,
    "coverage": 0.01811545221035555,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "statusId",
     "table": "status"
@@ -9864,7 +9877,7 @@
    "containment": 1.0,
    "coverage": 0.13729508196721313,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "statusId",
     "table": "status"
@@ -9881,7 +9894,7 @@
    "containment": 1.0,
    "coverage": 0.005664285412351524,
    "decision": "rejected_gate",
-   "reason": "G8: the source is its table's primary key",
+   "reason": "G8: the source is its table's dense primary key",
    "source": {
     "column": "statusId",
     "table": "status"
@@ -9922,14 +9935,15 @@
   "null_low": 0.3,
   "orphan_max": 0.2,
   "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
   "r_cap": 2,
   "self_refs": false
  },
  "counts": {
   "accepted": 18,
   "band": 90,
-  "rejected_gate": 266,
-  "rejected_score": 21
+  "rejected_gate": 265,
+  "rejected_score": 22
  },
  "db_id": "formula_1",
  "graphs": {
