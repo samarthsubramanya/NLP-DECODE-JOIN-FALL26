@@ -3,12 +3,17 @@ Stage 3: the LLM step. First it judges the ambiguous Stage 2b joins, then it wri
 name and a one-line description for every column, from the final join graph. A frozen LLM on
 ASU Research Computing's Voyager gateway; nothing is trained.
 
-Step 1, adjudication (one call per band record). Stage 2b scores every candidate join and
-labels the weakest accepted ones, score in [accept, accept + delta), as "band". Each band
-record goes to the LLM with both columns' profiles, sample rows of both tables, the other
-columns of each table, the Stage 2a score of the target and the Stage 2b score with its
-parts, weights, penalties and fan-out. The LLM may accept, reject or abstain on that one
-record; it cannot propose a join. An unreadable reply counts as abstain. Verdicts are written
+Step 1, adjudication. Stage 2b scores every candidate join and labels the weakest accepted
+ones, score in [accept, accept + delta), as "band". Almost all band records are there because
+their source column has several surviving targets and the fan-out factor psi pulled them all
+down, so by default (--adjudication grouped) the band records of one source column go to the
+LLM together, one call per source: the source column's profile and sample rows once, then each
+competing target with its profile, sample rows, other columns, Stage 2a score and the Stage 2b
+score with its parts, penalties and fan-out, plus the targets of that source statistics already
+accepted outright. The LLM accepts, rejects or abstains on each candidate while seeing its
+rivals; it may accept several or none, and cannot propose a join. --adjudication single sends
+one call per band record instead (the earlier behaviour). An unreadable reply counts as
+abstain. Verdicts are written
 on the records as llm_accept / llm_reject / llm_abstain with the model's reason, and
     graphs.llm = accepted + llm_accept
 is built with Stage 2b's own greedy assembly. Rejected and abstained records stay in the file
@@ -35,6 +40,8 @@ Key: VOYAGER_API_KEY in the environment or in the repo's .env (Voyager portal > 
 
 Usage:
     python src/describe_columns.py --dataset bird
+    python src/describe_columns.py --dataset bird --adjudication single --run single   # one call per band record
+    python src/describe_columns.py --dataset bird --no-describe --run joins_only       # step 1 only
     python src/describe_columns.py --dataset bird --databases financial --run try
     python src/describe_columns.py --dataset bird --names-only --run names_only        # RQ2 ablation
     python src/describe_columns.py --dataset bird --joins-run no_names --run no_names  # obfuscated simulation
@@ -78,6 +85,8 @@ DEFAULTS = {
     "workers": 4,                   # the gateway docs suggest 4-8 per model
     "retry_waits": [5, 10, 20, 40],
     "joins_run": "default",
+    "repeat": 0,                    # >0: ask again instead of replaying the cache (variance runs)
+    "adjudication": "grouped",      # grouped: one call per source column; single: one per band record
     "top_values": 5,
     "sample_values": 5,
     "sample_rows": 3,
@@ -102,11 +111,47 @@ Overlapping values alone are not enough: small integers, years and codes often o
 chance. Matching names alone are not enough either. You may only judge this candidate; do
 not suggest other joins.
 
+When the source column is its own table's primary key ("source_is_primary_key"), a real join is
+usually a subtype or extension link: the source table holds some of the target table's entities
+(an employee is a person, a savings account is an account) and reuses the target's key, so
+containment is full, coverage is low and both keys come from one shared ID pool. A shared ID pool
+is then expected, not a sign of coincidence: ask whether the source entity can be a kind of, or a
+one-to-one extension of, the target entity, and reject only when it cannot.
+
 accept   the evidence shows a real reference
 reject   the evidence shows the overlap is coincidental or the columns mean different things
 abstain  the evidence is too thin to tell
 
 Answer with JSON only: {"decision": "accept" | "reject" | "abstain", "reason": "<one sentence>"}"""
+
+ADJUDICATE_GROUP = """You review the candidate joins of one source column in a database you have never seen.
+Statistics found several target columns that this source column could reference and scored each
+just above the acceptance cutoff; they were pulled down because they compete, so the call is uncertain.
+
+For each candidate, decide whether the source column really references that target column, i.e.
+whether each source value names the same real-world entity as the matching target value. You get
+the source column's profile and sample rows once, then every candidate target with its profile,
+sample rows, other columns, primary-key score and join score with its parts. "already_accepted"
+lists targets of this source that statistics accepted outright.
+
+Compare the candidates with each other. Usually one target is the real reference and the others
+overlap by chance, but more than one can be right (the same entity kept in two tables), and none
+may be. Overlapping values alone are not enough: small integers, years and codes often overlap by
+chance. Matching names alone are not enough either. Judge only these candidates; do not suggest
+other joins.
+
+When the source column is its own table's primary key ("source.is_primary_key"), a real join is
+usually a subtype or extension link: the source table holds some of the target table's entities
+(an employee is a person, a savings account is an account) and reuses the target's key, so
+containment is full, coverage is low and both keys come from one shared ID pool. A shared ID pool
+is then expected, not a sign of coincidence: ask whether the source entity can be a kind of, or a
+one-to-one extension of, the target entity, and reject only when it cannot.
+
+accept   the evidence shows a real reference
+reject   the evidence shows the overlap is coincidental or the columns mean different things
+abstain  the evidence is too thin to tell
+
+Answer with JSON only, in the given schema: one decision and a one-sentence reason per candidate id."""
 
 DESCRIBE = """You document one table of a database that has no documentation.
 For each column you get what the data shows: its name, declared and inferred type, null rate,
@@ -162,7 +207,7 @@ def adjudication_payload(rec, profile, joins, cfg):
         side[role] = {"table": t, "column": c, "table_rows": tp["rows"],
                       "profile": column_evidence(tp["columns"][c], cfg),
                       "other_columns": [x for x in tp["columns"] if x != c], "sample_rows": rows_of(tp, cfg)}
-    return {**side,
+    return {**side, "source_is_primary_key": rec["source_is_pk"],
             "target_is_primary_key": rec["target_is_pk"], "target_pk_score": rec["target_pk_score"],
             "containment": round(rec["containment"], 3), "coverage": round(rec["coverage"], 3),
             "cardinality": rec["cardinality"], "join_score": round(rec["score"], 1),
@@ -185,14 +230,70 @@ def judge(llm, rec, profile, joins, cfg):
     return {"decision": verdict, "reason": reply.get("reason", "unparsable reply"), "reasoning_effort": effort}
 
 
-def adjudicate(llm, profile, joins, cfg):
+def group_payload(recs, profile, joins, cfg):
+    s = recs[0]["source"]
+    tp = profile["tables"][s["table"]]
+    accepted = [f"{r['target']['table']}.{r['target']['column']}" for r in joins["candidates"]
+                if r["decision"] == "accepted" and r["source"] == s]
+    cands = {}
+    for i, rec in enumerate(recs, 1):
+        t, c = rec["target"]["table"], rec["target"]["column"]
+        tt = profile["tables"][t]
+        cands[f"c{i}"] = {"table": t, "column": c, "table_rows": tt["rows"], "profile": column_evidence(tt["columns"][c], cfg),
+                          "other_columns": [x for x in tt["columns"] if x != c], "sample_rows": rows_of(tt, cfg),
+                          "target_is_primary_key": rec["target_is_pk"], "target_pk_score": rec["target_pk_score"],
+                          "containment": round(rec["containment"], 3), "coverage": round(rec["coverage"], 3),
+                          "cardinality": rec["cardinality"], "join_score": round(rec["score"], 1),
+                          "join_score_parts": rec["parts"], "penalties": rec["penalties"], "fan_out": rec["fan_out"]}
+    return {"source": {"table": s["table"], "column": s["column"], "table_rows": tp["rows"],
+                       "is_primary_key": recs[0]["source_is_pk"],
+                       "profile": column_evidence(tp["columns"][s["column"]], cfg),
+                       "other_columns": [x for x in tp["columns"] if x != s["column"]], "sample_rows": rows_of(tp, cfg)},
+            "already_accepted": accepted, "candidates": cands, "weights": joins["weights"],
+            "acceptance_cutoff": joins["config"]["accept"],
+            "band": [joins["config"]["accept"], joins["config"]["accept"] + joins["config"]["delta"]]}
+
+
+def group_schema(ids):
+    one = VERDICT_SCHEMA["schema"]
+    return {"name": "join_verdicts", "strict": True, "schema": {
+        "type": "object", "additionalProperties": False, "required": ["candidates"],
+        "properties": {"candidates": {"type": "object", "additionalProperties": False, "required": list(ids),
+                                      "properties": {i: one for i in ids}}}}}
+
+
+def judge_group(llm, recs, profile, joins, cfg):
+    s = recs[0]["source"]
+    payload = group_payload(recs, profile, joins, cfg)
+    reply, effort = llm.complete("adjudicate", f"{s['table']}.{s['column']} ({len(recs)} targets)", ADJUDICATE_GROUP,
+                                 json.dumps(payload, default=str), group_schema(payload["candidates"]))
+    got = (reply or {}).get("candidates") or {}
+    out = []
+    for i in payload["candidates"]:
+        v = got.get(i) or {}
+        out.append({"decision": v.get("decision") if v.get("decision") in VERDICTS else "abstain",
+                    "reason": v.get("reason", "unparsable reply"), "reasoning_effort": effort, "group_size": len(recs)})
+    return out
+
+
+def adjudicate(llm, profile, keys, joins, cfg):
     """Verdicts on the band records (in place), then graphs.llm. Returns the verdict counts."""
     # records judged by an earlier Stage 3 run are judged again, so a model or prompt change takes effect
     band = [r for r in joins["candidates"] if r["decision"] == "band" or r["decision"].startswith("llm_")]
+    for r in band:   # a key can be a source only when Stage 2b's G8 spared it (a sparse key)
+        r["source_is_pk"] = keys["tables"][r["source"]["table"]]["primary_key"] == r["source"]["column"]
     with ThreadPoolExecutor(cfg["workers"]) as pool:
-        verdicts = list(pool.map(lambda r: judge(llm, r, profile, joins, cfg), band))
+        if cfg["adjudication"] == "single":
+            verdicts = list(pool.map(lambda r: judge(llm, r, profile, joins, cfg), band))
+        else:
+            groups = {}
+            for r in band:
+                groups.setdefault((r["source"]["table"], r["source"]["column"]), []).append(r)
+            band = [r for g in groups.values() for r in g]
+            verdicts = [v for vs in pool.map(lambda g: judge_group(llm, g, profile, joins, cfg), groups.values())
+                        for v in vs]
     for rec, v in zip(band, verdicts):
-        rec["llm"] = {**v, "model": cfg["model"]}
+        rec["llm"] = {**v, "model": cfg["model"], "adjudication": cfg["adjudication"]}
         rec["decision"] = f"llm_{v['decision']}"
     joins["graphs"]["llm"] = assemble(joins["candidates"], {"accepted", "llm_accept"}, joins["config"])
     return {v: sum(r["decision"] == f"llm_{v}" for r in band) for v in VERDICTS}
@@ -297,7 +398,8 @@ class Voyager:
                 "max_tokens": self.cfg["max_tokens"], "reasoning_effort": self.cfg["reasoning_effort"],
                 "response_format": {"type": "json_schema", "json_schema": json_schema},
                 "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
-        h = hashlib.sha256(json.dumps(body, sort_keys=True).encode()).hexdigest()
+        # repeat > 0 gives the same request a fresh cache slot: a new sample of the model, itself cached
+        h = hashlib.sha256((json.dumps(body, sort_keys=True) + (f"#{self.cfg['repeat']}" if self.cfg["repeat"] else "")).encode()).hexdigest()
         cached, start, usage = self.cache_dir / f"{h}.json", time.perf_counter(), None
         effort = body["reasoning_effort"]
         if cached.exists():
@@ -355,12 +457,18 @@ def main():
     ap.add_argument("--reasoning-effort", default=DEFAULTS["reasoning_effort"],
                     choices=["none", "low", "medium", "high"])
     ap.add_argument("--workers", type=int, default=DEFAULTS["workers"])
+    ap.add_argument("--adjudication", default=DEFAULTS["adjudication"], choices=["grouped", "single"],
+                    help="grouped: one call per source column with its competing band targets; single: one per record")
+    ap.add_argument("--no-describe", action="store_true", help="step 1 only: judge the band and write graphs.llm")
+    ap.add_argument("--repeat", type=int, default=0,
+                    help="N > 0 bypasses the cached replies and asks again (cached as repeat N), to measure run-to-run variance")
     ap.add_argument("--names-only", action="store_true",
                     help="descriptions without values, sample rows or lookup labels (RQ2 ablation); "
                          "adjudication is unchanged")
     args = ap.parse_args()
     cfg = {**DEFAULTS, "model": args.model, "reasoning_effort": args.reasoning_effort,
-           "workers": args.workers, "joins_run": args.joins_run}
+           "workers": args.workers, "joins_run": args.joins_run, "adjudication": args.adjudication,
+           "repeat": args.repeat}
 
     out_dir = ROOT / "out" / "descriptions" / args.dataset / args.run
     (out_dir / "joins").mkdir(parents=True, exist_ok=True)
@@ -376,8 +484,12 @@ def main():
             sys.exit(f"{keys_path.relative_to(ROOT)} is missing; run src/primary_keys.py --run {joins['keys_run']} first")
         profile, keys = load_profile(args.dataset, db), json.loads(keys_path.read_text())
 
-        verdicts = adjudicate(llm, profile, joins, cfg)
+        verdicts = adjudicate(llm, profile, keys, joins, cfg)
         (out_dir / "joins" / f"{db['db_id']}.json").write_text(json.dumps(joins, indent=1, sort_keys=True))
+        if args.no_describe:
+            print(f"  {db['db_id']}: band {sum(verdicts.values())} -> {verdicts}, "
+                  f"{len(joins['graphs']['direct'])} direct + LLM = {len(joins['graphs']['llm'])} edges")
+            continue
         tables = describe(llm, profile, keys, joins, cfg, not args.names_only)
         out = {"db_id": db["db_id"], "model": cfg["model"], "reasoning_effort": cfg["reasoning_effort"],
                "use_values": not args.names_only, "joins_run": args.joins_run, "keys_run": joins["keys_run"],
