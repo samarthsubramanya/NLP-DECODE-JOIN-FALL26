@@ -95,8 +95,8 @@ Counts only; gold labels are used for evaluation after Stage 3, never here.
 
 | Run | Candidates | accepted | band | below 60 | gated out |
 |---|---|---|---|---|---|
-| names (`frozen` keys) | 1,502 | 148 | 467 | 90 | 797 |
-| no names (`frozen_no_names` keys) | 1,502 | 586 | 106 | 10 | 800 |
+| names (`frozen` keys) | 1,502 | 150 | 139 | 41 | 1,172 |
+| no names (`frozen_no_names` keys) | 1,502 | 246 | 70 | 15 | 1,171 |
 
 (Strict G8, before 2026-10-31: 145 / 459 / 86 / 812 with names, 581 / 97 / 7 / 817 without.)
 
@@ -115,5 +115,6 @@ Two things to know before Stage 3:
 
 ## 7. Changelog
 
+- **2026-11-01** G9 range-span gate (`min_range_span` 0.1): an integer source must span at least a tenth of the target's range, which removes small measures (ratings, counts) contained by chance in 1..n ids. Regenerated `out/joins/{bird,beaver,fiben}/default` and `out/joins/{bird,bird_obfuscated}/frozen_no_names`. Joins F1 after Stage 3: BIRD obfuscated .275 → .563, BIRD named .733 → .758, FIBEN .306 → .327 (.629 → .701 on FKs with rows). Unit test added (15 pass).
 - **2026-10-31** G8 spares sparse integer keys (`pk_source_max_density`, 0.5): finds subclass links (FIBEN: a child table's key references its parent's key; 135 of FIBEN's 159 declared FKs) and 1:1 extension tables (BIRD `frpm.CDSCode → schools.CDSCode`). Regenerated `out/joins/{bird,beaver,fiben,spider}/default` and `out/joins/{bird,bird_obfuscated}/frozen_no_names`. Joins graph F1 after Stage 3 (strict G8 → density rule): FIBEN vs its 159 declared FKs .196 → .306, BIRD named .737 → .733, BIRD obfuscated .271 → .275, BEAVER unchanged; Spider dev, statistics only, .824 → .833. Unit test added (14 pass).
 - **2026-10-24** First version of Stage 2b (`src/foreign_keys.py`, `tests/test_foreign_keys.py`, `docs/foreign_keys.md`). Ran the whole chain on BIRD dev; outputs in `out/joins/bird/default` and `out/joins/bird/frozen_no_names`.

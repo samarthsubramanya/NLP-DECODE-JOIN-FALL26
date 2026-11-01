@@ -82,6 +82,7 @@ Checked in this order. The first one that fires rejects the pair as `rejected_ga
 | 6 | Source has fewer than 2 distinct values | `prefilter: fewer than 2` | [Ours] |
 | 7 | Source average length is over 64 characters | `prefilter: average length` | [Paper] tier 2, [Team] |
 | 8 | **G6:** containment is below 0.75 (`--containment-min`) | `G6` | [Paper], [Report] |
+| 9 | **G9:** both columns are integers and the source's range `max − min + 1` spans less than `min_range_span` (0.1) of the target's (`--min-range-span`, negative = off) | `G9` | [Ours] |
 
 The paper's G8 is strict: a column that is *both* its table's primary key and a real foreign key cannot be found. That loses 1:1 extension tables (BIRD `frpm.CDSCode → schools.CDSCode`) and subclass tables (FIBEN `CORPORATION.CORPORATIONID → AUTONOMOUSAGENT.AUTONOMOUSAGENTID`; 135 of FIBEN's 159 declared FKs are such key → key links). Simply dropping G8 lets in keys numbered 1..n that overlap another table's 1..n by chance (BIRD: 17 extra accepted edges, 1 real).
 
@@ -94,6 +95,15 @@ What separates the two is how densely the key fills its own range, `density = di
 | FIBEN, declared | 28 | 0.0008 |
 
 So G8 spares an **integer** primary key whose density is at most `pk_source_max_density` (0.5): a sparse key whose scattered values all land in another key rarely does so by chance. That admits 3/3 BIRD and 19/28 FIBEN real links and 13/130 BIRD chance pairs (7 of them `european_football_2` ids that do match, undeclared). Dense real links (FIBEN `PERSON.PERSONID`, density 1.0) are still lost; text keys keep strict G8. `--pk-source-max-density -1` restores the paper's strict G8.
+
+**G9, why the range matters.** Without names, 501 of the 600 edges in BIRD obfuscated's final graph were wrong, nearly all small integer measures (a 0–100 rating, a 1–5 count) sitting inside a table's 1..n ids. Containment cannot tell them apart: any value set in 1..100 is contained by ids 1..11,060. What differs is how much of the target's range the source covers. A real foreign key draws from the whole parent key; a measure stays in a corner. On the edges of that graph, `span = (source max − min + 1) / (target max − min + 1)`:
+
+| | edges | 10th pct | median |
+|---|---|---|---|
+| declared FK | 99 | 0.93 | 1.00 |
+| not declared | 501 | 0.0001 | 0.004 |
+
+The smallest declared span is 0.14 (`pitstops.raceId`: recent races 841–982 of 1–988), so 0.1 loses no BIRD foreign key. Text pairs are not checked (no order to measure).
 
 ---
 
@@ -217,13 +227,14 @@ Decided together with the team unless marked otherwise.
 | Fan-out ψ | Kept exactly as in the paper, even though it can push a clear winner into the band (decided 2026-10-24) |
 | Coverage as an extra signal | Not used. Stage 1 stores `coverage`, but it is not in the paper or the proposal |
 | G8 exception | Integer primary keys with density ≤ 0.5 may be sources (§4); threshold chosen on FIBEN and BIRD, checked on Spider dev and BEAVER *(decided 2026-10-31)* |
+| G9 range span | Integer pairs need source range ≥ 0.1 × target range (§4); threshold set below the smallest BIRD span (0.14), checked on FIBEN, Spider dev and BEAVER *(2026-11-01)* |
 
 ---
 
 ## 10. Known limits
 
 - **G8:** a primary key that is also a foreign key is found only when it is a sparse integer key (§4); dense ones (keys numbered 1..n) and text keys are not.
-- **Containment is not enough on its own.** Small integer columns overlap by chance with a large id range; the gates, the name and cardinality terms and the fan-out penalty are what keep these down. Expect statistics alone to be noisy, and many borderline records to reach the band.
+- **Containment is not enough on its own.** Small integer columns overlap by chance with a large id range; G9 removes those that sit in a corner of the range, and the name and cardinality terms and the fan-out penalty handle the rest. A measure whose range happens to match an id range (1–77 counts against ids 1–77) still passes. Expect statistics alone to be noisy, and many borderline records to reach the band.
 - **No names:** with the 20 name points moved to overlap, most candidates clear 70 and the band nearly empties (§11).
 - **Fan-out** demotes a correct pair whenever its source has several surviving targets (§6). Kept on purpose; the LLM band absorbs it.
 - **Empty tables** (e.g. FIBEN) have no values to compare, so they produce no candidates.
@@ -253,7 +264,7 @@ python src/foreign_keys.py      --dataset bird_stripped --keys-run frozen --run 
 python -m pytest tests/test_foreign_keys.py
 ```
 
-Flags: `--databases`, `--run`, `--keys-run`, `--accept`, `--delta`, `--containment-min`, `--max-targets`, `--self-refs`, `--pk-source-max-density` (negative = strict G8), `--g4-ratio` / `--g4-multiplier`, `--reprofile`. The names setting always comes from the keys run.
+Flags: `--databases`, `--run`, `--keys-run`, `--accept`, `--delta`, `--containment-min`, `--max-targets`, `--self-refs`, `--pk-source-max-density` (negative = strict G8), `--min-range-span` (negative = G9 off), `--g4-ratio` / `--g4-multiplier`, `--reprofile`. The names setting always comes from the keys run.
 
 The first command needs the DuckDB file from the shared Hugging Face repo (`src/duckdb_driver.py` downloads it); set `HF_HUB_OFFLINE=1` afterwards to use the cached copy.
 
@@ -261,41 +272,41 @@ The first command needs the DuckDB file from the shared Hugging Face repo (`src/
 
 ## 12. What it produced on BIRD dev (not graded)
 
-Counts only. Gold labels are used for evaluation after Stage 3, never here. 1,502 candidates in total; the adaptive shift fired in no database. Regenerated 2026-10-31 with the G8 density rule (strict G8 totals: 145 / 459 / 86 / 812 with names, 581 / 97 / 7 / 817 without).
+Counts only. Gold labels are used for evaluation after Stage 3, never here. 1,502 candidates in total; the adaptive shift fired in no database. Regenerated 2026-11-01 with G9 (before G9: 148 / 467 / 90 / 797 with names, 586 / 106 / 10 / 800 without; strict G8: 145 / 459 / 86 / 812 and 581 / 97 / 7 / 817).
 
 **With names** (`out/joins/bird/default`)
 
 | Database | accepted | band | below 60 | gated out |
 |---|---|---|---|---|
 | california_schools | 2 | 0 | 1 | 1 |
-| card_games | 14 | 30 | 12 | 60 |
-| codebase_community | 21 | 49 | 22 | 124 |
+| card_games | 19 | 9 | 0 | 88 |
+| codebase_community | 13 | 34 | 7 | 162 |
 | debit_card_specializing | 7 | 0 | 0 | 8 |
-| european_football_2 | 39 | 276 | 13 | 191 |
-| financial | 8 | 18 | 20 | 86 |
-| formula_1 | 18 | 90 | 22 | 265 |
+| european_football_2 | 41 | 15 | 8 | 455 |
+| financial | 10 | 6 | 7 | 109 |
+| formula_1 | 19 | 71 | 18 | 287 |
 | student_club | 8 | 0 | 0 | 0 |
 | superhero | 27 | 2 | 0 | 62 |
 | thrombosis_prediction | 1 | 0 | 0 | 0 |
 | toxicology | 3 | 2 | 0 | 0 |
-| **total** | **148** | **467** | **90** | **797** |
+| **total** | **150** | **139** | **41** | **1172** |
 
 **No names, frozen key rules** (`out/joins/bird/frozen_no_names`)
 
 | Database | accepted | band | below 60 | gated out |
 |---|---|---|---|---|
 | california_schools | 2 | 0 | 1 | 1 |
-| card_games | 37 | 19 | 0 | 60 |
-| codebase_community | 52 | 40 | 0 | 124 |
+| card_games | 24 | 4 | 0 | 88 |
+| codebase_community | 26 | 26 | 2 | 162 |
 | debit_card_specializing | 7 | 0 | 0 | 8 |
-| european_football_2 | 303 | 19 | 6 | 191 |
-| financial | 30 | 14 | 2 | 86 |
-| formula_1 | 114 | 12 | 1 | 268 |
+| european_football_2 | 41 | 15 | 8 | 455 |
+| financial | 12 | 9 | 2 | 109 |
+| formula_1 | 93 | 14 | 2 | 286 |
 | student_club | 8 | 0 | 0 | 0 |
 | superhero | 29 | 0 | 0 | 62 |
 | thrombosis_prediction | 1 | 0 | 0 | 0 |
 | toxicology | 3 | 2 | 0 | 0 |
-| **total** | **586** | **106** | **10** | **800** |
+| **total** | **246** | **70** | **15** | **1171** |
 
 ### Checks done
 
@@ -309,6 +320,8 @@ Counts only. Gold labels are used for evaluation after Stage 3, never here. 1,50
 ---
 
 ## 13. Changelog
+
+- **2026-11-01** G9 range-span gate (§4, `min_range_span` 0.1), one unit test (15 pass). Regenerated `out/joins/{bird,beaver,fiben}/default` and `out/joins/{bird,bird_obfuscated}/frozen_no_names`. `out/joins/spider/g9_frozen` is the Spider dev check; the remote's `spider/default`, `spider/no_names` and `bird_stripped/default` are not regenerated.
 
 - **2026-10-24** First version: `src/foreign_keys.py` and `tests/test_foreign_keys.py`, runs on BIRD dev (names and no names).
 - **2026-10-31** G8 spares sparse integer primary keys (§4, `pk_source_max_density` 0.5); `out/joins/{bird,beaver,fiben}/default` and `out/joins/{bird,bird_obfuscated}/frozen_no_names` regenerated; one unit test added (14 pass). Not regenerated, so still strict G8: `out/joins/bird_stripped/default`, `out/joins/spider/default` and `out/joins/spider/no_names` (2026-10-28). Until they are rerun, `bird_stripped/default` differs from `bird/default` in the key → key edges only.
