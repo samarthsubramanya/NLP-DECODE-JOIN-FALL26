@@ -984,34 +984,6 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
-   "coverage": 0.002,
-   "decision": "accepted",
-   "fan_out": 1.0,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2222,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 84.4444,
-   "score_before_fan_out": 84.4444,
-   "source": {
-    "column": "ip_version",
-    "table": "subnets"
-   },
-   "target": {
-    "column": "gre_id",
-    "table": "ml2_gre_allocations"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
    "coverage": 0.4489795918367347,
    "decision": "accepted",
    "fan_out": 0.85,
@@ -1308,34 +1280,6 @@
    "score_before_fan_out": 79.8864,
    "source": {
     "column": "expected_codes",
-    "table": "healthmonitors"
-   },
-   "target": {
-    "column": "gre_id",
-    "table": "ml2_gre_allocations"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.002,
-   "decision": "accepted",
-   "fan_out": 1.0,
-   "name_via": "table_id",
-   "parts": {
-    "cardinality": 0.75,
-    "name": 0.1579,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 79.4079,
-   "score_before_fan_out": 79.4079,
-   "source": {
-    "column": "timeout",
     "table": "healthmonitors"
    },
    "target": {
@@ -3531,36 +3475,6 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.75,
-   "coverage": 0.003,
-   "decision": "rejected_score",
-   "fan_out": 1.0,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2,
-    "nulls": 1.0,
-    "overlap": 0.75,
-    "target_key": 1.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "score": 49.175,
-   "score_before_fan_out": 49.175,
-   "source": {
-    "column": "order",
-    "table": "dnsnameservers"
-   },
-   "target": {
-    "column": "gre_id",
-    "table": "ml2_gre_allocations"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
    "containment": 0.5,
    "coverage": 0.16666666666666666,
    "decision": "rejected_gate",
@@ -3711,6 +3625,23 @@
    },
    "target_is_pk": false,
    "target_pk_score": 57.6
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.75,
+   "coverage": 0.003,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.004 of the target's < 0.1",
+   "source": {
+    "column": "order",
+    "table": "dnsnameservers"
+   },
+   "target": {
+    "column": "gre_id",
+    "table": "ml2_gre_allocations"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
   },
   {
    "cardinality": "one_to_one",
@@ -4085,6 +4016,23 @@
    },
    "target_is_pk": false,
    "target_pk_score": 17.875
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.002,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
+   "source": {
+    "column": "timeout",
+    "table": "healthmonitors"
+   },
+   "target": {
+    "column": "gre_id",
+    "table": "ml2_gre_allocations"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
   },
   {
    "cardinality": "many_to_one",
@@ -5810,6 +5758,23 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.002,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.003 of the target's < 0.1",
+   "source": {
+    "column": "ip_version",
+    "table": "subnets"
+   },
+   "target": {
+    "column": "gre_id",
+    "table": "ml2_gre_allocations"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.5,
    "coverage": 0.00026490066225165563,
    "decision": "rejected_gate",
@@ -6149,6 +6114,7 @@
   "keys_run": "frozen",
   "long_text_len": 64,
   "max_targets": 3,
+  "min_range_span": 0.1,
   "min_source_distinct": 2,
   "name_contains": 0.8,
   "never_source_roles": [
@@ -6165,10 +6131,9 @@
   "self_refs": false
  },
  "counts": {
-  "accepted": 81,
+  "accepted": 79,
   "band": 45,
-  "rejected_gate": 146,
-  "rejected_score": 1
+  "rejected_gate": 149
  },
  "db_id": "neutron",
  "graphs": {
@@ -6701,21 +6666,6 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 0.002,
-    "decision": "accepted",
-    "score": 84.4444,
-    "source": {
-     "column": "ip_version",
-     "table": "subnets"
-    },
-    "target": {
-     "column": "gre_id",
-     "table": "ml2_gre_allocations"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
     "coverage": 0.4489795918367347,
     "decision": "accepted",
     "score": 83.1111,
@@ -6871,21 +6821,6 @@
     "score": 79.8864,
     "source": {
      "column": "expected_codes",
-     "table": "healthmonitors"
-    },
-    "target": {
-     "column": "gre_id",
-     "table": "ml2_gre_allocations"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.002,
-    "decision": "accepted",
-    "score": 79.4079,
-    "source": {
-     "column": "timeout",
      "table": "healthmonitors"
     },
     "target": {
@@ -7873,21 +7808,6 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 0.002,
-    "decision": "accepted",
-    "score": 84.4444,
-    "source": {
-     "column": "ip_version",
-     "table": "subnets"
-    },
-    "target": {
-     "column": "gre_id",
-     "table": "ml2_gre_allocations"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
     "coverage": 0.4489795918367347,
     "decision": "accepted",
     "score": 83.1111,
@@ -8043,21 +7963,6 @@
     "score": 79.8864,
     "source": {
      "column": "expected_codes",
-     "table": "healthmonitors"
-    },
-    "target": {
-     "column": "gre_id",
-     "table": "ml2_gre_allocations"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.002,
-    "decision": "accepted",
-    "score": 79.4079,
-    "source": {
-     "column": "timeout",
      "table": "healthmonitors"
     },
     "target": {
@@ -9132,7 +9037,7 @@
    }
   ]
  },
- "k_zero_share": 0.4118,
+ "k_zero_share": 0.4211,
  "keys_run": "frozen",
  "use_names": true,
  "weights": {

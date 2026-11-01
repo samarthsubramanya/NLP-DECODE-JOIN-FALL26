@@ -1,0 +1,1295 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9565217391304348,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 0.7826,
+    "name": 0.8,
+    "nulls": 1.0,
+    "overlap": 0.9565,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 91.0,
+   "score_before_fan_out": 91.0,
+   "source": {
+    "column": "Maker",
+    "table": "model_list"
+   },
+   "target": {
+    "column": "Id",
+    "table": "car_makers"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.229064039408867,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.2143,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 84.2857,
+   "score_before_fan_out": 84.2857,
+   "source": {
+    "column": "Horsepower",
+    "table": "cars_data"
+   },
+   "target": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9696969696969697,
+   "coverage": 0.8888888888888888,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 0.9697,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "score": 83.7879,
+   "score_before_fan_out": 83.7879,
+   "source": {
+    "column": "Model",
+    "table": "car_names"
+   },
+   "target": {
+    "column": "Model",
+    "table": "model_list"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 55.3
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.5333333333333333,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.8,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 81.6,
+   "score_before_fan_out": 96.0,
+   "source": {
+    "column": "Country",
+    "table": "car_makers"
+   },
+   "target": {
+    "column": "CountryId",
+    "table": "countries"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "fan_out": 0.75,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.8,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 72.0,
+   "score_before_fan_out": 96.0,
+   "source": {
+    "column": "Continent",
+    "table": "countries"
+   },
+   "target": {
+    "column": "ContId",
+    "table": "continents"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.2222222222222222,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "name_via": "table_id",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.1818,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 71.0909,
+   "score_before_fan_out": 83.6364,
+   "source": {
+    "column": "Country",
+    "table": "car_makers"
+   },
+   "target": {
+    "column": "ModelId",
+    "table": "model_list"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.22727272727272727,
+   "decision": "band",
+   "fan_out": 0.75,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.3636,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 65.4545,
+   "score_before_fan_out": 87.2727,
+   "source": {
+    "column": "Cylinders",
+    "table": "cars_data"
+   },
+   "target": {
+    "column": "Id",
+    "table": "car_makers"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.1388888888888889,
+   "decision": "band",
+   "fan_out": 0.75,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.25,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 63.75,
+   "score_before_fan_out": 85.0,
+   "source": {
+    "column": "Cylinders",
+    "table": "cars_data"
+   },
+   "target": {
+    "column": "ModelId",
+    "table": "model_list"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.1388888888888889,
+   "decision": "band",
+   "fan_out": 0.75,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.1875,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 62.8125,
+   "score_before_fan_out": 83.75,
+   "source": {
+    "column": "Continent",
+    "table": "countries"
+   },
+   "target": {
+    "column": "ModelId",
+    "table": "model_list"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.3333333333333333,
+   "decision": "band",
+   "fan_out": 0.75,
+   "name_via": "table_id",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.1818,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 62.7273,
+   "score_before_fan_out": 83.6364,
+   "source": {
+    "column": "Cylinders",
+    "table": "cars_data"
+   },
+   "target": {
+    "column": "CountryId",
+    "table": "countries"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.22727272727272727,
+   "decision": "band",
+   "fan_out": 0.75,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.1818,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 62.7273,
+   "score_before_fan_out": 83.6364,
+   "source": {
+    "column": "Continent",
+    "table": "countries"
+   },
+   "target": {
+    "column": "Id",
+    "table": "car_makers"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.8636363636363636,
+   "coverage": 0.5277777777777778,
+   "decision": "band",
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 0.4,
+    "nulls": 1.0,
+    "overlap": 0.8636,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "score": 60.0455,
+   "score_before_fan_out": 60.0455,
+   "source": {
+    "column": "Maker",
+    "table": "car_makers"
+   },
+   "target": {
+    "column": "Model",
+    "table": "model_list"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 55.3
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.36363636363636365,
+   "decision": "rejected_gate",
+   "reason": "same table",
+   "source": {
+    "column": "Country",
+    "table": "car_makers"
+   },
+   "target": {
+    "column": "Id",
+    "table": "car_makers"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.019704433497536946,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.020 of the target's < 0.1",
+   "source": {
+    "column": "Country",
+    "table": "car_makers"
+   },
+   "target": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.019704433497536946,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.020 of the target's < 0.1",
+   "source": {
+    "column": "Country",
+    "table": "car_makers"
+   },
+   "target": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.625,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G6: containment 0.625 < 0.75",
+   "source": {
+    "column": "Country",
+    "table": "car_makers"
+   },
+   "target": {
+    "column": "ContId",
+    "table": "continents"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.054187192118226604,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "Id",
+    "table": "car_makers"
+   },
+   "target": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.054187192118226604,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "Id",
+    "table": "car_makers"
+   },
+   "target": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.6363636363636364,
+   "coverage": 0.9333333333333333,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "Id",
+    "table": "car_makers"
+   },
+   "target": {
+    "column": "CountryId",
+    "table": "countries"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.6111111111111112,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "Id",
+    "table": "car_makers"
+   },
+   "target": {
+    "column": "ModelId",
+    "table": "model_list"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.5151515151515151,
+   "coverage": 0.7727272727272727,
+   "decision": "rejected_gate",
+   "reason": "G6: containment 0.515 < 0.75",
+   "source": {
+    "column": "Model",
+    "table": "car_names"
+   },
+   "target": {
+    "column": "Maker",
+    "table": "car_makers"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 25.075
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.012315270935960592,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.015 of the target's < 0.1",
+   "source": {
+    "column": "Cylinders",
+    "table": "cars_data"
+   },
+   "target": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.012315270935960592,
+   "decision": "rejected_gate",
+   "reason": "same table",
+   "source": {
+    "column": "Cylinders",
+    "table": "cars_data"
+   },
+   "target": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6,
+   "coverage": 0.6,
+   "decision": "rejected_gate",
+   "reason": "G6: containment 0.600 < 0.75",
+   "source": {
+    "column": "Cylinders",
+    "table": "cars_data"
+   },
+   "target": {
+    "column": "ContId",
+    "table": "continents"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.229064039408867,
+   "decision": "rejected_gate",
+   "reason": "same table",
+   "source": {
+    "column": "Horsepower",
+    "table": "cars_data"
+   },
+   "target": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.09113300492610837,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.095 of the target's < 0.1",
+   "source": {
+    "column": "MPG",
+    "table": "cars_data"
+   },
+   "target": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.09113300492610837,
+   "decision": "rejected_gate",
+   "reason": "same table",
+   "source": {
+    "column": "MPG",
+    "table": "cars_data"
+   },
+   "target": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.22727272727272727,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "ContId",
+    "table": "continents"
+   },
+   "target": {
+    "column": "Id",
+    "table": "car_makers"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.012315270935960592,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "ContId",
+    "table": "continents"
+   },
+   "target": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.012315270935960592,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "ContId",
+    "table": "continents"
+   },
+   "target": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.3333333333333333,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "ContId",
+    "table": "continents"
+   },
+   "target": {
+    "column": "CountryId",
+    "table": "countries"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.1388888888888889,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "ContId",
+    "table": "continents"
+   },
+   "target": {
+    "column": "ModelId",
+    "table": "model_list"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.012315270935960592,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.012 of the target's < 0.1",
+   "source": {
+    "column": "Continent",
+    "table": "countries"
+   },
+   "target": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.012315270935960592,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.012 of the target's < 0.1",
+   "source": {
+    "column": "Continent",
+    "table": "countries"
+   },
+   "target": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.3333333333333333,
+   "decision": "rejected_gate",
+   "reason": "same table",
+   "source": {
+    "column": "Continent",
+    "table": "countries"
+   },
+   "target": {
+    "column": "CountryId",
+    "table": "countries"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9333333333333333,
+   "coverage": 0.6363636363636364,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "CountryId",
+    "table": "countries"
+   },
+   "target": {
+    "column": "Id",
+    "table": "car_makers"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.03694581280788178,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "CountryId",
+    "table": "countries"
+   },
+   "target": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.03694581280788178,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "CountryId",
+    "table": "countries"
+   },
+   "target": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.4166666666666667,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "CountryId",
+    "table": "countries"
+   },
+   "target": {
+    "column": "ModelId",
+    "table": "model_list"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.05665024630541872,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.057 of the target's < 0.1",
+   "source": {
+    "column": "Maker",
+    "table": "model_list"
+   },
+   "target": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.05665024630541872,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.057 of the target's < 0.1",
+   "source": {
+    "column": "Maker",
+    "table": "model_list"
+   },
+   "target": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6521739130434783,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G6: containment 0.652 < 0.75",
+   "source": {
+    "column": "Maker",
+    "table": "model_list"
+   },
+   "target": {
+    "column": "CountryId",
+    "table": "countries"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.6388888888888888,
+   "decision": "rejected_gate",
+   "reason": "same table",
+   "source": {
+    "column": "Maker",
+    "table": "model_list"
+   },
+   "target": {
+    "column": "ModelId",
+    "table": "model_list"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.5277777777777778,
+   "coverage": 0.8636363636363636,
+   "decision": "rejected_gate",
+   "reason": "G6: containment 0.528 < 0.75",
+   "source": {
+    "column": "Model",
+    "table": "model_list"
+   },
+   "target": {
+    "column": "Maker",
+    "table": "car_makers"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 25.075
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.6111111111111112,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "ModelId",
+    "table": "model_list"
+   },
+   "target": {
+    "column": "Id",
+    "table": "car_makers"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.08866995073891626,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "ModelId",
+    "table": "model_list"
+   },
+   "target": {
+    "column": "MakeId",
+    "table": "car_names"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.08866995073891626,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "ModelId",
+    "table": "model_list"
+   },
+   "target": {
+    "column": "Id",
+    "table": "cars_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "frozen",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_range_span": 0.1,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
+  "r_cap": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 6,
+  "band": 6,
+  "rejected_gate": 37
+ },
+ "db_id": "car_1",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9565217391304348,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 91.0,
+    "source": {
+     "column": "Maker",
+     "table": "model_list"
+    },
+    "target": {
+     "column": "Id",
+     "table": "car_makers"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.229064039408867,
+    "decision": "accepted",
+    "score": 84.2857,
+    "source": {
+     "column": "Horsepower",
+     "table": "cars_data"
+    },
+    "target": {
+     "column": "MakeId",
+     "table": "car_names"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9696969696969697,
+    "coverage": 0.8888888888888888,
+    "decision": "accepted",
+    "score": 83.7879,
+    "source": {
+     "column": "Model",
+     "table": "car_names"
+    },
+    "target": {
+     "column": "Model",
+     "table": "model_list"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5333333333333333,
+    "decision": "accepted",
+    "score": 81.6,
+    "source": {
+     "column": "Country",
+     "table": "car_makers"
+    },
+    "target": {
+     "column": "CountryId",
+     "table": "countries"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 72.0,
+    "source": {
+     "column": "Continent",
+     "table": "countries"
+    },
+    "target": {
+     "column": "ContId",
+     "table": "continents"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.2222222222222222,
+    "decision": "accepted",
+    "score": 71.0909,
+    "source": {
+     "column": "Country",
+     "table": "car_makers"
+    },
+    "target": {
+     "column": "ModelId",
+     "table": "model_list"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9565217391304348,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 91.0,
+    "source": {
+     "column": "Maker",
+     "table": "model_list"
+    },
+    "target": {
+     "column": "Id",
+     "table": "car_makers"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.229064039408867,
+    "decision": "accepted",
+    "score": 84.2857,
+    "source": {
+     "column": "Horsepower",
+     "table": "cars_data"
+    },
+    "target": {
+     "column": "MakeId",
+     "table": "car_names"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9696969696969697,
+    "coverage": 0.8888888888888888,
+    "decision": "accepted",
+    "score": 83.7879,
+    "source": {
+     "column": "Model",
+     "table": "car_names"
+    },
+    "target": {
+     "column": "Model",
+     "table": "model_list"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5333333333333333,
+    "decision": "accepted",
+    "score": 81.6,
+    "source": {
+     "column": "Country",
+     "table": "car_makers"
+    },
+    "target": {
+     "column": "CountryId",
+     "table": "countries"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 72.0,
+    "source": {
+     "column": "Continent",
+     "table": "countries"
+    },
+    "target": {
+     "column": "ContId",
+     "table": "continents"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.2222222222222222,
+    "decision": "accepted",
+    "score": 71.0909,
+    "source": {
+     "column": "Country",
+     "table": "car_makers"
+    },
+    "target": {
+     "column": "ModelId",
+     "table": "model_list"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.22727272727272727,
+    "decision": "band",
+    "score": 65.4545,
+    "source": {
+     "column": "Cylinders",
+     "table": "cars_data"
+    },
+    "target": {
+     "column": "Id",
+     "table": "car_makers"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.1388888888888889,
+    "decision": "band",
+    "score": 63.75,
+    "source": {
+     "column": "Cylinders",
+     "table": "cars_data"
+    },
+    "target": {
+     "column": "ModelId",
+     "table": "model_list"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.1388888888888889,
+    "decision": "band",
+    "score": 62.8125,
+    "source": {
+     "column": "Continent",
+     "table": "countries"
+    },
+    "target": {
+     "column": "ModelId",
+     "table": "model_list"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.3333333333333333,
+    "decision": "band",
+    "score": 62.7273,
+    "source": {
+     "column": "Cylinders",
+     "table": "cars_data"
+    },
+    "target": {
+     "column": "CountryId",
+     "table": "countries"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.22727272727272727,
+    "decision": "band",
+    "score": 62.7273,
+    "source": {
+     "column": "Continent",
+     "table": "countries"
+    },
+    "target": {
+     "column": "Id",
+     "table": "car_makers"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 0.8636363636363636,
+    "coverage": 0.5277777777777778,
+    "decision": "band",
+    "score": 60.0455,
+    "source": {
+     "column": "Maker",
+     "table": "car_makers"
+    },
+    "target": {
+     "column": "Model",
+     "table": "model_list"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.1667,
+ "keys_run": "frozen",
+ "use_names": true,
+ "weights": {
+  "cardinality": 15,
+  "name": 20,
+  "nulls": 10,
+  "overlap": 40,
+  "target_key": 15
+ }
+}

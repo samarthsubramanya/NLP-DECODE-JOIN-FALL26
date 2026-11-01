@@ -55,6 +55,84 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 0.9397590361445783,
+   "coverage": 0.003907277303978661,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 0.9398,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 81.9277,
+   "score_before_fan_out": 96.3855,
+   "source": {
+    "column": "UpVotes",
+    "table": "users"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9066265060240963,
+   "coverage": 0.007731826354996147,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 0.9066,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 80.238,
+   "score_before_fan_out": 94.3976,
+   "source": {
+    "column": "UpVotes",
+    "table": "users"
+   },
+   "target": {
+    "column": "Id",
+    "table": "votes"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8676470588235294,
+   "coverage": 0.006062162856408939,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 0.8676,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 78.25,
+   "score_before_fan_out": 92.0588,
+   "source": {
+    "column": "Count",
+    "table": "tags"
+   },
+   "target": {
+    "column": "Id",
+    "table": "votes"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.8599108881234088,
    "coverage": 0.15151655093928848,
    "decision": "accepted",
@@ -186,84 +264,6 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
-   "coverage": 2.504664938447859e-05,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "LinkTypeId",
-    "table": "postLinks"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 1.1475456866626503e-05,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "LinkTypeId",
-    "table": "postLinks"
-   },
-   "target": {
-    "column": "Id",
-    "table": "comments"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 6.59728521713315e-06,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "LinkTypeId",
-    "table": "postLinks"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
    "coverage": 0.5450464972101674,
    "decision": "accepted",
    "fan_out": 0.75,
@@ -290,84 +290,6 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
-   "coverage": 8.766327284567507e-05,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "PostTypeId",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 4.0164099033192756e-05,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "PostTypeId",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "comments"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 2.3090498259966022e-05,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "PostTypeId",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
    "coverage": 0.0933388426157493,
    "decision": "accepted",
    "fan_out": 0.75,
@@ -382,58 +304,6 @@
    "score_before_fan_out": 100.0,
    "source": {
     "column": "PostId",
-    "table": "votes"
-   },
-   "target": {
-    "column": "Id",
-    "table": "posts"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 3.2986426085665745e-05,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "VoteTypeId",
-    "table": "votes"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.00010873583715721028,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "VoteTypeId",
     "table": "votes"
    },
    "target": {
@@ -471,110 +341,6 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.9743589743589743,
-   "coverage": 0.00012534841912552983,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9744,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 73.8461,
-   "score_before_fan_out": 98.4615,
-   "source": {
-    "column": "CommentCount",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9736842105263158,
-   "coverage": 0.00024409955303392655,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9737,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 73.8158,
-   "score_before_fan_out": 98.4211,
-   "source": {
-    "column": "DownVotes",
-    "table": "users"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9722222222222222,
-   "coverage": 0.00011545249129983012,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9722,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 73.75,
-   "score_before_fan_out": 98.3333,
-   "source": {
-    "column": "Score",
-    "table": "comments"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9722222222222222,
-   "coverage": 0.00038057543005023595,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9722,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 73.75,
-   "score_before_fan_out": 98.3333,
-   "source": {
-    "column": "Score",
-    "table": "comments"
-   },
-   "target": {
-    "column": "Id",
-    "table": "posts"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
    "containment": 0.8610977039233262,
    "coverage": 0.08239019643416734,
    "decision": "accepted",
@@ -595,240 +361,6 @@
    "target": {
     "column": "Id",
     "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.96,
-   "coverage": 0.00026096600917730465,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.96,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 73.2,
-   "score_before_fan_out": 97.6,
-   "source": {
-    "column": "PostHistoryTypeId",
-    "table": "postHistory"
-   },
-   "target": {
-    "column": "Id",
-    "table": "posts"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9595588235294118,
-   "coverage": 0.003268587744674456,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9596,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 73.1801,
-   "score_before_fan_out": 97.5735,
-   "source": {
-    "column": "Count",
-    "table": "tags"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9595588235294118,
-   "coverage": 0.000860945720835876,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9596,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 73.1801,
-   "score_before_fan_out": 97.5735,
-   "source": {
-    "column": "Count",
-    "table": "tags"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9548192771084337,
-   "coverage": 0.0010456697069156043,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9548,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 72.9669,
-   "score_before_fan_out": 97.2892,
-   "source": {
-    "column": "UpVotes",
-    "table": "users"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9530386740331491,
-   "coverage": 0.0011380316999554682,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.953,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 72.8867,
-   "score_before_fan_out": 97.1823,
-   "source": {
-    "column": "Views",
-    "table": "users"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9485294117647058,
-   "coverage": 0.002805384598656025,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9485,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 72.6839,
-   "score_before_fan_out": 96.9118,
-   "source": {
-    "column": "Count",
-    "table": "tags"
-   },
-   "target": {
-    "column": "Id",
-    "table": "posts"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9473684210526315,
-   "coverage": 0.000782898027531914,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9474,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 72.6316,
-   "score_before_fan_out": 96.8421,
-   "source": {
-    "column": "DownVotes",
-    "table": "users"
-   },
-   "target": {
-    "column": "Id",
-    "table": "posts"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9457831325301205,
-   "coverage": 0.0034143052867364027,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9458,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 72.5602,
-   "score_before_fan_out": 96.747,
-   "source": {
-    "column": "UpVotes",
-    "table": "users"
-   },
-   "target": {
-    "column": "Id",
-    "table": "posts"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9397590361445783,
-   "coverage": 0.003907277303978661,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9398,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 72.2891,
-   "score_before_fan_out": 96.3855,
-   "source": {
-    "column": "UpVotes",
-    "table": "users"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -913,32 +445,6 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.9342105263157895,
-   "coverage": 0.00088915605314899,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9342,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 72.0395,
-   "score_before_fan_out": 96.0526,
-   "source": {
-    "column": "DownVotes",
-    "table": "users"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
    "containment": 0.9998684902682798,
    "coverage": 0.08267185699062697,
    "decision": "accepted",
@@ -991,110 +497,6 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.9230769230769231,
-   "coverage": 0.00045083968892061464,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9231,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.5385,
-   "score_before_fan_out": 95.3846,
-   "source": {
-    "column": "CommentCount",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.92,
-   "coverage": 0.0002880364679215038,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.92,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.4,
-   "score_before_fan_out": 95.2,
-   "source": {
-    "column": "PostHistoryTypeId",
-    "table": "postHistory"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.92,
-   "coverage": 0.00013196775396620477,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.92,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.4,
-   "score_before_fan_out": 95.2,
-   "source": {
-    "column": "PostHistoryTypeId",
-    "table": "postHistory"
-   },
-   "target": {
-    "column": "Id",
-    "table": "comments"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9166666666666666,
-   "coverage": 0.00041326971484389677,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9167,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.25,
-   "score_before_fan_out": 95.0,
-   "source": {
-    "column": "Score",
-    "table": "comments"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
    "containment": 1.0,
    "coverage": 0.1631246125232486,
    "decision": "accepted",
@@ -1115,32 +517,6 @@
    "target": {
     "column": "Id",
     "table": "users"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9157735321528425,
-   "coverage": 0.025930629545941844,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9158,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.2098,
-   "score_before_fan_out": 94.9464,
-   "source": {
-    "column": "PostId",
-    "table": "votes"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -1225,32 +601,6 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.9,
-   "coverage": 0.00011270992223015366,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 70.5,
-   "score_before_fan_out": 94.0,
-   "source": {
-    "column": "VoteTypeId",
-    "table": "votes"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
    "containment": 0.8988055982999926,
    "coverage": 0.04046115023667761,
    "decision": "accepted",
@@ -1303,32 +653,6 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.8974358974358975,
-   "coverage": 0.0008990495761623426,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8974,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 70.3846,
-   "score_before_fan_out": 93.8462,
-   "source": {
-    "column": "CommentCount",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "votes"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
    "containment": 0.8946877912395154,
    "coverage": 0.0961791336363978,
    "decision": "accepted",
@@ -1355,26 +679,26 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.967741935483871,
-   "coverage": 9.895927825699725e-05,
+   "containment": 0.8839779005524862,
+   "coverage": 0.008219881839198561,
    "decision": "band",
    "fan_out": 0.75,
    "parts": {
     "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.9677,
+    "nulls": 1.0,
+    "overlap": 0.884,
     "target_key": 1.0
    },
    "penalties": {},
-   "score": 69.7984,
-   "score_before_fan_out": 93.0645,
+   "score": 69.779,
+   "score_before_fan_out": 93.0387,
    "source": {
-    "column": "AnswerCount",
-    "table": "posts"
+    "column": "Views",
+    "table": "users"
    },
    "target": {
     "column": "Id",
-    "table": "postHistory"
+    "table": "votes"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -1474,32 +798,6 @@
    "score_before_fan_out": 81.7738,
    "source": {
     "column": "AcceptedAnswerId",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.8769230769230769,
-   "coverage": 0.00037604525737658953,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8769,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 69.4615,
-   "score_before_fan_out": 92.6154,
-   "source": {
-    "column": "Score",
     "table": "posts"
    },
    "target": {
@@ -1641,58 +939,6 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.8538461538461538,
-   "coverage": 0.0013900890408385619,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8538,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 68.4231,
-   "score_before_fan_out": 91.2308,
-   "source": {
-    "column": "Score",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9354838709677419,
-   "coverage": 0.0003631764160749396,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.9355,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 68.3468,
-   "score_before_fan_out": 91.129,
-   "source": {
-    "column": "AnswerCount",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
    "containment": 0.927571351642434,
    "coverage": 0.01136382378651185,
    "decision": "band",
@@ -1713,32 +959,6 @@
    "target": {
     "column": "Id",
     "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.8384615384615385,
-   "coverage": 0.00279989725147701,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8385,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 67.7308,
-   "score_before_fan_out": 90.3077,
-   "source": {
-    "column": "Score",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "votes"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -1772,32 +992,6 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
-   "coverage": 0.00023090498259966023,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 67.5,
-   "score_before_fan_out": 90.0,
-   "source": {
-    "column": "Age",
-    "table": "users"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
    "coverage": 0.012622442653440794,
    "decision": "band",
    "fan_out": 0.75,
@@ -1817,32 +1011,6 @@
    "target": {
     "column": "Id",
     "table": "users"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.987012987012987,
-   "coverage": 0.00025069683825105967,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.987,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 66.9156,
-   "score_before_fan_out": 89.2208,
-   "source": {
-    "column": "FavoriteCount",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -1953,58 +1121,6 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.9571428571428572,
-   "coverage": 0.001721037760082199,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.9571,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 65.5714,
-   "score_before_fan_out": 87.4286,
-   "source": {
-    "column": "Age",
-    "table": "users"
-   },
-   "target": {
-    "column": "Id",
-    "table": "votes"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.8709677419354839,
-   "coverage": 0.00015491866769945777,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.871,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 65.4436,
-   "score_before_fan_out": 87.2581,
-   "source": {
-    "column": "AnswerCount",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "comments"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
    "containment": 0.8701733049559136,
    "coverage": 0.03284275755228505,
    "decision": "band",
@@ -2056,32 +1172,6 @@
    "target_pk_score": 101.25
   },
   {
-   "cardinality": "many_to_one",
-   "containment": 0.9428571428571428,
-   "coverage": 0.0007176565252375878,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.9429,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 64.9286,
-   "score_before_fan_out": 86.5714,
-   "source": {
-    "column": "Age",
-    "table": "users"
-   },
-   "target": {
-    "column": "Id",
-    "table": "posts"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
    "cardinality": "one_to_one",
    "containment": 0.8859060402684564,
    "coverage": 0.0017416832973231515,
@@ -2103,84 +1193,6 @@
    "target": {
     "column": "Id",
     "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.925343811394892,
-   "coverage": 0.0015536606686348568,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.9253,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 64.1405,
-   "score_before_fan_out": 85.5206,
-   "source": {
-    "column": "UserId",
-    "table": "votes"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.922077922077922,
-   "coverage": 0.00088915605314899,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.9221,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.9935,
-   "score_before_fan_out": 85.3247,
-   "source": {
-    "column": "FavoriteCount",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.922077922077922,
-   "coverage": 0.001823786283072181,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.9221,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.9935,
-   "score_before_fan_out": 85.3247,
-   "source": {
-    "column": "FavoriteCount",
-    "table": "posts"
-   },
-   "target": {
-    "column": "Id",
-    "table": "votes"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -2264,6 +1276,32 @@
    "target_pk_score": 101.25
   },
   {
+   "cardinality": "many_to_one",
+   "containment": 0.8821218074656189,
+   "coverage": 0.005622972786815444,
+   "decision": "band",
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 0.0,
+    "overlap": 0.8821,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 62.1955,
+   "score_before_fan_out": 82.9273,
+   "source": {
+    "column": "UserId",
+    "table": "votes"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
    "cardinality": "one_to_one",
    "containment": 0.8288590604026845,
    "coverage": 0.0028344378460567463,
@@ -2317,78 +1355,56 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.8333333333333334,
-   "coverage": 6.261662346119647e-05,
-   "decision": "band",
-   "fan_out": 0.75,
+   "containment": 0.7720588235294118,
+   "coverage": 0.005207687538747675,
+   "decision": "rejected_score",
+   "fan_out": 0.85,
    "parts": {
     "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.8333,
+    "nulls": 1.0,
+    "overlap": 0.7721,
     "target_key": 1.0
    },
-   "penalties": {},
-   "score": 60.0,
-   "score_before_fan_out": 80.0,
+   "penalties": {
+    "orphan": 0.7
+   },
+   "score": 51.3625,
+   "score_before_fan_out": 60.4265,
    "source": {
-    "column": "BountyAmount",
-    "table": "votes"
+    "column": "Count",
+    "table": "tags"
    },
    "target": {
     "column": "Id",
-    "table": "badges"
+    "table": "users"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.8333333333333334,
-   "coverage": 2.8688642166566258e-05,
-   "decision": "band",
+   "containment": 0.7601351351351351,
+   "coverage": 0.16181029138251704,
+   "decision": "rejected_score",
    "fan_out": 0.75,
    "parts": {
     "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.8333,
+    "nulls": 1.0,
+    "overlap": 0.7601,
     "target_key": 1.0
    },
-   "penalties": {},
-   "score": 60.0,
-   "score_before_fan_out": 80.0,
+   "penalties": {
+    "orphan": 0.7
+   },
+   "score": 44.9443,
+   "score_before_fan_out": 59.9257,
    "source": {
-    "column": "BountyAmount",
+    "column": "PostId",
     "table": "votes"
    },
    "target": {
     "column": "Id",
-    "table": "comments"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.8333333333333334,
-   "coverage": 1.6493213042832873e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.8333,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 60.0,
-   "score_before_fan_out": 80.0,
-   "source": {
-    "column": "BountyAmount",
-    "table": "votes"
-   },
-   "target": {
-    "column": "Id",
-    "table": "postHistory"
+    "table": "users"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -2556,6 +1572,23 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 0.9166666666666666,
+   "coverage": 0.00041326971484389677,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "Score",
+    "table": "comments"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.8611111111111112,
    "coverage": 0.0001778695814327108,
    "decision": "rejected_gate",
@@ -2567,6 +1600,40 @@
    "target": {
     "column": "Id",
     "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9722222222222222,
+   "coverage": 0.00011545249129983012,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "Score",
+    "table": "comments"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9722222222222222,
+   "coverage": 0.00038057543005023595,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "Score",
+    "table": "comments"
+   },
+   "target": {
+    "column": "Id",
+    "table": "posts"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -2593,15 +1660,7 @@
    "containment": 0.8333333333333334,
    "coverage": 0.0007439553626782394,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8333,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 90.0,
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
    "source": {
     "column": "Score",
     "table": "comments"
@@ -2618,15 +1677,7 @@
    "containment": 0.8888888888888888,
    "coverage": 0.0008219881839198562,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8889,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 93.3333,
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
    "source": {
     "column": "Score",
     "table": "comments"
@@ -2709,6 +1760,40 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 0.92,
+   "coverage": 0.0002880364679215038,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "PostHistoryTypeId",
+    "table": "postHistory"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.92,
+   "coverage": 0.00013196775396620477,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "PostHistoryTypeId",
+    "table": "postHistory"
+   },
+   "target": {
+    "column": "Id",
+    "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 1.0,
    "coverage": 8.246606521416437e-05,
    "decision": "rejected_gate",
@@ -2720,6 +1805,23 @@
    "target": {
     "column": "Id",
     "table": "postHistory"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.96,
+   "coverage": 0.00026096600917730465,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "PostHistoryTypeId",
+    "table": "postHistory"
+   },
+   "target": {
+    "column": "Id",
+    "table": "posts"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -2746,15 +1848,7 @@
    "containment": 0.88,
    "coverage": 0.0005455672659640422,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.88,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 92.8,
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
    "source": {
     "column": "PostHistoryTypeId",
     "table": "postHistory"
@@ -2771,15 +1865,7 @@
    "containment": 0.92,
    "coverage": 0.0005908040071923966,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.92,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 95.2,
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
    "source": {
     "column": "PostHistoryTypeId",
     "table": "postHistory"
@@ -2887,17 +1973,60 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 2.504664938447859e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "LinkTypeId",
+    "table": "postLinks"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.1475456866626503e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "LinkTypeId",
+    "table": "postLinks"
+   },
+   "target": {
+    "column": "Id",
+    "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 6.59728521713315e-06,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "LinkTypeId",
+    "table": "postLinks"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 2.1747167431442053e-05,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "LinkTypeId",
     "table": "postLinks"
@@ -2914,15 +2043,7 @@
    "containment": 1.0,
    "coverage": 0.001937984496124031,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
    "source": {
     "column": "LinkTypeId",
     "table": "postLinks"
@@ -2939,15 +2060,7 @@
    "containment": 1.0,
    "coverage": 4.9597024178549286e-05,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 0.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 85.0,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "LinkTypeId",
     "table": "postLinks"
@@ -2981,15 +2094,7 @@
    "containment": 1.0,
    "coverage": 5.137426149499101e-05,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "LinkTypeId",
     "table": "postLinks"
@@ -3099,6 +2204,57 @@
   {
    "cardinality": "many_to_one",
    "containment": 0.9354838709677419,
+   "coverage": 0.0003631764160749396,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "AnswerCount",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8709677419354839,
+   "coverage": 0.00015491866769945777,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "AnswerCount",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.967741935483871,
+   "coverage": 9.895927825699725e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "AnswerCount",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9354838709677419,
    "coverage": 0.0003153339277559098,
    "decision": "rejected_gate",
    "reason": "same table",
@@ -3135,17 +2291,7 @@
    "containment": 0.7741935483870968,
    "coverage": 0.0005951642901425914,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.7742,
-    "target_key": 1.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 57.0161,
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
    "source": {
     "column": "AnswerCount",
     "table": "posts"
@@ -3162,15 +2308,7 @@
    "containment": 0.8709677419354839,
    "coverage": 0.0006935525301823786,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.871,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 87.2581,
+   "reason": "G9: source range spans 0.003 of the target's < 0.1",
    "source": {
     "column": "AnswerCount",
     "table": "posts"
@@ -3184,18 +2322,27 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 0.9230769230769231,
+   "coverage": 0.00045083968892061464,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "CommentCount",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.8717948717948718,
    "coverage": 0.00019508276673265056,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8718,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 92.3077,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "CommentCount",
     "table": "posts"
@@ -3203,6 +2350,23 @@
    "target": {
     "column": "Id",
     "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9743589743589743,
+   "coverage": 0.00012534841912552983,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "CommentCount",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -3246,17 +2410,7 @@
    "containment": 0.7692307692307693,
    "coverage": 0.0007439553626782394,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.7692,
-    "target_key": 1.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 60.3077,
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
    "source": {
     "column": "CommentCount",
     "table": "posts"
@@ -3270,18 +2424,44 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 0.8974358974358975,
+   "coverage": 0.0008990495761623426,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "CommentCount",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "votes"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.922077922077922,
+   "coverage": 0.00088915605314899,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.003 of the target's < 0.1",
+   "source": {
+    "column": "FavoriteCount",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.8441558441558441,
    "coverage": 0.00037295234816536136,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.8442,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 80.6494,
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
    "source": {
     "column": "FavoriteCount",
     "table": "posts"
@@ -3289,6 +2469,23 @@
    "target": {
     "column": "Id",
     "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.987012987012987,
+   "coverage": 0.00025069683825105967,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "FavoriteCount",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -3332,15 +2529,7 @@
    "containment": 0.8311688311688312,
    "coverage": 0.0015871047737135771,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.8312,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 79.8701,
+   "reason": "G9: source range spans 0.004 of the target's < 0.1",
    "source": {
     "column": "FavoriteCount",
     "table": "posts"
@@ -3348,6 +2537,23 @@
    "target": {
     "column": "Id",
     "table": "users"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.922077922077922,
+   "coverage": 0.001823786283072181,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.005 of the target's < 0.1",
+   "source": {
+    "column": "FavoriteCount",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "votes"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -3568,6 +2774,57 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 8.766327284567507e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "PostTypeId",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 4.0164099033192756e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "PostTypeId",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 2.3090498259966022e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "PostTypeId",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 7.611508601004719e-05,
    "decision": "rejected_gate",
    "reason": "same table",
@@ -3587,15 +2844,7 @@
    "containment": 0.8571428571428571,
    "coverage": 0.005813953488372093,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8571,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 91.4286,
+   "reason": "G9: source range spans 0.004 of the target's < 0.1",
    "source": {
     "column": "PostTypeId",
     "table": "posts"
@@ -3629,15 +2878,7 @@
    "containment": 0.8571428571428571,
    "coverage": 0.00014879107253564785,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8571,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 91.4286,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "PostTypeId",
     "table": "posts"
@@ -3654,15 +2895,7 @@
    "containment": 1.0,
    "coverage": 0.00017980991523246852,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "PostTypeId",
     "table": "posts"
@@ -3676,20 +2909,27 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 0.8538461538461538,
+   "coverage": 0.0013900890408385619,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
+   "source": {
+    "column": "Score",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.7923076923076923,
    "coverage": 0.0005909860286312648,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.7923,
-    "target_key": 1.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 61.2769,
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
    "source": {
     "column": "Score",
     "table": "posts"
@@ -3697,6 +2937,23 @@
    "target": {
     "column": "Id",
     "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8769230769230769,
+   "coverage": 0.00037604525737658953,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "Score",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -3731,6 +2988,23 @@
    "target": {
     "column": "Id",
     "table": "users"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8384615384615385,
+   "coverage": 0.00279989725147701,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.005 of the target's < 0.1",
+   "source": {
+    "column": "Score",
+    "table": "posts"
+   },
+   "target": {
+    "column": "Id",
+    "table": "votes"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -3796,18 +3070,27 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 0.9595588235294118,
+   "coverage": 0.003268587744674456,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.079 of the target's < 0.1",
+   "source": {
+    "column": "Count",
+    "table": "tags"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.8419117647058824,
    "coverage": 0.0013139398112287344,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8419,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 90.5147,
+   "reason": "G9: source range spans 0.033 of the target's < 0.1",
    "source": {
     "column": "Count",
     "table": "tags"
@@ -3815,6 +3098,40 @@
    "target": {
     "column": "Id",
     "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9595588235294118,
+   "coverage": 0.000860945720835876,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.019 of the target's < 0.1",
+   "source": {
+    "column": "Count",
+    "table": "tags"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9485294117647058,
+   "coverage": 0.002805384598656025,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.063 of the target's < 0.1",
+   "source": {
+    "column": "Count",
+    "table": "tags"
+   },
+   "target": {
+    "column": "Id",
+    "table": "posts"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -3832,58 +3149,6 @@
    "target": {
     "column": "Id",
     "table": "tags"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.7720588235294118,
-   "coverage": 0.005207687538747675,
-   "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.7721,
-    "target_key": 1.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 60.4265,
-   "source": {
-    "column": "Count",
-    "table": "tags"
-   },
-   "target": {
-    "column": "Id",
-    "table": "users"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.8676470588235294,
-   "coverage": 0.006062162856408939,
-   "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8676,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 92.0588,
-   "source": {
-    "column": "Count",
-    "table": "tags"
-   },
-   "target": {
-    "column": "Id",
-    "table": "votes"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -4029,15 +3294,7 @@
    "containment": 0.9142857142857143,
    "coverage": 0.0008014927803033149,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.9143,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 84.8571,
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
    "source": {
     "column": "Age",
     "table": "users"
@@ -4054,15 +3311,7 @@
    "containment": 0.8714285714285714,
    "coverage": 0.00035000143443210835,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.8714,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.2857,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "Age",
     "table": "users"
@@ -4070,6 +3319,40 @@
    "target": {
     "column": "Id",
     "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.00023090498259966023,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "Age",
+    "table": "users"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9428571428571428,
+   "coverage": 0.0007176565252375878,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "Age",
+    "table": "users"
+   },
+   "target": {
+    "column": "Id",
+    "table": "posts"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -4110,18 +3393,44 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 0.9571428571428572,
+   "coverage": 0.001721037760082199,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
+   "source": {
+    "column": "Age",
+    "table": "users"
+   },
+   "target": {
+    "column": "Id",
+    "table": "votes"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9342105263157895,
+   "coverage": 0.00088915605314899,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.021 of the target's < 0.1",
+   "source": {
+    "column": "DownVotes",
+    "table": "users"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.8026315789473685,
    "coverage": 0.00035000143443210835,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8026,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 88.1579,
+   "reason": "G9: source range spans 0.009 of the target's < 0.1",
    "source": {
     "column": "DownVotes",
     "table": "users"
@@ -4129,6 +3438,40 @@
    "target": {
     "column": "Id",
     "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9736842105263158,
+   "coverage": 0.00024409955303392655,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.005 of the target's < 0.1",
+   "source": {
+    "column": "DownVotes",
+    "table": "users"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9473684210526315,
+   "coverage": 0.000782898027531914,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.017 of the target's < 0.1",
+   "source": {
+    "column": "DownVotes",
+    "table": "users"
+   },
+   "target": {
+    "column": "Id",
+    "table": "posts"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -4172,15 +3515,7 @@
    "containment": 0.881578947368421,
    "coverage": 0.001721037760082199,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8816,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 92.8947,
+   "reason": "G9: source range spans 0.044 of the target's < 0.1",
    "source": {
     "column": "DownVotes",
     "table": "users"
@@ -4349,15 +3684,7 @@
    "containment": 0.8524096385542169,
    "coverage": 0.0016237771466276502,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8524,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 91.1446,
+   "reason": "G9: source range spans 0.052 of the target's < 0.1",
    "source": {
     "column": "UpVotes",
     "table": "users"
@@ -4365,6 +3692,40 @@
    "target": {
     "column": "Id",
     "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9548192771084337,
+   "coverage": 0.0010456697069156043,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.030 of the target's < 0.1",
+   "source": {
+    "column": "UpVotes",
+    "table": "users"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9457831325301205,
+   "coverage": 0.0034143052867364027,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.099 of the target's < 0.1",
+   "source": {
+    "column": "UpVotes",
+    "table": "users"
+   },
+   "target": {
+    "column": "Id",
+    "table": "posts"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -4405,43 +3766,10 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.9066265060240963,
-   "coverage": 0.007731826354996147,
-   "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9066,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 94.3976,
-   "source": {
-    "column": "UpVotes",
-    "table": "users"
-   },
-   "target": {
-    "column": "Id",
-    "table": "votes"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
    "containment": 0.8397790055248618,
    "coverage": 0.0017442694437272285,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8398,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 90.3867,
+   "reason": "G9: source range spans 0.095 of the target's < 0.1",
    "source": {
     "column": "Views",
     "table": "users"
@@ -4449,6 +3777,23 @@
    "target": {
     "column": "Id",
     "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9530386740331491,
+   "coverage": 0.0011380316999554682,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.054 of the target's < 0.1",
+   "source": {
+    "column": "Views",
+    "table": "users"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -4489,25 +3834,51 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.8839779005524862,
-   "coverage": 0.008219881839198561,
+   "containment": 0.8333333333333334,
+   "coverage": 6.261662346119647e-05,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.884,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 93.0387,
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
    "source": {
-    "column": "Views",
-    "table": "users"
+    "column": "BountyAmount",
+    "table": "votes"
    },
    "target": {
     "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8333333333333334,
+   "coverage": 2.8688642166566258e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "BountyAmount",
     "table": "votes"
+   },
+   "target": {
+    "column": "Id",
+    "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8333333333333334,
+   "coverage": 1.6493213042832873e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "BountyAmount",
+    "table": "votes"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -4517,15 +3888,7 @@
    "containment": 0.8333333333333334,
    "coverage": 5.436791857860514e-05,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.8333,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 80.0,
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
    "source": {
     "column": "BountyAmount",
     "table": "votes"
@@ -4678,15 +4041,7 @@
    "containment": 0.869524697110904,
    "coverage": 0.042826405026250104,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8695,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 92.1715,
+   "reason": "G9: source range spans 0.076 of the target's < 0.1",
    "source": {
     "column": "PostId",
     "table": "votes"
@@ -4700,27 +4055,17 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.7601351351351351,
-   "coverage": 0.16181029138251704,
+   "containment": 0.9157735321528425,
+   "coverage": 0.025930629545941844,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.7601,
-    "target_key": 1.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 59.9257,
+   "reason": "G9: source range spans 0.044 of the target's < 0.1",
    "source": {
     "column": "PostId",
     "table": "votes"
    },
    "target": {
     "column": "Id",
-    "table": "users"
+    "table": "postHistory"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -4744,43 +4089,10 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.8821218074656189,
-   "coverage": 0.005622972786815444,
-   "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.8821,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.9273,
-   "source": {
-    "column": "UserId",
-    "table": "votes"
-   },
-   "target": {
-    "column": "Id",
-    "table": "badges"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 101.25
-  },
-  {
-   "cardinality": "many_to_one",
    "containment": 0.862475442043222,
    "coverage": 0.002518862782224517,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.8625,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 81.7485,
+   "reason": "G9: source range spans 0.054 of the target's < 0.1",
    "source": {
     "column": "UserId",
     "table": "votes"
@@ -4788,6 +4100,23 @@
    "target": {
     "column": "Id",
     "table": "comments"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.925343811394892,
+   "coverage": 0.0015536606686348568,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.031 of the target's < 0.1",
+   "source": {
+    "column": "UserId",
+    "table": "votes"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
    },
    "target_is_pk": true,
    "target_pk_score": 101.25
@@ -4812,17 +4141,26 @@
   {
    "cardinality": "many_to_one",
    "containment": 0.9,
+   "coverage": 0.00011270992223015366,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "VoteTypeId",
+    "table": "votes"
+   },
+   "target": {
+    "column": "Id",
+    "table": "badges"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9,
    "coverage": 5.1639555899819264e-05,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 94.0,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "VoteTypeId",
     "table": "votes"
@@ -4836,18 +4174,44 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 3.2986426085665745e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "VoteTypeId",
+    "table": "votes"
+   },
+   "target": {
+    "column": "Id",
+    "table": "postHistory"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.00010873583715721028,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "VoteTypeId",
+    "table": "votes"
+   },
+   "target": {
+    "column": "Id",
+    "table": "posts"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.9,
    "coverage": 0.00872093023255814,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 94.0,
+   "reason": "G9: source range spans 0.009 of the target's < 0.1",
    "source": {
     "column": "VoteTypeId",
     "table": "votes"
@@ -4864,15 +4228,7 @@
    "containment": 0.8,
    "coverage": 0.00019838809671419714,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.8,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 88.0,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "VoteTypeId",
     "table": "votes"
@@ -4919,6 +4275,7 @@
   "keys_run": "frozen_no_names",
   "long_text_len": 64,
   "max_targets": 3,
+  "min_range_span": 0.1,
   "min_source_distinct": 2,
   "name_contains": 0.8,
   "never_source_roles": [
@@ -4935,9 +4292,10 @@
   "self_refs": false
  },
  "counts": {
-  "accepted": 52,
-  "band": 40,
-  "rejected_gate": 124
+  "accepted": 26,
+  "band": 26,
+  "rejected_gate": 162,
+  "rejected_score": 2
  },
  "db_id": "codebase_community",
  "graphs": {
@@ -4970,6 +4328,51 @@
     "target": {
      "column": "Id",
      "table": "posts"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9397590361445783,
+    "coverage": 0.003907277303978661,
+    "decision": "accepted",
+    "score": 81.9277,
+    "source": {
+     "column": "UpVotes",
+     "table": "users"
+    },
+    "target": {
+     "column": "Id",
+     "table": "badges"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9066265060240963,
+    "coverage": 0.007731826354996147,
+    "decision": "accepted",
+    "score": 80.238,
+    "source": {
+     "column": "UpVotes",
+     "table": "users"
+    },
+    "target": {
+     "column": "Id",
+     "table": "votes"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8676470588235294,
+    "coverage": 0.006062162856408939,
+    "decision": "accepted",
+    "score": 78.25,
+    "source": {
+     "column": "Count",
+     "table": "tags"
+    },
+    "target": {
+     "column": "Id",
+     "table": "votes"
     }
    },
    {
@@ -5050,51 +4453,6 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 2.504664938447859e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "LinkTypeId",
-     "table": "postLinks"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.1475456866626503e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "LinkTypeId",
-     "table": "postLinks"
-    },
-    "target": {
-     "column": "Id",
-     "table": "comments"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 6.59728521713315e-06,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "LinkTypeId",
-     "table": "postLinks"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
     "coverage": 0.5450464972101674,
     "decision": "accepted",
     "score": 75.0,
@@ -5110,86 +4468,11 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 8.766327284567507e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "PostTypeId",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 4.0164099033192756e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "PostTypeId",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "comments"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 2.3090498259966022e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "PostTypeId",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
     "coverage": 0.0933388426157493,
     "decision": "accepted",
     "score": 75.0,
     "source": {
      "column": "PostId",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 3.2986426085665745e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "VoteTypeId",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.00010873583715721028,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "VoteTypeId",
      "table": "votes"
     },
     "target": {
@@ -5214,66 +4497,6 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.9743589743589743,
-    "coverage": 0.00012534841912552983,
-    "decision": "accepted",
-    "score": 73.8461,
-    "source": {
-     "column": "CommentCount",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9736842105263158,
-    "coverage": 0.00024409955303392655,
-    "decision": "accepted",
-    "score": 73.8158,
-    "source": {
-     "column": "DownVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9722222222222222,
-    "coverage": 0.00011545249129983012,
-    "decision": "accepted",
-    "score": 73.75,
-    "source": {
-     "column": "Score",
-     "table": "comments"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9722222222222222,
-    "coverage": 0.00038057543005023595,
-    "decision": "accepted",
-    "score": 73.75,
-    "source": {
-     "column": "Score",
-     "table": "comments"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
     "containment": 0.8610977039233262,
     "coverage": 0.08239019643416734,
     "decision": "accepted",
@@ -5285,141 +4508,6 @@
     "target": {
      "column": "Id",
      "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.96,
-    "coverage": 0.00026096600917730465,
-    "decision": "accepted",
-    "score": 73.2,
-    "source": {
-     "column": "PostHistoryTypeId",
-     "table": "postHistory"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9595588235294118,
-    "coverage": 0.003268587744674456,
-    "decision": "accepted",
-    "score": 73.1801,
-    "source": {
-     "column": "Count",
-     "table": "tags"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9595588235294118,
-    "coverage": 0.000860945720835876,
-    "decision": "accepted",
-    "score": 73.1801,
-    "source": {
-     "column": "Count",
-     "table": "tags"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9548192771084337,
-    "coverage": 0.0010456697069156043,
-    "decision": "accepted",
-    "score": 72.9669,
-    "source": {
-     "column": "UpVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9530386740331491,
-    "coverage": 0.0011380316999554682,
-    "decision": "accepted",
-    "score": 72.8867,
-    "source": {
-     "column": "Views",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9485294117647058,
-    "coverage": 0.002805384598656025,
-    "decision": "accepted",
-    "score": 72.6839,
-    "source": {
-     "column": "Count",
-     "table": "tags"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9473684210526315,
-    "coverage": 0.000782898027531914,
-    "decision": "accepted",
-    "score": 72.6316,
-    "source": {
-     "column": "DownVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9457831325301205,
-    "coverage": 0.0034143052867364027,
-    "decision": "accepted",
-    "score": 72.5602,
-    "source": {
-     "column": "UpVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9397590361445783,
-    "coverage": 0.003907277303978661,
-    "decision": "accepted",
-    "score": 72.2891,
-    "source": {
-     "column": "UpVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
     }
    },
    {
@@ -5469,21 +4557,6 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.9342105263157895,
-    "coverage": 0.00088915605314899,
-    "decision": "accepted",
-    "score": 72.0395,
-    "source": {
-     "column": "DownVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
     "containment": 0.9998684902682798,
     "coverage": 0.08267185699062697,
     "decision": "accepted",
@@ -5514,66 +4587,6 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.9230769230769231,
-    "coverage": 0.00045083968892061464,
-    "decision": "accepted",
-    "score": 71.5385,
-    "source": {
-     "column": "CommentCount",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.92,
-    "coverage": 0.0002880364679215038,
-    "decision": "accepted",
-    "score": 71.4,
-    "source": {
-     "column": "PostHistoryTypeId",
-     "table": "postHistory"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.92,
-    "coverage": 0.00013196775396620477,
-    "decision": "accepted",
-    "score": 71.4,
-    "source": {
-     "column": "PostHistoryTypeId",
-     "table": "postHistory"
-    },
-    "target": {
-     "column": "Id",
-     "table": "comments"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9166666666666666,
-    "coverage": 0.00041326971484389677,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "Score",
-     "table": "comments"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
     "containment": 1.0,
     "coverage": 0.1631246125232486,
     "decision": "accepted",
@@ -5585,21 +4598,6 @@
     "target": {
      "column": "Id",
      "table": "users"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9157735321528425,
-    "coverage": 0.025930629545941844,
-    "decision": "accepted",
-    "score": 71.2098,
-    "source": {
-     "column": "PostId",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
     }
    },
    {
@@ -5649,21 +4647,6 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.9,
-    "coverage": 0.00011270992223015366,
-    "decision": "accepted",
-    "score": 70.5,
-    "source": {
-     "column": "VoteTypeId",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
     "containment": 0.8988055982999926,
     "coverage": 0.04046115023667761,
     "decision": "accepted",
@@ -5690,21 +4673,6 @@
     "target": {
      "column": "Id",
      "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.8974358974358975,
-    "coverage": 0.0008990495761623426,
-    "decision": "accepted",
-    "score": 70.3846,
-    "source": {
-     "column": "CommentCount",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "votes"
     }
    },
    {
@@ -5756,6 +4724,51 @@
    },
    {
     "cardinality": "many_to_one",
+    "containment": 0.9397590361445783,
+    "coverage": 0.003907277303978661,
+    "decision": "accepted",
+    "score": 81.9277,
+    "source": {
+     "column": "UpVotes",
+     "table": "users"
+    },
+    "target": {
+     "column": "Id",
+     "table": "badges"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9066265060240963,
+    "coverage": 0.007731826354996147,
+    "decision": "accepted",
+    "score": 80.238,
+    "source": {
+     "column": "UpVotes",
+     "table": "users"
+    },
+    "target": {
+     "column": "Id",
+     "table": "votes"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8676470588235294,
+    "coverage": 0.006062162856408939,
+    "decision": "accepted",
+    "score": 78.25,
+    "source": {
+     "column": "Count",
+     "table": "tags"
+    },
+    "target": {
+     "column": "Id",
+     "table": "votes"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
     "containment": 0.8599108881234088,
     "coverage": 0.15151655093928848,
     "decision": "accepted",
@@ -5832,51 +4845,6 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 2.504664938447859e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "LinkTypeId",
-     "table": "postLinks"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.1475456866626503e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "LinkTypeId",
-     "table": "postLinks"
-    },
-    "target": {
-     "column": "Id",
-     "table": "comments"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 6.59728521713315e-06,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "LinkTypeId",
-     "table": "postLinks"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
     "coverage": 0.5450464972101674,
     "decision": "accepted",
     "score": 75.0,
@@ -5892,86 +4860,11 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 8.766327284567507e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "PostTypeId",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 4.0164099033192756e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "PostTypeId",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "comments"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 2.3090498259966022e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "PostTypeId",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
     "coverage": 0.0933388426157493,
     "decision": "accepted",
     "score": 75.0,
     "source": {
      "column": "PostId",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 3.2986426085665745e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "VoteTypeId",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.00010873583715721028,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "VoteTypeId",
      "table": "votes"
     },
     "target": {
@@ -5996,66 +4889,6 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.9743589743589743,
-    "coverage": 0.00012534841912552983,
-    "decision": "accepted",
-    "score": 73.8461,
-    "source": {
-     "column": "CommentCount",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9736842105263158,
-    "coverage": 0.00024409955303392655,
-    "decision": "accepted",
-    "score": 73.8158,
-    "source": {
-     "column": "DownVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9722222222222222,
-    "coverage": 0.00011545249129983012,
-    "decision": "accepted",
-    "score": 73.75,
-    "source": {
-     "column": "Score",
-     "table": "comments"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9722222222222222,
-    "coverage": 0.00038057543005023595,
-    "decision": "accepted",
-    "score": 73.75,
-    "source": {
-     "column": "Score",
-     "table": "comments"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
     "containment": 0.8610977039233262,
     "coverage": 0.08239019643416734,
     "decision": "accepted",
@@ -6067,141 +4900,6 @@
     "target": {
      "column": "Id",
      "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.96,
-    "coverage": 0.00026096600917730465,
-    "decision": "accepted",
-    "score": 73.2,
-    "source": {
-     "column": "PostHistoryTypeId",
-     "table": "postHistory"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9595588235294118,
-    "coverage": 0.003268587744674456,
-    "decision": "accepted",
-    "score": 73.1801,
-    "source": {
-     "column": "Count",
-     "table": "tags"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9595588235294118,
-    "coverage": 0.000860945720835876,
-    "decision": "accepted",
-    "score": 73.1801,
-    "source": {
-     "column": "Count",
-     "table": "tags"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9548192771084337,
-    "coverage": 0.0010456697069156043,
-    "decision": "accepted",
-    "score": 72.9669,
-    "source": {
-     "column": "UpVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9530386740331491,
-    "coverage": 0.0011380316999554682,
-    "decision": "accepted",
-    "score": 72.8867,
-    "source": {
-     "column": "Views",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9485294117647058,
-    "coverage": 0.002805384598656025,
-    "decision": "accepted",
-    "score": 72.6839,
-    "source": {
-     "column": "Count",
-     "table": "tags"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9473684210526315,
-    "coverage": 0.000782898027531914,
-    "decision": "accepted",
-    "score": 72.6316,
-    "source": {
-     "column": "DownVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9457831325301205,
-    "coverage": 0.0034143052867364027,
-    "decision": "accepted",
-    "score": 72.5602,
-    "source": {
-     "column": "UpVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9397590361445783,
-    "coverage": 0.003907277303978661,
-    "decision": "accepted",
-    "score": 72.2891,
-    "source": {
-     "column": "UpVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
     }
    },
    {
@@ -6251,21 +4949,6 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.9342105263157895,
-    "coverage": 0.00088915605314899,
-    "decision": "accepted",
-    "score": 72.0395,
-    "source": {
-     "column": "DownVotes",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
     "containment": 0.9998684902682798,
     "coverage": 0.08267185699062697,
     "decision": "accepted",
@@ -6296,66 +4979,6 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.9230769230769231,
-    "coverage": 0.00045083968892061464,
-    "decision": "accepted",
-    "score": 71.5385,
-    "source": {
-     "column": "CommentCount",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.92,
-    "coverage": 0.0002880364679215038,
-    "decision": "accepted",
-    "score": 71.4,
-    "source": {
-     "column": "PostHistoryTypeId",
-     "table": "postHistory"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.92,
-    "coverage": 0.00013196775396620477,
-    "decision": "accepted",
-    "score": 71.4,
-    "source": {
-     "column": "PostHistoryTypeId",
-     "table": "postHistory"
-    },
-    "target": {
-     "column": "Id",
-     "table": "comments"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9166666666666666,
-    "coverage": 0.00041326971484389677,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "Score",
-     "table": "comments"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
     "containment": 1.0,
     "coverage": 0.1631246125232486,
     "decision": "accepted",
@@ -6367,21 +4990,6 @@
     "target": {
      "column": "Id",
      "table": "users"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9157735321528425,
-    "coverage": 0.025930629545941844,
-    "decision": "accepted",
-    "score": 71.2098,
-    "source": {
-     "column": "PostId",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
     }
    },
    {
@@ -6431,21 +5039,6 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.9,
-    "coverage": 0.00011270992223015366,
-    "decision": "accepted",
-    "score": 70.5,
-    "source": {
-     "column": "VoteTypeId",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
     "containment": 0.8988055982999926,
     "coverage": 0.04046115023667761,
     "decision": "accepted",
@@ -6476,21 +5069,6 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.8974358974358975,
-    "coverage": 0.0008990495761623426,
-    "decision": "accepted",
-    "score": 70.3846,
-    "source": {
-     "column": "CommentCount",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "votes"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
     "containment": 0.8946877912395154,
     "coverage": 0.0961791336363978,
     "decision": "accepted",
@@ -6506,17 +5084,17 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.967741935483871,
-    "coverage": 9.895927825699725e-05,
+    "containment": 0.8839779005524862,
+    "coverage": 0.008219881839198561,
     "decision": "band",
-    "score": 69.7984,
+    "score": 69.779,
     "source": {
-     "column": "AnswerCount",
-     "table": "posts"
+     "column": "Views",
+     "table": "users"
     },
     "target": {
      "column": "Id",
-     "table": "postHistory"
+     "table": "votes"
     }
    },
    {
@@ -6572,21 +5150,6 @@
     "score": 69.5077,
     "source": {
      "column": "AcceptedAnswerId",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.8769230769230769,
-    "coverage": 0.00037604525737658953,
-    "decision": "band",
-    "score": 69.4615,
-    "source": {
-     "column": "Score",
      "table": "posts"
     },
     "target": {
@@ -6671,36 +5234,6 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.8538461538461538,
-    "coverage": 0.0013900890408385619,
-    "decision": "band",
-    "score": 68.4231,
-    "source": {
-     "column": "Score",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9354838709677419,
-    "coverage": 0.0003631764160749396,
-    "decision": "band",
-    "score": 68.3468,
-    "source": {
-     "column": "AnswerCount",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
     "containment": 0.927571351642434,
     "coverage": 0.01136382378651185,
     "decision": "band",
@@ -6712,21 +5245,6 @@
     "target": {
      "column": "Id",
      "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.8384615384615385,
-    "coverage": 0.00279989725147701,
-    "decision": "band",
-    "score": 67.7308,
-    "source": {
-     "column": "Score",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "votes"
     }
    },
    {
@@ -6747,21 +5265,6 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 0.00023090498259966023,
-    "decision": "band",
-    "score": 67.5,
-    "source": {
-     "column": "Age",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
     "coverage": 0.012622442653440794,
     "decision": "band",
     "score": 67.5,
@@ -6772,21 +5275,6 @@
     "target": {
      "column": "Id",
      "table": "users"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.987012987012987,
-    "coverage": 0.00025069683825105967,
-    "decision": "band",
-    "score": 66.9156,
-    "source": {
-     "column": "FavoriteCount",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
     }
    },
    {
@@ -6851,36 +5339,6 @@
    },
    {
     "cardinality": "many_to_one",
-    "containment": 0.9571428571428572,
-    "coverage": 0.001721037760082199,
-    "decision": "band",
-    "score": 65.5714,
-    "source": {
-     "column": "Age",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "votes"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.8709677419354839,
-    "coverage": 0.00015491866769945777,
-    "decision": "band",
-    "score": 65.4436,
-    "source": {
-     "column": "AnswerCount",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "comments"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
     "containment": 0.8701733049559136,
     "coverage": 0.03284275755228505,
     "decision": "band",
@@ -6910,21 +5368,6 @@
     }
    },
    {
-    "cardinality": "many_to_one",
-    "containment": 0.9428571428571428,
-    "coverage": 0.0007176565252375878,
-    "decision": "band",
-    "score": 64.9286,
-    "source": {
-     "column": "Age",
-     "table": "users"
-    },
-    "target": {
-     "column": "Id",
-     "table": "posts"
-    }
-   },
-   {
     "cardinality": "one_to_one",
     "containment": 0.8859060402684564,
     "coverage": 0.0017416832973231515,
@@ -6937,51 +5380,6 @@
     "target": {
      "column": "Id",
      "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.925343811394892,
-    "coverage": 0.0015536606686348568,
-    "decision": "band",
-    "score": 64.1405,
-    "source": {
-     "column": "UserId",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.922077922077922,
-    "coverage": 0.00088915605314899,
-    "decision": "band",
-    "score": 63.9935,
-    "source": {
-     "column": "FavoriteCount",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.922077922077922,
-    "coverage": 0.001823786283072181,
-    "decision": "band",
-    "score": 63.9935,
-    "source": {
-     "column": "FavoriteCount",
-     "table": "posts"
-    },
-    "target": {
-     "column": "Id",
-     "table": "votes"
     }
    },
    {
@@ -7030,6 +5428,21 @@
     }
    },
    {
+    "cardinality": "many_to_one",
+    "containment": 0.8821218074656189,
+    "coverage": 0.005622972786815444,
+    "decision": "band",
+    "score": 62.1955,
+    "source": {
+     "column": "UserId",
+     "table": "votes"
+    },
+    "target": {
+     "column": "Id",
+     "table": "badges"
+    }
+   },
+   {
     "cardinality": "one_to_one",
     "containment": 0.8288590604026845,
     "coverage": 0.0028344378460567463,
@@ -7058,55 +5471,10 @@
      "column": "Id",
      "table": "comments"
     }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.8333333333333334,
-    "coverage": 6.261662346119647e-05,
-    "decision": "band",
-    "score": 60.0,
-    "source": {
-     "column": "BountyAmount",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "badges"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.8333333333333334,
-    "coverage": 2.8688642166566258e-05,
-    "decision": "band",
-    "score": 60.0,
-    "source": {
-     "column": "BountyAmount",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "comments"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.8333333333333334,
-    "coverage": 1.6493213042832873e-05,
-    "decision": "band",
-    "score": 60.0,
-    "source": {
-     "column": "BountyAmount",
-     "table": "votes"
-    },
-    "target": {
-     "column": "Id",
-     "table": "postHistory"
-    }
    }
   ]
  },
- "k_zero_share": 0.0071,
+ "k_zero_share": 0.0,
  "keys_run": "frozen_no_names",
  "use_names": false,
  "weights": {
