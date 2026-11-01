@@ -6,6 +6,9 @@ Labels, read only here:
                   statements, so they are read from data/fiben/FIBEN.sql (IBM/fiben-benchmark; 159 FKs,
                   135 of them primary key -> primary key subclass links). --fiben-sql overrides the path.
     query joins   column pairs the gold SQL joins on, from out/filtered/fiben/questions.jsonl (recall only)
+Most declared FKs touch an empty table, where no statistic can see them, so join scores are also given
+against two subsets: FKs whose two tables both have rows, and FKs Stage 1 found as a containment pair
+(either direction; the ceiling for any statistics-only method).
 FIBEN ships no column descriptions, so Stage 3 descriptions are only counted by status.
 
 Usage (from the repo root):
@@ -80,6 +83,13 @@ def main():
 
     pair = lambda r: frozenset(((r["source"]["table"].lower(), r["source"]["column"].lower()),
                                 (r["target"]["table"].lower(), r["target"]["column"].lower())))
+    rows = {t.lower(): tp["rows"] for t, tp in profile["tables"].items()}
+    pool = {frozenset(((a[0].lower(), a[1].lower()), (b[0].lower(), b[1].lower())))
+            for x in profile["containment"] for a, b in [(x["source"], x["target"])]}
+    subsets = {"vs_declared_fks": fks} if fks is not None else {}
+    if fks is not None:
+        subsets["vs_fks_with_rows"] = {f for f in fks if all(rows.get(t, 0) for t, _ in f)}
+        subsets["vs_fks_in_containment"] = fks & pool
     jg = {}
     for g in ("direct", "stats", "llm"):
         if g in joins["graphs"]:
@@ -87,14 +97,16 @@ def main():
             jg[g] = {"edges": len(e),
                      "query_join_recall": round(len(e & set(qj)) / len(qj), 4) if qj else None,
                      "query_join_recall_weighted": round(sum(n for p, n in qj.items() if p in e) / sum(qj.values()), 4) if qj else None}
-            if fks is not None:
-                jg[g]["vs_declared_fks"] = prf(len(e & fks), len(e), len(fks))
+            for name, gold in subsets.items():
+                # every edge comes from a containment pair, so precision is the same in each subset; recall is what moves
+                jg[g][name] = prf(len(e & gold), len(e), len(gold))
     verdicts = Counter()
     for r in joins["candidates"]:
         if r["decision"] == "band" or r["decision"].startswith("llm_"):
             p = pair(r)
             verdicts[f"{r['decision']}|{'fk' if fks and p in fks else 'query_join' if p in qj else 'other'}"] += 1
     out = {"primary_keys": pk, "query_join_pairs": len(qj), "declared_fks": len(fks) if fks is not None else None,
+           "fk_subsets": {k: len(v) for k, v in subsets.items()},
            "joins": jg, "band_verdicts": dict(sorted(verdicts.items()))}
     if s3 and (s3 / f"{db['db_id']}.json").exists():
         d = json.loads((s3 / f"{db['db_id']}.json").read_text())

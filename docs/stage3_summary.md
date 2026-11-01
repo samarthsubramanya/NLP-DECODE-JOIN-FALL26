@@ -198,13 +198,27 @@ All runs: glm-5-3, `low` reasoning, grouped adjudication unless noted. Joins are
 |---|---|---|---|---|---|---|
 | BIRD, named | 104 FKs | 166 | .596 | .952 | **.733** | statistics only (`direct`): .659 |
 | BIRD, obfuscated | 104 FKs | 595 | .161 | .923 | **.275** | without names Stage 2b accepts 586 edges outright; the LLM only sees the band |
-| FIBEN | 159 FKs | 57 | .579 | .208 | **.306** | 111 FKs touch an empty table; on the 48 with data both sides, recall is 33/48 |
+| FIBEN | 159 FKs | 57 | .579 | .208 | **.306** | 111 FKs touch an empty table |
+| FIBEN, FKs with rows both sides | 48 FKs | 57 | .579 | .688 | **.629** | the fair score for a statistics-based method; 46 of the 48 are Stage 1 containment pairs |
 | BEAVER nova | 25 FKs | 146 | .110 | .640 | .187 | |
 | BEAVER neutron | 163 FKs | 108 | .398 | .264 | .317 | |
 | BEAVER dw | none declared | 445 | – | – | – | 23% recall of joins used in gold SQL |
 
+**With the G9 range-span gate** (Stage 2b, `docs/foreign_keys.md` §4; now the default join outputs, Stage 3 `out/descriptions/<dataset>/g9_joins_low`, joins only):
+
+| Dataset | Band before → after | Edges | P | R | F1 before → after |
+|---|---|---|---|---|---|
+| BIRD, named | 467 → 139 | 160 | .625 | .962 | .733 → **.758** |
+| BIRD, obfuscated | 106 → 70 | 255 | .396 | .971 | .275 → **.563** |
+| FIBEN, all FKs | 38 → 38 | 49 | .694 | .214 | .306 → **.327** |
+| FIBEN, FKs with rows | | 49 | .694 | .708 | .629 → **.701** |
+
+Statistics only (`direct`), Spider dev .824 → .833 and BEAVER nova .169 → .188, neutron .257 → .259; BEAVER dw's recall of joins in the gold SQL drops by one pair (.199 → .195). No BIRD foreign key is lost, and recall rises because spurious targets no longer push real ones out through G5 and the fan-out penalty. The band shrinks by 70% on BIRD named, so Stage 3 makes far fewer calls.
+
 - **The LLM's verdicts on BIRD named are near perfect:** 17 of 17 real foreign keys in the band accepted, 447 of 450 others rejected. Its effect is limited by what reaches it: precision is lost on edges scored ≥ 70, which it never reviews.
 - **FIBEN**: 135 of its 159 FKs are primary key → primary key subclass links. Strict G8 blocked all of them (F1 .196); the G8 density rule plus the subtype prompt bring it to .306. Of the 24 non-declared edges, 11 are implied by chaining declared links (child → grandparent).
+- **The 15 visible FIBEN FKs still missed:** 5 dense primary-key subtype links blocked by G8 (density near 1, so the density rule cannot tell them from chance), 4 scored 57–59 (just under the band), 3 rejected by the LLM in the band, 2 never a containment pair, 1 cut by G5. No single rule covers more than a third of them.
+- `grade_fiben.py` reports each join graph against all declared FKs (`vs_declared_fks`), the FKs whose two tables have rows (`vs_fks_with_rows`) and the FKs found as Stage 1 containment pairs (`vs_fks_in_containment`). Precision is the same in all three because every edge comes from a containment pair.
 - `grade_fiben.py` reads FIBEN's FKs from `data/fiben/FIBEN.sql` (IBM/fiben-benchmark); the DuckDB file has none, because the importer skips the `ALTER TABLE` statements.
 
 ### Descriptions (BIRD, against `database_description/`)
@@ -260,5 +274,7 @@ The obfuscated run (`bird_dev_obfuscated.duckdb`, columns `col_NNN`) still shows
 
 ## 7. Changelog
 
+- **2026-11-01** Stage 2b G9 range-span gate; joins-only Stage 3 runs `g9_joins_low` on BIRD named, obfuscated and FIBEN.
+- **2026-11-01** `grade_fiben.py` scores joins against the FKs with rows and the containment-visible FKs as well; FIBEN F1 on visible FKs .629.
 - **2026-10-31** `evals/perturb_values.py`: date shift and text cipher on profiles; two BIRD perturbation runs graded. Prompts explain subtype links; band payloads carry `source_is_primary_key`; `--repeat` for variance runs. FIBEN graded against `FIBEN.sql`; BIRD tables-hidden run; 3-repeat variance check.
 - **Earlier** Grouped adjudication (default) beside `single`; `--no-describe`; empty-reply fallback without reasoning; empty description → `unresolved`; first Voyager runs on BIRD (named, obfuscated), BEAVER and FIBEN, graded by `evals/grade_*.py`.

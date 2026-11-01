@@ -165,3 +165,14 @@ def test_name_similarity():
     assert fk.name_similarity("customer_id", "customers", "customer_id", CFG)[0] == 1.0
     assert fk.name_similarity("cust_id", "customers", "customer_id", CFG)[0] > 0.5
     assert fk.name_similarity("zzz", "customers", "customer_id", CFG)[0] < 0.4
+
+
+def test_g9_rejects_a_measure_in_a_corner_of_an_id_range():
+    """A 1-5 rating inside order ids 1..1000 is contained by chance; customer ids spanning the range are not."""
+    for smax, gated in ((5, True), (900, False)):
+        profile, keys = shop()
+        profile["tables"]["orders"]["columns"]["customer_id"]["numeric"] = {"min": 1, "max": smax}
+        profile["tables"]["customers"]["columns"]["customer_id"]["numeric"] = {"min": 1, "max": 1000}
+        r = one(run(profile, keys), ("orders", "customer_id"), ("customers", "customer_id"))
+        assert (r["decision"] == "rejected_gate" and r["reason"].startswith("G9")) == gated, smax
+    assert one(run(profile, keys, min_range_span=None), ("orders", "customer_id"), ("customers", "customer_id"))["decision"] == "accepted"

@@ -3,6 +3,136 @@
  "candidates": [
   {
    "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.23539062767036198,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 100.0,
+   "score_before_fan_out": 100.0,
+   "source": {
+    "column": "col_013",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "rulings"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9834254143646409,
+   "coverage": 0.14710743801652892,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 0.9834,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 99.0055,
+   "score_before_fan_out": 99.0055,
+   "source": {
+    "column": "col_020",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "set_translations"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9819277108433735,
+   "coverage": 0.1347107438016529,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 0.9819,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 98.9157,
+   "score_before_fan_out": 98.9157,
+   "source": {
+    "column": "col_002",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "set_translations"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9047619047619048,
+   "coverage": 0.034482758620689655,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 0.5,
+    "overlap": 0.9048,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 89.2857,
+   "score_before_fan_out": 89.2857,
+   "source": {
+    "column": "col_069",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "sets"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8888888888888888,
+   "coverage": 0.029038112522686024,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 0.5,
+    "overlap": 0.8889,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 88.3333,
+   "score_before_fan_out": 88.3333,
+   "source": {
+    "column": "col_055",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "sets"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.8862020804235893,
    "coverage": 0.09934869025278857,
    "decision": "accepted",
@@ -288,318 +418,6 @@
    "target_pk_score": 120.0
   },
   {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.0901451223024094,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "col_013",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "foreign_data"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.048281519115134834,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "col_013",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "legalities"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.23539062767036198,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "col_013",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "rulings"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 1.745307304983725e-05,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "col_019",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "foreign_data"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 9.347825578922522e-06,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "col_019",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "legalities"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 4.557417767093165e-05,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 75.0,
-   "score_before_fan_out": 100.0,
-   "source": {
-    "column": "col_019",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "rulings"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.994475138121547,
-   "coverage": 0.0031677871247052197,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9945,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 74.7514,
-   "score_before_fan_out": 99.6685,
-   "source": {
-    "column": "col_020",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "cards"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.994475138121547,
-   "coverage": 0.0007853882872426763,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9945,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 74.7514,
-   "score_before_fan_out": 99.6685,
-   "source": {
-    "column": "col_020",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "foreign_data"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.994475138121547,
-   "coverage": 0.0004206521510515135,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9945,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 74.7514,
-   "score_before_fan_out": 99.6685,
-   "source": {
-    "column": "col_020",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "legalities"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9939759036144579,
-   "coverage": 0.0029038048643131183,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.994,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 74.7289,
-   "score_before_fan_out": 99.6386,
-   "source": {
-    "column": "col_002",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "cards"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9939759036144579,
-   "coverage": 0.0007199392633057865,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.994,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 74.7289,
-   "score_before_fan_out": 99.6386,
-   "source": {
-    "column": "col_002",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "foreign_data"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9939759036144579,
-   "coverage": 0.0003855978051305541,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.994,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 74.7289,
-   "score_before_fan_out": 99.6386,
-   "source": {
-    "column": "col_002",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "legalities"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
    "cardinality": "one_to_one",
    "containment": 0.867286939679026,
    "coverage": 0.10940895168116727,
@@ -747,162 +565,6 @@
    "source": {
     "column": "col_046",
     "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "rulings"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 0.003537362289254162,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.25,
-   "score_before_fan_out": 95.0,
-   "source": {
-    "column": "col_012",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "cards"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 0.0008770169207543218,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.25,
-   "score_before_fan_out": 95.0,
-   "source": {
-    "column": "col_012",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "foreign_data"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 0.00046972823534085676,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.25,
-   "score_before_fan_out": 95.0,
-   "source": {
-    "column": "col_012",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "legalities"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.0010384578464653165,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.25,
-   "score_before_fan_out": 95.0,
-   "source": {
-    "column": "col_019",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "foreign_data"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.0005561956219458901,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.25,
-   "score_before_fan_out": 95.0,
-   "source": {
-    "column": "col_019",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "legalities"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.002711663571420433,
-   "decision": "accepted",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.25,
-   "score_before_fan_out": 95.0,
-   "source": {
-    "column": "col_019",
-    "table": "sets"
    },
    "target": {
     "column": "col_001",
@@ -1070,396 +732,6 @@
   {
    "cardinality": "one_to_one",
    "containment": 1.0,
-   "coverage": 0.00017598817359473442,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 67.5,
-   "score_before_fan_out": 90.0,
-   "source": {
-    "column": "col_013",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "cards"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 4.363268262459313e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 67.5,
-   "score_before_fan_out": 90.0,
-   "source": {
-    "column": "col_013",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "foreign_data"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
-   "coverage": 2.3369563947306306e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 67.5,
-   "score_before_fan_out": 90.0,
-   "source": {
-    "column": "col_013",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "legalities"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9047619047619048,
-   "coverage": 8.290209698672693e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.9048,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 66.9643,
-   "score_before_fan_out": 89.2857,
-   "source": {
-    "column": "col_069",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "foreign_data"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9047619047619048,
-   "coverage": 4.440217149988198e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.9048,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 66.9643,
-   "score_before_fan_out": 89.2857,
-   "source": {
-    "column": "col_069",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "legalities"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9047619047619048,
-   "coverage": 0.00021647734393692535,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.9048,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 66.9643,
-   "score_before_fan_out": 89.2857,
-   "source": {
-    "column": "col_069",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "rulings"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.8888888888888888,
-   "coverage": 6.9812292199349e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.8889,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 66.25,
-   "score_before_fan_out": 88.3333,
-   "source": {
-    "column": "col_055",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "foreign_data"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.8888888888888888,
-   "coverage": 3.739130231569009e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.8889,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 66.25,
-   "score_before_fan_out": 88.3333,
-   "source": {
-    "column": "col_055",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "legalities"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.8888888888888888,
-   "coverage": 0.0001822967106837266,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.8889,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 66.25,
-   "score_before_fan_out": 88.3333,
-   "source": {
-    "column": "col_055",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "rulings"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.875,
-   "coverage": 3.054287783721519e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.875,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 61.875,
-   "score_before_fan_out": 82.5,
-   "source": {
-    "column": "col_014",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "foreign_data"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.875,
-   "coverage": 1.6358694763114415e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.875,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 61.875,
-   "score_before_fan_out": 82.5,
-   "source": {
-    "column": "col_014",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "legalities"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.875,
-   "coverage": 7.975481092413039e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.875,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 61.875,
-   "score_before_fan_out": 82.5,
-   "source": {
-    "column": "col_014",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "rulings"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.875,
-   "coverage": 3.054287783721519e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.875,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 61.875,
-   "score_before_fan_out": 82.5,
-   "source": {
-    "column": "col_040",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "foreign_data"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.875,
-   "coverage": 1.6358694763114415e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.875,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 61.875,
-   "score_before_fan_out": 82.5,
-   "source": {
-    "column": "col_040",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "legalities"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.875,
-   "coverage": 7.975481092413039e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.875,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 61.875,
-   "score_before_fan_out": 82.5,
-   "source": {
-    "column": "col_040",
-    "table": "cards"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "rulings"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
    "coverage": 0.24792962920946304,
    "decision": "rejected_gate",
    "reason": "G8: the source is its table's dense primary key",
@@ -1527,6 +799,40 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0901451223024094,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.091 of the target's < 0.1",
+   "source": {
+    "column": "col_013",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "foreign_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.048281519115134834,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.049 of the target's < 0.1",
+   "source": {
+    "column": "col_013",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "legalities"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.875,
    "coverage": 0.0001231917215163141,
    "decision": "rejected_gate",
@@ -1545,17 +851,60 @@
   {
    "cardinality": "many_to_one",
    "containment": 0.875,
+   "coverage": 3.054287783721519e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "col_014",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "foreign_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.875,
+   "coverage": 1.6358694763114415e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "col_014",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "legalities"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.875,
+   "coverage": 7.975481092413039e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "col_014",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "rulings"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.875,
    "coverage": 0.005785123966942148,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.875,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.5,
+   "reason": "G9: source range spans 0.007 of the target's < 0.1",
    "source": {
     "column": "col_014",
     "table": "cards"
@@ -1572,15 +921,7 @@
    "containment": 0.875,
    "coverage": 0.012704174228675136,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.875,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.5,
+   "reason": "G9: source range spans 0.015 of the target's < 0.1",
    "source": {
     "column": "col_014",
     "table": "cards"
@@ -1605,6 +946,57 @@
    "target": {
     "column": "col_001",
     "table": "cards"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.745307304983725e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "col_019",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "foreign_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 9.347825578922522e-06,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "col_019",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "legalities"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 4.557417767093165e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "col_019",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "rulings"
    },
    "target_is_pk": true,
    "target_pk_score": 120.0
@@ -1731,17 +1123,60 @@
   {
    "cardinality": "many_to_one",
    "containment": 0.875,
+   "coverage": 3.054287783721519e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "col_040",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "foreign_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.875,
+   "coverage": 1.6358694763114415e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "col_040",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "legalities"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.875,
+   "coverage": 7.975481092413039e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "col_040",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "rulings"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.875,
    "coverage": 0.005785123966942148,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.875,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.5,
+   "reason": "G9: source range spans 0.017 of the target's < 0.1",
    "source": {
     "column": "col_040",
     "table": "cards"
@@ -1758,15 +1193,7 @@
    "containment": 0.875,
    "coverage": 0.012704174228675136,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 0.875,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.5,
+   "reason": "G9: source range spans 0.038 of the target's < 0.1",
    "source": {
     "column": "col_040",
     "table": "cards"
@@ -1900,24 +1327,16 @@
   {
    "cardinality": "many_to_one",
    "containment": 0.8888888888888888,
-   "coverage": 0.013223140495867768,
+   "coverage": 6.9812292199349e-05,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.8889,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 88.3333,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "col_055",
     "table": "cards"
    },
    "target": {
     "column": "col_001",
-    "table": "set_translations"
+    "table": "foreign_data"
    },
    "target_is_pk": true,
    "target_pk_score": 120.0
@@ -1925,24 +1344,50 @@
   {
    "cardinality": "many_to_one",
    "containment": 0.8888888888888888,
-   "coverage": 0.029038112522686024,
+   "coverage": 3.739130231569009e-05,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.8889,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 88.3333,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "col_055",
     "table": "cards"
    },
    "target": {
     "column": "col_001",
-    "table": "sets"
+    "table": "legalities"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8888888888888888,
+   "coverage": 0.0001822967106837266,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "col_055",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "rulings"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8888888888888888,
+   "coverage": 0.013223140495867768,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.083 of the target's < 0.1",
+   "source": {
+    "column": "col_055",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "set_translations"
    },
    "target_is_pk": true,
    "target_pk_score": 120.0
@@ -1967,24 +1412,16 @@
   {
    "cardinality": "many_to_one",
    "containment": 0.9047619047619048,
-   "coverage": 0.015702479338842976,
+   "coverage": 8.290209698672693e-05,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.9048,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 89.2857,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "col_069",
     "table": "cards"
    },
    "target": {
     "column": "col_001",
-    "table": "set_translations"
+    "table": "foreign_data"
    },
    "target_is_pk": true,
    "target_pk_score": 120.0
@@ -1992,24 +1429,50 @@
   {
    "cardinality": "many_to_one",
    "containment": 0.9047619047619048,
-   "coverage": 0.034482758620689655,
+   "coverage": 4.440217149988198e-05,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.9048,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 89.2857,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "col_069",
     "table": "cards"
    },
    "target": {
     "column": "col_001",
-    "table": "sets"
+    "table": "legalities"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9047619047619048,
+   "coverage": 0.00021647734393692535,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.001 of the target's < 0.1",
+   "source": {
+    "column": "col_069",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "rulings"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9047619047619048,
+   "coverage": 0.015702479338842976,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.083 of the target's < 0.1",
+   "source": {
+    "column": "col_069",
+    "table": "cards"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "set_translations"
    },
    "target_is_pk": true,
    "target_pk_score": 120.0
@@ -2289,17 +1752,60 @@
   {
    "cardinality": "many_to_one",
    "containment": 0.9939759036144579,
+   "coverage": 0.0029038048643131183,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.030 of the target's < 0.1",
+   "source": {
+    "column": "col_002",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "cards"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9939759036144579,
+   "coverage": 0.0007199392633057865,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.007 of the target's < 0.1",
+   "source": {
+    "column": "col_002",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "foreign_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9939759036144579,
+   "coverage": 0.0003855978051305541,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.004 of the target's < 0.1",
+   "source": {
+    "column": "col_002",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "legalities"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9939759036144579,
    "coverage": 0.0018799348289259305,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.994,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 99.6386,
+   "reason": "G9: source range spans 0.019 of the target's < 0.1",
    "source": {
     "column": "col_002",
     "table": "sets"
@@ -2307,31 +1813,6 @@
    "target": {
     "column": "col_001",
     "table": "rulings"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9819277108433735,
-   "coverage": 0.1347107438016529,
-   "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9819,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 98.9157,
-   "source": {
-    "column": "col_002",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "set_translations"
    },
    "target_is_pk": true,
    "target_pk_score": 120.0
@@ -2390,17 +1871,60 @@
   {
    "cardinality": "one_to_one",
    "containment": 1.0,
+   "coverage": 0.003537362289254162,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.064 of the target's < 0.1",
+   "source": {
+    "column": "col_012",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "cards"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.0008770169207543218,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.016 of the target's < 0.1",
+   "source": {
+    "column": "col_012",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "foreign_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.00046972823534085676,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.009 of the target's < 0.1",
+   "source": {
+    "column": "col_012",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "legalities"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
    "coverage": 0.0022901024279643155,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 95.0,
+   "reason": "G9: source range spans 0.042 of the target's < 0.1",
    "source": {
     "column": "col_012",
     "table": "sets"
@@ -2415,17 +1939,60 @@
   {
    "cardinality": "one_to_one",
    "containment": 1.0,
+   "coverage": 0.00017598817359473442,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.023 of the target's < 0.1",
+   "source": {
+    "column": "col_013",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "cards"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 4.363268262459313e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.006 of the target's < 0.1",
+   "source": {
+    "column": "col_013",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "foreign_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 2.3369563947306306e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.003 of the target's < 0.1",
+   "source": {
+    "column": "col_013",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "legalities"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
    "coverage": 0.00011393544417732913,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 90.0,
+   "reason": "G9: source range spans 0.015 of the target's < 0.1",
    "source": {
     "column": "col_013",
     "table": "sets"
@@ -2493,15 +2060,7 @@
    "containment": 0.9957983193277311,
    "coverage": 0.004170919714195206,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 0.5,
-    "overlap": 0.9958,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 94.7479,
+   "reason": "G9: source range spans 0.049 of the target's < 0.1",
    "source": {
     "column": "col_019",
     "table": "sets"
@@ -2509,6 +2068,57 @@
    "target": {
     "column": "col_001",
     "table": "cards"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0010384578464653165,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.012 of the target's < 0.1",
+   "source": {
+    "column": "col_019",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "foreign_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0005561956219458901,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.006 of the target's < 0.1",
+   "source": {
+    "column": "col_019",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "legalities"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.002711663571420433,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.032 of the target's < 0.1",
+   "source": {
+    "column": "col_019",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "rulings"
    },
    "target_is_pk": true,
    "target_pk_score": 120.0
@@ -2533,17 +2143,60 @@
   {
    "cardinality": "many_to_one",
    "containment": 0.994475138121547,
+   "coverage": 0.0031677871247052197,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.030 of the target's < 0.1",
+   "source": {
+    "column": "col_020",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "cards"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.994475138121547,
+   "coverage": 0.0007853882872426763,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.007 of the target's < 0.1",
+   "source": {
+    "column": "col_020",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "foreign_data"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.994475138121547,
+   "coverage": 0.0004206521510515135,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.004 of the target's < 0.1",
+   "source": {
+    "column": "col_020",
+    "table": "sets"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "legalities"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.994475138121547,
    "coverage": 0.0020508379951919243,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9945,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 99.6685,
+   "reason": "G9: source range spans 0.019 of the target's < 0.1",
    "source": {
     "column": "col_020",
     "table": "sets"
@@ -2551,31 +2204,6 @@
    "target": {
     "column": "col_001",
     "table": "rulings"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9834254143646409,
-   "coverage": 0.14710743801652892,
-   "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 0.9834,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 99.0055,
-   "source": {
-    "column": "col_020",
-    "table": "sets"
-   },
-   "target": {
-    "column": "col_001",
-    "table": "set_translations"
    },
    "target_is_pk": true,
    "target_pk_score": 120.0
@@ -2615,6 +2243,7 @@
   "keys_run": "frozen_no_names",
   "long_text_len": 64,
   "max_targets": 3,
+  "min_range_span": 0.1,
   "min_source_distinct": 2,
   "name_contains": 0.8,
   "never_source_roles": [
@@ -2631,13 +2260,88 @@
   "self_refs": false
  },
  "counts": {
-  "accepted": 37,
-  "band": 19,
-  "rejected_gate": 60
+  "accepted": 24,
+  "band": 4,
+  "rejected_gate": 88
  },
  "db_id": "card_games",
  "graphs": {
   "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.23539062767036198,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_013",
+     "table": "cards"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "rulings"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9834254143646409,
+    "coverage": 0.14710743801652892,
+    "decision": "accepted",
+    "score": 99.0055,
+    "source": {
+     "column": "col_020",
+     "table": "sets"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "set_translations"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9819277108433735,
+    "coverage": 0.1347107438016529,
+    "decision": "accepted",
+    "score": 98.9157,
+    "source": {
+     "column": "col_002",
+     "table": "sets"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "set_translations"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9047619047619048,
+    "coverage": 0.034482758620689655,
+    "decision": "accepted",
+    "score": 89.2857,
+    "source": {
+     "column": "col_069",
+     "table": "cards"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "sets"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8888888888888888,
+    "coverage": 0.029038112522686024,
+    "decision": "accepted",
+    "score": 88.3333,
+    "source": {
+     "column": "col_055",
+     "table": "cards"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "sets"
+    }
+   },
    {
     "cardinality": "many_to_one",
     "containment": 0.8862020804235893,
@@ -2804,186 +2508,6 @@
     }
    },
    {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.0901451223024094,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_013",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.048281519115134834,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_013",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.23539062767036198,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_013",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "rulings"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.745307304983725e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_019",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 9.347825578922522e-06,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_019",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 4.557417767093165e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_019",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "rulings"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.994475138121547,
-    "coverage": 0.0031677871247052197,
-    "decision": "accepted",
-    "score": 74.7514,
-    "source": {
-     "column": "col_020",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "cards"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.994475138121547,
-    "coverage": 0.0007853882872426763,
-    "decision": "accepted",
-    "score": 74.7514,
-    "source": {
-     "column": "col_020",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.994475138121547,
-    "coverage": 0.0004206521510515135,
-    "decision": "accepted",
-    "score": 74.7514,
-    "source": {
-     "column": "col_020",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9939759036144579,
-    "coverage": 0.0029038048643131183,
-    "decision": "accepted",
-    "score": 74.7289,
-    "source": {
-     "column": "col_002",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "cards"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9939759036144579,
-    "coverage": 0.0007199392633057865,
-    "decision": "accepted",
-    "score": 74.7289,
-    "source": {
-     "column": "col_002",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9939759036144579,
-    "coverage": 0.0003855978051305541,
-    "decision": "accepted",
-    "score": 74.7289,
-    "source": {
-     "column": "col_002",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
     "cardinality": "one_to_one",
     "containment": 0.867286939679026,
     "coverage": 0.10940895168116727,
@@ -3067,96 +2591,6 @@
     "source": {
      "column": "col_046",
      "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "rulings"
-    }
-   },
-   {
-    "cardinality": "one_to_one",
-    "containment": 1.0,
-    "coverage": 0.003537362289254162,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_012",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "cards"
-    }
-   },
-   {
-    "cardinality": "one_to_one",
-    "containment": 1.0,
-    "coverage": 0.0008770169207543218,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_012",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "one_to_one",
-    "containment": 1.0,
-    "coverage": 0.00046972823534085676,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_012",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.0010384578464653165,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_019",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.0005561956219458901,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_019",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.002711663571420433,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_019",
-     "table": "sets"
     },
     "target": {
      "column": "col_001",
@@ -3197,6 +2631,81 @@
   "stats": [
    {
     "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.23539062767036198,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_013",
+     "table": "cards"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "rulings"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9834254143646409,
+    "coverage": 0.14710743801652892,
+    "decision": "accepted",
+    "score": 99.0055,
+    "source": {
+     "column": "col_020",
+     "table": "sets"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "set_translations"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9819277108433735,
+    "coverage": 0.1347107438016529,
+    "decision": "accepted",
+    "score": 98.9157,
+    "source": {
+     "column": "col_002",
+     "table": "sets"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "set_translations"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9047619047619048,
+    "coverage": 0.034482758620689655,
+    "decision": "accepted",
+    "score": 89.2857,
+    "source": {
+     "column": "col_069",
+     "table": "cards"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "sets"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8888888888888888,
+    "coverage": 0.029038112522686024,
+    "decision": "accepted",
+    "score": 88.3333,
+    "source": {
+     "column": "col_055",
+     "table": "cards"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "sets"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
     "containment": 0.8862020804235893,
     "coverage": 0.09934869025278857,
     "decision": "accepted",
@@ -3361,186 +2870,6 @@
     }
    },
    {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.0901451223024094,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_013",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.048281519115134834,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_013",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.23539062767036198,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_013",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "rulings"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.745307304983725e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_019",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 9.347825578922522e-06,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_019",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 4.557417767093165e-05,
-    "decision": "accepted",
-    "score": 75.0,
-    "source": {
-     "column": "col_019",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "rulings"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.994475138121547,
-    "coverage": 0.0031677871247052197,
-    "decision": "accepted",
-    "score": 74.7514,
-    "source": {
-     "column": "col_020",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "cards"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.994475138121547,
-    "coverage": 0.0007853882872426763,
-    "decision": "accepted",
-    "score": 74.7514,
-    "source": {
-     "column": "col_020",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.994475138121547,
-    "coverage": 0.0004206521510515135,
-    "decision": "accepted",
-    "score": 74.7514,
-    "source": {
-     "column": "col_020",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9939759036144579,
-    "coverage": 0.0029038048643131183,
-    "decision": "accepted",
-    "score": 74.7289,
-    "source": {
-     "column": "col_002",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "cards"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9939759036144579,
-    "coverage": 0.0007199392633057865,
-    "decision": "accepted",
-    "score": 74.7289,
-    "source": {
-     "column": "col_002",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9939759036144579,
-    "coverage": 0.0003855978051305541,
-    "decision": "accepted",
-    "score": 74.7289,
-    "source": {
-     "column": "col_002",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
     "cardinality": "one_to_one",
     "containment": 0.867286939679026,
     "coverage": 0.10940895168116727,
@@ -3624,96 +2953,6 @@
     "source": {
      "column": "col_046",
      "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "rulings"
-    }
-   },
-   {
-    "cardinality": "one_to_one",
-    "containment": 1.0,
-    "coverage": 0.003537362289254162,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_012",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "cards"
-    }
-   },
-   {
-    "cardinality": "one_to_one",
-    "containment": 1.0,
-    "coverage": 0.0008770169207543218,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_012",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "one_to_one",
-    "containment": 1.0,
-    "coverage": 0.00046972823534085676,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_012",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.0010384578464653165,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_019",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.0005561956219458901,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_019",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.002711663571420433,
-    "decision": "accepted",
-    "score": 71.25,
-    "source": {
-     "column": "col_019",
-     "table": "sets"
     },
     "target": {
      "column": "col_001",
@@ -3809,235 +3048,10 @@
      "column": "col_001",
      "table": "rulings"
     }
-   },
-   {
-    "cardinality": "one_to_one",
-    "containment": 1.0,
-    "coverage": 0.00017598817359473442,
-    "decision": "band",
-    "score": 67.5,
-    "source": {
-     "column": "col_013",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "cards"
-    }
-   },
-   {
-    "cardinality": "one_to_one",
-    "containment": 1.0,
-    "coverage": 4.363268262459313e-05,
-    "decision": "band",
-    "score": 67.5,
-    "source": {
-     "column": "col_013",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "one_to_one",
-    "containment": 1.0,
-    "coverage": 2.3369563947306306e-05,
-    "decision": "band",
-    "score": 67.5,
-    "source": {
-     "column": "col_013",
-     "table": "sets"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9047619047619048,
-    "coverage": 8.290209698672693e-05,
-    "decision": "band",
-    "score": 66.9643,
-    "source": {
-     "column": "col_069",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9047619047619048,
-    "coverage": 4.440217149988198e-05,
-    "decision": "band",
-    "score": 66.9643,
-    "source": {
-     "column": "col_069",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9047619047619048,
-    "coverage": 0.00021647734393692535,
-    "decision": "band",
-    "score": 66.9643,
-    "source": {
-     "column": "col_069",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "rulings"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.8888888888888888,
-    "coverage": 6.9812292199349e-05,
-    "decision": "band",
-    "score": 66.25,
-    "source": {
-     "column": "col_055",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.8888888888888888,
-    "coverage": 3.739130231569009e-05,
-    "decision": "band",
-    "score": 66.25,
-    "source": {
-     "column": "col_055",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.8888888888888888,
-    "coverage": 0.0001822967106837266,
-    "decision": "band",
-    "score": 66.25,
-    "source": {
-     "column": "col_055",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "rulings"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.875,
-    "coverage": 3.054287783721519e-05,
-    "decision": "band",
-    "score": 61.875,
-    "source": {
-     "column": "col_014",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.875,
-    "coverage": 1.6358694763114415e-05,
-    "decision": "band",
-    "score": 61.875,
-    "source": {
-     "column": "col_014",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.875,
-    "coverage": 7.975481092413039e-05,
-    "decision": "band",
-    "score": 61.875,
-    "source": {
-     "column": "col_014",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "rulings"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.875,
-    "coverage": 3.054287783721519e-05,
-    "decision": "band",
-    "score": 61.875,
-    "source": {
-     "column": "col_040",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "foreign_data"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.875,
-    "coverage": 1.6358694763114415e-05,
-    "decision": "band",
-    "score": 61.875,
-    "source": {
-     "column": "col_040",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "legalities"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.875,
-    "coverage": 7.975481092413039e-05,
-    "decision": "band",
-    "score": 61.875,
-    "source": {
-     "column": "col_040",
-     "table": "cards"
-    },
-    "target": {
-     "column": "col_001",
-     "table": "rulings"
-    }
    }
   ]
  },
- "k_zero_share": 0.0704,
+ "k_zero_share": 0.1786,
  "keys_run": "frozen_no_names",
  "use_names": false,
  "weights": {

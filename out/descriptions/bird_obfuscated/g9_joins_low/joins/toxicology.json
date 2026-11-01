@@ -1,0 +1,407 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.9960269196464769,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 100.0,
+   "score_before_fan_out": 100.0,
+   "source": {
+    "column": "col_001",
+    "table": "connected"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "atom"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.9960269196464769,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 100.0,
+   "score_before_fan_out": 100.0,
+   "source": {
+    "column": "col_002",
+    "table": "connected"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "atom"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 100.0,
+   "score_before_fan_out": 100.0,
+   "source": {
+    "column": "col_003",
+    "table": "connected"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "bond"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.7725225225225225,
+   "coverage": 1.0,
+   "decision": "llm_accept",
+   "fan_out": 1.0,
+   "llm": {
+    "adjudication": "grouped",
+    "decision": "accept",
+    "group_size": 1,
+    "model": "glm-5-3",
+    "reason": "Every molecule code (TRxxx) appears in atom.col_002 with full coverage and many-to-one cardinality, exactly the expected atom-to-molecule reference, and the 23% orphans are plausibly atoms of molecules outside the sample.",
+    "reasoning_effort": "low"
+   },
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 0.7725,
+    "target_key": 1.0
+   },
+   "penalties": {
+    "orphan": 0.7
+   },
+   "score": 60.4459,
+   "score_before_fan_out": 60.4459,
+   "source": {
+    "column": "col_002",
+    "table": "atom"
+   },
+   "source_is_pk": false,
+   "target": {
+    "column": "col_001",
+    "table": "molecule"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 86.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.7725225225225225,
+   "coverage": 1.0,
+   "decision": "llm_accept",
+   "fan_out": 1.0,
+   "llm": {
+    "adjudication": "grouped",
+    "decision": "accept",
+    "group_size": 1,
+    "model": "glm-5-3",
+    "reason": "The source's TRxxx codes are a many-to-one reference to the molecule primary key with full coverage and 77% containment, and the bond rows' composite col_001 (e.g. TR031_18_36) embeds the same TR code, indicating a genuine foreign-key relationship rather than chance overlap.",
+    "reasoning_effort": "low"
+   },
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 0.7725,
+    "target_key": 1.0
+   },
+   "penalties": {
+    "orphan": 0.7
+   },
+   "score": 60.4459,
+   "score_before_fan_out": 60.4459,
+   "source": {
+    "column": "col_002",
+    "table": "bond"
+   },
+   "source_is_pk": false,
+   "target": {
+    "column": "col_001",
+    "table": "molecule"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 86.25
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "frozen_no_names",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_range_span": 0.1,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
+  "r_cap": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 3,
+  "band": 2
+ },
+ "db_id": "toxicology",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9960269196464769,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_001",
+     "table": "connected"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "atom"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9960269196464769,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_002",
+     "table": "connected"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "atom"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_003",
+     "table": "connected"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "bond"
+    }
+   }
+  ],
+  "llm": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9960269196464769,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_001",
+     "table": "connected"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "atom"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9960269196464769,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_002",
+     "table": "connected"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "atom"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_003",
+     "table": "connected"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "bond"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.7725225225225225,
+    "coverage": 1.0,
+    "decision": "llm_accept",
+    "score": 60.4459,
+    "source": {
+     "column": "col_002",
+     "table": "atom"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "molecule"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.7725225225225225,
+    "coverage": 1.0,
+    "decision": "llm_accept",
+    "score": 60.4459,
+    "source": {
+     "column": "col_002",
+     "table": "bond"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "molecule"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9960269196464769,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_001",
+     "table": "connected"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "atom"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9960269196464769,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_002",
+     "table": "connected"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "atom"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 100.0,
+    "source": {
+     "column": "col_003",
+     "table": "connected"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "bond"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.7725225225225225,
+    "coverage": 1.0,
+    "decision": "band",
+    "score": 60.4459,
+    "source": {
+     "column": "col_002",
+     "table": "atom"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "molecule"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.7725225225225225,
+    "coverage": 1.0,
+    "decision": "band",
+    "score": 60.4459,
+    "source": {
+     "column": "col_002",
+     "table": "bond"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "molecule"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.0,
+ "keys_run": "frozen_no_names",
+ "use_names": false,
+ "weights": {
+  "cardinality": 15,
+  "nulls": 10,
+  "overlap": 60,
+  "target_key": 15
+ }
+}

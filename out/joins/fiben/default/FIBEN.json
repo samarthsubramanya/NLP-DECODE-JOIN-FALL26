@@ -30,32 +30,60 @@
    "target_pk_score": 125.0
   },
   {
-   "cardinality": "one_to_one",
+   "cardinality": "many_to_one",
    "containment": 1.0,
-   "coverage": 0.38078757700107585,
+   "coverage": 1.0,
    "decision": "accepted",
    "fan_out": 1.0,
    "name_via": "column",
    "parts": {
-    "cardinality": 0.5,
-    "name": 0.8,
+    "cardinality": 1.0,
+    "name": 0.5,
     "nulls": 1.0,
     "overlap": 1.0,
     "target_key": 1.0
    },
    "penalties": {},
-   "score": 88.5,
-   "score_before_fan_out": 88.5,
+   "score": 90.0,
+   "score_before_fan_out": 90.0,
    "source": {
-    "column": "POSTALADDRESSID",
+    "column": "HASCOUNTRY",
     "table": "POSTALADDRESS"
    },
    "target": {
-    "column": "ADDRESSID",
-    "table": "ADDRESS"
+    "column": "COUNTRYID",
+    "table": "COUNTRY"
    },
    "target_is_pk": true,
-   "target_pk_score": 125.0
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.7159,
+    "name": 0.6875,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 89.4878,
+   "score_before_fan_out": 89.4878,
+   "source": {
+    "column": "HASCONTRACTPARTY",
+    "table": "CONTRACT"
+   },
+   "target": {
+    "column": "CONTRACTPARTYID",
+    "table": "CONTRACTPARTY"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
   },
   {
    "cardinality": "one_to_one",
@@ -172,6 +200,34 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 0.998003992015968,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.9727,
+    "name": 0.2222,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 84.0349,
+   "score_before_fan_out": 84.0349,
+   "source": {
+    "column": "ISOWNEDBY",
+    "table": "FINANCIALSERVICEACCOUNT"
+   },
+   "target": {
+    "column": "PERSONID",
+    "table": "PERSON"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 0.998053870520279,
    "decision": "accepted",
    "fan_out": 1.0,
@@ -206,6 +262,118 @@
    "name_via": "column",
    "parts": {
     "cardinality": 1.0,
+    "name": 0.1765,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 83.5294,
+   "score_before_fan_out": 83.5294,
+   "source": {
+    "column": "ISTRADEDON",
+    "table": "SECURITY"
+   },
+   "target": {
+    "column": "FINANCIALMARKETID",
+    "table": "FINANCIALMARKET"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.08032128514056225,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.1538,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 83.0769,
+   "score_before_fan_out": 83.0769,
+   "source": {
+    "column": "ISDOMICILEDIN",
+    "table": "CORPORATION"
+   },
+   "target": {
+    "column": "COUNTRYID",
+    "table": "COUNTRY"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.1429,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 82.8571,
+   "score_before_fan_out": 82.8571,
+   "source": {
+    "column": "HASCITIZENSHIP",
+    "table": "PERSON"
+   },
+   "target": {
+    "column": "COUNTRYID",
+    "table": "COUNTRY"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.1333,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 82.6667,
+   "score_before_fan_out": 82.6667,
+   "source": {
+    "column": "HASPLACEOFBIRTH",
+    "table": "PERSON"
+   },
+   "target": {
+    "column": "COUNTRYID",
+    "table": "COUNTRY"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 1.0,
     "name": 0.12,
     "nulls": 1.0,
     "overlap": 1.0,
@@ -224,6 +392,34 @@
    },
    "target_is_pk": true,
    "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.6666666666666666,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.1176,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 82.3529,
+   "score_before_fan_out": 82.3529,
+   "source": {
+    "column": "HASTYPE",
+    "table": "SECURITIESTRANSACTION"
+   },
+   "target": {
+    "column": "FINANCIALMARKETID",
+    "table": "FINANCIALMARKET"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
   },
   {
    "cardinality": "one_to_one",
@@ -280,6 +476,34 @@
    },
    "target_is_pk": false,
    "target_pk_score": 43.45
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.9982788296041308,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 0.6461,
+    "name": 0.125,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 77.1918,
+   "score_before_fan_out": 77.1918,
+   "source": {
+    "column": "ISMANAGEDBY",
+    "table": "CONTRACT"
+   },
+   "target": {
+    "column": "CORPORATIONID",
+    "table": "CORPORATION"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
   },
   {
    "cardinality": "one_to_one",
@@ -340,62 +564,6 @@
   {
    "cardinality": "one_to_one",
    "containment": 1.0,
-   "coverage": 0.005460024465683398,
-   "decision": "accepted",
-   "fan_out": 1.0,
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 0.5,
-    "name": 0.2,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 76.5,
-   "score_before_fan_out": 76.5,
-   "source": {
-    "column": "HASLASTTRADEDVALUE",
-    "table": "LISTEDSECURITY"
-   },
-   "target": {
-    "column": "MONETARYAMOUNTID",
-    "table": "MONETARYAMOUNT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 1.0,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.5,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 76.5,
-   "score_before_fan_out": 90.0,
-   "source": {
-    "column": "HASCOUNTRY",
-    "table": "POSTALADDRESS"
-   },
-   "target": {
-    "column": "COUNTRYID",
-    "table": "COUNTRY"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "one_to_one",
-   "containment": 1.0,
    "coverage": 0.9945399755343166,
    "decision": "accepted",
    "fan_out": 1.0,
@@ -417,146 +585,6 @@
    "target": {
     "column": "MONETARYAMOUNTID",
     "table": "MONETARYAMOUNT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9959839357429718,
-   "coverage": 0.08272181454302868,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2778,
-    "nulls": 1.0,
-    "overlap": 0.996,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 72.5857,
-   "score_before_fan_out": 85.3949,
-   "source": {
-    "column": "HASCOUNTRY",
-    "table": "POSTALADDRESS"
-   },
-   "target": {
-    "column": "CONTRACTID",
-    "table": "CONTRACT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.0019075232717839158,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2353,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 72.0,
-   "score_before_fan_out": 84.7059,
-   "source": {
-    "column": "ISMANAGEDBY",
-    "table": "FINANCIALSERVICEACCOUNT"
-   },
-   "target": {
-    "column": "AUTONOMOUSAGENTID",
-    "table": "AUTONOMOUSAGENT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.008032128514056224,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2222,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.7777,
-   "score_before_fan_out": 84.4444,
-   "source": {
-    "column": "HASTYPE",
-    "table": "SECURITIESTRANSACTION"
-   },
-   "target": {
-    "column": "COUNTRYID",
-    "table": "COUNTRY"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9959839357429718,
-   "coverage": 0.08272181454302868,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2222,
-    "nulls": 1.0,
-    "overlap": 0.996,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.6412,
-   "score_before_fan_out": 84.2838,
-   "source": {
-    "column": "HASPLACEOFBIRTH",
-    "table": "PERSON"
-   },
-   "target": {
-    "column": "CONTRACTID",
-    "table": "CONTRACT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.998003992015968,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 0.9727,
-    "name": 0.2222,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.4297,
-   "score_before_fan_out": 84.0349,
-   "source": {
-    "column": "ISOWNEDBY",
-    "table": "FINANCIALSERVICEACCOUNT"
-   },
-   "target": {
-    "column": "PERSONID",
-    "table": "PERSON"
    },
    "target_is_pk": true,
    "target_pk_score": 140.0
@@ -626,34 +654,6 @@
    "name_via": "column",
    "parts": {
     "cardinality": 1.0,
-    "name": 0.1765,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 71.0,
-   "score_before_fan_out": 83.5294,
-   "source": {
-    "column": "ISTRADEDON",
-    "table": "SECURITY"
-   },
-   "target": {
-    "column": "FINANCIALMARKETID",
-    "table": "FINANCIALMARKET"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.0066711140760507,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
     "name": 0.1538,
     "nulls": 1.0,
     "overlap": 1.0,
@@ -663,236 +663,12 @@
    "score": 70.6154,
    "score_before_fan_out": 83.0769,
    "source": {
-    "column": "ISDOMICILEDIN",
+    "column": "ISPROVIDEDBY",
+    "table": "FINANCIALREPORT"
+   },
+   "target": {
+    "column": "CORPORATIONID",
     "table": "CORPORATION"
-   },
-   "target": {
-    "column": "CONTRACTID",
-    "table": "CONTRACT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.08032128514056225,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1538,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 70.6154,
-   "score_before_fan_out": 83.0769,
-   "source": {
-    "column": "ISDOMICILEDIN",
-    "table": "CORPORATION"
-   },
-   "target": {
-    "column": "COUNTRYID",
-    "table": "COUNTRY"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 1.0,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1429,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 70.4285,
-   "score_before_fan_out": 82.8571,
-   "source": {
-    "column": "HASCITIZENSHIP",
-    "table": "PERSON"
-   },
-   "target": {
-    "column": "COUNTRYID",
-    "table": "COUNTRY"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9959839357429718,
-   "coverage": 0.08272181454302868,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1429,
-    "nulls": 1.0,
-    "overlap": 0.996,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 70.292,
-   "score_before_fan_out": 82.6965,
-   "source": {
-    "column": "HASCITIZENSHIP",
-    "table": "PERSON"
-   },
-   "target": {
-    "column": "CONTRACTID",
-    "table": "CONTRACT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 1.0,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1333,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 70.2667,
-   "score_before_fan_out": 82.6667,
-   "source": {
-    "column": "HASPLACEOFBIRTH",
-    "table": "PERSON"
-   },
-   "target": {
-    "column": "COUNTRYID",
-    "table": "COUNTRY"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.012048192771084338,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.125,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 70.125,
-   "score_before_fan_out": 82.5,
-   "source": {
-    "column": "ISTRADEDON",
-    "table": "SECURITY"
-   },
-   "target": {
-    "column": "COUNTRYID",
-    "table": "COUNTRY"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.6666666666666666,
-   "decision": "accepted",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1176,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 70.0,
-   "score_before_fan_out": 82.3529,
-   "source": {
-    "column": "HASTYPE",
-    "table": "SECURITIESTRANSACTION"
-   },
-   "target": {
-    "column": "FINANCIALMARKETID",
-    "table": "FINANCIALMARKET"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 120.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.9537616358919578,
-   "decision": "band",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 0.9727,
-    "name": 0.1176,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 69.6519,
-   "score_before_fan_out": 81.9434,
-   "source": {
-    "column": "ISOWNEDBY",
-    "table": "FINANCIALSERVICEACCOUNT"
-   },
-   "target": {
-    "column": "AUTONOMOUSAGENTID",
-    "table": "AUTONOMOUSAGENT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.001996007984031936,
-   "decision": "band",
-   "fan_out": 0.85,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.0909,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 69.5455,
-   "score_before_fan_out": 81.8182,
-   "source": {
-    "column": "ISMANAGEDBY",
-    "table": "FINANCIALSERVICEACCOUNT"
-   },
-   "target": {
-    "column": "PERSONID",
-    "table": "PERSON"
    },
    "target_is_pk": true,
    "target_pk_score": 140.0
@@ -952,34 +728,6 @@
    },
    "target_is_pk": true,
    "target_pk_score": 109.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 1.0,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 0.7159,
-    "name": 0.6875,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 67.1158,
-   "score_before_fan_out": 89.4878,
-   "source": {
-    "column": "HASCONTRACTPARTY",
-    "table": "CONTRACT"
-   },
-   "target": {
-    "column": "CONTRACTPARTYID",
-    "table": "CONTRACTPARTY"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
   },
   {
    "cardinality": "one_to_one",
@@ -1570,6 +1318,62 @@
    "target_pk_score": 125.0
   },
   {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "band",
+   "fan_out": 0.85,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5906,
+    "name": 0.1538,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 65.3953,
+   "score_before_fan_out": 76.9356,
+   "source": {
+    "column": "ISPROVIDEDBY",
+    "table": "SECURITY"
+   },
+   "target": {
+    "column": "CORPORATIONID",
+    "table": "CORPORATION"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8605851979345955,
+   "coverage": 0.66711140760507,
+   "decision": "band",
+   "fan_out": 0.85,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.1111,
+    "nulls": 1.0,
+    "overlap": 0.8606,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 65.1488,
+   "score_before_fan_out": 76.6456,
+   "source": {
+    "column": "ISPROVIDEDBY",
+    "table": "FINANCIALREPORT"
+   },
+   "target": {
+    "column": "CONTRACTID",
+    "table": "CONTRACT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
    "cardinality": "one_to_one",
    "containment": 1.0,
    "coverage": 0.10819434242013186,
@@ -1880,426 +1684,6 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
-   "coverage": 0.00015260186174271325,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2381,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.5714,
-   "score_before_fan_out": 84.7619,
-   "source": {
-    "column": "HASMETRICYEARCALENDAR",
-    "table": "DISCLOSURE"
-   },
-   "target": {
-    "column": "AUTONOMOUSAGENTID",
-    "table": "AUTONOMOUSAGENT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.00266844563042028,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2381,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.5714,
-   "score_before_fan_out": 84.7619,
-   "source": {
-    "column": "HASMETRICYEARCALENDAR",
-    "table": "DISCLOSURE"
-   },
-   "target": {
-    "column": "CONTRACTID",
-    "table": "CONTRACT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.00015260186174271325,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2381,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.5714,
-   "score_before_fan_out": 84.7619,
-   "source": {
-    "column": "HASMETRICYEARCALENDAR",
-    "table": "ELEMENTOFFINANCIALSTATEMENT"
-   },
-   "target": {
-    "column": "AUTONOMOUSAGENTID",
-    "table": "AUTONOMOUSAGENT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.00266844563042028,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2381,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.5714,
-   "score_before_fan_out": 84.7619,
-   "source": {
-    "column": "HASMETRICYEARCALENDAR",
-    "table": "ELEMENTOFFINANCIALSTATEMENT"
-   },
-   "target": {
-    "column": "CONTRACTID",
-    "table": "CONTRACT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 4.2844493530481475e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2105,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.1579,
-   "score_before_fan_out": 84.2105,
-   "source": {
-    "column": "HASMETRICYEARFISCAL",
-    "table": "DISCLOSURE"
-   },
-   "target": {
-    "column": "ADDRESSID",
-    "table": "ADDRESS"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.003002001334222815,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2105,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.1579,
-   "score_before_fan_out": 84.2105,
-   "source": {
-    "column": "HASMETRICYEARFISCAL",
-    "table": "DISCLOSURE"
-   },
-   "target": {
-    "column": "CONTRACTID",
-    "table": "CONTRACT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.00011239743733842868,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2105,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.1579,
-   "score_before_fan_out": 84.2105,
-   "source": {
-    "column": "HASMETRICYEARFISCAL",
-    "table": "DISCLOSURE"
-   },
-   "target": {
-    "column": "PHONENUMBERID",
-    "table": "PHONENUMBER"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 4.2844493530481475e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2105,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.1579,
-   "score_before_fan_out": 84.2105,
-   "source": {
-    "column": "HASMETRICYEARFISCAL",
-    "table": "ELEMENTOFFINANCIALSTATEMENT"
-   },
-   "target": {
-    "column": "ADDRESSID",
-    "table": "ADDRESS"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.003002001334222815,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2105,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.1579,
-   "score_before_fan_out": 84.2105,
-   "source": {
-    "column": "HASMETRICYEARFISCAL",
-    "table": "ELEMENTOFFINANCIALSTATEMENT"
-   },
-   "target": {
-    "column": "CONTRACTID",
-    "table": "CONTRACT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.00011239743733842868,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2105,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.1579,
-   "score_before_fan_out": 84.2105,
-   "source": {
-    "column": "HASMETRICYEARFISCAL",
-    "table": "ELEMENTOFFINANCIALSTATEMENT"
-   },
-   "target": {
-    "column": "PHONENUMBERID",
-    "table": "PHONENUMBER"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 6.150392471919614e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.0,
-   "score_before_fan_out": 84.0,
-   "source": {
-    "column": "HASMETRICYEARCALENDAR",
-    "table": "DISCLOSURE"
-   },
-   "target": {
-    "column": "VIRTUALADDRESSID",
-    "table": "VIRTUALADDRESS"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 6.150392471919614e-05,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 63.0,
-   "score_before_fan_out": 84.0,
-   "source": {
-    "column": "HASMETRICYEARCALENDAR",
-    "table": "ELEMENTOFFINANCIALSTATEMENT"
-   },
-   "target": {
-    "column": "VIRTUALADDRESSID",
-    "table": "VIRTUALADDRESS"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9987091222030982,
-   "coverage": 0.01784382615915678,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2,
-    "nulls": 1.0,
-    "overlap": 0.9987,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 62.9613,
-   "score_before_fan_out": 83.9484,
-   "source": {
-    "column": "ISPROVIDEDBY",
-    "table": "FINANCIALREPORT"
-   },
-   "target": {
-    "column": "VIRTUALADDRESSID",
-    "table": "VIRTUALADDRESS"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9987091222030982,
-   "coverage": 0.011049118831583056,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1875,
-    "nulls": 1.0,
-    "overlap": 0.9987,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 62.7738,
-   "score_before_fan_out": 83.6984,
-   "source": {
-    "column": "ISPROVIDEDBY",
-    "table": "FINANCIALREPORT"
-   },
-   "target": {
-    "column": "ADDRESSID",
-    "table": "ADDRESS"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 1.0,
-   "decision": "band",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1538,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 62.3077,
-   "score_before_fan_out": 83.0769,
-   "source": {
-    "column": "ISPROVIDEDBY",
-    "table": "FINANCIALREPORT"
-   },
-   "target": {
-    "column": "CORPORATIONID",
-    "table": "CORPORATION"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
    "coverage": 1.0,
    "decision": "band",
    "fan_out": 0.75,
@@ -2355,87 +1739,31 @@
   },
   {
    "cardinality": "many_to_one",
-   "containment": 0.9995689655172414,
-   "coverage": 0.017828450177976983,
+   "containment": 0.8605851979345955,
+   "coverage": 0.66711140760507,
    "decision": "rejected_score",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 0.6461,
-    "name": 0.25,
-    "nulls": 1.0,
-    "overlap": 0.9996,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 59.7559,
-   "score_before_fan_out": 79.6746,
-   "source": {
-    "column": "ISMANAGEDBY",
-    "table": "CONTRACT"
-   },
-   "target": {
-    "column": "VIRTUALADDRESSID",
-    "table": "VIRTUALADDRESS"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.03994353731115519,
-   "decision": "rejected_score",
-   "fan_out": 0.75,
+   "fan_out": 0.85,
    "name_via": "table_column",
    "parts": {
-    "cardinality": 0.7159,
-    "name": 0.1875,
+    "cardinality": 0.5906,
+    "name": 0.1111,
     "nulls": 1.0,
-    "overlap": 1.0,
+    "overlap": 0.8606,
     "target_key": 1.0
    },
    "penalties": {},
-   "score": 59.6158,
-   "score_before_fan_out": 79.4878,
+   "score": 59.9287,
+   "score_before_fan_out": 70.5043,
    "source": {
-    "column": "HASCONTRACTPARTY",
-    "table": "CONTRACT"
+    "column": "ISPROVIDEDBY",
+    "table": "SECURITY"
    },
    "target": {
-    "column": "AUTONOMOUSAGENTID",
-    "table": "AUTONOMOUSAGENT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.044254539905386844,
-   "decision": "rejected_score",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 0.6461,
-    "name": 0.2353,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 59.5483,
-   "score_before_fan_out": 79.3977,
-   "source": {
-    "column": "ISMANAGEDBY",
+    "column": "CONTRACTID",
     "table": "CONTRACT"
    },
-   "target": {
-    "column": "AUTONOMOUSAGENTID",
-    "table": "AUTONOMOUSAGENT"
-   },
    "target_is_pk": true,
-   "target_pk_score": 125.0
+   "target_pk_score": 140.0
   },
   {
    "cardinality": "one_to_one",
@@ -2464,146 +1792,6 @@
    },
    "target_is_pk": true,
    "target_pk_score": 109.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9995689655172414,
-   "coverage": 0.011039597833020727,
-   "decision": "rejected_score",
-   "fan_out": 0.75,
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 0.6461,
-    "name": 0.1875,
-    "nulls": 1.0,
-    "overlap": 0.9996,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 58.8184,
-   "score_before_fan_out": 78.4246,
-   "source": {
-    "column": "ISMANAGEDBY",
-    "table": "CONTRACT"
-   },
-   "target": {
-    "column": "ADDRESSID",
-    "table": "ADDRESS"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.04179640718562874,
-   "decision": "rejected_score",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 0.7159,
-    "name": 0.125,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 58.6783,
-   "score_before_fan_out": 78.2378,
-   "source": {
-    "column": "HASCONTRACTPARTY",
-    "table": "CONTRACT"
-   },
-   "target": {
-    "column": "PERSONID",
-    "table": "PERSON"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9987091222030982,
-   "coverage": 0.01784382615915678,
-   "decision": "rejected_score",
-   "fan_out": 0.75,
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 0.5906,
-    "name": 0.2,
-    "nulls": 1.0,
-    "overlap": 0.9987,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 58.3552,
-   "score_before_fan_out": 77.807,
-   "source": {
-    "column": "ISPROVIDEDBY",
-    "table": "SECURITY"
-   },
-   "target": {
-    "column": "VIRTUALADDRESSID",
-    "table": "VIRTUALADDRESS"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.9987091222030982,
-   "coverage": 0.011049118831583056,
-   "decision": "rejected_score",
-   "fan_out": 0.75,
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 0.5906,
-    "name": 0.1875,
-    "nulls": 1.0,
-    "overlap": 0.9987,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 58.1677,
-   "score_before_fan_out": 77.557,
-   "source": {
-    "column": "ISPROVIDEDBY",
-    "table": "SECURITY"
-   },
-   "target": {
-    "column": "ADDRESSID",
-    "table": "ADDRESS"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 1.0,
-   "decision": "rejected_score",
-   "fan_out": 0.75,
-   "name_via": "column",
-   "parts": {
-    "cardinality": 0.5906,
-    "name": 0.1538,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "score": 57.7017,
-   "score_before_fan_out": 76.9356,
-   "source": {
-    "column": "ISPROVIDEDBY",
-    "table": "SECURITY"
-   },
-   "target": {
-    "column": "CORPORATIONID",
-    "table": "CORPORATION"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
   },
   {
    "cardinality": "one_to_one",
@@ -3012,6 +2200,74 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.03994353731115519,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "HASCONTRACTPARTY",
+    "table": "CONTRACT"
+   },
+   "target": {
+    "column": "AUTONOMOUSAGENTID",
+    "table": "AUTONOMOUSAGENT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.04179640718562874,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.042 of the target's < 0.1",
+   "source": {
+    "column": "HASCONTRACTPARTY",
+    "table": "CONTRACT"
+   },
+   "target": {
+    "column": "PERSONID",
+    "table": "PERSON"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9995689655172414,
+   "coverage": 0.011039597833020727,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "ISMANAGEDBY",
+    "table": "CONTRACT"
+   },
+   "target": {
+    "column": "ADDRESSID",
+    "table": "ADDRESS"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.044254539905386844,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "ISMANAGEDBY",
+    "table": "CONTRACT"
+   },
+   "target": {
+    "column": "AUTONOMOUSAGENTID",
+    "table": "AUTONOMOUSAGENT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 0.8616379310344827,
    "coverage": 0.6667778519012675,
    "decision": "rejected_gate",
@@ -3023,33 +2279,6 @@
    "target": {
     "column": "CONTRACTID",
     "table": "CONTRACT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 1.0,
-   "coverage": 0.9982788296041308,
-   "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 0.6461,
-    "name": 0.125,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 77.1918,
-   "source": {
-    "column": "ISMANAGEDBY",
-    "table": "CONTRACT"
-   },
-   "target": {
-    "column": "CORPORATIONID",
-    "table": "CORPORATION"
    },
    "target_is_pk": true,
    "target_pk_score": 140.0
@@ -3093,17 +2322,7 @@
    "containment": 0.9995689655172414,
    "coverage": 0.028961073020868457,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 0.6461,
-    "name": 0.1538,
-    "nulls": 1.0,
-    "overlap": 0.9996,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 77.7515,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "ISMANAGEDBY",
     "table": "CONTRACT"
@@ -3111,6 +2330,23 @@
    "target": {
     "column": "PHONENUMBERID",
     "table": "PHONENUMBER"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9995689655172414,
+   "coverage": 0.017828450177976983,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "ISMANAGEDBY",
+    "table": "CONTRACT"
+   },
+   "target": {
+    "column": "VIRTUALADDRESSID",
+    "table": "VIRTUALADDRESS"
    },
    "target_is_pk": true,
    "target_pk_score": 125.0
@@ -3269,6 +2505,23 @@
    "target_pk_score": 125.0
   },
   {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0066711140760507,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.077 of the target's < 0.1",
+   "source": {
+    "column": "ISDOMICILEDIN",
+    "table": "CORPORATION"
+   },
+   "target": {
+    "column": "CONTRACTID",
+    "table": "CONTRACT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
    "cardinality": "one_to_one",
    "containment": 0.9959839357429718,
    "coverage": 0.08272181454302868,
@@ -3324,17 +2577,7 @@
    "containment": 1.0,
    "coverage": 3.808399424931687e-05,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1905,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 83.8095,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARCALENDAR",
     "table": "DISCLOSURE"
@@ -3349,19 +2592,43 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 0.00015260186174271325,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARCALENDAR",
+    "table": "DISCLOSURE"
+   },
+   "target": {
+    "column": "AUTONOMOUSAGENTID",
+    "table": "AUTONOMOUSAGENT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.00266844563042028,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.003 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARCALENDAR",
+    "table": "DISCLOSURE"
+   },
+   "target": {
+    "column": "CONTRACTID",
+    "table": "CONTRACT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 0.0034423407917383822,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1429,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.8571,
+   "reason": "G9: source range spans 0.003 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARCALENDAR",
     "table": "DISCLOSURE"
@@ -3378,19 +2645,7 @@
    "containment": 0.75,
    "coverage": 0.002185792349726776,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2857,
-    "nulls": 1.0,
-    "overlap": 0.75,
-    "target_key": 0.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 42.5,
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARCALENDAR",
     "table": "DISCLOSURE"
@@ -3407,19 +2662,7 @@
    "containment": 0.75,
    "coverage": 1.19344797064118e-05,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2381,
-    "nulls": 1.0,
-    "overlap": 0.75,
-    "target_key": 1.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 52.3333,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARCALENDAR",
     "table": "DISCLOSURE"
@@ -3436,17 +2679,7 @@
    "containment": 1.0,
    "coverage": 9.990883318971439e-05,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1905,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 83.8095,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARCALENDAR",
     "table": "DISCLOSURE"
@@ -3461,19 +2694,43 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 6.150392471919614e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARCALENDAR",
+    "table": "DISCLOSURE"
+   },
+   "target": {
+    "column": "VIRTUALADDRESSID",
+    "table": "VIRTUALADDRESS"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 4.2844493530481475e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARFISCAL",
+    "table": "DISCLOSURE"
+   },
+   "target": {
+    "column": "ADDRESSID",
+    "table": "ADDRESS"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 0.0001716770944605524,
    "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.125,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.5,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARFISCAL",
     "table": "DISCLOSURE"
@@ -3488,19 +2745,26 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 0.003002001334222815,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.003 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARFISCAL",
+    "table": "DISCLOSURE"
+   },
+   "target": {
+    "column": "CONTRACTID",
+    "table": "CONTRACT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 0.00387263339070568,
    "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1667,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 83.3333,
+   "reason": "G9: source range spans 0.004 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARFISCAL",
     "table": "DISCLOSURE"
@@ -3517,19 +2781,7 @@
    "containment": 0.7777777777777778,
    "coverage": 0.0025500910746812386,
    "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2812,
-    "nulls": 1.0,
-    "overlap": 0.7778,
-    "target_key": 0.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 43.2153,
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARFISCAL",
     "table": "DISCLOSURE"
@@ -3546,19 +2798,7 @@
    "containment": 0.7777777777777778,
    "coverage": 1.3923559657480432e-05,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2105,
-    "nulls": 1.0,
-    "overlap": 0.7778,
-    "target_key": 1.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 52.7251,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARFISCAL",
     "table": "DISCLOSURE"
@@ -3573,19 +2813,26 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 0.00011239743733842868,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARFISCAL",
+    "table": "DISCLOSURE"
+   },
+   "target": {
+    "column": "PHONENUMBERID",
+    "table": "PHONENUMBER"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 6.919191530909566e-05,
    "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1667,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 83.3333,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARFISCAL",
     "table": "DISCLOSURE"
@@ -3602,17 +2849,7 @@
    "containment": 1.0,
    "coverage": 3.808399424931687e-05,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1905,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 83.8095,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARCALENDAR",
     "table": "ELEMENTOFFINANCIALSTATEMENT"
@@ -3627,19 +2864,43 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 0.00015260186174271325,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARCALENDAR",
+    "table": "ELEMENTOFFINANCIALSTATEMENT"
+   },
+   "target": {
+    "column": "AUTONOMOUSAGENTID",
+    "table": "AUTONOMOUSAGENT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.00266844563042028,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.003 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARCALENDAR",
+    "table": "ELEMENTOFFINANCIALSTATEMENT"
+   },
+   "target": {
+    "column": "CONTRACTID",
+    "table": "CONTRACT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 0.0034423407917383822,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1429,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.8571,
+   "reason": "G9: source range spans 0.003 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARCALENDAR",
     "table": "ELEMENTOFFINANCIALSTATEMENT"
@@ -3656,19 +2917,7 @@
    "containment": 0.75,
    "coverage": 0.002185792349726776,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2857,
-    "nulls": 1.0,
-    "overlap": 0.75,
-    "target_key": 0.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 42.5,
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARCALENDAR",
     "table": "ELEMENTOFFINANCIALSTATEMENT"
@@ -3685,19 +2934,7 @@
    "containment": 0.75,
    "coverage": 1.19344797064118e-05,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2381,
-    "nulls": 1.0,
-    "overlap": 0.75,
-    "target_key": 1.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 52.3333,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARCALENDAR",
     "table": "ELEMENTOFFINANCIALSTATEMENT"
@@ -3714,17 +2951,7 @@
    "containment": 1.0,
    "coverage": 9.990883318971439e-05,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1905,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 83.8095,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARCALENDAR",
     "table": "ELEMENTOFFINANCIALSTATEMENT"
@@ -3739,19 +2966,43 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 6.150392471919614e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARCALENDAR",
+    "table": "ELEMENTOFFINANCIALSTATEMENT"
+   },
+   "target": {
+    "column": "VIRTUALADDRESSID",
+    "table": "VIRTUALADDRESS"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 4.2844493530481475e-05,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARFISCAL",
+    "table": "ELEMENTOFFINANCIALSTATEMENT"
+   },
+   "target": {
+    "column": "ADDRESSID",
+    "table": "ADDRESS"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 0.0001716770944605524,
    "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.125,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.5,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARFISCAL",
     "table": "ELEMENTOFFINANCIALSTATEMENT"
@@ -3766,19 +3017,26 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 0.003002001334222815,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.003 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARFISCAL",
+    "table": "ELEMENTOFFINANCIALSTATEMENT"
+   },
+   "target": {
+    "column": "CONTRACTID",
+    "table": "CONTRACT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 0.00387263339070568,
    "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1667,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 83.3333,
+   "reason": "G9: source range spans 0.004 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARFISCAL",
     "table": "ELEMENTOFFINANCIALSTATEMENT"
@@ -3795,19 +3053,7 @@
    "containment": 0.7777777777777778,
    "coverage": 0.0025500910746812386,
    "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2812,
-    "nulls": 1.0,
-    "overlap": 0.7778,
-    "target_key": 0.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 43.2153,
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARFISCAL",
     "table": "ELEMENTOFFINANCIALSTATEMENT"
@@ -3824,19 +3070,7 @@
    "containment": 0.7777777777777778,
    "coverage": 1.3923559657480432e-05,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.2105,
-    "nulls": 1.0,
-    "overlap": 0.7778,
-    "target_key": 1.0
-   },
-   "penalties": {
-    "orphan": 0.7
-   },
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 52.7251,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARFISCAL",
     "table": "ELEMENTOFFINANCIALSTATEMENT"
@@ -3851,19 +3085,26 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 0.00011239743733842868,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "HASMETRICYEARFISCAL",
+    "table": "ELEMENTOFFINANCIALSTATEMENT"
+   },
+   "target": {
+    "column": "PHONENUMBERID",
+    "table": "PHONENUMBER"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 6.919191530909566e-05,
    "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1667,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 83.3333,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "HASMETRICYEARFISCAL",
     "table": "ELEMENTOFFINANCIALSTATEMENT"
@@ -4023,20 +3264,27 @@
   },
   {
    "cardinality": "many_to_one",
+   "containment": 0.9987091222030982,
+   "coverage": 0.011049118831583056,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "ISPROVIDEDBY",
+    "table": "FINANCIALREPORT"
+   },
+   "target": {
+    "column": "ADDRESSID",
+    "table": "ADDRESS"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
    "containment": 1.0,
    "coverage": 0.044330840836258205,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1176,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.3529,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "ISPROVIDEDBY",
     "table": "FINANCIALREPORT"
@@ -4047,33 +3295,6 @@
    },
    "target_is_pk": true,
    "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.8605851979345955,
-   "coverage": 0.66711140760507,
-   "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.1111,
-    "nulls": 1.0,
-    "overlap": 0.8606,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 76.6456,
-   "source": {
-    "column": "ISPROVIDEDBY",
-    "table": "FINANCIALREPORT"
-   },
-   "target": {
-    "column": "CONTRACTID",
-    "table": "CONTRACT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
   },
   {
    "cardinality": "many_to_one",
@@ -4114,17 +3335,7 @@
    "containment": 0.9987091222030982,
    "coverage": 0.028986050229165887,
    "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 1.0,
-    "name": 0.125,
-    "nulls": 1.0,
-    "overlap": 0.9987,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 82.4484,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "ISPROVIDEDBY",
     "table": "FINANCIALREPORT"
@@ -4137,6 +3348,74 @@
    "target_pk_score": 125.0
   },
   {
+   "cardinality": "many_to_one",
+   "containment": 0.9987091222030982,
+   "coverage": 0.01784382615915678,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "ISPROVIDEDBY",
+    "table": "FINANCIALREPORT"
+   },
+   "target": {
+    "column": "VIRTUALADDRESSID",
+    "table": "VIRTUALADDRESS"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0019075232717839158,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "ISMANAGEDBY",
+    "table": "FINANCIALSERVICEACCOUNT"
+   },
+   "target": {
+    "column": "AUTONOMOUSAGENTID",
+    "table": "AUTONOMOUSAGENT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.001996007984031936,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.002 of the target's < 0.1",
+   "source": {
+    "column": "ISMANAGEDBY",
+    "table": "FINANCIALSERVICEACCOUNT"
+   },
+   "target": {
+    "column": "PERSONID",
+    "table": "PERSON"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.9537616358919578,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "ISOWNEDBY",
+    "table": "FINANCIALSERVICEACCOUNT"
+   },
+   "target": {
+    "column": "AUTONOMOUSAGENTID",
+    "table": "AUTONOMOUSAGENT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
    "cardinality": "one_to_one",
    "containment": 1.0,
    "coverage": 1.0,
@@ -4237,6 +3516,23 @@
    },
    "target_is_pk": false,
    "target_pk_score": 62.3
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.005460024465683398,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.009 of the target's < 0.1",
+   "source": {
+    "column": "HASLASTTRADEDVALUE",
+    "table": "LISTEDSECURITY"
+   },
+   "target": {
+    "column": "MONETARYAMOUNTID",
+    "table": "MONETARYAMOUNT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
   },
   {
    "cardinality": "one_to_one",
@@ -4290,6 +3586,40 @@
    "target_pk_score": 70.0
   },
   {
+   "cardinality": "many_to_one",
+   "containment": 0.9959839357429718,
+   "coverage": 0.08272181454302868,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.083 of the target's < 0.1",
+   "source": {
+    "column": "HASCITIZENSHIP",
+    "table": "PERSON"
+   },
+   "target": {
+    "column": "CONTRACTID",
+    "table": "CONTRACT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9959839357429718,
+   "coverage": 0.08272181454302868,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.083 of the target's < 0.1",
+   "source": {
+    "column": "HASPLACEOFBIRTH",
+    "table": "PERSON"
+   },
+   "target": {
+    "column": "CONTRACTID",
+    "table": "CONTRACT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
    "cardinality": "one_to_one",
    "containment": 1.0,
    "coverage": 0.9556691591637418,
@@ -4302,6 +3632,40 @@
    "target": {
     "column": "AUTONOMOUSAGENTID",
     "table": "AUTONOMOUSAGENT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9959839357429718,
+   "coverage": 0.08272181454302868,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.083 of the target's < 0.1",
+   "source": {
+    "column": "HASCOUNTRY",
+    "table": "POSTALADDRESS"
+   },
+   "target": {
+    "column": "CONTRACTID",
+    "table": "CONTRACT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.38078757700107585,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.012 of the target's < 0.1",
+   "source": {
+    "column": "POSTALADDRESSID",
+    "table": "POSTALADDRESS"
+   },
+   "target": {
+    "column": "ADDRESSID",
+    "table": "ADDRESS"
    },
    "target_is_pk": true,
    "target_pk_score": 125.0
@@ -4343,19 +3707,43 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
+   "coverage": 0.008032128514056224,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.008 of the target's < 0.1",
+   "source": {
+    "column": "HASTYPE",
+    "table": "SECURITIESTRANSACTION"
+   },
+   "target": {
+    "column": "COUNTRYID",
+    "table": "COUNTRY"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9987091222030982,
+   "coverage": 0.011049118831583056,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "ISPROVIDEDBY",
+    "table": "SECURITY"
+   },
+   "target": {
+    "column": "ADDRESSID",
+    "table": "ADDRESS"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
    "coverage": 0.044330840836258205,
    "decision": "rejected_gate",
-   "name_via": "column",
-   "parts": {
-    "cardinality": 0.5906,
-    "name": 0.1176,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 76.2116,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "ISPROVIDEDBY",
     "table": "SECURITY"
@@ -4366,33 +3754,6 @@
    },
    "target_is_pk": true,
    "target_pk_score": 125.0
-  },
-  {
-   "cardinality": "many_to_one",
-   "containment": 0.8605851979345955,
-   "coverage": 0.66711140760507,
-   "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 0.5906,
-    "name": 0.1111,
-    "nulls": 1.0,
-    "overlap": 0.8606,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 70.5043,
-   "source": {
-    "column": "ISPROVIDEDBY",
-    "table": "SECURITY"
-   },
-   "target": {
-    "column": "CONTRACTID",
-    "table": "CONTRACT"
-   },
-   "target_is_pk": true,
-   "target_pk_score": 140.0
   },
   {
    "cardinality": "many_to_one",
@@ -4433,17 +3794,7 @@
    "containment": 0.9987091222030982,
    "coverage": 0.028986050229165887,
    "decision": "rejected_gate",
-   "name_via": "table_column",
-   "parts": {
-    "cardinality": 0.5906,
-    "name": 0.125,
-    "nulls": 1.0,
-    "overlap": 0.9987,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 76.307,
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
    "source": {
     "column": "ISPROVIDEDBY",
     "table": "SECURITY"
@@ -4451,6 +3802,23 @@
    "target": {
     "column": "PHONENUMBERID",
     "table": "PHONENUMBER"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9987091222030982,
+   "coverage": 0.01784382615915678,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.000 of the target's < 0.1",
+   "source": {
+    "column": "ISPROVIDEDBY",
+    "table": "SECURITY"
+   },
+   "target": {
+    "column": "VIRTUALADDRESSID",
+    "table": "VIRTUALADDRESS"
    },
    "target_is_pk": true,
    "target_pk_score": 125.0
@@ -4468,6 +3836,23 @@
    "target": {
     "column": "CONTRACTID",
     "table": "CONTRACT"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.012048192771084338,
+   "decision": "rejected_gate",
+   "reason": "G9: source range spans 0.012 of the target's < 0.1",
+   "source": {
+    "column": "ISTRADEDON",
+    "table": "SECURITY"
+   },
+   "target": {
+    "column": "COUNTRYID",
+    "table": "COUNTRY"
    },
    "target_is_pk": true,
    "target_pk_score": 140.0
@@ -4568,6 +3953,7 @@
   "keys_run": "frozen",
   "long_text_len": 64,
   "max_targets": 3,
+  "min_range_span": 0.1,
   "min_source_distinct": 2,
   "name_contains": 0.8,
   "never_source_roles": [
@@ -4584,10 +3970,10 @@
   "self_refs": false
  },
  "counts": {
-  "accepted": 30,
-  "band": 54,
-  "rejected_gate": 81,
-  "rejected_score": 18
+  "accepted": 24,
+  "band": 38,
+  "rejected_gate": 110,
+  "rejected_score": 11
  },
  "db_id": "FIBEN",
  "graphs": {
@@ -4608,18 +3994,33 @@
     }
    },
    {
-    "cardinality": "one_to_one",
+    "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 0.38078757700107585,
+    "coverage": 1.0,
     "decision": "accepted",
-    "score": 88.5,
+    "score": 90.0,
     "source": {
-     "column": "POSTALADDRESSID",
+     "column": "HASCOUNTRY",
      "table": "POSTALADDRESS"
     },
     "target": {
-     "column": "ADDRESSID",
-     "table": "ADDRESS"
+     "column": "COUNTRYID",
+     "table": "COUNTRY"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 89.4878,
+    "source": {
+     "column": "HASCONTRACTPARTY",
+     "table": "CONTRACT"
+    },
+    "target": {
+     "column": "CONTRACTPARTYID",
+     "table": "CONTRACTPARTY"
     }
    },
    {
@@ -4685,6 +4086,21 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
+    "coverage": 0.998003992015968,
+    "decision": "accepted",
+    "score": 84.0349,
+    "source": {
+     "column": "ISOWNEDBY",
+     "table": "FINANCIALSERVICEACCOUNT"
+    },
+    "target": {
+     "column": "PERSONID",
+     "table": "PERSON"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
     "coverage": 0.998053870520279,
     "decision": "accepted",
     "score": 83.5294,
@@ -4702,6 +4118,66 @@
     "containment": 1.0,
     "coverage": 1.0,
     "decision": "accepted",
+    "score": 83.5294,
+    "source": {
+     "column": "ISTRADEDON",
+     "table": "SECURITY"
+    },
+    "target": {
+     "column": "FINANCIALMARKETID",
+     "table": "FINANCIALMARKET"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.08032128514056225,
+    "decision": "accepted",
+    "score": 83.0769,
+    "source": {
+     "column": "ISDOMICILEDIN",
+     "table": "CORPORATION"
+    },
+    "target": {
+     "column": "COUNTRYID",
+     "table": "COUNTRY"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 82.8571,
+    "source": {
+     "column": "HASCITIZENSHIP",
+     "table": "PERSON"
+    },
+    "target": {
+     "column": "COUNTRYID",
+     "table": "COUNTRY"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 82.6667,
+    "source": {
+     "column": "HASPLACEOFBIRTH",
+     "table": "PERSON"
+    },
+    "target": {
+     "column": "COUNTRYID",
+     "table": "COUNTRY"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
     "score": 82.4,
     "source": {
      "column": "ISHELDBY",
@@ -4710,6 +4186,21 @@
     "target": {
      "column": "FINANCIALSERVICEACCOUNTID",
      "table": "FINANCIALSERVICEACCOUNT"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.6666666666666666,
+    "decision": "accepted",
+    "score": 82.3529,
+    "source": {
+     "column": "HASTYPE",
+     "table": "SECURITIESTRANSACTION"
+    },
+    "target": {
+     "column": "FINANCIALMARKETID",
+     "table": "FINANCIALMARKET"
     }
    },
    {
@@ -4739,6 +4230,21 @@
     },
     "target": {
      "column": "HASLEGALNAME",
+     "table": "CORPORATION"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9982788296041308,
+    "decision": "accepted",
+    "score": 77.1918,
+    "source": {
+     "column": "ISMANAGEDBY",
+     "table": "CONTRACT"
+    },
+    "target": {
+     "column": "CORPORATIONID",
      "table": "CORPORATION"
     }
    },
@@ -4775,36 +4281,6 @@
    {
     "cardinality": "one_to_one",
     "containment": 1.0,
-    "coverage": 0.005460024465683398,
-    "decision": "accepted",
-    "score": 76.5,
-    "source": {
-     "column": "HASLASTTRADEDVALUE",
-     "table": "LISTEDSECURITY"
-    },
-    "target": {
-     "column": "MONETARYAMOUNTID",
-     "table": "MONETARYAMOUNT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.0,
-    "decision": "accepted",
-    "score": 76.5,
-    "source": {
-     "column": "HASCOUNTRY",
-     "table": "POSTALADDRESS"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "one_to_one",
-    "containment": 1.0,
     "coverage": 0.9945399755343166,
     "decision": "accepted",
     "score": 73.8333,
@@ -4815,81 +4291,6 @@
     "target": {
      "column": "MONETARYAMOUNTID",
      "table": "MONETARYAMOUNT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9959839357429718,
-    "coverage": 0.08272181454302868,
-    "decision": "accepted",
-    "score": 72.5857,
-    "source": {
-     "column": "HASCOUNTRY",
-     "table": "POSTALADDRESS"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.0019075232717839158,
-    "decision": "accepted",
-    "score": 72.0,
-    "source": {
-     "column": "ISMANAGEDBY",
-     "table": "FINANCIALSERVICEACCOUNT"
-    },
-    "target": {
-     "column": "AUTONOMOUSAGENTID",
-     "table": "AUTONOMOUSAGENT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.008032128514056224,
-    "decision": "accepted",
-    "score": 71.7777,
-    "source": {
-     "column": "HASTYPE",
-     "table": "SECURITIESTRANSACTION"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9959839357429718,
-    "coverage": 0.08272181454302868,
-    "decision": "accepted",
-    "score": 71.6412,
-    "source": {
-     "column": "HASPLACEOFBIRTH",
-     "table": "PERSON"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.998003992015968,
-    "decision": "accepted",
-    "score": 71.4297,
-    "source": {
-     "column": "ISOWNEDBY",
-     "table": "FINANCIALSERVICEACCOUNT"
-    },
-    "target": {
-     "column": "PERSONID",
-     "table": "PERSON"
     }
    },
    {
@@ -4927,119 +4328,14 @@
     "containment": 1.0,
     "coverage": 1.0,
     "decision": "accepted",
-    "score": 71.0,
-    "source": {
-     "column": "ISTRADEDON",
-     "table": "SECURITY"
-    },
-    "target": {
-     "column": "FINANCIALMARKETID",
-     "table": "FINANCIALMARKET"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.0066711140760507,
-    "decision": "accepted",
     "score": 70.6154,
     "source": {
-     "column": "ISDOMICILEDIN",
+     "column": "ISPROVIDEDBY",
+     "table": "FINANCIALREPORT"
+    },
+    "target": {
+     "column": "CORPORATIONID",
      "table": "CORPORATION"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.08032128514056225,
-    "decision": "accepted",
-    "score": 70.6154,
-    "source": {
-     "column": "ISDOMICILEDIN",
-     "table": "CORPORATION"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.0,
-    "decision": "accepted",
-    "score": 70.4285,
-    "source": {
-     "column": "HASCITIZENSHIP",
-     "table": "PERSON"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9959839357429718,
-    "coverage": 0.08272181454302868,
-    "decision": "accepted",
-    "score": 70.292,
-    "source": {
-     "column": "HASCITIZENSHIP",
-     "table": "PERSON"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.0,
-    "decision": "accepted",
-    "score": 70.2667,
-    "source": {
-     "column": "HASPLACEOFBIRTH",
-     "table": "PERSON"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.012048192771084338,
-    "decision": "accepted",
-    "score": 70.125,
-    "source": {
-     "column": "ISTRADEDON",
-     "table": "SECURITY"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.6666666666666666,
-    "decision": "accepted",
-    "score": 70.0,
-    "source": {
-     "column": "HASTYPE",
-     "table": "SECURITIESTRANSACTION"
-    },
-    "target": {
-     "column": "FINANCIALMARKETID",
-     "table": "FINANCIALMARKET"
     }
    }
   ],
@@ -5060,18 +4356,33 @@
     }
    },
    {
-    "cardinality": "one_to_one",
+    "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 0.38078757700107585,
+    "coverage": 1.0,
     "decision": "accepted",
-    "score": 88.5,
+    "score": 90.0,
     "source": {
-     "column": "POSTALADDRESSID",
+     "column": "HASCOUNTRY",
      "table": "POSTALADDRESS"
     },
     "target": {
-     "column": "ADDRESSID",
-     "table": "ADDRESS"
+     "column": "COUNTRYID",
+     "table": "COUNTRY"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 89.4878,
+    "source": {
+     "column": "HASCONTRACTPARTY",
+     "table": "CONTRACT"
+    },
+    "target": {
+     "column": "CONTRACTPARTYID",
+     "table": "CONTRACTPARTY"
     }
    },
    {
@@ -5137,6 +4448,21 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
+    "coverage": 0.998003992015968,
+    "decision": "accepted",
+    "score": 84.0349,
+    "source": {
+     "column": "ISOWNEDBY",
+     "table": "FINANCIALSERVICEACCOUNT"
+    },
+    "target": {
+     "column": "PERSONID",
+     "table": "PERSON"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
     "coverage": 0.998053870520279,
     "decision": "accepted",
     "score": 83.5294,
@@ -5154,6 +4480,66 @@
     "containment": 1.0,
     "coverage": 1.0,
     "decision": "accepted",
+    "score": 83.5294,
+    "source": {
+     "column": "ISTRADEDON",
+     "table": "SECURITY"
+    },
+    "target": {
+     "column": "FINANCIALMARKETID",
+     "table": "FINANCIALMARKET"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.08032128514056225,
+    "decision": "accepted",
+    "score": 83.0769,
+    "source": {
+     "column": "ISDOMICILEDIN",
+     "table": "CORPORATION"
+    },
+    "target": {
+     "column": "COUNTRYID",
+     "table": "COUNTRY"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 82.8571,
+    "source": {
+     "column": "HASCITIZENSHIP",
+     "table": "PERSON"
+    },
+    "target": {
+     "column": "COUNTRYID",
+     "table": "COUNTRY"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 82.6667,
+    "source": {
+     "column": "HASPLACEOFBIRTH",
+     "table": "PERSON"
+    },
+    "target": {
+     "column": "COUNTRYID",
+     "table": "COUNTRY"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
     "score": 82.4,
     "source": {
      "column": "ISHELDBY",
@@ -5162,6 +4548,21 @@
     "target": {
      "column": "FINANCIALSERVICEACCOUNTID",
      "table": "FINANCIALSERVICEACCOUNT"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.6666666666666666,
+    "decision": "accepted",
+    "score": 82.3529,
+    "source": {
+     "column": "HASTYPE",
+     "table": "SECURITIESTRANSACTION"
+    },
+    "target": {
+     "column": "FINANCIALMARKETID",
+     "table": "FINANCIALMARKET"
     }
    },
    {
@@ -5191,6 +4592,21 @@
     },
     "target": {
      "column": "HASLEGALNAME",
+     "table": "CORPORATION"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9982788296041308,
+    "decision": "accepted",
+    "score": 77.1918,
+    "source": {
+     "column": "ISMANAGEDBY",
+     "table": "CONTRACT"
+    },
+    "target": {
+     "column": "CORPORATIONID",
      "table": "CORPORATION"
     }
    },
@@ -5227,36 +4643,6 @@
    {
     "cardinality": "one_to_one",
     "containment": 1.0,
-    "coverage": 0.005460024465683398,
-    "decision": "accepted",
-    "score": 76.5,
-    "source": {
-     "column": "HASLASTTRADEDVALUE",
-     "table": "LISTEDSECURITY"
-    },
-    "target": {
-     "column": "MONETARYAMOUNTID",
-     "table": "MONETARYAMOUNT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.0,
-    "decision": "accepted",
-    "score": 76.5,
-    "source": {
-     "column": "HASCOUNTRY",
-     "table": "POSTALADDRESS"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "one_to_one",
-    "containment": 1.0,
     "coverage": 0.9945399755343166,
     "decision": "accepted",
     "score": 73.8333,
@@ -5267,81 +4653,6 @@
     "target": {
      "column": "MONETARYAMOUNTID",
      "table": "MONETARYAMOUNT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9959839357429718,
-    "coverage": 0.08272181454302868,
-    "decision": "accepted",
-    "score": 72.5857,
-    "source": {
-     "column": "HASCOUNTRY",
-     "table": "POSTALADDRESS"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.0019075232717839158,
-    "decision": "accepted",
-    "score": 72.0,
-    "source": {
-     "column": "ISMANAGEDBY",
-     "table": "FINANCIALSERVICEACCOUNT"
-    },
-    "target": {
-     "column": "AUTONOMOUSAGENTID",
-     "table": "AUTONOMOUSAGENT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.008032128514056224,
-    "decision": "accepted",
-    "score": 71.7777,
-    "source": {
-     "column": "HASTYPE",
-     "table": "SECURITIESTRANSACTION"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9959839357429718,
-    "coverage": 0.08272181454302868,
-    "decision": "accepted",
-    "score": 71.6412,
-    "source": {
-     "column": "HASPLACEOFBIRTH",
-     "table": "PERSON"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.998003992015968,
-    "decision": "accepted",
-    "score": 71.4297,
-    "source": {
-     "column": "ISOWNEDBY",
-     "table": "FINANCIALSERVICEACCOUNT"
-    },
-    "target": {
-     "column": "PERSONID",
-     "table": "PERSON"
     }
    },
    {
@@ -5379,149 +4690,14 @@
     "containment": 1.0,
     "coverage": 1.0,
     "decision": "accepted",
-    "score": 71.0,
-    "source": {
-     "column": "ISTRADEDON",
-     "table": "SECURITY"
-    },
-    "target": {
-     "column": "FINANCIALMARKETID",
-     "table": "FINANCIALMARKET"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.0066711140760507,
-    "decision": "accepted",
     "score": 70.6154,
     "source": {
-     "column": "ISDOMICILEDIN",
+     "column": "ISPROVIDEDBY",
+     "table": "FINANCIALREPORT"
+    },
+    "target": {
+     "column": "CORPORATIONID",
      "table": "CORPORATION"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.08032128514056225,
-    "decision": "accepted",
-    "score": 70.6154,
-    "source": {
-     "column": "ISDOMICILEDIN",
-     "table": "CORPORATION"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.0,
-    "decision": "accepted",
-    "score": 70.4285,
-    "source": {
-     "column": "HASCITIZENSHIP",
-     "table": "PERSON"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9959839357429718,
-    "coverage": 0.08272181454302868,
-    "decision": "accepted",
-    "score": 70.292,
-    "source": {
-     "column": "HASCITIZENSHIP",
-     "table": "PERSON"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.0,
-    "decision": "accepted",
-    "score": 70.2667,
-    "source": {
-     "column": "HASPLACEOFBIRTH",
-     "table": "PERSON"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.012048192771084338,
-    "decision": "accepted",
-    "score": 70.125,
-    "source": {
-     "column": "ISTRADEDON",
-     "table": "SECURITY"
-    },
-    "target": {
-     "column": "COUNTRYID",
-     "table": "COUNTRY"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.6666666666666666,
-    "decision": "accepted",
-    "score": 70.0,
-    "source": {
-     "column": "HASTYPE",
-     "table": "SECURITIESTRANSACTION"
-    },
-    "target": {
-     "column": "FINANCIALMARKETID",
-     "table": "FINANCIALMARKET"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.9537616358919578,
-    "decision": "band",
-    "score": 69.6519,
-    "source": {
-     "column": "ISOWNEDBY",
-     "table": "FINANCIALSERVICEACCOUNT"
-    },
-    "target": {
-     "column": "AUTONOMOUSAGENTID",
-     "table": "AUTONOMOUSAGENT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.001996007984031936,
-    "decision": "band",
-    "score": 69.5455,
-    "source": {
-     "column": "ISMANAGEDBY",
-     "table": "FINANCIALSERVICEACCOUNT"
-    },
-    "target": {
-     "column": "PERSONID",
-     "table": "PERSON"
     }
    },
    {
@@ -5552,21 +4728,6 @@
     "target": {
      "column": "DISCLOSUREID",
      "table": "DISCLOSURE"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.0,
-    "decision": "band",
-    "score": 67.1158,
-    "source": {
-     "column": "HASCONTRACTPARTY",
-     "table": "CONTRACT"
-    },
-    "target": {
-     "column": "CONTRACTPARTYID",
-     "table": "CONTRACTPARTY"
     }
    },
    {
@@ -5870,6 +5031,36 @@
     }
    },
    {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "band",
+    "score": 65.3953,
+    "source": {
+     "column": "ISPROVIDEDBY",
+     "table": "SECURITY"
+    },
+    "target": {
+     "column": "CORPORATIONID",
+     "table": "CORPORATION"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8605851979345955,
+    "coverage": 0.66711140760507,
+    "decision": "band",
+    "score": 65.1488,
+    "source": {
+     "column": "ISPROVIDEDBY",
+     "table": "FINANCIALREPORT"
+    },
+    "target": {
+     "column": "CONTRACTID",
+     "table": "CONTRACT"
+    }
+   },
+   {
     "cardinality": "one_to_one",
     "containment": 1.0,
     "coverage": 0.10819434242013186,
@@ -6037,231 +5228,6 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 0.00015260186174271325,
-    "decision": "band",
-    "score": 63.5714,
-    "source": {
-     "column": "HASMETRICYEARCALENDAR",
-     "table": "DISCLOSURE"
-    },
-    "target": {
-     "column": "AUTONOMOUSAGENTID",
-     "table": "AUTONOMOUSAGENT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.00266844563042028,
-    "decision": "band",
-    "score": 63.5714,
-    "source": {
-     "column": "HASMETRICYEARCALENDAR",
-     "table": "DISCLOSURE"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.00015260186174271325,
-    "decision": "band",
-    "score": 63.5714,
-    "source": {
-     "column": "HASMETRICYEARCALENDAR",
-     "table": "ELEMENTOFFINANCIALSTATEMENT"
-    },
-    "target": {
-     "column": "AUTONOMOUSAGENTID",
-     "table": "AUTONOMOUSAGENT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.00266844563042028,
-    "decision": "band",
-    "score": 63.5714,
-    "source": {
-     "column": "HASMETRICYEARCALENDAR",
-     "table": "ELEMENTOFFINANCIALSTATEMENT"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 4.2844493530481475e-05,
-    "decision": "band",
-    "score": 63.1579,
-    "source": {
-     "column": "HASMETRICYEARFISCAL",
-     "table": "DISCLOSURE"
-    },
-    "target": {
-     "column": "ADDRESSID",
-     "table": "ADDRESS"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.003002001334222815,
-    "decision": "band",
-    "score": 63.1579,
-    "source": {
-     "column": "HASMETRICYEARFISCAL",
-     "table": "DISCLOSURE"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.00011239743733842868,
-    "decision": "band",
-    "score": 63.1579,
-    "source": {
-     "column": "HASMETRICYEARFISCAL",
-     "table": "DISCLOSURE"
-    },
-    "target": {
-     "column": "PHONENUMBERID",
-     "table": "PHONENUMBER"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 4.2844493530481475e-05,
-    "decision": "band",
-    "score": 63.1579,
-    "source": {
-     "column": "HASMETRICYEARFISCAL",
-     "table": "ELEMENTOFFINANCIALSTATEMENT"
-    },
-    "target": {
-     "column": "ADDRESSID",
-     "table": "ADDRESS"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.003002001334222815,
-    "decision": "band",
-    "score": 63.1579,
-    "source": {
-     "column": "HASMETRICYEARFISCAL",
-     "table": "ELEMENTOFFINANCIALSTATEMENT"
-    },
-    "target": {
-     "column": "CONTRACTID",
-     "table": "CONTRACT"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 0.00011239743733842868,
-    "decision": "band",
-    "score": 63.1579,
-    "source": {
-     "column": "HASMETRICYEARFISCAL",
-     "table": "ELEMENTOFFINANCIALSTATEMENT"
-    },
-    "target": {
-     "column": "PHONENUMBERID",
-     "table": "PHONENUMBER"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 6.150392471919614e-05,
-    "decision": "band",
-    "score": 63.0,
-    "source": {
-     "column": "HASMETRICYEARCALENDAR",
-     "table": "DISCLOSURE"
-    },
-    "target": {
-     "column": "VIRTUALADDRESSID",
-     "table": "VIRTUALADDRESS"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 6.150392471919614e-05,
-    "decision": "band",
-    "score": 63.0,
-    "source": {
-     "column": "HASMETRICYEARCALENDAR",
-     "table": "ELEMENTOFFINANCIALSTATEMENT"
-    },
-    "target": {
-     "column": "VIRTUALADDRESSID",
-     "table": "VIRTUALADDRESS"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9987091222030982,
-    "coverage": 0.01784382615915678,
-    "decision": "band",
-    "score": 62.9613,
-    "source": {
-     "column": "ISPROVIDEDBY",
-     "table": "FINANCIALREPORT"
-    },
-    "target": {
-     "column": "VIRTUALADDRESSID",
-     "table": "VIRTUALADDRESS"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 0.9987091222030982,
-    "coverage": 0.011049118831583056,
-    "decision": "band",
-    "score": 62.7738,
-    "source": {
-     "column": "ISPROVIDEDBY",
-     "table": "FINANCIALREPORT"
-    },
-    "target": {
-     "column": "ADDRESSID",
-     "table": "ADDRESS"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
-    "coverage": 1.0,
-    "decision": "band",
-    "score": 62.3077,
-    "source": {
-     "column": "ISPROVIDEDBY",
-     "table": "FINANCIALREPORT"
-    },
-    "target": {
-     "column": "CORPORATIONID",
-     "table": "CORPORATION"
-    }
-   },
-   {
-    "cardinality": "many_to_one",
-    "containment": 1.0,
     "coverage": 1.0,
     "decision": "band",
     "score": 61.875,
@@ -6291,7 +5257,7 @@
    }
   ]
  },
- "k_zero_share": 0.0606,
+ "k_zero_share": 0.0533,
  "keys_run": "frozen",
  "use_names": true,
  "weights": {

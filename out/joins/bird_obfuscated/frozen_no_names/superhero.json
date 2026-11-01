@@ -342,7 +342,7 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
-   "coverage": 0.08571428571428572,
+   "coverage": 1.0,
    "decision": "accepted",
    "fan_out": 0.75,
    "parts": {
@@ -360,10 +360,10 @@
    },
    "target": {
     "column": "col_001",
-    "table": "colour"
+    "table": "gender"
    },
    "target_is_pk": true,
-   "target_pk_score": 120.0
+   "target_pk_score": 100.0
   },
   {
    "cardinality": "many_to_one",
@@ -732,7 +732,7 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
-   "coverage": 0.08571428571428572,
+   "coverage": 1.0,
    "decision": "accepted",
    "fan_out": 0.75,
    "parts": {
@@ -750,10 +750,10 @@
    },
    "target": {
     "column": "col_001",
-    "table": "colour"
+    "table": "gender"
    },
    "target_is_pk": true,
-   "target_pk_score": 120.0
+   "target_pk_score": 100.0
   },
   {
    "cardinality": "one_to_one",
@@ -1219,15 +1219,7 @@
    "containment": 1.0,
    "coverage": 0.09836065573770492,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.098 of the target's < 0.1",
    "source": {
     "column": "col_002",
     "table": "hero_attribute"
@@ -1244,15 +1236,7 @@
    "containment": 1.0,
    "coverage": 0.008,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.008 of the target's < 0.1",
    "source": {
     "column": "col_002",
     "table": "hero_attribute"
@@ -1269,15 +1253,7 @@
    "containment": 1.0,
    "coverage": 0.03592814371257485,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.036 of the target's < 0.1",
    "source": {
     "column": "col_002",
     "table": "hero_attribute"
@@ -1428,27 +1404,19 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
-   "coverage": 1.0,
+   "coverage": 0.08571428571428572,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.086 of the target's < 0.1",
    "source": {
     "column": "col_004",
     "table": "superhero"
    },
    "target": {
     "column": "col_001",
-    "table": "gender"
+    "table": "colour"
    },
    "target_is_pk": true,
-   "target_pk_score": 100.0
+   "target_pk_score": 120.0
   },
   {
    "cardinality": "many_to_one",
@@ -1480,15 +1448,7 @@
    "containment": 1.0,
    "coverage": 0.04918032786885246,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.049 of the target's < 0.1",
    "source": {
     "column": "col_004",
     "table": "superhero"
@@ -1522,15 +1482,7 @@
    "containment": 1.0,
    "coverage": 0.017964071856287425,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.018 of the target's < 0.1",
    "source": {
     "column": "col_004",
     "table": "superhero"
@@ -1741,27 +1693,19 @@
   {
    "cardinality": "many_to_one",
    "containment": 1.0,
-   "coverage": 1.0,
+   "coverage": 0.08571428571428572,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.086 of the target's < 0.1",
    "source": {
     "column": "col_010",
     "table": "superhero"
    },
    "target": {
     "column": "col_001",
-    "table": "gender"
+    "table": "colour"
    },
    "target_is_pk": true,
-   "target_pk_score": 100.0
+   "target_pk_score": 120.0
   },
   {
    "cardinality": "many_to_one",
@@ -1793,15 +1737,7 @@
    "containment": 1.0,
    "coverage": 0.04918032786885246,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.049 of the target's < 0.1",
    "source": {
     "column": "col_010",
     "table": "superhero"
@@ -1835,15 +1771,7 @@
    "containment": 1.0,
    "coverage": 0.017964071856287425,
    "decision": "rejected_gate",
-   "parts": {
-    "cardinality": 1.0,
-    "nulls": 1.0,
-    "overlap": 1.0,
-    "target_key": 1.0
-   },
-   "penalties": {},
-   "reason": "G5: more than 3 targets",
-   "score_before_fan_out": 100.0,
+   "reason": "G9: source range spans 0.018 of the target's < 0.1",
    "source": {
     "column": "col_010",
     "table": "superhero"
@@ -1941,6 +1869,7 @@
   "keys_run": "frozen_no_names",
   "long_text_len": 64,
   "max_targets": 3,
+  "min_range_span": 0.1,
   "min_source_distinct": 2,
   "name_contains": 0.8,
   "never_source_roles": [
@@ -2161,7 +2090,7 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 0.08571428571428572,
+    "coverage": 1.0,
     "decision": "accepted",
     "score": 75.0,
     "source": {
@@ -2170,7 +2099,7 @@
     },
     "target": {
      "column": "col_001",
-     "table": "colour"
+     "table": "gender"
     }
    },
    {
@@ -2386,7 +2315,7 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 0.08571428571428572,
+    "coverage": 1.0,
     "decision": "accepted",
     "score": 75.0,
     "source": {
@@ -2395,7 +2324,7 @@
     },
     "target": {
      "column": "col_001",
-     "table": "colour"
+     "table": "gender"
     }
    }
   ],
@@ -2598,7 +2527,7 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 0.08571428571428572,
+    "coverage": 1.0,
     "decision": "accepted",
     "score": 75.0,
     "source": {
@@ -2607,7 +2536,7 @@
     },
     "target": {
      "column": "col_001",
-     "table": "colour"
+     "table": "gender"
     }
    },
    {
@@ -2823,7 +2752,7 @@
    {
     "cardinality": "many_to_one",
     "containment": 1.0,
-    "coverage": 0.08571428571428572,
+    "coverage": 1.0,
     "decision": "accepted",
     "score": 75.0,
     "source": {
@@ -2832,7 +2761,7 @@
     },
     "target": {
      "column": "col_001",
-     "table": "colour"
+     "table": "gender"
     }
    }
   ]

@@ -15,6 +15,11 @@
  },
  "query_join_pairs": 30,
  "declared_fks": 159,
+ "fk_subsets": {
+  "vs_declared_fks": 159,
+  "vs_fks_with_rows": 48,
+  "vs_fks_in_containment": 46
+ },
  "joins": {
   "direct": {
    "edges": 30,
@@ -27,6 +32,22 @@
     "precision": 0.5667,
     "recall": 0.1069,
     "f1": 0.1799
+   },
+   "vs_fks_with_rows": {
+    "tp": 17,
+    "predicted": 30,
+    "gold": 48,
+    "precision": 0.5667,
+    "recall": 0.3542,
+    "f1": 0.4359
+   },
+   "vs_fks_in_containment": {
+    "tp": 17,
+    "predicted": 30,
+    "gold": 46,
+    "precision": 0.5667,
+    "recall": 0.3696,
+    "f1": 0.4474
    }
   },
   "stats": {
@@ -40,6 +61,22 @@
     "precision": 0.4337,
     "recall": 0.2264,
     "f1": 0.2975
+   },
+   "vs_fks_with_rows": {
+    "tp": 36,
+    "predicted": 83,
+    "gold": 48,
+    "precision": 0.4337,
+    "recall": 0.75,
+    "f1": 0.5496
+   },
+   "vs_fks_in_containment": {
+    "tp": 36,
+    "predicted": 83,
+    "gold": 46,
+    "precision": 0.4337,
+    "recall": 0.7826,
+    "f1": 0.5581
    }
   },
   "llm": {
@@ -53,6 +90,22 @@
     "precision": 0.5789,
     "recall": 0.2075,
     "f1": 0.3056
+   },
+   "vs_fks_with_rows": {
+    "tp": 33,
+    "predicted": 57,
+    "gold": 48,
+    "precision": 0.5789,
+    "recall": 0.6875,
+    "f1": 0.6286
+   },
+   "vs_fks_in_containment": {
+    "tp": 33,
+    "predicted": 57,
+    "gold": 46,
+    "precision": 0.5789,
+    "recall": 0.7174,
+    "f1": 0.6408
    }
   }
  },

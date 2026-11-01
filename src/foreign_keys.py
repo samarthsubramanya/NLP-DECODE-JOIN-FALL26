@@ -23,6 +23,10 @@ Gates and prefilters, in this order; the first one that fires rejects the pair (
     prefilters       source role boolean / free text / float; fewer than 2 distinct values;
                      average length over 64 characters                                [Paper tier 2, Team]
     G6               containment >= 0.75, exact                                       [Paper, Report]
+    G9               integer pairs: the source's range (max - min + 1) must span at least
+                     min_range_span (0.1) of the target's. A real foreign key draws from the
+                     whole parent key; a measure (a 0-100 rating, a 1-5 count) sits in a corner
+                     of a 1..n id and is contained by chance. None turns it off             [Ours]
 
 Score of a candidate that passes (points out of 100), then the penalties:
     s_FK = 40·v + 20·s + 15·r + 15·k + 10·nu
@@ -98,6 +102,7 @@ DEFAULTS = {
     "never_source_roles": ["boolean", "free_text", "float"],
     "self_refs": False,
     "pk_source_max_density": 0.5,     # G8 spares primary keys this sparse (int only); None: G8 absolute
+    "min_range_span": 0.1,            # G9, int pairs; None: off
     "g4_ratio": None,                 # G4 off: source rows < ratio * target rows ...
     "g4_multiplier": None,            # ... multiplies the score by this
     "keys_run": "frozen",
@@ -163,6 +168,14 @@ def sparse_key(p, cfg):
         and density <= cfg["pk_source_max_density"]
 
 
+def range_span(a, b):
+    """(source max - min + 1) / (target max - min + 1) for two integer columns, else None."""
+    na, nb = a.get("numeric") or {}, b.get("numeric") or {}
+    if a["family"] != "int" or b["family"] != "int" or None in (na.get("min"), na.get("max"), nb.get("min"), nb.get("max")):
+        return None
+    return (na["max"] - na["min"] + 1) / (nb["max"] - nb["min"] + 1)
+
+
 def gate(pair, profile, keys, cfg, use_names):
     """Reason the pair is rejected by a gate or prefilter, or None. Also returns the profiles."""
     (st, sc), (tt, tc) = pair["source"], pair["target"]
@@ -185,6 +198,9 @@ def gate(pair, profile, keys, cfg, use_names):
         return f"prefilter: average length over {cfg['long_text_len']}"
     if pair["containment"] < cfg["containment_min"]:
         return f"G6: containment {pair['containment']:.3f} < {cfg['containment_min']}"
+    span = range_span(a, b) if cfg["min_range_span"] is not None else None
+    if span is not None and span < cfg["min_range_span"]:
+        return f"G9: source range spans {span:.3f} of the target's < {cfg['min_range_span']}"
     return None
 
 
@@ -332,6 +348,8 @@ def add_args(ap):
     ap.add_argument("--self-refs", action="store_true", help="also consider source and target in one table")
     ap.add_argument("--pk-source-max-density", type=float, default=DEFAULTS["pk_source_max_density"],
                     help="G8 spares integer primary keys at most this dense; a negative value keeps G8 absolute")
+    ap.add_argument("--min-range-span", type=float, default=DEFAULTS["min_range_span"],
+                    help="G9: integer source range / target range at least this; a negative value turns it off")
     ap.add_argument("--g4-ratio", type=float, help="G4 on: source rows < ratio x target rows ...")
     ap.add_argument("--g4-multiplier", type=float, help="... multiplies the score by this (needs --g4-ratio)")
     ap.add_argument("--reprofile", action="store_true", help="recompute Stage 1 profiles")
@@ -341,6 +359,7 @@ def config_from(args):
     return {**DEFAULTS, "accept": args.accept, "delta": args.delta, "containment_min": args.containment_min,
             "max_targets": args.max_targets, "self_refs": args.self_refs, "keys_run": args.keys_run,
             "pk_source_max_density": None if args.pk_source_max_density < 0 else args.pk_source_max_density,
+            "min_range_span": None if args.min_range_span < 0 else args.min_range_span,
             "g4_ratio": args.g4_ratio, "g4_multiplier": args.g4_multiplier}
 
 
