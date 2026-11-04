@@ -1,0 +1,1280 @@
+{
+ "db_id": "european_football_2",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "dist",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 35,
+ "tables": {
+  "Country": {
+   "table": {
+    "name": "Country",
+    "purpose": "Lookup table of countries, one row per country, used to key leagues and matches (European football database)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "country_id",
+     "description": "Primary key; unique numeric identifier for each country. Referenced by Match (home/away country columns) and by League, which stores both this id and its own league id.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "name",
+     "description": "Country name (e.g. England, Germany, Portugal); one per row, unique.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "League": {
+   "table": {
+    "name": "League",
+    "purpose": "Lookup table of football (soccer) leagues/countries; one row per league, linked to its country and referenced by matches. Likely the European Soccer Database 'League' table (11 leagues)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "league_id",
+     "description": "Primary key of the league; unique integer identifier (e.g. 1729 = England Premier League). Referenced by Match (league/country columns).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "country_id",
+     "description": "Foreign key to Country.col_001 identifying the league's country; values match country ids (1729=England, 7809=Germany, 17642=Portugal, 21518=Spain, 24558=Switzerland).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "league_name",
+     "description": "Human-readable league name, e.g. 'England Premier League', 'Germany 1. Bundesliga', 'Portugal Liga ZON Sagres'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Match": {
+   "table": {
+    "name": "Match",
+    "purpose": "One row per professional football (soccer) match: teams, final score, lineups (player coordinates and player IDs), match event details as XML, and pre-match betting odds (home/draw/away) from multiple bookmakers. Covers European leagues, seasons 2008/2009-2015/2016."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "match_id",
+     "description": "Primary key, surrogate row id for the match (1..25979).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "country_id",
+     "description": "FK to Country; the country in which the match was played (11 countries, e.g. 1729=England, 21518=Spain).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "league_id",
+     "description": "FK to League; the league/competition of the match (11 leagues, e.g. 1729=England Premier League).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "season",
+     "description": "Season label in 'YYYY/YYYY' format, 2008/2009 through 2015/2016.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "stage",
+     "description": "Matchweek / round number within the season (1-38, consistent with league rounds).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "date",
+     "name": "date",
+     "description": "Kickoff/match date (2008-07-18 to 2016-05-25).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "identifier",
+     "name": "match_api_id",
+     "description": "External API id of the match; unique per row, distinct from the surrogate key.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "foreign_key",
+     "name": "home_team_api_id",
+     "description": "FK to Team; id of the home team (299 teams).",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "foreign_key",
+     "name": "away_team_api_id",
+     "description": "FK to Team; id of the away team (299 teams).",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "category",
+     "name": "home_team_goal",
+     "description": "Goals scored by the home team (0-10).",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "category",
+     "name": "away_team_goal",
+     "description": "Goals scored by the away team (0-9).",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "category",
+     "name": "home_player_X1",
+     "description": "Home team player 1 (goalkeeper) X grid coordinate (mostly 1).",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "category",
+     "name": "home_player_X2",
+     "description": "Home team player 2 X grid coordinate (1-8, mostly 2).",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "category",
+     "name": "home_player_X3",
+     "description": "Home team player 3 X grid coordinate (mostly 4).",
+     "status": "resolved"
+    },
+    "col_015": {
+     "role": "category",
+     "name": "home_player_X4",
+     "description": "Home team player 4 X grid coordinate (mostly 6).",
+     "status": "resolved"
+    },
+    "col_016": {
+     "role": "category",
+     "name": "home_player_X5",
+     "description": "Home team player 5 X grid coordinate (mostly 8).",
+     "status": "resolved"
+    },
+    "col_017": {
+     "role": "category",
+     "name": "home_player_X6",
+     "description": "Home team player 6 X grid coordinate (1-9, spread 2-5).",
+     "status": "resolved"
+    },
+    "col_018": {
+     "role": "category",
+     "name": "home_player_X7",
+     "description": "Home team player 7 X grid coordinate (mostly 4-6).",
+     "status": "resolved"
+    },
+    "col_019": {
+     "role": "category",
+     "name": "home_player_X8",
+     "description": "Home team player 8 X grid coordinate (mostly 3-7).",
+     "status": "resolved"
+    },
+    "col_020": {
+     "role": "category",
+     "name": "home_player_X9",
+     "description": "Home team player 9 X grid coordinate (mostly 3-8).",
+     "status": "resolved"
+    },
+    "col_021": {
+     "role": "category",
+     "name": "home_player_X10",
+     "description": "Home team player 10 X grid coordinate (mostly 4-7).",
+     "status": "resolved"
+    },
+    "col_022": {
+     "role": "category",
+     "name": "home_player_X11",
+     "description": "Home team player 11 X grid coordinate (mostly 5-7).",
+     "status": "resolved"
+    },
+    "col_023": {
+     "role": "category",
+     "name": "home_player_Y1",
+     "description": "Home team player 1 (goalkeeper) Y grid coordinate (almost always 1).",
+     "status": "resolved"
+    },
+    "col_024": {
+     "role": "category",
+     "name": "home_player_Y2",
+     "description": "Home team player 2 Y grid coordinate (mostly 2).",
+     "status": "resolved"
+    },
+    "col_025": {
+     "role": "category",
+     "name": "home_player_Y3",
+     "description": "Home team player 3 Y grid coordinate (mostly 4).",
+     "status": "resolved"
+    },
+    "col_026": {
+     "role": "category",
+     "name": "home_player_Y4",
+     "description": "Home team player 4 Y grid coordinate (mostly 6).",
+     "status": "resolved"
+    },
+    "col_027": {
+     "role": "category",
+     "name": "home_player_Y5",
+     "description": "Home team player 5 Y grid coordinate (mostly 8).",
+     "status": "resolved"
+    },
+    "col_028": {
+     "role": "category",
+     "name": "home_player_Y6",
+     "description": "Home team player 6 Y grid coordinate (mostly 2-4).",
+     "status": "resolved"
+    },
+    "col_029": {
+     "role": "category",
+     "name": "home_player_Y7",
+     "description": "Home team player 7 Y grid coordinate (mostly 4-6).",
+     "status": "resolved"
+    },
+    "col_030": {
+     "role": "category",
+     "name": "home_player_Y8",
+     "description": "Home team player 8 Y grid coordinate (mostly 3-7).",
+     "status": "resolved"
+    },
+    "col_031": {
+     "role": "category",
+     "name": "home_player_Y9",
+     "description": "Home team player 9 Y grid coordinate (mostly 3-8).",
+     "status": "resolved"
+    },
+    "col_032": {
+     "role": "category",
+     "name": "home_player_Y10",
+     "description": "Home team player 10 Y grid coordinate (mostly 4-7).",
+     "status": "resolved"
+    },
+    "col_033": {
+     "role": "category",
+     "name": "home_player_Y11",
+     "description": "Home team player 11 Y grid coordinate (mostly 5-7).",
+     "status": "resolved"
+    },
+    "col_034": {
+     "role": "category",
+     "name": "away_player_X1",
+     "description": "Away team player 1 (goalkeeper) X grid coordinate (almost always 1).",
+     "status": "resolved"
+    },
+    "col_035": {
+     "role": "category",
+     "name": "away_player_X2",
+     "description": "Away team player 2 X grid coordinate (almost always 3).",
+     "status": "resolved"
+    },
+    "col_036": {
+     "role": "category",
+     "name": "away_player_X3",
+     "description": "Away team player 3 X grid coordinate (almost always 3).",
+     "status": "resolved"
+    },
+    "col_037": {
+     "role": "category",
+     "name": "away_player_X4",
+     "description": "Away team player 4 X grid coordinate (almost always 3).",
+     "status": "resolved"
+    },
+    "col_038": {
+     "role": "category",
+     "name": "away_player_X5",
+     "description": "Away team player 5 X grid coordinate (mostly 3, sometimes 7).",
+     "status": "resolved"
+    },
+    "col_039": {
+     "role": "category",
+     "name": "away_player_X6",
+     "description": "Away team player 6 X grid coordinate (mostly 6-7).",
+     "status": "resolved"
+    },
+    "col_040": {
+     "role": "category",
+     "name": "away_player_X7",
+     "description": "Away team player 7 X grid coordinate (mostly 6-7).",
+     "status": "resolved"
+    },
+    "col_041": {
+     "role": "category",
+     "name": "away_player_X8",
+     "description": "Away team player 8 X grid coordinate (mostly 7-8).",
+     "status": "resolved"
+    },
+    "col_042": {
+     "role": "category",
+     "name": "away_player_X9",
+     "description": "Away team player 9 X grid coordinate (mostly 7-10).",
+     "status": "resolved"
+    },
+    "col_043": {
+     "role": "category",
+     "name": "away_player_X10",
+     "description": "Away team player 10 X grid coordinate (mostly 10).",
+     "status": "resolved"
+    },
+    "col_044": {
+     "role": "category",
+     "name": "away_player_X11",
+     "description": "Away team player 11 X grid coordinate (mostly 10-11).",
+     "status": "resolved"
+    },
+    "col_045": {
+     "role": "category",
+     "name": "away_player_Y1",
+     "description": "Away team player 1 (goalkeeper) Y grid coordinate (almost always 1).",
+     "status": "resolved"
+    },
+    "col_046": {
+     "role": "category",
+     "name": "away_player_Y2",
+     "description": "Away team player 2 Y grid coordinate (constant 3).",
+     "status": "resolved"
+    },
+    "col_047": {
+     "role": "category",
+     "name": "away_player_Y3",
+     "description": "Away team player 3 Y grid coordinate (almost always 3).",
+     "status": "resolved"
+    },
+    "col_048": {
+     "role": "category",
+     "name": "away_player_Y4",
+     "description": "Away team player 4 Y grid coordinate (almost always 3).",
+     "status": "resolved"
+    },
+    "col_049": {
+     "role": "category",
+     "name": "away_player_Y5",
+     "description": "Away team player 5 Y grid coordinate (mostly 3, sometimes 7).",
+     "status": "resolved"
+    },
+    "col_050": {
+     "role": "category",
+     "name": "away_player_Y6",
+     "description": "Away team player 6 Y grid coordinate (mostly 6-7).",
+     "status": "resolved"
+    },
+    "col_051": {
+     "role": "category",
+     "name": "away_player_Y7",
+     "description": "Away team player 7 Y grid coordinate (mostly 6-7).",
+     "status": "resolved"
+    },
+    "col_052": {
+     "role": "category",
+     "name": "away_player_Y8",
+     "description": "Away team player 8 Y grid coordinate (mostly 7-8).",
+     "status": "resolved"
+    },
+    "col_053": {
+     "role": "category",
+     "name": "away_player_Y9",
+     "description": "Away team player 9 Y grid coordinate (mostly 7-8, sometimes 10).",
+     "status": "resolved"
+    },
+    "col_054": {
+     "role": "category",
+     "name": "away_player_Y10",
+     "description": "Away team player 10 Y grid coordinate (mostly 10).",
+     "status": "resolved"
+    },
+    "col_055": {
+     "role": "category",
+     "name": "away_player_Y11",
+     "description": "Away team player 11 Y grid coordinate (mostly 10-11).",
+     "status": "resolved"
+    },
+    "col_056": {
+     "role": "foreign_key",
+     "name": "home_player_1",
+     "description": "FK to Player; home team starting player 1 (goalkeeper, given paired X/Y of 1).",
+     "status": "resolved"
+    },
+    "col_057": {
+     "role": "foreign_key",
+     "name": "home_player_2",
+     "description": "FK to Player; home team starting player 2.",
+     "status": "resolved"
+    },
+    "col_058": {
+     "role": "foreign_key",
+     "name": "home_player_3",
+     "description": "FK to Player; home team starting player 3.",
+     "status": "resolved"
+    },
+    "col_059": {
+     "role": "foreign_key",
+     "name": "home_player_4",
+     "description": "FK to Player; home team starting player 4.",
+     "status": "resolved"
+    },
+    "col_060": {
+     "role": "foreign_key",
+     "name": "home_player_5",
+     "description": "FK to Player; home team starting player 5.",
+     "status": "resolved"
+    },
+    "col_061": {
+     "role": "foreign_key",
+     "name": "home_player_6",
+     "description": "FK to Player; home team starting player 6.",
+     "status": "resolved"
+    },
+    "col_062": {
+     "role": "foreign_key",
+     "name": "home_player_7",
+     "description": "FK to Player; home team starting player 7.",
+     "status": "resolved"
+    },
+    "col_063": {
+     "role": "foreign_key",
+     "name": "home_player_8",
+     "description": "FK to Player; home team starting player 8.",
+     "status": "resolved"
+    },
+    "col_064": {
+     "role": "foreign_key",
+     "name": "home_player_9",
+     "description": "FK to Player; home team starting player 9.",
+     "status": "resolved"
+    },
+    "col_065": {
+     "role": "foreign_key",
+     "name": "home_player_10",
+     "description": "FK to Player; home team starting player 10.",
+     "status": "resolved"
+    },
+    "col_066": {
+     "role": "foreign_key",
+     "name": "home_player_11",
+     "description": "FK to Player; home team starting player 11.",
+     "status": "resolved"
+    },
+    "col_067": {
+     "role": "foreign_key",
+     "name": "away_player_1",
+     "description": "FK to Player; away team starting player 1 (goalkeeper).",
+     "status": "resolved"
+    },
+    "col_068": {
+     "role": "foreign_key",
+     "name": "away_player_2",
+     "description": "FK to Player; away team starting player 2.",
+     "status": "resolved"
+    },
+    "col_069": {
+     "role": "foreign_key",
+     "name": "away_player_3",
+     "description": "FK to Player; away team starting player 3.",
+     "status": "resolved"
+    },
+    "col_070": {
+     "role": "foreign_key",
+     "name": "away_player_4",
+     "description": "FK to Player; away team starting player 4.",
+     "status": "resolved"
+    },
+    "col_071": {
+     "role": "foreign_key",
+     "name": "away_player_5",
+     "description": "FK to Player; away team starting player 5.",
+     "status": "resolved"
+    },
+    "col_072": {
+     "role": "foreign_key",
+     "name": "away_player_6",
+     "description": "FK to Player; away team starting player 6.",
+     "status": "resolved"
+    },
+    "col_073": {
+     "role": "foreign_key",
+     "name": "away_player_7",
+     "description": "FK to Player; away team starting player 7.",
+     "status": "resolved"
+    },
+    "col_074": {
+     "role": "foreign_key",
+     "name": "away_player_8",
+     "description": "FK to Player; away team starting player 8.",
+     "status": "resolved"
+    },
+    "col_075": {
+     "role": "foreign_key",
+     "name": "away_player_9",
+     "description": "FK to Player; away team starting player 9.",
+     "status": "resolved"
+    },
+    "col_076": {
+     "role": "foreign_key",
+     "name": "away_player_10",
+     "description": "FK to Player; away team starting player 10.",
+     "status": "resolved"
+    },
+    "col_077": {
+     "role": "foreign_key",
+     "name": "away_player_11",
+     "description": "FK to Player; away team starting player 11.",
+     "status": "resolved"
+    },
+    "col_078": {
+     "role": "category",
+     "name": "goal",
+     "description": "XML fragment listing goal events (scorer, minute, goal type) for the match; empty tag when no goals.",
+     "status": "resolved"
+    },
+    "col_079": {
+     "role": "category",
+     "name": "shoton",
+     "description": "XML fragment listing shots on target events; empty tag when none.",
+     "status": "resolved"
+    },
+    "col_080": {
+     "role": "category",
+     "name": "shotoff",
+     "description": "XML fragment listing shots off target events; empty tag when none.",
+     "status": "resolved"
+    },
+    "col_081": {
+     "role": "category",
+     "name": "foulcommit",
+     "description": "XML fragment listing fouls committed; empty tag when none.",
+     "status": "resolved"
+    },
+    "col_082": {
+     "role": "category",
+     "name": "card",
+     "description": "XML fragment listing cards shown (comment y = yellow, r = red); empty tag when none.",
+     "status": "resolved"
+    },
+    "col_083": {
+     "role": "category",
+     "name": "cross",
+     "description": "XML fragment listing cross events; empty tag when none.",
+     "status": "resolved"
+    },
+    "col_084": {
+     "role": "category",
+     "name": "corner",
+     "description": "XML fragment listing corner kick events; empty tag when none.",
+     "status": "resolved"
+    },
+    "col_085": {
+     "role": "category",
+     "name": "possession",
+     "description": "XML fragment with ball possession stats (homepos/awaypos percentages); empty tag when absent.",
+     "status": "resolved"
+    },
+    "col_086": {
+     "role": "category",
+     "name": "B365H",
+     "description": "Bet365 odds for home win (decimal odds, ~1.04-26).",
+     "status": "resolved"
+    },
+    "col_087": {
+     "role": "category",
+     "name": "B365D",
+     "description": "Bet365 odds for a draw (decimal odds, ~1.4-17).",
+     "status": "resolved"
+    },
+    "col_088": {
+     "role": "category",
+     "name": "B365A",
+     "description": "Bet365 odds for away win (decimal odds, ~1.08-51).",
+     "status": "resolved"
+    },
+    "col_089": {
+     "role": "category",
+     "name": "BWH",
+     "description": "Bet&Win odds for home win.",
+     "status": "resolved"
+    },
+    "col_090": {
+     "role": "category",
+     "name": "BWD",
+     "description": "Bet&Win odds for a draw.",
+     "status": "resolved"
+    },
+    "col_091": {
+     "role": "category",
+     "name": "BWA",
+     "description": "Bet&Win odds for away win.",
+     "status": "resolved"
+    },
+    "col_092": {
+     "role": "category",
+     "name": "IWH",
+     "description": "Interwetten odds for home win.",
+     "status": "resolved"
+    },
+    "col_093": {
+     "role": "category",
+     "name": "IWD",
+     "description": "Interwetten odds for a draw.",
+     "status": "resolved"
+    },
+    "col_094": {
+     "role": "category",
+     "name": "IWA",
+     "description": "Interwetten odds for away win.",
+     "status": "resolved"
+    },
+    "col_095": {
+     "role": "category",
+     "name": "LBH",
+     "description": "Ladbrokes odds for home win.",
+     "status": "resolved"
+    },
+    "col_096": {
+     "role": "category",
+     "name": "LBD",
+     "description": "Ladbrokes odds for a draw.",
+     "status": "resolved"
+    },
+    "col_097": {
+     "role": "category",
+     "name": "LBA",
+     "description": "Ladbrokes odds for away win.",
+     "status": "resolved"
+    },
+    "col_098": {
+     "role": "category",
+     "name": "PSH",
+     "description": "Pinnacle odds for home win (57% null - bookmaker added later).",
+     "status": "resolved"
+    },
+    "col_099": {
+     "role": "category",
+     "name": "PSD",
+     "description": "Pinnacle odds for a draw.",
+     "status": "resolved"
+    },
+    "col_100": {
+     "role": "category",
+     "name": "PSA",
+     "description": "Pinnacle odds for away win.",
+     "status": "resolved"
+    },
+    "col_101": {
+     "role": "category",
+     "name": "WHH",
+     "description": "William Hill odds for home win.",
+     "status": "resolved"
+    },
+    "col_102": {
+     "role": "category",
+     "name": "WHD",
+     "description": "William Hill odds for a draw.",
+     "status": "resolved"
+    },
+    "col_103": {
+     "role": "category",
+     "name": "WHA",
+     "description": "William Hill odds for away win.",
+     "status": "resolved"
+    },
+    "col_104": {
+     "role": "category",
+     "name": "SJH",
+     "description": "Stan James odds for home win (34% null).",
+     "status": "resolved"
+    },
+    "col_105": {
+     "role": "category",
+     "name": "SJD",
+     "description": "Stan James odds for a draw.",
+     "status": "resolved"
+    },
+    "col_106": {
+     "role": "category",
+     "name": "SJA",
+     "description": "Stan James odds for away win.",
+     "status": "resolved"
+    },
+    "col_107": {
+     "role": "category",
+     "name": "VCH",
+     "description": "VC Bet odds for home win.",
+     "status": "resolved"
+    },
+    "col_108": {
+     "role": "category",
+     "name": "VCD",
+     "description": "VC Bet odds for a draw.",
+     "status": "resolved"
+    },
+    "col_109": {
+     "role": "category",
+     "name": "VCA",
+     "description": "VC Bet odds for away win.",
+     "status": "resolved"
+    },
+    "col_110": {
+     "role": "category",
+     "name": "GBH",
+     "description": "Gamebookers odds for home win (45% null).",
+     "status": "resolved"
+    },
+    "col_111": {
+     "role": "category",
+     "name": "GBD",
+     "description": "Gamebookers odds for a draw.",
+     "status": "resolved"
+    },
+    "col_112": {
+     "role": "category",
+     "name": "GBA",
+     "description": "Gamebookers odds for away win.",
+     "status": "resolved"
+    },
+    "col_113": {
+     "role": "category",
+     "name": "BSH",
+     "description": "Blue Square odds for home win (45% null).",
+     "status": "resolved"
+    },
+    "col_114": {
+     "role": "category",
+     "name": "BSD",
+     "description": "Blue Square odds for a draw.",
+     "status": "resolved"
+    },
+    "col_115": {
+     "role": "category",
+     "name": "BSA",
+     "description": "Blue Square odds for away win.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Player": {
+   "table": {
+    "name": "Player",
+    "purpose": "Soccer/football players master list (European football database): one row per player with identity, birth date, height and weight. Referenced by Player_Attributes (skill ratings) and Match (lineup player IDs)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "player_row_id",
+     "description": "Synthetic primary key, sequential 1..11075, one per player row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "player_api_id",
+     "description": "External (API) player ID, unique per player; referenced by Player_Attributes and by the 22 lineup player columns in Match (home/away players 1-11).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "player_name",
+     "description": "Player's full display name (e.g. 'Anthony Martial'); not unique (10848 distinct for 11060 rows).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "player_fifa_api_id",
+     "description": "FIFA (game dataset) player ID, unique; referenced by Player_Attributes.col_002. Distinct ID space from col_002.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "birthday",
+     "description": "Player's date of birth (range 1967-1999, consistent with professional players).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "height",
+     "description": "Player height in centimeters, stored with two decimals (e.g. 182.88 = 6 ft); range 157.48-208.28 cm.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "weight",
+     "description": "Player weight in pounds (integers, range 117-243 lbs, mean ~168 lbs, consistent with soccer players' weights in lbs).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Player_Attributes": {
+   "table": {
+    "name": "Player_Attributes",
+    "purpose": "Time-stamped skill/attribute ratings for soccer players (FIFA-style ratings), one row per player per rating date. Links to the Player table via both a FIFA API id and a general API id."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Surrogate primary key of the attribute record.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "player_fifa_api_id",
+     "description": "FIFA API identifier of the player; references Player.col_004 (many attribute rows per player).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "player_api_id",
+     "description": "General API identifier of the player; references Player.col_002 (many attribute rows per player).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "date",
+     "description": "Date the attribute ratings were recorded (2007-02-22 to 2016-07-07); repeated snapshots per player.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "overall_rating",
+     "description": "Overall player rating, 33-94 scale.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "potential",
+     "description": "Potential rating (upper bound of ability), 39-97; consistently >= overall rating.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "preferred_foot",
+     "description": "Preferred foot: 'right' or 'left'.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "attacking_work_rate",
+     "description": "Attacking work rate: low/medium/high, with some dirty values ('None', 'norm', 'stoc', 'le').",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "category",
+     "name": "defensive_work_rate",
+     "description": "Defensive work rate: low/medium/high, with many dirty values ('_0', digits, 'es', 'o').",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "category",
+     "name": "crossing",
+     "description": "Crossing skill rating (1-95).",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "category",
+     "name": "finishing",
+     "description": "Finishing skill rating (1-97).",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "category",
+     "name": "heading_accuracy",
+     "description": "Heading accuracy rating (1-98).",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "category",
+     "name": "short_passing",
+     "description": "Short passing rating (3-97).",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "category",
+     "name": "volleys",
+     "description": "Volleys rating (1-93); slightly higher null rate.",
+     "status": "resolved"
+    },
+    "col_015": {
+     "role": "category",
+     "name": "dribbling",
+     "description": "Dribbling rating (1-97).",
+     "status": "resolved"
+    },
+    "col_016": {
+     "role": "category",
+     "name": "curve",
+     "description": "Curve rating (2-94); slightly higher null rate.",
+     "status": "resolved"
+    },
+    "col_017": {
+     "role": "category",
+     "name": "free_kick_accuracy",
+     "description": "Free kick accuracy rating (1-97).",
+     "status": "resolved"
+    },
+    "col_018": {
+     "role": "category",
+     "name": "long_passing",
+     "description": "Long passing rating (3-97).",
+     "status": "resolved"
+    },
+    "col_019": {
+     "role": "category",
+     "name": "ball_control",
+     "description": "Ball control rating (5-97).",
+     "status": "resolved"
+    },
+    "col_020": {
+     "role": "category",
+     "name": "acceleration",
+     "description": "Acceleration rating (10-97).",
+     "status": "resolved"
+    },
+    "col_021": {
+     "role": "category",
+     "name": "sprint_speed",
+     "description": "Sprint speed rating (12-97).",
+     "status": "resolved"
+    },
+    "col_022": {
+     "role": "category",
+     "name": "agility",
+     "description": "Agility rating (11-96); slightly higher null rate.",
+     "status": "resolved"
+    },
+    "col_023": {
+     "role": "category",
+     "name": "reactions",
+     "description": "Reactions rating (17-96).",
+     "status": "resolved"
+    },
+    "col_024": {
+     "role": "category",
+     "name": "balance",
+     "description": "Balance rating (12-96); slightly higher null rate.",
+     "status": "resolved"
+    },
+    "col_025": {
+     "role": "category",
+     "name": "shot_power",
+     "description": "Shot power rating (2-97).",
+     "status": "resolved"
+    },
+    "col_026": {
+     "role": "category",
+     "name": "jumping",
+     "description": "Jumping rating (14-96); slightly higher null rate.",
+     "status": "resolved"
+    },
+    "col_027": {
+     "role": "category",
+     "name": "stamina",
+     "description": "Stamina rating (10-96).",
+     "status": "resolved"
+    },
+    "col_028": {
+     "role": "category",
+     "name": "strength",
+     "description": "Strength rating (10-96).",
+     "status": "resolved"
+    },
+    "col_029": {
+     "role": "category",
+     "name": "long_shots",
+     "description": "Long shots rating (1-96).",
+     "status": "resolved"
+    },
+    "col_030": {
+     "role": "category",
+     "name": "aggression",
+     "description": "Aggression rating (6-97).",
+     "status": "resolved"
+    },
+    "col_031": {
+     "role": "category",
+     "name": "interceptions",
+     "description": "Interceptions rating (1-96).",
+     "status": "resolved"
+    },
+    "col_032": {
+     "role": "category",
+     "name": "positioning",
+     "description": "Positioning rating (2-96).",
+     "status": "resolved"
+    },
+    "col_033": {
+     "role": "category",
+     "name": "vision",
+     "description": "Vision rating (1-97); slightly higher null rate.",
+     "status": "resolved"
+    },
+    "col_034": {
+     "role": "category",
+     "name": "penalties",
+     "description": "Penalties rating (2-96).",
+     "status": "resolved"
+    },
+    "col_035": {
+     "role": "category",
+     "name": "marking",
+     "description": "Marking rating (1-96); mode at 25 suggests many low/NA-like values.",
+     "status": "resolved"
+    },
+    "col_036": {
+     "role": "category",
+     "name": "standing_tackle",
+     "description": "Standing tackle rating (1-95).",
+     "status": "resolved"
+    },
+    "col_037": {
+     "role": "category",
+     "name": "sliding_tackle",
+     "description": "Sliding tackle rating (2-95); slightly higher null rate.",
+     "status": "resolved"
+    },
+    "col_038": {
+     "role": "category",
+     "name": "gk_diving",
+     "description": "Goalkeeper diving rating (1-94); low values for outfield players.",
+     "status": "resolved"
+    },
+    "col_039": {
+     "role": "category",
+     "name": "gk_handling",
+     "description": "Goalkeeper handling rating (1-93).",
+     "status": "resolved"
+    },
+    "col_040": {
+     "role": "category",
+     "name": "gk_kicking",
+     "description": "Goalkeeper kicking rating (1-97).",
+     "status": "resolved"
+    },
+    "col_041": {
+     "role": "category",
+     "name": "gk_positioning",
+     "description": "Goalkeeper positioning rating (1-96).",
+     "status": "resolved"
+    },
+    "col_042": {
+     "role": "category",
+     "name": "gk_reflexes",
+     "description": "Goalkeeper reflexes rating (1-96).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Team": {
+   "table": {
+    "name": "Team",
+    "purpose": "Soccer/football teams (European leagues), one row per team. Links to Match (home/away team) and Team_Attributes via the external team id, and to Country/League context via the broader database."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "team_id",
+     "description": "Surrogate primary key for the team row in this database; unique integer with no external meaning.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "team_api_id",
+     "description": "External API id of the team (e.g. from a football data provider). Referenced by Match home/away team columns and Team_Attributes.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "team_fifa_api_id",
+     "description": "FIFA/Electronic Arts (video game) team id; ~4% null, mostly small values with some large ones. Plausible alternative: another provider id, but the pattern (small ids plus a cluster of ~110k values) fits the FIFA-style id used in this dataset family. No joins provide further evidence.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "team_long_name",
+     "description": "Full, official team name (e.g. 'Villarreal CF', 'FC Utrecht'). A few names appear twice, likely distinct clubs sharing a name across eras/countries.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "team_short_name",
+     "description": "Short abbreviation of the team name, typically 3 letters (e.g. SIE for Siena, HIB for Hibernian); not unique across teams.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Team_Attributes": {
+   "table": {
+    "name": "Team_Attributes",
+    "purpose": "FIFA-style tactical/play-style attribute ratings for football teams, snapshotted at semi-annual dates (2010-2015). One row per team per rating date. Each play phase (build-up play, chance creation, defence) has a numeric rating (roughly 20-80) plus a categorical class label."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Surrogate primary key of the team-attributes snapshot row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "team_fifa_api_id",
+     "description": "FIFA (video game / EA) API id of the team; 285 distinct teams, some ids missing from the Team table. No join connects this column to Team (the Team_Attributes row is linked to Team via team_api_id instead), so this reading remains plausible but unconfirmed; it could alternatively be an internal provider id.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "team_api_id",
+     "description": "External API id of the team; foreign key to Team (many snapshots per team).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "date",
+     "description": "Date the attribute snapshot was taken; six distinct dates, roughly Feb and Sep each year 2010-2015.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "build_up_play_speed",
+     "description": "Numeric rating (20-80) of build-up play speed.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "build_up_play_speed_class",
+     "description": "Class label for build-up play speed: Slow / Balanced / Fast.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "build_up_play_dribbling",
+     "description": "Numeric rating of build-up play dribbling; 66.5% null (not captured in early snapshots).",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "build_up_play_dribbling_class",
+     "description": "Class label for build-up dribbling: Little / Normal / Lots.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "build_up_play_passing",
+     "description": "Numeric rating (20-80) of build-up play passing.",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "category",
+     "name": "build_up_play_passing_class",
+     "description": "Class label for build-up passing: Short / Mixed / Long.",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "category",
+     "name": "build_up_play_positioning_class",
+     "description": "Build-up play positioning: Organised / Free Form.",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "chance_creation_passing",
+     "description": "Numeric rating (21-80) of chance creation via passing.",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "category",
+     "name": "chance_creation_passing_class",
+     "description": "Class label for chance creation passing: Safe / Normal / Risky.",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "chance_creation_crossing",
+     "description": "Numeric rating (20-80) of chance creation via crossing.",
+     "status": "resolved"
+    },
+    "col_015": {
+     "role": "category",
+     "name": "chance_creation_crossing_class",
+     "description": "Class label for chance creation crossing: Little / Normal / Lots.",
+     "status": "resolved"
+    },
+    "col_016": {
+     "role": "numeric",
+     "name": "chance_creation_shooting",
+     "description": "Numeric rating (22-80) of chance creation via shooting.",
+     "status": "resolved"
+    },
+    "col_017": {
+     "role": "category",
+     "name": "chance_creation_shooting_class",
+     "description": "Class label for chance creation shooting: Little / Normal / Lots.",
+     "status": "resolved"
+    },
+    "col_018": {
+     "role": "category",
+     "name": "chance_creation_positioning_class",
+     "description": "Chance creation positioning: Organised / Free Form.",
+     "status": "resolved"
+    },
+    "col_019": {
+     "role": "numeric",
+     "name": "defence_pressure",
+     "description": "Numeric rating (23-72) of defensive pressure.",
+     "status": "resolved"
+    },
+    "col_020": {
+     "role": "category",
+     "name": "defence_pressure_class",
+     "description": "Class label for defensive pressure: Deep / Medium / High.",
+     "status": "resolved"
+    },
+    "col_021": {
+     "role": "numeric",
+     "name": "defence_aggression",
+     "description": "Numeric rating (24-72) of defensive aggression.",
+     "status": "resolved"
+    },
+    "col_022": {
+     "role": "category",
+     "name": "defence_aggression_class",
+     "description": "Class label for defensive aggression: Contain / Press / Double (team).",
+     "status": "resolved"
+    },
+    "col_023": {
+     "role": "numeric",
+     "name": "defence_team_width",
+     "description": "Numeric rating (29-73) of defensive team width.",
+     "status": "resolved"
+    },
+    "col_024": {
+     "role": "category",
+     "name": "defence_team_width_class",
+     "description": "Class label for defensive width: Narrow / Normal / Wide.",
+     "status": "resolved"
+    },
+    "col_025": {
+     "role": "category",
+     "name": "defence_defender_line_class",
+     "description": "Defensive line behaviour: Cover / Offside Trap.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 2,
+  "columns_changed": 2
+ }
+}

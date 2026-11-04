@@ -1,0 +1,119 @@
+{
+ "primary_keys": {
+  "tp": 39,
+  "predicted": 41,
+  "gold": 150,
+  "precision": 0.9512,
+  "recall": 0.26,
+  "f1": 0.4084,
+  "recall_tables_with_rows": 1.0,
+  "single_key_tables_with_rows": 39,
+  "r5_name_only": {
+   "predicted": 111,
+   "correct": 111
+  }
+ },
+ "query_join_pairs": 30,
+ "declared_fks": 159,
+ "fk_subsets": {
+  "vs_declared_fks": 159,
+  "vs_fks_with_rows": 48,
+  "vs_fks_in_containment": 46
+ },
+ "joins": {
+  "direct": {
+   "edges": 23,
+   "query_join_recall": 0.5667,
+   "query_join_recall_weighted": 0.5826,
+   "vs_declared_fks": {
+    "tp": 19,
+    "predicted": 23,
+    "gold": 159,
+    "precision": 0.8261,
+    "recall": 0.1195,
+    "f1": 0.2088
+   },
+   "vs_fks_with_rows": {
+    "tp": 19,
+    "predicted": 23,
+    "gold": 48,
+    "precision": 0.8261,
+    "recall": 0.3958,
+    "f1": 0.5352
+   },
+   "vs_fks_in_containment": {
+    "tp": 19,
+    "predicted": 23,
+    "gold": 46,
+    "precision": 0.8261,
+    "recall": 0.413,
+    "f1": 0.5507
+   }
+  },
+  "stats": {
+   "edges": 59,
+   "query_join_recall": 0.7667,
+   "query_join_recall_weighted": 0.8349,
+   "vs_declared_fks": {
+    "tp": 35,
+    "predicted": 59,
+    "gold": 159,
+    "precision": 0.5932,
+    "recall": 0.2201,
+    "f1": 0.3211
+   },
+   "vs_fks_with_rows": {
+    "tp": 35,
+    "predicted": 59,
+    "gold": 48,
+    "precision": 0.5932,
+    "recall": 0.7292,
+    "f1": 0.6542
+   },
+   "vs_fks_in_containment": {
+    "tp": 35,
+    "predicted": 59,
+    "gold": 46,
+    "precision": 0.5932,
+    "recall": 0.7609,
+    "f1": 0.6667
+   }
+  },
+  "llm": {
+   "edges": 49,
+   "query_join_recall": 0.7333,
+   "query_join_recall_weighted": 0.8245,
+   "vs_declared_fks": {
+    "tp": 32,
+    "predicted": 49,
+    "gold": 159,
+    "precision": 0.6531,
+    "recall": 0.2013,
+    "f1": 0.3077
+   },
+   "vs_fks_with_rows": {
+    "tp": 32,
+    "predicted": 49,
+    "gold": 48,
+    "precision": 0.6531,
+    "recall": 0.6667,
+    "f1": 0.6598
+   },
+   "vs_fks_in_containment": {
+    "tp": 32,
+    "predicted": 49,
+    "gold": 46,
+    "precision": 0.6531,
+    "recall": 0.6957,
+    "f1": 0.6737
+   }
+  }
+ },
+ "band_verdicts": {
+  "llm_abstain|other": 2,
+  "llm_accept|fk": 13,
+  "llm_accept|other": 14,
+  "llm_reject|fk": 3,
+  "llm_reject|other": 5
+ }
+}

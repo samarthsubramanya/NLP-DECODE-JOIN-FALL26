@@ -1,0 +1,119 @@
+{
+ "primary_keys": {
+  "tp": 39,
+  "predicted": 41,
+  "gold": 150,
+  "precision": 0.9512,
+  "recall": 0.26,
+  "f1": 0.4084,
+  "recall_tables_with_rows": 1.0,
+  "single_key_tables_with_rows": 39,
+  "r5_name_only": {
+   "predicted": 111,
+   "correct": 111
+  }
+ },
+ "query_join_pairs": 30,
+ "declared_fks": 159,
+ "fk_subsets": {
+  "vs_declared_fks": 159,
+  "vs_fks_with_rows": 48,
+  "vs_fks_in_containment": 46
+ },
+ "joins": {
+  "direct": {
+   "edges": 24,
+   "query_join_recall": 0.5667,
+   "query_join_recall_weighted": 0.5826,
+   "vs_declared_fks": {
+    "tp": 19,
+    "predicted": 24,
+    "gold": 159,
+    "precision": 0.7917,
+    "recall": 0.1195,
+    "f1": 0.2077
+   },
+   "vs_fks_with_rows": {
+    "tp": 19,
+    "predicted": 24,
+    "gold": 48,
+    "precision": 0.7917,
+    "recall": 0.3958,
+    "f1": 0.5278
+   },
+   "vs_fks_in_containment": {
+    "tp": 19,
+    "predicted": 24,
+    "gold": 46,
+    "precision": 0.7917,
+    "recall": 0.413,
+    "f1": 0.5429
+   }
+  },
+  "stats": {
+   "edges": 70,
+   "query_join_recall": 0.8,
+   "query_join_recall_weighted": 0.9266,
+   "vs_declared_fks": {
+    "tp": 36,
+    "predicted": 70,
+    "gold": 159,
+    "precision": 0.5143,
+    "recall": 0.2264,
+    "f1": 0.3144
+   },
+   "vs_fks_with_rows": {
+    "tp": 36,
+    "predicted": 70,
+    "gold": 48,
+    "precision": 0.5143,
+    "recall": 0.75,
+    "f1": 0.6102
+   },
+   "vs_fks_in_containment": {
+    "tp": 36,
+    "predicted": 70,
+    "gold": 46,
+    "precision": 0.5143,
+    "recall": 0.7826,
+    "f1": 0.6207
+   }
+  },
+  "llm": {
+   "edges": 52,
+   "query_join_recall": 0.7667,
+   "query_join_recall_weighted": 0.9163,
+   "vs_declared_fks": {
+    "tp": 33,
+    "predicted": 52,
+    "gold": 159,
+    "precision": 0.6346,
+    "recall": 0.2075,
+    "f1": 0.3128
+   },
+   "vs_fks_with_rows": {
+    "tp": 33,
+    "predicted": 52,
+    "gold": 48,
+    "precision": 0.6346,
+    "recall": 0.6875,
+    "f1": 0.66
+   },
+   "vs_fks_in_containment": {
+    "tp": 33,
+    "predicted": 52,
+    "gold": 46,
+    "precision": 0.6346,
+    "recall": 0.7174,
+    "f1": 0.6735
+   }
+  }
+ },
+ "band_verdicts": {
+  "llm_abstain|other": 2,
+  "llm_accept|fk": 14,
+  "llm_accept|other": 15,
+  "llm_reject|fk": 3,
+  "llm_reject|other": 13
+ }
+}
