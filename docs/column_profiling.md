@@ -197,6 +197,15 @@ Each stored pair is written as follows:
 | `coverage` | `\|Va ∩ Vb\| / \|Vb\|`: the share of the target's values the source uses |
 | `source_distinct`, `target_distinct` | Distinct counts |
 | `source_unique` | Whether the source's values are all distinct (a 1:1 link rather than many-to-one) |
+| `dist` | Quantile-EMD distribution score in [0, 1], or null (no evidence). See below |
+| `dist_buckets` | The source's hit counts per target bucket (null when `dist` is null) |
+
+**Distribution (`dist`).** Where the source's matching values sit over the target's sorted range, so chance overlaps can be told from real references: a small-integer measure (a 1–5 count) is contained by ids 1..11,060 but lies in the first bucket, while a real foreign key draws from the whole parent key.
+- The target's distinct values (same value expression and placeholder filter as the containment values: ints as BIGINT, text trimmed) are ranked once per target column in a temporary table, not once per pair. Works for ints and text.
+- `L = min(10, target_distinct)`. L is **not** capped by the number of hits, so a source with 3 distinct values that all fall in the first bucket of a 10-bucket target gets `dist` ≈ 0. `dist` is null only if `target_distinct < 5` or the source has no hit (`n_hit = 0`).
+- Bucket `b` of a target value is `ntile(L)` over its rank (computed with an exact SQL formula, checked against DuckDB's `ntile` in the tests). `counts[b]` = source matches in bucket `b`.
+- `p_i = counts_i / Σcounts`, `cum_i` the running sum, `EMD = Σ_{i=1..L-1} |cum_i − i/L|`, `EMD_max = (L − 1) / 2`, `dist = 1 − EMD / EMD_max` (`quantile_emd(counts)` in `src/profile_columns.py`).
+- Stage 2b uses it as a score term; it replaced the G9 range gate as the default (`foreign_keys.md` §4–5).
 
 Cost: about 30 s for all of BIRD dev or FIBEN, and about 5 s for Spider dev.
 
@@ -443,3 +452,4 @@ Add a line per change: the date, what changed, and which results it moved.
   - `filter_for_multitable_datasets.py` presets `bird_stripped` and `bird_obfuscated`. Neither file has `bird_metadata`, so `--questions-db-file` reads `dev.json` from the documented file. The `bird_obfuscated` preset reproduces the earlier hand-made `out/filtered/bird_obfuscated/databases.json` exactly.
   - `eval_primary_keys.py` reads gold keys from the documented file (`labels.documented`), not the run's file, and refuses `*_obfuscated`.
   - Stripped run: profiles, `frozen` keys and `default` joins identical to the documented run, so PK P/R/F1 is unchanged (1.000 / 0.970 / 0.985).
+- **2026-11-04** Stage 1 stores `dist` and `dist_buckets` (quantile-EMD) on every containment pair (§3.6). Existing profiles do not have them until Stage 1 is rerun with `--force`.

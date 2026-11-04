@@ -51,6 +51,8 @@ DEFAULTS = {
     "free_text_min_len": 30,  # avg length above this with spaces = free text
     "code_max_len": 12,       # short, mostly upper/digits = code
     "containment_store_min": 0.5,   # pairs below this are not written
+    "dist_max_buckets": 10,         # quantile-EMD distribution term: at most this many target buckets ...
+    "dist_min_buckets": 5,          # ... and fewer than this many means no evidence (dist = None)
 }
 
 
@@ -222,12 +224,45 @@ def key_like(prof):
             and prof["family"] in KEY_FAMILIES and prof["role"] not in NOT_KEY_ROLES)
 
 
+def quantile_emd(counts):
+    """Distribution score of a source's matching values over L equal-size quantile buckets of the target.
+
+    counts[i] = how many of the source's matching distinct values fall in bucket i (buckets are the target's
+    distinct values cut by ntile over their sort order). With p_i = counts_i / sum(counts) and cum_i the
+    running sum of p, the earth mover's distance to a uniform spread is EMD = sum_{i<L} |cum_i - i/L|, at most
+    (L - 1) / 2. Returns 1 - EMD / EMD_max in [0, 1]: 1 = spread evenly over the target's range, 0 = all in one
+    end bucket. None when there is no evidence: fewer than 5 buckets (a target with fewer than 5 distinct values), or no values.
+    """
+    n, total = len(counts), sum(counts)
+    if n < 5 or total <= 0:
+        return None
+    cum = emd = 0.0
+    for i, c in enumerate(counts[:-1], 1):
+        cum += c / total
+        emd += abs(cum - i / n)
+    return min(1.0, max(0.0, 1 - emd / ((n - 1) / 2)))
+
+
+def bucket_expr(rows, n_buckets, rank="rn"):
+    """SQL for ntile(n_buckets) over rows ranked 1..rows: the first rows % n_buckets buckets hold one extra row."""
+    q, r = divmod(rows, n_buckets)
+    return (f"CASE WHEN {rank} <= {r * (q + 1)} THEN ({rank} - 1) // {q + 1} + 1 "
+            f"ELSE {r} + ({rank} - {r * (q + 1)} - 1) // {q} + 1 END")
+
+
 def containment(con, schema, tables, cfg):
     """I(a -> b) = |Va ∩ Vb| / |Va| for every key-like target b and every same-family column a.
 
     Values are compared as BIGINT for int columns (so '007' = 7) and as trimmed text otherwise;
     NULLs and placeholders are left out. Pairs whose containment cannot reach
     containment_store_min (|Vb| / |Va| too small, or int ranges that do not overlap) are skipped.
+
+    Every stored pair also gets "dist" and "dist_buckets": where the source's matching values sit in the
+    target's sort order (quantile_emd). The target's distinct values are ranked once per target column; the
+    L = min(dist_max_buckets, target_distinct) buckets are ntile(L) of that rank. L is not capped by the
+    number of hits: a source with few distinct values that all land in one bucket scores about 0. No
+    evidence (both fields None) only when the target has fewer than dist_min_buckets distinct values or
+    the source has no hit.
     """
     cols = [(t, c, p) for t in sorted(tables) for c, p in tables[t]["columns"].items()]
     targets = [x for x in cols if key_like(x[2])]
@@ -243,6 +278,7 @@ def containment(con, schema, tables, cfg):
 
     out = []
     for tb, cb, pb in targets:
+        ranked_rows = None      # rows of the temp table _dist_rank, built on this target's first stored pair
         for ta, ca, pa in sources:
             fam = pa["family"]
             if (ta, ca) == (tb, cb) or fam != pb["family"] or pb["distinct"] < floor * pa["distinct"]:
@@ -257,12 +293,29 @@ def containment(con, schema, tables, cfg):
             ).fetchone()
             if not n_a or inter / n_a < floor:
                 continue
+            buckets = min(cfg["dist_max_buckets"], pb["distinct"])
+            dist = counts = None
+            if buckets >= cfg["dist_min_buckets"] and inter > 0:
+                if ranked_rows is None:
+                    con.execute(f"CREATE OR REPLACE TEMP TABLE _dist_rank AS SELECT x, row_number() OVER (ORDER BY x) AS rn "
+                                f"FROM ({values(tb, cb, fam)}) WHERE x IS NOT NULL", [cfg["placeholders"]])
+                    ranked_rows = con.execute("SELECT count(*) FROM _dist_rank").fetchone()[0]
+                buckets = min(buckets, ranked_rows)       # placeholders in the target can leave fewer rows than distinct
+            if buckets >= cfg["dist_min_buckets"] and inter > 0:
+                hit = dict(con.execute(
+                    f"SELECT {bucket_expr(ranked_rows, buckets)} AS b, count(*) FROM _dist_rank "
+                    f"WHERE x IN (SELECT x FROM ({values(ta, ca, fam)}) WHERE x IS NOT NULL) GROUP BY 1",
+                    [cfg["placeholders"]]).fetchall())
+                counts = [hit.get(i, 0) for i in range(1, buckets + 1)]
+                dist = quantile_emd(counts)
             out.append({
                 "source": [ta, ca], "target": [tb, cb], "intersection": inter,
                 "containment": inter / n_a,               # share of the source's values found in the target
                 "coverage": inter / pb["distinct"],       # share of the target's values the source uses
                 "source_distinct": n_a, "target_distinct": pb["distinct"],
                 "source_unique": pa["distinct"] == pa["rows"] - pa["nulls"],
+                "dist": dist,                             # quantile-EMD spread over the target's range, None = no evidence
+                "dist_buckets": counts,                   # source hits per target quantile bucket
             })
     return out
 

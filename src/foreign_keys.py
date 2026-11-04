@@ -24,21 +24,28 @@ Gates and prefilters, in this order; the first one that fires rejects the pair (
                      average length over 64 characters                                [Paper tier 2, Team]
     G6               containment >= 0.75, exact                                       [Paper, Report]
     G9               integer pairs: the source's range (max - min + 1) must span at least
-                     min_range_span (0.1) of the target's. A real foreign key draws from the
-                     whole parent key; a measure (a 0-100 rating, a 1-5 count) sits in a corner
-                     of a 1..n id and is contained by chance. None turns it off             [Ours]
+                     min_range_span of the target's. A real foreign key draws from the whole
+                     parent key; a measure (a 0-100 rating, a 1-5 count) sits in a corner of a
+                     1..n id and is contained by chance. OFF by default (None) since the soft
+                     distribution term d replaced it; --min-range-span 0.1 turns it on      [Ours]
 
 Score of a candidate that passes (points out of 100), then the penalties:
-    s_FK = 40·v + 20·s + 15·r + 15·k + 10·nu
+    s_FK = 25·v + 15·d + 20·s + 15·r + 15·k + 10·nu
       v  containment I(a->b)
+      d  distribution: 1 - EMD/EMD_max of where the source's matching values fall over L (<= 10)
+         quantile buckets of the target's sort order (Stage 1 pair["dist"]); 1 = spread over the whole
+         target range, 0 = all in one end. A small-integer measure sitting in a corner of an id range is
+         contained by chance but scores ~0. None (target with fewer than 5 distinct values, no hit, or an old profile) = no evidence:
+         that record's d points go to v                                                          [Ours]
       s  name similarity: best of source name vs b, "{b_table}_{b}", "{b_table}_id" (lower-case,
          letters and digits only): 1.0 equal, 0.8 one contains the other, else 1 - Levenshtein/longest
       r  min(rho, 2) / 2, rho = rows(source table) / distinct(source column)
       k  1 if b is its table's chosen primary key (2a), else 0
       nu null share of the source: below 30% 1.0, below 70% 0.5, else 0
-    no names (obfuscated):  the 20 name points go to overlap, 60·v + 15·r + 15·k + 10·nu     [Report]
+    no names (obfuscated):  40·v + 20·d + 15·r + 15·k + 10·nu: the old 60 overlap points (the 40 plus the
+                            20 name points [Report]) are split into containment and distribution
     adaptive:               if more than 40% of the candidates that passed the gates have k = 0,
-                            the 15 points of k go to overlap (40 -> 55)       [Paper; scope: one database]
+                            the 15 points of k go to overlap (25 -> 40)       [Paper; scope: one database]
     x 0.7  orphan rate 1 - v above 0.2                                                       [Paper]
     x 0.5  incompatible types; inert here, Stage 1 pairs are always the same family          [Paper]
     G4     source table far smaller than the target: the paper gives no multiplier, so it is a
@@ -46,6 +53,12 @@ Score of a candidate that passes (points out of 100), then the penalties:
     G5     each source keeps its 3 best targets, the rest are rejected                       [Paper]
     x psi(n)  n = targets kept for the source after G5: 1.0 / 0.85 / 0.75 / 0.65 for 1 / 2 / 3 / 4+
                                                                                    [Paper; counting answered]
+    cap    a record whose distribution term d is below dist_no_accept_below (0.3) has its final
+           score (after the penalties, G5 and fan-out) capped at accept + delta - 1 (69), so it
+           lands in the LLM band and is never auto-accepted. A lower score is not raised; d = None
+           (no evidence) is not capped; "dist_capped": true marks a score the cap changed. 0.3 is
+           the 5th percentile of d for 3 source values spread uniformly at random over 10 buckets
+           (about 0.44 at 5 values, 0.77 at 30); it is not fit to any dataset.             [Ours]
 
 Decision on the final score (cutoff = accept, band width = delta):
     below 60        rejected_score
@@ -87,7 +100,7 @@ DEFAULTS = {
     "delta": 10,                      # band width: [accept, accept + delta) goes to the LLM
     "containment_min": 0.75,          # G6, tau
     "max_targets": 3,                 # G5
-    "weights": {"overlap": 40, "name": 20, "cardinality": 15, "target_key": 15, "nulls": 10},
+    "weights": None,                  # None: W_NAMED / W_NO_NAMES by setting; a dict overrides both
     "adaptive_k_zero_share": 0.4,     # more candidates than this with k = 0 -> k's points go to overlap
     "r_cap": 2,
     "null_low": 0.3,
@@ -102,11 +115,16 @@ DEFAULTS = {
     "never_source_roles": ["boolean", "free_text", "float"],
     "self_refs": False,
     "pk_source_max_density": 0.5,     # G8 spares primary keys this sparse (int only); None: G8 absolute
-    "min_range_span": 0.1,            # G9, int pairs; None: off
+    "min_range_span": None,           # G9, int pairs; None: off (the soft distribution term replaced it)
+    "dist_no_accept_below": 0.3,      # d below this: final score capped at accept + delta - 1; None: no cap
     "g4_ratio": None,                 # G4 off: source rows < ratio * target rows ...
     "g4_multiplier": None,            # ... multiplies the score by this
     "keys_run": "frozen",
 }
+
+# points out of 100; overlap = containment, distribution = where the source's values sit in the target's range
+W_NAMED = {"overlap": 25, "distribution": 15, "name": 20, "cardinality": 15, "target_key": 15, "nulls": 10}
+W_NO_NAMES = {"overlap": 40, "distribution": 20, "name": 0, "cardinality": 15, "target_key": 15, "nulls": 10}
 
 ORDER = {"accepted": 0, "band": 1, "rejected_score": 2, "rejected_gate": 3}
 
@@ -151,9 +169,7 @@ def fan_out_factor(n, cfg):
 
 
 def weights(cfg, use_names, adaptive):
-    w = dict(cfg["weights"])
-    if not use_names:
-        w["overlap"] += w.pop("name")
+    w = dict(cfg.get("weights") or (W_NAMED if use_names else W_NO_NAMES))
     if adaptive:
         w["overlap"] += w["target_key"]
         w["target_key"] = 0
@@ -216,6 +232,8 @@ def make_record(pair, profile, keys, use_names):
         "containment": pair["containment"],
         "coverage": pair["coverage"],
         "cardinality": "one_to_one" if pair["source_unique"] else "many_to_one",
+        "dist": pair.get("dist"),                            # Stage 1 quantile-EMD, None = no evidence
+        "dist_buckets": pair.get("dist_buckets"),            # source hits per target quantile bucket
     }
 
 
@@ -231,14 +249,20 @@ def score_candidates(records, profile, cfg, use_names):
         rho = tables[st]["rows"] / a["distinct"]
         parts = {
             "overlap": r["containment"],
+            "distribution": r["dist"],
             "cardinality": min(rho, cfg["r_cap"]) / cfg["r_cap"],
             "target_key": 1.0 if r["target_is_pk"] else 0.0,
             "nulls": null_term(a["null_rate"], cfg),
         }
         if use_names:
             parts["name"], r["name_via"] = name_similarity(sc, tt, r["target"]["column"], cfg)
-        r["parts"] = {k: round(v, 4) for k, v in parts.items()}
-        raw = sum(w[k] * v for k, v in parts.items())
+        r["parts"] = {k: None if v is None else round(v, 4) for k, v in parts.items()}
+        wr = dict(w)                       # no distribution evidence: this record's points go to overlap
+        if parts["distribution"] is None:
+            wr["overlap"] += wr["distribution"]
+            wr["distribution"] = 0
+        r["weights_used"] = wr
+        raw = sum(wr[k] * v for k, v in parts.items() if v is not None)
         penalties = {}
         if 1 - r["containment"] > cfg["orphan_max"]:
             penalties["orphan"] = cfg["orphan_penalty"]
@@ -277,6 +301,18 @@ def decide(score, cfg):
     return "band" if score < cfg["accept"] + cfg["delta"] else "accepted"
 
 
+def cap_low_distribution(records, cfg):
+    """A record whose source sits in a corner of the target's range (distribution term below the threshold)
+    is never auto-accepted: its final score is capped just under the band's top. A lower score is kept."""
+    limit, top = cfg["dist_no_accept_below"], cfg["accept"] + cfg["delta"] - 1
+    if limit is None:
+        return
+    for r in records:
+        d = r["parts"]["distribution"] if "score" in r else None
+        if d is not None and d < limit and r["score"] > top:
+            r["score"], r["dist_capped"] = top, True
+
+
 def assemble(records, include, cfg):
     """Greedy, HoPF-style: highest score first, one edge per column pair, max_targets per source."""
     chosen = [r for r in records if r["decision"] in include]
@@ -307,6 +343,7 @@ def score_database(profile, keys, cfg=DEFAULTS):
         records.append(rec)
     w, adaptive, k_zero = score_candidates(passed, profile, cfg, use_names)
     cap_and_fan_out(passed, cfg)
+    cap_low_distribution(passed, cfg)
     for r in passed:
         if "score" in r:
             r["decision"] = decide(r["score"], cfg)
@@ -335,6 +372,14 @@ def score_database(profile, keys, cfg=DEFAULTS):
 
 
 # ------------------------------------------------------------------ command line
+def optional_float(text):
+    """argparse type: a number, or none/off/negative for 'switched off' (None)."""
+    if str(text).lower() in ("none", "off"):
+        return None
+    value = float(text)
+    return None if value < 0 else value
+
+
 def add_args(ap):
     ap.add_argument("--dataset", required=True)
     ap.add_argument("--databases", nargs="*", help="only these db_ids")
@@ -348,8 +393,11 @@ def add_args(ap):
     ap.add_argument("--self-refs", action="store_true", help="also consider source and target in one table")
     ap.add_argument("--pk-source-max-density", type=float, default=DEFAULTS["pk_source_max_density"],
                     help="G8 spares integer primary keys at most this dense; a negative value keeps G8 absolute")
+    ap.add_argument("--dist-no-accept-below", type=optional_float, default=DEFAULTS["dist_no_accept_below"],
+                    help="cap the score of a pair whose distribution term is below this at accept + delta - 1 "
+                         "(never auto-accepted); 'none' (or negative) disables the cap")
     ap.add_argument("--min-range-span", type=float, default=DEFAULTS["min_range_span"],
-                    help="G9: integer source range / target range at least this; a negative value turns it off")
+                    help="G9 hard gate, off by default: integer source range / target range at least this (e.g. 0.1)")
     ap.add_argument("--g4-ratio", type=float, help="G4 on: source rows < ratio x target rows ...")
     ap.add_argument("--g4-multiplier", type=float, help="... multiplies the score by this (needs --g4-ratio)")
     ap.add_argument("--reprofile", action="store_true", help="recompute Stage 1 profiles")
@@ -359,7 +407,8 @@ def config_from(args):
     return {**DEFAULTS, "accept": args.accept, "delta": args.delta, "containment_min": args.containment_min,
             "max_targets": args.max_targets, "self_refs": args.self_refs, "keys_run": args.keys_run,
             "pk_source_max_density": None if args.pk_source_max_density < 0 else args.pk_source_max_density,
-            "min_range_span": None if args.min_range_span < 0 else args.min_range_span,
+            "min_range_span": None if args.min_range_span is None or args.min_range_span < 0 else args.min_range_span,
+            "dist_no_accept_below": args.dist_no_accept_below,
             "g4_ratio": args.g4_ratio, "g4_multiplier": args.g4_multiplier}
 
 
