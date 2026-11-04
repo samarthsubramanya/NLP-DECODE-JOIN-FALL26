@@ -269,7 +269,7 @@ The obfuscated run (`bird_dev_obfuscated.duckdb`, columns `col_NNN`) still shows
 3. **Descriptions on FIBEN or BEAVER** have no reference text; only BIRD can be scored, and BIRD is memorized.
 4. **Lookup labels come from 5 sample rows.** A lookup table's full key → label list would need a database query; 5 pairs are usually enough to show what the codes mean.
 5. **Wide tables.** The widest table (`european_football_2.Match`, 115 columns) goes in one call; it has not been cut off at `low` reasoning.
-6. **Stage 4** (JoinGR export) is not built.
+6. **Stage 4** (refinement + JoinGR export): `src/export_joingr.py`, see [stage4_summary.md](stage4_summary.md).
 7. **The 2026-10-31 changes are not committed yet.**
 
 ## 7. Changelog
