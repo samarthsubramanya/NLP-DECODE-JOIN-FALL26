@@ -1,0 +1,236 @@
+{
+ "db_id": "Pesticide",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 1,
+ "tables": {
+  "resultsdata15": {
+   "table": {
+    "name": "resultsdata15",
+    "purpose": "Pesticide residue analytical results (one row per sample x pesticide x test), from a USDA Pesticide Data Program-style survey; each row records whether a pesticide was detected in a food sample, its concentration, detection limit, and the analytical methods used. Links many-to-one to sampledata15 via sample_pk."
+   },
+   "columns": {
+    "annotate": {
+     "role": "code",
+     "name": "annotation_code",
+     "description": "Result annotation flag: Q marks results at/below the quantitation limit, V and X mark other data-quality/annotation conditions (exact meanings of V, QV, X not defined in this database); blank = no annotation.",
+     "status": "tentative"
+    },
+    "commod": {
+     "role": "code",
+     "name": "commodity_code",
+     "description": "Code for the food commodity tested (e.g. ST, NE, AP, SP, OG, CU). The specific code-to-commodity mapping is not present in this database, so individual meanings are unresolved.",
+     "status": "tentative"
+    },
+    "commtype": {
+     "role": "code",
+     "name": "commodity_type",
+     "description": "Form/type of the commodity: FR = fresh, FZ = frozen, OT = other (e.g. processed).",
+     "status": "resolved"
+    },
+    "concen": {
+     "role": "numeric",
+     "name": "concentration",
+     "description": "Measured residue concentration in ppm (see conunit); blank when no quantified value (mean = ND/NP). Values range 0.001-16, median 0.028.",
+     "status": "resolved"
+    },
+    "confmethod": {
+     "role": "code",
+     "name": "confirmation_method",
+     "description": "Code for the confirmatory analytical method used (LU, GT, MO); blank when no confirmation performed. Exact method identities not in this database.",
+     "status": "tentative"
+    },
+    "confmethod2": {
+     "role": "code",
+     "name": "confirmation_method_2",
+     "description": "Second confirmatory method code; entirely empty in this dataset (never populated).",
+     "status": "resolved"
+    },
+    "conunit": {
+     "role": "code",
+     "name": "concentration_unit",
+     "description": "Unit of concentration; single value 'M' for all rows, consistent with ppm (parts per million).",
+     "status": "tentative"
+    },
+    "determin": {
+     "role": "code",
+     "name": "determinative_method",
+     "description": "Code for the determinative (quantitative) analytical method (07, 35, 52, 64, 72; values carry trailing CR/LF whitespace). Method identities not in this database.",
+     "status": "tentative"
+    },
+    "extract": {
+     "role": "code",
+     "name": "extraction_method",
+     "description": "Extraction method code; only 805 and 818 occur, 818 appearing exactly for the 33,705 'OT' commodity-type rows, suggesting 818 is the extraction method for processed/other commodities.",
+     "status": "tentative"
+    },
+    "lab": {
+     "role": "code",
+     "name": "laboratory_code",
+     "description": "Code of the analyzing laboratory, state-prefixed (CA1, NY1, WA1, FL1, MI1, OH1, TX1, US2).",
+     "status": "resolved"
+    },
+    "lod": {
+     "role": "numeric",
+     "name": "limit_of_detection",
+     "description": "Limit of detection for the analyte in ppm (0.001-0.5, median 0.005).",
+     "status": "resolved"
+    },
+    "mean": {
+     "role": "code",
+     "name": "result_flag",
+     "description": "Result status: ND = not detected (no residue found), NP = test not performed, O = over tolerance/limit, R = (likely) result requiring review or repeat. Exact semantics of O and R not defined here.",
+     "status": "tentative"
+    },
+    "pestcode": {
+     "role": "code",
+     "name": "pesticide_code",
+     "description": "Code identifying the pesticide/analyte tested (489 distinct, mostly 3-digit numeric codes, some 3-letter codes like AEL, AJY, ALE). Code-to-pesticide mapping not in this database.",
+     "status": "resolved"
+    },
+    "quantitate": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "sample_pk": {
+     "role": "foreign_key",
+     "name": "sample_id",
+     "description": "Identifier of the tested sample; references sampledata15.sample_pk (many results per sample; 10,187 samples, up to 425 results each).",
+     "status": "resolved"
+    },
+    "testclass": {
+     "role": "code",
+     "name": "test_class",
+     "description": "Code for the class/group of the analytical test panel (A, C, F, I, O, etc.; 20 distinct). Class definitions not in this database.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "sampledata15": {
+   "table": {
+    "name": "sampledata15",
+    "purpose": "USDA fruit and vegetable market sample records for 2015 (likely terminal market price sampling). Each row is one market/commodity sample observation, keyed by sample_pk and referenced by resultsdata15 (which likely holds the corresponding price/result data)."
+   },
+   "columns": {
+    "claim": {
+     "role": "code",
+     "name": "claim",
+     "description": "Claim status code for the sample. 'NC' (no claim) dominates; 'PO', 'OT', 'PP' are other claim categories (exact meanings unresolved, likely price objection / other / price protest in USDA market news reporting).",
+     "status": "tentative"
+    },
+    "commod": {
+     "role": "code",
+     "name": "commodity",
+     "description": "Commodity code (2-letter fruit/vegetable code, e.g. AP apples, GB?, TO tomatoes, CU cucumbers, CB corn, PE peaches, SP spinach).",
+     "status": "resolved"
+    },
+    "commtype": {
+     "role": "code",
+     "name": "commodity_type",
+     "description": "Commodity form/type code: FR = fresh, FZ = frozen, OT = other.",
+     "status": "resolved"
+    },
+    "country": {
+     "role": "code",
+     "name": "country_of_origin",
+     "description": "Numeric country code (ISO-like, e.g. 595, 275, 260, 415) for imported produce; blank for domestic (origin=1).",
+     "status": "resolved"
+    },
+    "day": {
+     "role": "date",
+     "name": "day",
+     "description": "Day of month (1-31) of the sample date.",
+     "status": "resolved"
+    },
+    "distst": {
+     "role": "code",
+     "name": "distribution_state",
+     "description": "State where the product was distributed; values are US state abbreviations, often with trailing CR/LF characters; blank when not applicable.",
+     "status": "resolved"
+    },
+    "disttype": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "growst": {
+     "role": "code",
+     "name": "growing_state",
+     "description": "US state where the commodity was grown; blank for imported product.",
+     "status": "resolved"
+    },
+    "month": {
+     "role": "date",
+     "name": "month",
+     "description": "Month (1-12) of the sample date.",
+     "status": "resolved"
+    },
+    "origin": {
+     "role": "code",
+     "name": "origin",
+     "description": "Origin code: 1 = domestic, 2 = imported, 3 = other/unknown origin (small count).",
+     "status": "tentative"
+    },
+    "packst": {
+     "role": "code",
+     "name": "packing_state",
+     "description": "US state where the product was packed; blank when not applicable.",
+     "status": "resolved"
+    },
+    "quantity": {
+     "role": "numeric",
+     "name": "quantity",
+     "description": "Quantity of the sampled lot (units, likely packages/cartons; 2-62, blank when unknown).",
+     "status": "tentative"
+    },
+    "sample_pk": {
+     "role": "identifier",
+     "name": "sample_primary_key",
+     "description": "Primary key; unique sample record identifier, referenced by resultsdata15.sample_pk (one sample to many result rows).",
+     "status": "resolved"
+    },
+    "site": {
+     "role": "code",
+     "name": "market_site",
+     "description": "Numeric market site code (zero-padded, 312 distinct values) identifying the reporting location/market where the sample was taken.",
+     "status": "resolved"
+    },
+    "source_id": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "state": {
+     "role": "code",
+     "name": "state",
+     "description": "US state associated with the sample record (likely the state of the reporting office/market).",
+     "status": "tentative"
+    },
+    "variety": {
+     "role": "category",
+     "name": "variety",
+     "description": "Commodity variety/cultivar name (e.g. Navel, Danjou, Norkotah), with placeholders NA/N/A/Unknown when not specified.",
+     "status": "resolved"
+    },
+    "year": {
+     "role": "date",
+     "name": "year",
+     "description": "Two-digit year of the sample; all rows are '15' (2015).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

@@ -1,0 +1,2225 @@
+{
+ "containment": [
+  {
+   "containment": 0.9659090909090909,
+   "coverage": 0.02083844079431233,
+   "dist": 0.49150326797385624,
+   "dist_buckets": [
+    0,
+    1,
+    5,
+    5,
+    74,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "intersection": 85,
+   "source": [
+    "country",
+    "IndepYear"
+   ],
+   "source_distinct": 88,
+   "source_unique": false,
+   "target": [
+    "city",
+    "ID"
+   ],
+   "target_distinct": 4079
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.05687668546212307,
+   "dist": 0.8938697318007663,
+   "dist_buckets": [
+    29,
+    23,
+    20,
+    10,
+    12,
+    22,
+    36,
+    47,
+    27,
+    6
+   ],
+   "intersection": 232,
+   "source": [
+    "country",
+    "Capital"
+   ],
+   "source_distinct": 232,
+   "source_unique": true,
+   "target": [
+    "city",
+    "ID"
+   ],
+   "target_distinct": 4079
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.9707112970711297,
+   "dist": 0.992911877394636,
+   "dist_buckets": [
+    22,
+    23,
+    24,
+    23,
+    23,
+    24,
+    24,
+    23,
+    24,
+    22
+   ],
+   "intersection": 232,
+   "source": [
+    "city",
+    "CountryCode"
+   ],
+   "source_distinct": 232,
+   "source_unique": false,
+   "target": [
+    "country",
+    "Code"
+   ],
+   "target_distinct": 239
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.9748953974895398,
+   "dist": 0.992274678111588,
+   "dist_buckets": [
+    22,
+    23,
+    24,
+    23,
+    23,
+    24,
+    24,
+    23,
+    24,
+    23
+   ],
+   "intersection": 233,
+   "source": [
+    "countrylanguage",
+    "CountryCode"
+   ],
+   "source_distinct": 233,
+   "source_unique": false,
+   "target": [
+    "country",
+    "Code"
+   ],
+   "target_distinct": 239
+  }
+ ],
+ "dataset": "spider_stripped",
+ "db_id": "world_1",
+ "duckdb_file": "decode_join_stripped.duckdb",
+ "duckdb_schema": "spider_d9f27f70b36dba1ffced",
+ "seed": 42,
+ "tables": {
+  "city": {
+   "columns": {
+    "CountryCode": {
+     "declared_type": "VARCHAR",
+     "distinct": 232,
+     "family": "text",
+     "name": "CountryCode",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "code",
+     "rows": 4079,
+     "sample_values": [
+      "TCA",
+      "TWN",
+      "GBR",
+      "THA",
+      "CAN",
+      "POL",
+      "KGZ",
+      "BEL",
+      "LBR",
+      "CZE"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "CHN",
+       363
+      ],
+      [
+       "IND",
+       341
+      ],
+      [
+       "USA",
+       274
+      ],
+      [
+       "BRA",
+       250
+      ],
+      [
+       "JPN",
+       248
+      ],
+      [
+       "RUS",
+       189
+      ],
+      [
+       "MEX",
+       173
+      ],
+      [
+       "PHL",
+       136
+      ],
+      [
+       "DEU",
+       93
+      ],
+      [
+       "IDN",
+       85
+      ]
+     ],
+     "uniqueness": 0.05687668546212307,
+     "zero_rate": 0.0
+    },
+    "District": {
+     "declared_type": "VARCHAR",
+     "distinct": 1367,
+     "family": "text",
+     "name": "District",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.000980632507967639,
+     "position": 3,
+     "role": "text",
+     "rows": 4079,
+     "sample_values": [
+      "al-Qadarif",
+      "Sanaa",
+      "Guerrero",
+      "Holgu\u00edn",
+      "DhiQar",
+      "Northern Mindanao",
+      "Nairobi",
+      "Ilocos",
+      "Kigali",
+      "Wellington"
+     ],
+     "text": {
+      "avg_len": 9.028220858895706,
+      "code_share": 0.00049079754601227,
+      "composite_share": 0.05030674846625767,
+      "date_shape_share": 0.0,
+      "max_len": 20,
+      "min_len": 1,
+      "space_share": 0.24343558282208588,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "England",
+       71
+      ],
+      [
+       "S\u00e3o Paulo",
+       69
+      ],
+      [
+       "California",
+       68
+      ],
+      [
+       "Punjab",
+       47
+      ],
+      [
+       "West Bengali",
+       46
+      ],
+      [
+       "Uttar Pradesh",
+       43
+      ],
+      [
+       "Nordrhein-Westfalen",
+       37
+      ],
+      [
+       "Andhra Pradesh",
+       35
+      ],
+      [
+       "Maharashtra",
+       35
+      ],
+      [
+       "Shandong",
+       32
+      ]
+     ],
+     "uniqueness": 0.33513115959794065,
+     "zero_rate": 0.0
+    },
+    "ID": {
+     "declared_type": "BIGINT",
+     "distinct": 4079,
+     "family": "int",
+     "name": "ID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 4079.0,
+      "mean": 2040.0,
+      "min": 1.0,
+      "p25": 1020.5,
+      "p50": 2040.0,
+      "p75": 3059.5
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 4079,
+     "sample_values": [
+      "2881",
+      "3773",
+      "4071",
+      "2982",
+      "153",
+      "1470",
+      "40",
+      "3125",
+      "2538",
+      "3573"
+     ],
+     "text": {
+      "avg_len": 3.728609953419956,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1",
+       1
+      ],
+      [
+       "10",
+       1
+      ],
+      [
+       "100",
+       1
+      ],
+      [
+       "1000",
+       1
+      ],
+      [
+       "1001",
+       1
+      ],
+      [
+       "1002",
+       1
+      ],
+      [
+       "1003",
+       1
+      ],
+      [
+       "1004",
+       1
+      ],
+      [
+       "1005",
+       1
+      ],
+      [
+       "1006",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Name": {
+     "declared_type": "VARCHAR",
+     "distinct": 4001,
+     "family": "text",
+     "name": "Name",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 4079,
+     "sample_values": [
+      "Faisalabad",
+      "Louisville",
+      "Concepci\u00f3n",
+      "Iksan",
+      "Apucarana",
+      "al-Qadarif",
+      "Sanaa",
+      "S\u00e3o Jo\u00e3o de Meriti",
+      "Bacolod",
+      "Hatay (Antakya)"
+     ],
+     "text": {
+      "avg_len": 8.529541554302526,
+      "code_share": 0.0,
+      "composite_share": 0.026231919588134346,
+      "date_shape_share": 0.0,
+      "max_len": 33,
+      "min_len": 3,
+      "space_share": 0.16229468006864428,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Cambridge",
+       3
+      ],
+      [
+       "C\u00f3rdoba",
+       3
+      ],
+      [
+       "Hamilton",
+       3
+      ],
+      [
+       "La Paz",
+       3
+      ],
+      [
+       "Le\u00f3n",
+       3
+      ],
+      [
+       "Richmond",
+       3
+      ],
+      [
+       "San Fernando",
+       3
+      ],
+      [
+       "San Jose",
+       3
+      ],
+      [
+       "San Miguel",
+       3
+      ],
+      [
+       "Springfield",
+       3
+      ]
+     ],
+     "uniqueness": 0.980877666094631,
+     "zero_rate": 0.0
+    },
+    "Population": {
+     "declared_type": "BIGINT",
+     "distinct": 3897,
+     "family": "int",
+     "name": "Population",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.00037114430637300586,
+      "max": 10500000.0,
+      "mean": 350468.22358421184,
+      "min": 42.0,
+      "p25": 114789.0,
+      "p50": 167051.0,
+      "p75": 310638.5
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "int",
+     "rows": 4079,
+     "sample_values": [
+      "94685",
+      "110487",
+      "120770",
+      "117748",
+      "350043",
+      "108441",
+      "114829",
+      "207588",
+      "92779",
+      "470809"
+     ],
+     "text": {
+      "avg_len": 5.918607501838686,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "90000",
+       12
+      ],
+      [
+       "101000",
+       6
+      ],
+      [
+       "100000",
+       4
+      ],
+      [
+       "103300",
+       4
+      ],
+      [
+       "106000",
+       4
+      ],
+      [
+       "112000",
+       4
+      ],
+      [
+       "127000",
+       4
+      ],
+      [
+       "130000",
+       4
+      ],
+      [
+       "140800",
+       4
+      ],
+      [
+       "92000",
+       4
+      ]
+     ],
+     "uniqueness": 0.9553812208874725,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 4079,
+   "sample_rows": [
+    {
+     "CountryCode": "PHL",
+     "District": "Central Luzon",
+     "ID": 841,
+     "Name": "Lubao",
+     "Population": 125699
+    },
+    {
+     "CountryCode": "IDN",
+     "District": "Sumatera Utara",
+     "ID": 988,
+     "Name": "Binjai",
+     "Population": 127222
+    },
+    {
+     "CountryCode": "JPN",
+     "District": "Nagano",
+     "ID": 1632,
+     "Name": "Matsumoto",
+     "Population": 206801
+    },
+    {
+     "CountryCode": "CHN",
+     "District": "Xinxiang",
+     "ID": 2167,
+     "Name": "Changji",
+     "Population": 132260
+    },
+    {
+     "CountryCode": "UKR",
+     "District": "Zytomyr",
+     "ID": 3477,
+     "Name": "Berdyt\u0161iv",
+     "Population": 90000
+    }
+   ]
+  },
+  "country": {
+   "columns": {
+    "Capital": {
+     "declared_type": "BIGINT",
+     "distinct": 232,
+     "family": "int",
+     "name": "Capital",
+     "null_rate": 0.029288702928870293,
+     "nulls": 7,
+     "numeric": {
+      "density": 0.05694648993618066,
+      "max": 4074.0,
+      "mean": 2071.3060344827586,
+      "min": 1.0,
+      "p25": 915.75,
+      "p50": 2449.5,
+      "p75": 3065.25
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 13,
+     "role": "int",
+     "rows": 239,
+     "sample_values": [
+      "2881",
+      "3066",
+      "3580",
+      "928",
+      "69",
+      "33",
+      "1792",
+      "2738",
+      "3261",
+      "456"
+     ],
+     "text": {
+      "avg_len": 3.6336206896551726,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1",
+       1
+      ],
+      [
+       "1109",
+       1
+      ],
+      [
+       "126",
+       1
+      ],
+      [
+       "129",
+       1
+      ],
+      [
+       "135",
+       1
+      ],
+      [
+       "1365",
+       1
+      ],
+      [
+       "1380",
+       1
+      ],
+      [
+       "144",
+       1
+      ],
+      [
+       "1447",
+       1
+      ],
+      [
+       "1449",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Code": {
+     "declared_type": "VARCHAR",
+     "distinct": 239,
+     "family": "text",
+     "name": "Code",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "code",
+     "rows": 239,
+     "sample_values": [
+      "TCA",
+      "TWN",
+      "GBR",
+      "SGS",
+      "THA",
+      "CAN",
+      "POL",
+      "HMD",
+      "KGZ",
+      "BEL"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "ABW",
+       1
+      ],
+      [
+       "AFG",
+       1
+      ],
+      [
+       "AGO",
+       1
+      ],
+      [
+       "AIA",
+       1
+      ],
+      [
+       "ALB",
+       1
+      ],
+      [
+       "AND",
+       1
+      ],
+      [
+       "ANT",
+       1
+      ],
+      [
+       "ARE",
+       1
+      ],
+      [
+       "ARG",
+       1
+      ],
+      [
+       "ARM",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Code2": {
+     "declared_type": "VARCHAR",
+     "distinct": 239,
+     "family": "text",
+     "name": "Code2",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0041841004184100415,
+     "position": 14,
+     "role": "code",
+     "rows": 239,
+     "sample_values": [
+      "DM",
+      "PE",
+      "YE",
+      "MV",
+      "IS",
+      "VA",
+      "ID",
+      "FR",
+      "PR",
+      "TK"
+     ],
+     "text": {
+      "avg_len": 2.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "AD",
+       1
+      ],
+      [
+       "AE",
+       1
+      ],
+      [
+       "AF",
+       1
+      ],
+      [
+       "AG",
+       1
+      ],
+      [
+       "AI",
+       1
+      ],
+      [
+       "AL",
+       1
+      ],
+      [
+       "AM",
+       1
+      ],
+      [
+       "AN",
+       1
+      ],
+      [
+       "AO",
+       1
+      ],
+      [
+       "AQ",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Continent": {
+     "declared_type": "VARCHAR",
+     "distinct": 7,
+     "family": "text",
+     "name": "Continent",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "text",
+     "rows": 239,
+     "sample_values": [
+      "Europe",
+      "South America",
+      "North America",
+      "Asia",
+      "Oceania",
+      "Africa",
+      "Antarctica"
+     ],
+     "text": {
+      "avg_len": 7.2677824267782425,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 13,
+      "min_len": 4,
+      "space_share": 0.21338912133891214,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Africa",
+       58
+      ],
+      [
+       "Asia",
+       51
+      ],
+      [
+       "Europe",
+       46
+      ],
+      [
+       "North America",
+       37
+      ],
+      [
+       "Oceania",
+       28
+      ],
+      [
+       "South America",
+       14
+      ],
+      [
+       "Antarctica",
+       5
+      ]
+     ],
+     "uniqueness": 0.029288702928870293,
+     "zero_rate": 0.0
+    },
+    "GNP": {
+     "declared_type": "DOUBLE",
+     "distinct": 214,
+     "family": "float",
+     "name": "GNP",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 8510700.0,
+      "mean": 122823.88242677823,
+      "min": 0.0,
+      "p25": 640.0,
+      "p50": 4787.0,
+      "p75": 29944.5
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 8,
+     "role": "float",
+     "rows": 239,
+     "sample_values": [
+      "1043.0",
+      "3512.0",
+      "20594.0",
+      "82710.0",
+      "3377.0",
+      "681.0",
+      "982268.0",
+      "1161755.0",
+      "2223.0",
+      "2133367.0"
+     ],
+     "text": {
+      "avg_len": 5.99581589958159,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 9,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0.0",
+       24
+      ],
+      [
+       "6.0",
+       2
+      ],
+      [
+       "612.0",
+       2
+      ],
+      [
+       "100.0",
+       1
+      ],
+      [
+       "10162.0",
+       1
+      ],
+      [
+       "10226.0",
+       1
+      ],
+      [
+       "102896.0",
+       1
+      ],
+      [
+       "1043.0",
+       1
+      ],
+      [
+       "105.0",
+       1
+      ],
+      [
+       "1054.0",
+       1
+      ]
+     ],
+     "uniqueness": 0.895397489539749,
+     "zero_rate": 0.100418410041841
+    },
+    "GNPOld": {
+     "declared_type": "DOUBLE",
+     "distinct": 178,
+     "family": "int",
+     "name": "GNPOld",
+     "null_rate": 0.25523012552301255,
+     "nulls": 61,
+     "numeric": {
+      "density": 2.194619877042106e-05,
+      "max": 8110900.0,
+      "mean": 165534.31460674157,
+      "min": 157.0,
+      "p25": 2187.0,
+      "p50": 8421.0,
+      "p75": 71145.5
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 9,
+     "role": "int",
+     "rows": 239,
+     "sample_values": [
+      "1161.0",
+      "1392448.0",
+      "8920.0",
+      "6180.0",
+      "64926.0",
+      "10285.0",
+      "206025.0",
+      "4361.0",
+      "52037.0",
+      "19300.0"
+     ],
+     "text": {
+      "avg_len": 6.567415730337078,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 9,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "10169.0",
+       1
+      ],
+      [
+       "102133.0",
+       1
+      ],
+      [
+       "10241.0",
+       1
+      ],
+      [
+       "10285.0",
+       1
+      ],
+      [
+       "105116.0",
+       1
+      ],
+      [
+       "1056.0",
+       1
+      ],
+      [
+       "1081.0",
+       1
+      ],
+      [
+       "1084.0",
+       1
+      ],
+      [
+       "1102.0",
+       1
+      ],
+      [
+       "11203.0",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "GovernmentForm": {
+     "declared_type": "VARCHAR",
+     "distinct": 35,
+     "family": "text",
+     "name": "GovernmentForm",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 11,
+     "role": "text",
+     "rows": 239,
+     "sample_values": [
+      "Co-administrated",
+      "Parliamentary Coprincipality",
+      "Monarchy (Sultanate)",
+      "Dependent Territory of the UK",
+      "Nonmetropolitan Territory of New Zealand",
+      "Territory of Australia",
+      "Federation",
+      "Parlementary Monarchy",
+      "Socialistic State",
+      "Monarchy"
+     ],
+     "text": {
+      "avg_len": 15.518828451882845,
+      "code_share": 0.0,
+      "composite_share": 0.0041841004184100415,
+      "date_shape_share": 0.0,
+      "max_len": 44,
+      "min_len": 8,
+      "space_share": 0.4560669456066946,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Republic",
+       122
+      ],
+      [
+       "Constitutional Monarchy",
+       29
+      ],
+      [
+       "Federal Republic",
+       15
+      ],
+      [
+       "Dependent Territory of the UK",
+       12
+      ],
+      [
+       "Monarchy",
+       5
+      ],
+      [
+       "Constitutional Monarchy, Federation",
+       4
+      ],
+      [
+       "Nonmetropolitan Territory of France",
+       4
+      ],
+      [
+       "Overseas Department of France",
+       4
+      ],
+      [
+       "Territory of Australia",
+       4
+      ],
+      [
+       "Nonmetropolitan Territory of New Zealand",
+       3
+      ]
+     ],
+     "uniqueness": 0.14644351464435146,
+     "zero_rate": 0.0
+    },
+    "HeadOfState": {
+     "declared_type": "VARCHAR",
+     "distinct": 179,
+     "family": "text",
+     "name": "HeadOfState",
+     "null_rate": 0.0041841004184100415,
+     "nulls": 1,
+     "pattern": "other",
+     "placeholder_rate": 0.008368200836820083,
+     "position": 12,
+     "role": "text",
+     "rows": 239,
+     "sample_values": [
+      "Vladimir Putin",
+      "John Kufuor",
+      "kenraali Than Shwe",
+      "Hamad ibn Isa al-Khalifa",
+      "Maaouiya Ould Sid\u00b4Ahmad Taya",
+      "Abdiqassim Salad Hassan",
+      "Abdullah II",
+      "Tarja Halonen",
+      "Azali Assoumani",
+      "Isayas Afewerki [Isaias Afwerki]"
+     ],
+     "text": {
+      "avg_len": 15.80084745762712,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 33,
+      "min_len": 5,
+      "space_share": 0.9788135593220338,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Elisabeth II",
+       35
+      ],
+      [
+       "Jacques Chirac",
+       11
+      ],
+      [
+       "George W. Bush",
+       7
+      ],
+      [
+       "Beatrix",
+       3
+      ],
+      [
+       "Harald V",
+       3
+      ],
+      [
+       "Jiang Zemin",
+       3
+      ],
+      [
+       "Margrethe II",
+       3
+      ],
+      [
+       "",
+       2
+      ],
+      [
+       "Abdelaziz Bouteflika",
+       1
+      ],
+      [
+       "Abdiqassim Salad Hassan",
+       1
+      ]
+     ],
+     "uniqueness": 0.7521008403361344,
+     "zero_rate": 0.0
+    },
+    "IndepYear": {
+     "declared_type": "BIGINT",
+     "distinct": 88,
+     "family": "int",
+     "name": "IndepYear",
+     "null_rate": 0.19665271966527198,
+     "nulls": 47,
+     "numeric": {
+      "density": 0.025014212620807278,
+      "max": 1994.0,
+      "mean": 1847.2604166666667,
+      "min": -1523.0,
+      "p25": 1906.75,
+      "p50": 1960.0,
+      "p75": 1974.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "int",
+     "rows": 239,
+     "sample_values": [
+      "1960",
+      "1965",
+      "1994",
+      "1776",
+      "1980",
+      "1968",
+      "1977",
+      "1929",
+      "1978",
+      "1838"
+     ],
+     "text": {
+      "avg_len": 3.9895833333333335,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1960",
+       18
+      ],
+      [
+       "1991",
+       18
+      ],
+      [
+       "1962",
+       7
+      ],
+      [
+       "1975",
+       7
+      ],
+      [
+       "1918",
+       5
+      ],
+      [
+       "1948",
+       5
+      ],
+      [
+       "1966",
+       4
+      ],
+      [
+       "1968",
+       4
+      ],
+      [
+       "1971",
+       4
+      ],
+      [
+       "1810",
+       3
+      ]
+     ],
+     "uniqueness": 0.4583333333333333,
+     "zero_rate": 0.0
+    },
+    "LifeExpectancy": {
+     "declared_type": "DOUBLE",
+     "distinct": 160,
+     "family": "float",
+     "name": "LifeExpectancy",
+     "null_rate": 0.07112970711297072,
+     "nulls": 17,
+     "numeric": {
+      "max": 83.5,
+      "mean": 66.48603603603601,
+      "min": 37.2,
+      "p25": 60.300000000000004,
+      "p50": 70.15,
+      "p75": 75.5
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 7,
+     "role": "float",
+     "rows": 239,
+     "sample_values": [
+      "75.4",
+      "73.7",
+      "49.8",
+      "45.9",
+      "50.5",
+      "76.9",
+      "63.2",
+      "68.6",
+      "80.7",
+      "73.0"
+     ],
+     "text": {
+      "avg_len": 4.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "71.4",
+       4
+      ],
+      [
+       "73.7",
+       4
+      ],
+      [
+       "78.8",
+       4
+      ],
+      [
+       "50.8",
+       3
+      ],
+      [
+       "64.5",
+       3
+      ],
+      [
+       "68.0",
+       3
+      ],
+      [
+       "68.6",
+       3
+      ],
+      [
+       "69.7",
+       3
+      ],
+      [
+       "71.1",
+       3
+      ],
+      [
+       "75.5",
+       3
+      ]
+     ],
+     "uniqueness": 0.7207207207207207,
+     "zero_rate": 0.0
+    },
+    "LocalName": {
+     "declared_type": "VARCHAR",
+     "distinct": 239,
+     "family": "text",
+     "name": "LocalName",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 10,
+     "role": "text",
+     "rows": 239,
+     "sample_values": [
+      "Belau/Palau",
+      "Wallis-et-Futuna",
+      "Muritaniya/Mauritanie",
+      "Lubnan",
+      "Uzbekiston",
+      "Al-Bahrayn",
+      "Cameroun/Cameroon",
+      "Nihon/Nippon",
+      "Timor Timur",
+      "Tanzania"
+     ],
+     "text": {
+      "avg_len": 11.807531380753138,
+      "code_share": 0.0,
+      "composite_share": 0.11715481171548117,
+      "date_shape_share": 0.0,
+      "max_len": 44,
+      "min_len": 1,
+      "space_share": 0.2719665271966527,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Afganistan/Afqanestan",
+       1
+      ],
+      [
+       "Al-Bahrayn",
+       1
+      ],
+      [
+       "Al-Imarat al-\u00b4Arabiya al-Muttahida",
+       1
+      ],
+      [
+       "Al-Jaza\u2019ir/Alg\u00e9rie",
+       1
+      ],
+      [
+       "Al-Kuwayt",
+       1
+      ],
+      [
+       "Al-Maghrib",
+       1
+      ],
+      [
+       "Al-Urdunn",
+       1
+      ],
+      [
+       "Al-Yaman",
+       1
+      ],
+      [
+       "Al-\u00b4Arabiya as-Sa\u00b4udiya",
+       1
+      ],
+      [
+       "Al-\u00b4Iraq",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Name": {
+     "declared_type": "VARCHAR",
+     "distinct": 239,
+     "family": "text",
+     "name": "Name",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 239,
+     "sample_values": [
+      "Djibouti",
+      "Tanzania",
+      "Lesotho",
+      "Antigua and Barbuda",
+      "Switzerland",
+      "Oman",
+      "Lithuania",
+      "Cyprus",
+      "Portugal",
+      "Netherlands"
+     ],
+     "text": {
+      "avg_len": 10.096234309623432,
+      "code_share": 0.0,
+      "composite_share": 0.0041841004184100415,
+      "date_shape_share": 0.0,
+      "max_len": 44,
+      "min_len": 4,
+      "space_share": 0.27615062761506276,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Afghanistan",
+       1
+      ],
+      [
+       "Albania",
+       1
+      ],
+      [
+       "Algeria",
+       1
+      ],
+      [
+       "American Samoa",
+       1
+      ],
+      [
+       "Andorra",
+       1
+      ],
+      [
+       "Angola",
+       1
+      ],
+      [
+       "Anguilla",
+       1
+      ],
+      [
+       "Antarctica",
+       1
+      ],
+      [
+       "Antigua and Barbuda",
+       1
+      ],
+      [
+       "Argentina",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Population": {
+     "declared_type": "BIGINT",
+     "distinct": 226,
+     "family": "int",
+     "name": "Population",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.7689999187755077e-07,
+      "max": 1277558000.0,
+      "mean": 25434098.11715481,
+      "min": 0.0,
+      "p25": 238000.0,
+      "p50": 3869000.0,
+      "p75": 14935500.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 6,
+     "role": "int",
+     "rows": 239,
+     "sample_values": [
+      "18886000",
+      "129155000",
+      "2441000",
+      "28351000",
+      "64000",
+      "1277558000",
+      "61399000",
+      "20212000",
+      "19000",
+      "10545700"
+     ],
+     "text": {
+      "avg_len": 6.644351464435147,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0",
+       7
+      ],
+      [
+       "2000",
+       4
+      ],
+      [
+       "12000",
+       2
+      ],
+      [
+       "38000",
+       2
+      ],
+      [
+       "68000",
+       2
+      ],
+      [
+       "78000",
+       2
+      ],
+      [
+       "1000",
+       1
+      ],
+      [
+       "10043200",
+       1
+      ],
+      [
+       "1008000",
+       1
+      ],
+      [
+       "10097000",
+       1
+      ]
+     ],
+     "uniqueness": 0.9456066945606695,
+     "zero_rate": 0.029288702928870293
+    },
+    "Region": {
+     "declared_type": "VARCHAR",
+     "distinct": 25,
+     "family": "text",
+     "name": "Region",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "text",
+     "rows": 239,
+     "sample_values": [
+      "Micronesia",
+      "South America",
+      "Polynesia",
+      "North America",
+      "Southern Africa",
+      "Southern and Central Asia",
+      "Nordic Countries",
+      "Southeast Asia",
+      "Western Europe",
+      "Northern Africa"
+     ],
+     "text": {
+      "avg_len": 13.748953974895397,
+      "code_share": 0.0,
+      "composite_share": 0.0041841004184100415,
+      "date_shape_share": 0.0,
+      "max_len": 25,
+      "min_len": 9,
+      "space_share": 0.7824267782426778,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Caribbean",
+       24
+      ],
+      [
+       "Eastern Africa",
+       20
+      ],
+      [
+       "Middle East",
+       18
+      ],
+      [
+       "Western Africa",
+       17
+      ],
+      [
+       "Southern Europe",
+       15
+      ],
+      [
+       "South America",
+       14
+      ],
+      [
+       "Southern and Central Asia",
+       14
+      ],
+      [
+       "Southeast Asia",
+       11
+      ],
+      [
+       "Eastern Europe",
+       10
+      ],
+      [
+       "Polynesia",
+       10
+      ]
+     ],
+     "uniqueness": 0.10460251046025104,
+     "zero_rate": 0.0
+    },
+    "SurfaceArea": {
+     "declared_type": "DOUBLE",
+     "distinct": 238,
+     "family": "float",
+     "name": "SurfaceArea",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 17075400.0,
+      "mean": 623248.1460251047,
+      "min": 0.4,
+      "p25": 2275.0,
+      "p50": 71740.0,
+      "p75": 398754.5
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "float",
+     "rows": 239,
+     "sample_values": [
+      "796095.0",
+      "99434.0",
+      "622984.0",
+      "18274.0",
+      "455.0",
+      "1862.0",
+      "7780.0",
+      "314.0",
+      "93030.0",
+      "28748.0"
+     ],
+     "text": {
+      "avg_len": 6.98744769874477,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "430.0",
+       2
+      ],
+      [
+       "0.4",
+       1
+      ],
+      [
+       "1.5",
+       1
+      ],
+      [
+       "1001449.0",
+       1
+      ],
+      [
+       "102.0",
+       1
+      ],
+      [
+       "102173.0",
+       1
+      ],
+      [
+       "1025520.0",
+       1
+      ],
+      [
+       "103000.0",
+       1
+      ],
+      [
+       "10400.0",
+       1
+      ],
+      [
+       "1075.0",
+       1
+      ]
+     ],
+     "uniqueness": 0.99581589958159,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 239,
+   "sample_rows": [
+    {
+     "Capital": null,
+     "Code": "IOT",
+     "Code2": "IO",
+     "Continent": "Africa",
+     "GNP": 0.0,
+     "GNPOld": null,
+     "GovernmentForm": "Dependent Territory of the UK",
+     "HeadOfState": "Elisabeth II",
+     "IndepYear": null,
+     "LifeExpectancy": null,
+     "LocalName": "British Indian Ocean Territory",
+     "Name": "British Indian Ocean Territory",
+     "Population": 0,
+     "Region": "Eastern Africa",
+     "SurfaceArea": 78.0
+    },
+    {
+     "Capital": 2432,
+     "Code": "LAO",
+     "Code2": "LA",
+     "Continent": "Asia",
+     "GNP": 1292.0,
+     "GNPOld": 1746.0,
+     "GovernmentForm": "Republic",
+     "HeadOfState": "Khamtay Siphandone",
+     "IndepYear": 1953,
+     "LifeExpectancy": 53.1,
+     "LocalName": "Lao",
+     "Name": "Laos",
+     "Population": 5433000,
+     "Region": "Southeast Asia",
+     "SurfaceArea": 236800.0
+    },
+    {
+     "Capital": 3207,
+     "Code": "SLE",
+     "Code2": "SL",
+     "Continent": "Africa",
+     "GNP": 746.0,
+     "GNPOld": 858.0,
+     "GovernmentForm": "Republic",
+     "HeadOfState": "Ahmed Tejan Kabbah",
+     "IndepYear": 1961,
+     "LifeExpectancy": 45.3,
+     "LocalName": "Sierra Leone",
+     "Name": "Sierra Leone",
+     "Population": 4854000,
+     "Region": "Western Africa",
+     "SurfaceArea": 71740.0
+    },
+    {
+     "Capital": 3048,
+     "Code": "SWE",
+     "Code2": "SE",
+     "Continent": "Europe",
+     "GNP": 226492.0,
+     "GNPOld": 227757.0,
+     "GovernmentForm": "Constitutional Monarchy",
+     "HeadOfState": "Carl XVI Gustaf",
+     "IndepYear": 836,
+     "LifeExpectancy": 79.6,
+     "LocalName": "Sverige",
+     "Name": "Sweden",
+     "Population": 8861400,
+     "Region": "Nordic Countries",
+     "SurfaceArea": 449964.0
+    },
+    {
+     "Capital": 4068,
+     "Code": "ZWE",
+     "Code2": "ZW",
+     "Continent": "Africa",
+     "GNP": 5951.0,
+     "GNPOld": 8670.0,
+     "GovernmentForm": "Republic",
+     "HeadOfState": "Robert G. Mugabe",
+     "IndepYear": 1980,
+     "LifeExpectancy": 37.8,
+     "LocalName": "Zimbabwe",
+     "Name": "Zimbabwe",
+     "Population": 11669000,
+     "Region": "Eastern Africa",
+     "SurfaceArea": 390757.0
+    }
+   ]
+  },
+  "countrylanguage": {
+   "columns": {
+    "CountryCode": {
+     "declared_type": "VARCHAR",
+     "distinct": 233,
+     "family": "text",
+     "name": "CountryCode",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "code",
+     "rows": 984,
+     "sample_values": [
+      "TCA",
+      "TWN",
+      "GBR",
+      "THA",
+      "CAN",
+      "POL",
+      "KGZ",
+      "BEL",
+      "LBR",
+      "CZE"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "CAN",
+       12
+      ],
+      [
+       "CHN",
+       12
+      ],
+      [
+       "IND",
+       12
+      ],
+      [
+       "RUS",
+       12
+      ],
+      [
+       "USA",
+       12
+      ],
+      [
+       "TZA",
+       11
+      ],
+      [
+       "ZAF",
+       11
+      ],
+      [
+       "COD",
+       10
+      ],
+      [
+       "IRN",
+       10
+      ],
+      [
+       "KEN",
+       10
+      ]
+     ],
+     "uniqueness": 0.23678861788617886,
+     "zero_rate": 0.0
+    },
+    "IsOfficial": {
+     "declared_type": "VARCHAR",
+     "distinct": 2,
+     "family": "text",
+     "name": "IsOfficial",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "boolean",
+     "rows": 984,
+     "sample_values": [
+      "T",
+      "F"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "F",
+       746
+      ],
+      [
+       "T",
+       238
+      ]
+     ],
+     "uniqueness": 0.0020325203252032522,
+     "zero_rate": 0.0
+    },
+    "Language": {
+     "declared_type": "VARCHAR",
+     "distinct": 457,
+     "family": "text",
+     "name": "Language",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 984,
+     "sample_values": [
+      "Shambala",
+      "Oromo",
+      "Seselwa",
+      "Sotho",
+      "Swazi",
+      "Mandyako",
+      "Southsotho",
+      "Assyrian",
+      "Javanese",
+      "Yalunka"
+     ],
+     "text": {
+      "avg_len": 7.1605691056910565,
+      "code_share": 0.0,
+      "composite_share": 0.03048780487804878,
+      "date_shape_share": 0.0,
+      "max_len": 25,
+      "min_len": 2,
+      "space_share": 0.056910569105691054,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "English",
+       60
+      ],
+      [
+       "Arabic",
+       33
+      ],
+      [
+       "Spanish",
+       28
+      ],
+      [
+       "French",
+       25
+      ],
+      [
+       "Chinese",
+       19
+      ],
+      [
+       "German",
+       19
+      ],
+      [
+       "Russian",
+       17
+      ],
+      [
+       "Italian",
+       15
+      ],
+      [
+       "Creole English",
+       14
+      ],
+      [
+       "Ful",
+       12
+      ]
+     ],
+     "uniqueness": 0.4644308943089431,
+     "zero_rate": 0.0
+    },
+    "Percentage": {
+     "declared_type": "DOUBLE",
+     "distinct": 357,
+     "family": "float",
+     "name": "Percentage",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 100.0,
+      "mean": 20.374390243902447,
+      "min": 0.0,
+      "p25": 1.2750000000000001,
+      "p50": 5.3,
+      "p75": 21.125
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "float",
+     "rows": 984,
+     "sample_values": [
+      "5.2",
+      "97.6",
+      "48.2",
+      "98.4",
+      "17.3",
+      "4.9",
+      "16.4",
+      "23.8",
+      "94.1",
+      "40.1"
+     ],
+     "text": {
+      "avg_len": 3.369918699186992,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0.0",
+       65
+      ],
+      [
+       "0.4",
+       25
+      ],
+      [
+       "0.2",
+       22
+      ],
+      [
+       "0.1",
+       20
+      ],
+      [
+       "0.5",
+       20
+      ],
+      [
+       "0.6",
+       20
+      ],
+      [
+       "0.3",
+       17
+      ],
+      [
+       "0.7",
+       17
+      ],
+      [
+       "1.4",
+       15
+      ],
+      [
+       "1.6",
+       15
+      ]
+     ],
+     "uniqueness": 0.3628048780487805,
+     "zero_rate": 0.06605691056910569
+    }
+   },
+   "rows": 984,
+   "sample_rows": [
+    {
+     "CountryCode": "IND",
+     "IsOfficial": "F",
+     "Language": "Urdu",
+     "Percentage": 5.1
+    },
+    {
+     "CountryCode": "KNA",
+     "IsOfficial": "F",
+     "Language": "Creole English",
+     "Percentage": 100.0
+    },
+    {
+     "CountryCode": "SLB",
+     "IsOfficial": "F",
+     "Language": "Malenasian Languages",
+     "Percentage": 85.6
+    },
+    {
+     "CountryCode": "SYC",
+     "IsOfficial": "F",
+     "Language": "Seselwa",
+     "Percentage": 91.3
+    },
+    {
+     "CountryCode": "ZWE",
+     "IsOfficial": "T",
+     "Language": "English",
+     "Percentage": 2.2
+    }
+   ]
+  }
+ }
+}

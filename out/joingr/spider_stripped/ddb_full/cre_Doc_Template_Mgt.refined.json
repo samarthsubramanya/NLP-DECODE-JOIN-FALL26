@@ -1,0 +1,158 @@
+{
+ "db_id": "cre_Doc_Template_Mgt",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 3,
+ "tables": {
+  "Documents": {
+   "table": {
+    "name": "Documents",
+    "purpose": "Master list of documents (articles, CVs, reviews, etc.), each linked to a layout template and containing paragraphs stored in the Paragraphs table."
+   },
+   "columns": {
+    "Document_Description": {
+     "role": "category",
+     "name": "Document_Description",
+     "description": "Short description or category code of the document. Values are single letters (y, h, w, b, f, r, k, z, n) with no evident meaning; the specific letter-to-meaning mapping is unknown. Could also be a status/type flag, but no joined evidence distinguishes these readings.",
+     "status": "tentative"
+    },
+    "Document_ID": {
+     "role": "identifier",
+     "name": "Document_ID",
+     "description": "Primary key uniquely identifying each document. Referenced by Paragraphs.Document_ID, which stores the document's paragraph content.",
+     "status": "resolved"
+    },
+    "Document_Name": {
+     "role": "identifier",
+     "name": "Document_Name",
+     "description": "Human-readable title of the document (e.g. 'A history of Arts', 'Robbin CV', 'Customer reviews'). Unique per row.",
+     "status": "resolved"
+    },
+    "Other_Details": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "Template_ID": {
+     "role": "identifier",
+     "name": "Template_ID",
+     "description": "Foreign key to Templates.Template_ID, indicating which template/layout the document uses. The lookup table's Template_Details labels are empty, so the meaning of individual template IDs is unknown.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Paragraphs": {
+   "table": {
+    "name": "Paragraphs",
+    "purpose": "Stores individual paragraphs extracted from documents; each row is one paragraph belonging to a document. In this sample the paragraph text values are country names, suggesting the documents are country-related (e.g., country profiles or reports) and paragraphs are short entries like country names."
+   },
+   "columns": {
+    "Document_ID": {
+     "role": "foreign_key",
+     "name": "Document_ID",
+     "description": "Identifier of the document this paragraph belongs to; references Documents.Document_ID (many paragraphs per document).",
+     "status": "resolved"
+    },
+    "Other_Details": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "Paragraph_ID": {
+     "role": "identifier",
+     "name": "Paragraph_ID",
+     "description": "Primary key; unique identifier of the paragraph.",
+     "status": "resolved"
+    },
+    "Paragraph_Text": {
+     "role": "free_text",
+     "name": "Paragraph_Text",
+     "description": "Text content of the paragraph. In this data all values are country names (e.g., Korea, Brazil, Fiji, Japan), so paragraphs here appear to be short country-name entries rather than prose.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Ref_Template_Types": {
+   "table": {
+    "name": "Ref_Template_Types",
+    "purpose": "Lookup/reference table of template type categories. Each row is a distinct document template type (code + description) referenced by the Templates table."
+   },
+   "columns": {
+    "Template_Type_Code": {
+     "role": "code",
+     "name": "Template_Type_Code",
+     "description": "Short code identifying a template type (primary key). Values: AD=Advertisement, BK=Book, CV=CV, PP=Paper, PPT=Presentation. Referenced by Templates.Template_Type_Code.",
+     "status": "resolved"
+    },
+    "Template_Type_Description": {
+     "role": "category",
+     "name": "Template_Type_Description",
+     "description": "Human-readable label of the template type (e.g. Advertisement, Book, CV, Paper, Presentation).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Templates": {
+   "table": {
+    "name": "Templates",
+    "purpose": "Catalog of document templates, each with a type (presentation, CV, advertisement, paper, book), a version number, and an effective validity period. Templates are referenced by Documents, which presumably instantiate them; Paragraphs likely hold template content. The data appears synthetic/test data (empty details, From dates after To dates), so the effective-date semantics are nominal rather than reliable."
+   },
+   "columns": {
+    "Date_Effective_From": {
+     "role": "date",
+     "name": "Date_Effective_From",
+     "description": "Start of the template's validity/effective period, stored as text but parseable as a datetime. Note: in several rows it is later than Date_Effective_To, so the data does not consistently honor interval semantics.",
+     "status": "tentative"
+    },
+    "Date_Effective_To": {
+     "role": "date",
+     "name": "Date_Effective_To",
+     "description": "End of the template's validity/effective period, stored as text but parseable as a datetime. Often earlier than the From date in this data, so the interval meaning is nominal.",
+     "status": "tentative"
+    },
+    "Template_Details": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "Template_ID": {
+     "role": "identifier",
+     "name": "Template_ID",
+     "description": "Primary key of the Templates table; unique integer identifier for each template. Referenced by Documents.Template_ID, linking documents to the template they were created from.",
+     "status": "resolved"
+    },
+    "Template_Type_Code": {
+     "role": "code",
+     "name": "Template_Type_Code",
+     "description": "Code identifying the template's type; foreign key to Ref_Template_Types. Values: PPT=Presentation, CV=CV, AD=Advertisement, PP=Paper, BK=Book.",
+     "status": "resolved"
+    },
+    "Version_Number": {
+     "role": "identifier",
+     "name": "Version_Number",
+     "description": "Version of the template, an integer 0-9; multiple templates share the same version number, so it distinguishes revisions within a template type rather than being unique. Alternatively it could be part of a composite key with Template_ID, but the data does not confirm this.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 3,
+  "columns_changed": 2
+ }
+}

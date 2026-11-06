@@ -1,0 +1,58 @@
+{
+ "db_id": "GreaterManchesterCrime",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 0,
+ "tables": {
+  "GreaterManchesterCrime": {
+   "table": {
+    "name": "GreaterManchesterCrime",
+    "purpose": "Records of reported crimes in Greater Manchester, UK, during August 2018, with location, crime type, and investigation outcome. Each row is one recorded crime incident. The structure matches UK police street-level crime data (e.g. police.uk), though the CrimeID values are unusual (see below)."
+   },
+   "columns": {
+    "CrimeID": {
+     "role": "identifier",
+     "name": "CrimeID",
+     "description": "Primary key identifying each crime record. Values are MAC-address-like hex strings (six colon-separated byte pairs), unique across all 5000 rows. The format is atypical for a crime ID (UK police data normally uses numeric IDs); it appears to be a synthetic or anonymized identifier, but its identifying function is clear.",
+     "status": "resolved"
+    },
+    "CrimeTS": {
+     "role": "date",
+     "name": "CrimeTimestamp",
+     "description": "Timestamp of the crime record, second precision, spanning 2018-08-01 to 2018-08-30 (August 2018). Nearly unique per row, so it functions as the incident time. Whether it is the time the crime occurred or the time it was recorded/reported cannot be distinguished from the data alone.",
+     "status": "tentative"
+    },
+    "LSOA": {
+     "role": "category",
+     "name": "LSOA",
+     "description": "Lower Layer Super Output Area name of the crime's location, combining a Greater Manchester borough (Manchester, Salford, Bolton, Tameside, Rochdale, Oldham, etc.) with a census LSOA code (e.g. 'Manchester 055B'). 1375 distinct areas.",
+     "status": "resolved"
+    },
+    "Location": {
+     "role": "category",
+     "name": "Location",
+     "description": "Coarse location description of the crime, in UK police data style: 'On or near <street/place>'. Values are either street names or generic place types (Parking Area, Supermarket, Nightclub, Petrol Station). Anonymized to the 'on or near' level rather than exact coordinates.",
+     "status": "resolved"
+    },
+    "Outcome": {
+     "role": "category",
+     "name": "Outcome",
+     "description": "Investigation outcome of the crime, one of 11 standard UK police outcome categories, e.g. 'Investigation complete; no suspect identified', 'Under investigation', 'Unable to prosecute suspect', 'Awaiting court outcome', 'Offender given a caution'.",
+     "status": "resolved"
+    },
+    "Type": {
+     "role": "category",
+     "name": "CrimeType",
+     "description": "Category of the crime, one of 13 standard UK police crime classifications, e.g. 'Violence and sexual offences', 'Public order', 'Criminal damage and arson', 'Vehicle crime', 'Burglary', 'Shoplifting'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

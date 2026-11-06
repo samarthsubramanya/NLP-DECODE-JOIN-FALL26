@@ -1,0 +1,56 @@
+{
+ "adaptive": false,
+ "candidates": [],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "dist_no_accept_below": 0.3,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "ddb",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_range_span": null,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
+  "r_cap": 2,
+  "self_refs": false
+ },
+ "counts": {},
+ "db_id": "USWildFires",
+ "graphs": {
+  "direct": [],
+  "llm": [],
+  "stats": []
+ },
+ "k_zero_share": 0.0,
+ "keys_run": "ddb",
+ "use_names": true,
+ "weights": {
+  "cardinality": 15,
+  "distribution": 15,
+  "name": 20,
+  "nulls": 10,
+  "overlap": 25,
+  "target_key": 15
+ }
+}

@@ -1,0 +1,522 @@
+{
+ "db_id": "codebase_community",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 13,
+ "tables": {
+  "badges": {
+   "table": {
+    "name": "badges",
+    "purpose": "Badges awarded to users (StackExchange-style data dump). One row per badge awarded to a user; a user can earn the same badge multiple times (e.g. tag-based badges)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "badge_id",
+     "description": "Primary key; unique numeric identifier of the badge award row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "user_id",
+     "description": "Foreign key to users.id; the user who received the badge. Many badges per user (many-to-one).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "name",
+     "description": "Badge name. Mostly standard StackExchange badge names (Student, Supporter, Editor, Scholar, Teacher, Autobiographer, Analytical...), but also tag-based badges whose name is a tag (correlation, nonparametric, modeling, pca, Outspoken). 153 distinct names.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "date",
+     "description": "Timestamp when the badge was awarded, ranging from 2010-07-19 to 2014-09-14.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "comments": {
+   "table": {
+    "name": "comments",
+    "purpose": "Comments on posts (StackExchange-style data dump: each row is one comment made by a user on a post)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "comment_id",
+     "description": "Primary key; unique identifier of the comment.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "post_id",
+     "description": "ID of the post (question or answer) the comment was made on; references posts.col_001 (many comments per post).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "score",
+     "description": "Score of the comment (net upvotes). Mostly 0, small non-negative integers, occasional high outliers (max 90).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "free_text",
+     "name": "text",
+     "description": "Body text of the comment.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "creation_date",
+     "description": "Timestamp when the comment was created (2009-02-02 to 2014-09-14).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "user_id",
+     "description": "ID of the user who wrote the comment; references users.col_001. Null for ~1.6% of comments (likely deleted/anonymized users).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "free_text",
+     "name": "user_display_name",
+     "description": "Display name of the commenting user, populated only when user_id is null (e.g. 'user10525' for deleted accounts, or a real name).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "postHistory": {
+   "table": {
+    "name": "postHistory",
+    "purpose": "Stack Exchange-style post history / revision log: one row per edit or lifecycle event on a post (initial body, title/tag edits, closures, deletions, etc.), referencing the post and the acting user."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "Id",
+     "description": "Primary key; unique identifier of the post-history event.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "PostHistoryTypeId",
+     "description": "Code for the type of history event (e.g. initial question/answer body, title edit, body edit, tag edit, close/reopen, delete/undelete, etc.). 25 distinct codes, 1-38, matching the Stack Exchange PostHistoryTypeId enumeration; exact per-code meanings not verifiable from the data alone. Alternative reading: an internal event-category code not following the Stack Exchange enumeration, though the value range and count fit it well.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "PostId",
+     "description": "Foreign key to posts.Id; the post this history event applies to.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "RevisionGuid",
+     "description": "UUID grouping the revisions of a single edit (all events of one revision share the same GUID); all-zero GUID appears for non-revision events.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "CreationDate",
+     "description": "Timestamp when the history event occurred.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "UserId",
+     "description": "Foreign key to users.Id; the user who caused the event. Null (or -1) for events by deleted/anonymous users or system actions.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "free_text",
+     "name": "Text",
+     "description": "The content captured by the event: post body/title/tags at that revision (values like '<regression>', '<r>', question/answer text). Empty for events without content.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "free_text",
+     "name": "Comment",
+     "description": "Editor's comment describing the change ('edited title', 'added 1 characters in body', 'removed signature and greetings'); empty for most events.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "free_text",
+     "name": "UserDisplayName",
+     "description": "Display name of the acting user when no user account applies (e.g. 'user10525'); empty when UserId is set.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "postLinks": {
+   "table": {
+    "name": "postLinks",
+    "purpose": "Links between posts (Stack Overflow-style PostLinks table): each row records a relationship between two posts, such as duplicate or related links, with the date the link was created."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the post link row; unique integer identifier.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "creation_date",
+     "description": "Timestamp when the link was created.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "post_id",
+     "description": "Id of the source post in the link (references posts.id).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "related_post_id",
+     "description": "Id of the target/related post in the link (references posts.id).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "link_type_id",
+     "description": "Link type code: 1 = duplicate (dominant, ~92%), 3 = related. Only these two values occur; consistent with the Stack Exchange PostLinks enum. Alternative reading: a generic link category code whose labels are not documented in the database itself.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "posts": {
+   "table": {
+    "name": "posts",
+    "purpose": "Stack Exchange-style Q&A posts (questions and answers, apparently from the Cross Validated / statistics site), one row per post. Questions and answers are mixed in this table, distinguished by post type; answers point to their question via a parent id."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "PostId",
+     "description": "Primary key of the post. Referenced by postHistory, comments, postLinks, tags and votes.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "PostTypeId",
+     "description": "Post type code: 1 = question (~43k rows), 2 = answer (~48k rows); rare values 4-7 likely wiki/tag-wiki/moderator-nomination etc. Exact mapping of 3-7 is not verifiable from the data alone.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "AcceptedAnswerId",
+     "description": "Id of the answer accepted as the solution; set only on questions that have an accepted answer (hence ~84% null). Values fall in the post-id range.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "CreationDate",
+     "description": "Date and time the post was created.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "Score",
+     "description": "Net vote score (upvotes minus downvotes); can be negative (min -19).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "ViewCount",
+     "description": "Number of views; populated only for questions (null for answers, ~53% null).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "free_text",
+     "name": "Body",
+     "description": "Post body in HTML (questions and answers).",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "identifier",
+     "name": "OwnerUserId",
+     "description": "Id of the user who created the post; references users.col_001. -1 denotes a system/anonymous owner.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "date",
+     "name": "LastActivityDate",
+     "description": "Timestamp of the last activity (edit, answer, comment) on the post.",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "free_text",
+     "name": "Title",
+     "description": "Post title; only questions have titles (null for answers, ~53% null).",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "category",
+     "name": "Tags",
+     "description": "Question tags in angle-bracket format, e.g. <regression><r>; only on questions.",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "AnswerCount",
+     "description": "Number of answers to the question; null for answers.",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "CommentCount",
+     "description": "Number of comments on the post.",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "FavoriteCount",
+     "description": "Number of users who favorited/starred the question; mostly null (only set when nonzero).",
+     "status": "resolved"
+    },
+    "col_015": {
+     "role": "identifier",
+     "name": "LastEditorUserId",
+     "description": "Id of the user who last edited the post; references users.col_001. Null when never edited.",
+     "status": "resolved"
+    },
+    "col_016": {
+     "role": "date",
+     "name": "LastEditDate",
+     "description": "Timestamp of the last edit; null when the post was never edited.",
+     "status": "resolved"
+    },
+    "col_017": {
+     "role": "date",
+     "name": "CommunityOwnedDate",
+     "description": "Date the post became community wiki (no owner); null for ~97% of posts, matching the rare community-wiki posts. Alternative reading: could mark some other ownership-change event, but community wiki is the standard Stack Exchange meaning.",
+     "status": "tentative"
+    },
+    "col_018": {
+     "role": "identifier",
+     "name": "ParentId",
+     "description": "For answers, the id of the parent question (null for questions, ~48% null). Values are post ids; top value 726 has 136 answers.",
+     "status": "resolved"
+    },
+    "col_019": {
+     "role": "date",
+     "name": "ClosedDate",
+     "description": "Date the post was closed; null for the ~98% of posts that are open. Alternative reading: could be the date of deletion or another lifecycle event, but closure is the standard Stack Exchange meaning.",
+     "status": "tentative"
+    },
+    "col_020": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_021": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "tags": {
+   "table": {
+    "name": "tags",
+    "purpose": "Stack Exchange-style tag registry (appears to be from a statistics Q&A site like Cross Validated): one row per tag, with its usage count and links to the posts containing its excerpt and wiki body."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key; unique tag identifier.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "tag_name",
+     "description": "Unique tag name (lowercase, hyphenated), e.g. 'glmm', 'overdispersion', 'ab-test'.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "count",
+     "description": "Number of times the tag is used (usage count); heavily skewed with a max of 7244.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "excerpt_post_id",
+     "description": "Foreign key to posts.id for the tag's excerpt (short description) post; null when no excerpt exists. The paired col_005 is consistently one less, matching the Stack Exchange pattern of excerpt and wiki posts created together.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "wiki_post_id",
+     "description": "Foreign key to posts.id for the tag's full wiki (description) post; null when no wiki exists.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "users": {
+   "table": {
+    "name": "users",
+    "purpose": "Registered user accounts of a Stack Overflow-style Q&A site (one row per user). Referenced by posts, comments, postHistory, badges and votes as the author/owner of that content."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "user_id",
+     "description": "Primary key of the user row. Value -1 is the conventional 'community/anonymous' pseudo-user. Referenced by posts, comments, postHistory and badges as the content author.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "account_id",
+     "description": "Id of the user's global account on the parent Q&A network (shared across sites). Most rows share value 101 (a default/placeholder account), so it is not unique per user. Alternative reading: a per-site account identifier that is simply mostly defaulted in this dump.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "creation_date",
+     "description": "Timestamp when the user account was created (earliest date in table, 2010-07-19, matches site launch).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "display_name",
+     "description": "Public display name of the user; many auto-generated names like 'user34964' for anonymous registrations.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "last_access_date",
+     "description": "Timestamp of the user's most recent site visit; always >= creation_date and includes dates up to the data snapshot date.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "website_url",
+     "description": "Personal website URL from the user's profile; ~80% null, with placeholder values like 'http://none'/'http://N/A' for unset fields.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "location",
+     "description": "Free-text location from the profile (city/country strings like 'London, United Kingdom', 'Washington DC, United States').",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "free_text",
+     "name": "about_me",
+     "description": "HTML 'About me' biography text from the profile; ~77% null. Values like 'merge keep'/'please delete me' reflect account-merge/cleanup notes.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "up_votes",
+     "description": "Count of upvotes cast by the user; heavily zero-skewed, max ~20.9k. Alternative reading: count of upvotes received, though the zero-skew and the paired down_votes column make 'cast' the more likely reading.",
+     "status": "tentative"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "down_votes",
+     "description": "Count of downvotes cast by the user; more zero-skewed than col_009, max ~11.4k, consistent with downvotes being rarer than upvotes. Alternative reading: count of downvotes received.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "views",
+     "description": "Number of profile views; unique per row, ranges up to ~5M, -1 for the community pseudo-user. Alternative reading: some other per-user counter, but profile views is the standard Stack Exchange meaning.",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "age",
+     "description": "Self-reported age in years (13-94, median 30); ~79% null since age is optional.",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "category",
+     "name": "profile_image_url",
+     "description": "URL of the user's avatar (gravatar, googleusercontent, facebook graph URLs); the most frequent value is the default identicon avatar.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "votes": {
+   "table": {
+    "name": "votes",
+    "purpose": "One row per vote cast on a post (StackExchange-style schema): up/down votes, favorites, closures, reopenings, bounties, etc., recorded per post and date, with the voter's user id and bounty amount present only for bounty-related vote types."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "vote_id",
+     "description": "Primary key; unique identifier of the vote record.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "post_id",
+     "description": "Id of the post (question or answer) the vote was cast on; references posts.col_001 (many votes per post).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "vote_type_id",
+     "description": "Vote type code. Values 1-16 match StackExchange vote types: 2 = upvote (dominant, 33323), 5 = favorite, 1 = accepted answer, 3 = downvote, 16 = edit, plus others (e.g. 4 = offensive, 6 = close, 7 = reopen, 8 = bounty start, 9 = bounty awarded, 12 = spam, 15 = moderator review). Exact mapping beyond the observed frequencies is inferred from the standard scheme, so another mapping of the rarer codes could also fit.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "creation_date",
+     "description": "Date the vote was cast (date only, no time), ranging 2010-07-19 to 2011-05-01.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "user_id",
+     "description": "Id of the user who cast the vote; populated only for vote types that record the voter (e.g. favorites, bounties), hence 91% null. Likely references users, but no accepted join was detected, so it could also be a denormalized voter identifier without an enforced reference.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "bounty_amount",
+     "description": "Bounty reputation amount (25/50/100/150/200, standard bounty tiers) attached to bounty-related votes; null for all other vote types.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 5,
+  "columns_changed": 10
+ }
+}

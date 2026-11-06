@@ -1,0 +1,349 @@
+{
+ "accept": 70,
+ "db_id": "concert_singer",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "concert": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 100.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "col_002": {
+     "base": 55.231,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7037037037037038,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8333333333333334
+     },
+     "phi": 0.85,
+     "score": 46.947
+    },
+    "col_003": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 51.625
+    },
+    "col_004": {
+     "base": 67.731,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7037037037037038,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.8333333333333334
+     },
+     "phi": 0.55,
+     "score": 37.252
+    },
+    "col_005": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.3333333333333333
+     },
+     "phi": 0.55,
+     "score": 16.5
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "singer": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 100.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "col_002": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    },
+    "col_003": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "col_004": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 40.562
+    },
+    "col_005": {
+     "base": 86.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 47.438
+    },
+    "col_006": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    },
+    "col_007": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.3333333333333333
+     },
+     "phi": 0.55,
+     "score": 13.063
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "singer_in_concert": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 50.694,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.21111111111111108,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.6
+     },
+     "phi": 1.0,
+     "score": 50.694
+    },
+    "col_002": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.5
+     },
+     "phi": 0.85,
+     "score": 25.5
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "stadium": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 100.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "col_002": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    },
+    "col_003": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 51.625
+    },
+    "col_004": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    },
+    "col_005": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    },
+    "col_006": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    },
+    "col_007": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  }
+ },
+ "use_names": false
+}

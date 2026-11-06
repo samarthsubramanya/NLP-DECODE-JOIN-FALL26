@@ -1,0 +1,188 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.058823529411764705,
+   "decision": "llm_accept",
+   "dist": 0.0,
+   "dist_buckets": [
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "dist_capped": true,
+   "fan_out": 1.0,
+   "llm": {
+    "adjudication": "grouped",
+    "decision": "accept",
+    "group_size": 1,
+    "model": "glm-5-3",
+    "reason": "Has_Pet.col_001 values (1001, 1002) are fully contained in Student's primary key ID range (1001-1035), and a Has_Pet table naturally references students who own pets, so this is a real many-to-one reference despite the low coverage.",
+    "reasoning_effort": "low"
+   },
+   "parts": {
+    "cardinality": 0.75,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 69,
+   "score_before_fan_out": 76.25,
+   "source": {
+    "column": "col_001",
+    "table": "Has_Pet"
+   },
+   "source_is_pk": false,
+   "target": {
+    "column": "col_001",
+    "table": "Student"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "dist": null,
+   "dist_buckets": null,
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_002",
+    "table": "Has_Pet"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "Pets"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "dist": null,
+   "dist_buckets": null,
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "Pets"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "Has_Pet"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 85.0
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "dist_no_accept_below": 0.3,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "ddb",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_range_span": null,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
+  "r_cap": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "band": 1,
+  "rejected_gate": 2
+ },
+ "db_id": "pets_1",
+ "graphs": {
+  "direct": [],
+  "llm": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.058823529411764705,
+    "decision": "llm_accept",
+    "score": 69,
+    "source": {
+     "column": "col_001",
+     "table": "Has_Pet"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "Student"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.058823529411764705,
+    "decision": "band",
+    "score": 69,
+    "source": {
+     "column": "col_001",
+     "table": "Has_Pet"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "Student"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.0,
+ "keys_run": "ddb",
+ "use_names": false,
+ "weights": {
+  "cardinality": 15,
+  "distribution": 20,
+  "name": 0,
+  "nulls": 10,
+  "overlap": 40,
+  "target_key": 15
+ }
+}

@@ -1,0 +1,136 @@
+{
+ "db_id": "USWildFires",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 0,
+ "tables": {
+  "Fires": {
+   "table": {
+    "name": "Fires",
+    "purpose": "Wildland fire occurrence records for the United States (1992-2015), one row per fire incident. This matches the USFS Fire Occurrence / '1.88M Wildfires' dataset: Julian discovery and containment dates, fire size and size class, cause, ownership, and county-level geography for ~1.88M fires across 50 states plus DC and PR."
+   },
+   "columns": {
+    "CONT_DATE": {
+     "role": "date",
+     "name": "containment_date",
+     "description": "Date the fire was contained, stored as a Julian date (days since Jan 1, 4713 BC; .5 = midnight/noon convention). Empty for ~47% of rows (fires with no recorded containment). Range 2448622.5-2457391.5 corresponds to ~1992-2015.",
+     "status": "resolved"
+    },
+    "CONT_DOY": {
+     "role": "date",
+     "name": "containment_day_of_year",
+     "description": "Day of year (1-366) on which the fire was contained; empty when containment date is missing.",
+     "status": "resolved"
+    },
+    "CONT_TIME": {
+     "role": "code",
+     "name": "containment_time",
+     "description": "Time of containment in 24-hour HHMM format (e.g. 0701, 1800). Empty for ~52% of rows.",
+     "status": "resolved"
+    },
+    "COUNTY": {
+     "role": "code",
+     "name": "county_fips_code",
+     "description": "County FIPS code (3-digit, zero-padded) of the fire location; empty for ~36% of rows. Some rows appear to hold non-numeric values (e.g. '5', 'Lincoln', 'SUFFOLK'), suggesting mixed/uncleaned county identifiers.",
+     "status": "tentative"
+    },
+    "DISCOVERY_DATE": {
+     "role": "date",
+     "name": "discovery_date",
+     "description": "Date the fire was discovered, as a Julian date (same convention as CONT_DATE). Always populated; range 2448622.5-2457387.5 (~1992-2015).",
+     "status": "resolved"
+    },
+    "DISCOVERY_DOY": {
+     "role": "date",
+     "name": "discovery_day_of_year",
+     "description": "Day of year (1-366) on which the fire was discovered. Peak around DOY 185 (early July).",
+     "status": "resolved"
+    },
+    "DISCOVERY_TIME": {
+     "role": "code",
+     "name": "discovery_time",
+     "description": "Time of discovery in 24-hour HHMM format (e.g. 1400, 0235). Empty for ~47% of rows.",
+     "status": "resolved"
+    },
+    "FIPS_CODE": {
+     "role": "code",
+     "name": "county_fips_code",
+     "description": "3-digit county FIPS code within the state; empty for ~36% of rows. Pairs with STATE to form the full 5-digit county FIPS.",
+     "status": "resolved"
+    },
+    "FIPS_NAME": {
+     "role": "code",
+     "name": "county_name",
+     "description": "Name of the county (FIPS_NAME) matching FIPS_CODE; empty for ~36% of rows.",
+     "status": "resolved"
+    },
+    "FIRE_SIZE": {
+     "role": "numeric",
+     "name": "fire_size_acres",
+     "description": "Final size of the fire in acres (median 1.0, max 606,945 acres). Matches the standard US wildfire size convention.",
+     "status": "resolved"
+    },
+    "FIRE_SIZE_CLASS": {
+     "role": "code",
+     "name": "fire_size_class",
+     "description": "Size class code A-G based on acreage: A = <=0.25 ac, B = 0.26-9.9, C = 10-99, D = 100-299, E = 300-999, F = 1000-4999, G = >=5000 acres. Distribution (B most common) is consistent with this standard NWCG scheme.",
+     "status": "resolved"
+    },
+    "FIRE_YEAR": {
+     "role": "numeric",
+     "name": "fire_year",
+     "description": "Calendar year of the fire, 1992-2015.",
+     "status": "resolved"
+    },
+    "LATITUDE": {
+     "role": "numeric",
+     "name": "latitude",
+     "description": "Latitude of the fire ignition point in decimal degrees (range 17.94-70.33, covering US states/territories including Alaska and Hawaii).",
+     "status": "resolved"
+    },
+    "LONGITUDE": {
+     "role": "numeric",
+     "name": "longitude",
+     "description": "Longitude of the fire ignition point in decimal degrees (negative, range -178.8 to -65.3).",
+     "status": "resolved"
+    },
+    "OWNER_CODE": {
+     "role": "code",
+     "name": "owner_code",
+     "description": "Numeric code for the land ownership/owner of the fire location; pairs with OWNER_DESCR (e.g. 14 = MISSING/NOT SPECIFIED, 8 = PRIVATE, 5 = USFS, 2 = BIA, 13 = STATE OR PRIVATE).",
+     "status": "resolved"
+    },
+    "OWNER_DESCR": {
+     "role": "code",
+     "name": "owner_description",
+     "description": "Text description of land ownership at the fire location (USFS, BIA, BLM, PRIVATE, COUNTY, etc.).",
+     "status": "resolved"
+    },
+    "STATE": {
+     "role": "code",
+     "name": "state_code",
+     "description": "Two-letter USPS state/territory abbreviation where the fire occurred (52 values: 50 states + DC + PR).",
+     "status": "resolved"
+    },
+    "STAT_CAUSE_CODE": {
+     "role": "code",
+     "name": "cause_code",
+     "description": "Numeric code (1-13) for the statistical cause of the fire; pairs with STAT_CAUSE_DESCR (1 = Lightning, 5 = Debris Burning, 7 = Arson, 9 = Miscellaneous, 13 = Missing/Undefined).",
+     "status": "resolved"
+    },
+    "STAT_CAUSE_DESCR": {
+     "role": "code",
+     "name": "cause_description",
+     "description": "Text description of the fire cause (Lightning, Debris Burning, Arson, Campfire, Fireworks, Children, etc.).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

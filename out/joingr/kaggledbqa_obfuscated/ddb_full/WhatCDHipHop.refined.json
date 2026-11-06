@@ -1,0 +1,96 @@
+{
+ "db_id": "WhatCDHipHop",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 2,
+ "tables": {
+  "tags": {
+   "table": {
+    "name": "torrent_tags",
+    "purpose": "Associative table linking torrents to descriptive tags (e.g. genre/style labels like 'electronic', '2010s', 'instrumental'). Each row is one tag applied to one torrent. The referenced table 'torrents' holds the torrent records; col_007 there is its primary key (torrent ID)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "tag_id",
+     "description": "Primary key of the tags table; unique sequential integer ID for each tag assignment row (0 to 161282). Referenced one-to-one by torrents.col_007, suggesting torrents.col_007 stores the latest/current tag ID for each torrent.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "torrent_id",
+     "description": "Foreign key to torrents.col_007 (many-to-one). Identifies which torrent the tag applies to; a torrent can have many tags.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "tag",
+     "description": "The tag label applied to the torrent: genre/style/era descriptors such as 'electronic', '2010s', 'instrumental', 'freely.available', 'experimental', plus artist/scene-specific tags like 'makiza', 'turkish'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "torrents": {
+   "table": {
+    "name": "torrents",
+    "purpose": "Music release torrents (albums, singles, EPs, mixtapes, etc.), each row one release/torrent with title, artist, year, release type, and internal IDs; tags table links tags to each torrent."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "title",
+     "description": "Release title (album/single/EP name), e.g. 'the predator', 'cheers'. HTML entities appear unescaped in some values.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "artist_id",
+     "description": "Numeric ID of the artist; low-cardinality integer (2816 distinct) matching the ~2800 distinct artist names in col_003, so likely a key into an artist table not present in this database. No join evidence available to confirm this, so this reading remains tentative.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "artist",
+     "description": "Artist name, e.g. 'ice cube', 'various artists', 'dj screw'.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "year",
+     "description": "Release year, 1979-2016.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "release_type",
+     "description": "Release category: album, single, ep, compilation, mixtape, live album, soundtrack, etc. (15 distinct values).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "identifier",
+     "name": "torrent_id",
+     "description": "Unique ID of the torrent, likely from the source site (values up to ~73 million, e.g. What.cd-style torrent IDs). No join evidence connects this column, so the external-site-ID reading remains tentative.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "foreign_key",
+     "name": "id",
+     "description": "Primary key of this table (0..75718, one per row); referenced by tags.col_002 to attach tags to a torrent, and one-to-one with tags.col_001.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 1,
+  "columns_changed": 2
+ }
+}

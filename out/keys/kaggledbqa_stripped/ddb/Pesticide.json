@@ -1,0 +1,409 @@
+{
+ "accept": 70,
+ "db_id": "Pesticide",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "resultsdata15": {
+   "candidate_keys": [],
+   "columns": {
+    "annotate": {
+     "rejected": "mostly empty or zero"
+    },
+    "commod": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 8.56930705583889e-06
+     },
+     "phi": 0.85,
+     "score": 16.15
+    },
+    "commtype": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.2853960583758335e-06
+     },
+     "phi": 0.7,
+     "score": 13.3
+    },
+    "concen": {
+     "rejected": "mostly empty or zero"
+    },
+    "confmethod": {
+     "rejected": "mostly empty or zero"
+    },
+    "confmethod2": {
+     "rejected": "mostly empty or zero"
+    },
+    "conunit": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 4.284653527919445e-07
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "determin": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 2.1423267639597226e-06
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "extract": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 8.56930705583889e-07
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "lab": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 3.427722822335556e-06
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "lod": {
+     "base": 24.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 5.398663445178501e-05
+     },
+     "phi": 0.55,
+     "score": 13.2
+    },
+    "mean": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.713861411167778e-06
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "pestcode": {
+     "base": 39.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.00020951955751526087
+     },
+     "phi": 0.55,
+     "score": 21.45
+    },
+    "quantitate": {
+     "rejected": "mostly empty or zero"
+    },
+    "sample_pk": {
+     "base": 24.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.004364776548891539
+     },
+     "phi": 1.0,
+     "score": 24.0
+    },
+    "testclass": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 8.56930705583889e-06
+     },
+     "phi": 0.55,
+     "score": 10.45
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "sampledata15": {
+   "candidate_keys": [
+    {
+     "column": "sample_pk",
+     "score": 94.0
+    }
+   ],
+   "columns": {
+    "claim": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0003926573083341514
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "commod": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0019632865416707567
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "commtype": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0002944929812506135
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "country": {
+     "rejected": "mostly empty or zero"
+    },
+    "day": {
+     "rejected": "blacklist: date/time (day)"
+    },
+    "distst": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.003730244429174438
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "disttype": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0004908216354176892
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "growst": {
+     "rejected": "mostly empty or zero"
+    },
+    "month": {
+     "rejected": "blacklist: date/time (month)"
+    },
+    "origin": {
+     "base": 24.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0002944929812506135
+     },
+     "phi": 0.55,
+     "score": 13.2
+    },
+    "packst": {
+     "rejected": "mostly empty or zero"
+    },
+    "quantity": {
+     "rejected": "blacklist: quantity (quantity)"
+    },
+    "sample_pk": {
+     "base": 74.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "resultsdata15.sample_pk",
+       "resultsdata15.extract",
+       "resultsdata15.determin",
+       "sampledata15.year",
+       "sampledata15.month",
+       "sampledata15.day",
+       "sampledata15.site",
+       "sampledata15.origin",
+       "sampledata15.country",
+       "sampledata15.quantity"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 94.0
+    },
+    "site": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.030627270050063805
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "source_id": {
+     "base": 29.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.001276136252085992
+     },
+     "phi": 0.55,
+     "score": 15.95
+    },
+    "state": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0009816432708353784
+     },
+     "phi": 0.85,
+     "score": 16.15
+    },
+    "variety": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.12388338077942476
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "year": {
+     "rejected": "blacklist: date/time (year)"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "sample_pk"
+  }
+ },
+ "use_names": true
+}

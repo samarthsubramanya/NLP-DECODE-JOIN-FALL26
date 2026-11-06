@@ -1,0 +1,114 @@
+{
+ "accept": 70,
+ "db_id": "GreaterManchesterCrime",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "GreaterManchesterCrime": {
+   "candidate_keys": [
+    {
+     "column": "CrimeID",
+     "score": 84.0
+    }
+   ],
+   "columns": {
+    "CrimeID": {
+     "base": 84.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 84.0
+    },
+    "CrimeTS": {
+     "base": 54.44,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.9988,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9988
+     },
+     "phi": 0.85,
+     "score": 46.274
+    },
+    "LSOA": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.275
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "Location": {
+     "base": 21.73,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.2546000000000001,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6206
+     },
+     "phi": 0.7,
+     "score": 15.211
+    },
+    "Outcome": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0022
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "Type": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0026
+     },
+     "phi": 0.55,
+     "score": 4.95
+    }
+   },
+   "evidence": "score",
+   "primary_key": "CrimeID"
+  }
+ },
+ "use_names": true
+}

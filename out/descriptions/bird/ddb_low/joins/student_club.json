@@ -1,0 +1,822 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.9090909090909091,
+   "decision": "accepted",
+   "dist": 0.9703703703703703,
+   "dist_buckets": [
+    3,
+    3,
+    4,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    3
+   ],
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.9704,
+    "name": 0.4286,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 88.127,
+   "score_before_fan_out": 88.127,
+   "source": {
+    "column": "link_to_member",
+    "table": "attendance"
+   },
+   "target": {
+    "column": "member_id",
+    "table": "member"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 99.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 15,
+    "name": 20,
+    "nulls": 10,
+    "overlap": 25,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.40476190476190477,
+   "decision": "accepted",
+   "dist": 0.9071895424836601,
+   "dist_buckets": [
+    1,
+    3,
+    2,
+    2,
+    0,
+    0,
+    4,
+    1,
+    2,
+    2
+   ],
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.9072,
+    "name": 0.4167,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 86.9412,
+   "score_before_fan_out": 86.9412,
+   "source": {
+    "column": "link_to_event",
+    "table": "attendance"
+   },
+   "target": {
+    "column": "event_id",
+    "table": "event"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 99.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 15,
+    "name": 20,
+    "nulls": 10,
+    "overlap": 25,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.5476190476190477,
+   "decision": "accepted",
+   "dist": 0.8560386473429952,
+   "dist_buckets": [
+    3,
+    3,
+    3,
+    2,
+    2,
+    3,
+    3,
+    1,
+    0,
+    3
+   ],
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.856,
+    "name": 0.4167,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 86.1739,
+   "score_before_fan_out": 86.1739,
+   "source": {
+    "column": "link_to_event",
+    "table": "budget"
+   },
+   "target": {
+    "column": "event_id",
+    "table": "event"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 99.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 15,
+    "name": 20,
+    "nulls": 10,
+    "overlap": 25,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.0007880220646178094,
+   "decision": "accepted",
+   "dist": 0.7070707070707072,
+   "dist_buckets": [
+    9,
+    2,
+    6,
+    2,
+    4,
+    2,
+    3,
+    1,
+    2,
+    2
+   ],
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.7071,
+    "name": 0.8,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 84.1061,
+   "score_before_fan_out": 84.1061,
+   "source": {
+    "column": "zip",
+    "table": "member"
+   },
+   "target": {
+    "column": "zip_code",
+    "table": "zip_code"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 105.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 15,
+    "name": 20,
+    "nulls": 10,
+    "overlap": 25,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.09090909090909091,
+   "decision": "accepted",
+   "dist": 0.6962962962962963,
+   "dist_buckets": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.6963,
+    "name": 0.4286,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 84.0159,
+   "score_before_fan_out": 84.0159,
+   "source": {
+    "column": "link_to_member",
+    "table": "expense"
+   },
+   "target": {
+    "column": "member_id",
+    "table": "member"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 99.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 15,
+    "name": 20,
+    "nulls": 10,
+    "overlap": 25,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.46153846153846156,
+   "decision": "accepted",
+   "dist": 0.9148148148148147,
+   "dist_buckets": [
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    0,
+    1,
+    4,
+    3
+   ],
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 0.6667,
+    "distribution": 0.9148,
+    "name": 0.4286,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 82.2937,
+   "score_before_fan_out": 82.2937,
+   "source": {
+    "column": "link_to_budget",
+    "table": "expense"
+   },
+   "target": {
+    "column": "budget_id",
+    "table": "budget"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 99.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 15,
+    "name": 20,
+    "nulls": 10,
+    "overlap": 25,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.9393939393939394,
+   "decision": "accepted",
+   "dist": 0.9304659498207885,
+   "dist_buckets": [
+    3,
+    4,
+    4,
+    3,
+    3,
+    3,
+    3,
+    3,
+    2,
+    3
+   ],
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 0.5806,
+    "distribution": 0.9305,
+    "name": 0.4286,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 81.2381,
+   "score_before_fan_out": 81.2381,
+   "source": {
+    "column": "link_to_member",
+    "table": "income"
+   },
+   "target": {
+    "column": "member_id",
+    "table": "member"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 99.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 15,
+    "name": 20,
+    "nulls": 10,
+    "overlap": 25,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.23008849557522124,
+   "decision": "accepted",
+   "dist": 0.9282051282051282,
+   "dist_buckets": [
+    2,
+    3,
+    2,
+    3,
+    2,
+    5,
+    3,
+    0,
+    2,
+    4
+   ],
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 0.6346,
+    "distribution": 0.9282,
+    "name": 0.3333,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 80.109,
+   "score_before_fan_out": 80.109,
+   "source": {
+    "column": "link_to_major",
+    "table": "member"
+   },
+   "target": {
+    "column": "major_id",
+    "table": "major"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 99.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 15,
+    "name": 20,
+    "nulls": 10,
+    "overlap": 25,
+    "target_key": 15
+   }
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "dist_no_accept_below": 0.3,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "ddb",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_range_span": null,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
+  "r_cap": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 8
+ },
+ "db_id": "student_club",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9090909090909091,
+    "decision": "accepted",
+    "score": 88.127,
+    "source": {
+     "column": "link_to_member",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "member_id",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.40476190476190477,
+    "decision": "accepted",
+    "score": 86.9412,
+    "source": {
+     "column": "link_to_event",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "event_id",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5476190476190477,
+    "decision": "accepted",
+    "score": 86.1739,
+    "source": {
+     "column": "link_to_event",
+     "table": "budget"
+    },
+    "target": {
+     "column": "event_id",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.0007880220646178094,
+    "decision": "accepted",
+    "score": 84.1061,
+    "source": {
+     "column": "zip",
+     "table": "member"
+    },
+    "target": {
+     "column": "zip_code",
+     "table": "zip_code"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.09090909090909091,
+    "decision": "accepted",
+    "score": 84.0159,
+    "source": {
+     "column": "link_to_member",
+     "table": "expense"
+    },
+    "target": {
+     "column": "member_id",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.46153846153846156,
+    "decision": "accepted",
+    "score": 82.2937,
+    "source": {
+     "column": "link_to_budget",
+     "table": "expense"
+    },
+    "target": {
+     "column": "budget_id",
+     "table": "budget"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9393939393939394,
+    "decision": "accepted",
+    "score": 81.2381,
+    "source": {
+     "column": "link_to_member",
+     "table": "income"
+    },
+    "target": {
+     "column": "member_id",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.23008849557522124,
+    "decision": "accepted",
+    "score": 80.109,
+    "source": {
+     "column": "link_to_major",
+     "table": "member"
+    },
+    "target": {
+     "column": "major_id",
+     "table": "major"
+    }
+   }
+  ],
+  "llm": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9090909090909091,
+    "decision": "accepted",
+    "score": 88.127,
+    "source": {
+     "column": "link_to_member",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "member_id",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.40476190476190477,
+    "decision": "accepted",
+    "score": 86.9412,
+    "source": {
+     "column": "link_to_event",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "event_id",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5476190476190477,
+    "decision": "accepted",
+    "score": 86.1739,
+    "source": {
+     "column": "link_to_event",
+     "table": "budget"
+    },
+    "target": {
+     "column": "event_id",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.0007880220646178094,
+    "decision": "accepted",
+    "score": 84.1061,
+    "source": {
+     "column": "zip",
+     "table": "member"
+    },
+    "target": {
+     "column": "zip_code",
+     "table": "zip_code"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.09090909090909091,
+    "decision": "accepted",
+    "score": 84.0159,
+    "source": {
+     "column": "link_to_member",
+     "table": "expense"
+    },
+    "target": {
+     "column": "member_id",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.46153846153846156,
+    "decision": "accepted",
+    "score": 82.2937,
+    "source": {
+     "column": "link_to_budget",
+     "table": "expense"
+    },
+    "target": {
+     "column": "budget_id",
+     "table": "budget"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9393939393939394,
+    "decision": "accepted",
+    "score": 81.2381,
+    "source": {
+     "column": "link_to_member",
+     "table": "income"
+    },
+    "target": {
+     "column": "member_id",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.23008849557522124,
+    "decision": "accepted",
+    "score": 80.109,
+    "source": {
+     "column": "link_to_major",
+     "table": "member"
+    },
+    "target": {
+     "column": "major_id",
+     "table": "major"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9090909090909091,
+    "decision": "accepted",
+    "score": 88.127,
+    "source": {
+     "column": "link_to_member",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "member_id",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.40476190476190477,
+    "decision": "accepted",
+    "score": 86.9412,
+    "source": {
+     "column": "link_to_event",
+     "table": "attendance"
+    },
+    "target": {
+     "column": "event_id",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5476190476190477,
+    "decision": "accepted",
+    "score": 86.1739,
+    "source": {
+     "column": "link_to_event",
+     "table": "budget"
+    },
+    "target": {
+     "column": "event_id",
+     "table": "event"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.0007880220646178094,
+    "decision": "accepted",
+    "score": 84.1061,
+    "source": {
+     "column": "zip",
+     "table": "member"
+    },
+    "target": {
+     "column": "zip_code",
+     "table": "zip_code"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.09090909090909091,
+    "decision": "accepted",
+    "score": 84.0159,
+    "source": {
+     "column": "link_to_member",
+     "table": "expense"
+    },
+    "target": {
+     "column": "member_id",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.46153846153846156,
+    "decision": "accepted",
+    "score": 82.2937,
+    "source": {
+     "column": "link_to_budget",
+     "table": "expense"
+    },
+    "target": {
+     "column": "budget_id",
+     "table": "budget"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9393939393939394,
+    "decision": "accepted",
+    "score": 81.2381,
+    "source": {
+     "column": "link_to_member",
+     "table": "income"
+    },
+    "target": {
+     "column": "member_id",
+     "table": "member"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.23008849557522124,
+    "decision": "accepted",
+    "score": 80.109,
+    "source": {
+     "column": "link_to_major",
+     "table": "member"
+    },
+    "target": {
+     "column": "major_id",
+     "table": "major"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.0,
+ "keys_run": "ddb",
+ "use_names": true,
+ "weights": {
+  "cardinality": 15,
+  "distribution": 15,
+  "name": 20,
+  "nulls": 10,
+  "overlap": 25,
+  "target_key": 15
+ }
+}

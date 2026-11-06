@@ -1,0 +1,118 @@
+{
+ "db_id": "museum_visit",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "museum": {
+   "table": {
+    "name": "museum",
+    "purpose": "Lookup table of museums; each row is one museum, referenced by the visit and visitor tables."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "museum_id",
+     "description": "Primary key; unique museum identifier referenced by visitor.col_003, visit.col_001 and visit.col_002.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "museum_name",
+     "description": "Unique human-readable name of the museum.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "year",
+     "description": "Four-digit year 2000-2012, likely the museum's opening/founding year, though it could be another event year (e.g., renovation).",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "visit": {
+   "table": {
+    "name": "visit",
+    "purpose": "Junction/transaction table recording individual visits by visitors to museums, with an amount (likely ticket price or total spend) per visit. Each row is one visit event linking a museum to a visitor."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "museum_id",
+     "description": "Identifier of the museum visited. References museum.col_001 (many-to-one); lookup confirms museum names such as 'Capital Plaza Museum', 'ZirMed Gateway Museum'.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "visitor_id",
+     "description": "Identifier of the visitor making the visit. Although it also statistically matches museum.col_001, the join to visitor.col_001 (lookup shows person names like 'Arjen Robben', 'Rafael van der Vaart') is the semantically correct reference. Declared VARCHAR but contains integers.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "visit_id",
+     "description": "Unique integer per row (all 6 values distinct, range 2-24). Likely the visit's identifier, though it was not detected as the primary key. Alternative reading: a count of tickets/people, but uniqueness across all rows favors an ID.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "total_price",
+     "description": "Monetary amount per visit (range 19.98-320.44, two-decimal values typical of currency). Likely the ticket price or total amount paid for the visit; the exact basis (per ticket vs. total) cannot be determined from the data.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "visitor": {
+   "table": {
+    "name": "visitor",
+    "purpose": "One row per visitor to a museum: the visitor's identity, their home/preferred museum, and their age. Referenced by the visit table, which records individual visits by these visitors."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "visitor_id",
+     "description": "Primary key of the visitor table; unique integer identifier for each visitor. Referenced by visit.col_002, which assigns a visit to a visitor.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "visitor_name",
+     "description": "Full name of the visitor (e.g. 'Arjen Robben', 'Rafael van der Vaart'). Unique per row; some values look like name plus descriptor ('Guti Midfielder'), suggesting free-text entry rather than a clean name field.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "museum_id",
+     "description": "Foreign key to museum.col_001, identifying the museum associated with the visitor (likely their home or primary museum). Values map to museum names such as 'ZirMed Gateway Museum' (8) and 'Capital Plaza Museum' (2).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "age",
+     "description": "Visitor's age in years; values range 25-56, consistent with adult ages. No join or other evidence confirms the unit, so this reading is plausible but not certain (could also be another person-level numeric attribute).",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 3,
+  "columns_changed": 0
+ }
+}

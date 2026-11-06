@@ -1,0 +1,140 @@
+{
+ "db_id": "USWildFires",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 0,
+ "tables": {
+  "Fires": {
+   "table": {
+    "name": "Fires",
+    "purpose": "Wildfire occurrence records for the United States, 1992-2015 (matches the USGS/Kaggle '1.88M US Wildfires' Short-2 dataset). Each row is one wildfire incident with discovery and containment dates, cause, size, location and administrative jurisdiction."
+   },
+   "columns": {
+    "col_001": {
+     "role": "date",
+     "name": "fire_year",
+     "description": "Calendar year of the fire (1992-2015).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "discovery_date",
+     "description": "Date the fire was discovered, as a Julian day number (days since 4713 BC, .5 = noon UTC); range 2448622.5-2457387.5 corresponds to 1992-2015.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "discovery_doy",
+     "description": "Day of year (1-366) on which the fire was discovered.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "discovery_time",
+     "description": "Time of discovery as HHMM (0000-2359); empty string when unknown (~47%).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "stat_cause_code",
+     "description": "Statistical cause of the fire, numeric code 1-13 (e.g. 1=Lightning, 5=Debris Burning, 7=Arson, 9=Miscellaneous, 13=Missing/Undefined); pairs with col_006.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "stat_cause_descr",
+     "description": "Statistical cause description (Lightning, Debris Burning, Arson, Miscellaneous, Missing/Undefined, Campfire, Children, Fireworks, etc.).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "date",
+     "name": "cont_date",
+     "description": "Date the fire was contained, as a Julian day number; empty string when unknown (~47%).",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "date",
+     "name": "cont_doy",
+     "description": "Day of year (1-366) on which the fire was contained; empty when unknown.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "code",
+     "name": "cont_time",
+     "description": "Time of containment as HHMM (0000-2359); empty when unknown (~52%).",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "fire_size",
+     "description": "Final size of the fire in acres (0 to ~606,945; median 1 acre).",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "code",
+     "name": "fire_size_class",
+     "description": "Fire size class A-G by acreage (A: 0-0.25, B: 0.26-9.9, C: 10-99, D: 100-299, E: 300-999, F: 1000-4999, G: 5000+).",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "latitude",
+     "description": "Latitude of the fire point location in decimal degrees (17.9-70.3, i.e. US including Alaska, Hawaii, Puerto Rico).",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "longitude",
+     "description": "Longitude of the fire point location in decimal degrees (negative, -178.8 to -65.3).",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "code",
+     "name": "owner_code",
+     "description": "Numeric code (0-15) for the land owner/jurisdiction where the fire started; pairs with col_015 (e.g. 14=Missing/Not Specified, 8=Private, 5=USFS, 2=BIA, 13=State or Private).",
+     "status": "resolved"
+    },
+    "col_015": {
+     "role": "category",
+     "name": "owner_descr",
+     "description": "Land ownership description: MISSING/NOT SPECIFIED, PRIVATE, USFS, BIA, STATE OR PRIVATE, BLM, COUNTY, OTHER FEDERAL, etc.",
+     "status": "resolved"
+    },
+    "col_016": {
+     "role": "category",
+     "name": "state",
+     "description": "Two-letter US state/territory postal code where the fire occurred (CA, GA, TX, NC, FL, ..., PR).",
+     "status": "resolved"
+    },
+    "col_017": {
+     "role": "category",
+     "name": "county",
+     "description": "County of the fire: inconsistently populated with county names (Lincoln, Polk, ...) or county FIPS codes ('5', '51', '91'); empty for ~36% of rows.",
+     "status": "resolved"
+    },
+    "col_018": {
+     "role": "code",
+     "name": "fips_code",
+     "description": "Three-digit county FIPS code within the state (001-810); empty for ~36% of rows.",
+     "status": "resolved"
+    },
+    "col_019": {
+     "role": "category",
+     "name": "fips_name",
+     "description": "County name from the FIPS lookup (Washington, Lincoln, Jackson, Mono, Howell, Botetourt, ...); empty for ~36% of rows.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 0,
+  "columns_changed": 0
+ }
+}

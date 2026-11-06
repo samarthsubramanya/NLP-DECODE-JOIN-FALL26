@@ -1,0 +1,434 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.9707112970711297,
+   "decision": "accepted",
+   "dist": 0.992911877394636,
+   "dist_buckets": [
+    22,
+    23,
+    24,
+    23,
+    23,
+    24,
+    24,
+    23,
+    24,
+    22
+   ],
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.9929,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 99.8582,
+   "score_before_fan_out": 99.8582,
+   "source": {
+    "column": "col_003",
+    "table": "city"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "country"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 106.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.9748953974895398,
+   "decision": "accepted",
+   "dist": 0.992274678111588,
+   "dist_buckets": [
+    22,
+    23,
+    24,
+    23,
+    23,
+    24,
+    24,
+    23,
+    24,
+    23
+   ],
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.9923,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 99.8455,
+   "score_before_fan_out": 99.8455,
+   "source": {
+    "column": "col_001",
+    "table": "countrylanguage"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "country"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 106.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.05687668546212307,
+   "decision": "accepted",
+   "dist": 0.8938697318007663,
+   "dist_buckets": [
+    29,
+    23,
+    20,
+    10,
+    12,
+    22,
+    36,
+    47,
+    27,
+    6
+   ],
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 0.5151,
+    "distribution": 0.8939,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 90.6037,
+   "score_before_fan_out": 90.6037,
+   "source": {
+    "column": "col_014",
+    "table": "country"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "city"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9659090909090909,
+   "coverage": 0.02083844079431233,
+   "decision": "accepted",
+   "dist": 0.49150326797385624,
+   "dist_buckets": [
+    0,
+    1,
+    5,
+    5,
+    74,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.4915,
+    "nulls": 1.0,
+    "overlap": 0.9659,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 88.4664,
+   "score_before_fan_out": 88.4664,
+   "source": {
+    "column": "col_006",
+    "table": "country"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "city"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "dist_no_accept_below": 0.3,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "ddb",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_range_span": null,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
+  "r_cap": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 4
+ },
+ "db_id": "world_1",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9707112970711297,
+    "decision": "accepted",
+    "score": 99.8582,
+    "source": {
+     "column": "col_003",
+     "table": "city"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "country"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9748953974895398,
+    "decision": "accepted",
+    "score": 99.8455,
+    "source": {
+     "column": "col_001",
+     "table": "countrylanguage"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "country"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.05687668546212307,
+    "decision": "accepted",
+    "score": 90.6037,
+    "source": {
+     "column": "col_014",
+     "table": "country"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "city"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9659090909090909,
+    "coverage": 0.02083844079431233,
+    "decision": "accepted",
+    "score": 88.4664,
+    "source": {
+     "column": "col_006",
+     "table": "country"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "city"
+    }
+   }
+  ],
+  "llm": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9707112970711297,
+    "decision": "accepted",
+    "score": 99.8582,
+    "source": {
+     "column": "col_003",
+     "table": "city"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "country"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9748953974895398,
+    "decision": "accepted",
+    "score": 99.8455,
+    "source": {
+     "column": "col_001",
+     "table": "countrylanguage"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "country"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.05687668546212307,
+    "decision": "accepted",
+    "score": 90.6037,
+    "source": {
+     "column": "col_014",
+     "table": "country"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "city"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9659090909090909,
+    "coverage": 0.02083844079431233,
+    "decision": "accepted",
+    "score": 88.4664,
+    "source": {
+     "column": "col_006",
+     "table": "country"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "city"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9707112970711297,
+    "decision": "accepted",
+    "score": 99.8582,
+    "source": {
+     "column": "col_003",
+     "table": "city"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "country"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9748953974895398,
+    "decision": "accepted",
+    "score": 99.8455,
+    "source": {
+     "column": "col_001",
+     "table": "countrylanguage"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "country"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.05687668546212307,
+    "decision": "accepted",
+    "score": 90.6037,
+    "source": {
+     "column": "col_014",
+     "table": "country"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "city"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9659090909090909,
+    "coverage": 0.02083844079431233,
+    "decision": "accepted",
+    "score": 88.4664,
+    "source": {
+     "column": "col_006",
+     "table": "country"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "city"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.0,
+ "keys_run": "ddb",
+ "use_names": false,
+ "weights": {
+  "cardinality": 15,
+  "distribution": 20,
+  "name": 0,
+  "nulls": 10,
+  "overlap": 40,
+  "target_key": 15
+ }
+}

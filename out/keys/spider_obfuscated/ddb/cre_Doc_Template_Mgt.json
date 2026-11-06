@@ -1,0 +1,274 @@
+{
+ "accept": 70,
+ "db_id": "cre_Doc_Template_Mgt",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "Documents": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Paragraphs.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 58.333,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.6333333333333334,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8
+     },
+     "phi": 0.85,
+     "score": 49.583
+    },
+    "col_003": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 51.625
+    },
+    "col_004": {
+     "base": 33.241,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.3518518518518518,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.55,
+     "score": 18.282
+    },
+    "col_005": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "Paragraphs": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 40.741,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.3518518518518518,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.85,
+     "score": 34.63
+    },
+    "col_003": {
+     "base": 68.426,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.914814814814815,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9333333333333333
+     },
+     "phi": 0.7,
+     "score": 47.898
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "Ref_Template_Types": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 106.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 86.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "Templates.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 106.25
+    },
+    "col_002": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "Templates": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Documents.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.5
+     },
+     "phi": 0.85,
+     "score": 31.875
+    },
+    "col_003": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.25
+     },
+     "phi": 0.7,
+     "score": 16.625
+    },
+    "col_004": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 40.562
+    },
+    "col_005": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 40.562
+    },
+    "col_006": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  }
+ },
+ "use_names": false
+}

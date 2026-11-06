@@ -1,0 +1,3557 @@
+{
+ "containment": [
+  {
+   "containment": 1.0,
+   "coverage": 0.0023715032426676994,
+   "dist": 0.0226757369614512,
+   "dist_buckets": [
+    44,
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "intersection": 49,
+   "source": [
+    "matches",
+    "loser_id"
+   ],
+   "source_distinct": 49,
+   "source_unique": false,
+   "target": [
+    "players",
+    "player_id"
+   ],
+   "target_distinct": 20662
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.001839124963701481,
+   "dist": 0.023391812865497186,
+   "dist_buckets": [
+    34,
+    4,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "intersection": 38,
+   "source": [
+    "matches",
+    "winner_id"
+   ],
+   "source_distinct": 38,
+   "source_unique": false,
+   "target": [
+    "players",
+    "player_id"
+   ],
+   "target_distinct": 20662
+  }
+ ],
+ "dataset": "spider_stripped",
+ "db_id": "wta_1",
+ "duckdb_file": "decode_join_stripped.duckdb",
+ "duckdb_schema": "spider_b268efe35bce00110340",
+ "seed": 42,
+ "tables": {
+  "matches": {
+   "columns": {
+    "best_of": {
+     "declared_type": "BIGINT",
+     "distinct": 1,
+     "family": "int",
+     "name": "best_of",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 3.0,
+      "mean": 3.0,
+      "min": 3.0,
+      "p25": 3.0,
+      "p50": 3.0,
+      "p75": 3.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "3"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "3",
+       278
+      ]
+     ],
+     "uniqueness": 0.0035971223021582736,
+     "zero_rate": 0.0
+    },
+    "draw_size": {
+     "declared_type": "BIGINT",
+     "distinct": 6,
+     "family": "int",
+     "name": "draw_size",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.048,
+      "max": 128.0,
+      "mean": 74.37410071942446,
+      "min": 4.0,
+      "p25": 32.0,
+      "p50": 64.0,
+      "p75": 128.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "128",
+      "64",
+      "32",
+      "8",
+      "12",
+      "4"
+     ],
+     "text": {
+      "avg_len": 2.287769784172662,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "128",
+       107
+      ],
+      [
+       "64",
+       72
+      ],
+      [
+       "32",
+       67
+      ],
+      [
+       "8",
+       15
+      ],
+      [
+       "4",
+       12
+      ],
+      [
+       "12",
+       5
+      ]
+     ],
+     "uniqueness": 0.02158273381294964,
+     "zero_rate": 0.0
+    },
+    "loser_age": {
+     "declared_type": "DOUBLE",
+     "distinct": 259,
+     "family": "float",
+     "name": "loser_age",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 37.138945927399995,
+      "mean": 27.31121386258453,
+      "min": 21.0896646133,
+      "p25": 24.56741957565,
+      "p50": 27.0253251198,
+      "p75": 29.750171115675
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "float",
+     "rows": 278,
+     "sample_values": [
+      "21.9055441478",
+      "24.079397672800003",
+      "21.5222450376",
+      "25.650924024600002",
+      "31.9370294319",
+      "26.9650924025",
+      "25.842573579699998",
+      "27.310061601599998",
+      "31.7289527721",
+      "28.574948665300003"
+     ],
+     "text": {
+      "avg_len": 14.622302158273381,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 18,
+      "min_len": 11,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "24.626967830300003",
+       3
+      ],
+      [
+       "21.472963723499998",
+       2
+      ],
+      [
+       "21.6837782341",
+       2
+      ],
+      [
+       "23.0444900753",
+       2
+      ],
+      [
+       "23.811088295700003",
+       2
+      ],
+      [
+       "24.2245037645",
+       2
+      ],
+      [
+       "24.594113620799998",
+       2
+      ],
+      [
+       "25.0759753593",
+       2
+      ],
+      [
+       "25.7577002053",
+       2
+      ],
+      [
+       "26.4804928131",
+       2
+      ]
+     ],
+     "uniqueness": 0.9316546762589928,
+     "zero_rate": 0.0
+    },
+    "loser_entry": {
+     "declared_type": "VARCHAR",
+     "distinct": 1,
+     "family": "text",
+     "name": "loser_entry",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 1.0,
+     "position": 3,
+     "role": "text",
+     "rows": 278,
+     "sample_values": [
+      ""
+     ],
+     "text": {
+      "avg_len": null,
+      "code_share": null,
+      "composite_share": null,
+      "date_shape_share": null,
+      "max_len": null,
+      "min_len": null,
+      "space_share": null,
+      "uuid_share": null
+     },
+     "top_values": [
+      [
+       "",
+       278
+      ]
+     ],
+     "uniqueness": 0.0035971223021582736,
+     "zero_rate": 0.0
+    },
+    "loser_hand": {
+     "declared_type": "VARCHAR",
+     "distinct": 2,
+     "family": "text",
+     "name": "loser_hand",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "code",
+     "rows": 278,
+     "sample_values": [
+      "L",
+      "R"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "R",
+       246
+      ],
+      [
+       "L",
+       32
+      ]
+     ],
+     "uniqueness": 0.007194244604316547,
+     "zero_rate": 0.0
+    },
+    "loser_ht": {
+     "declared_type": "BIGINT",
+     "distinct": 24,
+     "family": "int",
+     "name": "loser_ht",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.8275862068965517,
+      "max": 185.0,
+      "mean": 174.66546762589928,
+      "min": 157.0,
+      "p25": 170.0,
+      "p50": 174.0,
+      "p75": 180.75
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "159",
+      "176",
+      "175",
+      "162",
+      "161",
+      "157",
+      "179",
+      "181",
+      "180",
+      "178"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "174",
+       38
+      ],
+      [
+       "177",
+       26
+      ],
+      [
+       "184",
+       26
+      ],
+      [
+       "170",
+       20
+      ],
+      [
+       "173",
+       20
+      ],
+      [
+       "182",
+       18
+      ],
+      [
+       "168",
+       17
+      ],
+      [
+       "162",
+       13
+      ],
+      [
+       "183",
+       13
+      ],
+      [
+       "178",
+       12
+      ]
+     ],
+     "uniqueness": 0.08633093525179857,
+     "zero_rate": 0.0
+    },
+    "loser_id": {
+     "declared_type": "BIGINT",
+     "distinct": 49,
+     "family": "int",
+     "name": "loser_id",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.019902518277822908,
+      "max": 202494.0,
+      "mean": 201557.0071942446,
+      "min": 200033.0,
+      "p25": 201446.75,
+      "p50": 201499.0,
+      "p75": 201595.75
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 6,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "201621",
+      "201520",
+      "201320",
+      "201615",
+      "201517",
+      "201662",
+      "201493",
+      "201311",
+      "201455",
+      "200033"
+     ],
+     "text": {
+      "avg_len": 6.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 6,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "201320",
+       20
+      ],
+      [
+       "201493",
+       17
+      ],
+      [
+       "201662",
+       17
+      ],
+      [
+       "201474",
+       16
+      ],
+      [
+       "202494",
+       15
+      ],
+      [
+       "201594",
+       14
+      ],
+      [
+       "201521",
+       13
+      ],
+      [
+       "202469",
+       13
+      ],
+      [
+       "201499",
+       12
+      ],
+      [
+       "201619",
+       10
+      ]
+     ],
+     "uniqueness": 0.17625899280575538,
+     "zero_rate": 0.0
+    },
+    "loser_ioc": {
+     "declared_type": "VARCHAR",
+     "distinct": 23,
+     "family": "text",
+     "name": "loser_ioc",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 7,
+     "role": "code",
+     "rows": 278,
+     "sample_values": [
+      "NED",
+      "POL",
+      "BEL",
+      "CZE",
+      "RUS",
+      "ROU",
+      "SWE",
+      "UKR",
+      "GER",
+      "BLR"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "RUS",
+       40
+      ],
+      [
+       "CZE",
+       34
+      ],
+      [
+       "USA",
+       30
+      ],
+      [
+       "ESP",
+       26
+      ],
+      [
+       "GER",
+       23
+      ],
+      [
+       "ROU",
+       18
+      ],
+      [
+       "POL",
+       16
+      ],
+      [
+       "UKR",
+       16
+      ],
+      [
+       "ITA",
+       11
+      ],
+      [
+       "FRA",
+       10
+      ]
+     ],
+     "uniqueness": 0.08273381294964029,
+     "zero_rate": 0.0
+    },
+    "loser_name": {
+     "declared_type": "VARCHAR",
+     "distinct": 49,
+     "family": "text",
+     "name": "loser_name",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 8,
+     "role": "text",
+     "rows": 278,
+     "sample_values": [
+      "Kirsten Flipkens",
+      "Carla Suarez Navarro",
+      "Roberta Vinci",
+      "Lucie Safarova",
+      "Elina Svitolina",
+      "Serena Williams",
+      "Simona Halep",
+      "Coco Vandeweghe",
+      "Sorana Cirstea",
+      "Annika Beck"
+     ],
+     "text": {
+      "avg_len": 16.18705035971223,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 26,
+      "min_len": 10,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Svetlana Kuznetsova",
+       20
+      ],
+      [
+       "Angelique Kerber",
+       17
+      ],
+      [
+       "Karolina Pliskova",
+       17
+      ],
+      [
+       "Agnieszka Radwanska",
+       16
+      ],
+      [
+       "Elina Svitolina",
+       15
+      ],
+      [
+       "Simona Halep",
+       14
+      ],
+      [
+       "Carla Suarez Navarro",
+       13
+      ],
+      [
+       "Garbine Muguruza",
+       13
+      ],
+      [
+       "Anastasia Pavlyuchenkova",
+       12
+      ],
+      [
+       "Madison Keys",
+       10
+      ]
+     ],
+     "uniqueness": 0.17625899280575538,
+     "zero_rate": 0.0
+    },
+    "loser_rank": {
+     "declared_type": "BIGINT",
+     "distinct": 52,
+     "family": "int",
+     "name": "loser_rank",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.4642857142857143,
+      "max": 112.0,
+      "mean": 15.97841726618705,
+      "min": 1.0,
+      "p25": 5.25,
+      "p50": 12.0,
+      "p75": 21.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 9,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "40",
+      "29",
+      "33",
+      "2",
+      "112",
+      "17",
+      "10",
+      "44",
+      "56",
+      "9"
+     ],
+     "text": {
+      "avg_len": 1.5683453237410072,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "4",
+       19
+      ],
+      [
+       "1",
+       16
+      ],
+      [
+       "9",
+       15
+      ],
+      [
+       "3",
+       13
+      ],
+      [
+       "6",
+       13
+      ],
+      [
+       "7",
+       12
+      ],
+      [
+       "2",
+       11
+      ],
+      [
+       "5",
+       11
+      ],
+      [
+       "8",
+       11
+      ],
+      [
+       "12",
+       10
+      ]
+     ],
+     "uniqueness": 0.18705035971223022,
+     "zero_rate": 0.0
+    },
+    "loser_rank_points": {
+     "declared_type": "BIGINT",
+     "distinct": 239,
+     "family": "int",
+     "name": "loser_rank_points",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.02542012337800468,
+      "max": 9945.0,
+      "mean": 3492.039568345324,
+      "min": 544.0,
+      "p25": 2025.0,
+      "p50": 3095.0,
+      "p75": 4623.25
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 10,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "2777",
+      "1440",
+      "1960",
+      "1797",
+      "1994",
+      "8300",
+      "2094",
+      "3570",
+      "2560",
+      "6100"
+     ],
+     "text": {
+      "avg_len": 3.9784172661870505,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "3010",
+       3
+      ],
+      [
+       "3095",
+       3
+      ],
+      [
+       "4310",
+       3
+      ],
+      [
+       "5890",
+       3
+      ],
+      [
+       "1015",
+       2
+      ],
+      [
+       "1380",
+       2
+      ],
+      [
+       "1455",
+       2
+      ],
+      [
+       "1550",
+       2
+      ],
+      [
+       "1571",
+       2
+      ],
+      [
+       "1620",
+       2
+      ]
+     ],
+     "uniqueness": 0.8597122302158273,
+     "zero_rate": 0.0
+    },
+    "loser_seed": {
+     "declared_type": "BIGINT",
+     "distinct": 32,
+     "family": "int",
+     "name": "loser_seed",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 32.0,
+      "mean": 8.557553956834532,
+      "min": 1.0,
+      "p25": 4.0,
+      "p50": 6.5,
+      "p75": 10.75
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 11,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "29",
+      "2",
+      "17",
+      "10",
+      "9",
+      "23",
+      "27",
+      "25",
+      "14",
+      "13"
+     ],
+     "text": {
+      "avg_len": 1.2949640287769784,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "5",
+       26
+      ],
+      [
+       "6",
+       26
+      ],
+      [
+       "4",
+       23
+      ],
+      [
+       "1",
+       22
+      ],
+      [
+       "2",
+       21
+      ],
+      [
+       "3",
+       21
+      ],
+      [
+       "7",
+       19
+      ],
+      [
+       "8",
+       19
+      ],
+      [
+       "9",
+       19
+      ],
+      [
+       "10",
+       12
+      ]
+     ],
+     "uniqueness": 0.11510791366906475,
+     "zero_rate": 0.0
+    },
+    "match_num": {
+     "declared_type": "BIGINT",
+     "distinct": 64,
+     "family": "int",
+     "name": "match_num",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.41830065359477125,
+      "max": 300.0,
+      "mean": 272.01798561151077,
+      "min": 148.0,
+      "p25": 232.25,
+      "p50": 293.0,
+      "p75": 297.75
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 12,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "251",
+      "254",
+      "212",
+      "225",
+      "213",
+      "260",
+      "300",
+      "161",
+      "206",
+      "207"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "300",
+       27
+      ],
+      [
+       "298",
+       24
+      ],
+      [
+       "297",
+       20
+      ],
+      [
+       "299",
+       19
+      ],
+      [
+       "294",
+       17
+      ],
+      [
+       "295",
+       16
+      ],
+      [
+       "296",
+       15
+      ],
+      [
+       "291",
+       9
+      ],
+      [
+       "289",
+       8
+      ],
+      [
+       "286",
+       7
+      ]
+     ],
+     "uniqueness": 0.2302158273381295,
+     "zero_rate": 0.0
+    },
+    "minutes": {
+     "declared_type": "BIGINT",
+     "distinct": 113,
+     "family": "int",
+     "name": "minutes",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.565,
+      "max": 199.0,
+      "mean": 98.78057553956835,
+      "min": 0.0,
+      "p25": 75.0,
+      "p50": 95.0,
+      "p75": 120.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 13,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "153",
+      "40",
+      "154",
+      "69",
+      "122",
+      "138",
+      "176",
+      "175",
+      "112",
+      "80"
+     ],
+     "text": {
+      "avg_len": 2.4280575539568345,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "77",
+       7
+      ],
+      [
+       "127",
+       6
+      ],
+      [
+       "70",
+       6
+      ],
+      [
+       "75",
+       6
+      ],
+      [
+       "96",
+       6
+      ],
+      [
+       "101",
+       5
+      ],
+      [
+       "103",
+       5
+      ],
+      [
+       "111",
+       5
+      ],
+      [
+       "131",
+       5
+      ],
+      [
+       "62",
+       5
+      ]
+     ],
+     "uniqueness": 0.4064748201438849,
+     "zero_rate": 0.007194244604316547
+    },
+    "round": {
+     "declared_type": "VARCHAR",
+     "distinct": 7,
+     "family": "text",
+     "name": "round",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 14,
+     "role": "code",
+     "rows": 278,
+     "sample_values": [
+      "QF",
+      "RR",
+      "R16",
+      "SF",
+      "F",
+      "BR",
+      "R32"
+     ],
+     "text": {
+      "avg_len": 2.2158273381294964,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "QF",
+       75
+      ],
+      [
+       "R16",
+       59
+      ],
+      [
+       "SF",
+       50
+      ],
+      [
+       "R32",
+       33
+      ],
+      [
+       "F",
+       32
+      ],
+      [
+       "RR",
+       28
+      ],
+      [
+       "BR",
+       1
+      ]
+     ],
+     "uniqueness": 0.025179856115107913,
+     "zero_rate": 0.0
+    },
+    "score": {
+     "declared_type": "VARCHAR",
+     "distinct": 157,
+     "family": "text",
+     "name": "score",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 15,
+     "role": "text",
+     "rows": 278,
+     "sample_values": [
+      "6-4 6-7(4) 6-1",
+      "6-2 6-7(3) 6-3",
+      "6-4 1-6 6-4",
+      "5-7 6-4 7-6(1)",
+      "7-5 4-6 6-2",
+      "6-3 7-5 ",
+      "6-0 7-5 ",
+      "7-6(3) 6-4",
+      "7-5 6-3",
+      "7-5 7-6(2)"
+     ],
+     "text": {
+      "avg_len": 9.338129496402878,
+      "code_share": 0.0,
+      "composite_share": 0.007194244604316547,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 3,
+      "space_share": 0.9928057553956835,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "6-4 6-4",
+       14
+      ],
+      [
+       "6-2 6-4",
+       9
+      ],
+      [
+       "6-3 6-4",
+       9
+      ],
+      [
+       "6-3 6-3",
+       8
+      ],
+      [
+       "6-1 6-1",
+       7
+      ],
+      [
+       "6-3 6-2",
+       7
+      ],
+      [
+       "6-1 6-4",
+       6
+      ],
+      [
+       "6-4 6-2",
+       6
+      ],
+      [
+       "6-4 6-3",
+       6
+      ],
+      [
+       "7-5 6-3",
+       6
+      ]
+     ],
+     "uniqueness": 0.564748201438849,
+     "zero_rate": 0.0
+    },
+    "surface": {
+     "declared_type": "VARCHAR",
+     "distinct": 3,
+     "family": "text",
+     "name": "surface",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 16,
+     "role": "text",
+     "rows": 278,
+     "sample_values": [
+      "Grass",
+      "Clay",
+      "Hard"
+     ],
+     "text": {
+      "avg_len": 4.100719424460432,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Hard",
+       205
+      ],
+      [
+       "Clay",
+       45
+      ],
+      [
+       "Grass",
+       28
+      ]
+     ],
+     "uniqueness": 0.01079136690647482,
+     "zero_rate": 0.0
+    },
+    "tourney_date": {
+     "declared_type": "BIGINT",
+     "distinct": 57,
+     "family": "int",
+     "name": "tourney_date",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.0014318729903536978,
+      "max": 20170828.0,
+      "mean": 20163195.248201437,
+      "min": 20131021.0,
+      "p25": 20160523.0,
+      "p50": 20161003.0,
+      "p75": 20170320.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 17,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "20160208",
+      "20160404",
+      "20170619",
+      "20160808",
+      "20161031",
+      "20170703",
+      "20170828",
+      "20170213",
+      "20160801",
+      "20160815"
+     ],
+     "text": {
+      "avg_len": 8.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 8,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "20170306",
+       16
+      ],
+      [
+       "20161024",
+       15
+      ],
+      [
+       "20131021",
+       12
+      ],
+      [
+       "20160627",
+       12
+      ],
+      [
+       "20160307",
+       11
+      ],
+      [
+       "20160523",
+       11
+      ],
+      [
+       "20160829",
+       11
+      ],
+      [
+       "20160321",
+       10
+      ],
+      [
+       "20160725",
+       9
+      ],
+      [
+       "20160815",
+       8
+      ]
+     ],
+     "uniqueness": 0.20503597122302158,
+     "zero_rate": 0.0
+    },
+    "tourney_id": {
+     "declared_type": "VARCHAR",
+     "distinct": 70,
+     "family": "text",
+     "name": "tourney_id",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 18,
+     "role": "code",
+     "rows": 278,
+     "sample_values": [
+      "2013-W-WT-TUR-01A-2013",
+      "2017-1098",
+      "2016-M035",
+      "2016-M014",
+      "2017-1052",
+      "2016-M006",
+      "2016-M004",
+      "2016-1048",
+      "2016-1049",
+      "2016-1075"
+     ],
+     "text": {
+      "avg_len": 9.309352517985612,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 22,
+      "min_len": 8,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2017-M006",
+       16
+      ],
+      [
+       "2016-0808",
+       15
+      ],
+      [
+       "2013-W-WT-TUR-01A-2013",
+       12
+      ],
+      [
+       "2016-540",
+       12
+      ],
+      [
+       "2016-520",
+       11
+      ],
+      [
+       "2016-560",
+       11
+      ],
+      [
+       "2016-M006",
+       11
+      ],
+      [
+       "2016-M007",
+       10
+      ],
+      [
+       "2016-0806",
+       9
+      ],
+      [
+       "2016-1075",
+       8
+      ]
+     ],
+     "uniqueness": 0.2517985611510791,
+     "zero_rate": 0.0
+    },
+    "tourney_level": {
+     "declared_type": "VARCHAR",
+     "distinct": 4,
+     "family": "text",
+     "name": "tourney_level",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 19,
+     "role": "code",
+     "rows": 278,
+     "sample_values": [
+      "I",
+      "G",
+      "P",
+      "W"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "I",
+       142
+      ],
+      [
+       "G",
+       64
+      ],
+      [
+       "P",
+       60
+      ],
+      [
+       "W",
+       12
+      ]
+     ],
+     "uniqueness": 0.014388489208633094,
+     "zero_rate": 0.0
+    },
+    "tourney_name": {
+     "declared_type": "VARCHAR",
+     "distinct": 53,
+     "family": "text",
+     "name": "tourney_name",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 20,
+     "role": "text",
+     "rows": 278,
+     "sample_values": [
+      "Miami",
+      "Strasbourg",
+      "Toronto",
+      "Madrid",
+      "Australian Open",
+      "Roland Garros",
+      "New Haven",
+      "WTA Championships",
+      "Olympics",
+      "Bucharest"
+     ],
+     "text": {
+      "avg_len": 9.107913669064748,
+      "code_share": 0.0,
+      "composite_share": 0.0035971223021582736,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 4,
+      "space_share": 0.3381294964028777,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Indian Wells",
+       27
+      ],
+      [
+       "Us Open",
+       19
+      ],
+      [
+       "Miami",
+       16
+      ],
+      [
+       "Wimbledon",
+       16
+      ],
+      [
+       "Singapore",
+       15
+      ],
+      [
+       "Cincinnati",
+       13
+      ],
+      [
+       "Australian Open",
+       12
+      ],
+      [
+       "WTA Championships",
+       12
+      ],
+      [
+       "French Open",
+       11
+      ],
+      [
+       "Montreal",
+       9
+      ]
+     ],
+     "uniqueness": 0.1906474820143885,
+     "zero_rate": 0.0
+    },
+    "winner_age": {
+     "declared_type": "DOUBLE",
+     "distinct": 178,
+     "family": "float",
+     "name": "winner_age",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 37.196440794000004,
+      "mean": 27.062177773183823,
+      "min": 20.917180013699998,
+      "p25": 24.51540041065,
+      "p50": 26.6502395619,
+      "p75": 28.6132785763
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 21,
+     "role": "float",
+     "rows": 278,
+     "sample_values": [
+      "21.9055441478",
+      "21.5222450376",
+      "25.6125941136",
+      "25.650924024600002",
+      "26.9650924025",
+      "25.574264202600002",
+      "24.402464065700002",
+      "28.249144421599997",
+      "28.574948665300003",
+      "25.7275838467"
+     ],
+     "text": {
+      "avg_len": 14.359712230215827,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 18,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "30.5954825462",
+       5
+      ],
+      [
+       "22.9021218344",
+       4
+      ],
+      [
+       "23.8494182067",
+       4
+      ],
+      [
+       "24.8268309377",
+       4
+      ],
+      [
+       "27.4688569473",
+       4
+      ],
+      [
+       "28.7665982204",
+       4
+      ],
+      [
+       "22.4503764545",
+       3
+      ],
+      [
+       "22.527036276500002",
+       3
+      ],
+      [
+       "22.6228610541",
+       3
+      ],
+      [
+       "22.672142368200003",
+       3
+      ]
+     ],
+     "uniqueness": 0.6402877697841727,
+     "zero_rate": 0.0
+    },
+    "winner_entry": {
+     "declared_type": "VARCHAR",
+     "distinct": 1,
+     "family": "text",
+     "name": "winner_entry",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 1.0,
+     "position": 22,
+     "role": "text",
+     "rows": 278,
+     "sample_values": [
+      ""
+     ],
+     "text": {
+      "avg_len": null,
+      "code_share": null,
+      "composite_share": null,
+      "date_shape_share": null,
+      "max_len": null,
+      "min_len": null,
+      "space_share": null,
+      "uuid_share": null
+     },
+     "top_values": [
+      [
+       "",
+       278
+      ]
+     ],
+     "uniqueness": 0.0035971223021582736,
+     "zero_rate": 0.0
+    },
+    "winner_hand": {
+     "declared_type": "VARCHAR",
+     "distinct": 2,
+     "family": "text",
+     "name": "winner_hand",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 23,
+     "role": "code",
+     "rows": 278,
+     "sample_values": [
+      "L",
+      "R"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "R",
+       231
+      ],
+      [
+       "L",
+       47
+      ]
+     ],
+     "uniqueness": 0.007194244604316547,
+     "zero_rate": 0.0
+    },
+    "winner_ht": {
+     "declared_type": "BIGINT",
+     "distinct": 21,
+     "family": "int",
+     "name": "winner_ht",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.7777777777777778,
+      "max": 185.0,
+      "mean": 175.21942446043167,
+      "min": 159.0,
+      "p25": 172.0,
+      "p50": 175.0,
+      "p75": 181.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 24,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "159",
+      "176",
+      "175",
+      "162",
+      "161",
+      "179",
+      "181",
+      "180",
+      "178",
+      "173"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "174",
+       35
+      ],
+      [
+       "173",
+       24
+      ],
+      [
+       "168",
+       22
+      ],
+      [
+       "184",
+       22
+      ],
+      [
+       "177",
+       21
+      ],
+      [
+       "178",
+       21
+      ],
+      [
+       "182",
+       18
+      ],
+      [
+       "183",
+       16
+      ],
+      [
+       "170",
+       15
+      ],
+      [
+       "175",
+       15
+      ]
+     ],
+     "uniqueness": 0.07553956834532374,
+     "zero_rate": 0.0
+    },
+    "winner_id": {
+     "declared_type": "BIGINT",
+     "distinct": 38,
+     "family": "int",
+     "name": "winner_id",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.015434606011372868,
+      "max": 202494.0,
+      "mean": 201530.25179856116,
+      "min": 200033.0,
+      "p25": 201474.0,
+      "p50": 201505.0,
+      "p75": 201595.75
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 25,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "201520",
+      "201320",
+      "201615",
+      "201662",
+      "201493",
+      "201311",
+      "201455",
+      "200033",
+      "201496",
+      "201521"
+     ],
+     "text": {
+      "avg_len": 6.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 6,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "201493",
+       22
+      ],
+      [
+       "201594",
+       21
+      ],
+      [
+       "201662",
+       17
+      ],
+      [
+       "201320",
+       16
+      ],
+      [
+       "201520",
+       16
+      ],
+      [
+       "202494",
+       16
+      ],
+      [
+       "200033",
+       15
+      ],
+      [
+       "201619",
+       15
+      ],
+      [
+       "202469",
+       15
+      ],
+      [
+       "201495",
+       14
+      ]
+     ],
+     "uniqueness": 0.1366906474820144,
+     "zero_rate": 0.0
+    },
+    "winner_ioc": {
+     "declared_type": "VARCHAR",
+     "distinct": 21,
+     "family": "text",
+     "name": "winner_ioc",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 26,
+     "role": "code",
+     "rows": 278,
+     "sample_values": [
+      "NED",
+      "POL",
+      "BEL",
+      "CZE",
+      "RUS",
+      "ROU",
+      "SWE",
+      "UKR",
+      "GER",
+      "BLR"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "USA",
+       45
+      ],
+      [
+       "RUS",
+       37
+      ],
+      [
+       "CZE",
+       36
+      ],
+      [
+       "ROU",
+       25
+      ],
+      [
+       "GER",
+       24
+      ],
+      [
+       "ESP",
+       22
+      ],
+      [
+       "UKR",
+       18
+      ],
+      [
+       "SVK",
+       14
+      ],
+      [
+       "POL",
+       12
+      ],
+      [
+       "DEN",
+       9
+      ]
+     ],
+     "uniqueness": 0.07553956834532374,
+     "zero_rate": 0.0
+    },
+    "winner_name": {
+     "declared_type": "VARCHAR",
+     "distinct": 38,
+     "family": "text",
+     "name": "winner_name",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 27,
+     "role": "text",
+     "rows": 278,
+     "sample_values": [
+      "Carla Suarez Navarro",
+      "Roberta Vinci",
+      "Lucie Safarova",
+      "Elina Svitolina",
+      "Serena Williams",
+      "Simona Halep",
+      "Coco Vandeweghe",
+      "Anastasia Pavlyuchenkova",
+      "Samantha Stosur",
+      "Kristina Mladenovic"
+     ],
+     "text": {
+      "avg_len": 15.766187050359711,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 26,
+      "min_len": 5,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Angelique Kerber",
+       22
+      ],
+      [
+       "Simona Halep",
+       21
+      ],
+      [
+       "Karolina Pliskova",
+       17
+      ],
+      [
+       "Elina Svitolina",
+       16
+      ],
+      [
+       "Petra Kvitova",
+       16
+      ],
+      [
+       "Svetlana Kuznetsova",
+       16
+      ],
+      [
+       "Garbine Muguruza",
+       15
+      ],
+      [
+       "Madison Keys",
+       15
+      ],
+      [
+       "Serena Williams",
+       15
+      ],
+      [
+       "Dominika Cibulkova",
+       14
+      ]
+     ],
+     "uniqueness": 0.1366906474820144,
+     "zero_rate": 0.0
+    },
+    "winner_rank": {
+     "declared_type": "BIGINT",
+     "distinct": 46,
+     "family": "int",
+     "name": "winner_rank",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.5609756097560976,
+      "max": 82.0,
+      "mean": 13.715827338129497,
+      "min": 1.0,
+      "p25": 5.0,
+      "p50": 11.0,
+      "p75": 17.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 28,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "40",
+      "33",
+      "2",
+      "17",
+      "10",
+      "44",
+      "56",
+      "9",
+      "23",
+      "27"
+     ],
+     "text": {
+      "avg_len": 1.5323741007194245,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "5",
+       20
+      ],
+      [
+       "1",
+       19
+      ],
+      [
+       "3",
+       18
+      ],
+      [
+       "16",
+       16
+      ],
+      [
+       "4",
+       15
+      ],
+      [
+       "6",
+       15
+      ],
+      [
+       "8",
+       15
+      ],
+      [
+       "2",
+       13
+      ],
+      [
+       "15",
+       12
+      ],
+      [
+       "11",
+       11
+      ]
+     ],
+     "uniqueness": 0.16546762589928057,
+     "zero_rate": 0.0
+    },
+    "winner_rank_points": {
+     "declared_type": "BIGINT",
+     "distinct": 172,
+     "family": "int",
+     "name": "winner_rank_points",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.015362629510539478,
+      "max": 12040.0,
+      "mean": 3826.251798561151,
+      "min": 845.0,
+      "p25": 2340.0,
+      "p50": 3431.0,
+      "p75": 5107.75
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 29,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "1768",
+      "3580",
+      "1960",
+      "6386",
+      "1965",
+      "1037",
+      "1994",
+      "1445",
+      "2094",
+      "4100"
+     ],
+     "text": {
+      "avg_len": 4.003597122302159,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2340",
+       8
+      ],
+      [
+       "3915",
+       4
+      ],
+      [
+       "4935",
+       4
+      ],
+      [
+       "5071",
+       4
+      ],
+      [
+       "5310",
+       4
+      ],
+      [
+       "8000",
+       4
+      ],
+      [
+       "12040",
+       3
+      ],
+      [
+       "1768",
+       3
+      ],
+      [
+       "2343",
+       3
+      ],
+      [
+       "2390",
+       3
+      ]
+     ],
+     "uniqueness": 0.6187050359712231,
+     "zero_rate": 0.0
+    },
+    "winner_seed": {
+     "declared_type": "BIGINT",
+     "distinct": 25,
+     "family": "int",
+     "name": "winner_seed",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.8333333333333334,
+      "max": 30.0,
+      "mean": 7.410071942446043,
+      "min": 1.0,
+      "p25": 3.0,
+      "p50": 5.5,
+      "p75": 11.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 30,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "2",
+      "10",
+      "9",
+      "27",
+      "14",
+      "13",
+      "7",
+      "1",
+      "19",
+      "22"
+     ],
+     "text": {
+      "avg_len": 1.2841726618705036,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2",
+       35
+      ],
+      [
+       "1",
+       32
+      ],
+      [
+       "3",
+       28
+      ],
+      [
+       "7",
+       24
+      ],
+      [
+       "4",
+       23
+      ],
+      [
+       "5",
+       21
+      ],
+      [
+       "8",
+       16
+      ],
+      [
+       "6",
+       14
+      ],
+      [
+       "14",
+       13
+      ],
+      [
+       "13",
+       12
+      ]
+     ],
+     "uniqueness": 0.08992805755395683,
+     "zero_rate": 0.0
+    },
+    "year": {
+     "declared_type": "BIGINT",
+     "distinct": 3,
+     "family": "int",
+     "name": "year",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.6,
+      "max": 2017.0,
+      "mean": 2016.2589928057555,
+      "min": 2013.0,
+      "p25": 2016.0,
+      "p50": 2016.0,
+      "p75": 2017.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 31,
+     "role": "int",
+     "rows": 278,
+     "sample_values": [
+      "2013",
+      "2017",
+      "2016"
+     ],
+     "text": {
+      "avg_len": 4.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2016",
+       158
+      ],
+      [
+       "2017",
+       108
+      ],
+      [
+       "2013",
+       12
+      ]
+     ],
+     "uniqueness": 0.01079136690647482,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 278,
+   "sample_rows": [
+    {
+     "best_of": 3,
+     "draw_size": 64,
+     "loser_age": 33.4893908282,
+     "loser_entry": "",
+     "loser_hand": "R",
+     "loser_ht": 163,
+     "loser_id": 201311,
+     "loser_ioc": "ITA",
+     "loser_name": "Roberta Vinci",
+     "loser_rank": 8,
+     "loser_rank_points": 3440,
+     "loser_seed": 6,
+     "match_num": 287,
+     "minutes": 74,
+     "round": "R16",
+     "score": "6-1 7-5",
+     "surface": "Hard",
+     "tourney_date": 20160815,
+     "tourney_id": "2016-M024",
+     "tourney_level": "P",
+     "tourney_name": "Cincinnati",
+     "winner_age": 27.947980835,
+     "winner_entry": "",
+     "winner_hand": "R",
+     "winner_ht": 162,
+     "winner_id": 201521,
+     "winner_ioc": "ESP",
+     "winner_name": "Carla Suarez Navarro",
+     "winner_rank": 12,
+     "winner_rank_points": 3010,
+     "winner_seed": 9,
+     "year": 2016
+    },
+    {
+     "best_of": 3,
+     "draw_size": 64,
+     "loser_age": 24.517453798800002,
+     "loser_entry": "",
+     "loser_hand": "R",
+     "loser_ht": 184,
+     "loser_id": 201662,
+     "loser_ioc": "CZE",
+     "loser_name": "Karolina Pliskova",
+     "loser_rank": 6,
+     "loser_rank_points": 4425,
+     "loser_seed": 5,
+     "match_num": 287,
+     "minutes": 74,
+     "round": "R16",
+     "score": "6-2 6-2",
+     "surface": "Hard",
+     "tourney_date": 20160926,
+     "tourney_id": "2016-1075",
+     "tourney_level": "I",
+     "tourney_name": "Wuhan",
+     "winner_age": 27.3921971253,
+     "winner_entry": "",
+     "winner_hand": "R",
+     "winner_ht": 161,
+     "winner_id": 201495,
+     "winner_ioc": "SVK",
+     "winner_name": "Dominika Cibulkova",
+     "winner_rank": 12,
+     "winner_rank_points": 2975,
+     "winner_seed": 10,
+     "year": 2016
+    },
+    {
+     "best_of": 3,
+     "draw_size": 64,
+     "loser_age": 25.6317590691,
+     "loser_entry": "",
+     "loser_hand": "R",
+     "loser_ht": 168,
+     "loser_id": 201594,
+     "loser_ioc": "ROU",
+     "loser_name": "Simona Halep",
+     "loser_rank": 4,
+     "loser_rank_points": 5205,
+     "loser_seed": 6,
+     "match_num": 300,
+     "minutes": 127,
+     "round": "F",
+     "score": "4-6 7-5 6-1",
+     "surface": "Clay",
+     "tourney_date": 20170515,
+     "tourney_id": "2017-M009",
+     "tourney_level": "I",
+     "tourney_name": "Rome",
+     "winner_age": 22.672142368200003,
+     "winner_entry": "",
+     "winner_hand": "R",
+     "winner_ht": 174,
+     "winner_id": 202494,
+     "winner_ioc": "UKR",
+     "winner_name": "Elina Svitolina",
+     "winner_rank": 11,
+     "winner_rank_points": 3780,
+     "winner_seed": 8,
+     "year": 2017
+    },
+    {
+     "best_of": 3,
+     "draw_size": 128,
+     "loser_age": 28.733744011,
+     "loser_entry": "",
+     "loser_hand": "R",
+     "loser_ht": 162,
+     "loser_id": 201521,
+     "loser_ioc": "ESP",
+     "loser_name": "Carla Suarez Navarro",
+     "loser_rank": 23,
+     "loser_rank_points": 1800,
+     "loser_seed": 21,
+     "match_num": 217,
+     "minutes": 60,
+     "round": "R16",
+     "score": "6-1 6-1",
+     "surface": "Clay",
+     "tourney_date": 20170529,
+     "tourney_id": "2017-520",
+     "tourney_level": "G",
+     "tourney_name": "Roland Garros",
+     "winner_age": 25.6700889802,
+     "winner_entry": "",
+     "winner_hand": "R",
+     "winner_ht": 168,
+     "winner_id": 201594,
+     "winner_ioc": "ROU",
+     "winner_name": "Simona Halep",
+     "winner_rank": 4,
+     "winner_rank_points": 5790,
+     "winner_seed": 3,
+     "year": 2017
+    },
+    {
+     "best_of": 3,
+     "draw_size": 128,
+     "loser_age": 25.7275838467,
+     "loser_entry": "",
+     "loser_hand": "R",
+     "loser_ht": 185,
+     "loser_id": 201535,
+     "loser_ioc": "USA",
+     "loser_name": "Coco Vandeweghe",
+     "loser_rank": 22,
+     "loser_rank_points": 1994,
+     "loser_seed": 20,
+     "match_num": 224,
+     "minutes": 66,
+     "round": "SF",
+     "score": "6-1 6-2",
+     "surface": "Hard",
+     "tourney_date": 20170828,
+     "tourney_id": "2017-560",
+     "tourney_level": "G",
+     "tourney_name": "Us Open",
+     "winner_age": 22.527036276500002,
+     "winner_entry": "",
+     "winner_hand": "R",
+     "winner_ht": 178,
+     "winner_id": 201619,
+     "winner_ioc": "USA",
+     "winner_name": "Madison Keys",
+     "winner_rank": 16,
+     "winner_rank_points": 2343,
+     "winner_seed": 15,
+     "year": 2017
+    }
+   ]
+  },
+  "players": {
+   "columns": {
+    "birth_date": {
+     "declared_type": "UNION(integer_value BIGINT, real_value DOUBLE, text_value VARCHAR, blob_value BLOB)",
+     "distinct": 10228,
+     "family": "text",
+     "name": "birth_date",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.02507017713677282,
+     "position": 4,
+     "role": "code",
+     "rows": 20662,
+     "sample_values": [
+      "19980818",
+      "19911108",
+      "19880712",
+      "19840420",
+      "19880717",
+      "19670213",
+      "19830130",
+      "19900921",
+      "19850823",
+      "19880527"
+     ],
+     "text": {
+      "avg_len": 8.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 8,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "",
+       518
+      ],
+      [
+       "19970313",
+       11
+      ],
+      [
+       "19970424",
+       10
+      ],
+      [
+       "19970617",
+       10
+      ],
+      [
+       "19890506",
+       9
+      ],
+      [
+       "19920114",
+       9
+      ],
+      [
+       "19970303",
+       9
+      ],
+      [
+       "19850530",
+       8
+      ],
+      [
+       "19881126",
+       8
+      ],
+      [
+       "19920513",
+       8
+      ]
+     ],
+     "uniqueness": 0.49501500338786175,
+     "zero_rate": 0.0
+    },
+    "country_code": {
+     "declared_type": "VARCHAR",
+     "distinct": 153,
+     "family": "text",
+     "name": "country_code",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "code",
+     "rows": 20662,
+     "sample_values": [
+      "ECA",
+      "HAI",
+      "NED",
+      "HON",
+      "FRG",
+      "GBR",
+      "THA",
+      "CAN",
+      "POL",
+      "TRI"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 0.9998064078985578,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "USA",
+       2217
+      ],
+      [
+       "ITA",
+       866
+      ],
+      [
+       "ESP",
+       853
+      ],
+      [
+       "GER",
+       833
+      ],
+      [
+       "JPN",
+       823
+      ],
+      [
+       "RUS",
+       810
+      ],
+      [
+       "AUS",
+       742
+      ],
+      [
+       "FRA",
+       736
+      ],
+      [
+       "GBR",
+       660
+      ],
+      [
+       "IND",
+       478
+      ]
+     ],
+     "uniqueness": 0.007404897880166489,
+     "zero_rate": 0.0
+    },
+    "first_name": {
+     "declared_type": "VARCHAR",
+     "distinct": 6768,
+     "family": "text",
+     "name": "first_name",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.00038718420288452233,
+     "position": 1,
+     "role": "text",
+     "rows": 20662,
+     "sample_values": [
+      "Katia Monserrat",
+      "Yue",
+      "Murielle",
+      "Nia",
+      "Roxanne",
+      "Ludivine",
+      "Happy",
+      "Nele",
+      "Lydie",
+      "Nikol"
+     ],
+     "text": {
+      "avg_len": 6.532148736322262,
+      "code_share": 0.0022755882637745715,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 31,
+      "min_len": 1,
+      "space_share": 0.09208869952551564,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Anna",
+       190
+      ],
+      [
+       "Maria",
+       185
+      ],
+      [
+       "Laura",
+       159
+      ],
+      [
+       "Alexandra",
+       131
+      ],
+      [
+       "Andrea",
+       120
+      ],
+      [
+       "Julia",
+       112
+      ],
+      [
+       "Natalia",
+       99
+      ],
+      [
+       "Elena",
+       96
+      ],
+      [
+       "Anastasia",
+       95
+      ],
+      [
+       "Stephanie",
+       92
+      ]
+     ],
+     "uniqueness": 0.3275578356403059,
+     "zero_rate": 0.0
+    },
+    "hand": {
+     "declared_type": "VARCHAR",
+     "distinct": 4,
+     "family": "text",
+     "name": "hand",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.046171716193979286,
+     "position": 3,
+     "role": "code",
+     "rows": 20662,
+     "sample_values": [
+      "L",
+      "",
+      "U",
+      "R"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "U",
+       14193
+      ],
+      [
+       "R",
+       5028
+      ],
+      [
+       "",
+       954
+      ],
+      [
+       "L",
+       487
+      ]
+     ],
+     "uniqueness": 0.00019359210144226117,
+     "zero_rate": 0.0
+    },
+    "last_name": {
+     "declared_type": "VARCHAR",
+     "distinct": 15928,
+     "family": "text",
+     "name": "last_name",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "text",
+     "rows": 20662,
+     "sample_values": [
+      "Delgado Valero",
+      "Yue",
+      "Abid",
+      "Njoze",
+      "Helliar",
+      "Palacios",
+      "Krutko",
+      "Salimova",
+      "Pavlova",
+      "Sigutova"
+     ],
+     "text": {
+      "avg_len": 7.462927112573807,
+      "code_share": 0.0004355822282450876,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 35,
+      "min_len": 1,
+      "space_share": 0.08972993901848804,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Lee",
+       69
+      ],
+      [
+       "Kim",
+       58
+      ],
+      [
+       "Smith",
+       38
+      ],
+      [
+       "Wang",
+       37
+      ],
+      [
+       "Liu",
+       35
+      ],
+      [
+       "Chen",
+       34
+      ],
+      [
+       "Li",
+       29
+      ],
+      [
+       "Jones",
+       26
+      ],
+      [
+       "Martinez",
+       25
+      ],
+      [
+       "Rodriguez",
+       25
+      ]
+     ],
+     "uniqueness": 0.7708837479430839,
+     "zero_rate": 0.0
+    },
+    "player_id": {
+     "declared_type": "BIGINT",
+     "distinct": 20662,
+     "family": "int",
+     "name": "player_id",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.999516253869969,
+      "max": 220672.0,
+      "mean": 210331.56243345272,
+      "min": 200001.0,
+      "p25": 205166.25,
+      "p50": 210331.5,
+      "p75": 215496.75
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 20662,
+     "sample_values": [
+      "209344",
+      "216844",
+      "217147",
+      "213131",
+      "213483",
+      "200711",
+      "216100",
+      "206702",
+      "211996",
+      "202755"
+     ],
+     "text": {
+      "avg_len": 6.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 6,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "200001",
+       1
+      ],
+      [
+       "200002",
+       1
+      ],
+      [
+       "200003",
+       1
+      ],
+      [
+       "200004",
+       1
+      ],
+      [
+       "200005",
+       1
+      ],
+      [
+       "200006",
+       1
+      ],
+      [
+       "200007",
+       1
+      ],
+      [
+       "200008",
+       1
+      ],
+      [
+       "200009",
+       1
+      ],
+      [
+       "200010",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 20662,
+   "sample_rows": [
+    {
+     "birth_date": 19430430,
+     "country_code": "ESP",
+     "first_name": "Maria Jose",
+     "hand": "U",
+     "last_name": "Aubet",
+     "player_id": 200841
+    },
+    {
+     "birth_date": 19720131,
+     "country_code": "BEL",
+     "first_name": "Caroline",
+     "hand": "U",
+     "last_name": "Van Renterghem",
+     "player_id": 201713
+    },
+    {
+     "birth_date": 19990914,
+     "country_code": "RUS",
+     "first_name": "Adelina",
+     "hand": "U",
+     "last_name": "Baravi",
+     "player_id": 215291
+    },
+    {
+     "birth_date": 19921023,
+     "country_code": "JPN",
+     "first_name": "Anjyu",
+     "hand": "U",
+     "last_name": "Kanda",
+     "player_id": 217871
+    },
+    {
+     "birth_date": 20000802,
+     "country_code": "RUS",
+     "first_name": "Varvara",
+     "hand": "U",
+     "last_name": "Gracheva",
+     "player_id": 219875
+    }
+   ]
+  },
+  "rankings": {
+   "columns": {
+    "player_id": {
+     "declared_type": "UNION(integer_value BIGINT, real_value DOUBLE, text_value VARCHAR, blob_value BLOB)",
+     "distinct": 2776,
+     "family": "text",
+     "name": "player_id",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 1.959105629098204e-06,
+     "position": 2,
+     "role": "code",
+     "rows": 510437,
+     "sample_values": [
+      "211996",
+      "201543",
+      "213755",
+      "201650",
+      "206111",
+      "202704",
+      "201377",
+      "210910",
+      "215035",
+      "205144"
+     ],
+     "text": {
+      "avg_len": 6.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 6,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "200009",
+       1117
+      ],
+      [
+       "200744",
+       1076
+      ],
+      [
+       "200748",
+       1057
+      ],
+      [
+       "200036",
+       1050
+      ],
+      [
+       "201815",
+       1025
+      ],
+      [
+       "200124",
+       1017
+      ],
+      [
+       "201462",
+       1003
+      ],
+      [
+       "201212",
+       1001
+      ],
+      [
+       "201086",
+       988
+      ],
+      [
+       "200083",
+       986
+      ]
+     ],
+     "uniqueness": 0.005438477226376614,
+     "zero_rate": 0.0
+    },
+    "ranking": {
+     "declared_type": "BIGINT",
+     "distinct": 1491,
+     "family": "int",
+     "name": "ranking",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.9893828798938288,
+      "max": 1507.0,
+      "mean": 553.480874231296,
+      "min": 1.0,
+      "p25": 239.0,
+      "p50": 517.0,
+      "p75": 852.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "int",
+     "rows": 510437,
+     "sample_values": [
+      "153",
+      "1470",
+      "40",
+      "755",
+      "308",
+      "610",
+      "307",
+      "1440",
+      "406",
+      "770"
+     ],
+     "text": {
+      "avg_len": 3.031014601214254,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "27",
+       651
+      ],
+      [
+       "30",
+       646
+      ],
+      [
+       "28",
+       643
+      ],
+      [
+       "39",
+       637
+      ],
+      [
+       "31",
+       622
+      ],
+      [
+       "43",
+       617
+      ],
+      [
+       "58",
+       608
+      ],
+      [
+       "40",
+       606
+      ],
+      [
+       "29",
+       603
+      ],
+      [
+       "45",
+       603
+      ]
+     ],
+     "uniqueness": 0.002921026492985422,
+     "zero_rate": 0.0
+    },
+    "ranking_date": {
+     "declared_type": "BIGINT",
+     "distinct": 1504,
+     "family": "int",
+     "name": "ranking_date",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.005000116359090804,
+      "max": 20170911.0,
+      "mean": 20103426.372000854,
+      "min": 19870119.0,
+      "p25": 20080324.0,
+      "p50": 20110711.0,
+      "p75": 20130826.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 510437,
+     "sample_values": [
+      "20170417",
+      "20131125",
+      "19980713",
+      "20100906",
+      "19910114",
+      "19980831",
+      "20060101",
+      "20151102",
+      "19921221",
+      "20140113"
+     ],
+     "text": {
+      "avg_len": 8.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 8,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "20160307",
+       1349
+      ],
+      [
+       "20160118",
+       1347
+      ],
+      [
+       "20160229",
+       1347
+      ],
+      [
+       "20160215",
+       1346
+      ],
+      [
+       "20160201",
+       1345
+      ],
+      [
+       "20160222",
+       1343
+      ],
+      [
+       "20160208",
+       1341
+      ],
+      [
+       "20160411",
+       1332
+      ],
+      [
+       "20160509",
+       1332
+      ],
+      [
+       "20160418",
+       1330
+      ]
+     ],
+     "uniqueness": 0.002946494866163699,
+     "zero_rate": 0.0
+    },
+    "ranking_points": {
+     "declared_type": "BIGINT",
+     "distinct": 3740,
+     "family": "int",
+     "name": "ranking_points",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.27467685076380727,
+      "max": 13615.0,
+      "mean": 225.6710583284519,
+      "min": 0.0,
+      "p25": 13.0,
+      "p50": 44.0,
+      "p75": 168.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "int",
+     "rows": 510437,
+     "sample_values": [
+      "4900",
+      "4970",
+      "2982",
+      "153",
+      "1470",
+      "40",
+      "3125",
+      "2777",
+      "755",
+      "308"
+     ],
+     "text": {
+      "avg_len": 2.2015567053328815,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "3",
+       20373
+      ],
+      [
+       "4",
+       15164
+      ],
+      [
+       "6",
+       13306
+      ],
+      [
+       "10",
+       10779
+      ],
+      [
+       "7",
+       10485
+      ],
+      [
+       "8",
+       10403
+      ],
+      [
+       "5",
+       10136
+      ],
+      [
+       "9",
+       8877
+      ],
+      [
+       "12",
+       8819
+      ],
+      [
+       "11",
+       8590
+      ]
+     ],
+     "uniqueness": 0.007327055052827283,
+     "zero_rate": 0.0014987158062601262
+    },
+    "tours": {
+     "declared_type": "BIGINT",
+     "distinct": 42,
+     "family": "int",
+     "name": "tours",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 41.0,
+      "mean": 12.995292269173277,
+      "min": 0.0,
+      "p25": 5.0,
+      "p50": 12.0,
+      "p75": 21.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "int",
+     "rows": 510437,
+     "sample_values": [
+      "40",
+      "29",
+      "33",
+      "2",
+      "17",
+      "10",
+      "9",
+      "23",
+      "27",
+      "37"
+     ],
+     "text": {
+      "avg_len": 1.5762278204753966,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "3",
+       31046
+      ],
+      [
+       "0",
+       27737
+      ],
+      [
+       "4",
+       25779
+      ],
+      [
+       "1",
+       23042
+      ],
+      [
+       "5",
+       22528
+      ],
+      [
+       "25",
+       18330
+      ],
+      [
+       "6",
+       18216
+      ],
+      [
+       "22",
+       18152
+      ],
+      [
+       "2",
+       17990
+      ],
+      [
+       "13",
+       17665
+      ]
+     ],
+     "uniqueness": 8.228243642212458e-05,
+     "zero_rate": 0.05433971283429689
+    }
+   },
+   "rows": 510437,
+   "sample_rows": [
+    {
+     "player_id": 201305,
+     "ranking": 278,
+     "ranking_date": 20000306,
+     "ranking_points": 66,
+     "tours": 33
+    },
+    {
+     "player_id": 201365,
+     "ranking": 790,
+     "ranking_date": 20000515,
+     "ranking_points": 5,
+     "tours": 24
+    },
+    {
+     "player_id": 202306,
+     "ranking": 462,
+     "ranking_date": 20021202,
+     "ranking_points": 29,
+     "tours": 14
+    },
+    {
+     "player_id": 204524,
+     "ranking": 590,
+     "ranking_date": 20030303,
+     "ranking_points": 17,
+     "tours": 0
+    },
+    {
+     "player_id": 200765,
+     "ranking": 143,
+     "ranking_date": 20030519,
+     "ranking_points": 223,
+     "tours": 7
+    }
+   ]
+  }
+ }
+}

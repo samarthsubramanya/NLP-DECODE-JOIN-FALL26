@@ -1,0 +1,257 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.24394184168012925,
+   "decision": "accepted",
+   "dist": 0.6659308314937454,
+   "dist_buckets": [
+    54,
+    69,
+    32,
+    22,
+    17,
+    41,
+    36,
+    31,
+    0,
+    0
+   ],
+   "fan_out": 1.0,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.6659,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 94.989,
+   "score_before_fan_out": 94.989,
+   "source": {
+    "column": "ID",
+    "table": "Laboratory"
+   },
+   "target": {
+    "column": "ID",
+    "table": "Patient"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 125.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 15,
+    "name": 20,
+    "nulls": 10,
+    "overlap": 25,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.2154696132596685,
+   "coverage": 0.1780821917808219,
+   "decision": "llm_reject",
+   "dist": null,
+   "dist_buckets": null,
+   "fan_out": 1.0,
+   "llm": {
+    "adjudication": "grouped",
+    "decision": "reject",
+    "group_size": 1,
+    "model": "glm-5-3",
+    "reason": "Both columns hold free-text disease abbreviations (SLE, RA, SjS) describing a shared medical vocabulary, not entity identifiers, so matching values name a disease category rather than the same real-world entity and the join would arbitrarily pair unrelated patients and examinations.",
+    "reasoning_effort": "low"
+   },
+   "partial_overlap": true,
+   "parts": {
+    "overlap": 0.2155
+   },
+   "penalties": {},
+   "score": 65.0,
+   "source": {
+    "column": "Diagnosis",
+    "table": "Examination"
+   },
+   "source_is_pk": false,
+   "target": {
+    "column": "Diagnosis",
+    "table": "Patient"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 4.95
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.06622516556291391,
+   "coverage": 0.02621231979030144,
+   "decision": "llm_abstain",
+   "dist": null,
+   "dist_buckets": null,
+   "fan_out": 1.0,
+   "llm": {
+    "adjudication": "grouped",
+    "decision": "abstain",
+    "group_size": 1,
+    "model": "glm-5-3",
+    "reason": "Both columns plausibly hold patient identifiers from the same clinical dataset, but the overlap is tiny (containment 0.066, coverage 0.026) and the ID distributions differ noticeably (Examination skews much higher), so the evidence is too thin to confirm or rule out a shared ID pool.",
+    "reasoning_effort": "low"
+   },
+   "partial_overlap": true,
+   "parts": {
+    "overlap": 0.0662
+   },
+   "penalties": {},
+   "score": 65.0,
+   "source": {
+    "column": "ID",
+    "table": "Laboratory"
+   },
+   "source_is_pk": false,
+   "target": {
+    "column": "ID",
+    "table": "Examination"
+   },
+   "target_is_pk": false,
+   "target_pk_score": null
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "dist_no_accept_below": 0.3,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "ddb",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_range_span": null,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
+  "r_cap": 2,
+  "repair_isolated": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 1,
+  "band": 2
+ },
+ "db_id": "thrombosis_prediction",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.24394184168012925,
+    "decision": "accepted",
+    "score": 94.989,
+    "source": {
+     "column": "ID",
+     "table": "Laboratory"
+    },
+    "target": {
+     "column": "ID",
+     "table": "Patient"
+    }
+   }
+  ],
+  "llm": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.24394184168012925,
+    "decision": "accepted",
+    "score": 94.989,
+    "source": {
+     "column": "ID",
+     "table": "Laboratory"
+    },
+    "target": {
+     "column": "ID",
+     "table": "Patient"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.24394184168012925,
+    "decision": "accepted",
+    "score": 94.989,
+    "source": {
+     "column": "ID",
+     "table": "Laboratory"
+    },
+    "target": {
+     "column": "ID",
+     "table": "Patient"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.2154696132596685,
+    "coverage": 0.1780821917808219,
+    "decision": "band",
+    "score": 65.0,
+    "source": {
+     "column": "Diagnosis",
+     "table": "Examination"
+    },
+    "target": {
+     "column": "Diagnosis",
+     "table": "Patient"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.06622516556291391,
+    "coverage": 0.02621231979030144,
+    "decision": "band",
+    "score": 65.0,
+    "source": {
+     "column": "ID",
+     "table": "Laboratory"
+    },
+    "target": {
+     "column": "ID",
+     "table": "Examination"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.0,
+ "keys_run": "ddb",
+ "use_names": true,
+ "weights": {
+  "cardinality": 15,
+  "distribution": 15,
+  "name": 20,
+  "nulls": 10,
+  "overlap": 25,
+  "target_key": 15
+ }
+}

@@ -1,0 +1,310 @@
+{
+ "accept": 70,
+ "db_id": "thrombosis_prediction",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "Examination": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "has nulls"
+    },
+    "col_002": {
+     "rejected": "has nulls"
+    },
+    "col_003": {
+     "base": 11.875,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.14267990074441686
+     },
+     "phi": 0.7,
+     "score": 8.312
+    },
+    "col_004": {
+     "base": 11.875,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.17369727047146402
+     },
+     "phi": 0.55,
+     "score": 6.531
+    },
+    "col_005": {
+     "rejected": "has nulls"
+    },
+    "col_006": {
+     "rejected": "has nulls"
+    },
+    "col_007": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_008": {
+     "rejected": "has nulls"
+    },
+    "col_009": {
+     "rejected": "has nulls"
+    },
+    "col_010": {
+     "rejected": "has nulls"
+    },
+    "col_011": {
+     "rejected": "has nulls"
+    },
+    "col_012": {
+     "rejected": "has nulls"
+    },
+    "col_013": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "Laboratory": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.02171412136899626
+     },
+     "phi": 1.0,
+     "score": 18.75
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.2676876617773943
+     },
+     "phi": 0.85,
+     "score": 9.562
+    },
+    "col_003": {
+     "rejected": "has nulls"
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    },
+    "col_005": {
+     "rejected": "has nulls"
+    },
+    "col_006": {
+     "rejected": "has nulls"
+    },
+    "col_007": {
+     "rejected": "has nulls"
+    },
+    "col_008": {
+     "rejected": "has nulls"
+    },
+    "col_009": {
+     "rejected": "has nulls"
+    },
+    "col_010": {
+     "rejected": "has nulls"
+    },
+    "col_011": {
+     "rejected": "has nulls"
+    },
+    "col_012": {
+     "rejected": "has nulls"
+    },
+    "col_013": {
+     "rejected": "has nulls"
+    },
+    "col_014": {
+     "rejected": "has nulls"
+    },
+    "col_015": {
+     "rejected": "has nulls"
+    },
+    "col_016": {
+     "rejected": "has nulls"
+    },
+    "col_017": {
+     "rejected": "has nulls"
+    },
+    "col_018": {
+     "rejected": "has nulls"
+    },
+    "col_019": {
+     "rejected": "has nulls"
+    },
+    "col_020": {
+     "rejected": "has nulls"
+    },
+    "col_021": {
+     "rejected": "has nulls"
+    },
+    "col_022": {
+     "rejected": "has nulls"
+    },
+    "col_023": {
+     "rejected": "has nulls"
+    },
+    "col_024": {
+     "rejected": "has nulls"
+    },
+    "col_025": {
+     "rejected": "has nulls"
+    },
+    "col_026": {
+     "rejected": "has nulls"
+    },
+    "col_027": {
+     "rejected": "has nulls"
+    },
+    "col_028": {
+     "rejected": "has nulls"
+    },
+    "col_029": {
+     "rejected": "has nulls"
+    },
+    "col_030": {
+     "rejected": "has nulls"
+    },
+    "col_031": {
+     "rejected": "has nulls"
+    },
+    "col_032": {
+     "rejected": "has nulls"
+    },
+    "col_033": {
+     "rejected": "has nulls"
+    },
+    "col_034": {
+     "rejected": "has nulls"
+    },
+    "col_035": {
+     "rejected": "has nulls"
+    },
+    "col_036": {
+     "rejected": "has nulls"
+    },
+    "col_037": {
+     "rejected": "has nulls"
+    },
+    "col_038": {
+     "rejected": "has nulls"
+    },
+    "col_039": {
+     "rejected": "has nulls"
+    },
+    "col_040": {
+     "rejected": "has nulls"
+    },
+    "col_041": {
+     "rejected": "has nulls"
+    },
+    "col_042": {
+     "rejected": "has nulls"
+    },
+    "col_043": {
+     "rejected": "has nulls"
+    },
+    "col_044": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "Patient": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Laboratory.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0024232633279483036
+     },
+     "phi": 0.85,
+     "score": 20.188
+    },
+    "col_003": {
+     "rejected": "has nulls"
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    },
+    "col_005": {
+     "rejected": "has nulls"
+    },
+    "col_006": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_007": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1777059773828756
+     },
+     "phi": 0.55,
+     "score": 6.188
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  }
+ },
+ "use_names": false
+}

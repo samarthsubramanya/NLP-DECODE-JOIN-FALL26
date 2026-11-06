@@ -1,0 +1,390 @@
+{
+ "db_id": "dog_kennels",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 6,
+ "tables": {
+  "Breeds": {
+   "table": {
+    "name": "Breeds",
+    "purpose": "Lookup table of dog breeds, referenced by the Dogs table. Each row is one breed with a short code and its full name."
+   },
+   "columns": {
+    "breed_code": {
+     "role": "code",
+     "name": "breed_code",
+     "description": "Primary key. Short three-letter code identifying a dog breed (e.g. ESK = Eskimo, HUS = Husky, BUL = Bulldog). Referenced by Dogs.breed_code.",
+     "status": "resolved"
+    },
+    "breed_name": {
+     "role": "category",
+     "name": "breed_name",
+     "description": "Full display name of the breed corresponding to the breed code.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Charges": {
+   "table": {
+    "name": "Charges",
+    "purpose": "Lookup/price list of veterinary charges: each row is a billable charge type with its amount (likely in the smallest currency unit, e.g., cents, given BIGINT values like 98–640). Referenced by treatments presumably via charge_id."
+   },
+   "columns": {
+    "charge_amount": {
+     "role": "code",
+     "name": "charge_amount",
+     "description": "Price of the charge type. Declared BIGINT with values 98–640; likely stored in minor currency units (cents) rather than a currency unit, though with only 3 rows this is tentative.",
+     "status": "tentative"
+    },
+    "charge_id": {
+     "role": "code",
+     "name": "charge_id",
+     "description": "Primary key identifying each charge entry.",
+     "status": "resolved"
+    },
+    "charge_type": {
+     "role": "code",
+     "name": "charge_type",
+     "description": "Name of the charge category, e.g., 'Daily Accommodation', 'Drugs', 'Health Check'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Dogs": {
+   "table": {
+    "name": "Dogs",
+    "purpose": "Animal-shelter / kennel register: one row per dog, tracking its arrival at the facility, adoption by an owner, and departure, along with breed, size, age and physical attributes. Referenced by Treatments for medical care records."
+   },
+   "columns": {
+    "abandoned_yn": {
+     "role": "boolean",
+     "name": "abandoned_flag",
+     "description": "Flag indicating whether the dog was abandoned (1 = yes, 0 = no); 3 of 15 dogs were abandoned.",
+     "status": "resolved"
+    },
+    "age": {
+     "role": "numeric",
+     "name": "age_years",
+     "description": "Age of the dog in whole years (values 1-9).",
+     "status": "resolved"
+    },
+    "breed_code": {
+     "role": "code",
+     "name": "breed_code",
+     "description": "Foreign key to Breeds.breed_code; three-letter code for the dog's breed (ESK = Eskimo, HUS = Husky, BUL = Bulldog).",
+     "status": "resolved"
+    },
+    "date_adopted": {
+     "role": "date",
+     "name": "adoption_date",
+     "description": "Timestamp when the dog was adopted; all values fall in Feb-Mar 2018, after arrival and around departure.",
+     "status": "resolved"
+    },
+    "date_arrived": {
+     "role": "date",
+     "name": "arrival_date",
+     "description": "Timestamp when the dog arrived at the shelter/kennel (Apr 2017 - Jan 2018).",
+     "status": "resolved"
+    },
+    "date_departed": {
+     "role": "date",
+     "name": "departure_date",
+     "description": "Timestamp when the dog left the facility; all values cluster on 2018-03-24/25, consistent with a batch departure/adoption event.",
+     "status": "resolved"
+    },
+    "date_of_birth": {
+     "role": "date",
+     "name": "date_of_birth",
+     "description": "The dog's date of birth (2008-2018). Note: in some rows it is inconsistent with the age column (e.g. dog 7 born 2017-09-19 but age 2), so age and birth date do not always agree.",
+     "status": "resolved"
+    },
+    "dog_id": {
+     "role": "identifier",
+     "name": "dog_id",
+     "description": "Primary key; unique identifier of the dog. Referenced by Treatments.dog_id for its treatment records.",
+     "status": "resolved"
+    },
+    "gender": {
+     "role": "boolean",
+     "name": "gender",
+     "description": "Binary gender flag (0/1). Which value maps to male vs female is not determinable from the data; the joins provide no additional evidence.",
+     "status": "tentative"
+    },
+    "name": {
+     "role": "free_text",
+     "name": "name",
+     "description": "The dog's given name (all unique in this sample).",
+     "status": "resolved"
+    },
+    "owner_id": {
+     "role": "identifier",
+     "name": "owner_id",
+     "description": "Foreign key to Owners.owner_id; the owner who adopted the dog. Some owners (e.g. 14) adopted more than one dog.",
+     "status": "resolved"
+    },
+    "size_code": {
+     "role": "code",
+     "name": "size_code",
+     "description": "Foreign key to Sizes.size_code; the dog's size class (SML = Small, MED = Medium, LGE = Large).",
+     "status": "resolved"
+    },
+    "weight": {
+     "role": "numeric",
+     "name": "weight",
+     "description": "The dog's weight, numeric (1.39-9.8). The unit is not evident from the data; values are small for dogs of these breeds, so kilograms is plausible but pounds would be unusually low - unit unresolved. The joins provide no additional evidence.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Owners": {
+   "table": {
+    "name": "Owners",
+    "purpose": "Pet owners registered at a veterinary clinic; each row is one dog owner with contact and address details, referenced by the Dogs table."
+   },
+   "columns": {
+    "cell_number": {
+     "role": "free_text",
+     "name": "cell_number",
+     "description": "Owner's mobile/cell phone number, stored as text in varied formats (with extensions, country codes, punctuation).",
+     "status": "resolved"
+    },
+    "city": {
+     "role": "free_text",
+     "name": "city",
+     "description": "Owner's city of residence.",
+     "status": "resolved"
+    },
+    "email_address": {
+     "role": "free_text",
+     "name": "email_address",
+     "description": "Owner's email address.",
+     "status": "resolved"
+    },
+    "first_name": {
+     "role": "free_text",
+     "name": "first_name",
+     "description": "Owner's given (first) name.",
+     "status": "resolved"
+    },
+    "home_phone": {
+     "role": "free_text",
+     "name": "home_phone",
+     "description": "Owner's home/landline phone number, stored as text in varied formats.",
+     "status": "resolved"
+    },
+    "last_name": {
+     "role": "free_text",
+     "name": "last_name",
+     "description": "Owner's family (last) name.",
+     "status": "resolved"
+    },
+    "owner_id": {
+     "role": "identifier",
+     "name": "owner_id",
+     "description": "Primary key identifying the owner; referenced by Dogs.owner_id (a dog belongs to one owner).",
+     "status": "resolved"
+    },
+    "state": {
+     "role": "free_text",
+     "name": "state",
+     "description": "Owner's U.S. state of residence (written without spaces, e.g. 'NorthDakota', 'NewYork').",
+     "status": "resolved"
+    },
+    "street": {
+     "role": "free_text",
+     "name": "street",
+     "description": "Owner's street address including house number and unit/suite.",
+     "status": "resolved"
+    },
+    "zip_code": {
+     "role": "free_text",
+     "name": "zip_code",
+     "description": "Owner's U.S. ZIP code (5-digit, stored as text with leading zeros).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Professionals": {
+   "table": {
+    "name": "Professionals",
+    "purpose": "Staff members of a veterinary clinic (veterinarians and other employees) who perform treatments on dogs; each row is one staff member with contact and address details. Referenced by Treatments.professional_id, indicating which professional carried out each treatment."
+   },
+   "columns": {
+    "cell_number": {
+     "role": "free_text",
+     "name": "cell_number",
+     "description": "Mobile phone number of the professional, stored as free-formatted text with varied punctuation and extensions.",
+     "status": "resolved"
+    },
+    "city": {
+     "role": "free_text",
+     "name": "city",
+     "description": "City of the professional's address.",
+     "status": "resolved"
+    },
+    "email_address": {
+     "role": "free_text",
+     "name": "email_address",
+     "description": "Email address of the professional.",
+     "status": "resolved"
+    },
+    "first_name": {
+     "role": "free_text",
+     "name": "first_name",
+     "description": "Given name of the professional.",
+     "status": "resolved"
+    },
+    "home_phone": {
+     "role": "free_text",
+     "name": "home_phone",
+     "description": "Home/landline phone number of the professional, stored as free-formatted text with varied formats and extensions.",
+     "status": "resolved"
+    },
+    "last_name": {
+     "role": "free_text",
+     "name": "last_name",
+     "description": "Family name of the professional.",
+     "status": "resolved"
+    },
+    "professional_id": {
+     "role": "identifier",
+     "name": "professional_id",
+     "description": "Primary key identifying the professional; referenced by Treatments.professional_id to record who performed each treatment.",
+     "status": "resolved"
+    },
+    "role_code": {
+     "role": "category",
+     "name": "role_code",
+     "description": "Job role of the staff member: 'Veterenarian' (sic, misspelled Veterinarian) or 'Employee' (non-veterinarian staff).",
+     "status": "resolved"
+    },
+    "state": {
+     "role": "category",
+     "name": "state",
+     "description": "U.S. state of the professional's address (full state names, sometimes without spaces, e.g. 'NorthCarolina').",
+     "status": "resolved"
+    },
+    "street": {
+     "role": "free_text",
+     "name": "street",
+     "description": "Street portion of the professional's mailing address; values are multi-line and also embed city, state and ZIP, so the separate city/state/zip_code columns appear inconsistent with the embedded address text.",
+     "status": "resolved"
+    },
+    "zip_code": {
+     "role": "identifier",
+     "name": "zip_code",
+     "description": "U.S. ZIP code of the professional's address (5-digit, stored as text with leading zeros).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Sizes": {
+   "table": {
+    "name": "Sizes",
+    "purpose": "Lookup table of dog size categories, referenced by Dogs.size_code. Each row is one size category with a code and its full description."
+   },
+   "columns": {
+    "size_code": {
+     "role": "code",
+     "name": "size_code",
+     "description": "Primary key. Abbreviated size category code: SML = Small, MED = Medium, LGE = Large. Referenced by Dogs.size_code.",
+     "status": "resolved"
+    },
+    "size_description": {
+     "role": "category",
+     "name": "size_description",
+     "description": "Full human-readable label of the size category (Small, Medium, Large), one-to-one with size_code.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Treatment_Types": {
+   "table": {
+    "name": "Treatment_Types",
+    "purpose": "Lookup table of treatment/service types offered for dogs (e.g., exams, vaccinations, walks), referenced by the Treatments table in a veterinary/dog-care database."
+   },
+   "columns": {
+    "treatment_type_code": {
+     "role": "code",
+     "name": "treatment_type_code",
+     "description": "Short code identifying the treatment type (EXAM, VAC, WALK); primary key, referenced by Treatments.treatment_type_code.",
+     "status": "resolved"
+    },
+    "treatment_type_description": {
+     "role": "code",
+     "name": "treatment_type_description",
+     "description": "Human-readable description of the treatment type (e.g., 'Physical examination', 'Vaccination', 'Take for a Walk').",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Treatments": {
+   "table": {
+    "name": "Treatments",
+    "purpose": "Records individual treatment/procedure events performed on dogs by professionals, with date, type, and cost. Each row is one treatment given to one dog by one professional (a veterinary/clinic context)."
+   },
+   "columns": {
+    "cost_of_treatment": {
+     "role": "numeric",
+     "name": "cost_of_treatment",
+     "description": "Cost charged for the treatment, in whole currency units (e.g. dollars/cents as integer). Ranges 139–945, all distinct, no nulls.",
+     "status": "resolved"
+    },
+    "date_of_treatment": {
+     "role": "date",
+     "name": "date_of_treatment",
+     "description": "Timestamp (date and time) when the treatment was performed. Stored as VARCHAR but values are valid timestamps; range Feb 26 – Mar 24, 2018.",
+     "status": "resolved"
+    },
+    "dog_id": {
+     "role": "foreign_key",
+     "name": "dog_id",
+     "description": "Foreign key to Dogs.dog_id — the dog that received the treatment (many treatments per dog).",
+     "status": "resolved"
+    },
+    "professional_id": {
+     "role": "foreign_key",
+     "name": "professional_id",
+     "description": "Foreign key to Professionals.professional_id — the staff member who performed/administered the treatment.",
+     "status": "resolved"
+    },
+    "treatment_id": {
+     "role": "foreign_key",
+     "name": "treatment_id",
+     "description": "Primary key of the Treatments table; unique identifier for each treatment event.",
+     "status": "resolved"
+    },
+    "treatment_type_code": {
+     "role": "foreign_key",
+     "name": "treatment_type_code",
+     "description": "Foreign key to Treatment_Types.treatment_type_code — code for the kind of treatment: EXAM (Physical examination), VAC (Vaccination), WALK (Take for a Walk).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 1,
+  "columns_changed": 2
+ }
+}

@@ -1,0 +1,6630 @@
+{
+ "accept": 70,
+ "db_id": "neutron",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "address_scopes": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "agents": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "lbaas_loadbalanceragentbindings.col_002",
+       "networkdhcpagentbindings.col_002",
+       "routerl3agentbindings.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.03875968992248062
+     },
+     "phi": 0.85,
+     "score": 9.562
+    },
+    "col_003": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.03875968992248062
+     },
+     "phi": 0.7,
+     "score": 12.25
+    },
+    "col_004": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_005": {
+     "base": 78.062,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9689922480620154,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.9689922480620154
+     },
+     "phi": 0.55,
+     "score": 42.934
+    },
+    "col_006": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.007751937984496124
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_007": {
+     "base": 21.479,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.25366063738156763,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6201550387596899
+     },
+     "phi": 0.55,
+     "score": 11.813
+    },
+    "col_008": {
+     "base": 57.278,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.8264427217915592,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8914728682170543
+     },
+     "phi": 0.55,
+     "score": 31.503
+    },
+    "col_009": {
+     "base": 27.616,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.3518518518518518,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.55,
+     "score": 15.189
+    },
+    "col_010": {
+     "rejected": "has nulls"
+    },
+    "col_011": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 40.562
+    },
+    "col_012": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_013": {
+     "rejected": "has nulls"
+    },
+    "col_014": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "alembic_version": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 73.75
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 73.75
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "alembic_version_fwaas": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 73.75
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 73.75
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "alembic_version_lbaas": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 73.75
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 73.75
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "allowedaddresspairs": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 92.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 92.5
+    },
+    "col_002": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 68.0
+    },
+    "col_003": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 56.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "arista_provisioned_nets": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "arista_provisioned_tenants": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "arista_provisioned_vms": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "auto_allocated_topologies": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "bgp_peers": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "bgp_speaker_dragent_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "bgp_speaker_network_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "bgp_speaker_peer_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "bgp_speakers": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "brocadenetworks": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "brocadeports": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_csr_identifier_map": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_firewall_associations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_hosting_devices": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    },
+    "col_009": {
+     "rejected": "empty table"
+    },
+    "col_010": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_apic_contracts": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_apic_host_links": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_apic_names": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_n1kv_network_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_n1kv_network_profiles": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_n1kv_policy_profiles": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_n1kv_port_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_n1kv_profile_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_n1kv_vlan_allocations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_n1kv_vxlan_allocations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_nexus_nve": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_ml2_nexusport_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_port_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "cisco_router_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "consistencyhashes": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "default_security_group": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 93.75
+    },
+    {
+     "column": "col_002",
+     "score": 78.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 73.75,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "floatingips.col_001",
+       "healthmonitors.col_001",
+       "lbaas_listeners.col_001",
+       "lbaas_loadbalancers.col_001",
+       "lbaas_members.col_001",
+       "lbaas_pools.col_001",
+       "members.col_001",
+       "networkrbacs.col_003",
+       "networks.col_001",
+       "pools.col_001",
+       "ports.col_001",
+       "quotas.col_002",
+       "quotausages.col_001",
+       "reservations.col_002",
+       "routers.col_001",
+       "securitygrouprules.col_001",
+       "securitygroups.col_001",
+       "subnets.col_001",
+       "vips.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 93.75
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 78.625
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "dnsnameservers": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.09230769230769231
+     },
+     "phi": 1.0,
+     "score": 17.5
+    },
+    "col_002": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.3384615384615385
+     },
+     "phi": 0.85,
+     "score": 25.5
+    },
+    "col_003": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "dvr_host_macs": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "externalnetworks": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 92.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 92.5
+    },
+    "col_002": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "extradhcpopts": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "firewall_policies": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "firewall_router_associations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "firewall_rules": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    },
+    "col_009": {
+     "rejected": "empty table"
+    },
+    "col_010": {
+     "rejected": "empty table"
+    },
+    "col_011": {
+     "rejected": "empty table"
+    },
+    "col_012": {
+     "rejected": "empty table"
+    },
+    "col_013": {
+     "rejected": "empty table"
+    },
+    "col_014": {
+     "rejected": "empty table"
+    },
+    "col_015": {
+     "rejected": "empty table"
+    },
+    "col_016": {
+     "rejected": "empty table"
+    },
+    "col_017": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "firewalls": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "flavors": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "flavorserviceprofilebindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "floatingipdnses": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "floatingips": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 78.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.13043478260869565
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 78.625
+    },
+    "col_003": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 56.0
+    },
+    "col_004": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.043478260869565216
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "col_005": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 50.875
+    },
+    "col_006": {
+     "rejected": "has nulls"
+    },
+    "col_007": {
+     "rejected": "has nulls"
+    },
+    "col_008": {
+     "rejected": "has nulls"
+    },
+    "col_009": {
+     "rejected": "has nulls"
+    },
+    "col_010": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.08695652173913043
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_011": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "ha_router_agent_port_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ha_router_networks": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ha_router_vrid_allocations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "healthmonitors": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 33.241,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.3518518518518518,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6666666666666666
+     },
+     "phi": 1.0,
+     "score": 33.241
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "poolmonitorassociations.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "base": 45.741,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.3518518518518518,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.7,
+     "score": 32.019
+    },
+    "col_004": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    },
+    "col_005": {
+     "base": 59.491,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.3518518518518518,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.55,
+     "score": 32.72
+    },
+    "col_006": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.3333333333333333
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_007": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.3333333333333333
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_008": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.3333333333333333
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_009": {
+     "base": 45.741,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.3518518518518518,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.55,
+     "score": 25.157
+    },
+    "col_010": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.3333333333333333
+     },
+     "phi": 0.55,
+     "score": 20.625
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "ikepolicies": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    },
+    "col_009": {
+     "rejected": "empty table"
+    },
+    "col_010": {
+     "rejected": "empty table"
+    },
+    "col_011": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ipallocationpools": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    },
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "ipavailabilityranges.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "dnsnameservers.col_002",
+       "ipallocations.col_003",
+       "lbaas_loadbalancers.col_006",
+       "lbaas_members.col_004",
+       "pools.col_006",
+       "subnetroutes.col_003",
+       "subnets.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "base": 72.701,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.8832199546485261,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.9183673469387755
+     },
+     "phi": 0.7,
+     "score": 50.891
+    },
+    "col_004": {
+     "base": 75.394,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9263038548752835,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.9387755102040817
+     },
+     "phi": 0.55,
+     "score": 41.467
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "ipallocations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "has nulls"
+    },
+    "col_002": {
+     "base": 79.868,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9978830378406987,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.9978830378406987
+     },
+     "phi": 0.85,
+     "score": 67.888
+    },
+    "col_003": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.012701772955808415
+     },
+     "phi": 0.7,
+     "score": 21.0
+    },
+    "col_004": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.01190791214607039
+     },
+     "phi": 0.55,
+     "score": 16.5
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ipamallocationpools": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ipamallocations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ipamavailabilityranges": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ipamsubnets": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ipavailabilityranges": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.2554347826086957
+     },
+     "phi": 1.0,
+     "score": 30.0
+    },
+    "col_002": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 68.0
+    },
+    "col_003": {
+     "base": 78.981,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9836956521739131,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.9836956521739131
+     },
+     "phi": 0.7,
+     "score": 55.287
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ipsec_site_connections": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    },
+    "col_009": {
+     "rejected": "empty table"
+    },
+    "col_010": {
+     "rejected": "empty table"
+    },
+    "col_011": {
+     "rejected": "empty table"
+    },
+    "col_012": {
+     "rejected": "empty table"
+    },
+    "col_013": {
+     "rejected": "empty table"
+    },
+    "col_014": {
+     "rejected": "empty table"
+    },
+    "col_015": {
+     "rejected": "empty table"
+    },
+    "col_016": {
+     "rejected": "empty table"
+    },
+    "col_017": {
+     "rejected": "empty table"
+    },
+    "col_018": {
+     "rejected": "empty table"
+    },
+    "col_019": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ipsecpeercidrs": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ipsecpolicies": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    },
+    "col_009": {
+     "rejected": "empty table"
+    },
+    "col_010": {
+     "rejected": "empty table"
+    },
+    "col_011": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "lbaas_healthmonitors": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    },
+    "col_009": {
+     "rejected": "empty table"
+    },
+    "col_010": {
+     "rejected": "empty table"
+    },
+    "col_011": {
+     "rejected": "empty table"
+    },
+    "col_012": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "lbaas_l7policies": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    },
+    "col_009": {
+     "rejected": "empty table"
+    },
+    "col_010": {
+     "rejected": "empty table"
+    },
+    "col_011": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "lbaas_l7rules": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    },
+    "col_009": {
+     "rejected": "empty table"
+    },
+    "col_010": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "lbaas_listeners": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 78.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.4
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 78.625
+    },
+    "col_003": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 56.0
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    },
+    "col_005": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_006": {
+     "base": 31.944,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.21111111111111108,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6
+     },
+     "phi": 0.55,
+     "score": 17.569
+    },
+    "col_007": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_008": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "lbaas_pools.col_011"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 61.875
+    },
+    "col_009": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "lbaas_members.col_003",
+       "lbaas_pools.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 61.875
+    },
+    "col_010": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_011": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_012": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_013": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "lbaas_loadbalancer_statistics": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "lbaas_listeners.col_008",
+       "lbaas_loadbalanceragentbindings.col_001",
+       "lbaas_loadbalancers.col_002",
+       "lbaas_pools.col_011"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 69.062
+    },
+    "col_003": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_004": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_005": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "lbaas_loadbalanceragentbindings": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "lbaas_listeners.col_008",
+       "lbaas_loadbalancer_statistics.col_001",
+       "lbaas_loadbalancers.col_002",
+       "lbaas_pools.col_011"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.16666666666666666
+     },
+     "phi": 0.85,
+     "score": 25.5
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "lbaas_loadbalancers": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.3333333333333333
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "lbaas_listeners.col_008",
+       "lbaas_loadbalancer_statistics.col_001",
+       "lbaas_loadbalanceragentbindings.col_001",
+       "lbaas_pools.col_011"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 51.625
+    },
+    "col_004": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 40.562
+    },
+    "col_005": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 50.875
+    },
+    "col_006": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.5
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "col_007": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.0
+    },
+    "col_008": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.16666666666666666
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_009": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.16666666666666666
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_010": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.16666666666666666
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_011": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "lbaas_members": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 78.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.09090909090909091
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 78.625
+    },
+    "col_003": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.22727272727272727
+     },
+     "phi": 0.7,
+     "score": 21.0
+    },
+    "col_004": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.09090909090909091
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "col_005": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.4090909090909091
+     },
+     "phi": 0.55,
+     "score": 9.625
+    },
+    "col_006": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.22727272727272727
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_007": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.045454545454545456
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_008": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.045454545454545456
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_009": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.045454545454545456
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_010": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.045454545454545456
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_011": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "lbaas_pools": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.4
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "lbaas_listeners.col_009",
+       "lbaas_members.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 56.0
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    },
+    "col_005": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_006": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 9.625
+    },
+    "col_007": {
+     "rejected": "has nulls"
+    },
+    "col_008": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_009": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_010": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_011": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "lbaas_listeners.col_008"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 61.875
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "lbaas_sessionpersistences": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "lbaas_sni": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "lsn": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "lsn_port": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "maclearningstates": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "members": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 78.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 78.625
+    },
+    "col_003": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.5
+     },
+     "phi": 0.7,
+     "score": 21.0
+    },
+    "col_004": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.0
+    },
+    "col_005": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_006": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.25
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_007": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.25
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_008": {
+     "rejected": "has nulls"
+    },
+    "col_009": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.25
+     },
+     "phi": 0.55,
+     "score": 20.625
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "meteringlabelrules": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "meteringlabels": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_brocadenetworks": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_brocadeports": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_dvr_port_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_flat_allocations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_geneve_allocations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_geneve_endpoints": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_gre_allocations": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "healthmonitors.col_004",
+       "healthmonitors.col_005",
+       "healthmonitors.col_006",
+       "healthmonitors.col_009",
+       "lbaas_listeners.col_006",
+       "quotausages.col_004",
+       "subnets.col_005",
+       "vips.col_006"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "ml2_gre_endpoints": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 80.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 80.0
+    },
+    "col_002": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "ml2_network_segments": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    },
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "ml2_port_binding_levels.col_005"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "externalnetworks.col_001",
+       "floatingips.col_004",
+       "ipallocations.col_004",
+       "networkdhcpagentbindings.col_001",
+       "networkrbacs.col_002",
+       "networks.col_002",
+       "networksecuritybindings.col_001",
+       "ports.col_004",
+       "subnets.col_004"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.04081632653061224
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    },
+    "col_005": {
+     "base": 60.488,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.6678004535147393,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8163265306122449
+     },
+     "phi": 0.55,
+     "score": 33.268
+    },
+    "col_006": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_007": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "ml2_nexus_vxlan_allocations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_nexus_vxlan_mcast_groups": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_port_binding_levels": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "allowedaddresspairs.col_001",
+       "ipallocations.col_001",
+       "ml2_port_bindings.col_001",
+       "ports.col_002",
+       "portsecuritybindings.col_001",
+       "routerports.col_002",
+       "routers.col_006",
+       "securitygroupportbindings.col_001",
+       "vips.col_005"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.032502708559046585
+     },
+     "phi": 0.85,
+     "score": 14.875
+    },
+    "col_003": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_004": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00027085590465872155
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_005": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.012459371614301192
+     },
+     "phi": 0.55,
+     "score": 16.5
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "ml2_port_bindings": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "allowedaddresspairs.col_001",
+       "floatingips.col_005",
+       "floatingips.col_006",
+       "ipallocations.col_001",
+       "lbaas_loadbalancers.col_005",
+       "ml2_port_binding_levels.col_001",
+       "ports.col_002",
+       "portsecuritybindings.col_001",
+       "routerports.col_002",
+       "routers.col_006",
+       "securitygroupportbindings.col_001",
+       "vips.col_005"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.0324396782841823
+     },
+     "phi": 0.85,
+     "score": 14.875
+    },
+    "col_003": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0008042895442359249
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "col_004": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00026809651474530834
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_005": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0005361930294906167
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_006": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "ml2_ucsm_port_profiles": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_vlan_allocations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1111111111111111
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 69.062
+    },
+    "col_003": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.2222222222222222
+     },
+     "phi": 0.7,
+     "score": 26.25
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_vxlan_allocations": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ml2_vxlan_endpoints": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "multi_provider_networks": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "networkconnections": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "networkdhcpagentbindings": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "externalnetworks.col_001",
+       "floatingips.col_004",
+       "ipallocations.col_004",
+       "networkrbacs.col_002",
+       "ports.col_004",
+       "subnets.col_004"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.022222222222222223
+     },
+     "phi": 0.85,
+     "score": 25.5
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "networkdnsdomains": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "networkgatewaydevicereferences": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "networkgatewaydevices": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "networkgateways": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "networkqueuemappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "networkrbacs": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 92.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 92.5
+    },
+    "col_002": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.42857142857142855
+     },
+     "phi": 0.85,
+     "score": 25.5
+    },
+    "col_003": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.2857142857142857
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "col_004": {
+     "base": 67.798,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9047619047619049,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9285714285714286
+     },
+     "phi": 0.55,
+     "score": 37.289
+    },
+    "col_005": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.14285714285714285
+     },
+     "phi": 0.55,
+     "score": 9.625
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "networks": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 12.596,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.02154195011337871,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5102040816326531
+     },
+     "phi": 1.0,
+     "score": 12.596
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "externalnetworks.col_001",
+       "floatingips.col_004",
+       "ipallocations.col_004",
+       "ml2_network_segments.col_002",
+       "networkdhcpagentbindings.col_001",
+       "networkrbacs.col_002",
+       "networksecuritybindings.col_001",
+       "ports.col_004",
+       "subnets.col_004"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "base": 69.144,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9263038548752835,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9387755102040817
+     },
+     "phi": 0.7,
+     "score": 48.401
+    },
+    "col_004": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.02040816326530612
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_005": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.02040816326530612
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_006": {
+     "rejected": "has nulls"
+    },
+    "col_007": {
+     "rejected": "has nulls"
+    },
+    "col_008": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    },
+    "col_009": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "networksecuritybindings": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 92.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 92.5
+    },
+    "col_002": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.05555555555555555
+     },
+     "phi": 0.85,
+     "score": 31.875
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "neutron_nsx_network_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "neutron_nsx_port_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "neutron_nsx_router_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "neutron_nsx_security_group_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nexthops": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_edge_dhcp_static_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_edge_monitor_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_edge_pool_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_edge_vip_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_edge_vnic_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_firewall_rule_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_internal_edges": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_internal_networks": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_port_index_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_port_vnic_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_router_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_router_ext_attributes": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_rule_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_security_group_section_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_spoofguard_policy_network_mappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_tz_network_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nsxv_vdr_dhcp_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nuage_net_partition_router_mapping": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nuage_net_partitions": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nuage_provider_net_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "nuage_subnet_l2dom_mapping": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "poolloadbalanceragentbindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "poolmonitorassociations": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 92.5
+    },
+    {
+     "column": "col_002",
+     "score": 78.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 92.5
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 78.625
+    },
+    "col_003": {
+     "base": 86.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 60.375
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "pools": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    },
+    {
+     "column": "col_001",
+     "score": 93.75
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 73.75,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "members.col_001",
+       "vips.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 93.75
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "members.col_003",
+       "poolmonitorassociations.col_001",
+       "poolstatisticss.col_001",
+       "vips.col_008"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "rejected": "has nulls"
+    },
+    "col_004": {
+     "base": 73.75,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "vips.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 51.563
+    },
+    "col_005": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 40.562
+    },
+    "col_006": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.5
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "col_007": {
+     "base": 86.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "vips.col_007"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 58.438
+    },
+    "col_008": {
+     "base": 80.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "referenced_by": [
+       "lbaas_pools.col_006"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 55.0
+    },
+    "col_009": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.5
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_010": {
+     "rejected": "has nulls"
+    },
+    "col_011": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.5
+     },
+     "phi": 0.55,
+     "score": 20.625
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "poolstatisticss": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "members.col_003",
+       "poolmonitorassociations.col_001",
+       "pools.col_002",
+       "vips.col_008"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_003": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_004": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_005": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "portbindingports": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "portdnses": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "portqueuemappings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ports": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "rejected": "has nulls"
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "allowedaddresspairs.col_001",
+       "floatingips.col_005",
+       "floatingips.col_006",
+       "ipallocations.col_001",
+       "lbaas_loadbalancers.col_005",
+       "ml2_port_binding_levels.col_001",
+       "ml2_port_bindings.col_001",
+       "portsecuritybindings.col_001",
+       "routerports.col_002",
+       "routers.col_006",
+       "securitygroupportbindings.col_001",
+       "vips.col_005"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "rejected": "has nulls"
+    },
+    "col_004": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.012185430463576159
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "col_005": {
+     "base": 79.983,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9997350993377483,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.9997350993377483
+     },
+     "phi": 0.55,
+     "score": 43.991
+    },
+    "col_006": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0005298013245033113
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_007": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0010596026490066225
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_008": {
+     "base": 85.766,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.8922590139808684,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.9226490066225166
+     },
+     "phi": 0.55,
+     "score": 47.171
+    },
+    "col_009": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.0023841059602649007
+     },
+     "phi": 0.55,
+     "score": 9.625
+    },
+    "col_010": {
+     "rejected": "has nulls"
+    },
+    "col_011": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "vips.col_006"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 55.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "portsecuritybindings": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "allowedaddresspairs.col_001",
+       "floatingips.col_005",
+       "floatingips.col_006",
+       "lbaas_loadbalancers.col_005"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0006261740763932373
+     },
+     "phi": 0.85,
+     "score": 31.875
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "providerresourceassociations": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.02631578947368421
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "lbaas_listeners.col_008",
+       "lbaas_loadbalancer_statistics.col_001",
+       "lbaas_loadbalanceragentbindings.col_001",
+       "lbaas_loadbalancers.col_002",
+       "lbaas_pools.col_011",
+       "members.col_003",
+       "poolmonitorassociations.col_001",
+       "pools.col_002",
+       "poolstatisticss.col_001",
+       "vips.col_008"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "qos_bandwidth_limit_rules": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "qos_network_policy_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "qos_policies": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "qos_port_policy_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "qospolicyrbacs": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "qosqueues": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "quotas": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 92.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 92.5
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1433267587113741
+     },
+     "phi": 0.85,
+     "score": 9.562
+    },
+    "col_003": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.005917159763313609
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "col_004": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0039447731755424065
+     },
+     "phi": 0.55,
+     "score": 10.312
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "quotausages": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 16.626,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.08600823045267492,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5407407407407407
+     },
+     "phi": 1.0,
+     "score": 16.626
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.008641975308641974
+     },
+     "phi": 0.85,
+     "score": 9.562
+    },
+    "col_003": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_004": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.05555555555555555
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_005": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "reservations": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "resourcedeltas.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.2
+     },
+     "phi": 0.85,
+     "score": 9.562
+    },
+    "col_003": {
+     "base": 68.125,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 47.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "resourcedeltas": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.2
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "reservations.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.2
+     },
+     "phi": 0.7,
+     "score": 26.25
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "router_extra_attributes": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "floatingips.col_008",
+       "floatingips.col_009",
+       "routerl3agentbindings.col_001",
+       "routerports.col_001",
+       "routers.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_003": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_004": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_005": {
+     "rejected": "has nulls"
+    },
+    "col_006": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "routerl3agentbindings": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 112.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "floatingips.col_008",
+       "floatingips.col_009",
+       "router_extra_attributes.col_001",
+       "routerports.col_001",
+       "routers.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 112.5
+    },
+    "col_002": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.037037037037037035
+     },
+     "phi": 0.85,
+     "score": 25.5
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "routerports": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 46.964,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.2714285714285714,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.6285714285714286
+     },
+     "phi": 1.0,
+     "score": 46.964
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "routers.col_006"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.05714285714285714
+     },
+     "phi": 0.7,
+     "score": 12.25
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "routerroutes": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "routerrules": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "routers": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 47.901,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.5864197530864198,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.7777777777777778
+     },
+     "phi": 1.0,
+     "score": 47.901
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "floatingips.col_008",
+       "floatingips.col_009",
+       "router_extra_attributes.col_001",
+       "routerl3agentbindings.col_001",
+       "routerports.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "base": 67.449,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.8991769547325104,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9259259259259259
+     },
+     "phi": 0.7,
+     "score": 47.214
+    },
+    "col_004": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.037037037037037035
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_005": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.037037037037037035
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_006": {
+     "rejected": "has nulls"
+    },
+    "col_007": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.037037037037037035
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_008": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "securitygroupportbindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 45.454,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.2472649139597291,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.6171254855598717
+     },
+     "phi": 1.0,
+     "score": 45.454
+    },
+    "col_002": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.14186792771491302
+     },
+     "phi": 0.85,
+     "score": 25.5
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "securitygrouprules": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 78.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.08929364726788094
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 78.625
+    },
+    "col_003": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.19946690359840072
+     },
+     "phi": 0.7,
+     "score": 21.0
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    },
+    "col_005": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0002221235006663705
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_006": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0002221235006663705
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_007": {
+     "rejected": "has nulls"
+    },
+    "col_008": {
+     "rejected": "has nulls"
+    },
+    "col_009": {
+     "rejected": "has nulls"
+    },
+    "col_010": {
+     "rejected": "has nulls"
+    },
+    "col_011": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "securitygroups": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.4471635150166852
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "default_security_group.col_002",
+       "securitygroupportbindings.col_002",
+       "securitygrouprules.col_003",
+       "securitygrouprules.col_004"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.3559510567296997
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "col_004": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "serviceprofiles": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "sessionpersistences": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 92.5
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 92.5
+    },
+    "col_002": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 68.0
+    },
+    "col_003": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "standardattributes": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "floatingips.col_011",
+       "networks.col_008",
+       "ports.col_011",
+       "routers.col_008",
+       "securitygrouprules.col_011",
+       "securitygroups.col_004",
+       "subnets.col_012",
+       "vips.col_006"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00047538200339558573
+     },
+     "phi": 0.85,
+     "score": 9.562
+    },
+    "col_003": {
+     "rejected": "has nulls"
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    },
+    "col_005": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "subnetpoolprefixes": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "subnetpools": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    },
+    "col_009": {
+     "rejected": "empty table"
+    },
+    "col_010": {
+     "rejected": "empty table"
+    },
+    "col_011": {
+     "rejected": "empty table"
+    },
+    "col_012": {
+     "rejected": "empty table"
+    },
+    "col_013": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "subnetroutes": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 39.491,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.3518518518518518,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.6666666666666666
+     },
+     "phi": 1.0,
+     "score": 39.491
+    },
+    "col_002": {
+     "base": 61.481,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7037037037037038,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.8333333333333334
+     },
+     "phi": 0.85,
+     "score": 52.259
+    },
+    "col_003": {
+     "base": 73.981,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7037037037037038,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.8333333333333334
+     },
+     "phi": 0.7,
+     "score": 51.787
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "subnets": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 95.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.46938775510204084
+     },
+     "phi": 1.0,
+     "score": 11.25
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "referenced_by": [
+       "dnsnameservers.col_002",
+       "ipallocationpools.col_002",
+       "ipallocations.col_003",
+       "lbaas_loadbalancers.col_006",
+       "lbaas_members.col_004",
+       "pools.col_006",
+       "subnetroutes.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 95.625
+    },
+    "col_003": {
+     "base": 66.451,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.8832199546485261,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9183673469387755
+     },
+     "phi": 0.7,
+     "score": 46.516
+    },
+    "col_004": {
+     "base": 87.894,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9263038548752835,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 0.9387755102040817
+     },
+     "phi": 0.55,
+     "score": 48.342
+    },
+    "col_005": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.04081632653061224
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_006": {
+     "base": 59.238,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.6678004535147393,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.8163265306122449
+     },
+     "phi": 0.55,
+     "score": 32.581
+    },
+    "col_007": {
+     "rejected": "has nulls"
+    },
+    "col_008": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.04081632653061224
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_009": {
+     "rejected": "has nulls"
+    },
+    "col_010": {
+     "rejected": "has nulls"
+    },
+    "col_011": {
+     "rejected": "has nulls"
+    },
+    "col_012": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "tags": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "tz_network_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "vcns_router_bindings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "vips": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 78.625
+    },
+    {
+     "column": "col_001",
+     "score": 73.75
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 73.75
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 78.625
+    },
+    "col_003": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 56.0
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    },
+    "col_005": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 50.875
+    },
+    "col_006": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 55.0
+    },
+    "col_007": {
+     "base": 86.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 47.438
+    },
+    "col_008": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "uuid",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 50.875
+    },
+    "col_009": {
+     "base": 86.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 47.438
+    },
+    "col_010": {
+     "rejected": "has nulls"
+    },
+    "col_011": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 55.0
+    },
+    "col_012": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 55.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "vpnservices": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    },
+    "col_003": {
+     "rejected": "empty table"
+    },
+    "col_004": {
+     "rejected": "empty table"
+    },
+    "col_005": {
+     "rejected": "empty table"
+    },
+    "col_006": {
+     "rejected": "empty table"
+    },
+    "col_007": {
+     "rejected": "empty table"
+    },
+    "col_008": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  }
+ },
+ "use_names": false
+}

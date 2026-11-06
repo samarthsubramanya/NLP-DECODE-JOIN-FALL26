@@ -1,0 +1,954 @@
+{
+ "containment": [
+  {
+   "containment": 1.0,
+   "coverage": 1.0,
+   "dist": 1.0,
+   "dist_buckets": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "intersection": 8,
+   "source": [
+    "song",
+    "Song_ID"
+   ],
+   "source_distinct": 8,
+   "source_unique": true,
+   "target": [
+    "singer",
+    "Singer_ID"
+   ],
+   "target_distinct": 8
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.75,
+   "dist": 0.880952380952381,
+   "dist_buckets": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "intersection": 6,
+   "source": [
+    "song",
+    "Singer_ID"
+   ],
+   "source_distinct": 6,
+   "source_unique": false,
+   "target": [
+    "singer",
+    "Singer_ID"
+   ],
+   "target_distinct": 8
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.25,
+   "dist": 0.2857142857142857,
+   "dist_buckets": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "intersection": 2,
+   "source": [
+    "song",
+    "Highest_Position"
+   ],
+   "source_distinct": 2,
+   "source_unique": false,
+   "target": [
+    "singer",
+    "Singer_ID"
+   ],
+   "target_distinct": 8
+  },
+  {
+   "containment": 1.0,
+   "coverage": 1.0,
+   "dist": 1.0,
+   "dist_buckets": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "intersection": 8,
+   "source": [
+    "singer",
+    "Singer_ID"
+   ],
+   "source_distinct": 8,
+   "source_unique": true,
+   "target": [
+    "song",
+    "Song_ID"
+   ],
+   "target_distinct": 8
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.75,
+   "dist": 0.880952380952381,
+   "dist_buckets": [
+    1,
+    1,
+    0,
+    1,
+    1,
+    1,
+    1,
+    0
+   ],
+   "intersection": 6,
+   "source": [
+    "song",
+    "Singer_ID"
+   ],
+   "source_distinct": 6,
+   "source_unique": false,
+   "target": [
+    "song",
+    "Song_ID"
+   ],
+   "target_distinct": 8
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.25,
+   "dist": 0.2857142857142857,
+   "dist_buckets": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "intersection": 2,
+   "source": [
+    "song",
+    "Highest_Position"
+   ],
+   "source_distinct": 2,
+   "source_unique": false,
+   "target": [
+    "song",
+    "Song_ID"
+   ],
+   "target_distinct": 8
+  }
+ ],
+ "dataset": "spider_stripped",
+ "db_id": "singer",
+ "duckdb_file": "decode_join_stripped.duckdb",
+ "duckdb_schema": "spider_801eb48e9ceb7493ef6e",
+ "seed": 42,
+ "tables": {
+  "singer": {
+   "columns": {
+    "Birth_Year": {
+     "declared_type": "DOUBLE",
+     "distinct": 8,
+     "family": "int",
+     "name": "Birth_Year",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.34782608695652173,
+      "max": 1962.0,
+      "mean": 1949.875,
+      "min": 1940.0,
+      "p25": 1943.5,
+      "p50": 1948.5,
+      "p75": 1955.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "int",
+     "rows": 8,
+     "sample_values": [
+      "1944.0",
+      "1942.0",
+      "1953.0",
+      "1948.0",
+      "1961.0",
+      "1949.0",
+      "1940.0",
+      "1962.0"
+     ],
+     "text": {
+      "avg_len": 6.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 6,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1940.0",
+       1
+      ],
+      [
+       "1942.0",
+       1
+      ],
+      [
+       "1944.0",
+       1
+      ],
+      [
+       "1948.0",
+       1
+      ],
+      [
+       "1949.0",
+       1
+      ],
+      [
+       "1953.0",
+       1
+      ],
+      [
+       "1961.0",
+       1
+      ],
+      [
+       "1962.0",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Citizenship": {
+     "declared_type": "VARCHAR",
+     "distinct": 5,
+     "family": "text",
+     "name": "Citizenship",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "text",
+     "rows": 8,
+     "sample_values": [
+      "France",
+      "United States",
+      "Australia",
+      "Chile",
+      "Germany"
+     ],
+     "text": {
+      "avg_len": 9.875,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 13,
+      "min_len": 5,
+      "space_share": 0.5,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "United States",
+       4
+      ],
+      [
+       "Australia",
+       1
+      ],
+      [
+       "Chile",
+       1
+      ],
+      [
+       "France",
+       1
+      ],
+      [
+       "Germany",
+       1
+      ]
+     ],
+     "uniqueness": 0.625,
+     "zero_rate": 0.0
+    },
+    "Name": {
+     "declared_type": "VARCHAR",
+     "distinct": 8,
+     "family": "text",
+     "name": "Name",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 8,
+     "sample_values": [
+      "Abigail Johnson",
+      "Alice Walton",
+      "Jacqueline Mars",
+      "Susanne Klatten",
+      "Iris Fontbona",
+      "Christy Walton",
+      "Gina Rinehart",
+      "Liliane Bettencourt"
+     ],
+     "text": {
+      "avg_len": 14.5,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 19,
+      "min_len": 12,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Abigail Johnson",
+       1
+      ],
+      [
+       "Alice Walton",
+       1
+      ],
+      [
+       "Christy Walton",
+       1
+      ],
+      [
+       "Gina Rinehart",
+       1
+      ],
+      [
+       "Iris Fontbona",
+       1
+      ],
+      [
+       "Jacqueline Mars",
+       1
+      ],
+      [
+       "Liliane Bettencourt",
+       1
+      ],
+      [
+       "Susanne Klatten",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Net_Worth_Millions": {
+     "declared_type": "DOUBLE",
+     "distinct": 8,
+     "family": "float",
+     "name": "Net_Worth_Millions",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 30.0,
+      "mean": 20.5375,
+      "min": 12.7,
+      "p25": 16.325,
+      "p50": 17.6,
+      "p75": 26.925
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "float",
+     "rows": 8,
+     "sample_values": [
+      "28.8",
+      "26.3",
+      "17.4",
+      "17.0",
+      "12.7",
+      "30.0",
+      "14.3",
+      "17.8"
+     ],
+     "text": {
+      "avg_len": 4.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "12.7",
+       1
+      ],
+      [
+       "14.3",
+       1
+      ],
+      [
+       "17.0",
+       1
+      ],
+      [
+       "17.4",
+       1
+      ],
+      [
+       "17.8",
+       1
+      ],
+      [
+       "26.3",
+       1
+      ],
+      [
+       "28.8",
+       1
+      ],
+      [
+       "30.0",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Singer_ID": {
+     "declared_type": "BIGINT",
+     "distinct": 8,
+     "family": "int",
+     "name": "Singer_ID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 8.0,
+      "mean": 4.5,
+      "min": 1.0,
+      "p25": 2.75,
+      "p50": 4.5,
+      "p75": 6.25
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 8,
+     "sample_values": [
+      "2",
+      "7",
+      "1",
+      "8",
+      "4",
+      "3",
+      "6",
+      "5"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1",
+       1
+      ],
+      [
+       "2",
+       1
+      ],
+      [
+       "3",
+       1
+      ],
+      [
+       "4",
+       1
+      ],
+      [
+       "5",
+       1
+      ],
+      [
+       "6",
+       1
+      ],
+      [
+       "7",
+       1
+      ],
+      [
+       "8",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 8,
+   "sample_rows": [
+    {
+     "Birth_Year": 1948.0,
+     "Citizenship": "United States",
+     "Name": "Christy Walton",
+     "Net_Worth_Millions": 28.8,
+     "Singer_ID": 2
+    },
+    {
+     "Birth_Year": 1949.0,
+     "Citizenship": "United States",
+     "Name": "Alice Walton",
+     "Net_Worth_Millions": 26.3,
+     "Singer_ID": 3
+    },
+    {
+     "Birth_Year": 1942.0,
+     "Citizenship": "Chile",
+     "Name": "Iris Fontbona",
+     "Net_Worth_Millions": 17.4,
+     "Singer_ID": 4
+    },
+    {
+     "Birth_Year": 1962.0,
+     "Citizenship": "Germany",
+     "Name": "Susanne Klatten",
+     "Net_Worth_Millions": 14.3,
+     "Singer_ID": 7
+    },
+    {
+     "Birth_Year": 1961.0,
+     "Citizenship": "United States",
+     "Name": "Abigail Johnson",
+     "Net_Worth_Millions": 12.7,
+     "Singer_ID": 8
+    }
+   ]
+  },
+  "song": {
+   "columns": {
+    "Highest_Position": {
+     "declared_type": "DOUBLE",
+     "distinct": 2,
+     "family": "int",
+     "name": "Highest_Position",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.6666666666666666,
+      "max": 3.0,
+      "mean": 1.25,
+      "min": 1.0,
+      "p25": 1.0,
+      "p50": 1.0,
+      "p75": 1.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "int",
+     "rows": 8,
+     "sample_values": [
+      "1.0",
+      "3.0"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1.0",
+       7
+      ],
+      [
+       "3.0",
+       1
+      ]
+     ],
+     "uniqueness": 0.25,
+     "zero_rate": 0.0
+    },
+    "Sales": {
+     "declared_type": "DOUBLE",
+     "distinct": 8,
+     "family": "int",
+     "name": "Sales",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 9.603830007406954e-06,
+      "max": 1094000.0,
+      "mean": 432603.5,
+      "min": 261000.0,
+      "p25": 287750.0,
+      "p50": 317500.0,
+      "p75": 401667.5
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "int",
+     "rows": 8,
+     "sample_values": [
+      "351421.0",
+      "335000.0",
+      "292000.0",
+      "1094000.0",
+      "552407.0",
+      "300000.0",
+      "261000.0",
+      "275000.0"
+     ],
+     "text": {
+      "avg_len": 8.125,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 9,
+      "min_len": 8,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1094000.0",
+       1
+      ],
+      [
+       "261000.0",
+       1
+      ],
+      [
+       "275000.0",
+       1
+      ],
+      [
+       "292000.0",
+       1
+      ],
+      [
+       "300000.0",
+       1
+      ],
+      [
+       "335000.0",
+       1
+      ],
+      [
+       "351421.0",
+       1
+      ],
+      [
+       "552407.0",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Singer_ID": {
+     "declared_type": "BIGINT",
+     "distinct": 6,
+     "family": "int",
+     "name": "Singer_ID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.8571428571428571,
+      "max": 7.0,
+      "mean": 3.5,
+      "min": 1.0,
+      "p25": 1.75,
+      "p50": 3.0,
+      "p75": 5.25
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "int",
+     "rows": 8,
+     "sample_values": [
+      "2",
+      "7",
+      "1",
+      "4",
+      "6",
+      "5"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1",
+       2
+      ],
+      [
+       "2",
+       2
+      ],
+      [
+       "4",
+       1
+      ],
+      [
+       "5",
+       1
+      ],
+      [
+       "6",
+       1
+      ],
+      [
+       "7",
+       1
+      ]
+     ],
+     "uniqueness": 0.75,
+     "zero_rate": 0.0
+    },
+    "Song_ID": {
+     "declared_type": "BIGINT",
+     "distinct": 8,
+     "family": "int",
+     "name": "Song_ID",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 8.0,
+      "mean": 4.5,
+      "min": 1.0,
+      "p25": 2.75,
+      "p50": 4.5,
+      "p75": 6.25
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 8,
+     "sample_values": [
+      "2",
+      "7",
+      "1",
+      "8",
+      "4",
+      "3",
+      "6",
+      "5"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1",
+       1
+      ],
+      [
+       "2",
+       1
+      ],
+      [
+       "3",
+       1
+      ],
+      [
+       "4",
+       1
+      ],
+      [
+       "5",
+       1
+      ],
+      [
+       "6",
+       1
+      ],
+      [
+       "7",
+       1
+      ],
+      [
+       "8",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Title": {
+     "declared_type": "VARCHAR",
+     "distinct": 8,
+     "family": "text",
+     "name": "Title",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 8,
+     "sample_values": [
+      "Left Outside Alone",
+      "Do They Know It's Christmas",
+      "F**k It (I Don't Want You Back)",
+      "Cha Cha Slide",
+      "Mysterious Girl",
+      "Call on Me",
+      "All This Time",
+      "Yeah"
+     ],
+     "text": {
+      "avg_len": 16.375,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 31,
+      "min_len": 4,
+      "space_share": 0.875,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "All This Time",
+       1
+      ],
+      [
+       "Call on Me",
+       1
+      ],
+      [
+       "Cha Cha Slide",
+       1
+      ],
+      [
+       "Do They Know It's Christmas",
+       1
+      ],
+      [
+       "F**k It (I Don't Want You Back)",
+       1
+      ],
+      [
+       "Left Outside Alone",
+       1
+      ],
+      [
+       "Mysterious Girl",
+       1
+      ],
+      [
+       "Yeah",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 8,
+   "sample_rows": [
+    {
+     "Highest_Position": 1.0,
+     "Sales": 552407.0,
+     "Singer_ID": 1,
+     "Song_ID": 2,
+     "Title": "F**k It (I Don't Want You Back)"
+    },
+    {
+     "Highest_Position": 1.0,
+     "Sales": 351421.0,
+     "Singer_ID": 2,
+     "Song_ID": 3,
+     "Title": "Cha Cha Slide"
+    },
+    {
+     "Highest_Position": 1.0,
+     "Sales": 335000.0,
+     "Singer_ID": 4,
+     "Song_ID": 4,
+     "Title": "Call on Me"
+    },
+    {
+     "Highest_Position": 3.0,
+     "Sales": 275000.0,
+     "Singer_ID": 5,
+     "Song_ID": 7,
+     "Title": "Left Outside Alone"
+    },
+    {
+     "Highest_Position": 1.0,
+     "Sales": 261000.0,
+     "Singer_ID": 7,
+     "Song_ID": 8,
+     "Title": "Mysterious Girl"
+    }
+   ]
+  }
+ }
+}

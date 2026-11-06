@@ -1,0 +1,220 @@
+{
+ "accept": 70,
+ "db_id": "USWildFires",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "Fires": {
+   "candidate_keys": [],
+   "columns": {
+    "CONT_DATE": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "CONT_DOY": {
+     "base": 24.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0001951644938884797
+     },
+     "phi": 0.55,
+     "score": 13.2
+    },
+    "CONT_TIME": {
+     "rejected": "mostly empty or zero"
+    },
+    "COUNTY": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0018378432993966917
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "DISCOVERY_DATE": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "DISCOVERY_DOY": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.00019463271052638575
+     },
+     "phi": 0.7,
+     "score": 21.0
+    },
+    "DISCOVERY_TIME": {
+     "rejected": "blacklist: date/time (time)"
+    },
+    "FIPS_CODE": {
+     "base": 39.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.00015209004155886975
+     },
+     "phi": 0.55,
+     "score": 21.45
+    },
+    "FIPS_NAME": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0009034999321976214
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "FIRE_SIZE": {
+     "rejected": "blacklist: quantity (size)"
+    },
+    "FIRE_SIZE_CLASS": {
+     "rejected": "blacklist: quantity (size)"
+    },
+    "FIRE_YEAR": {
+     "rejected": "blacklist: date/time (year)"
+    },
+    "LATITUDE": {
+     "base": 9.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.4754467644970792
+     },
+     "phi": 0.55,
+     "score": 5.225
+    },
+    "LONGITUDE": {
+     "base": 17.717,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.06433198998947369,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.5304730478897507
+     },
+     "phi": 0.55,
+     "score": 9.744
+    },
+    "OWNER_CODE": {
+     "base": 39.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 8.508533793503203e-06
+     },
+     "phi": 0.55,
+     "score": 21.725
+    },
+    "OWNER_DESCR": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 8.508533793503203e-06
+     },
+     "phi": 0.55,
+     "score": 4.95
+    },
+    "STATE": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 2.765273482888541e-05
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "STAT_CAUSE_CODE": {
+     "base": 39.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 6.913183707221352e-06
+     },
+     "phi": 0.55,
+     "score": 21.725
+    },
+    "STAT_CAUSE_DESCR": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 6.913183707221352e-06
+     },
+     "phi": 0.55,
+     "score": 4.95
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  }
+ },
+ "use_names": true
+}

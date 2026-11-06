@@ -1,0 +1,430 @@
+{
+ "db_id": "thrombosis_prediction",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 1,
+ "tables": {
+  "Examination": {
+   "table": {
+    "name": "Examination",
+    "purpose": "Clinical/laboratory examination records for autoimmune disease patients (rheumatology cohort, ~1989-1998), capturing antinuclear antibody results, antiphospholipid antibody tests, lupus anticoagulant assays, thrombosis history, and diagnoses such as SLE, Sjögren's syndrome, and rheumatoid arthritis. One row = one examination of one patient (ID likely links to Patient)."
+   },
+   "columns": {
+    "ANA": {
+     "role": "numeric",
+     "name": "ANA titer (reciprocal dilution)",
+     "description": "Antinuclear antibody titer, expressed as reciprocal dilution values (0, 4, 16, 64, 256, ... 4096), i.e. doubling dilutions; 0 = negative.",
+     "status": "resolved"
+    },
+    "ANA Pattern": {
+     "role": "category",
+     "name": "ANA staining pattern",
+     "description": "Immunofluorescence staining pattern of the ANA test, comma-separated codes; S likely = speckled, P = peripheral/rim, D = diffuse/homogeneous (plausible reading; exact code legend not in data).",
+     "status": "tentative"
+    },
+    "Diagnosis": {
+     "role": "category",
+     "name": "Diagnosis",
+     "description": "Clinical diagnosis, abbreviated: SLE = systemic lupus erythematosus, SjS = Sjögren's syndrome, RA = rheumatoid arthritis, MCTD = mixed connective tissue disease, DM = dermatomyositis; 'susp' = suspected; multiple diagnoses comma-separated. Null = no/undocumented diagnosis.",
+     "status": "resolved"
+    },
+    "Examination Date": {
+     "role": "date",
+     "name": "Examination date",
+     "description": "Date of the examination (stored as text, YYYY-MM-DD), ranging 1989-04-18 to 1998-04-17.",
+     "status": "resolved"
+    },
+    "ID": {
+     "role": "identifier",
+     "name": "Patient identifier",
+     "description": "Highly unique numeric ID, most likely the patient identifier linking to the Patient table (no join detected, but 763 distinct values over 806 rows suggests repeated examinations per patient).",
+     "status": "tentative"
+    },
+    "KCT": {
+     "role": "category",
+     "name": "Kaolin clotting time result",
+     "description": "Lupus anticoagulant test via kaolin clotting time; '+' positive, '-' negative; mostly null (test not always performed).",
+     "status": "resolved"
+    },
+    "LAC": {
+     "role": "category",
+     "name": "Lupus anticoagulant result",
+     "description": "Lupus anticoagulant test overall result; '+' positive, '-' negative; mostly null when not tested.",
+     "status": "resolved"
+    },
+    "RVVT": {
+     "role": "category",
+     "name": "Russell viper venom time result",
+     "description": "Lupus anticoagulant test via dilute Russell viper venom time; '+' positive, '-' negative; mostly null when not tested.",
+     "status": "resolved"
+    },
+    "Symptoms": {
+     "role": "category",
+     "name": "Clinical symptoms/complications",
+     "description": "Free-text clinical manifestations, mostly thrombotic/obstetric events consistent with antiphospholipid syndrome: CNS lupus, brain infarction, AMI (acute myocardial infarction), PH (pulmonary hypertension?), thrombocytopenia, DVT, thrombophlebitis, abortion. Mostly null.",
+     "status": "resolved"
+    },
+    "Thrombosis": {
+     "role": "numeric",
+     "name": "Thrombosis count",
+     "description": "Number of thrombotic events (0-3); 0 = none, higher values = multiple episodes.",
+     "status": "resolved"
+    },
+    "aCL IgA": {
+     "role": "numeric",
+     "name": "Anticardiolipin IgA level",
+     "description": "Anticardiolipin antibody IgA level (units not documented; likely GPL/MPL-like units); 0 = negative, extreme max 48547 suggests occasional very high titers.",
+     "status": "resolved"
+    },
+    "aCL IgG": {
+     "role": "numeric",
+     "name": "Anticardiolipin IgG level",
+     "description": "Anticardiolipin antibody IgG level (likely GPL units); 0 = negative.",
+     "status": "resolved"
+    },
+    "aCL IgM": {
+     "role": "numeric",
+     "name": "Anticardiolipin IgM level",
+     "description": "Anticardiolipin antibody IgM level (likely MPL units); 0 = negative, extreme max 187122 suggests occasional very high titers.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Laboratory": {
+   "table": {
+    "name": "Laboratory",
+    "purpose": "Laboratory test results per patient visit (one row per patient per date), covering blood counts, blood chemistry, urinalysis, coagulation, immunoglobulins, complement, and autoantibody tests. The panel (anti-DNA, anti-Sm, anti-RNP, anti-SSA/SSB, anti-centromere, C3/C4, RA test, RF) strongly suggests a rheumatology/autoimmune disease (likely SLE) cohort. Links to Patient via ID and presumably to Examination by patient/date."
+   },
+   "columns": {
+    "ALB": {
+     "role": "numeric",
+     "name": "Serum albumin",
+     "description": "Albumin, g/dL (range 1.0-5.8, typical 3.5-5.0). Low values consistent with nephrotic-range proteinuria in autoimmune disease.",
+     "status": "resolved"
+    },
+    "ALP": {
+     "role": "numeric",
+     "name": "Alkaline phosphatase",
+     "description": "ALP enzyme activity, U/L (range 11-1308, median ~101).",
+     "status": "resolved"
+    },
+    "APTT": {
+     "role": "numeric",
+     "name": "Activated partial thromboplastin time",
+     "description": "APTT, seconds (range 57-146, median ~95; prolonged vs normal ~25-35, consistent with lupus anticoagulant screening). Measured in <1% of rows.",
+     "status": "resolved"
+    },
+    "C3": {
+     "role": "numeric",
+     "name": "Complement component C3",
+     "description": "Serum C3, mg/dL (range 15-196, median ~69; low levels typical of SLE activity).",
+     "status": "resolved"
+    },
+    "C4": {
+     "role": "numeric",
+     "name": "Complement component C4",
+     "description": "Serum C4, mg/dL (range 3-80, median ~21; low in SLE).",
+     "status": "resolved"
+    },
+    "CENTROMEA": {
+     "role": "code",
+     "name": "Anti-centromere antibody",
+     "description": "Anti-centromere antibody result; values 'negative'/'0' (and possibly titer-style numbers). Almost never measured (99.9% null).",
+     "status": "resolved"
+    },
+    "CPK": {
+     "role": "numeric",
+     "name": "Creatine phosphokinase (CK)",
+     "description": "CPK, U/L (range 0-10835, median ~35; high values indicate muscle involvement such as myositis).",
+     "status": "resolved"
+    },
+    "CRE": {
+     "role": "numeric",
+     "name": "Serum creatinine",
+     "description": "Creatinine, mg/dL (range 0.1-17.1, median 0.7; high values reflect renal failure).",
+     "status": "resolved"
+    },
+    "CRP": {
+     "role": "code",
+     "name": "C-reactive protein",
+     "description": "CRP result; stored inconsistently as semi-quantitative ('-', '+', '2+') and numeric strings with limits ('<0.3', '2.18'). Mixed-format inflammation marker, mg/dL when numeric.",
+     "status": "resolved"
+    },
+    "DNA": {
+     "role": "numeric",
+     "name": "Anti-dsDNA antibody",
+     "description": "Anti-double-stranded DNA antibody titer/value (range 0.56-185, median ~23). Measured in <1% of rows; characteristic SLE marker.",
+     "status": "resolved"
+    },
+    "DNA-II": {
+     "role": "code",
+     "name": "Anti-dsDNA antibody (second method)",
+     "description": "Second anti-dsDNA antibody column, likely a repeat or alternative assay alongside DNA; plausibly a different measurement method (e.g., RIA vs. IF), but no direct evidence distinguishes it from a duplicate entry of the same test.",
+     "status": "tentative"
+    },
+    "Date": {
+     "role": "date",
+     "name": "Lab test date",
+     "description": "Date of the laboratory examination (1981-1999).",
+     "status": "resolved"
+    },
+    "FG": {
+     "role": "numeric",
+     "name": "Fibrinogen",
+     "description": "Fibrinogen, likely mg/dL in tens (range 23.8-106.5, median 39) — possibly recorded in units of 10 mg/dL given normal fibrinogen 200-400 mg/dL. Measured in ~3% of rows. Alternative reading: values in µmol/L (normal 6-12), which fits less well.",
+     "status": "tentative"
+    },
+    "GLU": {
+     "role": "numeric",
+     "name": "Glucose",
+     "description": "Blood glucose, mg/dL (range 62-499, median ~102).",
+     "status": "resolved"
+    },
+    "GOT": {
+     "role": "numeric",
+     "name": "AST (GOT)",
+     "description": "Aspartate aminotransferase (glutamic-oxaloacetic transaminase), U/L (range 3-21480, median 20).",
+     "status": "resolved"
+    },
+    "GPT": {
+     "role": "numeric",
+     "name": "ALT (GPT)",
+     "description": "Alanine aminotransferase (glutamic-pyruvic transaminase), U/L (range 1-4780, median 18).",
+     "status": "resolved"
+    },
+    "HCT": {
+     "role": "numeric",
+     "name": "Hematocrit",
+     "description": "Hematocrit, % (range 3-56, median ~38).",
+     "status": "resolved"
+    },
+    "HGB": {
+     "role": "numeric",
+     "name": "Hemoglobin",
+     "description": "Hemoglobin, g/dL (range 1.3-18.9, median 12.5; anemia common in this cohort).",
+     "status": "resolved"
+    },
+    "ID": {
+     "role": "foreign_key",
+     "name": "Patient ID",
+     "description": "Identifier of the patient; references Patient.ID (many lab rows per patient; 302 distinct patients over 13908 rows).",
+     "status": "resolved"
+    },
+    "IGA": {
+     "role": "numeric",
+     "name": "Serum IgA",
+     "description": "Immunoglobulin A, mg/dL (range 1-1765, median ~343).",
+     "status": "resolved"
+    },
+    "IGG": {
+     "role": "numeric",
+     "name": "Serum IgG",
+     "description": "Immunoglobulin G, mg/dL (range 3-6510, median ~1666; elevated in autoimmune disease).",
+     "status": "resolved"
+    },
+    "IGM": {
+     "role": "numeric",
+     "name": "Serum IgM",
+     "description": "Immunoglobulin M, mg/dL (range 0-1573, median ~152).",
+     "status": "resolved"
+    },
+    "LDH": {
+     "role": "numeric",
+     "name": "Lactate dehydrogenase",
+     "description": "LDH, U/L (range 25-67080, median ~295).",
+     "status": "resolved"
+    },
+    "PIC": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "PLT": {
+     "role": "numeric",
+     "name": "Platelet count",
+     "description": "Platelets, ×10^3/µL (range 5-5844, median 248).",
+     "status": "resolved"
+    },
+    "PT": {
+     "role": "numeric",
+     "name": "Prothrombin time",
+     "description": "Prothrombin time, seconds (range 10.1-27, median ~12.4). Measured in ~4.5% of rows.",
+     "status": "resolved"
+    },
+    "RA": {
+     "role": "code",
+     "name": "RA test (rheumatoid factor latex agglutination)",
+     "description": "Semi-quantitative rheumatoid arthritis test result: '-', '+-', '+', '2+' (one stray '7-' likely data entry error).",
+     "status": "resolved"
+    },
+    "RBC": {
+     "role": "numeric",
+     "name": "Red blood cell count",
+     "description": "RBC count, ×10^6/µL (range 0.4-6.6, median 4.3).",
+     "status": "resolved"
+    },
+    "RF": {
+     "role": "numeric",
+     "name": "Rheumatoid factor",
+     "description": "RF titer/value, IU or U/mL; stored as text with '<' limit values ('<40', '<20.5') and numerics (up to ~98).",
+     "status": "resolved"
+    },
+    "RNP": {
+     "role": "code",
+     "name": "Anti-RNP antibody",
+     "description": "Anti-ribonucleoprotein antibody result: 'negative'/'0' or titer-style numbers (1, 4, 16, 64, 256 — doubling-dilution titers).",
+     "status": "resolved"
+    },
+    "SC170": {
+     "role": "code",
+     "name": "Anti-Scl-70 antibody",
+     "description": "Anti-Scl-70 (topoisomerase I) antibody, scleroderma marker: 'negative'/'0' or titer numbers (1, 4, 16). Almost never measured.",
+     "status": "resolved"
+    },
+    "SM": {
+     "role": "code",
+     "name": "Anti-Sm antibody",
+     "description": "Anti-Smith antibody result: 'negative'/'0' or titer numbers (1, 2, 8). SLE-specific marker, rarely measured.",
+     "status": "resolved"
+    },
+    "SSA": {
+     "role": "code",
+     "name": "Anti-SSA/Ro antibody",
+     "description": "Anti-SSA (Ro) antibody result: 'negative'/'0' or titer numbers (1, 16, 64, 256).",
+     "status": "resolved"
+    },
+    "SSB": {
+     "role": "code",
+     "name": "Anti-SSB/La antibody",
+     "description": "Anti-SSB (La) antibody result: 'negative'/'0' or titer numbers (1, 2, 32).",
+     "status": "resolved"
+    },
+    "T-BIL": {
+     "role": "numeric",
+     "name": "Total bilirubin",
+     "description": "Total bilirubin, mg/dL (range 0.1-7.9, median 0.5).",
+     "status": "resolved"
+    },
+    "T-CHO": {
+     "role": "numeric",
+     "name": "Total cholesterol",
+     "description": "Total cholesterol, mg/dL (range 37-568, median ~198).",
+     "status": "resolved"
+    },
+    "TAT": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "TAT2": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "TG": {
+     "role": "numeric",
+     "name": "Triglycerides",
+     "description": "Serum triglycerides, mg/dL (range 1-867, median ~108).",
+     "status": "resolved"
+    },
+    "TP": {
+     "role": "numeric",
+     "name": "Total protein",
+     "description": "Total serum protein, g/dL (range 0-9.9, median 7.1).",
+     "status": "resolved"
+    },
+    "U-PRO": {
+     "role": "code",
+     "name": "Urine protein",
+     "description": "Urinary protein (dipstick/quantitative): '-', '0', 'TR' (trace), numeric amounts, '>=1000' (mg/dL), and stray '%%' entry error.",
+     "status": "resolved"
+    },
+    "UA": {
+     "role": "numeric",
+     "name": "Uric acid",
+     "description": "Serum uric acid, mg/dL (range 0.4-17.3, median 4.3).",
+     "status": "resolved"
+    },
+    "UN": {
+     "role": "numeric",
+     "name": "Urea nitrogen (BUN)",
+     "description": "Blood urea nitrogen, mg/dL (range 0-152, median 14).",
+     "status": "resolved"
+    },
+    "WBC": {
+     "role": "numeric",
+     "name": "White blood cell count",
+     "description": "WBC count, ×10^3/µL (range 0.9-35.2, median 7.0).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Patient": {
+   "table": {
+    "name": "Patient",
+    "purpose": "Rheumatology patient registry: one row per patient with demographics, diagnosis, and key visit dates; referenced by Laboratory results and presumably Examination records."
+   },
+   "columns": {
+    "Admission": {
+     "role": "code",
+     "name": "Admission",
+     "description": "Admission status flag: '-' (outpatient/not admitted, 713), '+' (admitted, 488), '+(' (admitted with parenthetical note, 3), blank (unknown, 34). Alternative reading: could mark whether the patient was hospitalized at the time of the recorded visit rather than a general status.",
+     "status": "tentative"
+    },
+    "Birthday": {
+     "role": "date",
+     "name": "Date of birth",
+     "description": "Patient's birth date (1912-2007 range, mostly 1930s-1960s).",
+     "status": "resolved"
+    },
+    "Description": {
+     "role": "date",
+     "name": "Description date",
+     "description": "A date despite the name; 1991-1998 range, low uniqueness, 17% null. Likely the date of a clinical description/case report entry, but the exact event is unresolved; no joined column clarifies it.",
+     "status": "tentative"
+    },
+    "Diagnosis": {
+     "role": "code",
+     "name": "Diagnosis",
+     "description": "Primary diagnosis, mostly rheumatic/autoimmune disease abbreviations: SLE (systemic lupus erythematosus), SJS (Sjögren's syndrome), RA (rheumatoid arthritis), Behçet's, PSS (progressive systemic sclerosis), DM (dermatomyositis), PN (polyarteritis nodosa). Free text, may list multiple diagnoses.",
+     "status": "resolved"
+    },
+    "First Date": {
+     "role": "date",
+     "name": "First visit / first presentation date",
+     "description": "Date of the patient's first visit or disease onset record (1972-1998), 20% null. Could alternatively be the date of first presentation at this registry rather than disease onset; Laboratory rows are keyed by patient and date but do not disambiguate this.",
+     "status": "tentative"
+    },
+    "ID": {
+     "role": "identifier",
+     "name": "Patient ID",
+     "description": "Primary key; unique patient identifier, referenced by Laboratory.ID.",
+     "status": "resolved"
+    },
+    "SEX": {
+     "role": "code",
+     "name": "Sex",
+     "description": "Patient sex: F (1023), M (202), blank (13). Strong female predominance consistent with autoimmune disease cohort.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 2,
+  "columns_changed": 5
+ }
+}

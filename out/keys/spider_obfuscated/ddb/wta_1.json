@@ -1,0 +1,622 @@
+{
+ "accept": 70,
+ "db_id": "wta_1",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "matches": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0035971223021582736
+     },
+     "phi": 1.0,
+     "score": 37.5
+    },
+    "col_002": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.02158273381294964
+     },
+     "phi": 0.85,
+     "score": 15.938
+    },
+    "col_003": {
+     "base": 68.829,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.9112709832134293,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.9316546762589928
+     },
+     "phi": 0.7,
+     "score": 48.181
+    },
+    "col_004": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_005": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.007194244604316547
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_006": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.08633093525179857
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_007": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.17625899280575538
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_008": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.08273381294964029
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_009": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.17625899280575538
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_010": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.18705035971223022
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_011": {
+     "base": 66.212,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.7593924860111911,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8597122302158273
+     },
+     "phi": 0.55,
+     "score": 36.417
+    },
+    "col_012": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.11510791366906475
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_013": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.2302158273381295
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_014": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.4064748201438849
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_015": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.025179856115107913
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_016": {
+     "base": 19.793,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.13669064748201448,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.564748201438849
+     },
+     "phi": 0.55,
+     "score": 10.886
+    },
+    "col_017": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.01079136690647482
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_018": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.20503597122302158
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_019": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.2517985611510791
+     },
+     "phi": 0.55,
+     "score": 9.625
+    },
+    "col_020": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.014388489208633094
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_021": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1906474820143885
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_022": {
+     "base": 30.385,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.2961630695443646,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.6402877697841727
+     },
+     "phi": 0.55,
+     "score": 16.712
+    },
+    "col_023": {
+     "rejected": "mostly empty or zero"
+    },
+    "col_024": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.007194244604316547
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_025": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.07553956834532374
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_026": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1366906474820144
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_027": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.07553956834532374
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_028": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1366906474820144
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_029": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.16546762589928057
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_030": {
+     "base": 34.412,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.25059952038369315,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6187050359712231
+     },
+     "phi": 0.55,
+     "score": 18.927
+    },
+    "col_031": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.08992805755395683
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_032": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.01079136690647482
+     },
+     "phi": 0.55,
+     "score": 10.312
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "players": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "matches.col_007",
+       "matches.col_026"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.3275578356403059
+     },
+     "phi": 0.85,
+     "score": 9.562
+    },
+    "col_003": {
+     "base": 46.992,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.5718656901020661,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.7708837479430839
+     },
+     "phi": 0.7,
+     "score": 32.894
+    },
+    "col_004": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.00019359210144226117
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_005": {
+     "base": 18.125,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.49501500338786175
+     },
+     "phi": 0.55,
+     "score": 9.969
+    },
+    "col_006": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.007404897880166489
+     },
+     "phi": 0.55,
+     "score": 13.063
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "rankings": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.002946494866163699
+     },
+     "phi": 1.0,
+     "score": 18.75
+    },
+    "col_002": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.002921026492985422
+     },
+     "phi": 0.85,
+     "score": 31.875
+    },
+    "col_003": {
+     "base": 18.125,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.005438477226376614
+     },
+     "phi": 0.7,
+     "score": 12.688
+    },
+    "col_004": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.007327055052827283
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_005": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 8.228243642212458e-05
+     },
+     "phi": 0.55,
+     "score": 20.625
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  }
+ },
+ "use_names": false
+}
