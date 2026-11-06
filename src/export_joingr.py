@@ -31,7 +31,7 @@ import json
 import sys
 from concurrent.futures import ThreadPoolExecutor
 
-from describe_columns import DEFAULTS as S3, STATUSES, Voyager, clip
+from describe_columns import DEFAULTS as S3, STATUSES, Voyager, clip, pack
 from primary_keys import ROOT, load_profile, work_list
 
 sys.path.insert(0, str(ROOT))
@@ -80,19 +80,45 @@ def neighbours(edges, desc):
     return out
 
 
-def refine_table(llm, table, desc, links, cfg):
+BATCH_REFINE = REFINE + """
+
+This request holds several tables under "tables". Revise each one on its own by the rules above, one entry per table
+under its exact key."""
+
+
+def refine_payload(table, desc, links):
     td = desc["tables"][table]
     todo = [c for c, cd in td["columns"].items() if cd["status"] != "resolved"]
-    payload = {
+    return todo, {
         "table": table, "table_purpose": td["table"].get("purpose", ""),
         "columns": {c: {k: cd.get(k, "") for k in ("role", "name", "description", "status")}
                     | ({"joins": links[(table, c)]} if (table, c) in links else {})
                     for c, cd in td["columns"].items()},
         "revise": todo,
     }
+
+
+def refine_table(llm, table, desc, links, cfg):
+    todo, payload = refine_payload(table, desc, links)
     reply, _ = llm.complete("refine", table, REFINE, json.dumps(payload, default=lambda v: clip(str(v), 80)),
                             refine_schema(todo))
     return todo, reply or {}
+
+
+def refine_batch(llm, tables, desc, links, cfg):
+    """{table: (todo, reply)} for several tables in one call. A table the reply leaves out is asked on its own."""
+    if len(tables) == 1:
+        return {tables[0]: refine_table(llm, tables[0], desc, links, cfg)}
+    parts = {t: refine_payload(t, desc, links) for t in tables}
+    schema = {"name": "table_refinement_batch", "strict": True, "schema": {
+        "type": "object", "additionalProperties": False, "required": ["tables"],
+        "properties": {"tables": {"type": "object", "additionalProperties": False, "required": tables,
+                                  "properties": {t: refine_schema(p[0])["schema"] for t, p in parts.items()}}}}}
+    reply, _ = llm.complete("refine", f"batch of {len(tables)} tables", BATCH_REFINE,
+                            json.dumps({"tables": {t: p[1] for t, p in parts.items()}},
+                                       default=lambda v: clip(str(v), 80)), schema)
+    got = (reply or {}).get("tables") or {}
+    return {t: (parts[t][0], got[t]) if got.get(t) else refine_table(llm, t, desc, links, cfg) for t in tables}
 
 
 def refine(llm, desc, edges, cfg):
@@ -102,8 +128,10 @@ def refine(llm, desc, edges, cfg):
     joined = {t for t, _ in links}
     tables = [t for t in desc["tables"] if t in joined
               and any(cd["status"] != "resolved" for cd in desc["tables"][t]["columns"].values())]
+    chunks = pack(tables, lambda t: len(desc["tables"][t]["columns"]), cfg.get("batch_columns", 0))
     with ThreadPoolExecutor(cfg["workers"]) as pool:
-        results = dict(zip(tables, pool.map(lambda t: refine_table(llm, t, desc, links, cfg), tables)))
+        results = {t: r for part in pool.map(lambda c: refine_batch(llm, c, desc, links, cfg), chunks)
+                   for t, r in part.items()}
     for t, (todo, reply) in results.items():
         for c in todo:
             new, old = reply.get(c) or {}, out["tables"][t]["columns"][c]
@@ -163,8 +191,11 @@ def main():
     ap.add_argument("--model", default=S3["model"])
     ap.add_argument("--reasoning-effort", default="low", choices=["none", "low", "medium", "high"])
     ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--batch-columns", type=int, default=0,
+                    help="pack small tables into one refine call up to this many columns; 0: one call per table")
     args = ap.parse_args()
-    cfg = {**S3, "model": args.model, "reasoning_effort": args.reasoning_effort, "workers": args.workers}
+    cfg = {**S3, "model": args.model, "reasoning_effort": args.reasoning_effort, "workers": args.workers,
+           "batch_columns": args.batch_columns}
 
     s3_dir = ROOT / "out" / "descriptions" / args.dataset / args.stage3_run
     out_dir = ROOT / "out" / "joingr" / args.dataset / args.run

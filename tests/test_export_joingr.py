@@ -45,3 +45,49 @@ def test_refine_never_runs_without_joins():
 def test_edge_purpose_uses_both_ends():
     text = s4.edge_purpose(E, desc())
     assert "orders" in text and "customer_id (customer key)" in text and "many-to-one" in text
+
+
+class Fake:
+    """Answers batch calls from `tables` and logs every call."""
+    def __init__(self, drop=()):
+        self.calls, self.drop = [], set(drop)
+
+    def complete(self, step, tag, system, user, schema):
+        self.calls.append(tag)
+        props = schema["schema"]["properties"]
+        col = {"name": "n", "description": "d", "status": "resolved", "role": "key"}
+        if "tables" in props:
+            names = [t for t in props["tables"]["required"] if t not in self.drop]
+            if step == "describe":
+                return {"tables": {t: {"table": {"name": t, "purpose": "p"}, "columns": {"a": col}} for t in names}}, "low"
+            return {"tables": {t: {"a": col} for t in names}}, "low"
+        if "columns" in props:
+            return {"table": {"name": "alone", "purpose": "p"}, "columns": {"a": col}}, "low"
+        return {"a": col}, "low"
+
+
+def test_pack_keeps_order_and_budget():
+    from describe_columns import pack
+    assert pack([3, 3, 3, 9, 1], lambda x: x, 6) == [[3, 3], [3], [9], [1]]
+    assert pack([1, 2], lambda x: x, 0) == [[1], [2]]
+
+
+def test_refine_batch_asks_again_for_a_table_left_out():
+    desc = {"tables": {t: {"table": {"purpose": ""}, "columns": {"a": {"role": "", "name": "", "description": "", "status": "tentative"}}}
+                       for t in ("x", "y")}}
+    llm = Fake(drop=["y"])
+    out = s4.refine_batch(llm, ["x", "y"], desc, {}, {})
+    assert llm.calls == ["batch of 2 tables", "y"] and out["x"][1]["a"]["name"] == "n" and out["y"][1]["a"]["name"] == "n"
+
+
+def test_describe_batch_asks_again_for_a_table_left_out():
+    import describe_columns as s3
+    cfg = {**s3.DEFAULTS}
+    prof = {"name": "a", "declared_type": "INT", "family": "int", "role": "int", "null_rate": 0, "distinct": 1, "uniqueness": 1,
+            "top_values": [], "sample_values": []}
+    profile = {"tables": {t: {"rows": 1, "columns": {"a": prof}, "sample_rows": []} for t in ("x", "y")}}
+    keys = {"tables": {t: {"primary_key": None} for t in ("x", "y")}}
+    llm = Fake(drop=["y"])
+    out = s3.describe_batch(llm, profile, keys, {}, ["x", "y"], cfg, True)
+    assert llm.calls == ["batch of 2 tables", "y"]
+    assert out["x"]["table"]["name"] == "x" and out["y"]["table"]["name"] == "alone" and out["x"]["ok"] and out["y"]["ok"]
