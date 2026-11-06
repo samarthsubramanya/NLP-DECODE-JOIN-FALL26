@@ -278,3 +278,32 @@ The obfuscated run (`bird_dev_obfuscated.duckdb`, columns `col_NNN`) still shows
 - **2026-11-01** `grade_fiben.py` scores joins against the FKs with rows and the containment-visible FKs as well; FIBEN F1 on visible FKs .629.
 - **2026-10-31** `evals/perturb_values.py`: date shift and text cipher on profiles; two BIRD perturbation runs graded. Prompts explain subtype links; band payloads carry `source_is_primary_key`; `--repeat` for variance runs. FIBEN graded against `FIBEN.sql`; BIRD tables-hidden run; 3-repeat variance check.
 - **Earlier** Grouped adjudication (default) beside `single`; `--no-describe`; empty-reply fallback without reasoning; empty description → `unresolved`; first Voyager runs on BIRD (named, obfuscated), BEAVER and FIBEN, graded by `evals/grade_*.py`.
+
+## Batching LLM calls (tested 2026-11-06, off by default)
+
+`--batch-columns N` packs small tables into one describe or refine call; `--batch-candidates N` packs source columns into one adjudication call. A table or source the reply leaves out is asked on its own. With both off, prompts and cache entries are unchanged.
+
+Tested on FIBEN and Spider at 40 columns and 12 candidates, against a fresh unbatched run (`--repeat 7`, runs `bat_off`, `bat_on`). One run each; the batched timing overlapped other jobs.
+
+| | FIBEN unbatched | FIBEN batched | Spider unbatched | Spider batched |
+|---|---|---|---|---|
+| Calls (Stages 3 and 4) | 185 | 32 | 146 | 52 |
+| Stage 3 time | 256s | 978s | 511s | 758s |
+| Input tokens | 401k | 128k | 198k | 158k |
+| Output tokens | 55k | 63k | 40k | 33k |
+| Join F1 | .598 | .626 | .895 | .889 |
+| Walk PR@15 | .847 | .800 | .983 | .983 |
+| Column R@15 (walk) | .478 | .493 | .939 | .924 |
+| Unresolved columns | 101 | 196 | 32 | 30 |
+| Tentative columns | 127 | 36 | 36 | 31 |
+| Average description length | 181 | 119 | 113 | 81 |
+
+Batched token counts are slightly low, because 16 FIBEN and 6 Spider calls replayed the cache.
+
+- **Slower, not faster.** Unbatched runs 8 calls in parallel; a batch is one long call. One FIBEN batch ran 854s, returned nothing and had to be repeated table by table.
+- **Descriptions get worse.** In batches the model writes about 30% less, and on FIBEN it gave up on twice as many columns.
+- **Adjudication holds up.** Join F1 stays within run-to-run noise (FIBEN unbatched varies .598–.633 between identical runs), with calls down from 24 to 4 and 35 to 14.
+
+Keep `--batch-columns` off. `--batch-candidates` is safe if call count matters, but adjudication is the smaller share of calls.
+
+**Noise warning:** dense PR@15 on FIBEN was .317 in `ddb_full` and .160 in `bat_off`, from the same settings. Treat FIBEN dense scores as unstable across description runs.
