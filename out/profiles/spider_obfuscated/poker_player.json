@@ -1,0 +1,1003 @@
+{
+ "containment": [
+  {
+   "containment": 1.0,
+   "coverage": 0.7142857142857143,
+   "dist": 0.6666666666666665,
+   "dist_buckets": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "intersection": 5,
+   "source": [
+    "poker_player",
+    "col_001"
+   ],
+   "source_distinct": 5,
+   "source_unique": true,
+   "target": [
+    "people",
+    "col_001"
+   ],
+   "target_distinct": 7
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.7142857142857143,
+   "dist": 0.8190476190476191,
+   "dist_buckets": [
+    1,
+    1,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "intersection": 5,
+   "source": [
+    "poker_player",
+    "col_002"
+   ],
+   "source_distinct": 5,
+   "source_unique": true,
+   "target": [
+    "people",
+    "col_001"
+   ],
+   "target_distinct": 7
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.42857142857142855,
+   "dist": 0.33333333333333337,
+   "dist_buckets": [
+    1,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "intersection": 3,
+   "source": [
+    "poker_player",
+    "col_004"
+   ],
+   "source_distinct": 3,
+   "source_unique": false,
+   "target": [
+    "people",
+    "col_001"
+   ],
+   "target_distinct": 7
+  },
+  {
+   "containment": 0.7142857142857143,
+   "coverage": 1.0,
+   "dist": 1.0,
+   "dist_buckets": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "intersection": 5,
+   "source": [
+    "people",
+    "col_001"
+   ],
+   "source_distinct": 7,
+   "source_unique": true,
+   "target": [
+    "poker_player",
+    "col_001"
+   ],
+   "target_distinct": 5
+  },
+  {
+   "containment": 0.6,
+   "coverage": 0.6,
+   "dist": 0.7,
+   "dist_buckets": [
+    1,
+    1,
+    0,
+    0,
+    1
+   ],
+   "intersection": 3,
+   "source": [
+    "poker_player",
+    "col_002"
+   ],
+   "source_distinct": 5,
+   "source_unique": true,
+   "target": [
+    "poker_player",
+    "col_001"
+   ],
+   "target_distinct": 5
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.6,
+   "dist": 0.5,
+   "dist_buckets": [
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "intersection": 3,
+   "source": [
+    "poker_player",
+    "col_004"
+   ],
+   "source_distinct": 3,
+   "source_unique": false,
+   "target": [
+    "poker_player",
+    "col_001"
+   ],
+   "target_distinct": 5
+  },
+  {
+   "containment": 0.7142857142857143,
+   "coverage": 1.0,
+   "dist": 1.0,
+   "dist_buckets": [
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "intersection": 5,
+   "source": [
+    "people",
+    "col_001"
+   ],
+   "source_distinct": 7,
+   "source_unique": true,
+   "target": [
+    "poker_player",
+    "col_002"
+   ],
+   "target_distinct": 5
+  },
+  {
+   "containment": 0.6,
+   "coverage": 0.6,
+   "dist": 0.5,
+   "dist_buckets": [
+    1,
+    1,
+    1,
+    0,
+    0
+   ],
+   "intersection": 3,
+   "source": [
+    "poker_player",
+    "col_001"
+   ],
+   "source_distinct": 5,
+   "source_unique": true,
+   "target": [
+    "poker_player",
+    "col_002"
+   ],
+   "target_distinct": 5
+  },
+  {
+   "containment": 0.6666666666666666,
+   "coverage": 0.4,
+   "dist": 0.2500000000000001,
+   "dist_buckets": [
+    1,
+    1,
+    0,
+    0,
+    0
+   ],
+   "intersection": 2,
+   "source": [
+    "poker_player",
+    "col_004"
+   ],
+   "source_distinct": 3,
+   "source_unique": false,
+   "target": [
+    "poker_player",
+    "col_002"
+   ],
+   "target_distinct": 5
+  }
+ ],
+ "dataset": "spider_obfuscated",
+ "db_id": "poker_player",
+ "duckdb_file": "decode_join_obfuscated.duckdb",
+ "duckdb_schema": "spider_3193f478bd5c888afd7d",
+ "seed": 42,
+ "tables": {
+  "people": {
+   "columns": {
+    "col_001": {
+     "declared_type": "BIGINT",
+     "distinct": 7,
+     "family": "int",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 7.0,
+      "mean": 4.0,
+      "min": 1.0,
+      "p25": 2.5,
+      "p50": 4.0,
+      "p75": 5.5
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 7,
+     "sample_values": [
+      "2",
+      "7",
+      "1",
+      "4",
+      "3",
+      "6",
+      "5"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1",
+       1
+      ],
+      [
+       "2",
+       1
+      ],
+      [
+       "3",
+       1
+      ],
+      [
+       "4",
+       1
+      ],
+      [
+       "5",
+       1
+      ],
+      [
+       "6",
+       1
+      ],
+      [
+       "7",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 2,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 7,
+     "sample_values": [
+      "Bulgaria",
+      "Russia"
+     ],
+     "text": {
+      "avg_len": 6.285714285714286,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 6,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Russia",
+       6
+      ],
+      [
+       "Bulgaria",
+       1
+      ]
+     ],
+     "uniqueness": 0.2857142857142857,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "declared_type": "VARCHAR",
+     "distinct": 7,
+     "family": "text",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "text",
+     "rows": 7,
+     "sample_values": [
+      "Roman Bragin",
+      "Yevgeni Sivozhelez",
+      "Teodor Salparov",
+      "Maksim Botin",
+      "Sergey Grankin",
+      "Aleksey Ostapenko",
+      "Semen Poltavskiy"
+     ],
+     "text": {
+      "avg_len": 14.857142857142858,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 18,
+      "min_len": 12,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Aleksey Ostapenko",
+       1
+      ],
+      [
+       "Maksim Botin",
+       1
+      ],
+      [
+       "Roman Bragin",
+       1
+      ],
+      [
+       "Semen Poltavskiy",
+       1
+      ],
+      [
+       "Sergey Grankin",
+       1
+      ],
+      [
+       "Teodor Salparov",
+       1
+      ],
+      [
+       "Yevgeni Sivozhelez",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_004": {
+     "declared_type": "VARCHAR",
+     "distinct": 7,
+     "family": "text",
+     "name": "col_004",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "text",
+     "rows": 7,
+     "sample_values": [
+      "May 26, 1986",
+      "January 22, 1987",
+      "February 8, 1981",
+      "August 16, 1982",
+      "April 17, 1987",
+      "August 8, 1986",
+      "July 14, 1983"
+     ],
+     "text": {
+      "avg_len": 14.285714285714286,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 16,
+      "min_len": 12,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "April 17, 1987",
+       1
+      ],
+      [
+       "August 16, 1982",
+       1
+      ],
+      [
+       "August 8, 1986",
+       1
+      ],
+      [
+       "February 8, 1981",
+       1
+      ],
+      [
+       "January 22, 1987",
+       1
+      ],
+      [
+       "July 14, 1983",
+       1
+      ],
+      [
+       "May 26, 1986",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_005": {
+     "declared_type": "DOUBLE",
+     "distinct": 7,
+     "family": "int",
+     "name": "col_005",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.2692307692307692,
+      "max": 207.0,
+      "mean": 194.85714285714286,
+      "min": 182.0,
+      "p25": 190.0,
+      "p50": 194.0,
+      "p75": 200.5
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "int",
+     "rows": 7,
+     "sample_values": [
+      "205.0",
+      "187.0",
+      "207.0",
+      "193.0",
+      "194.0",
+      "196.0",
+      "182.0"
+     ],
+     "text": {
+      "avg_len": 5.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "182.0",
+       1
+      ],
+      [
+       "187.0",
+       1
+      ],
+      [
+       "193.0",
+       1
+      ],
+      [
+       "194.0",
+       1
+      ],
+      [
+       "196.0",
+       1
+      ],
+      [
+       "205.0",
+       1
+      ],
+      [
+       "207.0",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 7,
+   "sample_rows": [
+    {
+     "col_001": 1,
+     "col_002": "Russia",
+     "col_003": "Aleksey Ostapenko",
+     "col_004": "May 26, 1986",
+     "col_005": 207.0
+    },
+    {
+     "col_001": 3,
+     "col_002": "Russia",
+     "col_003": "Roman Bragin",
+     "col_004": "April 17, 1987",
+     "col_005": 187.0
+    },
+    {
+     "col_001": 4,
+     "col_002": "Russia",
+     "col_003": "Sergey Grankin",
+     "col_004": "January 22, 1987",
+     "col_005": 193.0
+    },
+    {
+     "col_001": 5,
+     "col_002": "Russia",
+     "col_003": "Yevgeni Sivozhelez",
+     "col_004": "August 8, 1986",
+     "col_005": 196.0
+    },
+    {
+     "col_001": 6,
+     "col_002": "Russia",
+     "col_003": "Maksim Botin",
+     "col_004": "July 14, 1983",
+     "col_005": 194.0
+    }
+   ]
+  },
+  "poker_player": {
+   "columns": {
+    "col_001": {
+     "declared_type": "BIGINT",
+     "distinct": 5,
+     "family": "int",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 5.0,
+      "mean": 3.0,
+      "min": 1.0,
+      "p25": 2.0,
+      "p50": 3.0,
+      "p75": 4.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 5,
+     "sample_values": [
+      "2",
+      "1",
+      "4",
+      "3",
+      "5"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1",
+       1
+      ],
+      [
+       "2",
+       1
+      ],
+      [
+       "3",
+       1
+      ],
+      [
+       "4",
+       1
+      ],
+      [
+       "5",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "BIGINT",
+     "distinct": 5,
+     "family": "int",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.7142857142857143,
+      "max": 7.0,
+      "mean": 4.2,
+      "min": 1.0,
+      "p25": 2.0,
+      "p50": 5.0,
+      "p75": 6.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "int",
+     "rows": 5,
+     "sample_values": [
+      "2",
+      "7",
+      "1",
+      "6",
+      "5"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1",
+       1
+      ],
+      [
+       "2",
+       1
+      ],
+      [
+       "5",
+       1
+      ],
+      [
+       "6",
+       1
+      ],
+      [
+       "7",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "declared_type": "DOUBLE",
+     "distinct": 5,
+     "family": "int",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.15151515151515152,
+      "max": 42.0,
+      "mean": 23.6,
+      "min": 10.0,
+      "p25": 19.0,
+      "p50": 21.0,
+      "p75": 26.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "int",
+     "rows": 5,
+     "sample_values": [
+      "26.0",
+      "21.0",
+      "19.0",
+      "10.0",
+      "42.0"
+     ],
+     "text": {
+      "avg_len": 4.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "10.0",
+       1
+      ],
+      [
+       "19.0",
+       1
+      ],
+      [
+       "21.0",
+       1
+      ],
+      [
+       "26.0",
+       1
+      ],
+      [
+       "42.0",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_004": {
+     "declared_type": "DOUBLE",
+     "distinct": 3,
+     "family": "int",
+     "name": "col_004",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 3.0,
+      "mean": 1.8,
+      "min": 1.0,
+      "p25": 1.0,
+      "p50": 2.0,
+      "p75": 2.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "int",
+     "rows": 5,
+     "sample_values": [
+      "2.0",
+      "1.0",
+      "3.0"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1.0",
+       2
+      ],
+      [
+       "2.0",
+       2
+      ],
+      [
+       "3.0",
+       1
+      ]
+     ],
+     "uniqueness": 0.6,
+     "zero_rate": 0.0
+    },
+    "col_005": {
+     "declared_type": "DOUBLE",
+     "distinct": 5,
+     "family": "int",
+     "name": "col_005",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.045871559633027525,
+      "max": 166.0,
+      "mean": 117.4,
+      "min": 58.0,
+      "p25": 68.0,
+      "p50": 141.0,
+      "p75": 154.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "int",
+     "rows": 5,
+     "sample_values": [
+      "154.0",
+      "166.0",
+      "141.0",
+      "58.0",
+      "68.0"
+     ],
+     "text": {
+      "avg_len": 4.6,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "141.0",
+       1
+      ],
+      [
+       "154.0",
+       1
+      ],
+      [
+       "166.0",
+       1
+      ],
+      [
+       "58.0",
+       1
+      ],
+      [
+       "68.0",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_006": {
+     "declared_type": "DOUBLE",
+     "distinct": 5,
+     "family": "int",
+     "name": "col_006",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0171036143794041e-05,
+      "max": 596462.0,
+      "mean": 301891.2,
+      "min": 104871.0,
+      "p25": 142800.0,
+      "p50": 189233.0,
+      "p75": 476090.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "int",
+     "rows": 5,
+     "sample_values": [
+      "189233.0",
+      "476090.0",
+      "142800.0",
+      "104871.0",
+      "596462.0"
+     ],
+     "text": {
+      "avg_len": 8.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 8,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "104871.0",
+       1
+      ],
+      [
+       "142800.0",
+       1
+      ],
+      [
+       "189233.0",
+       1
+      ],
+      [
+       "476090.0",
+       1
+      ],
+      [
+       "596462.0",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 5,
+   "sample_rows": [
+    {
+     "col_001": 1,
+     "col_002": 1,
+     "col_003": 42.0,
+     "col_004": 1.0,
+     "col_005": 68.0,
+     "col_006": 476090.0
+    },
+    {
+     "col_001": 2,
+     "col_002": 2,
+     "col_003": 10.0,
+     "col_004": 2.0,
+     "col_005": 141.0,
+     "col_006": 189233.0
+    },
+    {
+     "col_001": 3,
+     "col_002": 5,
+     "col_003": 21.0,
+     "col_004": 1.0,
+     "col_005": 166.0,
+     "col_006": 104871.0
+    },
+    {
+     "col_001": 4,
+     "col_002": 6,
+     "col_003": 19.0,
+     "col_004": 2.0,
+     "col_005": 58.0,
+     "col_006": 596462.0
+    },
+    {
+     "col_001": 5,
+     "col_002": 7,
+     "col_003": 26.0,
+     "col_004": 3.0,
+     "col_005": 154.0,
+     "col_006": 142800.0
+    }
+   ]
+  }
+ }
+}

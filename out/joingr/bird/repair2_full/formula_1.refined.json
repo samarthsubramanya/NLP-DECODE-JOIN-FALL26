@@ -1,0 +1,710 @@
+{
+ "db_id": "formula_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "repair2",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 18,
+ "tables": {
+  "circuits": {
+   "table": {
+    "name": "circuits",
+    "purpose": "Reference table of Formula 1 racing circuits (venues where races are held), one row per circuit, referenced by the races table."
+   },
+   "columns": {
+    "alt": {
+     "role": "boolean",
+     "name": "alt",
+     "description": "Altitude of the circuit above sea level, in metres (e.g. Mexico City is high, ~2200). Plausible given the neighbouring geographic columns (lat, lng, location), though the column's declared boolean role does not fit this reading; another possibility is a flag of some kind, but no evidence supports that.",
+     "status": "tentative"
+    },
+    "circuitId": {
+     "role": "identifier",
+     "name": "circuitId",
+     "description": "Primary key; unique numeric identifier for each circuit. Referenced by races.circuitId to link races to their venue.",
+     "status": "resolved"
+    },
+    "circuitRef": {
+     "role": "code",
+     "name": "circuitRef",
+     "description": "Unique short slug/code identifying each circuit (e.g. 'ricard', 'zolder', 'interlagos'), used as a stable textual reference key.",
+     "status": "resolved"
+    },
+    "country": {
+     "role": "category",
+     "name": "country",
+     "description": "Country where the circuit is located (e.g. France, USA, UK).",
+     "status": "resolved"
+    },
+    "lat": {
+     "role": "numeric",
+     "name": "lat",
+     "description": "Latitude of the circuit's geographic location in decimal degrees (range -34.9 to 57.3, consistent with worldwide circuit locations).",
+     "status": "resolved"
+    },
+    "lng": {
+     "role": "numeric",
+     "name": "lng",
+     "description": "Longitude of the circuit's geographic location in decimal degrees (range -118.2 to 138.9, consistent with worldwide circuit locations).",
+     "status": "resolved"
+    },
+    "location": {
+     "role": "category",
+     "name": "location",
+     "description": "Town, city or locality where the circuit is situated (e.g. Le Castellet, Heusden-Zolder, Silverstone).",
+     "status": "resolved"
+    },
+    "name": {
+     "role": "free_text",
+     "name": "name",
+     "description": "Full official name of the circuit (e.g. 'Circuit Paul Ricard', 'Silverstone Circuit').",
+     "status": "resolved"
+    },
+    "url": {
+     "role": "free_text",
+     "name": "url",
+     "description": "Wikipedia URL for the circuit's article; one unique URL per circuit.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "constructorResults": {
+   "table": {
+    "name": "constructorResults",
+    "purpose": "Per-race championship points earned by each constructor (Formula 1). One row per constructor per race, recording the points that constructor scored in that race (used to build constructor standings)."
+   },
+   "columns": {
+    "constructorId": {
+     "role": "foreign_key",
+     "name": "constructorId",
+     "description": "Identifier of the constructor (team) that scored the points; references constructors.constructorId.",
+     "status": "resolved"
+    },
+    "constructorResultsId": {
+     "role": "identifier",
+     "name": "constructorResultsId",
+     "description": "Primary key; unique surrogate identifier for the constructor-per-race points record.",
+     "status": "resolved"
+    },
+    "points": {
+     "role": "numeric",
+     "name": "points",
+     "description": "Championship points scored by the constructor in that race (0–66; larger values reflect combined points of both cars and, in some eras, different points systems).",
+     "status": "resolved"
+    },
+    "raceId": {
+     "role": "foreign_key",
+     "name": "raceId",
+     "description": "Identifier of the race in which the points were scored; references races.raceId.",
+     "status": "resolved"
+    },
+    "status": {
+     "role": "code",
+     "name": "status",
+     "description": "Almost always null; the only observed value is 'D', which likely marks a disqualified constructor result. The exact code meaning is not confirmed by other evidence.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "constructorStandings": {
+   "table": {
+    "name": "constructorStandings",
+    "purpose": "Formula 1 constructors' (teams') championship standings after each race: cumulative points, championship position, and win count per constructor per race (the standard Ergast F1 database schema)."
+   },
+   "columns": {
+    "constructorId": {
+     "role": "foreign_key",
+     "name": "constructorId",
+     "description": "Identifier of the constructor (team); references constructors.constructorId.",
+     "status": "resolved"
+    },
+    "constructorStandingsId": {
+     "role": "foreign_key",
+     "name": "constructorStandingsId",
+     "description": "Surrogate primary key uniquely identifying each standings row.",
+     "status": "resolved"
+    },
+    "points": {
+     "role": "numeric",
+     "name": "points",
+     "description": "Cumulative championship points accumulated by the constructor up to and including that race (max 765, half points like 27.5 reflect shortened-race point splits).",
+     "status": "resolved"
+    },
+    "position": {
+     "role": "numeric",
+     "name": "position",
+     "description": "Constructor's championship standing position (rank) after that race, 1 = leading the championship.",
+     "status": "resolved"
+    },
+    "positionText": {
+     "role": "numeric",
+     "name": "positionText",
+     "description": "Position rendered as text; in this dataset it always equals the numeric position (in other F1 datasets it can hold 'E' for excluded, but no such values appear here).",
+     "status": "resolved"
+    },
+    "raceId": {
+     "role": "foreign_key",
+     "name": "raceId",
+     "description": "Identifier of the race after which the standings were computed; references races.raceId.",
+     "status": "resolved"
+    },
+    "wins": {
+     "role": "numeric",
+     "name": "wins",
+     "description": "Cumulative number of race wins by the constructor up to and including that race.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "constructors": {
+   "table": {
+    "name": "constructors",
+    "purpose": "Formula 1 constructors (racing teams/car builders). One row per constructor, referenced by results, qualifying, constructor results and standings. This is the Ergast F1 database's constructors table."
+   },
+   "columns": {
+    "constructorId": {
+     "role": "identifier",
+     "name": "constructor_id",
+     "description": "Primary key; unique numeric identifier for each constructor. Referenced by results, constructorResults, constructorStandings and qualifying.",
+     "status": "resolved"
+    },
+    "constructorRef": {
+     "role": "identifier",
+     "name": "constructor_ref",
+     "description": "Unique short slug/code identifying the constructor (e.g. 'tyrrell', 'zakspeed'), likely used as a stable external reference key.",
+     "status": "resolved"
+    },
+    "name": {
+     "role": "category",
+     "name": "name",
+     "description": "Full display name of the constructor/team (e.g. 'Alfa Romeo', 'Brabham-Repco').",
+     "status": "resolved"
+    },
+    "nationality": {
+     "role": "category",
+     "name": "nationality",
+     "description": "Country/nationality of the constructor (e.g. British, American, Italian).",
+     "status": "resolved"
+    },
+    "url": {
+     "role": "free_text",
+     "name": "url",
+     "description": "Wikipedia URL for the constructor's page. Not unique because some constructors (e.g. Cooper variants) share the same Wikipedia article.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "driverStandings": {
+   "table": {
+    "name": "driverStandings",
+    "purpose": "Formula 1 driver championship standings snapshot after each race: one row per driver per race, showing cumulative points, championship position, and win count at that point in the season."
+   },
+   "columns": {
+    "driverId": {
+     "role": "foreign_key",
+     "name": "driverId",
+     "description": "Identifier of the driver this standing belongs to; references drivers.driverId.",
+     "status": "resolved"
+    },
+    "driverStandingsId": {
+     "role": "identifier",
+     "name": "driverStandingsId",
+     "description": "Primary key; unique surrogate identifier for each standings row.",
+     "status": "resolved"
+    },
+    "points": {
+     "role": "numeric",
+     "name": "points",
+     "description": "Cumulative championship points the driver had accumulated in the season up to and including this race (max 397, half points like 27.5 occur due to shared points or shortened races).",
+     "status": "resolved"
+    },
+    "position": {
+     "role": "numeric",
+     "name": "position",
+     "description": "Driver's championship standing position (rank) after the given race; 1 = championship leader.",
+     "status": "resolved"
+    },
+    "positionText": {
+     "role": "numeric",
+     "name": "positionText",
+     "description": "Text representation of the championship position; in this dataset it duplicates the numeric position (values like 'D' for disqualified may exist elsewhere but are not observed here).",
+     "status": "tentative"
+    },
+    "raceId": {
+     "role": "foreign_key",
+     "name": "raceId",
+     "description": "Identifier of the race after which this standings snapshot applies; references races.raceId.",
+     "status": "resolved"
+    },
+    "wins": {
+     "role": "numeric",
+     "name": "wins",
+     "description": "Number of race wins the driver had accumulated in the season up to and including this race.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "drivers": {
+   "table": {
+    "name": "drivers",
+    "purpose": "Formula 1 drivers reference table: one row per driver (historical and current), with personal details and links to race results, standings, lap times, pit stops and qualifying."
+   },
+   "columns": {
+    "code": {
+     "role": "code",
+     "name": "driver code",
+     "description": "Three-letter driver abbreviation (e.g. VER, ROS, SAI) used in timing screens and TV graphics. Mostly null because permanent codes were only introduced in recent seasons.",
+     "status": "resolved"
+    },
+    "dob": {
+     "role": "date",
+     "name": "date of birth",
+     "description": "Driver's date of birth (YYYY-MM-DD). Range 1896-1998 covers the full history of the sport.",
+     "status": "resolved"
+    },
+    "driverId": {
+     "role": "identifier",
+     "name": "driver ID",
+     "description": "Primary key; unique surrogate identifier for each driver, referenced by results, driverStandings, pitStops, lapTimes and qualifying.",
+     "status": "resolved"
+    },
+    "driverRef": {
+     "role": "identifier",
+     "name": "driver reference slug",
+     "description": "Unique human-readable slug (typically surname-based, e.g. 'gilles_villeneuve') used as a stable reference key in the Ergast-style API.",
+     "status": "resolved"
+    },
+    "forename": {
+     "role": "category",
+     "name": "forename",
+     "description": "Driver's first/given name.",
+     "status": "resolved"
+    },
+    "nationality": {
+     "role": "category",
+     "name": "nationality",
+     "description": "Driver's nationality as an adjective (British, American, Italian, ...), 41 distinct values including hyphenated dual nationalities.",
+     "status": "resolved"
+    },
+    "number": {
+     "role": "identifier",
+     "name": "permanent car number",
+     "description": "Driver's permanent race number (2-99) introduced in 2014; null for drivers who raced before permanent numbering.",
+     "status": "resolved"
+    },
+    "surname": {
+     "role": "category",
+     "name": "surname",
+     "description": "Driver's last/family name.",
+     "status": "resolved"
+    },
+    "url": {
+     "role": "identifier",
+     "name": "Wikipedia URL",
+     "description": "Link to the driver's Wikipedia page; unique per driver.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "lapTimes": {
+   "table": {
+    "name": "lapTimes",
+    "purpose": "Per-lap timing data for each driver in each race (Formula 1): one row per driver per lap of a race, with lap time and the driver's race position at the end of that lap. Composite key of (raceId, driverId, lap)."
+   },
+   "columns": {
+    "driverId": {
+     "role": "foreign_key",
+     "name": "driverId",
+     "description": "Identifier of the driver who recorded the lap; references drivers.driverId (many-to-one).",
+     "status": "resolved"
+    },
+    "lap": {
+     "role": "identifier",
+     "name": "lap",
+     "description": "Lap number within the race, starting at 1 (max observed 78, e.g. number of laps completed so far). Part of the row's composite key with raceId and driverId.",
+     "status": "resolved"
+    },
+    "milliseconds": {
+     "role": "numeric",
+     "name": "milliseconds",
+     "description": "Lap time in milliseconds (e.g. 91255 ms = 1:31.255, matching the time column).",
+     "status": "resolved"
+    },
+    "position": {
+     "role": "numeric",
+     "name": "position",
+     "description": "The driver's race position (1–24) at the end of that lap; roughly equal counts per position reflect one driver per position per lap.",
+     "status": "resolved"
+    },
+    "raceId": {
+     "role": "foreign_key",
+     "name": "raceId",
+     "description": "Identifier of the race; references races.raceId (many-to-one).",
+     "status": "resolved"
+    },
+    "time": {
+     "role": "numeric",
+     "name": "time",
+     "description": "Lap time formatted as m:ss.mmm (e.g. '1:31.255'), the human-readable form of milliseconds.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "pitStops": {
+   "table": {
+    "name": "pitStops",
+    "purpose": "Formula 1 pit stop records: one row per pit stop made by a driver during a race, giving the lap, stop number, local time of day, and stationary duration of the stop."
+   },
+   "columns": {
+    "driverId": {
+     "role": "foreign_key",
+     "name": "driverId",
+     "description": "Identifier of the driver making the pit stop; references drivers.driverId (many-to-one).",
+     "status": "resolved"
+    },
+    "duration": {
+     "role": "code",
+     "name": "duration",
+     "description": "Pit stop duration in seconds, stored as text with millisecond precision (e.g. '24.719' = 24.719 s); string form of milliseconds.",
+     "status": "resolved"
+    },
+    "lap": {
+     "role": "code",
+     "name": "lap",
+     "description": "Lap number of the race on which the pit stop occurred (1–74).",
+     "status": "resolved"
+    },
+    "milliseconds": {
+     "role": "code",
+     "name": "milliseconds",
+     "description": "Pit stop duration in milliseconds (e.g. 30888 ms = 30.888 s); numeric counterpart of duration. Max ~2011 s likely reflects an anomalous/very long stop.",
+     "status": "resolved"
+    },
+    "raceId": {
+     "role": "foreign_key",
+     "name": "raceId",
+     "description": "Identifier of the race in which the pit stop occurred; references races.raceId (many-to-one).",
+     "status": "resolved"
+    },
+    "stop": {
+     "role": "code",
+     "name": "stop",
+     "description": "Sequential pit stop number for that driver within the race (1st stop, 2nd stop, etc.; 1–6).",
+     "status": "resolved"
+    },
+    "time": {
+     "role": "code",
+     "name": "time",
+     "description": "Local time of day (HH:MM:SS) at which the pit stop occurred.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "qualifying": {
+   "table": {
+    "name": "qualifying",
+    "purpose": "Formula 1 qualifying results: one row per driver per race, recording the driver's car number, constructor, final qualifying position, and lap times in each qualifying segment (Q1, Q2, Q3)."
+   },
+   "columns": {
+    "constructorId": {
+     "role": "foreign_key",
+     "name": "constructorId",
+     "description": "Foreign key to constructors.constructorId; the team the driver was driving for in this qualifying session.",
+     "status": "resolved"
+    },
+    "driverId": {
+     "role": "foreign_key",
+     "name": "driverId",
+     "description": "Foreign key to drivers.driverId; the driver who took part in this qualifying session.",
+     "status": "resolved"
+    },
+    "number": {
+     "role": "code",
+     "name": "number",
+     "description": "The driver's car/race number used in that session (0-99, e.g. 7, 18).",
+     "status": "resolved"
+    },
+    "position": {
+     "role": "code",
+     "name": "position",
+     "description": "Final qualifying position (grid slot) achieved by the driver in that race's qualifying, 1 = pole sitter; up to 28.",
+     "status": "resolved"
+    },
+    "q1": {
+     "role": "code",
+     "name": "q1",
+     "description": "Driver's best lap time in the Q1 qualifying segment, formatted as m:ss.mmm. Null/empty if the driver set no Q1 time.",
+     "status": "resolved"
+    },
+    "q2": {
+     "role": "code",
+     "name": "q2",
+     "description": "Driver's best lap time in the Q2 qualifying segment (m:ss.mmm). Null for drivers eliminated after Q1 (~51.5% null rate).",
+     "status": "resolved"
+    },
+    "q3": {
+     "role": "code",
+     "name": "q3",
+     "description": "Driver's best lap time in the Q3 qualifying segment (m:ss.mmm). Null for drivers eliminated after Q1/Q2 (~71% null rate).",
+     "status": "resolved"
+    },
+    "qualifyId": {
+     "role": "identifier",
+     "name": "qualifyId",
+     "description": "Primary key; unique surrogate identifier for each qualifying result row.",
+     "status": "resolved"
+    },
+    "raceId": {
+     "role": "foreign_key",
+     "name": "raceId",
+     "description": "Foreign key to races.raceId; the race (round) this qualifying session belongs to.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "races": {
+   "table": {
+    "name": "races",
+    "purpose": "One row per Formula 1 Grand Prix race (1950–2017): its season, round number, circuit, date, start time, and Wikipedia link. Referenced by results, standings, qualifying, lap times, and pit stops."
+   },
+   "columns": {
+    "circuitId": {
+     "role": "foreign_key",
+     "name": "circuitId",
+     "description": "Foreign key to circuits.circuitId, the venue where the race was held.",
+     "status": "resolved"
+    },
+    "date": {
+     "role": "date",
+     "name": "date",
+     "description": "Date the race took place (1950-05-13 to 2017-11-26).",
+     "status": "resolved"
+    },
+    "name": {
+     "role": "category",
+     "name": "name",
+     "description": "Name of the Grand Prix, e.g. 'British Grand Prix', 'Italian Grand Prix'.",
+     "status": "resolved"
+    },
+    "raceId": {
+     "role": "foreign_key",
+     "name": "raceId",
+     "description": "Primary key; unique identifier of the race, referenced by results, qualifying, lapTimes, pitStops, driverStandings, constructorStandings, constructorResults.",
+     "status": "resolved"
+    },
+    "round": {
+     "role": "code",
+     "name": "round",
+     "description": "Round number of the race within its championship season (1–21).",
+     "status": "resolved"
+    },
+    "time": {
+     "role": "code",
+     "name": "time",
+     "description": "Scheduled local start time of the race in HH:MM:SS format; null for 75% of rows (mostly older races where start time is unknown).",
+     "status": "resolved"
+    },
+    "url": {
+     "role": "code",
+     "name": "url",
+     "description": "Wikipedia article URL for the specific race edition (e.g. 1950_Belgian_Grand_Prix).",
+     "status": "resolved"
+    },
+    "year": {
+     "role": "code",
+     "name": "year",
+     "description": "Championship season year the race belongs to (1950–2017).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "results": {
+   "table": {
+    "name": "results",
+    "purpose": "Race results for Formula 1 Grands Prix: one row per driver per race, recording grid position, finishing position, points, laps, times, fastest-lap data and finishing status. This is the standard Ergast F1 database 'results' table."
+   },
+   "columns": {
+    "constructorId": {
+     "role": "foreign_key",
+     "name": "constructorId",
+     "description": "Identifier of the constructor (team) the driver raced for; references constructors.constructorId.",
+     "status": "resolved"
+    },
+    "driverId": {
+     "role": "foreign_key",
+     "name": "driverId",
+     "description": "Identifier of the driver; references drivers.driverId.",
+     "status": "resolved"
+    },
+    "fastestLap": {
+     "role": "code",
+     "name": "fastestLap",
+     "description": "Lap number on which the driver's fastest lap of the race was set (2-78). Null for races before this data was recorded (~2004) or when not applicable.",
+     "status": "resolved"
+    },
+    "fastestLapSpeed": {
+     "role": "code",
+     "name": "fastestLapSpeed",
+     "description": "Average speed of the driver's fastest lap, in km/h (range ~89.5-257.3). Stored as VARCHAR.",
+     "status": "resolved"
+    },
+    "fastestLapTime": {
+     "role": "code",
+     "name": "fastestLapTime",
+     "description": "Time of the driver's fastest lap, formatted m:ss.mmm (e.g. 1:21.134).",
+     "status": "resolved"
+    },
+    "grid": {
+     "role": "code",
+     "name": "grid",
+     "description": "Starting grid position of the driver (1 = pole). 0 indicates starting from the pit lane or no recorded grid position.",
+     "status": "resolved"
+    },
+    "laps": {
+     "role": "code",
+     "name": "laps",
+     "description": "Number of laps completed by the driver in the race; 0 for drivers who did not start.",
+     "status": "resolved"
+    },
+    "milliseconds": {
+     "role": "code",
+     "name": "milliseconds",
+     "description": "Total race time for classified finishers, in milliseconds (e.g. 6076447 ≈ 1h41m). Null for non-finishers.",
+     "status": "resolved"
+    },
+    "number": {
+     "role": "code",
+     "name": "number",
+     "description": "Car/driver number used in that race (0-208).",
+     "status": "resolved"
+    },
+    "points": {
+     "role": "code",
+     "name": "points",
+     "description": "Championship points scored by the driver for this race result (0-50; fractional values reflect shared points or fastest-lap rules).",
+     "status": "resolved"
+    },
+    "position": {
+     "role": "code",
+     "name": "position",
+     "description": "Official finishing position (1 = winner) for classified finishers; null for non-classified results (DNF, DSQ, etc.).",
+     "status": "resolved"
+    },
+    "positionOrder": {
+     "role": "code",
+     "name": "positionOrder",
+     "description": "Finishing order of all entries in the race, always populated (1 = first); unlike 'position', it ranks non-finishers too.",
+     "status": "resolved"
+    },
+    "positionText": {
+     "role": "code",
+     "name": "positionText",
+     "description": "Finishing position as text: a number for classified finishers, or a code such as 'R' (retired) and 'F' for non-finishers.",
+     "status": "resolved"
+    },
+    "raceId": {
+     "role": "foreign_key",
+     "name": "raceId",
+     "description": "Identifier of the race (Grand Prix); references races.raceId.",
+     "status": "resolved"
+    },
+    "rank": {
+     "role": "code",
+     "name": "rank",
+     "description": "Rank of the driver's fastest lap within the race (1 = fastest lap of the race, up to 24). Null when fastest-lap data is absent.",
+     "status": "resolved"
+    },
+    "resultId": {
+     "role": "foreign_key",
+     "name": "resultId",
+     "description": "Primary key; unique identifier of the race-result row.",
+     "status": "resolved"
+    },
+    "statusId": {
+     "role": "foreign_key",
+     "name": "statusId",
+     "description": "Identifier of the finishing status (e.g. finished, retired, accident); references status.statusId.",
+     "status": "resolved"
+    },
+    "time": {
+     "role": "code",
+     "name": "time",
+     "description": "Gap to the race winner as text, e.g. '+24.160' (seconds) or '+8:22.19' (minutes:seconds); null for the winner and non-finishers.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "seasons": {
+   "table": {
+    "name": "seasons",
+    "purpose": "One row per Formula One championship season (1950-2017), linking each season year to its Wikipedia article. This is a small dimension/lookup table in a Formula One database (races, drivers, constructors, results, etc.)."
+   },
+   "columns": {
+    "url": {
+     "role": "identifier",
+     "name": "wikipedia_url",
+     "description": "URL of the Wikipedia article for that season's Formula One championship (e.g. http://en.wikipedia.org/wiki/1950_Formula_One_season). One unique URL per season.",
+     "status": "resolved"
+    },
+    "year": {
+     "role": "identifier",
+     "name": "season_year",
+     "description": "Calendar year of the Formula One championship season. Unique, one row per year, ranging 1950-2017 (68 seasons). Likely the table's primary key despite not being flagged.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "status": {
+   "table": {
+    "name": "status",
+    "purpose": "Lookup table of race finish/dnf statuses for Formula 1 results (e.g. finished, +N laps, mechanical failure reasons). Referenced by results.statusId."
+   },
+   "columns": {
+    "status": {
+     "role": "code",
+     "name": "status_label",
+     "description": "Human-readable race status: either a finishing classification relative to the winner ('+N Laps') or the reason a driver did not finish (e.g. 'Engine', 'Out of fuel', 'Fuel rig', 'Water pipe', 'Exhaust').",
+     "status": "resolved"
+    },
+    "statusId": {
+     "role": "identifier",
+     "name": "status_id",
+     "description": "Primary key of the status lookup table; surrogate integer identifier for each distinct status label. Referenced by results.statusId to classify each race result.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 3,
+  "columns_changed": 1
+ }
+}

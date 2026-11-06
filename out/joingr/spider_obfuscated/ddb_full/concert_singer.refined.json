@@ -1,0 +1,182 @@
+{
+ "db_id": "concert_singer",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 6,
+ "tables": {
+  "concert": {
+   "table": {
+    "name": "concert",
+    "purpose": "One row per concert/show episode (e.g. of a TV singing competition like The X Factor), identifying the concert, its theme/week, the song performed, the venue (stadium), and the year."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "concert_id",
+     "description": "Primary key of the concert table; unique integer identifier for each concert. Referenced by singer_in_concert.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "concert_name",
+     "description": "Name/theme of the concert or show stage, e.g. 'Auditions', 'Home Visits', 'Super bootcamp', 'Week 1', 'Week 2' — stages of a singing competition.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "theme_or_song",
+     "description": "Song or theme performed at the concert, e.g. 'Bleeding Love', 'Wide Awake', 'Happy Tonight', 'Free choice'. Could be the concert's theme rather than a specific song; both readings fit. No joined columns provide further evidence.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "stadium_id",
+     "description": "Foreign key to stadium.col_001; the venue where the concert took place (lookup labels are football club/stadium names like 'Ayr United', 'Brechin City').",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "year",
+     "description": "Year the concert took place (2014 or 2015).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "singer": {
+   "table": {
+    "name": "singer",
+    "purpose": "Directory of singers, each with name, country, song title, release year, age, and a flag (likely whether the singer is male). Referenced by singer_in_concert, which links singers to concerts."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "singer_id",
+     "description": "Primary key; unique integer identifying each singer. Referenced by singer_in_concert.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "name",
+     "description": "Singer's full/stage name (e.g. 'Joe Sharp', 'Timbaland').",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "country",
+     "description": "Singer's country (France, Netherlands, United States).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "song_name",
+     "description": "Title of a song associated with the singer (e.g. 'Hey Oh', 'Gentleman').",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "identifier",
+     "name": "song_release_year",
+     "description": "Year the song was released (1992-2016), stored as text.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "identifier",
+     "name": "age",
+     "description": "Singer's age in years (25-52).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "boolean",
+     "name": "is_male",
+     "description": "Boolean flag stored as 'T'/'F'. Plausibly indicates the singer is male (T=4, F=2); could also be another yes/no attribute, so tentative.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "singer_in_concert": {
+   "table": {
+    "name": "singer_in_concert",
+    "purpose": "Junction (association) table linking singers to the concerts they perform in; each row states that a given singer performed in a given concert. The composite of both columns likely forms the primary key, though neither column is individually unique (uniqueness 0.5-0.6, no single-column PK detected)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "singer_id",
+     "description": "Identifier of the singer performing in the concert. References singer.col_001 (many_to_one); lookup pairs show singer names (Joe Sharp, Justin Brown, Rose White, etc.). It also statistically joins to concert.col_001, but that is coincidental overlap of small integer IDs, not a real relationship.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "concert_id",
+     "description": "Identifier of the concert the singer performs in. References concert.col_001 (many_to_one); lookup pairs show concert names (Auditions, Home Visits, Week 1, Week 2). Joins to singer and stadium are coincidental integer overlap, not real relationships. Declared VARCHAR but values are integers.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "stadium": {
+   "table": {
+    "name": "stadium",
+    "purpose": "One row per football stadium (Scottish clubs), with capacity and attendance statistics. Referenced by concert and singer_in_concert, which place concerts at these venues."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "stadium_id",
+     "description": "Primary key; unique identifier of the stadium, referenced by concert.col_004 and singer_in_concert.col_002.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "team",
+     "description": "Name of the football club / team that uses the stadium (e.g. Ayr United, Queen's Park).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "stadium_name",
+     "description": "Name of the stadium (e.g. Hampden Park, Somerset Park).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "capacity",
+     "description": "Stadium seating capacity in number of people (2,000 to 52,500; Hampden Park's 52,500 confirms this reading).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "highest_attendance",
+     "description": "Highest recorded attendance at the stadium (780 to 4,812); the largest of the three attendance figures per row. Alternative reading: could be a specific season's peak attendance rather than an all-time record.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "lowest_attendance",
+     "description": "Lowest recorded attendance at the stadium (315 to 1,294); consistently the smallest of the three attendance figures per row. Alternative reading: could be a season's minimum rather than an all-time low.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "average_attendance",
+     "description": "Average attendance at the stadium (552 to 2,106); lies between the lowest and highest figures in each row. Alternative reading: could be a season average rather than an all-time average.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 3,
+  "columns_changed": 4
+ }
+}

@@ -63,3 +63,14 @@ def test_a_target_with_fewer_than_five_distinct_values_gives_no_evidence_and_fol
     rec = fk.score_database(prof, keys)["candidates"][0]
     assert rec["parts"]["distribution"] is None
     assert rec["weights_used"]["distribution"] == 0 and rec["weights_used"]["overlap"] == 60     # 40 + 20
+
+
+def test_partial_overlaps_needs_no_key():
+    import duckdb
+    from profile_columns import DEFAULTS, partial_overlaps
+    con = duckdb.connect()
+    con.execute("CREATE SCHEMA s; CREATE TABLE s.a AS SELECT 'k' || (i % 50) AS x FROM range(200) t(i);"
+                "CREATE TABLE s.b AS SELECT 'k' || (i + 30) AS x FROM range(100) t(i)")
+    p = {"family": "text", "role": "code", "distinct": 50}
+    (o,) = partial_overlaps(con, "s", {"a": {"columns": {"x": p}}, "b": {"columns": {"x": p}}}, DEFAULTS)
+    assert (o["a_distinct"], o["b_distinct"], o["shared"]) == (50, 100, 20)

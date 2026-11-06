@@ -1,0 +1,5823 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "dist": 0.9998137455764574,
+   "dist_buckets": [
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    536
+   ],
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.9998,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 92.4963,
+   "score_before_fan_out": 92.4963,
+   "source": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9348109517601043,
+   "coverage": 0.9348109517601043,
+   "decision": "accepted",
+   "dist": 0.930065750149432,
+   "dist_buckets": [
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    186
+   ],
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.9301,
+    "nulls": 1.0,
+    "overlap": 0.9348,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 88.4938,
+   "score_before_fan_out": 88.4938,
+   "source": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.15155555555555555,
+   "decision": "accepted",
+   "dist": 0.4229390681003584,
+   "dist_buckets": [
+    29,
+    21,
+    25,
+    27,
+    42,
+    21,
+    28,
+    23,
+    108,
+    358
+   ],
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.4229,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 80.9588,
+   "score_before_fan_out": 80.9588,
+   "source": {
+    "column": "col_002",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "dist": 0.9999999999999999,
+   "dist_buckets": [
+    450,
+    450,
+    450,
+    450,
+    450,
+    450,
+    450,
+    450,
+    450,
+    450
+   ],
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 0.5966,
+    "distribution": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 79.8561,
+   "score_before_fan_out": 93.9483,
+   "source": {
+    "column": "col_003",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9348109517601043,
+   "coverage": 0.9348109517601043,
+   "decision": "accepted",
+   "dist": 0.930065750149432,
+   "dist_buckets": [
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    186
+   ],
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.9301,
+    "nulls": 1.0,
+    "overlap": 0.9348,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 75.2197,
+   "score_before_fan_out": 88.4938,
+   "source": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "dist": 0.9999999999999999,
+   "dist_buckets": [
+    450,
+    450,
+    450,
+    450,
+    450,
+    450,
+    450,
+    450,
+    450,
+    450
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 75.0,
+   "score_before_fan_out": 100.0,
+   "source": {
+    "column": "col_002",
+    "table": "trans"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "dist": 0.9696969696969695,
+   "dist_buckets": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    7,
+    7,
+    7
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.9697,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 74.5454,
+   "score_before_fan_out": 99.3939,
+   "source": {
+    "column": "col_002",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "dist": 0.9696969696969695,
+   "dist_buckets": [
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    8,
+    7,
+    7,
+    7
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.9697,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 74.5454,
+   "score_before_fan_out": 99.3939,
+   "source": {
+    "column": "col_004",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.8351111111111111,
+   "decision": "accepted",
+   "dist": 0.9879131925965348,
+   "dist_buckets": [
+    383,
+    381,
+    373,
+    385,
+    381,
+    383,
+    389,
+    373,
+    319,
+    391
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.861,
+    "distribution": 0.9879,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 73.2545,
+   "score_before_fan_out": 97.6727,
+   "source": {
+    "column": "col_002",
+    "table": "order"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.06493506493506493,
+   "decision": "accepted",
+   "dist": 0.7999999999999999,
+   "dist_buckets": [
+    0,
+    1,
+    1,
+    0,
+    1,
+    1,
+    0,
+    1,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.8,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 72.0,
+   "score_before_fan_out": 96.0,
+   "source": {
+    "column": "col_005",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8508888888888889,
+   "coverage": 0.7131681877444589,
+   "decision": "accepted",
+   "dist": 0.7307390963698095,
+   "dist_buckets": [
+    513,
+    514,
+    505,
+    512,
+    511,
+    511,
+    510,
+    175,
+    55,
+    23
+   ],
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 0.5966,
+    "distribution": 0.7307,
+    "nulls": 1.0,
+    "overlap": 0.8509,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 70.2089,
+   "score_before_fan_out": 82.5987,
+   "source": {
+    "column": "col_003",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.16613894579996275,
+   "decision": "band",
+   "dist": 0.9718983557548581,
+   "dist_buckets": [
+    98,
+    82,
+    81,
+    87,
+    87,
+    89,
+    82,
+    80,
+    98,
+    108
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.9719,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 68.9535,
+   "score_before_fan_out": 91.938,
+   "source": {
+    "column": "col_002",
+    "table": "card"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8508888888888889,
+   "coverage": 0.7131681877444589,
+   "decision": "band",
+   "dist": 0.7307390963698095,
+   "dist_buckets": [
+    513,
+    514,
+    505,
+    512,
+    511,
+    511,
+    510,
+    175,
+    55,
+    23
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.7307,
+    "nulls": 1.0,
+    "overlap": 0.8509,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 66.4877,
+   "score_before_fan_out": 88.6503,
+   "source": {
+    "column": "col_002",
+    "table": "trans"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8506666666666667,
+   "coverage": 0.7129819333209164,
+   "decision": "band",
+   "dist": 0.7304075235109718,
+   "dist_buckets": [
+    513,
+    514,
+    505,
+    512,
+    511,
+    511,
+    510,
+    175,
+    55,
+    22
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.7304,
+    "nulls": 1.0,
+    "overlap": 0.8507,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 66.4761,
+   "score_before_fan_out": 88.6348,
+   "source": {
+    "column": "col_002",
+    "table": "trans"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9204035874439462,
+   "coverage": 0.15291488172844106,
+   "decision": "band",
+   "dist": 0.9384219786168629,
+   "dist_buckets": [
+    98,
+    82,
+    81,
+    87,
+    87,
+    89,
+    82,
+    80,
+    98,
+    37
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.9384,
+    "nulls": 1.0,
+    "overlap": 0.9204,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 66.0634,
+   "score_before_fan_out": 88.0846,
+   "source": {
+    "column": "col_002",
+    "table": "card"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "band",
+   "dist": 0.9998137455764574,
+   "dist_buckets": [
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    536
+   ],
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.9998,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "score": 65.8719,
+   "score_before_fan_out": 77.4963,
+   "source": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8512506652474721,
+   "coverage": 0.5958279009126467,
+   "decision": "band",
+   "dist": 0.7172380257719426,
+   "dist_buckets": [
+    437,
+    434,
+    432,
+    430,
+    438,
+    437,
+    425,
+    99,
+    46,
+    21
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.861,
+    "distribution": 0.7172,
+    "nulls": 1.0,
+    "overlap": 0.8513,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 64.7319,
+   "score_before_fan_out": 86.3092,
+   "source": {
+    "column": "col_002",
+    "table": "order"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8507184672698244,
+   "coverage": 0.5954553920655615,
+   "decision": "band",
+   "dist": 0.7164355472144023,
+   "dist_buckets": [
+    437,
+    434,
+    432,
+    430,
+    438,
+    437,
+    425,
+    99,
+    46,
+    19
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.861,
+    "distribution": 0.7164,
+    "nulls": 1.0,
+    "overlap": 0.8507,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 64.7039,
+   "score_before_fan_out": 86.2719,
+   "source": {
+    "column": "col_002",
+    "table": "order"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.8508888888888889,
+   "coverage": 0.7131681877444589,
+   "decision": "band",
+   "dist": 0.7307390963698095,
+   "dist_buckets": [
+    513,
+    514,
+    505,
+    512,
+    511,
+    511,
+    510,
+    175,
+    55,
+    23
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.7307,
+    "nulls": 1.0,
+    "overlap": 0.8509,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 60.8627,
+   "score_before_fan_out": 81.1503,
+   "source": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.8506666666666667,
+   "coverage": 0.7129819333209164,
+   "decision": "band",
+   "dist": 0.7304075235109718,
+   "dist_buckets": [
+    513,
+    514,
+    505,
+    512,
+    511,
+    511,
+    510,
+    175,
+    55,
+    22
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.7304,
+    "nulls": 1.0,
+    "overlap": 0.8507,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 60.8511,
+   "score_before_fan_out": 81.1348,
+   "source": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9545454545454546,
+   "coverage": 0.04708520179372197,
+   "decision": "band",
+   "dist": 0.19365079365079363,
+   "dist_buckets": [
+    3,
+    39,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.875,
+    "distribution": 0.1937,
+    "nulls": 1.0,
+    "overlap": 0.9545,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 60.1349,
+   "score_before_fan_out": 80.1798,
+   "source": {
+    "column": "col_014",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0024444444444444444,
+   "decision": "band",
+   "dist": 0.0,
+   "dist_buckets": [
+    11,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 60.0,
+   "score_before_fan_out": 80.0,
+   "source": {
+    "column": "col_009",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0020487986589681506,
+   "decision": "band",
+   "dist": 0.0,
+   "dist_buckets": [
+    11,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 60.0,
+   "score_before_fan_out": 80.0,
+   "source": {
+    "column": "col_009",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0020487986589681506,
+   "decision": "band",
+   "dist": 0.0,
+   "dist_buckets": [
+    11,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 60.0,
+   "score_before_fan_out": 80.0,
+   "source": {
+    "column": "col_009",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.005605381165919282,
+   "decision": "band",
+   "dist": 0.0,
+   "dist_buckets": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 60.0,
+   "score_before_fan_out": 80.0,
+   "source": {
+    "column": "col_005",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0009312721177127957,
+   "decision": "band",
+   "dist": 0.0,
+   "dist_buckets": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 60.0,
+   "score_before_fan_out": 80.0,
+   "source": {
+    "column": "col_005",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.974025974025974,
+   "coverage": 0.08408071748878924,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    75,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.974,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 59.2207,
+   "score_before_fan_out": 78.961,
+   "source": {
+    "column": "col_002",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.974025974025974,
+   "coverage": 0.08408071748878924,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    75,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.974,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 59.2207,
+   "score_before_fan_out": 78.961,
+   "source": {
+    "column": "col_004",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9722222222222222,
+   "coverage": 0.03923766816143498,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    35,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9722,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 59.1667,
+   "score_before_fan_out": 78.8889,
+   "source": {
+    "column": "col_006",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.013596572918606817,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9481,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 58.4416,
+   "score_before_fan_out": 77.9221,
+   "source": {
+    "column": "col_002",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.01622222222222222,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9481,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 58.4416,
+   "score_before_fan_out": 77.9221,
+   "source": {
+    "column": "col_004",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9444444444444444,
+   "coverage": 0.007555555555555556,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    34,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9444,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 58.3333,
+   "score_before_fan_out": 77.7778,
+   "source": {
+    "column": "col_006",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9444444444444444,
+   "coverage": 0.00633265040044701,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    34,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9444,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 58.3333,
+   "score_before_fan_out": 77.7778,
+   "source": {
+    "column": "col_006",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9411764705882353,
+   "coverage": 0.0035555555555555557,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    16,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9412,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 58.2353,
+   "score_before_fan_out": 77.6471,
+   "source": {
+    "column": "col_007",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9411764705882353,
+   "coverage": 0.002980070776680946,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    16,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9412,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 58.2353,
+   "score_before_fan_out": 77.6471,
+   "source": {
+    "column": "col_007",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9411764705882353,
+   "coverage": 0.002980070776680946,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    16,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9412,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 58.2353,
+   "score_before_fan_out": 77.6471,
+   "source": {
+    "column": "col_007",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9811320754716981,
+   "coverage": 0.05829596412556054,
+   "decision": "rejected_score",
+   "dist": 0.02991452991453003,
+   "dist_buckets": [
+    45,
+    7,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.7264,
+    "distribution": 0.0299,
+    "nulls": 1.0,
+    "overlap": 0.9811,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 56.8049,
+   "score_before_fan_out": 75.7398,
+   "source": {
+    "column": "col_005",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9318181818181818,
+   "coverage": 0.009111111111111111,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    41,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.875,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9318,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 56.5483,
+   "score_before_fan_out": 75.3977,
+   "source": {
+    "column": "col_014",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9318181818181818,
+   "coverage": 0.0076364313652449245,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    41,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.875,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9318,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 56.5483,
+   "score_before_fan_out": 75.3977,
+   "source": {
+    "column": "col_014",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8333333333333334,
+   "coverage": 0.0011111111111111111,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8333,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 55.0,
+   "score_before_fan_out": 73.3333,
+   "source": {
+    "column": "col_008",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8333333333333334,
+   "coverage": 0.005605381165919282,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8333,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 55.0,
+   "score_before_fan_out": 73.3333,
+   "source": {
+    "column": "col_008",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8333333333333334,
+   "coverage": 0.0009312721177127957,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8333,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 55.0,
+   "score_before_fan_out": 73.3333,
+   "source": {
+    "column": "col_008",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9204035874439462,
+   "coverage": 0.15291488172844106,
+   "decision": "rejected_score",
+   "dist": 0.9384219786168629,
+   "dist_buckets": [
+    98,
+    82,
+    81,
+    87,
+    87,
+    89,
+    82,
+    80,
+    98,
+    37
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.9384,
+    "nulls": 1.0,
+    "overlap": 0.9204,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "score": 54.8134,
+   "score_before_fan_out": 73.0846,
+   "source": {
+    "column": "col_002",
+    "table": "card"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9056603773584906,
+   "coverage": 0.008940212330042838,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    48,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.7264,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9057,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 54.092,
+   "score_before_fan_out": 72.1226,
+   "source": {
+    "column": "col_005",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9056603773584906,
+   "coverage": 0.008940212330042838,
+   "decision": "rejected_score",
+   "dist": 0.0,
+   "dist_buckets": [
+    48,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.7264,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9057,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 54.092,
+   "score_before_fan_out": 72.1226,
+   "source": {
+    "column": "col_005",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.8508888888888889,
+   "coverage": 0.7131681877444589,
+   "decision": "rejected_score",
+   "dist": 0.7307390963698095,
+   "dist_buckets": [
+    513,
+    514,
+    505,
+    512,
+    511,
+    511,
+    510,
+    175,
+    55,
+    23
+   ],
+   "fan_out": 0.75,
+   "parts": {
+    "cardinality": 0.5,
+    "distribution": 0.7307,
+    "nulls": 1.0,
+    "overlap": 0.8509,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "score": 49.6127,
+   "score_before_fan_out": 66.1503,
+   "source": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.6424444444444445,
+   "coverage": 0.0027368600424113906,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    2891,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.642 < 0.75",
+   "source": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.01622222222222222,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_002",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.013596572918606817,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9481,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 77.9221,
+   "source": {
+    "column": "col_002",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.013596572918606817,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9481,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 62.9221,
+   "source": {
+    "column": "col_002",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8571428571428571,
+   "coverage": 6.248106634353226e-05,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    66,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8571,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 74.2857,
+   "source": {
+    "column": "col_002",
+    "table": "account"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.952914798206278,
+   "coverage": 0.18888888888888888,
+   "decision": "rejected_gate",
+   "dist": 0.12810457516339857,
+   "dist_buckets": [
+    440,
+    330,
+    80,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9540358744394619,
+   "coverage": 0.15850251443471783,
+   "decision": "rejected_gate",
+   "dist": 0.09426818122470293,
+   "dist_buckets": [
+    524,
+    293,
+    34,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9540358744394619,
+   "coverage": 0.15850251443471783,
+   "decision": "rejected_gate",
+   "dist": 0.09426818122470293,
+   "dist_buckets": [
+    524,
+    293,
+    34,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9540358744394619,
+   "coverage": 0.15850251443471783,
+   "decision": "rejected_gate",
+   "dist": 0.09426818122470293,
+   "dist_buckets": [
+    524,
+    293,
+    34,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.7320627802690582,
+   "coverage": 0.0006181838836716146,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    653,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.6894618834080718,
+   "coverage": 0.13666666666666666,
+   "decision": "rejected_gate",
+   "dist": 0.8737127371273713,
+   "dist_buckets": [
+    73,
+    72,
+    72,
+    62,
+    64,
+    69,
+    73,
+    65,
+    63,
+    2
+   ],
+   "reason": "G6: containment 0.689 < 0.75",
+   "source": {
+    "column": "col_002",
+    "table": "card"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.625560538116592,
+   "coverage": 0.0005282490154498637,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    558,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.626 < 0.75",
+   "source": {
+    "column": "col_002",
+    "table": "card"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.7131681877444589,
+   "coverage": 0.8508888888888889,
+   "decision": "rejected_gate",
+   "dist": 0.888888888888889,
+   "dist_buckets": [
+    429,
+    425,
+    426,
+    418,
+    435,
+    422,
+    431,
+    426,
+    386,
+    31
+   ],
+   "reason": "G6: containment 0.713 < 0.75",
+   "source": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.6420189979512013,
+   "coverage": 0.0032632156922144805,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    3447,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.642 < 0.75",
+   "source": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.013596572918606817,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_004",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.013596572918606817,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9481,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 77.9221,
+   "source": {
+    "column": "col_004",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.013596572918606817,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9481,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 62.9221,
+   "source": {
+    "column": "col_004",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8571428571428571,
+   "coverage": 6.248106634353226e-05,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    66,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8571,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 74.2857,
+   "source": {
+    "column": "col_004",
+    "table": "client"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.7129819333209164,
+   "coverage": 0.8506666666666667,
+   "decision": "rejected_gate",
+   "dist": 0.8885986299779403,
+   "dist_buckets": [
+    429,
+    425,
+    426,
+    418,
+    435,
+    422,
+    431,
+    426,
+    386,
+    30
+   ],
+   "reason": "G6: containment 0.713 < 0.75",
+   "source": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9348109517601043,
+   "coverage": 0.9348109517601043,
+   "decision": "rejected_gate",
+   "dist": 0.930065750149432,
+   "dist_buckets": [
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    186
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.643881542186627,
+   "coverage": 0.003272682520448349,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    3457,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.644 < 0.75",
+   "source": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.7131681877444589,
+   "coverage": 0.8508888888888889,
+   "decision": "rejected_gate",
+   "dist": 0.888888888888889,
+   "dist_buckets": [
+    429,
+    425,
+    426,
+    418,
+    435,
+    422,
+    431,
+    426,
+    386,
+    31
+   ],
+   "reason": "G6: containment 0.713 < 0.75",
+   "source": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9348109517601043,
+   "coverage": 0.9348109517601043,
+   "decision": "rejected_gate",
+   "dist": 0.930065750149432,
+   "dist_buckets": [
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    537,
+    186
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.6420189979512013,
+   "coverage": 0.0032632156922144805,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    3447,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.642 < 0.75",
+   "source": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8506666666666667,
+   "coverage": 0.7129819333209164,
+   "decision": "rejected_gate",
+   "dist": 0.7304075235109718,
+   "dist_buckets": [
+    513,
+    514,
+    505,
+    512,
+    511,
+    511,
+    510,
+    175,
+    55,
+    22
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_003",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8508888888888889,
+   "coverage": 0.7131681877444589,
+   "decision": "rejected_gate",
+   "dist": 0.7307390963698095,
+   "dist_buckets": [
+    513,
+    514,
+    505,
+    512,
+    511,
+    511,
+    510,
+    175,
+    55,
+    23
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_003",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6424444444444445,
+   "coverage": 0.0027368600424113906,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    2891,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.642 < 0.75",
+   "source": {
+    "column": "col_003",
+    "table": "disp"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.01622222222222222,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.974025974025974,
+   "coverage": 0.08408071748878924,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    75,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.013596572918606817,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.013596572918606817,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.948051948051948,
+   "coverage": 0.013596572918606817,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    73,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.8571428571428571,
+   "coverage": 6.248106634353226e-05,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    66,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.6493506493506493,
+   "coverage": 4.7334141169342625e-05,
+   "decision": "rejected_gate",
+   "dist": 0.0311111111111112,
+   "dist_buckets": [
+    44,
+    5,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.649 < 0.75",
+   "source": {
+    "column": "col_004",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8867924528301887,
+   "coverage": 0.010444444444444444,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    47,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 0.7264,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8868,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 71.3679,
+   "source": {
+    "column": "col_005",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9056603773584906,
+   "coverage": 0.008940212330042838,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    48,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 0.7264,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9057,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 57.1226,
+   "source": {
+    "column": "col_005",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.7358490566037735,
+   "coverage": 0.5064935064935064,
+   "decision": "rejected_gate",
+   "dist": 0.9527065527065527,
+   "dist_buckets": [
+    3,
+    4,
+    4,
+    5,
+    4,
+    2,
+    4,
+    4,
+    4,
+    5
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_005",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8679245283018868,
+   "coverage": 4.354740987579521e-05,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    46,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 0.7264,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8679,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 70.6132,
+   "source": {
+    "column": "col_005",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9444444444444444,
+   "coverage": 0.00633265040044701,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    34,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9444,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 77.7778,
+   "source": {
+    "column": "col_006",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9444444444444444,
+   "coverage": 0.00633265040044701,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    34,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9444,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 62.7778,
+   "source": {
+    "column": "col_006",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9722222222222222,
+   "coverage": 0.45454545454545453,
+   "decision": "rejected_gate",
+   "dist": 0.5904761904761907,
+   "dist_buckets": [
+    3,
+    7,
+    8,
+    7,
+    5,
+    2,
+    2,
+    0,
+    1,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_006",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8888888888888888,
+   "coverage": 3.029385034837928e-05,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    32,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8889,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 75.5556,
+   "source": {
+    "column": "col_006",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8823529411764706,
+   "coverage": 0.016816143497757848,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    15,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8824,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 75.2941,
+   "source": {
+    "column": "col_007",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9411764705882353,
+   "coverage": 0.002980070776680946,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    16,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9412,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 62.6471,
+   "source": {
+    "column": "col_007",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9411764705882353,
+   "coverage": 0.2077922077922078,
+   "decision": "rejected_gate",
+   "dist": 0.13888888888888884,
+   "dist_buckets": [
+    8,
+    6,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_007",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.7647058823529411,
+   "coverage": 1.2306876704029083e-05,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    13,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.7647,
+    "target_key": 1.0
+   },
+   "penalties": {
+    "orphan": 0.7
+   },
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 49.4118,
+   "source": {
+    "column": "col_007",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8333333333333334,
+   "coverage": 0.0009312721177127957,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8333,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 73.3333,
+   "source": {
+    "column": "col_008",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8333333333333334,
+   "coverage": 0.0009312721177127957,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8333,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 58.3333,
+   "source": {
+    "column": "col_008",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8333333333333334,
+   "coverage": 0.06493506493506493,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_008",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9090909090909091,
+   "coverage": 0.011210762331838564,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    10,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9091,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 76.3636,
+   "source": {
+    "column": "col_009",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "card"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0020487986589681506,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    11,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 65.0,
+   "source": {
+    "column": "col_009",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.14285714285714285,
+   "decision": "rejected_gate",
+   "dist": 0.060606060606060774,
+   "dist_buckets": [
+    8,
+    3,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_009",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "district"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.7272727272727273,
+   "coverage": 7.57346258709482e-06,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    8,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.727 < 0.75",
+   "source": {
+    "column": "col_009",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6578947368421053,
+   "coverage": 4.7334141169342625e-05,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    50,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.658 < 0.75",
+   "source": {
+    "column": "col_011",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9318181818181818,
+   "coverage": 0.0076364313652449245,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    41,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 0.875,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9318,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 75.3977,
+   "source": {
+    "column": "col_014",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9318181818181818,
+   "coverage": 0.0076364313652449245,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    41,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 0.875,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.9318,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 60.3977,
+   "source": {
+    "column": "col_014",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6363636363636364,
+   "coverage": 2.650711905483187e-05,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    28,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.636 < 0.75",
+   "source": {
+    "column": "col_014",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.64,
+   "coverage": 0.010666666666666666,
+   "decision": "rejected_gate",
+   "dist": 0.7916666666666667,
+   "dist_buckets": [
+    0,
+    0,
+    4,
+    12,
+    9,
+    7,
+    5,
+    6,
+    5,
+    0
+   ],
+   "reason": "G6: containment 0.640 < 0.75",
+   "source": {
+    "column": "col_015",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.7333333333333333,
+   "coverage": 0.010243993294840752,
+   "decision": "rejected_gate",
+   "dist": 0.8080808080808082,
+   "dist_buckets": [
+    0,
+    5,
+    8,
+    13,
+    6,
+    6,
+    7,
+    7,
+    2,
+    1
+   ],
+   "reason": "G6: containment 0.733 < 0.75",
+   "source": {
+    "column": "col_015",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.7333333333333333,
+   "coverage": 0.010243993294840752,
+   "decision": "rejected_gate",
+   "dist": 0.8080808080808082,
+   "dist_buckets": [
+    0,
+    5,
+    8,
+    13,
+    6,
+    6,
+    7,
+    7,
+    2,
+    1
+   ],
+   "reason": "G6: containment 0.733 < 0.75",
+   "source": {
+    "column": "col_015",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.7333333333333333,
+   "coverage": 0.010243993294840752,
+   "decision": "rejected_gate",
+   "dist": 0.8080808080808082,
+   "dist_buckets": [
+    0,
+    5,
+    8,
+    13,
+    6,
+    6,
+    7,
+    7,
+    2,
+    1
+   ],
+   "reason": "G6: containment 0.733 < 0.75",
+   "source": {
+    "column": "col_015",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6133333333333333,
+   "coverage": 4.354740987579521e-05,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    46,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.613 < 0.75",
+   "source": {
+    "column": "col_015",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6710526315789473,
+   "coverage": 0.011333333333333334,
+   "decision": "rejected_gate",
+   "dist": 0.7930283224400871,
+   "dist_buckets": [
+    0,
+    1,
+    4,
+    8,
+    13,
+    9,
+    5,
+    4,
+    5,
+    2
+   ],
+   "reason": "G6: containment 0.671 < 0.75",
+   "source": {
+    "column": "col_016",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.7368421052631579,
+   "coverage": 0.010430247718383311,
+   "decision": "rejected_gate",
+   "dist": 0.7769841269841269,
+   "dist_buckets": [
+    0,
+    4,
+    6,
+    13,
+    12,
+    5,
+    8,
+    5,
+    3,
+    0
+   ],
+   "reason": "G6: containment 0.737 < 0.75",
+   "source": {
+    "column": "col_016",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.7368421052631579,
+   "coverage": 0.010430247718383311,
+   "decision": "rejected_gate",
+   "dist": 0.7769841269841269,
+   "dist_buckets": [
+    0,
+    4,
+    6,
+    13,
+    12,
+    5,
+    8,
+    5,
+    3,
+    0
+   ],
+   "reason": "G6: containment 0.737 < 0.75",
+   "source": {
+    "column": "col_016",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.7368421052631579,
+   "coverage": 0.010430247718383311,
+   "decision": "rejected_gate",
+   "dist": 0.7769841269841269,
+   "dist_buckets": [
+    0,
+    4,
+    6,
+    13,
+    12,
+    5,
+    8,
+    5,
+    3,
+    0
+   ],
+   "reason": "G6: containment 0.737 < 0.75",
+   "source": {
+    "column": "col_016",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6052631578947368,
+   "coverage": 4.354740987579521e-05,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    46,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.605 < 0.75",
+   "source": {
+    "column": "col_016",
+    "table": "district"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.6774193548387096,
+   "coverage": 0.00043736746440472586,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    462,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.677 < 0.75",
+   "source": {
+    "column": "col_001",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.6363636363636364,
+   "coverage": 0.00041086034534989395,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    434,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.636 < 0.75",
+   "source": {
+    "column": "col_002",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6046511627906976,
+   "coverage": 0.00036920630112087245,
+   "decision": "rejected_gate",
+   "dist": 0.09629629629629632,
+   "dist_buckets": [
+    250,
+    113,
+    25,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.605 < 0.75",
+   "source": {
+    "column": "col_004",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8,
+   "coverage": 0.0008888888888888889,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    4,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 0.8,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 72.0,
+   "source": {
+    "column": "col_005",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0009312721177127957,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 80.0,
+   "source": {
+    "column": "col_005",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.0009312721177127957,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 65.0,
+   "source": {
+    "column": "col_005",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 4.733414116934262e-06,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    5,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 80.0,
+   "source": {
+    "column": "col_005",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.5580589254766031,
+   "coverage": 0.07155555555555555,
+   "decision": "rejected_gate",
+   "dist": 0.8880607315389923,
+   "dist_buckets": [
+    11,
+    21,
+    30,
+    41,
+    44,
+    37,
+    39,
+    42,
+    40,
+    17
+   ],
+   "reason": "G6: containment 0.558 < 0.75",
+   "source": {
+    "column": "col_006",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "account"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6377816291161178,
+   "coverage": 0.06854162786366176,
+   "decision": "rejected_gate",
+   "dist": 0.9003623188405798,
+   "dist_buckets": [
+    17,
+    27,
+    43,
+    54,
+    44,
+    46,
+    46,
+    47,
+    33,
+    11
+   ],
+   "reason": "G6: containment 0.638 < 0.75",
+   "source": {
+    "column": "col_006",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "client"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6377816291161178,
+   "coverage": 0.06854162786366176,
+   "decision": "rejected_gate",
+   "dist": 0.9003623188405798,
+   "dist_buckets": [
+    17,
+    27,
+    43,
+    54,
+    44,
+    46,
+    46,
+    47,
+    33,
+    11
+   ],
+   "reason": "G6: containment 0.638 < 0.75",
+   "source": {
+    "column": "col_006",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "disp"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6377816291161178,
+   "coverage": 0.06854162786366176,
+   "decision": "rejected_gate",
+   "dist": 0.9003623188405798,
+   "dist_buckets": [
+    17,
+    27,
+    43,
+    54,
+    44,
+    46,
+    46,
+    47,
+    33,
+    11
+   ],
+   "reason": "G6: containment 0.638 < 0.75",
+   "source": {
+    "column": "col_006",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.5944540727902946,
+   "coverage": 0.0003247122084216904,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    343,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.594 < 0.75",
+   "source": {
+    "column": "col_006",
+    "table": "loan"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.6128882707464071,
+   "coverage": 0.003754544077552257,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    3966,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.613 < 0.75",
+   "source": {
+    "column": "col_001",
+    "table": "order"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8512506652474721,
+   "coverage": 0.5958279009126467,
+   "decision": "rejected_gate",
+   "dist": 0.7172380257719426,
+   "dist_buckets": [
+    437,
+    434,
+    432,
+    430,
+    438,
+    437,
+    425,
+    99,
+    46,
+    21
+   ],
+   "parts": {
+    "cardinality": 0.861,
+    "distribution": 0.7172,
+    "nulls": 1.0,
+    "overlap": 0.8513,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 71.3092,
+   "source": {
+    "column": "col_002",
+    "table": "order"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6373070782331027,
+   "coverage": 0.0022673053620115118,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    2395,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G6: containment 0.637 < 0.75",
+   "source": {
+    "column": "col_002",
+    "table": "order"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8508888888888889,
+   "coverage": 0.7131681877444589,
+   "decision": "rejected_gate",
+   "dist": 0.7307390963698095,
+   "dist_buckets": [
+    513,
+    514,
+    505,
+    512,
+    511,
+    511,
+    510,
+    175,
+    55,
+    23
+   ],
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.7307,
+    "nulls": 1.0,
+    "overlap": 0.8509,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "reason": "G5: more than 3 targets",
+   "score_before_fan_out": 73.6503,
+   "source": {
+    "column": "col_002",
+    "table": "trans"
+   },
+   "target": {
+    "column": "col_002",
+    "table": "disp"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 86.062,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6424444444444445,
+   "coverage": 0.0027368600424113906,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    2891,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_002",
+    "table": "trans"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6193925884647534,
+   "coverage": 0.02104475916388973,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    22230,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_006",
+    "table": "trans"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6044019380054394,
+   "coverage": 0.06353567100878521,
+   "decision": "rejected_gate",
+   "dist": 0.00011257793538688166,
+   "dist_buckets": [
+    67080,
+    34,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_007",
+    "table": "trans"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "trans"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "dist_no_accept_below": 0.3,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "ddb",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_range_span": null,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
+  "r_cap": 2,
+  "repair_isolated": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 11,
+  "band": 15,
+  "rejected_gate": 86,
+  "rejected_score": 20
+ },
+ "db_id": "financial",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 92.4963,
+    "source": {
+     "column": "col_002",
+     "table": "disp"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 0.9348109517601043,
+    "coverage": 0.9348109517601043,
+    "decision": "accepted",
+    "score": 88.4938,
+    "source": {
+     "column": "col_001",
+     "table": "disp"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.15155555555555555,
+    "decision": "accepted",
+    "score": 80.9588,
+    "source": {
+     "column": "col_002",
+     "table": "loan"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "account"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 79.8561,
+    "source": {
+     "column": "col_003",
+     "table": "disp"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "account"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 75.0,
+    "source": {
+     "column": "col_002",
+     "table": "trans"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "account"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 74.5454,
+    "source": {
+     "column": "col_002",
+     "table": "account"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "district"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 74.5454,
+    "source": {
+     "column": "col_004",
+     "table": "client"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "district"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.8351111111111111,
+    "decision": "accepted",
+    "score": 73.2545,
+    "source": {
+     "column": "col_002",
+     "table": "order"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "account"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.06493506493506493,
+    "decision": "accepted",
+    "score": 72.0,
+    "source": {
+     "column": "col_005",
+     "table": "loan"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "district"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8508888888888889,
+    "coverage": 0.7131681877444589,
+    "decision": "accepted",
+    "score": 70.2089,
+    "source": {
+     "column": "col_003",
+     "table": "disp"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 92.4963,
+    "source": {
+     "column": "col_002",
+     "table": "disp"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 0.9348109517601043,
+    "coverage": 0.9348109517601043,
+    "decision": "accepted",
+    "score": 88.4938,
+    "source": {
+     "column": "col_001",
+     "table": "disp"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.15155555555555555,
+    "decision": "accepted",
+    "score": 80.9588,
+    "source": {
+     "column": "col_002",
+     "table": "loan"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "account"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 79.8561,
+    "source": {
+     "column": "col_003",
+     "table": "disp"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "account"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 75.0,
+    "source": {
+     "column": "col_002",
+     "table": "trans"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "account"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 74.5454,
+    "source": {
+     "column": "col_002",
+     "table": "account"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "district"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 74.5454,
+    "source": {
+     "column": "col_004",
+     "table": "client"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "district"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.8351111111111111,
+    "decision": "accepted",
+    "score": 73.2545,
+    "source": {
+     "column": "col_002",
+     "table": "order"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "account"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.06493506493506493,
+    "decision": "accepted",
+    "score": 72.0,
+    "source": {
+     "column": "col_005",
+     "table": "loan"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "district"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8508888888888889,
+    "coverage": 0.7131681877444589,
+    "decision": "accepted",
+    "score": 70.2089,
+    "source": {
+     "column": "col_003",
+     "table": "disp"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.16613894579996275,
+    "decision": "band",
+    "score": 68.9535,
+    "source": {
+     "column": "col_002",
+     "table": "card"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "disp"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8508888888888889,
+    "coverage": 0.7131681877444589,
+    "decision": "band",
+    "score": 66.4877,
+    "source": {
+     "column": "col_002",
+     "table": "trans"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8506666666666667,
+    "coverage": 0.7129819333209164,
+    "decision": "band",
+    "score": 66.4761,
+    "source": {
+     "column": "col_002",
+     "table": "trans"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "disp"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 0.9204035874439462,
+    "coverage": 0.15291488172844106,
+    "decision": "band",
+    "score": 66.0634,
+    "source": {
+     "column": "col_002",
+     "table": "card"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8512506652474721,
+    "coverage": 0.5958279009126467,
+    "decision": "band",
+    "score": 64.7319,
+    "source": {
+     "column": "col_002",
+     "table": "order"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.8507184672698244,
+    "coverage": 0.5954553920655615,
+    "decision": "band",
+    "score": 64.7039,
+    "source": {
+     "column": "col_002",
+     "table": "order"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "disp"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 0.8508888888888889,
+    "coverage": 0.7131681877444589,
+    "decision": "band",
+    "score": 60.8627,
+    "source": {
+     "column": "col_001",
+     "table": "account"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 0.8506666666666667,
+    "coverage": 0.7129819333209164,
+    "decision": "band",
+    "score": 60.8511,
+    "source": {
+     "column": "col_001",
+     "table": "account"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "disp"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9545454545454546,
+    "coverage": 0.04708520179372197,
+    "decision": "band",
+    "score": 60.1349,
+    "source": {
+     "column": "col_014",
+     "table": "district"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "card"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.0024444444444444444,
+    "decision": "band",
+    "score": 60.0,
+    "source": {
+     "column": "col_009",
+     "table": "district"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "account"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.0020487986589681506,
+    "decision": "band",
+    "score": 60.0,
+    "source": {
+     "column": "col_009",
+     "table": "district"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.0020487986589681506,
+    "decision": "band",
+    "score": 60.0,
+    "source": {
+     "column": "col_009",
+     "table": "district"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "disp"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.005605381165919282,
+    "decision": "band",
+    "score": 60.0,
+    "source": {
+     "column": "col_005",
+     "table": "loan"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "card"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.0009312721177127957,
+    "decision": "band",
+    "score": 60.0,
+    "source": {
+     "column": "col_005",
+     "table": "loan"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "client"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.1918,
+ "keys_run": "ddb",
+ "use_names": false,
+ "weights": {
+  "cardinality": 15,
+  "distribution": 20,
+  "name": 0,
+  "nulls": 10,
+  "overlap": 40,
+  "target_key": 15
+ }
+}

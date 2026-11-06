@@ -1,0 +1,284 @@
+{
+ "db_id": "real_estate_properties",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "Other_Available_Features": {
+   "table": {
+    "name": "Other_Available_Features",
+    "purpose": "Lookup table of optional property features (e.g. air conditioning, swimming pool, burglar alarm), each classified by feature type (Amenity or Security), that can be attached to properties via Other_Property_Features. Note: rows start at id 2, suggesting row 1 was deleted or the sequence started there; the full feature list is likely larger than these 3 rows suggest, but only 3 exist here."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "feature_id",
+     "description": "Primary key of the feature; surrogate BIGINT id referenced by Other_Property_Features.col_002 to link properties to features.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "feature_type",
+     "description": "Category of the feature, a foreign key to Ref_Feature_Types (values: Amenity, e.g. Pool; Security, e.g. Burglar Alarm).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "feature_code",
+     "description": "Short machine-friendly code name of the feature (AirCon, Pool, BurglarAlarm).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "free_text",
+     "name": "feature_description",
+     "description": "Human-readable display name/description of the feature (Air Conditioning., Swimming Pool., Burglar Alarm).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Other_Property_Features": {
+   "table": {
+    "name": "Other_Property_Features",
+    "purpose": "Junction/association table linking properties (Properties) to their available features (Other_Available_Features), with a free-text note per row. Each row represents one feature attached to one property."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "property_id",
+     "description": "Reference to Properties.col_001 (the property the feature belongs to). Many-to-one: multiple feature rows can point to the same property.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "feature_id",
+     "description": "Reference to Other_Available_Features.col_001 (the feature attached to the property). Lookup labels suggest feature categories such as Amenity and Security.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "free_text",
+     "name": "note",
+     "description": "Free-text note or description attached to the property-feature pair. Values are Latin-like filler words (e.g. 'quo', 'autem', 'corrupti'), so the actual semantic content cannot be determined from the data; it is a short text field, possibly a comment or placeholder.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Properties": {
+   "table": {
+    "name": "Properties",
+    "purpose": "Real-estate property listings: one row per property with its type, dates, name, address, and various numeric attributes. Referenced by a property-features table."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "property_id",
+     "description": "Primary key, unique integer identifier of the property; referenced by Other_Property_Features.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "property_type",
+     "description": "Category of the property (House, Apartment, Shop, Field, Other); foreign key to Ref_Property_Types lookup.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "created_at",
+     "description": "Timestamp, likely record creation/listing date. Could also be an acquisition or registration date; exact semantics unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "updated_at",
+     "description": "Second timestamp per property; plausibly last-updated date, but could be another event date (e.g. sale/inspection). Unresolved which.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "free_text",
+     "name": "property_name",
+     "description": "Short unique name/label of the property (e.g. 'avalon', 'high line').",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "free_text",
+     "name": "address",
+     "description": "Full postal address (street, city, state, ZIP) of the property.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_008": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_010": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_011": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_012": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_013": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_014": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_015": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_016": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_017": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_018": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_019": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_020": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_021": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_022": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_023": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_024": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_025": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_026": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Ref_Feature_Types": {
+   "table": {
+    "name": "Ref_Feature_Types",
+    "purpose": "Small lookup/reference table classifying property features into broad types (Amenity, Security), each with a description and example. Referenced by Other_Available_Features to categorize its feature rows."
+   },
+   "columns": {
+    "col_001": {
+     "role": "code",
+     "name": "feature_type",
+     "description": "Short code/label for the feature category: 'Amenity' or 'Security'. Primary key of this lookup table; referenced by Other_Available_Features.col_002 to classify each available feature.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "free_text",
+     "name": "feature_type_description",
+     "description": "Human-readable description of the feature type with an example ('Amenity, eg Pool.', 'Securiyt, eg Burglar Alarm.' — note the typo 'Securiyt' in the source data).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Ref_Property_Types": {
+   "table": {
+    "name": "Ref_Property_Types",
+    "purpose": "Lookup/reference table of property type categories used to classify properties in the Properties table. Each row is one property type with a short code/label and a longer description of what it covers."
+   },
+   "columns": {
+    "col_001": {
+     "role": "code",
+     "name": "property_type",
+     "description": "Short label of the property type category (Apartment, Field, House, Other, Shop). Primary key of this lookup table; referenced by Properties.col_002 to classify each property.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "free_text",
+     "name": "property_type_description",
+     "description": "Longer description of what each property type category includes, e.g. 'House, Bungalow, etc.' or 'Shop, Retail Outlet.'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "db_id": "course_teach",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 5,
+ "tables": {
+  "course": {
+   "table": {
+    "name": "course",
+    "purpose": "A course catalog: one row per course, with its date and subject name. Referenced by course_arrange, which schedules courses (likely with teachers)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "course_id",
+     "description": "Primary key; unique numeric identifier for each course (1-10).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "course_date",
+     "description": "Date the course takes place, stored as text like '6 May' (day and month only; year not shown).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "subject",
+     "description": "Subject name of the course, e.g. Math, History, Sports, Bible, French.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "course_arrange": {
+   "table": {
+    "name": "course_arrange",
+    "purpose": "Junction/assignment table linking courses to teachers: each row assigns a teacher (or teachers) to a course. 'course_arrange' suggests course scheduling/arrangement, but with only 6 rows and opaque ids the exact semantics beyond course-teacher linkage are unclear."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "course_id",
+     "description": "Reference to course.col_001. The lookup labels in course.col_002 look like dates ('6 May', '9 May', ...), so this identifies the course (possibly a course session/offering identified by its date).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "teacher_id",
+     "description": "Reference to teacher.col_001; identifies the teacher assigned to the course. The accepted join to teacher.col_001 confirms this reading; the statistical overlap with course.col_001 ids is coincidental.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "References both teacher.col_001 and course.col_001, so it could be a second assigned teacher (co-teacher) or a second course, but the evidence does not distinguish between these readings.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "teacher": {
+   "table": {
+    "name": "teacher",
+    "purpose": "A lookup table of teachers/instructors, one row per teacher, referenced by course_arrange (which assigns teachers to course offerings)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "teacher_id",
+     "description": "Primary key, surrogate integer identifier for each teacher; referenced by course_arrange.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "teacher_name",
+     "description": "Full name of the teacher (unique per row).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "age",
+     "description": "Teacher's age in years (values 26-45, stored as text).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "address",
+     "description": "Teacher's home location, given as an English administrative district name (e.g. 'Blackrod Urban District'). Could be a home address/district or an affiliated institution's district; the district-name reading is best supported.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 2,
+  "columns_changed": 2
+ }
+}

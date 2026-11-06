@@ -1,0 +1,150 @@
+{
+ "db_id": "battle_death",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "battle": {
+   "table": {
+    "name": "battle",
+    "purpose": "Battles of the Bulgarian–Latin Empire (Fourth Crusade aftermath) wars, c. 1205–1235: each row is one battle/siege with its date, opposing leaders, and outcome. Referenced by death and ship tables."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "battle_id",
+     "description": "Primary key; surrogate integer identifier for each battle. Referenced by death and ship tables.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "battle_name",
+     "description": "Name of the battle or siege (e.g. Battle of Adrianople, Siege of Constantinople).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "battle_date",
+     "description": "Date of the battle, stored as free text with mixed precision (full day, month-year, or year only), e.g. '14 April 1205', 'June 1205', '1235'.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "bulgarian_leader",
+     "description": "Leader of the Bulgarian side: a Bulgarian tsar (Kaloyan, Boril, Ivan Asen II) or 'Unknown'.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "latin_leader",
+     "description": "Leader of the Latin Empire (Crusader) side: Latin emperors or nobles (Baldwin I, Henry I, John of Brienne, Boniface of Montferrat, Thierry de Termond) or 'Unknown'.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "outcome",
+     "description": "Result of the battle: 'Bulgarian victory', 'Latin victory', or 'Two Year Truce'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "death": {
+   "table": {
+    "name": "death",
+    "purpose": "Records of death incidents, each row an incident at a location in India (district, state) with counts of casualties. The joins to 'ship' and 'battle' (naval/historical battle names) are inconsistent with the location data and appear spurious; the table is most plausibly a record of violent incidents (e.g., insurgent/encounter deaths) by district, with counts of deaths and injuries. Evidence is thin (13 rows), so overall meaning is tentative."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key; unique sequential integer 1-13 identifying each death incident row.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "location",
+     "description": "Location of the incident as 'district, state' (e.g., 'Dantewada, Chhattisgarh', 'East Champaran, Bihar'), all in eastern/central India. Dantewada appears 5 times.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "deaths",
+     "description": "Count of deaths in the incident, 0-29, mostly small (median 3, five rows with 0). Plausibly the number of people killed; could alternatively be another casualty count, but 'deaths' fits the table name.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "injuries",
+     "description": "Small count 0-9, zero in 11 of 13 rows. Likely a secondary casualty count such as number injured; too little evidence to be sure.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ship": {
+   "table": {
+    "name": "ship",
+    "purpose": "A register of ships (mostly brigs) and their fates — each row is one ship, with its name, rig/armament, location of loss, and outcome (captured, sank, scuttled, wrecked). The ships appear to be lost or taken in naval engagements, since col_001 points to a battle table. The exact historical scope is unclear because the referenced lookup data is inconsistent with the ship data (see col_001)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "battle_id",
+     "description": "Reference to the battle or engagement in which the ship was lost. It joins to battle.col_001 (many ships to one battle). However, the lookup labels returned for that join (Battle of Serres, Siege of Constantinople — medieval Balkan battles) and for the death.col_002 join (Indian districts) are inconsistent with 18th/19th-century naval brigs in the English Channel, so the precise meaning of the referenced entity is unresolved; only the many-to-one battle reference is supported.",
+     "status": "tentative"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "ship_id",
+     "description": "Primary key of the ship table; unique integer identifier for each ship row. Referenced by death.col_001.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "ship_name",
+     "description": "Name of the ship (e.g. 'HMS Avon', 'Lettice', 'Mary', 'Bacchus', 'Bon Accord', 'Three Brothers', 'HMS Atalanta'). Unique per row.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "ship_type",
+     "description": "Rig/type and armament of the vessel: 'Brig' (5 rows), '18-gun Brig', '8 gun Brig'. Describes the ship class, including gun count where known.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "loss_location",
+     "description": "Sea area where the ship was lost or captured: 'English Channel' (5), 'Mid-Atlantic', 'SW Approaches'.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "fate",
+     "description": "Outcome of the ship: 'Captured' (4), 'Sank', 'Scuttled', 'Wrecked'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

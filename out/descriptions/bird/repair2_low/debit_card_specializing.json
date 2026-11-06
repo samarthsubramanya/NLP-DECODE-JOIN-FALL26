@@ -1,0 +1,188 @@
+{
+ "db_id": "debit_card_specializing",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "repair2",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "customers": {
+   "table": {
+    "name": "customers",
+    "purpose": "Customer master table for a fuel-card / loyalty program (likely a Czech fuel retailer, given CZK currency and gasstations/products/transactions tables). One row per customer, referenced by transactions and a year-month aggregation table."
+   },
+   "columns": {
+    "Currency": {
+     "role": "code",
+     "name": "Currency",
+     "description": "ISO 4217 currency code of the customer's billing currency. CZK (Czech koruna) dominates (~94%), EUR (~6%).",
+     "status": "resolved"
+    },
+    "CustomerID": {
+     "role": "identifier",
+     "name": "CustomerID",
+     "description": "Primary key; unique numeric customer identifier. Referenced by transactions_1k.CustomerID and yearmonth.CustomerID.",
+     "status": "resolved"
+    },
+    "Segment": {
+     "role": "code",
+     "name": "Segment",
+     "description": "Customer segment code. SME = small and medium enterprises (dominant), KAM = key account management (large accounts), LAM = local account management. Exact expansion of LAM/KAM is inferred from common sales-segmentation usage, not confirmed by the data.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "gasstations": {
+   "table": {
+    "name": "gasstations",
+    "purpose": "Reference/dimension table of gas stations (one row per station), identified by GasStationID, with attributes for chain membership, country, and market segment. Referenced by transactions_1k."
+   },
+   "columns": {
+    "ChainID": {
+     "role": "code",
+     "name": "ChainID",
+     "description": "Identifier of the retail chain/brand the gas station belongs to (233 distinct chains; e.g. 3, 2, 33 are the most common). No join to a chains table exists in this database, so the chain names are unknown.",
+     "status": "resolved"
+    },
+    "Country": {
+     "role": "code",
+     "name": "Country",
+     "description": "ISO 3166-1 alpha-3 country code of the station's location: CZE (Czech Republic, 4836 stations) or SVK (Slovakia, 880 stations).",
+     "status": "resolved"
+    },
+    "GasStationID": {
+     "role": "identifier",
+     "name": "GasStationID",
+     "description": "Primary key: unique identifier of the gas station. Referenced by transactions_1k.GasStationID (many transactions per station).",
+     "status": "resolved"
+    },
+    "Segment": {
+     "role": "category",
+     "name": "Segment",
+     "description": "Market/positioning segment of the station: one of 'Other', 'Premium', 'Noname', 'Value for money', 'Discount'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "products": {
+   "table": {
+    "name": "products",
+    "purpose": "Product/service catalog for a fuel-card system: each row is a billable product or service (fuels, shop goods, tolls, fees, card services) referenced by line items in the transactions table. Descriptions are in Czech, suggesting a Czech fuel-card issuer (e.g. EuroOil-style)."
+   },
+   "columns": {
+    "Description": {
+     "role": "free_text",
+     "name": "product_description",
+     "description": "Human-readable name/description of the product or service in Czech (occasionally English/German), e.g. 'Katalyzátor' (catalyst), 'Potraviny' (food/groceries), 'Servisní poplatek' (service fee), 'AdBlue (jerrycan)', 'Toll access-Austria'. Not unique (529 distinct in 591 rows), so some products share descriptions.",
+     "status": "resolved"
+    },
+    "ProductID": {
+     "role": "identifier",
+     "name": "product_id",
+     "description": "Primary key of the products table; unique integer identifier for each product/service. Referenced by transactions_1k.ProductID (many transactions to one product).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "transactions_1k": {
+   "table": {
+    "name": "transactions_1k",
+    "purpose": "Fuel/petrol station purchase transactions (1,000-row sample, late Aug 2012): each row is one purchase of a product by a customer's loyalty/payment card at a specific gas station, recording the quantity (Amount), unit price (Price), date and time."
+   },
+   "columns": {
+    "Amount": {
+     "role": "numeric",
+     "name": "Amount",
+     "description": "Quantity purchased, in liters (fuel volumes; small values like 0-264 with median 19 fit liters of fuel).",
+     "status": "tentative"
+    },
+    "CardID": {
+     "role": "numeric",
+     "name": "CardID",
+     "description": "Identifier of the card used for the transaction (loyalty or payment card); nearly unique per row, no join detected to another table.",
+     "status": "tentative"
+    },
+    "CustomerID": {
+     "role": "numeric",
+     "name": "CustomerID",
+     "description": "Identifier of the purchasing customer; references customers.CustomerID (many-to-one).",
+     "status": "resolved"
+    },
+    "Date": {
+     "role": "date",
+     "name": "Date",
+     "description": "Date of the transaction (YYYY-MM-DD); sample covers 2012-08-23 to 2012-08-26.",
+     "status": "resolved"
+    },
+    "GasStationID": {
+     "role": "numeric",
+     "name": "GasStationID",
+     "description": "Identifier of the gas station where the purchase occurred; references gasstations.GasStationID (many-to-one).",
+     "status": "resolved"
+    },
+    "Price": {
+     "role": "numeric",
+     "name": "Price",
+     "description": "Total price of the transaction (currency units, e.g. euros); consistent with Amount x unit price (e.g. 4 units -> 3.64).",
+     "status": "resolved"
+    },
+    "ProductID": {
+     "role": "numeric",
+     "name": "ProductID",
+     "description": "Identifier of the product purchased (fuel type or shop item); references products.ProductID (many-to-one).",
+     "status": "resolved"
+    },
+    "Time": {
+     "role": "numeric",
+     "name": "Time",
+     "description": "Time of day of the transaction, HH:MM:SS (24-hour).",
+     "status": "resolved"
+    },
+    "TransactionID": {
+     "role": "numeric",
+     "name": "TransactionID",
+     "description": "Primary key; unique sequential identifier (1-1000) for each transaction row.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "yearmonth": {
+   "table": {
+    "name": "yearmonth",
+    "purpose": "Monthly per-customer consumption summary: each row records a customer's total consumption (likely fuel volume or spending) for a given year-month (2011-2013). Aggregated from the transactions data by customer and month."
+   },
+   "columns": {
+    "Consumption": {
+     "role": "numeric",
+     "name": "Consumption",
+     "description": "Total consumption for the customer in that month. Units unclear: could be fuel volume (liters) or monetary amount; negative values suggest returns/corrections. Large values (up to ~2M) indicate aggregation over many transactions.",
+     "status": "tentative"
+    },
+    "CustomerID": {
+     "role": "foreign_key",
+     "name": "CustomerID",
+     "description": "Identifier of the customer; references customers.CustomerID (many-to-one).",
+     "status": "resolved"
+    },
+    "Date": {
+     "role": "date",
+     "name": "YearMonth",
+     "description": "Year and month encoded as an integer string, e.g. 201205 = May 2012. Range 201112-201311 (Dec 2011 to Nov 2013).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

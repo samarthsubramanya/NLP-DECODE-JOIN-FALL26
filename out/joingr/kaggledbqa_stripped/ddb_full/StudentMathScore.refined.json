@@ -1,0 +1,136 @@
+{
+ "db_id": "StudentMathScore",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 2,
+ "tables": {
+  "FINREV_FED_17": {
+   "table": {
+    "name": "FINREV_FED_17",
+    "purpose": "Census F-33 style school-district finance table for fiscal year 2017 (yr_data=17), one row per U.S. public school district (LEA), showing federal revenue amounts by source code. Companion lookup FINREV_FED_KEY_17 maps state codes (and likely revenue line codes) to labels. The NDECoreExcel_Math_Grade8 table suggests this database combines district finance with NAEP/assessment data via NCES IDs."
+   },
+   "columns": {
+    "c14": {
+     "role": "numeric",
+     "name": "federal_revenue_code_c14",
+     "description": "Federal revenue amount for Census F-33 line code C14, in thousands of dollars (consistent with other revenue columns). In the F-33 schema C14 is a specific federal aid category (likely Title I / revenue through the state), but the exact program cannot be confirmed without the code key table, so the specific program label is tentative. Zero for ~11% of districts.",
+     "status": "tentative"
+    },
+    "c25": {
+     "role": "numeric",
+     "name": "federal_revenue_code_c25",
+     "description": "Federal revenue amount for Census F-33 line code C25, in thousands of dollars. Likely a specific federal program category (plausibly special education/IDEA or another federal aid line), but the exact program cannot be confirmed from the data alone.",
+     "status": "tentative"
+    },
+    "idcensus": {
+     "role": "identifier",
+     "name": "census_district_id",
+     "description": "Census Bureau school-district (LEA) identifier: a FIPS-style composite code of state (2 digits) + county + district components (up to 14 digits), unique per row. Used to link to Census F-33 finance data.",
+     "status": "resolved"
+    },
+    "nces_id": {
+     "role": "identifier",
+     "name": "nces_lea_id",
+     "description": "NCES Local Education Agency (school district) ID, unique per row; the standard key for joining to other education datasets (e.g., NDECoreExcel_Math_Grade8).",
+     "status": "resolved"
+    },
+    "school_district": {
+     "role": "category",
+     "name": "school_district_name",
+     "description": "Name of the school district / LEA (e.g., 'LORAIN CITY SCH DIST'). Duplicated names across states (e.g., 'LINCOLN CO SCH DIST' appears 6 times) because district names are not unique nationally.",
+     "status": "resolved"
+    },
+    "state_code": {
+     "role": "code",
+     "name": "state_fips_code",
+     "description": "FIPS state code (1-51, includes DC and other non-state codes), referencing FINREV_FED_KEY_17.State_Code which maps to state names (e.g., 24=Minnesota, 44=Texas, 51=Wyoming).",
+     "status": "resolved"
+    },
+    "t_fed_rev": {
+     "role": "numeric",
+     "name": "total_federal_revenue",
+     "description": "Total federal revenue received by the district, in thousands of dollars (Census F-33 total federal revenue line). Ranges 0 to ~2,061,297 (thousands), median ~880.",
+     "status": "resolved"
+    },
+    "yr_data": {
+     "role": "code",
+     "name": "fiscal_year",
+     "description": "Year of the data, coded as 17 = fiscal year 2017 (matches the '_17' suffix of the table name). Constant across all rows.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINREV_FED_KEY_17": {
+   "table": {
+    "name": "FINREV_FED_KEY_17",
+    "purpose": "Key/lookup table for the 2017 federal finance revenue survey (FINREV_FED_17): one row per U.S. state (51 rows incl. DC), mapping state names to FIPS state codes and giving the number of records per state in the main survey table."
+   },
+   "columns": {
+    "#_Records": {
+     "role": "numeric",
+     "name": "record_count",
+     "description": "Number of records (school districts / LEAs) reported for the state in FINREV_FED_17. Stored as text with thousands separators (e.g. '1,045'), so the numeric stats are approximate.",
+     "status": "resolved"
+    },
+    "State": {
+     "role": "category",
+     "name": "state_name",
+     "description": "Full name of the U.S. state (or district); one row per state, 51 distinct values.",
+     "status": "resolved"
+    },
+    "State_Code": {
+     "role": "numeric",
+     "name": "state_fips_code",
+     "description": "FIPS state code (1-51, alphabetical order), primary key of this table; referenced by FINREV_FED_17.state_code.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "NDECoreExcel_Math_Grade8": {
+   "table": {
+    "name": "NDECoreExcel_Math_Grade8",
+    "purpose": "NAEP (National Assessment of Educational Progress) 8th-grade mathematics average scale scores by state for 2017, for the 'All students' group. One row per state (plus a National aggregate)."
+   },
+   "columns": {
+    "all_students": {
+     "role": "category",
+     "name": "student_group",
+     "description": "Assessment population subgroup; constant value 'All students' indicating the row covers all students rather than a demographic subgroup.",
+     "status": "resolved"
+    },
+    "average_scale_score": {
+     "role": "numeric",
+     "name": "average_scale_score",
+     "description": "Average NAEP mathematics scale score for 8th grade, ranging 266-297 (NAEP math scale 0-500).",
+     "status": "resolved"
+    },
+    "state": {
+     "role": "category",
+     "name": "state",
+     "description": "U.S. state name (50 states, plus 'National' for the national aggregate); uniquely identifies each row.",
+     "status": "resolved"
+    },
+    "year": {
+     "role": "numeric",
+     "name": "year",
+     "description": "Assessment year, constant 2017.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 1,
+  "columns_changed": 0
+ }
+}

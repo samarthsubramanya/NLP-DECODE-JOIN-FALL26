@@ -1,0 +1,4187 @@
+{
+ "accept": 70,
+ "db_id": "FIBEN",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "ACCOUNTSPAYABLEANDACCRUEDLIABILITIES": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 3.107230525432682e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "ACCOUNTSPAYABLEDETAILS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ACCRUEDLIABILITIES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ACCUMULATEDOTHERCOMPREHENSIVEINCOMELOSS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ADDRESS": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "ADDRESS.col_003",
+       "ADDRESS.col_004",
+       "CONTRACT.col_003",
+       "CORPORATION.col_001",
+       "DISCLOSURE.col_002",
+       "DISCLOSURE.col_012",
+       "ELEMENTOFFINANCIALSTATEMENT.col_002",
+       "ELEMENTOFFINANCIALSTATEMENT.col_012",
+       "EMAILADDRESS.col_001",
+       "FINANCIALREPORT.col_002",
+       "PHONENUMBER.col_001",
+       "POSTALADDRESS.col_001",
+       "SECURITY.col_003",
+       "VIRTUALADDRESS.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.2490836038883758
+     },
+     "phi": 0.85,
+     "score": 15.938
+    },
+    "col_003": {
+     "rejected": "has nulls"
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "ALLOWANCEFORCREDITLOSSES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ANTIDILUTIVESECURITIESEXCLUDEDFROMCOMPUTATIONOFEARNINGSPERSHARE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ASSET": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 4.165278240586471e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "ASSETIMPAIRMENTCHARGES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ASSETRETIREMENTOBLIGATIONDISCLOSURE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "AUTONOMOUSAGENT": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "ADDRESS.col_002",
+       "CONTRACT.col_002",
+       "CONTRACT.col_003",
+       "CONTRACTPARTY.col_001",
+       "CORPORATION.col_001",
+       "DISCLOSURE.col_002",
+       "DISCLOSURE.col_012",
+       "ELEMENTOFFINANCIALSTATEMENT.col_002",
+       "ELEMENTOFFINANCIALSTATEMENT.col_012",
+       "FINANCIALREPORT.col_002",
+       "FINANCIALSERVICEACCOUNT.col_002",
+       "FINANCIALSERVICEACCOUNT.col_003",
+       "PERSON.col_001",
+       "SECURITY.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "AVAILABLEFORSALESECURITIES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "BUSINESSACQUISITIONINTEGRATIONRESTRUCTURINGANDOTHERRELATEDCOSTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "BUSINESSACQUISITIONPROFORMAINFORMATION": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "BUSINESSCOMBINATIONDISCLOSURE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "CAPITALUNITS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "CASHANDCASHEQUIVALENTS": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 2.1895732521731515e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "CASHANDCASHEQUIVALENTSDISCLOSURE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "CASHCASHEQUIVALENTSANDSHORTTERMINVESTMENTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "CHANGEINACCOUNTINGESTIMATE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "CHANGESINFAIRVALUEOFPLANASSETS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "COMMITMENTSCONTINGENCIESANDGUARANTEES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "COMPREHENSIVEINCOME": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "LOSS.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.9043266301035955e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "COMPREHENSIVEINCOMELOSS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "CONTRACT": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "CORPORATION.col_003",
+       "COUNTRY.col_001",
+       "COUNTRY.col_003",
+       "CURRENCY.col_002",
+       "DISCLOSURE.col_002",
+       "DISCLOSURE.col_012",
+       "ELEMENTOFFINANCIALSTATEMENT.col_002",
+       "ELEMENTOFFINANCIALSTATEMENT.col_012",
+       "PERSON.col_002",
+       "PERSON.col_003",
+       "POSTALADDRESS.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 63.686,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.41898302572085083,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.6984656437625083
+     },
+     "phi": 0.85,
+     "score": 54.133
+    },
+    "col_003": {
+     "base": 73.633,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.5781261581795271,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.7738492328218812
+     },
+     "phi": 0.7,
+     "score": 51.543
+    },
+    "col_004": {
+     "base": 20.941,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.2450522570602625,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6160773849232822
+     },
+     "phi": 0.55,
+     "score": 11.517
+    },
+    "col_005": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00066711140760507
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_006": {
+     "base": 20.589,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.2394188718404862,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6134089392928619
+     },
+     "phi": 0.55,
+     "score": 11.324
+    },
+    "col_007": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.05703802535023349
+     },
+     "phi": 0.55,
+     "score": 6.188
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "CONTRACTPARTY": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "CONTRACT.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "CONVERSIONOFSTOCK": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "CORPORATION": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "CONTRACT.col_003",
+       "DISCLOSURE.col_002",
+       "DISCLOSURE.col_012",
+       "ELEMENTOFFINANCIALSTATEMENT.col_002",
+       "ELEMENTOFFINANCIALSTATEMENT.col_012",
+       "FINANCIALREPORT.col_002",
+       "SECURITY.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1540447504302926
+     },
+     "phi": 0.85,
+     "score": 15.938
+    },
+    "col_003": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.008605851979345954
+     },
+     "phi": 0.7,
+     "score": 13.125
+    },
+    "col_004": {
+     "base": 86.089,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9974182444061962,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.9974182444061962
+     },
+     "phi": 0.55,
+     "score": 47.349
+    },
+    "col_005": {
+     "base": 73.75,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "LISTEDSECURITY.col_005"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 51.563
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "COSTMETHODINVESTMENTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "COSTSOFRETIREMENTPLANS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "COUNTRY": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    },
+    {
+     "column": "col_003",
+     "score": 74.375
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "CORPORATION.col_003",
+       "FINANCIALMARKET.col_001",
+       "PERSON.col_002",
+       "PERSON.col_003",
+       "POSTALADDRESS.col_002",
+       "SECURITIESTRANSACTION.col_005",
+       "SECURITY.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    },
+    "col_003": {
+     "base": 86.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "CURRENCY.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 74.375
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "CURRENCY": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 100.0
+    },
+    {
+     "column": "col_002",
+     "score": 78.625
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "col_002": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 78.625
+    },
+    "col_003": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 51.625
+    },
+    "col_004": {
+     "base": 86.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 47.438
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "DEBT": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00018779342723004695
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "DEBTCONVERSION": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "DEFERREDTAXASSETSANDLIABILITIES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "DEFINEDBENEFITPLANAMOUNTSRECOGNIZEDINOTHERCOMPREHENSIVEINCOMELOSS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "DERIVATIVE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "DISCLOSURE": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 106.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 86.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "ACCOUNTSPAYABLEANDACCRUEDLIABILITIES.col_001",
+       "CASHANDCASHEQUIVALENTS.col_001",
+       "DEBT.col_001",
+       "EQUITY.col_001",
+       "GOODWILL.col_001",
+       "INVENTORYCURRENT.col_001",
+       "LONGTERMDEBT.col_001",
+       "STOCKHOLDERSEQUITY.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 106.25
+    },
+    "col_002": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 3.843234466126692e-05
+     },
+     "phi": 0.85,
+     "score": 25.5
+    },
+    "col_003": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.00041314770510861943
+     },
+     "phi": 0.7,
+     "score": 16.625
+    },
+    "col_004": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 9.60808616531673e-06
+     },
+     "phi": 0.55,
+     "score": 9.625
+    },
+    "col_005": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.921617233063346e-05
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_006": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.921617233063346e-05
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_007": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 4.804043082658365e-06
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_008": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.0002690264126288685
+     },
+     "phi": 0.55,
+     "score": 9.625
+    },
+    "col_009": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.00041314770510861943
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_010": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 4.804043082658365e-06
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_011": {
+     "base": 35.55,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.38879867963544784,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6841677956167911
+     },
+     "phi": 0.55,
+     "score": 19.552
+    },
+    "col_012": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 4.323638774392529e-05
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "col_013": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 3.843234466126692e-05
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_014": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.22862921434679426
+     },
+     "phi": 0.55,
+     "score": 9.625
+    },
+    "col_015": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.921617233063346e-05
+     },
+     "phi": 0.55,
+     "score": 13.063
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "DISTRIBUTIONTOOWNER": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 2.0693222969477496e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "DIVIDENDPAYMENTRESTRICTIONS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "DIVIDENDSPAYABLE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "EFFECTIVEINCOMETAXRATERECONCILIATION": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ELEMENTOFFINANCIALSTATEMENT": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 106.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 86.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "ASSET.col_001",
+       "COMPREHENSIVEINCOME.col_001",
+       "DISTRIBUTIONTOOWNER.col_001",
+       "EQUITY.col_001",
+       "EXPENSE.col_001",
+       "LIABILITY.col_001",
+       "LOSS.col_001",
+       "REVENUE.col_001",
+       "STOCKHOLDERSEQUITY.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 106.25
+    },
+    "col_002": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.8026381609485483e-05
+     },
+     "phi": 0.85,
+     "score": 25.5
+    },
+    "col_003": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0003943270977074949
+     },
+     "phi": 0.7,
+     "score": 16.625
+    },
+    "col_004": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 4.506595402371371e-06
+     },
+     "phi": 0.55,
+     "score": 9.625
+    },
+    "col_005": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 9.013190804742742e-06
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_006": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 4.506595402371371e-06
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_007": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 6.759893103557056e-06
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_008": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.00024110285402686833
+     },
+     "phi": 0.55,
+     "score": 9.625
+    },
+    "col_009": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.00019153030460078324
+     },
+     "phi": 0.55,
+     "score": 13.063
+    },
+    "col_010": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 4.506595402371371e-06
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_011": {
+     "base": 26.275,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.24040257917462204,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.613874905924821
+     },
+     "phi": 0.55,
+     "score": 14.451
+    },
+    "col_012": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 2.0279679310671167e-05
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "col_013": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 2.253297701185685e-05
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_014": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.10742822120172874
+     },
+     "phi": 0.55,
+     "score": 9.625
+    },
+    "col_015": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 9.013190804742742e-06
+     },
+     "phi": 0.55,
+     "score": 13.063
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "ELEMENTSOFFINANCIALREPORT": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "ACCOUNTSPAYABLEANDACCRUEDLIABILITIES.col_001",
+       "ASSET.col_001",
+       "CASHANDCASHEQUIVALENTS.col_001",
+       "COMPREHENSIVEINCOME.col_001",
+       "DEBT.col_001",
+       "DISCLOSURE.col_001",
+       "DISTRIBUTIONTOOWNER.col_001",
+       "ELEMENTOFFINANCIALSTATEMENT.col_001",
+       "EQUITY.col_001",
+       "EXPENSE.col_001",
+       "GOODWILL.col_001",
+       "INVENTORYCURRENT.col_001",
+       "LIABILITY.col_001",
+       "LONGTERMDEBT.col_001",
+       "LOSS.col_001",
+       "REVENUE.col_001",
+       "STOCKHOLDERSEQUITY.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.005936761245327019
+     },
+     "phi": 0.85,
+     "score": 15.938
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "EMAILADDRESS": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 100.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "col_002": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "ENTITYLOCATION": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "EQUITY": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "STOCKHOLDERSEQUITY.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 2.284148012791229e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "EQUITYMETHODINVESTMENTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "ERRORCORRECTIONSANDPRIORPERIODADJUSTMENTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "EXPENSE": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 7.740537193281214e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "EXTINGUISHMENTOFDEBT": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "EXTRAORDINARYITEMS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "FINANCIALINSTRUMENT": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "HOLDING.col_003",
+       "LISTEDSECURITY.col_001",
+       "SECURITIESTRANSACTION.col_004",
+       "SECURITY.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00036429872495446266
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "FINANCIALINSTRUMENTSSUBJECTTOMANDATORYREDEMPTION": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "FINANCIALMARKET": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 100.0
+    },
+    {
+     "column": "col_002",
+     "score": 73.312
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "col_002": {
+     "base": 86.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 73.312
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "FINANCIALMETRICS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "FINANCIALREPORT": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "ELEMENTSOFFINANCIALREPORT.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.04811494586033416
+     },
+     "phi": 0.85,
+     "score": 31.875
+    },
+    "col_003": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 56.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "FINANCIALSERVICEACCOUNT": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "HOLDING.col_002",
+       "SECURITIESTRANSACTION.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 39.352,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.02962544121174747,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.5140331037318804
+     },
+     "phi": 0.85,
+     "score": 33.449
+    },
+    "col_003": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0010280662074637606
+     },
+     "phi": 0.7,
+     "score": 26.25
+    },
+    "col_004": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 55.0
+    },
+    "col_005": {
+     "base": 5.625,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.056286624858640895
+     },
+     "phi": 0.55,
+     "score": 3.094
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "FINANCINGRECEIVABLEALLOWANCEFORCREDITLOSSES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "FINANCINGRECEIVABLECREDITQUALITYINDICATORS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "FINANCINGRECEIVABLES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "FINANCINGRECEIVABLESPASTDUE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "FINANCINGRECEIVABLETROUBLEDDEBTRESTRUCTURINGS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "FOREIGNCURRENCYTRANSLATION": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "FORWARDCONTRACTINDEXEDTOISSUERSEQUITY": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "FRESHSTARTADJUSTMENTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "GAINLOSSONINVESTMENTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "GOODWILL": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 2.916302128900554e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "GUARANTEES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "GUARANTOROBLIGATIONS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "HELDTOMATURITYSECURITIES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "HOLDING": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 100.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "col_002": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.18199235508622513
+     },
+     "phi": 0.85,
+     "score": 31.875
+    },
+    "col_003": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.005135900223210527
+     },
+     "phi": 0.7,
+     "score": 13.125
+    },
+    "col_004": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.005083512169931877
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_005": {
+     "base": 66.589,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.875420689580619,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.9146729582223985
+     },
+     "phi": 0.55,
+     "score": 36.624
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "IMPAIREDFINANCINGRECEIVABLES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "INCOMETAXCONTINGENCY": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "INDEFINITELIVEDINTANGIBLEASSETS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "INDUSTRYSECTORCLASSIFICATIONSCHEME": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 100.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "col_002": {
+     "base": 80.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 68.0
+    },
+    "col_003": {
+     "base": 86.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 60.375
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "INDUSTRYSECTORCLASSIFIER": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    },
+    {
+     "column": "col_003",
+     "score": 74.375
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "CORPORATION.col_002",
+       "INDUSTRYSECTORCLASSIFIER.col_003",
+       "INDUSTRYSECTORCLASSIFIER.col_005"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0022123893805309734
+     },
+     "phi": 0.85,
+     "score": 31.875
+    },
+    "col_003": {
+     "base": 86.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "CORPORATION.col_002",
+       "INDUSTRYSECTORCLASSIFIER.col_001",
+       "INDUSTRYSECTORCLASSIFIER.col_005"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 74.375
+    },
+    "col_004": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 40.562
+    },
+    "col_005": {
+     "base": 86.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "CORPORATION.col_002",
+       "INDUSTRYSECTORCLASSIFIER.col_001",
+       "INDUSTRYSECTORCLASSIFIER.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 58.438
+    },
+    "col_006": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.024336283185840708
+     },
+     "phi": 0.55,
+     "score": 6.188
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "INTANGIBLEASSETSANDGOODWILL": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "INTERESTANDOTHERINCOME": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "INTERESTCOSTSINCURRED": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "INVENTORYCURRENT": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 3.760246672181695e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "INVENTORYNONCURRENT": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "INVESTMENTINCOME": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "INVESTMENTSANDOTHERNONCURRENTASSETS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "LIABILITY": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 6.249739594183576e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "LINEOFCREDITFACILITY": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "LISTEDSECURITY": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "FINANCIALINSTRUMENT.col_001",
+       "HOLDING.col_003",
+       "SECURITIESTRANSACTION.col_004",
+       "SECURITY.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 69.062
+    },
+    "col_003": {
+     "base": 62.272,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.9063549888686502,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9293260473588343
+     },
+     "phi": 0.7,
+     "score": 43.591
+    },
+    "col_004": {
+     "base": 85.612,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.989799635701275,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.989799635701275
+     },
+     "phi": 0.55,
+     "score": 47.087
+    },
+    "col_005": {
+     "base": 58.861,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7617688726978346,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8608378870673953
+     },
+     "phi": 0.55,
+     "score": 32.373
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "LONGLIVEDASSETSHELDFORSALE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "LONGLIVEDASSETSTOBEABANDONED": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "LONGTERMDEBT": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 4.922471080482402e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "LONGTERMDEBTMATURITIES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "LONGTERMPURCHASECOMMITMENT": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "LOSS": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 7.04324552753909e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "MARKETABLESECURITIES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "MONETARYAMOUNT": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "LISTEDSECURITY.col_002",
+       "SECURITIESTRANSACTION.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.9890799510686333e-06
+     },
+     "phi": 0.85,
+     "score": 31.875
+    },
+    "col_003": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "NETPERIODICBENEFITCOSTNOTYETRECOGNIZED": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "NEWACCOUNTINGPRONOUNCEMENTEARLYADOPTION": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "NONCONTROLLINGINTEREST": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "OPERATINGLOSSCARRYFORWARDS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "OTHERASSETS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "OTHERASSETSANDOTHERLIABILITIES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "OTHERASSETSDISCLOSURE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "OTHERASSETSNONCURRENT": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "OTHERLIABILITIESDISCLOSURE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "OTHERNONOPERATINGINCOMEEXPENSE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "OTHEROWNERSHIPINTERESTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "OTHERTHANTEMPORARYIMPAIRMENTCREDITLOSSESRECOGNIZEDINEARNINGS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "PERSON": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "ADDRESS.col_002",
+       "AUTONOMOUSAGENT.col_001",
+       "CONTRACT.col_002",
+       "CONTRACTPARTY.col_001",
+       "FINANCIALSERVICEACCOUNT.col_002",
+       "FINANCIALSERVICEACCOUNT.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "rejected": "has nulls"
+    },
+    "col_003": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.004970059880239521
+     },
+     "phi": 0.7,
+     "score": 26.25
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    },
+    "col_005": {
+     "rejected": "has nulls"
+    },
+    "col_006": {
+     "base": 73.735,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9997604790419161,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9997604790419161
+     },
+     "phi": 0.55,
+     "score": 40.554
+    },
+    "col_007": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.19832335329341316
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_008": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.19836327345309382
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_009": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "PHONENUMBER": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "CONTRACT.col_003",
+       "CORPORATION.col_001",
+       "DISCLOSURE.col_002",
+       "DISCLOSURE.col_012",
+       "ELEMENTOFFINANCIALSTATEMENT.col_002",
+       "ELEMENTOFFINANCIALSTATEMENT.col_012",
+       "FINANCIALREPORT.col_002",
+       "SECURITY.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "POSTALADDRESS": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "ADDRESS.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0031129280276037956
+     },
+     "phi": 0.85,
+     "score": 31.875
+    },
+    "col_003": {
+     "base": 73.698,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9991623848279139,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9991623848279139
+     },
+     "phi": 0.7,
+     "score": 51.588
+    },
+    "col_004": {
+     "rejected": "has nulls"
+    },
+    "col_005": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.012414206953456101
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_006": {
+     "base": 35.695,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.3911239184276727,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6852692245183712
+     },
+     "phi": 0.55,
+     "score": 19.632
+    },
+    "col_007": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0013126804935678655
+     },
+     "phi": 0.55,
+     "score": 6.188
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "PREFERREDSTOCK": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "PRODUCTWARRANTYLIABILITY": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "PROPERTYMANAGEMENTFEE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "PROPERTYPLANTANDEQUIPMENT": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "PROPERTYPLANTANDEQUIPMENTINCOMESTATEMENTDISCLOSURES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "PROPERTYPLANTANDEQUIPMENTUSEFULLIVES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "PROPERTYSUBJECTTOORAVAILABLEFOROPERATINGLEASE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "REALESTATEPROPERTIES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "REALIZEDGAINLOSS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "REALIZEDGAINLOSSONINVESTMENTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "RECONCILIATIONOFOPERATINGPROFITLOSSFROMSEGMENTSTOCONSOLIDATED": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "RECORDEDUNCONDITIONALPURCHASEOBLIGATION": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "REDEEMABLENONCONTROLLINGINTEREST": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "RELATEDPARTYTRANSACTIONSBYRELATEDPARTY": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "RENTEXPENSE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "RESTRICTEDCASHANDCASHEQUIVALENTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "RESTRUCTURINGANDRELATEDCOSTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "REVENUE": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 81.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 81.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 4.7087630079578097e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "SALELEASEBACKTRANSACTION": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "SECURITIESTRANSACTION": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 100.0
+    },
+    {
+     "column": "col_003",
+     "score": 84.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "col_002": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.19346
+     },
+     "phi": 0.85,
+     "score": 31.875
+    },
+    "col_003": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "MONETARYAMOUNT.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 84.0
+    },
+    "col_004": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00549
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_005": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 4e-06
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "col_006": {
+     "base": 67.632,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.992106,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.992106
+     },
+     "phi": 0.55,
+     "score": 37.197
+    },
+    "col_007": {
+     "base": 24.375,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.009802
+     },
+     "phi": 0.55,
+     "score": 13.406
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "SECURITY": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "FINANCIALINSTRUMENT.col_001",
+       "HOLDING.col_003",
+       "LISTEDSECURITY.col_001",
+       "SECURITIESTRANSACTION.col_004"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.001092896174863388
+     },
+     "phi": 0.85,
+     "score": 31.875
+    },
+    "col_003": {
+     "base": 83.236,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.7317749443432504,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.8466302367941713
+     },
+     "phi": 0.7,
+     "score": 58.265
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "SHAREBASEDCOMPENSATIONACTIVITY": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSGRANTSINPERIODGRANTDATEINTRINSICVALUE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSGRANTSINPERIODWEIGHTEDAVERAGEGRANTDATEFAIRVALUE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSVESTEDANDEXPECTEDTOVESTEXERCISABLE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSVESTEDANDEXPECTEDTOVESTOUTSTANDINGANDEXERCISABLE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "SHAREBASEDCOMPENSATIONRESTRICTEDSTOCKUNITSAWARDACTIVITY": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "SHORTTERMDEBT": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "STOCKHOLDERSEQUITY": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "EQUITY.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 2.284148012791229e-05
+     },
+     "phi": 0.85,
+     "score": 9.562
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "SUBSEQUENTEVENTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "TAXCREDITCARRYFORWARD": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "TRADINGSECURITIESANDOTHERTRADINGASSETS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "TREASURYSTOCK": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "UNREALIZEDGAINLOSSONINVESTMENTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "UNREALIZEDLOSSONINVESTMENTS": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "UNRECORDEDUNCONDITIONALPURCHASEOBLIGATION": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "UNRECORDEDUNCONDITIONALPURCHASEOBLIGATIONSDISCLOSURE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "VALUATIONALLOWANCE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "VALUATIONANDQUALIFYINGACCOUNTSDISCLOSURE": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "VIRTUALADDRESS": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "ADDRESS.col_004",
+       "CONTRACT.col_003",
+       "CORPORATION.col_001",
+       "DISCLOSURE.col_002",
+       "DISCLOSURE.col_012",
+       "ELEMENTOFFINANCIALSTATEMENT.col_002",
+       "ELEMENTOFFINANCIALSTATEMENT.col_012",
+       "EMAILADDRESS.col_001",
+       "FINANCIALREPORT.col_002",
+       "PHONENUMBER.col_001",
+       "SECURITY.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "WEIGHTEDAVERAGENUMBEROFSHARES": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "rejected": "empty table"
+    },
+    "col_002": {
+     "rejected": "empty table"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  }
+ },
+ "use_names": false
+}

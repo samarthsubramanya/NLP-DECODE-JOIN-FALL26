@@ -1,0 +1,214 @@
+{
+ "db_id": "car_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 6,
+ "tables": {
+  "car_makers": {
+   "table": {
+    "name": "car_makers",
+    "purpose": "One row per automobile manufacturer; links maker names to their headquarter country and to the models they produce (model_list)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "maker_id",
+     "description": "Primary key; unique identifier of the car maker, referenced by model_list (each model belongs to one maker).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "maker_short_name",
+     "description": "Lowercase short/abbreviated maker name (e.g. 'amc', 'gm', 'bmw'); joins one-to-one to model_list.col_003, so model_list stores the maker by this short name.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "full_name",
+     "description": "Full official manufacturer name (e.g. 'General Motors', 'American Motor Company').",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "country_id",
+     "description": "Foreign key to countries.col_001, the country of the maker's headquarters (e.g. 2=germany, 4=japan, 7=uk). Stored as text despite being numeric.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "car_names": {
+   "table": {
+    "name": "car_names",
+    "purpose": "Maps each car (one row per car model variant) to its make and full model name; the ID is referenced by the cars_data table with technical specs."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "car_id",
+     "description": "Primary key; unique numeric identifier for each car entry, referenced by cars_data.col_005 which holds the car's technical data.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "make",
+     "description": "Car manufacturer/make (e.g. ford, chevrolet, amc); references model_list.col_003.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "model",
+     "description": "Full model name including make (e.g. 'amc matador', 'toyota corolla'); not unique because a model can appear in multiple years/variants.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "cars_data": {
+   "table": {
+    "name": "cars_data",
+    "purpose": "Technical specifications of car models (one row per car), covering fuel economy, engine, weight, performance and model year. This is the classic 'cars' / auto-mpg style dataset."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Surrogate primary key; sequential integer 1-406, one per car row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "numeric",
+     "name": "mpg",
+     "description": "Fuel economy in miles per gallon (values 9.0-46.6, stored as VARCHAR).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "cylinders",
+     "description": "Number of engine cylinders (3, 4, 5, 6, or 8).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "displacement",
+     "description": "Engine displacement in cubic inches (68-455).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "horsepower",
+     "description": "Engine horsepower (46-230, stored as VARCHAR). Joins to car_names.col_001, so it doubles as a link to the car's name/model record.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "weight",
+     "description": "Vehicle weight in pounds (1613-5140).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "acceleration",
+     "description": "Acceleration, likely 0-60 mph time in seconds (8.0-24.8; lower = faster).",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "numeric",
+     "name": "model_year",
+     "description": "Model year of the car (1970-1982).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "continents": {
+   "table": {
+    "name": "continents",
+    "purpose": "Lookup table of continents, one row per continent, referenced by the countries table."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "continent_id",
+     "description": "Primary key; surrogate integer identifier for each continent (1-5). Referenced by countries.col_003 as a foreign key.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "continent_name",
+     "description": "Name of the continent: africa, america, asia, australia, europe. Note 'america' covers North and South America combined.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "countries": {
+   "table": {
+    "name": "countries",
+    "purpose": "Lookup table of countries, each mapped to its continent; referenced by car_makers to indicate a maker's home country."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "country_id",
+     "description": "Primary key; unique numeric identifier for each country. Referenced by car_makers.col_004 (the maker's country).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "country_name",
+     "description": "Unique lowercase name of the country (e.g. germany, japan, uk).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "continent_id",
+     "description": "Foreign key to continents.col_001; values 1-5 map to america, europe, asia, africa, australia respectively.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "model_list": {
+   "table": {
+    "name": "model_list",
+    "purpose": "List of car models/makes, each row a distinct car make/model entry, linked to its manufacturer (car_makers) and referenced by car_names for individual named cars."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "model_id",
+     "description": "Primary key; unique numeric identifier for each model/make entry (1-36).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "maker_id",
+     "description": "Foreign key to car_makers.col_001, identifying the manufacturer of the model (e.g. 4=gm, 13=daimler benz, 16=renault).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "model_name",
+     "description": "Unique make/model name (e.g. 'buick', 'mercedes-benz', 'opel'); referenced by car_names and matched one-to-one with car_makers' maker names.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 0,
+  "columns_changed": 0
+ }
+}

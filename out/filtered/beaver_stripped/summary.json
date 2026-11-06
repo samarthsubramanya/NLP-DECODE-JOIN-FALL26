@@ -1,0 +1,45 @@
+{
+  "dataset": "beaver_stripped",
+  "settings": {
+    "db_file": "decode_join_stripped.duckdb",
+    "questions_db_file": "decode_join.duckdb",
+    "mapping": "data/beaver/schema_mapping.csv",
+    "questions": [
+      "duckdb:beaver_metadata.queries_dw",
+      "duckdb:beaver_metadata.queries_dw_real",
+      "duckdb:beaver_metadata.queries_nova",
+      "duckdb:beaver_metadata.queries_neutron"
+    ],
+    "sql_field": "sql",
+    "db_field": "db",
+    "question_field": "question",
+    "id_field": "id",
+    "gold_tables_field": "tables",
+    "dialect": "mysql",
+    "default_db": null,
+    "schema_source": "duckdb",
+    "min_tables": 2,
+    "out": "out/filtered/beaver_stripped",
+    "dataset": "beaver_stripped"
+  },
+  "total": 7978,
+  "kept": 7961,
+  "rejected": {
+    "single_table": 17
+  },
+  "databases": 3,
+  "gold_table_count_histogram": {
+    "2": 1676,
+    "3": 2596,
+    "4": 2168,
+    "5": 1204,
+    "6": 283,
+    "7": 27,
+    "8": 7
+  },
+  "questions_with_unresolved_tables": 0,
+  "annotation_check": {
+    "disagree": 1727,
+    "agree": 6251
+  }
+}

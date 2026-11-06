@@ -1,0 +1,232 @@
+{
+ "accept": 70,
+ "db_id": "flight_2",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "airlines": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "flights.col_001"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    },
+    "col_003": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 51.625
+    },
+    "col_004": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.08333333333333333
+     },
+     "phi": 0.55,
+     "score": 13.063
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "airports": {
+   "candidate_keys": [
+    {
+     "column": "col_002",
+     "score": 90.312
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 57.431,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7388888888888889,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.85
+     },
+     "phi": 1.0,
+     "score": 57.431
+    },
+    "col_002": {
+     "base": 86.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "flights.col_003",
+       "flights.col_004"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 90.312
+    },
+    "col_003": {
+     "base": 62.708,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.8233333333333334,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.89
+     },
+     "phi": 0.7,
+     "score": 43.896
+    },
+    "col_004": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.01
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_005": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.02
+     },
+     "phi": 0.55,
+     "score": 13.063
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_002"
+  },
+  "flights": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.01
+     },
+     "phi": 1.0,
+     "score": 37.5
+    },
+    "col_002": {
+     "base": 44.699,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.4151851851851852,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6966666666666667
+     },
+     "phi": 0.85,
+     "score": 37.994
+    },
+    "col_003": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.08333333333333333
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "col_004": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.08333333333333333
+     },
+     "phi": 0.55,
+     "score": 6.188
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  }
+ },
+ "use_names": false
+}

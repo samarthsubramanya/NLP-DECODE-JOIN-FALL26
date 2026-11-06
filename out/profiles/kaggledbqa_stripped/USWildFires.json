@@ -1,0 +1,1721 @@
+{
+ "containment": [],
+ "dataset": "kaggledbqa_stripped",
+ "db_id": "USWildFires",
+ "duckdb_file": "decode_join_kaggledbqa_stripped.duckdb",
+ "duckdb_schema": "kaggledbqa_8a9459df84dfadeb322f",
+ "seed": 42,
+ "tables": {
+  "Fires": {
+   "columns": {
+    "CONT_DATE": {
+     "declared_type": "VARCHAR",
+     "distinct": 8761,
+     "family": "int",
+     "name": "CONT_DATE",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.9989737742303306,
+      "max": 2457391.5,
+      "mean": 2453237.7532969844,
+      "min": 2448622.5,
+      "p25": 2450700.75,
+      "p50": 2453466.5,
+      "p75": 2455753.5
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.47410135259098146,
+     "position": 6,
+     "role": "int",
+     "rows": 1880465,
+     "sample_values": [
+      "2451099.5",
+      "2450230.5",
+      "2453415.5",
+      "2449173.5",
+      "2449389.5",
+      "2452680.5",
+      "2450816.5",
+      "2452121.5",
+      "2454667.5",
+      "2456198.5"
+     ],
+     "text": {
+      "avg_len": 9.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 9,
+      "min_len": 9,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "",
+       891531
+      ],
+      [
+       "2455611.5",
+       841
+      ],
+      [
+       "2457067.5",
+       668
+      ],
+      [
+       "2449056.5",
+       649
+      ],
+      [
+       "2448683.5",
+       631
+      ],
+      [
+       "2450137.5",
+       631
+      ],
+      [
+       "2456367.5",
+       631
+      ],
+      [
+       "2449430.5",
+       605
+      ],
+      [
+       "2455606.5",
+       594
+      ],
+      [
+       "2450309.5",
+       593
+      ]
+     ],
+     "uniqueness": 0.004658954035305097,
+     "zero_rate": 0.0
+    },
+    "CONT_DOY": {
+     "declared_type": "VARCHAR",
+     "distinct": 367,
+     "family": "int",
+     "name": "CONT_DOY",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0027322404371584,
+      "max": 366.0,
+      "mean": 172.65676577001094,
+      "min": 1.0,
+      "p25": 102.0,
+      "p50": 181.0,
+      "p75": 232.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.47410135259098146,
+     "position": 7,
+     "role": "int",
+     "rows": 1880465,
+     "sample_values": [
+      "153",
+      "40",
+      "308",
+      "307",
+      "159",
+      "275",
+      "310",
+      "154",
+      "69",
+      "29"
+     ],
+     "text": {
+      "avg_len": 2.7549219664810796,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "",
+       891531
+      ],
+      [
+       "185",
+       7325
+      ],
+      [
+       "186",
+       7091
+      ],
+      [
+       "184",
+       5389
+      ],
+      [
+       "187",
+       5268
+      ],
+      [
+       "204",
+       5246
+      ],
+      [
+       "205",
+       5215
+      ],
+      [
+       "214",
+       5181
+      ],
+      [
+       "216",
+       5181
+      ],
+      [
+       "206",
+       5146
+      ]
+     ],
+     "uniqueness": 0.0001951644938884797,
+     "zero_rate": 0.0
+    },
+    "CONT_TIME": {
+     "declared_type": "VARCHAR",
+     "distinct": 1441,
+     "family": "int",
+     "name": "CONT_TIME",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.610593220338983,
+      "max": 2359.0,
+      "mean": 1534.8320795407485,
+      "min": 0.0,
+      "p25": 1310.0,
+      "p50": 1600.0,
+      "p75": 1810.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.5171875041545575,
+     "position": 8,
+     "role": "int",
+     "rows": 1880465,
+     "sample_values": [
+      "0701",
+      "0400",
+      "0235",
+      "0900",
+      "0841",
+      "2159",
+      "1539",
+      "0119",
+      "1440",
+      "1728"
+     ],
+     "text": {
+      "avg_len": 4.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "",
+       972553
+      ],
+      [
+       "1800",
+       38078
+      ],
+      [
+       "1600",
+       22167
+      ],
+      [
+       "1700",
+       20606
+      ],
+      [
+       "1200",
+       19276
+      ],
+      [
+       "1500",
+       18757
+      ],
+      [
+       "2000",
+       17315
+      ],
+      [
+       "1400",
+       16234
+      ],
+      [
+       "1900",
+       15354
+      ],
+      [
+       "1630",
+       14367
+      ]
+     ],
+     "uniqueness": 0.0007662998247773822,
+     "zero_rate": 0.0002712095146679146
+    },
+    "COUNTY": {
+     "declared_type": "VARCHAR",
+     "distinct": 3456,
+     "family": "text",
+     "name": "COUNTY",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.3606278234372881,
+     "position": 16,
+     "role": "text",
+     "rows": 1880465,
+     "sample_values": [
+      "Powhatan",
+      "Kankakee",
+      "NELSON",
+      "Leelanau",
+      "BENTON",
+      "Cass",
+      "Gregory",
+      "153",
+      "Habersham",
+      "40"
+     ],
+     "text": {
+      "avg_len": 7.13070845708744,
+      "code_share": 0.2567850242490125,
+      "composite_share": 0.0005090171726757585,
+      "date_shape_share": 0.0,
+      "max_len": 50,
+      "min_len": 1,
+      "space_share": 0.12738986473617192,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "",
+       678148
+      ],
+      [
+       "5",
+       7576
+      ],
+      [
+       "Lincoln",
+       7405
+      ],
+      [
+       "SUFFOLK",
+       7373
+      ],
+      [
+       "Polk",
+       6955
+      ],
+      [
+       "Washington",
+       6916
+      ],
+      [
+       "Cherokee",
+       6796
+      ],
+      [
+       "Oahu",
+       6777
+      ],
+      [
+       "Marion",
+       6657
+      ],
+      [
+       "Jackson",
+       6305
+      ]
+     ],
+     "uniqueness": 0.0018378432993966917,
+     "zero_rate": 0.0
+    },
+    "DISCOVERY_DATE": {
+     "declared_type": "DOUBLE",
+     "distinct": 8766,
+     "family": "float",
+     "name": "DISCOVERY_DATE",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 2457387.5,
+      "mean": 2453063.6570271184,
+      "min": 2448622.5,
+      "p25": 2451084.5,
+      "p50": 2453177.5,
+      "p75": 2455035.5
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "float",
+     "rows": 1880465,
+     "sample_values": [
+      "2451099.5",
+      "2450230.5",
+      "2453415.5",
+      "2449173.5",
+      "2449389.5",
+      "2452680.5",
+      "2450816.5",
+      "2452121.5",
+      "2454667.5",
+      "2456198.5"
+     ],
+     "text": {
+      "avg_len": 9.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 9,
+      "min_len": 9,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2454506.5",
+       1208
+      ],
+      [
+       "2453441.5",
+       1177
+      ],
+      [
+       "2453798.5",
+       1121
+      ],
+      [
+       "2455611.5",
+       1108
+      ],
+      [
+       "2449430.5",
+       1070
+      ],
+      [
+       "2453799.5",
+       1052
+      ],
+      [
+       "2453476.5",
+       1001
+      ],
+      [
+       "2456112.5",
+       958
+      ],
+      [
+       "2454575.5",
+       936
+      ],
+      [
+       "2449773.5",
+       933
+      ]
+     ],
+     "uniqueness": 0.004661612952115567,
+     "zero_rate": 0.0
+    },
+    "DISCOVERY_DOY": {
+     "declared_type": "BIGINT",
+     "distinct": 366,
+     "family": "int",
+     "name": "DISCOVERY_DOY",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 366.0,
+      "mean": 164.71914499871042,
+      "min": 1.0,
+      "p25": 89.0,
+      "p50": 164.0,
+      "p75": 230.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "int",
+     "rows": 1880465,
+     "sample_values": [
+      "153",
+      "40",
+      "308",
+      "307",
+      "159",
+      "275",
+      "310",
+      "154",
+      "69",
+      "29"
+     ],
+     "text": {
+      "avg_len": 2.6924973344358976,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "185",
+       12875
+      ],
+      [
+       "186",
+       11535
+      ],
+      [
+       "101",
+       9261
+      ],
+      [
+       "67",
+       9260
+      ],
+      [
+       "108",
+       9256
+      ],
+      [
+       "100",
+       9248
+      ],
+      [
+       "83",
+       8949
+      ],
+      [
+       "95",
+       8924
+      ],
+      [
+       "109",
+       8850
+      ],
+      [
+       "107",
+       8787
+      ]
+     ],
+     "uniqueness": 0.00019463271052638575,
+     "zero_rate": 0.0
+    },
+    "DISCOVERY_TIME": {
+     "declared_type": "VARCHAR",
+     "distinct": 1441,
+     "family": "int",
+     "name": "DISCOVERY_TIME",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.610593220338983,
+      "max": 2359.0,
+      "mean": 1453.0143261306819,
+      "min": 0.0,
+      "p25": 1240.0,
+      "p50": 1457.0,
+      "p75": 1708.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.46937220315188,
+     "position": 3,
+     "role": "int",
+     "rows": 1880465,
+     "sample_values": [
+      "0701",
+      "0400",
+      "0235",
+      "0900",
+      "0841",
+      "2159",
+      "1539",
+      "0119",
+      "1440",
+      "1728"
+     ],
+     "text": {
+      "avg_len": 4.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "",
+       882638
+      ],
+      [
+       "1400",
+       20981
+      ],
+      [
+       "1500",
+       20020
+      ],
+      [
+       "1600",
+       18234
+      ],
+      [
+       "1300",
+       17280
+      ],
+      [
+       "1700",
+       14027
+      ],
+      [
+       "1200",
+       13963
+      ],
+      [
+       "1530",
+       12993
+      ],
+      [
+       "1430",
+       12901
+      ],
+      [
+       "1800",
+       12012
+      ]
+     ],
+     "uniqueness": 0.0007662998247773822,
+     "zero_rate": 0.00035469950251666477
+    },
+    "FIPS_CODE": {
+     "declared_type": "VARCHAR",
+     "distinct": 286,
+     "family": "int",
+     "name": "FIPS_CODE",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.3530864197530864,
+      "max": 810.0,
+      "mean": 95.78349969267673,
+      "min": 1.0,
+      "p25": 29.0,
+      "p50": 67.0,
+      "p75": 121.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.3606278234372881,
+     "position": 17,
+     "role": "int",
+     "rows": 1880465,
+     "sample_values": [
+      "153",
+      "40",
+      "307",
+      "159",
+      "095",
+      "275",
+      "122",
+      "311",
+      "205",
+      "251"
+     ],
+     "text": {
+      "avg_len": 2.9999991682725935,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "",
+       678148
+      ],
+      [
+       "005",
+       29069
+      ],
+      [
+       "003",
+       28850
+      ],
+      [
+       "029",
+       28519
+      ],
+      [
+       "001",
+       27042
+      ],
+      [
+       "007",
+       22230
+      ],
+      [
+       "019",
+       21909
+      ],
+      [
+       "017",
+       21776
+      ],
+      [
+       "015",
+       21321
+      ],
+      [
+       "035",
+       20710
+      ]
+     ],
+     "uniqueness": 0.00015209004155886975,
+     "zero_rate": 0.0
+    },
+    "FIPS_NAME": {
+     "declared_type": "VARCHAR",
+     "distinct": 1699,
+     "family": "text",
+     "name": "FIPS_NAME",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.3606278234372881,
+     "position": 18,
+     "role": "text",
+     "rows": 1880465,
+     "sample_values": [
+      "Powhatan",
+      "Kankakee",
+      "Leelanau",
+      "Cass",
+      "Gregory",
+      "Habersham",
+      "Ripley",
+      "Pima",
+      "Archer",
+      "Swain"
+     ],
+     "text": {
+      "avg_len": 6.994575473855897,
+      "code_share": 0.0,
+      "composite_share": 0.0013374176693833656,
+      "date_shape_share": 0.0,
+      "max_len": 31,
+      "min_len": 3,
+      "space_share": 0.06529891867119902,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "",
+       678148
+      ],
+      [
+       "Washington",
+       11014
+      ],
+      [
+       "Lincoln",
+       10571
+      ],
+      [
+       "Jackson",
+       9902
+      ],
+      [
+       "Marion",
+       8908
+      ],
+      [
+       "Cherokee",
+       8558
+      ],
+      [
+       "Polk",
+       8300
+      ],
+      [
+       "Monroe",
+       8173
+      ],
+      [
+       "Coconino",
+       7900
+      ],
+      [
+       "Jefferson",
+       7770
+      ]
+     ],
+     "uniqueness": 0.0009034999321976214,
+     "zero_rate": 0.0
+    },
+    "FIRE_SIZE": {
+     "declared_type": "DOUBLE",
+     "distinct": 13637,
+     "family": "float",
+     "name": "FIRE_SIZE",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 606945.0,
+      "mean": 74.52015833993273,
+      "min": 1e-05,
+      "p25": 0.1,
+      "p50": 1.0,
+      "p75": 3.3
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 9,
+     "role": "float",
+     "rows": 1880465,
+     "sample_values": [
+      "6700.0",
+      "825.6",
+      "59.15",
+      "36.45",
+      "6074.8",
+      "23.09",
+      "51.12",
+      "1296.0",
+      "19.4",
+      "1377.8"
+     ],
+     "text": {
+      "avg_len": 3.307046395439426,
+      "code_share": 0.9999989364332759,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 19,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0.1",
+       459145
+      ],
+      [
+       "1.0",
+       221680
+      ],
+      [
+       "0.5",
+       113222
+      ],
+      [
+       "2.0",
+       109493
+      ],
+      [
+       "0.2",
+       75302
+      ],
+      [
+       "3.0",
+       65784
+      ],
+      [
+       "5.0",
+       61963
+      ],
+      [
+       "0.25",
+       54325
+      ],
+      [
+       "0.3",
+       52973
+      ],
+      [
+       "4.0",
+       38191
+      ]
+     ],
+     "uniqueness": 0.007251929708875199,
+     "zero_rate": 0.0
+    },
+    "FIRE_SIZE_CLASS": {
+     "declared_type": "VARCHAR",
+     "distinct": 7,
+     "family": "text",
+     "name": "FIRE_SIZE_CLASS",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 10,
+     "role": "code",
+     "rows": 1880465,
+     "sample_values": [
+      "C",
+      "G",
+      "A",
+      "D",
+      "F",
+      "E",
+      "B"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "B",
+       939376
+      ],
+      [
+       "A",
+       666919
+      ],
+      [
+       "C",
+       220077
+      ],
+      [
+       "D",
+       28427
+      ],
+      [
+       "E",
+       14107
+      ],
+      [
+       "F",
+       7786
+      ],
+      [
+       "G",
+       3773
+      ]
+     ],
+     "uniqueness": 3.7224835346576513e-06,
+     "zero_rate": 0.0
+    },
+    "FIRE_YEAR": {
+     "declared_type": "BIGINT",
+     "distinct": 24,
+     "family": "int",
+     "name": "FIRE_YEAR",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 2015.0,
+      "mean": 2003.7099743946312,
+      "min": 1992.0,
+      "p25": 1998.0,
+      "p50": 2004.0,
+      "p75": 2009.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 1880465,
+     "sample_values": [
+      "1994",
+      "2006",
+      "1995",
+      "1999",
+      "2001",
+      "2012",
+      "2013",
+      "2000",
+      "1997",
+      "2010"
+     ],
+     "text": {
+      "avg_len": 4.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2006",
+       114004
+      ],
+      [
+       "2000",
+       96416
+      ],
+      [
+       "2007",
+       95573
+      ],
+      [
+       "2011",
+       90552
+      ],
+      [
+       "1999",
+       89363
+      ],
+      [
+       "2005",
+       88604
+      ],
+      [
+       "2001",
+       86587
+      ],
+      [
+       "2008",
+       85378
+      ],
+      [
+       "2010",
+       79889
+      ],
+      [
+       "2009",
+       78325
+      ]
+     ],
+     "uniqueness": 1.2762800690254803e-05,
+     "zero_rate": 0.0
+    },
+    "LATITUDE": {
+     "declared_type": "DOUBLE",
+     "distinct": 894061,
+     "family": "float",
+     "name": "LATITUDE",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 70.3306,
+      "mean": 36.78121280528337,
+      "min": 17.93972222,
+      "p25": 32.8186,
+      "p50": 35.4525,
+      "p75": 40.8272
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 11,
+     "role": "float",
+     "rows": 1880465,
+     "sample_values": [
+      "35.191966",
+      "34.45624083",
+      "36.19589996",
+      "33.53448",
+      "29.0893",
+      "43.25275",
+      "45.7049",
+      "34.96869036",
+      "61.59806",
+      "41.884893"
+     ],
+     "text": {
+      "avg_len": 8.625497416862318,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 18,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "47.8666",
+       955
+      ],
+      [
+       "33.3353",
+       706
+      ],
+      [
+       "33.3517",
+       605
+      ],
+      [
+       "47.8833",
+       585
+      ],
+      [
+       "17.970539",
+       571
+      ],
+      [
+       "35.3",
+       526
+      ],
+      [
+       "33.925",
+       517
+      ],
+      [
+       "35.6833",
+       496
+      ],
+      [
+       "41.0665",
+       495
+      ],
+      [
+       "33.3167",
+       471
+      ]
+     ],
+     "uniqueness": 0.4754467644970792,
+     "zero_rate": 0.0
+    },
+    "LONGITUDE": {
+     "declared_type": "DOUBLE",
+     "distinct": 997536,
+     "family": "float",
+     "name": "LONGITUDE",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": -65.25694444,
+      "mean": -95.70494158755795,
+      "min": -178.8026,
+      "p25": -110.36347,
+      "p50": -92.043043,
+      "p75": -82.2976
+     },
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 12,
+     "role": "float",
+     "rows": 1880465,
+     "sample_values": [
+      "-91.14269625",
+      "-82.12076638",
+      "-73.4715",
+      "-75.47556725",
+      "-82.58369692",
+      "-73.951",
+      "-89.946307",
+      "-101.8375",
+      "-116.781644",
+      "-110.1628"
+     ],
+     "text": {
+      "avg_len": 9.961200554118264,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 19,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "-110.4518",
+       792
+      ],
+      [
+       "-123.6845",
+       745
+      ],
+      [
+       "-66.246414",
+       571
+      ],
+      [
+       "-110.4507",
+       507
+      ],
+      [
+       "-66.386131",
+       384
+      ],
+      [
+       "-123.6678",
+       371
+      ],
+      [
+       "-81.9",
+       358
+      ],
+      [
+       "-95.0169",
+       356
+      ],
+      [
+       "-79.75",
+       355
+      ],
+      [
+       "-66.114357",
+       352
+      ]
+     ],
+     "uniqueness": 0.5304730478897507,
+     "zero_rate": 0.0
+    },
+    "OWNER_CODE": {
+     "declared_type": "DOUBLE",
+     "distinct": 16,
+     "family": "int",
+     "name": "OWNER_CODE",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 15.0,
+      "mean": 10.596577974064925,
+      "min": 0.0,
+      "p25": 8.0,
+      "p50": 14.0,
+      "p75": 14.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 13,
+     "role": "int",
+     "rows": 1880465,
+     "sample_values": [
+      "5.0",
+      "4.0",
+      "13.0",
+      "14.0",
+      "8.0",
+      "2.0",
+      "7.0",
+      "0.0",
+      "1.0",
+      "9.0"
+     ],
+     "text": {
+      "avg_len": 3.601598009003092,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "14.0",
+       1050835
+      ],
+      [
+       "8.0",
+       314822
+      ],
+      [
+       "5.0",
+       188338
+      ],
+      [
+       "2.0",
+       106819
+      ],
+      [
+       "13.0",
+       71881
+      ],
+      [
+       "1.0",
+       63278
+      ],
+      [
+       "7.0",
+       30790
+      ],
+      [
+       "3.0",
+       17524
+      ],
+      [
+       "4.0",
+       12191
+      ],
+      [
+       "9.0",
+       8952
+      ]
+     ],
+     "uniqueness": 8.508533793503203e-06,
+     "zero_rate": 7.976750431409253e-06
+    },
+    "OWNER_DESCR": {
+     "declared_type": "VARCHAR",
+     "distinct": 16,
+     "family": "text",
+     "name": "OWNER_DESCR",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 14,
+     "role": "text",
+     "rows": 1880465,
+     "sample_values": [
+      "BIA",
+      "USFS",
+      "OTHER FEDERAL",
+      "BLM",
+      "COUNTY",
+      "STATE OR PRIVATE",
+      "STATE",
+      "BOR",
+      "MUNICIPAL/LOCAL",
+      "UNDEFINED FEDERAL"
+     ],
+     "text": {
+      "avg_len": 14.453211838561208,
+      "code_share": 0.39610149617248924,
+      "composite_share": 0.0022526343218299727,
+      "date_shape_share": 0.0,
+      "max_len": 21,
+      "min_len": 3,
+      "space_share": 0.6016458695056808,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "MISSING/NOT SPECIFIED",
+       1050835
+      ],
+      [
+       "PRIVATE",
+       314822
+      ],
+      [
+       "USFS",
+       188338
+      ],
+      [
+       "BIA",
+       106819
+      ],
+      [
+       "STATE OR PRIVATE",
+       71881
+      ],
+      [
+       "BLM",
+       63278
+      ],
+      [
+       "STATE",
+       30790
+      ],
+      [
+       "NPS",
+       17524
+      ],
+      [
+       "FWS",
+       12191
+      ],
+      [
+       "TRIBAL",
+       8952
+      ]
+     ],
+     "uniqueness": 8.508533793503203e-06,
+     "zero_rate": 0.0
+    },
+    "STATE": {
+     "declared_type": "VARCHAR",
+     "distinct": 52,
+     "family": "text",
+     "name": "STATE",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 15,
+     "role": "code",
+     "rows": 1880465,
+     "sample_values": [
+      "TX",
+      "OK",
+      "VA",
+      "ID",
+      "PR",
+      "WY",
+      "NE",
+      "ND",
+      "FL",
+      "AL"
+     ],
+     "text": {
+      "avg_len": 2.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "CA",
+       189550
+      ],
+      [
+       "GA",
+       168867
+      ],
+      [
+       "TX",
+       142021
+      ],
+      [
+       "NC",
+       111277
+      ],
+      [
+       "FL",
+       90261
+      ],
+      [
+       "SC",
+       81315
+      ],
+      [
+       "NY",
+       80870
+      ],
+      [
+       "MS",
+       79230
+      ],
+      [
+       "AZ",
+       71586
+      ],
+      [
+       "AL",
+       66570
+      ]
+     ],
+     "uniqueness": 2.765273482888541e-05,
+     "zero_rate": 0.0
+    },
+    "STAT_CAUSE_CODE": {
+     "declared_type": "DOUBLE",
+     "distinct": 13,
+     "family": "int",
+     "name": "STAT_CAUSE_CODE",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 13.0,
+      "mean": 5.9790370998662565,
+      "min": 1.0,
+      "p25": 3.0,
+      "p50": 5.0,
+      "p75": 9.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "int",
+     "rows": 1880465,
+     "sample_values": [
+      "5.0",
+      "4.0",
+      "13.0",
+      "8.0",
+      "2.0",
+      "7.0",
+      "1.0",
+      "9.0",
+      "10.0",
+      "3.0"
+     ],
+     "text": {
+      "avg_len": 3.1044778818005123,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "5.0",
+       429028
+      ],
+      [
+       "9.0",
+       323805
+      ],
+      [
+       "7.0",
+       281455
+      ],
+      [
+       "1.0",
+       278468
+      ],
+      [
+       "13.0",
+       166723
+      ],
+      [
+       "2.0",
+       147612
+      ],
+      [
+       "4.0",
+       76139
+      ],
+      [
+       "8.0",
+       61167
+      ],
+      [
+       "3.0",
+       52869
+      ],
+      [
+       "6.0",
+       33455
+      ]
+     ],
+     "uniqueness": 6.913183707221352e-06,
+     "zero_rate": 0.0
+    },
+    "STAT_CAUSE_DESCR": {
+     "declared_type": "VARCHAR",
+     "distinct": 13,
+     "family": "text",
+     "name": "STAT_CAUSE_DESCR",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "text",
+     "rows": 1880465,
+     "sample_values": [
+      "Fireworks",
+      "Missing/Undefined",
+      "Lightning",
+      "Children",
+      "Campfire",
+      "Debris Burning",
+      "Equipment Use",
+      "Structure",
+      "Smoking",
+      "Railroad"
+     ],
+     "text": {
+      "avg_len": 11.107070857474083,
+      "code_share": 0.0,
+      "composite_share": 0.08866051747838966,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 5,
+      "space_share": 0.3066475579178554,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Debris Burning",
+       429028
+      ],
+      [
+       "Miscellaneous",
+       323805
+      ],
+      [
+       "Arson",
+       281455
+      ],
+      [
+       "Lightning",
+       278468
+      ],
+      [
+       "Missing/Undefined",
+       166723
+      ],
+      [
+       "Equipment Use",
+       147612
+      ],
+      [
+       "Campfire",
+       76139
+      ],
+      [
+       "Children",
+       61167
+      ],
+      [
+       "Smoking",
+       52869
+      ],
+      [
+       "Railroad",
+       33455
+      ]
+     ],
+     "uniqueness": 6.913183707221352e-06,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 1880465,
+   "sample_rows": [
+    {
+     "CONT_DATE": "2453566.5",
+     "CONT_DOY": "196",
+     "CONT_TIME": "2010",
+     "COUNTY": "51",
+     "DISCOVERY_DATE": 2453566.5,
+     "DISCOVERY_DOY": 196,
+     "DISCOVERY_TIME": "1835",
+     "FIPS_CODE": "051",
+     "FIPS_NAME": "Mono",
+     "FIRE_SIZE": 0.1,
+     "FIRE_SIZE_CLASS": "A",
+     "FIRE_YEAR": 2005,
+     "LATITUDE": 38.39694444,
+     "LONGITUDE": -119.09777778,
+     "OWNER_CODE": 5.0,
+     "OWNER_DESCR": "USFS",
+     "STATE": "CA",
+     "STAT_CAUSE_CODE": 1.0,
+     "STAT_CAUSE_DESCR": "Lightning"
+    },
+    {
+     "CONT_DATE": "2453449.5",
+     "CONT_DOY": "79",
+     "CONT_TIME": "1715",
+     "COUNTY": "91",
+     "DISCOVERY_DATE": 2453449.5,
+     "DISCOVERY_DOY": 79,
+     "DISCOVERY_TIME": "1706",
+     "FIPS_CODE": "091",
+     "FIPS_NAME": "Howell",
+     "FIRE_SIZE": 0.1,
+     "FIRE_SIZE_CLASS": "A",
+     "FIRE_YEAR": 2005,
+     "LATITUDE": 36.8625,
+     "LONGITUDE": -92.05333333,
+     "OWNER_CODE": 13.0,
+     "OWNER_DESCR": "STATE OR PRIVATE",
+     "STATE": "MO",
+     "STAT_CAUSE_CODE": 5.0,
+     "STAT_CAUSE_DESCR": "Debris Burning"
+    },
+    {
+     "CONT_DATE": "2453811.5",
+     "CONT_DOY": "76",
+     "CONT_TIME": "1000",
+     "COUNTY": "23",
+     "DISCOVERY_DATE": 2453810.5,
+     "DISCOVERY_DOY": 75,
+     "DISCOVERY_TIME": "2030",
+     "FIPS_CODE": "023",
+     "FIPS_NAME": "Botetourt",
+     "FIRE_SIZE": 35.0,
+     "FIRE_SIZE_CLASS": "C",
+     "FIRE_YEAR": 2006,
+     "LATITUDE": 37.43138889,
+     "LONGITUDE": -79.815,
+     "OWNER_CODE": 5.0,
+     "OWNER_DESCR": "USFS",
+     "STATE": "VA",
+     "STAT_CAUSE_CODE": 9.0,
+     "STAT_CAUSE_DESCR": "Miscellaneous"
+    },
+    {
+     "CONT_DATE": "2454137.5",
+     "CONT_DOY": "37",
+     "CONT_TIME": "2000",
+     "COUNTY": "111",
+     "DISCOVERY_DATE": 2454137.5,
+     "DISCOVERY_DOY": 37,
+     "DISCOVERY_TIME": "1600",
+     "FIPS_CODE": "111",
+     "FIPS_NAME": "Fannin",
+     "FIRE_SIZE": 2.1,
+     "FIRE_SIZE_CLASS": "B",
+     "FIRE_YEAR": 2007,
+     "LATITUDE": 34.85083333,
+     "LONGITUDE": -84.28861111,
+     "OWNER_CODE": 5.0,
+     "OWNER_DESCR": "USFS",
+     "STATE": "GA",
+     "STAT_CAUSE_CODE": 9.0,
+     "STAT_CAUSE_DESCR": "Miscellaneous"
+    },
+    {
+     "CONT_DATE": "2454303.5",
+     "CONT_DOY": "203",
+     "CONT_TIME": "1200",
+     "COUNTY": "3",
+     "DISCOVERY_DATE": 2454302.5,
+     "DISCOVERY_DOY": 202,
+     "DISCOVERY_TIME": "1730",
+     "FIPS_CODE": "003",
+     "FIPS_NAME": "Catron",
+     "FIRE_SIZE": 0.1,
+     "FIRE_SIZE_CLASS": "A",
+     "FIRE_YEAR": 2007,
+     "LATITUDE": 34.06888889,
+     "LONGITUDE": -108.7125,
+     "OWNER_CODE": 5.0,
+     "OWNER_DESCR": "USFS",
+     "STATE": "NM",
+     "STAT_CAUSE_CODE": 1.0,
+     "STAT_CAUSE_DESCR": "Lightning"
+    }
+   ]
+  }
+ }
+}

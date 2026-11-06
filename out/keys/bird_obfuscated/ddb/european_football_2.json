@@ -1,0 +1,1786 @@
+{
+ "accept": 70,
+ "db_id": "european_football_2",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "Country": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "League.col_001",
+       "League.col_002",
+       "Match.col_002",
+       "Match.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "League": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    },
+    {
+     "column": "col_002",
+     "score": 86.062
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Country.col_001",
+       "League.col_002",
+       "Match.col_002",
+       "Match.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Country.col_001",
+       "League.col_001",
+       "Match.col_002",
+       "Match.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 86.062
+    },
+    "col_003": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 51.625
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "Match": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Country.col_001",
+       "League.col_001",
+       "League.col_002",
+       "Match.col_002",
+       "Match.col_003",
+       "Match.col_005",
+       "Match.col_008",
+       "Match.col_009",
+       "Match.col_014",
+       "Match.col_015",
+       "Match.col_016",
+       "Match.col_017",
+       "Match.col_018",
+       "Match.col_019",
+       "Match.col_020",
+       "Match.col_021",
+       "Match.col_022",
+       "Match.col_023",
+       "Match.col_024",
+       "Match.col_025",
+       "Match.col_026",
+       "Match.col_027",
+       "Match.col_028",
+       "Match.col_029",
+       "Match.col_030",
+       "Match.col_031",
+       "Match.col_032",
+       "Match.col_033",
+       "Match.col_036",
+       "Match.col_037",
+       "Match.col_038",
+       "Match.col_039",
+       "Match.col_040",
+       "Match.col_041",
+       "Match.col_042",
+       "Match.col_043",
+       "Match.col_044",
+       "Match.col_045",
+       "Match.col_046",
+       "Match.col_047",
+       "Match.col_048",
+       "Match.col_049",
+       "Match.col_050",
+       "Match.col_051",
+       "Match.col_052",
+       "Match.col_053",
+       "Match.col_054",
+       "Match.col_055",
+       "Player.col_001",
+       "Player.col_007",
+       "Player_Attributes.col_005",
+       "Player_Attributes.col_006",
+       "Player_Attributes.col_010",
+       "Player_Attributes.col_011",
+       "Player_Attributes.col_012",
+       "Player_Attributes.col_013",
+       "Player_Attributes.col_014",
+       "Player_Attributes.col_015",
+       "Player_Attributes.col_016",
+       "Player_Attributes.col_017",
+       "Player_Attributes.col_018",
+       "Player_Attributes.col_019",
+       "Player_Attributes.col_020",
+       "Player_Attributes.col_021",
+       "Player_Attributes.col_022",
+       "Player_Attributes.col_023",
+       "Player_Attributes.col_024",
+       "Player_Attributes.col_025",
+       "Player_Attributes.col_026",
+       "Player_Attributes.col_027",
+       "Player_Attributes.col_028",
+       "Player_Attributes.col_029",
+       "Player_Attributes.col_030",
+       "Player_Attributes.col_031",
+       "Player_Attributes.col_032",
+       "Player_Attributes.col_033",
+       "Player_Attributes.col_034",
+       "Player_Attributes.col_035",
+       "Player_Attributes.col_036",
+       "Player_Attributes.col_037",
+       "Player_Attributes.col_038",
+       "Player_Attributes.col_039",
+       "Player_Attributes.col_040",
+       "Player_Attributes.col_041",
+       "Player_Attributes.col_042",
+       "Team.col_002",
+       "Team_Attributes.col_001",
+       "Team_Attributes.col_003",
+       "Team_Attributes.col_005",
+       "Team_Attributes.col_007",
+       "Team_Attributes.col_009",
+       "Team_Attributes.col_012",
+       "Team_Attributes.col_014",
+       "Team_Attributes.col_016",
+       "Team_Attributes.col_019",
+       "Team_Attributes.col_021",
+       "Team_Attributes.col_023"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00042341891527772433
+     },
+     "phi": 0.85,
+     "score": 15.938
+    },
+    "col_003": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00042341891527772433
+     },
+     "phi": 0.7,
+     "score": 13.125
+    },
+    "col_004": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00030794102929289043
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_005": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.0014627198891412295
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_006": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.06520651295276954
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_007": {
+     "base": 81.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.688
+    },
+    "col_008": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.01150929596982178
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_009": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.01150929596982178
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_010": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.00042341891527772433
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_011": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.000384926286616113
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_012": {
+     "rejected": "has nulls"
+    },
+    "col_013": {
+     "rejected": "has nulls"
+    },
+    "col_014": {
+     "rejected": "has nulls"
+    },
+    "col_015": {
+     "rejected": "has nulls"
+    },
+    "col_016": {
+     "rejected": "has nulls"
+    },
+    "col_017": {
+     "rejected": "has nulls"
+    },
+    "col_018": {
+     "rejected": "has nulls"
+    },
+    "col_019": {
+     "rejected": "has nulls"
+    },
+    "col_020": {
+     "rejected": "has nulls"
+    },
+    "col_021": {
+     "rejected": "has nulls"
+    },
+    "col_022": {
+     "rejected": "has nulls"
+    },
+    "col_023": {
+     "rejected": "has nulls"
+    },
+    "col_024": {
+     "rejected": "has nulls"
+    },
+    "col_025": {
+     "rejected": "has nulls"
+    },
+    "col_026": {
+     "rejected": "has nulls"
+    },
+    "col_027": {
+     "rejected": "has nulls"
+    },
+    "col_028": {
+     "rejected": "has nulls"
+    },
+    "col_029": {
+     "rejected": "has nulls"
+    },
+    "col_030": {
+     "rejected": "has nulls"
+    },
+    "col_031": {
+     "rejected": "has nulls"
+    },
+    "col_032": {
+     "rejected": "has nulls"
+    },
+    "col_033": {
+     "rejected": "has nulls"
+    },
+    "col_034": {
+     "rejected": "has nulls"
+    },
+    "col_035": {
+     "rejected": "has nulls"
+    },
+    "col_036": {
+     "rejected": "has nulls"
+    },
+    "col_037": {
+     "rejected": "has nulls"
+    },
+    "col_038": {
+     "rejected": "has nulls"
+    },
+    "col_039": {
+     "rejected": "has nulls"
+    },
+    "col_040": {
+     "rejected": "has nulls"
+    },
+    "col_041": {
+     "rejected": "has nulls"
+    },
+    "col_042": {
+     "rejected": "has nulls"
+    },
+    "col_043": {
+     "rejected": "has nulls"
+    },
+    "col_044": {
+     "rejected": "has nulls"
+    },
+    "col_045": {
+     "rejected": "has nulls"
+    },
+    "col_046": {
+     "rejected": "has nulls"
+    },
+    "col_047": {
+     "rejected": "has nulls"
+    },
+    "col_048": {
+     "rejected": "has nulls"
+    },
+    "col_049": {
+     "rejected": "has nulls"
+    },
+    "col_050": {
+     "rejected": "has nulls"
+    },
+    "col_051": {
+     "rejected": "has nulls"
+    },
+    "col_052": {
+     "rejected": "has nulls"
+    },
+    "col_053": {
+     "rejected": "has nulls"
+    },
+    "col_054": {
+     "rejected": "has nulls"
+    },
+    "col_055": {
+     "rejected": "has nulls"
+    },
+    "col_056": {
+     "rejected": "has nulls"
+    },
+    "col_057": {
+     "rejected": "has nulls"
+    },
+    "col_058": {
+     "rejected": "has nulls"
+    },
+    "col_059": {
+     "rejected": "has nulls"
+    },
+    "col_060": {
+     "rejected": "has nulls"
+    },
+    "col_061": {
+     "rejected": "has nulls"
+    },
+    "col_062": {
+     "rejected": "has nulls"
+    },
+    "col_063": {
+     "rejected": "has nulls"
+    },
+    "col_064": {
+     "rejected": "has nulls"
+    },
+    "col_065": {
+     "rejected": "has nulls"
+    },
+    "col_066": {
+     "rejected": "has nulls"
+    },
+    "col_067": {
+     "rejected": "has nulls"
+    },
+    "col_068": {
+     "rejected": "has nulls"
+    },
+    "col_069": {
+     "rejected": "has nulls"
+    },
+    "col_070": {
+     "rejected": "has nulls"
+    },
+    "col_071": {
+     "rejected": "has nulls"
+    },
+    "col_072": {
+     "rejected": "has nulls"
+    },
+    "col_073": {
+     "rejected": "has nulls"
+    },
+    "col_074": {
+     "rejected": "has nulls"
+    },
+    "col_075": {
+     "rejected": "has nulls"
+    },
+    "col_076": {
+     "rejected": "has nulls"
+    },
+    "col_077": {
+     "rejected": "has nulls"
+    },
+    "col_078": {
+     "rejected": "has nulls"
+    },
+    "col_079": {
+     "rejected": "has nulls"
+    },
+    "col_080": {
+     "rejected": "has nulls"
+    },
+    "col_081": {
+     "rejected": "has nulls"
+    },
+    "col_082": {
+     "rejected": "has nulls"
+    },
+    "col_083": {
+     "rejected": "has nulls"
+    },
+    "col_084": {
+     "rejected": "has nulls"
+    },
+    "col_085": {
+     "rejected": "has nulls"
+    },
+    "col_086": {
+     "rejected": "has nulls"
+    },
+    "col_087": {
+     "rejected": "has nulls"
+    },
+    "col_088": {
+     "rejected": "has nulls"
+    },
+    "col_089": {
+     "rejected": "has nulls"
+    },
+    "col_090": {
+     "rejected": "has nulls"
+    },
+    "col_091": {
+     "rejected": "has nulls"
+    },
+    "col_092": {
+     "rejected": "has nulls"
+    },
+    "col_093": {
+     "rejected": "has nulls"
+    },
+    "col_094": {
+     "rejected": "has nulls"
+    },
+    "col_095": {
+     "rejected": "has nulls"
+    },
+    "col_096": {
+     "rejected": "has nulls"
+    },
+    "col_097": {
+     "rejected": "has nulls"
+    },
+    "col_098": {
+     "rejected": "has nulls"
+    },
+    "col_099": {
+     "rejected": "has nulls"
+    },
+    "col_100": {
+     "rejected": "has nulls"
+    },
+    "col_101": {
+     "rejected": "has nulls"
+    },
+    "col_102": {
+     "rejected": "has nulls"
+    },
+    "col_103": {
+     "rejected": "has nulls"
+    },
+    "col_104": {
+     "rejected": "has nulls"
+    },
+    "col_105": {
+     "rejected": "has nulls"
+    },
+    "col_106": {
+     "rejected": "has nulls"
+    },
+    "col_107": {
+     "rejected": "has nulls"
+    },
+    "col_108": {
+     "rejected": "has nulls"
+    },
+    "col_109": {
+     "rejected": "has nulls"
+    },
+    "col_110": {
+     "rejected": "has nulls"
+    },
+    "col_111": {
+     "rejected": "has nulls"
+    },
+    "col_112": {
+     "rejected": "has nulls"
+    },
+    "col_113": {
+     "rejected": "has nulls"
+    },
+    "col_114": {
+     "rejected": "has nulls"
+    },
+    "col_115": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "Player": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    },
+    {
+     "column": "col_002",
+     "score": 86.062
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Match.col_005",
+       "Match.col_008",
+       "Match.col_009",
+       "Match.col_014",
+       "Match.col_015",
+       "Match.col_016",
+       "Match.col_017",
+       "Match.col_018",
+       "Match.col_019",
+       "Match.col_020",
+       "Match.col_021",
+       "Match.col_022",
+       "Match.col_023",
+       "Match.col_024",
+       "Match.col_025",
+       "Match.col_026",
+       "Match.col_027",
+       "Match.col_028",
+       "Match.col_029",
+       "Match.col_030",
+       "Match.col_031",
+       "Match.col_032",
+       "Match.col_033",
+       "Match.col_036",
+       "Match.col_037",
+       "Match.col_038",
+       "Match.col_039",
+       "Match.col_040",
+       "Match.col_041",
+       "Match.col_042",
+       "Match.col_043",
+       "Match.col_044",
+       "Match.col_045",
+       "Match.col_046",
+       "Match.col_047",
+       "Match.col_048",
+       "Match.col_049",
+       "Match.col_050",
+       "Match.col_051",
+       "Match.col_052",
+       "Match.col_053",
+       "Match.col_054",
+       "Match.col_055",
+       "Player.col_007",
+       "Player_Attributes.col_005",
+       "Player_Attributes.col_006",
+       "Player_Attributes.col_010",
+       "Player_Attributes.col_011",
+       "Player_Attributes.col_012",
+       "Player_Attributes.col_013",
+       "Player_Attributes.col_014",
+       "Player_Attributes.col_015",
+       "Player_Attributes.col_016",
+       "Player_Attributes.col_017",
+       "Player_Attributes.col_018",
+       "Player_Attributes.col_019",
+       "Player_Attributes.col_020",
+       "Player_Attributes.col_021",
+       "Player_Attributes.col_022",
+       "Player_Attributes.col_023",
+       "Player_Attributes.col_024",
+       "Player_Attributes.col_025",
+       "Player_Attributes.col_026",
+       "Player_Attributes.col_027",
+       "Player_Attributes.col_028",
+       "Player_Attributes.col_029",
+       "Player_Attributes.col_030",
+       "Player_Attributes.col_031",
+       "Player_Attributes.col_032",
+       "Player_Attributes.col_033",
+       "Player_Attributes.col_034",
+       "Player_Attributes.col_035",
+       "Player_Attributes.col_036",
+       "Player_Attributes.col_037",
+       "Player_Attributes.col_038",
+       "Player_Attributes.col_039",
+       "Player_Attributes.col_040",
+       "Player_Attributes.col_041",
+       "Player_Attributes.col_042",
+       "Team.col_002",
+       "Team_Attributes.col_001",
+       "Team_Attributes.col_003",
+       "Team_Attributes.col_005",
+       "Team_Attributes.col_007",
+       "Team_Attributes.col_009",
+       "Team_Attributes.col_012",
+       "Team_Attributes.col_014",
+       "Team_Attributes.col_016",
+       "Team_Attributes.col_019",
+       "Team_Attributes.col_021",
+       "Team_Attributes.col_023"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Match.col_056",
+       "Match.col_057",
+       "Match.col_058",
+       "Match.col_059",
+       "Match.col_060",
+       "Match.col_061",
+       "Match.col_062",
+       "Match.col_063",
+       "Match.col_064",
+       "Match.col_065",
+       "Match.col_066",
+       "Match.col_067",
+       "Match.col_068",
+       "Match.col_069",
+       "Match.col_070",
+       "Match.col_071",
+       "Match.col_072",
+       "Match.col_073",
+       "Match.col_074",
+       "Match.col_075",
+       "Match.col_076",
+       "Match.col_077",
+       "Player_Attributes.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 86.062
+    },
+    "col_003": {
+     "base": 72.552,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9808318264014466,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9808318264014466
+     },
+     "phi": 0.7,
+     "score": 50.786
+    },
+    "col_004": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Player_Attributes.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 55.688
+    },
+    "col_005": {
+     "base": 14.018,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.04428370504319865,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5209764918625678
+     },
+     "phi": 0.55,
+     "score": 7.71
+    },
+    "col_006": {
+     "base": 11.875,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.0018083182640144665
+     },
+     "phi": 0.55,
+     "score": 6.531
+    },
+    "col_007": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0045207956600361665
+     },
+     "phi": 0.55,
+     "score": 10.312
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "Player_Attributes": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Country.col_001",
+       "League.col_001",
+       "League.col_002",
+       "Match.col_001",
+       "Match.col_002",
+       "Match.col_003",
+       "Match.col_005",
+       "Match.col_008",
+       "Match.col_009",
+       "Match.col_014",
+       "Match.col_015",
+       "Match.col_016",
+       "Match.col_017",
+       "Match.col_018",
+       "Match.col_019",
+       "Match.col_020",
+       "Match.col_021",
+       "Match.col_022",
+       "Match.col_023",
+       "Match.col_024",
+       "Match.col_025",
+       "Match.col_026",
+       "Match.col_027",
+       "Match.col_028",
+       "Match.col_029",
+       "Match.col_030",
+       "Match.col_031",
+       "Match.col_032",
+       "Match.col_033",
+       "Match.col_036",
+       "Match.col_037",
+       "Match.col_038",
+       "Match.col_039",
+       "Match.col_040",
+       "Match.col_041",
+       "Match.col_042",
+       "Match.col_043",
+       "Match.col_044",
+       "Match.col_045",
+       "Match.col_046",
+       "Match.col_047",
+       "Match.col_048",
+       "Match.col_049",
+       "Match.col_050",
+       "Match.col_051",
+       "Match.col_052",
+       "Match.col_053",
+       "Match.col_054",
+       "Match.col_055",
+       "Player.col_001",
+       "Player.col_007",
+       "Player_Attributes.col_005",
+       "Player_Attributes.col_006",
+       "Player_Attributes.col_010",
+       "Player_Attributes.col_011",
+       "Player_Attributes.col_012",
+       "Player_Attributes.col_013",
+       "Player_Attributes.col_014",
+       "Player_Attributes.col_015",
+       "Player_Attributes.col_016",
+       "Player_Attributes.col_017",
+       "Player_Attributes.col_018",
+       "Player_Attributes.col_019",
+       "Player_Attributes.col_020",
+       "Player_Attributes.col_021",
+       "Player_Attributes.col_022",
+       "Player_Attributes.col_023",
+       "Player_Attributes.col_024",
+       "Player_Attributes.col_025",
+       "Player_Attributes.col_026",
+       "Player_Attributes.col_027",
+       "Player_Attributes.col_028",
+       "Player_Attributes.col_029",
+       "Player_Attributes.col_030",
+       "Player_Attributes.col_031",
+       "Player_Attributes.col_032",
+       "Player_Attributes.col_033",
+       "Player_Attributes.col_034",
+       "Player_Attributes.col_035",
+       "Player_Attributes.col_036",
+       "Player_Attributes.col_037",
+       "Player_Attributes.col_038",
+       "Player_Attributes.col_039",
+       "Player_Attributes.col_040",
+       "Player_Attributes.col_041",
+       "Player_Attributes.col_042",
+       "Team.col_001",
+       "Team.col_002",
+       "Team.col_003",
+       "Team_Attributes.col_001",
+       "Team_Attributes.col_002",
+       "Team_Attributes.col_003",
+       "Team_Attributes.col_005",
+       "Team_Attributes.col_007",
+       "Team_Attributes.col_009",
+       "Team_Attributes.col_012",
+       "Team_Attributes.col_014",
+       "Team_Attributes.col_016",
+       "Team_Attributes.col_019",
+       "Team_Attributes.col_021",
+       "Team_Attributes.col_023"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.060126754285838524
+     },
+     "phi": 0.85,
+     "score": 15.938
+    },
+    "col_003": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0601158834208438
+     },
+     "phi": 0.7,
+     "score": 13.125
+    },
+    "col_004": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0010707802019806717
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_005": {
+     "rejected": "has nulls"
+    },
+    "col_006": {
+     "rejected": "has nulls"
+    },
+    "col_007": {
+     "rejected": "has nulls"
+    },
+    "col_008": {
+     "rejected": "has nulls"
+    },
+    "col_009": {
+     "rejected": "has nulls"
+    },
+    "col_010": {
+     "rejected": "has nulls"
+    },
+    "col_011": {
+     "rejected": "has nulls"
+    },
+    "col_012": {
+     "rejected": "has nulls"
+    },
+    "col_013": {
+     "rejected": "has nulls"
+    },
+    "col_014": {
+     "rejected": "has nulls"
+    },
+    "col_015": {
+     "rejected": "has nulls"
+    },
+    "col_016": {
+     "rejected": "has nulls"
+    },
+    "col_017": {
+     "rejected": "has nulls"
+    },
+    "col_018": {
+     "rejected": "has nulls"
+    },
+    "col_019": {
+     "rejected": "has nulls"
+    },
+    "col_020": {
+     "rejected": "has nulls"
+    },
+    "col_021": {
+     "rejected": "has nulls"
+    },
+    "col_022": {
+     "rejected": "has nulls"
+    },
+    "col_023": {
+     "rejected": "has nulls"
+    },
+    "col_024": {
+     "rejected": "has nulls"
+    },
+    "col_025": {
+     "rejected": "has nulls"
+    },
+    "col_026": {
+     "rejected": "has nulls"
+    },
+    "col_027": {
+     "rejected": "has nulls"
+    },
+    "col_028": {
+     "rejected": "has nulls"
+    },
+    "col_029": {
+     "rejected": "has nulls"
+    },
+    "col_030": {
+     "rejected": "has nulls"
+    },
+    "col_031": {
+     "rejected": "has nulls"
+    },
+    "col_032": {
+     "rejected": "has nulls"
+    },
+    "col_033": {
+     "rejected": "has nulls"
+    },
+    "col_034": {
+     "rejected": "has nulls"
+    },
+    "col_035": {
+     "rejected": "has nulls"
+    },
+    "col_036": {
+     "rejected": "has nulls"
+    },
+    "col_037": {
+     "rejected": "has nulls"
+    },
+    "col_038": {
+     "rejected": "has nulls"
+    },
+    "col_039": {
+     "rejected": "has nulls"
+    },
+    "col_040": {
+     "rejected": "has nulls"
+    },
+    "col_041": {
+     "rejected": "has nulls"
+    },
+    "col_042": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "Team": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 101.25
+    },
+    {
+     "column": "col_002",
+     "score": 86.062
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Match.col_014",
+       "Match.col_015",
+       "Match.col_016",
+       "Match.col_017",
+       "Match.col_018",
+       "Match.col_019",
+       "Match.col_020",
+       "Match.col_021",
+       "Match.col_022",
+       "Match.col_023",
+       "Match.col_024",
+       "Match.col_025",
+       "Match.col_026",
+       "Match.col_027",
+       "Match.col_028",
+       "Match.col_029",
+       "Match.col_030",
+       "Match.col_031",
+       "Match.col_032",
+       "Match.col_033",
+       "Match.col_036",
+       "Match.col_037",
+       "Match.col_038",
+       "Match.col_039",
+       "Match.col_040",
+       "Match.col_041",
+       "Match.col_042",
+       "Match.col_043",
+       "Match.col_044",
+       "Match.col_045",
+       "Match.col_046",
+       "Match.col_047",
+       "Match.col_048",
+       "Match.col_049",
+       "Match.col_050",
+       "Match.col_051",
+       "Match.col_052",
+       "Match.col_053",
+       "Match.col_054",
+       "Match.col_055"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 101.25
+    },
+    "col_002": {
+     "base": 81.25,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Match.col_008",
+       "Match.col_009",
+       "Team_Attributes.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 86.062
+    },
+    "col_003": {
+     "rejected": "has nulls"
+    },
+    "col_004": {
+     "base": 73.123,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.9899665551839465,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9899665551839465
+     },
+     "phi": 0.55,
+     "score": 40.218
+    },
+    "col_005": {
+     "base": 72.071,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7731326644370122,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.8662207357859532
+     },
+     "phi": 0.55,
+     "score": 39.639
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "Team_Attributes": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Match.col_005",
+       "Match.col_014",
+       "Match.col_015",
+       "Match.col_016",
+       "Match.col_017",
+       "Match.col_018",
+       "Match.col_019",
+       "Match.col_020",
+       "Match.col_021",
+       "Match.col_022",
+       "Match.col_023",
+       "Match.col_024",
+       "Match.col_025",
+       "Match.col_026",
+       "Match.col_027",
+       "Match.col_028",
+       "Match.col_029",
+       "Match.col_030",
+       "Match.col_031",
+       "Match.col_032",
+       "Match.col_033",
+       "Match.col_036",
+       "Match.col_037",
+       "Match.col_038",
+       "Match.col_039",
+       "Match.col_040",
+       "Match.col_041",
+       "Match.col_042",
+       "Match.col_043",
+       "Match.col_044",
+       "Match.col_045",
+       "Match.col_046",
+       "Match.col_047",
+       "Match.col_048",
+       "Match.col_049",
+       "Match.col_050",
+       "Match.col_051",
+       "Match.col_052",
+       "Match.col_053",
+       "Match.col_054",
+       "Match.col_055",
+       "Player.col_007",
+       "Player_Attributes.col_005",
+       "Player_Attributes.col_006",
+       "Player_Attributes.col_010",
+       "Player_Attributes.col_011",
+       "Player_Attributes.col_012",
+       "Player_Attributes.col_013",
+       "Player_Attributes.col_014",
+       "Player_Attributes.col_015",
+       "Player_Attributes.col_016",
+       "Player_Attributes.col_017",
+       "Player_Attributes.col_018",
+       "Player_Attributes.col_019",
+       "Player_Attributes.col_020",
+       "Player_Attributes.col_021",
+       "Player_Attributes.col_022",
+       "Player_Attributes.col_023",
+       "Player_Attributes.col_024",
+       "Player_Attributes.col_025",
+       "Player_Attributes.col_026",
+       "Player_Attributes.col_027",
+       "Player_Attributes.col_028",
+       "Player_Attributes.col_029",
+       "Player_Attributes.col_030",
+       "Player_Attributes.col_031",
+       "Player_Attributes.col_032",
+       "Player_Attributes.col_033",
+       "Player_Attributes.col_034",
+       "Player_Attributes.col_035",
+       "Player_Attributes.col_036",
+       "Player_Attributes.col_037",
+       "Player_Attributes.col_038",
+       "Player_Attributes.col_039",
+       "Player_Attributes.col_040",
+       "Player_Attributes.col_041",
+       "Player_Attributes.col_042",
+       "Team_Attributes.col_005",
+       "Team_Attributes.col_007",
+       "Team_Attributes.col_009",
+       "Team_Attributes.col_012",
+       "Team_Attributes.col_014",
+       "Team_Attributes.col_016",
+       "Team_Attributes.col_019",
+       "Team_Attributes.col_021",
+       "Team_Attributes.col_023"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "col_002": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.19547325102880658
+     },
+     "phi": 0.85,
+     "score": 15.938
+    },
+    "col_003": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.19753086419753085
+     },
+     "phi": 0.7,
+     "score": 13.125
+    },
+    "col_004": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00411522633744856
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_005": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.03909465020576132
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_006": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_007": {
+     "rejected": "has nulls"
+    },
+    "col_008": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_009": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.039780521262002745
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_010": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_011": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0013717421124828531
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_012": {
+     "base": 18.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.03429355281207133
+     },
+     "phi": 0.55,
+     "score": 10.312
+    },
+    "col_013": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_014": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.038408779149519894
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_015": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_016": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.03909465020576132
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_017": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_018": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0013717421124828531
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_019": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.03292181069958848
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_020": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_021": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.03223593964334705
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_022": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_023": {
+     "base": 37.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.029492455418381344
+     },
+     "phi": 0.55,
+     "score": 20.625
+    },
+    "col_024": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.00205761316872428
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "col_025": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0013717421124828531
+     },
+     "phi": 0.55,
+     "score": 6.188
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  }
+ },
+ "use_names": false
+}

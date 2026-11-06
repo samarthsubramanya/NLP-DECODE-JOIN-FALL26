@@ -1,0 +1,3780 @@
+{
+ "db_id": "FIBEN",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 50,
+ "tables": {
+  "ACCOUNTSPAYABLEANDACCRUEDLIABILITIES": {
+   "table": {
+    "name": "ACCOUNTSPAYABLEANDACCRUEDLIABILITIES",
+    "purpose": "XBRL-tagged fact table for the element 'AccountsPayableCurrent' (accounts payable and accrued liabilities, current) as reported in financial statements. Each row is one reported instance of this element, keyed to an entry in ELEMENTSOFFINANCIALREPORT which carries the entity, period, and monetary value. The table itself only stores the element name; the actual amounts and context live in the referenced table."
+   },
+   "columns": {
+    "ACCOUNTSPAYABLEANDACCRUEDLIABILITIESID": {
+     "role": "identifier",
+     "name": "Accounts payable and accrued liabilities fact ID",
+     "description": "Primary key; surrogate identifier for one reported AccountsPayableCurrent fact. One-to-one with ELEMENTSOFFINANCIALREPORT.ELEMENTSOFFINANCIALREPORTID, which holds the actual value and reporting context.",
+     "status": "resolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "Element name",
+     "description": "The XBRL element name of the reported fact. Constant value 'AccountsPayableCurrent' in all rows, indicating this table stores only facts for the current accounts payable (and accrued liabilities) line item.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ACCOUNTSPAYABLEDETAILS": {
+   "table": {
+    "name": "ACCOUNTSPAYABLEDETAILS",
+    "purpose": "Accounts payable detail records, likely a breakdown/detail table supporting the ACCOUNTSPAYABLEANDACCRUEDLIABILITIES disclosure. The table is empty (0 rows), so its meaning is inferred only from its name and the surrounding financial-reporting schema; no value evidence exists to confirm it."
+   },
+   "columns": {
+    "ACCOUNTSPAYABLEDETAILSID": {
+     "role": "identifier",
+     "name": "ACCOUNTSPAYABLEDETAILSID",
+     "description": "Primary key identifier for an accounts payable detail record. Declared BIGINT and flagged as the table's primary key, but the table has no rows, so this is inferred from the name and key designation only.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ACCRUEDLIABILITIES": {
+   "table": {
+    "name": "ACCRUEDLIABILITIES",
+    "purpose": "Accrued liabilities disclosure table (likely from an XBRL/financial-reporting schema). The table is empty, so its purpose is inferred from the name and the surrounding financial-statement tables only. It presumably stores accrued liability line items reported in filings, keyed by an ID and linked to a name/label element. No row-level evidence is available to confirm this."
+   },
+   "columns": {
+    "ACCRUEDLIABILITIESID": {
+     "role": "identifier",
+     "name": "ACCRUEDLIABILITIESID",
+     "description": "Primary key identifying an accrued liabilities record. The table has zero rows, so this is inferred solely from the column name and its detection as the primary key; no value evidence exists.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ACCUMULATEDOTHERCOMPREHENSIVEINCOMELOSS": {
+   "table": {
+    "name": "",
+    "purpose": "The table name suggests it stores accumulated other comprehensive income (loss) amounts, but the table contains zero rows and no column has any observed values, so its meaning cannot be confirmed from the data. The database context (XBRL-style financial reporting tables like COMPREHENSIVEINCOMELOSS, DEFINEDBENEFITPLANAMOUNTSRECOGNIZEDINOTHERCOMPREHENSIVEINCOMELOSS, FOREIGNCURRENCYTRANSLATION) is consistent with that reading, but this is inference from names only, not from data."
+   },
+   "columns": {
+    "ACCUMULATEDOTHERCOMPREHENSIVEINCOMELOSSID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ADDRESS": {
+   "table": {
+    "name": "ADDRESS",
+    "purpose": "Supertype/union table for addresses: each row is an address that is either a postal (physical) address or a virtual (electronic) address, and is indexed to an owner (a person or an autonomous agent). It serves as the common parent of POSTALADDRESS and VIRTUALADDRESS, each linked one-to-one back to this table, and points to the entity (person/agent) the address belongs to via ISINDEXTO. The database appears to be an XBRL/financial-reporting style model (SEC-style tables), so this is likely part of a filer/entity contact model rather than a general customer database."
+   },
+   "columns": {
+    "ADDRESSID": {
+     "role": "identifier",
+     "name": "Address ID",
+     "description": "Primary key of the ADDRESS table; unique surrogate identifier for each address row. Referenced one-to-one by POSTALADDRESS.POSTALADDRESSID and VIRTUALADDRESS.VIRTUALADDRESSID, confirming ADDRESS is the parent/supertype of those two address types.",
+     "status": "resolved"
+    },
+    "ISINDEXTO": {
+     "role": "foreign_key",
+     "name": "Owner entity ID (index to person or autonomous agent)",
+     "description": "Foreign key to the entity that owns this address. Joins many-to-one to both PERSON.PERSONID and AUTONOMOUSAGENT.AUTONOMOUSAGENTID, so it points to either a person or an autonomous agent; the target table is not distinguishable from the value alone. About 25% of addresses share an owner (multiple addresses per entity).",
+     "status": "resolved"
+    },
+    "POSTALADDRESS": {
+     "role": "foreign_key",
+     "name": "Postal address ID",
+     "description": "Foreign key to POSTALADDRESS.POSTALADDRESSID for rows that are physical/postal addresses. Null for rows that are virtual addresses; the POSTALADDRESS and VIRTUALADDRESS columns are mutually exclusive (null rates 61.9% and 38.1% sum to 100%).",
+     "status": "resolved"
+    },
+    "VIRTUALADDRESS": {
+     "role": "foreign_key",
+     "name": "Virtual address ID",
+     "description": "Foreign key to VIRTUALADDRESS.VIRTUALADDRESSID for rows that are virtual/electronic addresses (e.g. email or web). Null for rows that are postal addresses; mutually exclusive with POSTALADDRESS.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ALLOWANCEFORCREDITLOSSES": {
+   "table": {
+    "name": "ALLOWANCEFORCREDITLOSSES",
+    "purpose": "Likely represents an allowance for credit losses (a valuation/qualifying account for expected credit losses on receivables or financing receivables), consistent with the XBRL-style naming of the surrounding tables (e.g., FINANCINGRECEIVABLEALLOWANCEFORCREDITLOSSES, VALUATIONANDQUALIFYINGACCOUNTSDISCLOSURE). However, the table is empty (0 rows), so this is inferred from the name and database context only, not from data. The row grain (per entity, per period, per receivable portfolio, etc.) cannot be determined."
+   },
+   "columns": {
+    "ALLOWANCEFORCREDITLOSSESID": {
+     "role": "identifier",
+     "name": "ALLOWANCEFORCREDITLOSSESID",
+     "description": "Surrogate primary key for the allowance-for-credit-losses record. Declared BIGINT and flagged as the table's primary key, but the table is empty so no values exist to confirm.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ANTIDILUTIVESECURITIESEXCLUDEDFROMCOMPUTATIONOFEARNINGSPERSHARE": {
+   "table": {
+    "name": "ANTIDILUTIVESECURITIESEXCLUDEDFROMCOMPUTATIONOFEARNINGSPERSHARE",
+    "purpose": "Likely a disclosure table for securities excluded from the diluted EPS computation (e.g., instruments that would be antidilutive in a period). However, the table is empty (0 rows, 100% null rate on all columns), so this is inferred from the name and the surrounding XBRL-style financial reporting schema only, not from data. Each row would presumably represent one antidilutive security/period instance with an associated name or label."
+   },
+   "columns": {
+    "ANTIDILUTIVESECURITIESEXCLUDEDFROMCOMPUTATIONOFEARNINGSPERSHAREID": {
+     "role": "identifier",
+     "name": "Antidilutive securities excluded from EPS computation ID",
+     "description": "Primary key identifier for a row representing an antidilutive security excluded from the diluted earnings-per-share computation. No data present (0 rows), so type/meaning is inferred from the column name, its BIGINT declaration, and its primary-key designation.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ASSET": {
+   "table": {
+    "name": "ASSET",
+    "purpose": "Represents the 'Assets' element of financial statements (XBRL-style element taxonomy), with a small number of rows tagged as 'AssetsCurrent' (current assets). Each row is an instance of an asset line item concept used in financial reports, keyed by an ID shared with the ELEMENTOFFINANCIALSTATEMENT / ELEMENTSOFFINANCIALREPORT tables."
+   },
+   "columns": {
+    "ASSETID": {
+     "role": "identifier",
+     "name": "asset_id",
+     "description": "Primary key identifying an asset element instance. Joins one-to-one to ELEMENTOFFINANCIALSTATEMENT.ELEMENTOFFINANCIALSTATEMENTID and ELEMENTSOFFINANCIALREPORT.ELEMENTSOFFINANCIALREPORTID, indicating this table specializes those generic financial-statement-element rows that represent assets.",
+     "status": "resolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "element_name",
+     "description": "The XBRL element name of the asset concept. 'Assets' (total assets, 48,000 rows) or 'AssetsCurrent' (current assets, 16 rows).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ASSETIMPAIRMENTCHARGES": {
+   "table": {
+    "name": "ASSETIMPAIRMENTCHARGES",
+    "purpose": "Table for asset impairment charges (write-downs of asset value recognized as charges). It is empty, so its purpose is inferred from the name and the surrounding XBRL-style financial reporting schema only. Each row presumably represents one asset impairment charge instance or disclosure fact."
+   },
+   "columns": {
+    "ASSETIMPAIRMENTCHARGESID": {
+     "role": "identifier",
+     "name": "ASSETIMPAIRMENTCHARGESID",
+     "description": "Primary key identifier for an asset impairment charge record. The table is empty (0 rows, 100% null rate), so no values exist to confirm the meaning; the name and primary-key detection support this reading.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ASSETRETIREMENTOBLIGATIONDISCLOSURE": {
+   "table": {
+    "name": "ASSETRETIREMENTOBLIGATIONDISCLOSURE",
+    "purpose": "Asset retirement obligation (ARO) disclosure table, likely from an XBRL/SEC filing database. It is empty (0 rows), so its purpose is inferred from the name and the surrounding financial-disclosure tables only. It presumably stores disclosure-level facts about asset retirement obligations (e.g., whether the entity has a named ARO, related liability amounts and changes). No row-level evidence is available to confirm the exact content or grain of a row."
+   },
+   "columns": {
+    "ASSETRETIREMENTOBLIGATIONDISCLOSUREID": {
+     "role": "identifier",
+     "name": "ASSETRETIREMENTOBLIGATIONDISCLOSUREID",
+     "description": "Primary key identifying a row in the asset retirement obligation disclosure table. The table is empty, so no values exist to confirm; the meaning is inferred from the name and its detection as the primary key.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "AUTONOMOUSAGENT": {
+   "table": {
+    "name": "AUTONOMOUSAGENT",
+    "purpose": "Registry of autonomous agents (likely automated/robotic financial service entities), each corresponding one-to-one to a PERSON record and able to own financial service accounts and have addresses. Evidence: one-to-one join to PERSON.PERSONID, referenced by FINANCIALSERVICEACCOUNT.ISOWNEDBY and ADDRESS.ISINDEXTO. The table itself contains only a surrogate key, so its semantics are inferred almost entirely from these relationships; the specific nature of the agents is unresolved."
+   },
+   "columns": {
+    "AUTONOMOUSAGENTID": {
+     "role": "identifier",
+     "name": "AUTONOMOUSAGENTID",
+     "description": "Surrogate primary key uniquely identifying each autonomous agent. Values fall in two ranges: a small set of low IDs (1000+) and a large block around 400000000000+, suggesting two generation/seed batches. Joins one-to-one to PERSON.PERSONID (each agent is a person-like entity), and is referenced by ADDRESS.ISINDEXTO and FINANCIALSERVICEACCOUNT.ISOWNEDBY (agents own financial service accounts).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "AVAILABLEFORSALESECURITIES": {
+   "table": {
+    "name": "",
+    "purpose": "unresolved: the table has 0 rows and no sample data. The name suggests it stores available-for-sale securities (debt/equity securities not classified as trading or held-to-maturity), consistent with sibling tables like HELDTOMATURITYSECURITIES and TRADINGSECURITIESANDOTHERTRADINGASSETS, but there is no data evidence to confirm this or what a row represents (e.g., per-security, per-period, or per-fair-value-hierarchy-level)."
+   },
+   "columns": {
+    "AVAILABLEFORSALESECURITIESID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "BUSINESSACQUISITIONINTEGRATIONRESTRUCTURINGANDOTHERRELATEDCOSTS": {
+   "table": {
+    "name": "BUSINESSACQUISITIONINTEGRATIONRESTRUCTURINGANDOTHERRELATEDCOSTS",
+    "purpose": "Likely a disclosure/extension table for business acquisition, integration, restructuring and other related costs (XBRL-style financial reporting database). The table is empty (0 rows), so its content cannot be verified from data; the meaning is inferred from the table name and the surrounding financial-reporting schema only, and is therefore tentative."
+   },
+   "columns": {
+    "BUSINESSACQUISITIONINTEGRATIONRESTRUCTURINGANDOTHERRELATEDCOSTSID": {
+     "role": "identifier",
+     "name": "Surrogate primary key",
+     "description": "Declared BIGINT and flagged as the table's primary key; almost certainly an auto-generated surrogate identifier for one row of this disclosure. No data present to confirm.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "BUSINESSACQUISITIONPROFORMAINFORMATION": {
+   "table": {
+    "name": "BUSINESSACQUISITIONPROFORMAINFORMATION",
+    "purpose": "Likely stores pro forma financial information disclosed for business acquisitions (per XBRL/SEC pro forma revenue and income adjustments), but the table is empty (0 rows) so this cannot be confirmed from data. The name and the surrounding business-combination tables (e.g., BUSINESSCOMBINATIONDISCLOSURE) support this reading only tentatively."
+   },
+   "columns": {
+    "BUSINESSACQUISITIONPROFORMAINFORMATIONID": {
+     "role": "identifier",
+     "name": "BUSINESSACQUISITIONPROFORMAINFORMATIONID",
+     "description": "Primary key identifier for a business acquisition pro forma information record. The table is empty, so no data confirms this; inferred from the column name and its detection as the table's primary key.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "BUSINESSCOMBINATIONDISCLOSURE": {
+   "table": {
+    "name": "BUSINESSCOMBINATIONDISCLOSURE",
+    "purpose": "Business combination (merger/acquisition) disclosure table, likely from an XBRL/financial-reporting schema. The table is empty (0 rows), so meanings rest on names and the database context only. Each row would represent one business combination disclosure instance for a filing/entity."
+   },
+   "columns": {
+    "BUSINESSCOMBINATIONDISCLOSUREID": {
+     "role": "identifier",
+     "name": "Business combination disclosure ID",
+     "description": "Primary key identifying a business combination disclosure record. No data present (table empty), so type/semantics beyond identifier are unverified.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CAPITALUNITS": {
+   "table": {
+    "name": "CAPITALUNITS",
+    "purpose": "Likely a reference/lookup table for capital units (e.g., shares or ownership units of capital stock) in a financial reporting database. The table is empty, so its purpose is inferred only from its name and the surrounding XBRL-style financial schema. Marked tentative because no data exists to confirm it."
+   },
+   "columns": {
+    "CAPITALUNITSID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CASHANDCASHEQUIVALENTS": {
+   "table": {
+    "name": "CASHANDCASHEQUIVALENTS",
+    "purpose": "XBRL fact table for the element 'CashAndCashEquivalentsAtCarryingValue' — one row per reported cash and cash equivalents (at carrying value) fact, each tied to a disclosure instance. This is a member of a generic XBRL-style financial reporting schema (cf. CASHANDCASHEQUIVALENTSDISCLOSURE, CASHCASHEQUIVALENTSANDSHORTTERMINVESTMENTS)."
+   },
+   "columns": {
+    "CASHANDCASHEQUIVALENTSID": {
+     "role": "identifier",
+     "name": "cash_and_cash_equivalents_id",
+     "description": "Primary key; surrogate identifier for an individual cash-and-cash-equivalents fact row. References DISCLOSURE.DISCLOSUREID one-to-one, i.e. each row is the cash-and-cash-equivalents element of a specific disclosure.",
+     "status": "resolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "element_name",
+     "description": "The XBRL element name of the reported fact. Constant across all rows: 'CashAndCashEquivalentsAtCarryingValue', the US-GAAP tag for cash and cash equivalents at carrying value. The table is essentially a typed instance table for this single element.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CASHANDCASHEQUIVALENTSDISCLOSURE": {
+   "table": {
+    "name": "CASHANDCASHEQUIVALENTSDISCLOSURE",
+    "purpose": "Disclosure table for cash and cash equivalents (likely XBRL-derived, e.g. us-gaap:CashAndCashEquivalentsPolicyTextBlock). The table is empty (0 rows), so its contents cannot be verified; the meaning is inferred from the name and the surrounding financial-reporting schema. It presumably stores textual disclosure information about a company's cash and cash equivalents policy/breakdown, keyed to a reporting entity/context. Related tables CASHANDCASHEQUIVALENTS and CASHCASHEQUIVALENTSANDSHORTTERMINVESTMENTS hold the corresponding monetary amounts."
+   },
+   "columns": {
+    "CASHANDCASHEQUIVALENTSDISCLOSUREID": {
+     "role": "identifier",
+     "name": "CASHANDCASHEQUIVAVALENTSDISCLOSUREID",
+     "description": "Primary key of the disclosure record. Declared BIGINT, detected as the table's primary key, but the table has no rows so no values exist to confirm.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CASHCASHEQUIVALENTSANDSHORTTERMINVESTMENTS": {
+   "table": {
+    "name": "",
+    "purpose": "unresolved - the table has 0 rows and no sample data. The name suggests it represents the combined balance of cash, cash equivalents and short-term investments (a US GAAP / XBRL concept), but there is no data evidence to confirm this or what a row represents (e.g., per-entity per-period amount vs. a breakdown by component)."
+   },
+   "columns": {
+    "CASHCASHEQUIVALENTSANDSHORTTERMINVESTMENTSID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CHANGEINACCOUNTINGESTIMATE": {
+   "table": {
+    "name": "CHANGEINACCOUNTINGESTIMATE",
+    "purpose": "Likely represents a change in accounting estimate disclosure (e.g., depreciation lives, allowance methods) in a financial-reporting XBRL-style schema. The table is empty (0 rows), so the meaning is inferred only from the name and the surrounding financial-reporting tables, not from data. It appears to be a lookup/abstract table, possibly a stub for the XBRL 'Change in Accounting Estimate' element, with no actual instances recorded in this database."
+   },
+   "columns": {
+    "CHANGEINACCOUNTINGESTIMATEID": {
+     "role": "identifier",
+     "name": "CHANGEINACCOUNTINGESTIMATEID",
+     "description": "Primary key identifier for a change-in-accounting-estimate record. Declared BIGINT and flagged as the table's primary key, but the table has zero rows, so no values exist to confirm its semantics (e.g., whether it is a surrogate key or references a disclosure element).",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CHANGESINFAIRVALUEOFPLANASSETS": {
+   "table": {
+    "name": "CHANGESINFAIRVALUEOFPLANASSETS",
+    "purpose": "Likely a disclosure table for changes in the fair value of pension/retirement plan assets (XBRL-style element, consistent with sibling tables like COSTSOFRETIREMENTPLANS and DEFINEDBENEFITPLANAMOUNTSRECOGNIZEDINOTHERCOMPREHENSIVEINCOMELOSS). However, the table is empty (0 rows), so this is inferred from the name and database context only, not from data."
+   },
+   "columns": {
+    "CHANGESINFAIRVALUEOFPLANASSETSID": {
+     "role": "identifier",
+     "name": "CHANGESINFAIRVALUEOFPLANASSETSID",
+     "description": "Primary key identifier for rows in this table. No data present to confirm.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "identifier",
+     "name": "HASNAME",
+     "description": "Text column, likely a name/label for the plan-asset fair value change item (e.g., a line item name in the disclosure). The table is empty, so no values exist to confirm; the meaning is guessed from the column name alone.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "COMMITMENTSCONTINGENCIESANDGUARANTEES": {
+   "table": {
+    "name": "",
+    "purpose": "unresolved — the table has 0 rows and no sample data. The name suggests it holds commitments, contingencies and guarantees disclosures (XBRL-style financial reporting data, consistent with the other tables), but there is no evidence from values to confirm this or to determine what a row represents."
+   },
+   "columns": {
+    "COMMITMENTSCONTINGENCIESANDGUARANTEESID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "COMPREHENSIVEINCOME": {
+   "table": {
+    "name": "COMPREHENSIVEINCOME",
+    "purpose": "Junction/association table linking comprehensive income facts to financial report elements; each row asserts that a comprehensive income item (here always net income/loss) is reported as an element of a financial statement/report. It appears to be a bridge between the COMPREHENSIVEINCOMELOSS concept and the element-of-financial-report/statement tables, likely derived from XBRL-style filings data."
+   },
+   "columns": {
+    "COMPREHENSIVEINCOMEID": {
+     "role": "identifier",
+     "name": "comprehensive_income_id",
+     "description": "Primary key of the row; also serves as a foreign key to ELEMENTSOFFINANCIALREPORT.ELEMENTSOFFINANCIALREPORTID and ELEMENTOFFINANCIALSTATEMENT.ELEMENTOFFINANCIALSTATEMENTID (one-to-one), identifying the specific reported element instance.",
+     "status": "resolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "element_name",
+     "description": "Name of the financial element this comprehensive income row represents. Constant value 'NetIncomeLoss' in all 52,512 rows, i.e. every row denotes a net income/loss element. The column name suggests it stores the 'name' of the referenced element.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "COMPREHENSIVEINCOMELOSS": {
+   "table": {
+    "name": "",
+    "purpose": "Table is empty (0 rows) and no column data is available, so its meaning cannot be confirmed from values. The name suggests it relates to comprehensive income/loss (XBRL-style taxonomy, cf. COMPREHENSIVEINCOME and ACCUMULATEDOTHERCOMPREHENSIVEINCOMELOSS tables), but this is unverified by data. Marked unresolved due to lack of evidence."
+   },
+   "columns": {
+    "COMPREHENSIVEINCOMELOSSID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CONTRACT": {
+   "table": {
+    "name": "CONTRACT",
+    "purpose": "Employment/appointment contracts for corporate officers and directors: each row links a contract party (a person) to a position/title and an effective/expiration date, apparently managed by some entity (likely a corporation or filing/report)."
+   },
+   "columns": {
+    "CONTRACTID": {
+     "role": "identifier",
+     "name": "Contract ID",
+     "description": "Primary key of the contract record.",
+     "status": "resolved"
+    },
+    "HASCONTRACTPARTY": {
+     "role": "foreign_key",
+     "name": "Contract Party",
+     "description": "Foreign key to CONTRACTPARTY.CONTRACTPARTYID, identifying the individual who is party to the contract (the officer or director).",
+     "status": "resolved"
+    },
+    "HASEFFECTIVEDATE": {
+     "role": "date",
+     "name": "Effective Date",
+     "description": "Date the contract becomes effective (start date of the appointment/employment term).",
+     "status": "resolved"
+    },
+    "HASEXPIRATIONDATE": {
+     "role": "date",
+     "name": "Expiration Date",
+     "description": "Date the contract expires (end of the term). In some rows it equals the effective date, suggesting open-ended or same-day agreements.",
+     "status": "resolved"
+    },
+    "HASPOSITION": {
+     "role": "category",
+     "name": "Position",
+     "description": "Broad position category of the contract party: 'Officer' or 'Director'.",
+     "status": "resolved"
+    },
+    "HASTITLE": {
+     "role": "category",
+     "name": "Title",
+     "description": "Specific job title held under the contract, e.g. BOARD MEMBER, PRESIDENT, SENIOR VICE PRESIDENT, CHIEF TECHNICAL OFFICER.",
+     "status": "resolved"
+    },
+    "ISMANAGEDBY": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CONTRACTPARTY": {
+   "table": {
+    "name": "CONTRACTPARTY",
+    "purpose": "Junction/association table linking contracts to the parties involved in them (e.g., counterparties, obligors, guarantors). Each row is one contract party instance, identified by a surrogate key and referenced by the CONTRACT table's HASCONTRACTPARTY relationship. Only the surrogate key column is present in this table; party details (person/corporation, roles) would live in related tables such as CONTRACT, PERSON, and CORPORATION."
+   },
+   "columns": {
+    "CONTRACTPARTYID": {
+     "role": "identifier",
+     "name": "CONTRACTPARTYID",
+     "description": "Surrogate primary key uniquely identifying a contract party record (one party associated with a contract). Values are sequential integers starting at 400000000005, consistent with an auto-generated key from a bulk-loaded XBRL/financial-reporting database. Referenced by CONTRACT.HASCONTRACTPARTY, indicating each contract party belongs to one contract.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CONVERSIONOFSTOCK": {
+   "table": {
+    "name": "CONVERSIONOFSTOCK",
+    "purpose": "Likely represents conversion features of stock (e.g., convertible preferred stock converted into common stock), consistent with XBRL-style financial reporting tables in this database. However, the table is empty (0 rows), so this is inferred from the name and sibling tables (e.g., PREFERREDSTOCK, DEBTCONVERSION, STOCKHOLDERSEQUITY) rather than data. Marked tentative for the table as a whole; column meanings below are correspondingly uncertain."
+   },
+   "columns": {
+    "CONVERSIONOFSTOCKID": {
+     "role": "identifier",
+     "name": "CONVERSIONOFSTOCKID",
+     "description": "Primary key identifier for a conversion-of-stock record. No data present (table empty), so the meaning rests only on the naming convention (ID suffix) and its detection as the table's primary key.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "HASNAME",
+     "description": "Likely a boolean flag indicating whether the conversion-of-stock item has a name (a common pattern in XBRL-derived schemas where elements may be named or unnamed). No data present to confirm; could alternatively be a text field holding a name despite the 'HAS' prefix.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CORPORATION": {
+   "table": {
+    "name": "CORPORATION",
+    "purpose": "Master list of reporting companies (corporations) that file financial reports; each row is one corporation with its legal name, stock ticker, industry classification, and country of domicile. Referenced by FINANCIALREPORT (each report is provided by a corporation)."
+   },
+   "columns": {
+    "CORPORATIONID": {
+     "role": "identifier",
+     "name": "Corporation ID",
+     "description": "Primary key; surrogate identifier for the corporation. Referenced by FINANCIALREPORT.ISPROVIDEDBY.",
+     "status": "resolved"
+    },
+    "HASLEGALNAME": {
+     "role": "category",
+     "name": "Legal name",
+     "description": "The corporation's registered legal name, e.g. 'Amneal Pharmaceuticals, Inc.', '3M Company'. Unique across rows; also used as a join key by LISTEDSECURITY.HASLEGALNAME.",
+     "status": "resolved"
+    },
+    "HASTICKERSYMBOL": {
+     "role": "code",
+     "name": "Ticker symbol",
+     "description": "Stock exchange ticker symbol for the corporation (e.g. 'IPXL', 'GOOG', 'MXL'). A few symbols appear twice, likely due to ticker reuse by different companies over time.",
+     "status": "resolved"
+    },
+    "ISCLASSIFIEDBY": {
+     "role": "foreign_key",
+     "name": "Industry sector classifier",
+     "description": "Foreign key to INDUSTRYSECTORCLASSIFIER.INDUSTRYSECTORCLASSIFIERID; assigns the corporation to an industry/sector classification (values look like SIC-style codes, e.g. 2834 pharmaceuticals, 3674 semiconductors).",
+     "status": "resolved"
+    },
+    "ISDOMICILEDIN": {
+     "role": "foreign_key",
+     "name": "Country of domicile",
+     "description": "Foreign key to COUNTRY.COUNTRYID; the corporation's country of domicile. Value 237 dominates (2224 of 2324 rows), consistent with US-domiciled filers; other values cover other countries.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "COSTMETHODINVESTMENTS": {
+   "table": {
+    "name": "COSTMETHODINVESTMENTS",
+    "purpose": "Likely intended to hold cost-method investments (investments accounted for at cost), consistent with the XBRL-style financial reporting schema of the surrounding tables. However, the table is empty (0 rows) and no column data exists, so this is only inferred from the table name and database context, not from data. The row grain cannot be determined (it could be one row per investment, per entity per period, or a disclosure-level fact)."
+   },
+   "columns": {
+    "COSTMETHODINVESTMENTSID": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "COSTSOFRETIREMENTPLANS": {
+   "table": {
+    "name": "COSTSOFRETIREMENTPLANS",
+    "purpose": "Likely a disclosure table for costs of retirement plans (e.g., defined contribution/401(k) plan expense disclosures) in a financial reporting database. However, the table is empty (0 rows), so this is inferred from the name and the surrounding XBRL-style financial tables only; no data evidence exists. Each row would presumably represent a retirement plan cost disclosure for an entity/period, but this cannot be confirmed from data."
+   },
+   "columns": {
+    "COSTSOFRETIREMENTPLANSID": {
+     "role": "identifier",
+     "name": "COSTSOFRETIREMENTPLANSID",
+     "description": "Primary key identifier for a retirement plan cost record. Declared BIGINT and flagged as primary key, but the table is empty so no values exist to confirm.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "COUNTRY": {
+   "table": {
+    "name": "COUNTRY",
+    "purpose": "Reference/lookup table of countries (249 rows, one per country), used by other tables (postal addresses, persons' citizenship and place of birth, corporate domicile) to identify countries. Country codes match ISO 3166-1 numeric codes (e.g., Indonesia=360, Latvia=428, Sierra Leone=694)."
+   },
+   "columns": {
+    "COUNTRYID": {
+     "role": "identifier",
+     "name": "country_id",
+     "description": "Surrogate primary key uniquely identifying each country row (1-249, sequential). Referenced by POSTALADDRESS.HASCOUNTRY, PERSON.HASCITIZENSHIP, PERSON.HASPLACEOFBIRTH, and CORPORATION.ISDOMICILEDIN.",
+     "status": "resolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "country_name",
+     "description": "Common English name of the country (e.g., 'Indonesia', 'Latvia', 'Sierra Leone'), unique per row.",
+     "status": "resolved"
+    },
+    "HASNUMERICCOUNTRYCODE": {
+     "role": "code",
+     "name": "iso_3166_1_numeric_code",
+     "description": "Three-digit ISO 3166-1 numeric country code stored as text (e.g., 360=Indonesia, 428=Latvia, 694=Sierra Leone). Unique per row.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CURRENCY": {
+   "table": {
+    "name": "CURRENCY",
+    "purpose": "Lookup table of currencies (ISO 4217 style), currently containing a single row for the United States dollar. Used to classify the currency of monetary amounts in the financial reporting database."
+   },
+   "columns": {
+    "CURRENCYID": {
+     "role": "identifier",
+     "name": "Currency ID",
+     "description": "Primary key identifying a currency; surrogate integer key.",
+     "status": "resolved"
+    },
+    "HASCURRENCYNAME": {
+     "role": "category",
+     "name": "Currency name",
+     "description": "Full human-readable name of the currency (e.g., 'United States dollar').",
+     "status": "resolved"
+    },
+    "HASMINORUNIT": {
+     "role": "code",
+     "name": "Currency alphabetic code",
+     "description": "ISO 4217 alphabetic currency code (e.g., 'USD'). The column name suggests 'minor unit', but the value is clearly the alphabetic code, not the minor unit (which would be 2 for USD cents).",
+     "status": "resolved"
+    },
+    "HASNUMERICCODE": {
+     "role": "code",
+     "name": "Currency numeric code",
+     "description": "ISO 4217 numeric currency code (e.g., 840 for USD), stored as text.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "DEBT": {
+   "table": {
+    "name": "DEBT",
+    "purpose": "Junction/instance table recording a 'DebtCurrent' (current portion of debt) disclosure element; each row is one debt disclosure instance tied one-to-one to a DISCLOSURE record, likely from XBRL-tagged financial filings (us-gaap:DebtCurrent)."
+   },
+   "columns": {
+    "DEBTID": {
+     "role": "identifier",
+     "name": "DEBTID",
+     "description": "Primary key; surrogate identifier for a debt (current) disclosure instance. References DISCLOSURE.DISCLOSUREID one-to-one, indicating each row corresponds to a specific disclosure fact.",
+     "status": "resolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "HASNAME",
+     "description": "Name of the XBRL element/tag for the debt item; constant value 'DebtCurrent' (us-gaap:DebtCurrent), i.e., the current portion of debt. The column stores the element name for every row.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "DEBTCONVERSION": {
+   "table": {
+    "name": "DEBTCONVERSION",
+    "purpose": "Likely represents conversion of debt instruments (e.g., convertible debt converted into equity), consistent with the XBRL-style financial reporting schema of the other tables. However, the table is empty (0 rows), so this is inferred from the name and database context only, not from data. Related tables such as DEBT, EXTINGUISHMENTOFDEBT, and CONVERSIONOFSTOCK support this reading, but the exact semantics (whether it links debt to equity issued upon conversion) cannot be confirmed without data."
+   },
+   "columns": {
+    "DEBTCONVERSIONID": {
+     "role": "identifier",
+     "name": "DEBTCONVERSIONID",
+     "description": "Primary key identifying a debt conversion record. The table is empty, so the type and key role come from the schema declaration only; no data exists to confirm values or semantics.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "DEFERREDTAXASSETSANDLIABILITIES": {
+   "table": {
+    "name": "DEFERREDTAXASSETSANDLIABILITIES",
+    "purpose": "Table for deferred tax assets and liabilities disclosures. The table is empty (0 rows), so its contents cannot be verified; the meaning is inferred from the table name and the surrounding XBRL-style financial reporting schema only. Each row would presumably represent a deferred tax asset or liability item reported in a financial statement disclosure, with a name/label and an amount (amount column not present in the provided data)."
+   },
+   "columns": {
+    "DEFERREDTAXASSETSANDLIABILITIESID": {
+     "role": "identifier",
+     "name": "DEFERREDTAXASSETSANDLIABILITIESID",
+     "description": "Primary key identifier for a deferred tax asset/liability record. Declared BIGINT and flagged as primary key, but the table is empty so no values exist to confirm.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "HASNAME",
+     "description": "Name/label of the deferred tax asset or liability item (e.g., a component such as net operating loss carryforwards, temporary differences, or valuation allowance). The table is empty, so no values exist to confirm this reading; it could alternatively be a boolean-style flag, but the VARCHAR declaration suggests a text label.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "DEFINEDBENEFITPLANAMOUNTSRECOGNIZEDINOTHERCOMPREHENSIVEINCOMELOSS": {
+   "table": {
+    "name": "DEFINEDBENEFITPLANAMOUNTSRECOGNIZEDINOTHERCOMPREHENSIVEINCOMELOSS",
+    "purpose": "Likely stores amounts recognized in other comprehensive income (loss) related to defined benefit plans (e.g., actuarial gains/losses, prior service cost/credit, return on plan assets). The table is empty, so this is inferred from the name and the surrounding XBRL-style financial reporting schema only; no data confirms it."
+   },
+   "columns": {
+    "DEFINEDBENEFITPLANAMOUNTSRECOGNIZEDINOTHERCOMPREHENSIVEINCOMELOSSID": {
+     "role": "identifier",
+     "name": "DEFINEDBENEFITPLANAMOUNTSRECOGNIZEDINOTHERCOMPREHENSIVEINCOMELOSSID",
+     "description": "Surrogate primary key for the table (declared BIGINT, flagged as primary key). The table has zero rows, so no value evidence exists; the meaning is inferred from the naming convention (table name + 'ID') used across this schema.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "DERIVATIVE": {
+   "table": {
+    "name": "",
+    "purpose": ""
+   },
+   "columns": {
+    "DERIVATIVEID": {
+     "role": "",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": false,
+   "reasoning_effort": "low"
+  },
+  "DISCLOSURE": {
+   "table": {
+    "name": "DISCLOSURE",
+    "purpose": "Fact table of individual XBRL-tagged monetary disclosure facts extracted from SEC 10-K and 10-Q filings. Each row is one reported value of a US-GAAP concept (e.g. CashAndCashEquivalentsAtCarryingValue, StockholdersEquity, Goodwill, DebtCurrent) for a specific company filing, period, and currency, with its XBRL taxonomy version and source document. It is referenced by topic-specific tables (CASHANDCASHEQUIVALENTS, DEBT, GOODWILL, LONGTERMDEBT, etc.) that classify each fact into a disclosure category, and each fact links one-to-one to ELEMENTSOFFINANCIALREPORT."
+   },
+   "columns": {
+    "APPLICABLEPERIOD": {
+     "role": "code",
+     "name": "Applicable period type",
+     "description": "Indicates the period type the disclosed value applies to. Constant value 'instant' in all rows, meaning every fact in this table is a point-in-time (balance-sheet style) measure rather than a duration. No duration facts are present.",
+     "status": "resolved"
+    },
+    "DISCLOSUREID": {
+     "role": "identifier",
+     "name": "Disclosure fact identifier",
+     "description": "Primary key uniquely identifying a single disclosed fact (one reported XBRL value). Referenced one-to-one by ELEMENTSOFFINANCIALREPORT and by topic tables such as CASHANDCASHEQUIVALENTS, DEBT, GOODWILL, and LONGTERMDEBT, which attach the fact to its disclosure category.",
+     "status": "resolved"
+    },
+    "HASDOCUMENTTYPE": {
+     "role": "code",
+     "name": "SEC filing type",
+     "description": "The SEC form type the fact was reported in: '10-Q' (quarterly report, ~155k rows) or '10-K' (annual report, ~53k rows).",
+     "status": "resolved"
+    },
+    "HASMETRICCONTEXTDIMENSIONS": {
+     "role": "identifier",
+     "name": "Source XBRL document / context",
+     "description": "Filename of the XBRL instance document (or filing context) the fact came from, typically the company ticker plus period end date (e.g. 'pvh-20180204.xml', 'mhfi-20141231.xml'). Identifies the specific filing; not fully unique because a filing contains many facts.",
+     "status": "resolved"
+    },
+    "HASMETRICENDDATE": {
+     "role": "date",
+     "name": "Period end date",
+     "description": "End date of the reporting period, stored as YYYYMMDD (e.g. 20140731, 20141231). Ranges 2012-04-30 to 2019-11-30. For instant facts this is the 'as of' balance date.",
+     "status": "resolved"
+    },
+    "HASMETRICENDQUARTER": {
+     "role": "code",
+     "name": "Period end quarter",
+     "description": "Calendar quarter of the period end date: Q1-Q4. Q4 count (~53k) matches the 10-K rows, i.e. fiscal year-end facts.",
+     "status": "resolved"
+    },
+    "HASMETRICSTARTDATE": {
+     "role": "date",
+     "name": "Period start date",
+     "description": "Start date of the reporting period, stored as YYYYMMDD. Identical in distribution to HASMETRICENDDATE (same top values and samples), consistent with all facts being 'instant' (point-in-time) measures where start equals end.",
+     "status": "resolved"
+    },
+    "HASMETRICSTARTQUARTER": {
+     "role": "code",
+     "name": "Period start quarter",
+     "description": "Calendar quarter of the period start date: Q1-Q4. Identical distribution to HASMETRICENDQUARTER, consistent with instant facts.",
+     "status": "resolved"
+    },
+    "HASMETRICVALUE": {
+     "role": "numeric",
+     "name": "Reported value",
+     "description": "The disclosed monetary amount in the unit given by HASUNIT, stored in scientific notation (e.g. +2.6094E+007 = 26,094,000). Ranges from about -13.6 billion to +419 billion; can be negative (e.g. deficit/loss-related balances).",
+     "status": "resolved"
+    },
+    "HASMETRICYEARCALENDAR": {
+     "role": "numeric",
+     "name": "Calendar year",
+     "description": "Calendar year of the reporting period, 2012-2019.",
+     "status": "resolved"
+    },
+    "HASMETRICYEARFISCAL": {
+     "role": "numeric",
+     "name": "Fiscal year",
+     "description": "Fiscal year of the reporting period as designated by the filer, 2012-2020. Can differ from the calendar year (e.g. a fact dated 2019-09-30 for a company with a September year-end has calendar year 2019 but fiscal year 2020).",
+     "status": "resolved"
+    },
+    "HASUNIQUEIDENTIFIER": {
+     "role": "code",
+     "name": "XBRL concept identifier",
+     "description": "The US-GAAP XBRL element tag plus taxonomy year identifying what the value represents, e.g. 'us-gaap/2016_CashAndCashEquivalentsAtCarryingValue', 'us-gaap/2019_LongTermDebtNoncurrent', 'us-gaap/2014_DebtCurrent'. 56 distinct concepts, all balance-sheet (instant) items.",
+     "status": "resolved"
+    },
+    "HASUNIT": {
+     "role": "code",
+     "name": "Currency unit",
+     "description": "ISO currency code of the reported value: overwhelmingly USD (208,066 rows), with a few CAD (88), EUR (3), and AUD (1).",
+     "status": "resolved"
+    },
+    "HASURL": {
+     "role": "code",
+     "name": "XBRL taxonomy namespace URL",
+     "description": "The FASB US-GAAP taxonomy namespace/version the concept belongs to, e.g. 'http://fasb.org/us-gaap/2016'. Corresponds to the year in HASUNIQUEIDENTIFIER.",
+     "status": "resolved"
+    },
+    "ISCOMPUTED": {
+     "role": "boolean",
+     "name": "Is computed flag",
+     "description": "Boolean flag, constant 'false' in all rows, indicating the value was reported directly in the filing rather than derived/computed. No computed values exist in this table.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "DISTRIBUTIONTOOWNER": {
+   "table": {
+    "name": "DISTRIBUTIONTOOWNER",
+    "purpose": "Appears to be an XBRL-tagged financial statement element table. Each row represents a fact/element instance, with the ID shared one-to-one with ELEMENTOFFINANCIALSTATEMENT and a name attribute. Despite the table name (XBRL element 'DistributionToOwner'), every row carries the element name 'EarningsPerShareBasic', suggesting the table stores element-name facts for basic EPS disclosures, or the table name and content are mismatched in the source data."
+   },
+   "columns": {
+    "DISTRIBUTIONTOOWNERID": {
+     "role": "identifier",
+     "name": "Element fact identifier",
+     "description": "Surrogate primary key (BIGINT) uniquely identifying each row (48,325 distinct values, no nulls). Joins one-to-one to ELEMENTOFFINANCIALSTATEMENT.ELEMENTOFFINANCIALSTATEMENTID, indicating each row is an instance of a financial statement element fact, with the ID shared across the element tables.",
+     "status": "resolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "Element name",
+     "description": "The XBRL/financial statement element name for the fact. Constant value 'EarningsPerShareBasic' in all 48,325 rows, so every row in this table represents a basic earnings-per-share element fact. This conflicts with the table name 'DistributionToOwner' (an XBRL element for distributions to owners); either the table is used to store the EPS-basic element name, or the source data mislabels the element. The exact reconciliation is unresolved. The one-to-one join to ELEMENTOFFINANCIALSTATEMENT confirms each row is an element fact, but the joined column carries no additional evidence about this name attribute.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "DIVIDENDPAYMENTRESTRICTIONS": {
+   "table": {
+    "name": "DIVIDENDPAYMENTRESTRICTIONS",
+    "purpose": "Likely a disclosure table capturing restrictions on an entity's ability to pay dividends (e.g., debt covenant or regulatory restrictions on dividend distributions). The table is empty (0 rows), so the meaning is inferred from the name and the surrounding XBRL-style financial-reporting schema only; no value evidence exists. Related tables such as DIVIDENDSPAYABLE, DISTRIBUTIONTOOWNER, DEBT, and DISCLOSURE support this reading, but it remains tentative without data."
+   },
+   "columns": {
+    "DIVIDENDPAYMENTRESTRICTIONSID": {
+     "role": "identifier",
+     "name": "Dividend payment restriction ID",
+     "description": "Primary key identifying a dividend payment restriction record. The table is empty, so no values exist to confirm; the primary-key flag and ID suffix support this reading.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "DIVIDENDSPAYABLE": {
+   "table": {
+    "name": "DIVIDENDSPAYABLE",
+    "purpose": "Likely represents dividends payable (declared but unpaid dividends recorded as a liability), but the table is empty (0 rows) so this rests only on the name and the surrounding XBRL-style financial database context. No data evidence is available."
+   },
+   "columns": {
+    "DIVIDENDSPAYABLEID": {
+     "role": "identifier",
+     "name": "DIVIDENDSPAYABLEID",
+     "description": "Primary key identifier for a dividends payable record. The table is empty, so the meaning is inferred from the name and its primary-key detection only; no data evidence confirms it.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "EFFECTIVEINCOMETAXRATERECONCILIATION": {
+   "table": {
+    "name": "EFFECTIVEINCOMETAXRATERECONCILIATION",
+    "purpose": "Likely represents the reconciliation of the statutory (expected) income tax rate to the effective income tax rate, as disclosed in income tax footnotes of financial statements. However, the table contains zero rows and no sample data, so this is inferred from the table name and the surrounding financial-reporting schema only, not from observed values. Each row would presumably represent one reconciling item (e.g., statutory rate, state taxes, tax credits, valuation allowance) for a given reporting period and entity, but the table lacks visible period/entity columns, so the exact row grain is unresolved."
+   },
+   "columns": {
+    "EFFECTIVEINCOMETAXRATERECONCILIATIONID": {
+     "role": "identifier",
+     "name": "EFFECTIVEINCOMETAXRATERECONCILIATIONID",
+     "description": "Surrogate primary key for the effective income tax rate reconciliation record. Declared BIGINT and flagged as the table's primary key, but the table is empty so no values exist to confirm.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ELEMENTOFFINANCIALSTATEMENT": {
+   "table": {
+    "name": "ELEMENTOFFINANCIALSTATEMENT",
+    "purpose": "Fact table of individual XBRL-tagged financial statement facts (values of US-GAAP elements) extracted from SEC 10-K and 10-Q filings, with the period, unit, taxonomy version, and source document context for each reported value. Each row is one reported financial figure (e.g., NetIncomeLoss for a quarter) from one filing. It is referenced one-to-one by specialized fact tables (ASSET, LIABILITY, REVENUE, COMPREHENSIVEINCOME, DISTRIBUTIONTOOWNER) and references ELEMENTSOFFINANCIALREPORT, which likely holds the element definitions/metadata (name, taxonomy URL, etc.)."
+   },
+   "columns": {
+    "APPLICABLEPERIOD": {
+     "role": "category",
+     "name": "applicable_period",
+     "description": "Nature of the reporting period for the fact: 'instant' for balance-sheet (point-in-time) values, 'quarterly' for a quarter's duration, 'yearly' for a full-year duration.",
+     "status": "resolved"
+    },
+    "ELEMENTOFFINANCIALSTATEMENTID": {
+     "role": "identifier",
+     "name": "element_of_financial_statement_id",
+     "description": "Primary key of the fact row; one-to-one with ELEMENTSOFFINANCIALREPORT.ELEMENTSOFFINANCIALREPORTID and with the specialized fact tables (ASSET, LIABILITY, REVENUE, COMPREHENSIVEINCOME, DISTRIBUTIONTOOWNER) that reference it.",
+     "status": "resolved"
+    },
+    "HASDOCUMENTTYPE": {
+     "role": "category",
+     "name": "document_type",
+     "description": "SEC filing type the fact was reported in: '10-Q' (quarterly report) or '10-K' (annual report).",
+     "status": "resolved"
+    },
+    "HASMETRICCONTEXTDIMENSIONS": {
+     "role": "foreign_key",
+     "name": "context_dimensions",
+     "description": "Source XBRL context/document identifier, typically the filing's XBRL instance filename (e.g., 'orcl-20160831.xml'), which encodes the filer and period; may also carry dimensional qualifiers of the XBRL context.",
+     "status": "resolved"
+    },
+    "HASMETRICENDDATE": {
+     "role": "foreign_key",
+     "name": "period_end_date",
+     "description": "End date of the reporting period (or the instant date for balance-sheet facts), stored as YYYYMMDD integers (20120430–20191130).",
+     "status": "resolved"
+    },
+    "HASMETRICENDQUARTER": {
+     "role": "category",
+     "name": "period_end_quarter",
+     "description": "Calendar quarter (Q1–Q4) in which the period end date falls.",
+     "status": "resolved"
+    },
+    "HASMETRICSTARTDATE": {
+     "role": "foreign_key",
+     "name": "period_start_date",
+     "description": "Start date of the reporting period, YYYYMMDD (20120101–20191130); for 'instant' facts it equals the end date.",
+     "status": "resolved"
+    },
+    "HASMETRICSTARTQUARTER": {
+     "role": "category",
+     "name": "period_start_quarter",
+     "description": "Calendar quarter (Q1–Q4) in which the period start date falls.",
+     "status": "resolved"
+    },
+    "HASMETRICVALUE": {
+     "role": "numeric",
+     "name": "metric_value",
+     "description": "The reported numeric value of the financial element, stored in scientific-notation strings (e.g., '+1.83200000000000E+009'); ranges from about -25.4 billion to 2.76 trillion in the underlying currency (mostly USD).",
+     "status": "resolved"
+    },
+    "HASMETRICYEARCALENDAR": {
+     "role": "numeric",
+     "name": "calendar_year",
+     "description": "Calendar year of the reporting period (2012–2019).",
+     "status": "resolved"
+    },
+    "HASMETRICYEARFISCAL": {
+     "role": "numeric",
+     "name": "fiscal_year",
+     "description": "Fiscal year of the filer the fact belongs to (2012–2020); can differ from the calendar year for companies with non-calendar fiscal years (e.g., Oracle's Aug-2016 quarter is fiscal 2017).",
+     "status": "resolved"
+    },
+    "HASUNIQUEIDENTIFIER": {
+     "role": "foreign_key",
+     "name": "element_identifier",
+     "description": "Identifier of the XBRL/US-GAAP element, combining the taxonomy version and element name (e.g., 'us-gaap/2016_NetIncomeLoss', 'us-gaap/2015_AssetsCurrent'); identifies which financial statement line item the value represents.",
+     "status": "resolved"
+    },
+    "HASUNIT": {
+     "role": "category",
+     "name": "unit",
+     "description": "Currency unit of the reported value: 'USD' for almost all rows, 'CAD' for a small number.",
+     "status": "resolved"
+    },
+    "HASURL": {
+     "role": "foreign_key",
+     "name": "taxonomy_url",
+     "description": "URL of the US-GAAP taxonomy version used to tag the fact (e.g., 'http://fasb.org/us-gaap/2016'); matches the year in HASUNIQUEIDENTIFIER.",
+     "status": "resolved"
+    },
+    "ISCOMPUTED": {
+     "role": "category",
+     "name": "is_computed",
+     "description": "Boolean flag (with inconsistent trailing whitespace, e.g., 'true ') indicating whether the value was computed/derived rather than directly reported in the filing; true for ~12k of ~444k rows.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ELEMENTSOFFINANCIALREPORT": {
+   "table": {
+    "name": "ELEMENTSOFFINANCIALREPORT",
+    "purpose": "Association table linking individual financial statement elements (and disclosure items) to the financial report they appear in. Each row states that a specific element/disclosure (e.g., an asset, liability, revenue, expense, inventory, or comprehensive income item) is a member of a specific financial report. It is referenced one-to-one by many element-specific tables (ASSET, LIABILITY, REVENUE, EXPENSE, INVENTORYCURRENT, COMPREHENSIVEINCOME, LONGTERMDEBT, DISCLOSURE, ELEMENTOFFINANCIALSTATEMENT, etc.), which use its ID as their own primary key, making it a supertype/anchor table for all financial report elements."
+   },
+   "columns": {
+    "ELEMENTSOFFINANCIALREPORTID": {
+     "role": "identifier",
+     "name": "Element of financial report ID",
+     "description": "Primary key. Surrogate identifier for a single financial report element instance. Serves as the shared/supertype key referenced one-to-one by the many element-specific tables (ASSET, LIABILITY, REVENUE, EXPENSE, DISCLOSURE, ELEMENTOFFINANCIALSTATEMENT, etc.), which hold the element's detailed attributes.",
+     "status": "resolved"
+    },
+    "ISMEMBEROF": {
+     "role": "foreign_key",
+     "name": "Is member of (financial report)",
+     "description": "Foreign key to FINANCIALREPORT.FINANCIALREPORTID identifying the financial report (e.g., a company's filing for a period) that this element belongs to. Many elements can belong to the same report (many-to-one).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "EMAILADDRESS": {
+   "table": {
+    "name": "EMAILADDRESS",
+    "purpose": "Stores email addresses, one per row, likely as contact information for persons or entities in the database (e.g., PERSON). The 'HASVALUE' naming suggests a property/value pattern common in XBRL-style financial reporting schemas, where EMAILADDRESS is a concept and HASVALUE holds its literal value."
+   },
+   "columns": {
+    "EMAILADDRESSID": {
+     "role": "identifier",
+     "name": "EMAILADDRESSID",
+     "description": "Synthetic primary key for the email address row; a surrogate BIGINT in the 850000000000-850000049999 range with no external meaning.",
+     "status": "resolved"
+    },
+    "HASVALUE": {
+     "role": "free_text",
+     "name": "HASVALUE",
+     "description": "The email address string itself (e.g., 'Sheelagh.Zhiwei@forwiss.de'). ~1% null. The 'HASVALUE' name reflects a property-value modeling pattern; the column holds the actual email address value.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ENTITYLOCATION": {
+   "table": {
+    "name": "ENTITYLOCATION",
+    "purpose": "Likely associates an entity (e.g., a corporation or person) with a location/address, but the table is empty (0 rows) and no columns have data, so its purpose cannot be confirmed from evidence. The name suggests a link between an entity and a physical or virtual location (cf. ADDRESS, POSTALADDRESS, VIRTUALADDRESS tables)."
+   },
+   "columns": {
+    "ENTITYLOCATIONID": {
+     "role": "identifier",
+     "name": "ENTITYLOCATIONID",
+     "description": "Primary key identifier for an entity-location association record. No data present (table is empty), so this is inferred from the name and primary-key detection only.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "EQUITY": {
+   "table": {
+    "name": "EQUITY",
+    "purpose": "XBRL-style fact table for the StockholdersEquity element: one row per reported stockholders' equity fact, keyed to a row in STOCKHOLDERSEQUITY. The HASNAME column carries the XBRL element name, constant here as 'StockholdersEquity'."
+   },
+   "columns": {
+    "EQUITYID": {
+     "role": "identifier",
+     "name": "EQUITYID",
+     "description": "Primary key of the EQUITY table; surrogate identifier for a single reported stockholders' equity fact. One-to-one with STOCKHOLDERSEQUITY.STOCKHOLDERSEQUITYID, which it references.",
+     "status": "resolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "HASNAME",
+     "description": "The XBRL element name of the reported fact. Constant value 'StockholdersEquity' in all 43,780 rows, indicating every row represents a StockholdersEquity concept.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "EQUITYMETHODINVESTMENTS": {
+   "table": {
+    "name": "EQUITYMETHODINVESTMENTS",
+    "purpose": "Table for equity method investment disclosures (investments in which the investor holds significant influence, accounted for under the equity method). The table is empty, so the meaning is inferred from the name and the surrounding XBRL-style financial reporting schema only. Each row would presumably represent one equity method investment or disclosure fact for a reporting entity/period, but this cannot be confirmed from data."
+   },
+   "columns": {
+    "EQUITYMETHODINVESTMENTSID": {
+     "role": "identifier",
+     "name": "EQUITYMETHODINVESTMENTSID",
+     "description": "Primary key / surrogate identifier for an equity method investment record. Declared BIGINT and flagged as primary key, but the table has zero rows so no values exist to confirm.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ERRORCORRECTIONSANDPRIORPERIODADJUSTMENTS": {
+   "table": {
+    "name": "",
+    "purpose": "The table is empty (0 rows) and no column has any observed values, joins, or references. The name suggests it may hold error corrections and prior period adjustments (a financial reporting concept), but there is no data evidence to confirm this, so the table meaning remains unresolved."
+   },
+   "columns": {
+    "ERRORCORRECTIONSANDPRIORPERIODADJUSTMENTSID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "EXPENSE": {
+   "table": {
+    "name": "EXPENSE",
+    "purpose": "Expense line items from financial reports, each row representing an expense concept (cost of revenue, operating expenses, or total costs and expenses) tied to an element of a financial report. Likely derived from XBRL-style financial statement data (e.g., SEC filings)."
+   },
+   "columns": {
+    "EXPENSEID": {
+     "role": "identifier",
+     "name": "EXPENSEID",
+     "description": "Primary key of the EXPENSE table; a surrogate integer identifier for an expense line item. One-to-one with ELEMENTSOFFINANCIALREPORT.ELEMENTSOFFINANCIALREPORTID, indicating each expense row corresponds to a specific financial report element instance.",
+     "status": "resolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "HASNAME",
+     "description": "The expense category/label of the line item, taking one of three values: 'CostOfRevenue' (cost of revenue/cost of goods sold), 'OperatingExpenses' (operating expenses), and 'CostsAndExpenses' (total costs and expenses, the income-statement subtotal combining both).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "EXTINGUISHMENTOFDEBT": {
+   "table": {
+    "name": "EXTINGUISHMENTOFDEBT",
+    "purpose": "Likely represents extinguishment (retirement/repayment) of debt events, e.g. gains/losses on debt extinguishment disclosures. However, the table is empty (0 rows) and all columns are fully null, so the meaning cannot be confirmed from data. The name and the surrounding XBRL-style financial reporting tables (DEBT, DEBTCONVERSION, LONGTERMDEBT, etc.) support this reading, but it remains tentative. Each row would presumably represent one debt extinguishment event or disclosure fact for an entity/period, with EXTINGUISHMENTOFDEBTID as its identifier and HASNAME possibly a name/label attribute of the extinguished debt instrument or a boolean flag for whether a name exists (unresolved)."
+   },
+   "columns": {
+    "EXTINGUISHMENTOFDEBTID": {
+     "role": "identifier",
+     "name": "EXTINGUISHMENTOFDEBTID",
+     "description": "Primary key identifying a debt extinguishment record. No data present to verify.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "EXTRAORDINARYITEMS": {
+   "table": {
+    "name": "EXTRAORDINARYITEMS",
+    "purpose": "Table for extraordinary items (unusual, non-recurring gains/losses) in financial statements. The table is empty (0 rows), so meanings are inferred from names and the database context (an XBRL-style financial reporting schema) only. It likely stores per-instance details of extraordinary items, such as a description/name and an amount, tied to a reporting entity/period via other tables, but no data exists to confirm this. The table appears to be an unused or deprecated element in this schema instance."
+   },
+   "columns": {
+    "EXTRAORDINARYITEMSID": {
+     "role": "identifier",
+     "name": "EXTRAORDINARYITEMSID",
+     "description": "Primary key identifier for an extraordinary item record. Declared BIGINT and flagged as the table's primary key, but the table is empty so no values exist to confirm.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "HASNAME",
+     "description": "Likely the name or description of the extraordinary item (e.g., 'Loss on disposal of segment'). Declared VARCHAR, but the table is empty; the 'HAS' prefix could alternatively indicate a boolean flag for whether the item has a name, so the exact meaning is uncertain.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINANCIALINSTRUMENT": {
+   "table": {
+    "name": "FINANCIALINSTRUMENT",
+    "purpose": "Reference/lookup table of financial instruments (securities held or transacted). Each row is one financial instrument, identified by a surrogate ID, referenced by HOLDING and SECURITIESTRANSACTION. The only attribute captured is transferability, which is constant 'YES' for all rows in this data."
+   },
+   "columns": {
+    "FINANCIALINSTRUMENTID": {
+     "role": "identifier",
+     "name": "FINANCIALINSTRUMENTID",
+     "description": "Surrogate primary key identifying a financial instrument. Referenced by HOLDING.REFERSTO and SECURITIESTRANSACTION.REFERSTO, so these instruments are the objects held and traded. Values are sequential integers in the 1001000–1005649 range with no intrinsic meaning.",
+     "status": "resolved"
+    },
+    "ISTRANSFERABLE": {
+     "role": "category",
+     "name": "ISTRANSFERABLE",
+     "description": "Flag indicating whether the financial instrument is transferable. All 2745 rows contain the constant value 'YES' (padded), so the column carries no discriminating information in this dataset; the meaning of the flag itself is supported by its name and the single observed value.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINANCIALINSTRUMENTSSUBJECTTOMANDATORYREDEMPTION": {
+   "table": {
+    "name": "",
+    "purpose": "unresolved"
+   },
+   "columns": {
+    "FINANCIALINSTRUMENTSSUBJECTTOMANDATORYREDEMPTIONID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINANCIALMARKET": {
+   "table": {
+    "name": "FINANCIALMARKET",
+    "purpose": "Lookup table of stock exchanges / financial markets on which securities are traded (NYSE, NASDAQ, AMEX). Referenced by SECURITY (where a security is traded) and SECURITIESTRANSACTION (market type of a transaction)."
+   },
+   "columns": {
+    "FINANCIALMARKETID": {
+     "role": "identifier",
+     "name": "financial_market_id",
+     "description": "Primary key identifying a financial market/exchange.",
+     "status": "resolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "name",
+     "description": "Name of the financial market/exchange (NYSE, NASDAQ, AMEX).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINANCIALMETRICS": {
+   "table": {
+    "name": "",
+    "purpose": "unresolved - the table contains 0 rows and no sample data, so its meaning cannot be determined from evidence. The name FINANCIALMETRICS suggests it stores financial metrics, but this is unsupported by data."
+   },
+   "columns": {
+    "FINANCIALMETRICSID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINANCIALREPORT": {
+   "table": {
+    "name": "FINANCIALREPORT",
+    "purpose": "One row per financial report filing (e.g., a SEC XBRL submission), uniquely identified by an accession number and produced by a corporation. Its elements/line items (ELEMENTSOFFINANCIALREPORT) link back to it."
+   },
+   "columns": {
+    "FINANCIALREPORTID": {
+     "role": "identifier",
+     "name": "financial_report_id",
+     "description": "Primary key: surrogate identifier for a financial report filing. Referenced by ELEMENTSOFFINANCIALREPORT.ISMEMBEROF, which assigns each financial-statement element/line item to its report.",
+     "status": "resolved"
+    },
+    "HASUNIQUEIDENTIFIER": {
+     "role": "identifier",
+     "name": "accession_number",
+     "description": "Unique external identifier of the filing, in the SEC accession-number format CIK-YYYY-NNNNNNN (e.g., 0001085869-14-000007). Each report corresponds to one filing submission.",
+     "status": "resolved"
+    },
+    "ISPROVIDEDBY": {
+     "role": "foreign_key",
+     "name": "corporation_id",
+     "description": "Foreign key to CORPORATION.CORPORATIONID: the company that filed/provided this financial report. Many reports per corporation (up to ~28 each).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINANCIALSERVICEACCOUNT": {
+   "table": {
+    "name": "FINANCIALSERVICEACCOUNT",
+    "purpose": "Each row represents a financial service account (e.g., a brokerage or securities account) held at a financial institution. The account is owned by a person or autonomous agent, managed by an account manager, and can hold securities (referenced by HOLDING) and facilitate securities transactions (referenced by SECURITIESTRANSACTION). This appears to be a synthetic/generated dataset (sequential IDs, uniform distributions)."
+   },
+   "columns": {
+    "FINANCIALSERVICEACCOUNTID": {
+     "role": "identifier",
+     "name": "Financial service account ID",
+     "description": "Primary key uniquely identifying each financial service account. Referenced by SECURITIESTRANSACTION.ISFACILITATEDBY (transactions facilitated through the account) and HOLDING.ISHELDBY (securities holdings held in the account).",
+     "status": "resolved"
+    },
+    "HASACCOUNTNUMBER": {
+     "role": "identifier",
+     "name": "Account number",
+     "description": "The account number of the financial service account. Unique across rows, sequential integers in the 104M range, consistent with a generated account numbering scheme.",
+     "status": "resolved"
+    },
+    "HASSTARTDATE": {
+     "role": "date",
+     "name": "Account start (opening) date",
+     "description": "The date the account was opened/started. Dates span 2000-01-01 to 2014-12-31 with no time component.",
+     "status": "resolved"
+    },
+    "ISMANAGEDBY": {
+     "role": "foreign_key",
+     "name": "Manager ID",
+     "description": "Reference to the party (likely a person/employee such as an account manager or advisor) that manages the account. Only 100 distinct values, each managing roughly 2,400-2,500 accounts. No accepted join confirms the target table, so the referenced entity type remains tentative.",
+     "status": "tentative"
+    },
+    "ISOWNEDBY": {
+     "role": "foreign_key",
+     "name": "Owner ID",
+     "description": "Reference to the owner of the account. Accepted joins point to PERSON.PERSONID and AUTONOMOUSAGENT.AUTONOMOUSAGENTID, so the owner may be either a person or an autonomous agent (e.g., a bot or algorithmic trading entity).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINANCINGRECEIVABLEALLOWANCEFORCREDITLOSSES": {
+   "table": {
+    "name": "FINANCINGRECEIVABLEALLOWANCEFORCREDITLOSSES",
+    "purpose": "Likely represents the allowance for credit losses on financing receivables (a valuation/qualifying account), but the table is empty (0 rows) and no column data exists, so this is inferred only from the table name and the presence of related tables (FINANCINGRECEIVABLES, ALLOWANCEFORCREDITLOSSES, IMPAIREDFINANCINGRECEIVABLES). Marked tentative due to absence of data."
+   },
+   "columns": {
+    "FINANCINGRECEIVABLEALLOWANCEFORCREDITLOSSESID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINANCINGRECEIVABLECREDITQUALITYINDICATORS": {
+   "table": {
+    "name": "FINANCINGRECEIVABLECREDITQUALITYINDICATORS",
+    "purpose": "Likely a disclosure table for credit quality indicators of financing receivables (e.g., aging/past-due status categories per receivable, per XBRL-style financial reporting schema). The table is empty (0 rows), so the meaning is inferred only from the table name and sibling tables (FINANCINGRECEIVABLES, FINANCINGRECEIVABLESPASTDUE, FINANCINGRECEIVABLEALLOWANCEFORCREDITLOSSES, IMPAIREDFINANCINGRECEIVABLES). No row-level evidence is available to confirm the row grain or the specific credit-quality indicator values captured."
+   },
+   "columns": {
+    "FINANCINGRECEIVABLECREDITQUALITYINDICATORSID": {
+     "role": "identifier",
+     "name": "FINANCINGRECEIVABLECREDITQUALITYINDICATORSID",
+     "description": "Surrogate primary key for the table (declared BIGINT, flagged as primary key). The table is empty, so no value evidence exists; the meaning rests solely on the naming convention (ID suffix) and PK detection.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINANCINGRECEIVABLES": {
+   "table": {
+    "name": "FINANCINGRECEIVABLES",
+    "purpose": "Table for financing receivables (loans/notes receivable) disclosures. The table is empty (0 rows), so its purpose is inferred only from its name and the surrounding XBRL-style financial disclosure tables (e.g. FINANCINGRECEIVABLEALLOWANCEFORCREDITLOSSES, FINANCINGRECEIVABLESPASTDUE, FINANCINGRECEIVABLECREDITQUALITYINDICATORS). No row-level evidence is available to confirm the meaning of any column, so all columns are unresolved. The table likely represents a financing receivable instrument/asset and its attributes as reported in financial statement disclosures, but this cannot be verified from the data."
+   },
+   "columns": {
+    "FINANCINGRECEIVABLESID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINANCINGRECEIVABLESPASTDUE": {
+   "table": {
+    "name": "FINANCINGRECEIVABLESPASTDUE",
+    "purpose": "Table for financing receivables past due (aging) disclosures, likely per XBRL tagging of past-due amounts of financing receivables. The table is empty (0 rows), so meanings are inferred from names and the surrounding schema only. Each row would presumably represent a past-due financing receivable or an aging bucket of financing receivables for a reporting entity/period. This is tentative because no data exists to confirm the row grain or the aging structure (e.g., 30/60/90-day buckets)."
+   },
+   "columns": {
+    "FINANCINGRECEIVABLESPASTDUEID": {
+     "role": "identifier",
+     "name": "FINANCINGRECEIVABLESPASTDUEID",
+     "description": "Surrogate primary key for a past-due financing receivable record. Declared BIGINT and flagged as primary key, but the table is empty so no values exist to confirm.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FINANCINGRECEIVABLETROUBLEDDEBTRESTRUCTURINGS": {
+   "table": {
+    "name": "FINANCINGRECEIVABLETROUBLEDDEBTRESTRUCTURINGS",
+    "purpose": "Likely a disclosure table for financing receivables that have undergone troubled debt restructurings (TDRs), consistent with the XBRL-style naming of the surrounding database (e.g., FINANCINGRECEIVABLES, FINANCINGRECEIVABLESPASTDUE, IMPAIREDFINANCINGRECEIVABLES). However, the table contains zero rows and no column values, so this reading rests only on the table name and its sibling tables, not on data evidence."
+   },
+   "columns": {
+    "FINANCINGRECEIVABLETROUBLEDDEBTRESTRUCTURINGSID": {
+     "role": "identifier",
+     "name": "FINANCINGRECEIVABLETROUBLEDDEBTRESTRUCTURINGSID",
+     "description": "Surrogate primary key for the table (declared BIGINT, flagged as primary key). The table is empty, so no value evidence exists; the meaning is inferred solely from the naming convention (table name + 'ID') seen throughout this database.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FOREIGNCURRENCYTRANSLATION": {
+   "table": {
+    "name": "FOREIGNCURRENCYTRANSLATION",
+    "purpose": "Foreign currency translation disclosure (XBRL-style taxonomy table, likely from SEC filing data). The table is empty (0 rows), so its contents cannot be verified; the meaning is inferred from the table name and the surrounding financial-reporting schema only. It presumably stores facts about translating foreign-currency amounts into the reporting currency (e.g., translation adjustments, exchange rates, related comprehensive income effects)."
+   },
+   "columns": {
+    "FOREIGNCURRENCYTRANSLATIONID": {
+     "role": "identifier",
+     "name": "FOREIGNCURRENCYTRANSLATIONID",
+     "description": "Primary key identifying a foreign currency translation record. The table is empty, so no values exist to confirm; type and PK flag support this reading.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FORWARDCONTRACTINDEXEDTOISSUERSEQUITY": {
+   "table": {
+    "name": "FORWARDCONTRACTINDEXEDTOISSUERSEQUITY",
+    "purpose": "Likely represents forward contracts whose settlement value is indexed to the issuer's own equity (e.g., XBRL-tagged disclosure of such contracts). The table is empty (0 rows), so the meaning is inferred from the name and the surrounding financial-reporting schema only; no value evidence exists. Each row would presumably describe one such forward contract or disclosure instance, with a link to a contract and a name/label. Marked tentative due to absence of data."
+   },
+   "columns": {
+    "FORWARDCONTRACTINDEXEDTOISSUERSEQUITYID": {
+     "role": "identifier",
+     "name": "FORWARDCONTRACTINDEXEDTOISSUERSEQUITYID",
+     "description": "Primary key identifier for a forward contract indexed to the issuer's equity record. Declared BIGINT and flagged as primary key, but the table is empty so no value evidence exists.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "FRESHSTARTADJUSTMENTS": {
+   "table": {
+    "name": "FRESHSTARTADJUSTMENTS",
+    "purpose": "Likely captures fresh start accounting adjustments (fair-value revaluations recognized upon emergence from bankruptcy/reorganization), consistent with the XBRL-style financial reporting schema of the other tables. However, the table is empty (0 rows), so this reading rests only on the table name and database context, not on data. Marked tentative for the table as a whole; column meanings below are correspondingly weakly supported."
+   },
+   "columns": {
+    "FRESHSTARTADJUSTMENTSID": {
+     "role": "identifier",
+     "name": "FRESHSTARTADJUSTMENTSID",
+     "description": "Primary key identifier for a fresh start adjustment record. Declared BIGINT and flagged as the table's primary key, but the table is empty so no value evidence exists.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "GAINLOSSONINVESTMENTS": {
+   "table": {
+    "name": "GAINLOSSONINVESTMENTS",
+    "purpose": "Likely intended to record gains or losses on investments (XBRL-style financial reporting schema, cf. related tables REALIZEDGAINLOSSONINVESTMENTS, UNREALIZEDGAINLOSSONINVESTMENTS). However, the table is empty (0 rows), so this is inferred from naming conventions and sibling tables only, not from data. Marked tentative for the table as a whole; column meanings below are unresolved due to no data."
+   },
+   "columns": {
+    "GAINLOSSONINVESTMENTSID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "HASNAME": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "GOODWILL": {
+   "table": {
+    "name": "GOODWILL",
+    "purpose": "Goodwill disclosure instances: each row represents a goodwill disclosure reported in a financial report, one-to-one with a row in DISCLOSURE. The table carries only an identifier and a fixed label; the actual goodwill amounts/rollforward details presumably live in related tables (e.g., INTANGIBLEASSETSANDGOODWILL)."
+   },
+   "columns": {
+    "GOODWILLID": {
+     "role": "identifier",
+     "name": "GOODWILLID",
+     "description": "Primary key of the goodwill disclosure instance; one-to-one with DISCLOSURE.DISCLOSUREID, so it identifies the specific goodwill disclosure in a filing.",
+     "status": "resolved"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "HASNAME",
+     "description": "Fixed label for the disclosure element; always the literal text 'Goodwill'. It names the disclosed item rather than varying per row.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "GUARANTEES": {
+   "table": {
+    "name": "GUARANTEES",
+    "purpose": "Likely stores guarantees disclosed by the reporting entity (e.g., guarantees of third-party debt or performance obligations), consistent with the related COMMITMENTSCONTINGENCIESANDGUARANTEES and GUARANTOROBLIGATIONS tables. However, the table is empty (0 rows), so this is inferred from the table name and database context only, not from data. Each row would presumably represent one guarantee."
+   },
+   "columns": {
+    "GUARANTEESID": {
+     "role": "identifier",
+     "name": "GUARANTEESID",
+     "description": "Primary key identifier for a guarantee record. Declared BIGINT and flagged as the table's primary key, but the table is empty so no value evidence exists.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "GUARANTOROBLIGATIONS": {
+   "table": {
+    "name": "GUARANTOROBLIGATIONS",
+    "purpose": "Likely stores guarantor obligations (guarantees given by a guarantor entity on behalf of another party), as disclosed in financial statement guarantees/commitments notes. The table is empty (0 rows), so the meaning is inferred from the name and the surrounding XBRL-style financial reporting schema (e.g., GUARANTEES, COMMITMENTSCONTINGENCIESANDGUARANTEES tables) rather than from data. Marked tentative because no data exists to confirm the row grain or contents."
+   },
+   "columns": {
+    "GUARANTOROBLIGATIONSID": {
+     "role": "identifier",
+     "name": "Guarantor obligations ID",
+     "description": "Primary key identifying each guarantor obligation record. Declared BIGINT and flagged as the table's primary key, but the table is empty so no values exist to confirm.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "HELDTOMATURITYSECURITIES": {
+   "table": {
+    "name": "HELDTOMATURITYSECURITIES",
+    "purpose": "Held-to-maturity securities disclosure table (XBRL-style financial reporting schema). The table is empty (0 rows), so meanings rest on naming conventions and the surrounding financial-reporting schema, not on observed data. Likely stores details of debt securities an entity intends and is able to hold to maturity, carried at amortized cost, per reporting period and filer entity. The database appears to be an XBRL/SEC-filing derived model (tables like AVAILABLEFORSALESECURITIES, TRADINGSECURITIESANDOTHERTRADINGASSETS, SECURITY, FINANCIALINSTRUMENT)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "Has name",
+     "description": "Likely a boolean flag indicating whether the held-to-maturity security (or disclosure) has a name. No data present (100% null, 0 rows), so this cannot be confirmed; the reading is based only on the column name.",
+     "status": "tentative"
+    },
+    "HELDTOMATURITYSECURITIESID": {
+     "role": "identifier",
+     "name": "Held-to-maturity securities ID",
+     "description": "Primary key identifying a row in this table. No data present, so the exact semantics (surrogate key vs. composite of entity/period) are unresolved, but its role as the table's identifier is supported by it being detected as the primary key.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "HOLDING": {
+   "table": {
+    "name": "HOLDING",
+    "purpose": "Records individual security holdings: a quantity of a specific security held by a financial service account (e.g., a brokerage account). Each row links an account to a security with a share count and a description of the security."
+   },
+   "columns": {
+    "HASCOUNT": {
+     "role": "numeric",
+     "name": "quantity_held",
+     "description": "Number of shares/units of the security held by the account. Values range from ~20 to ~3000 with fractional parts (e.g., 41.797, 2342.907), consistent with share counts that can be fractional (e.g., dividend reinvestment).",
+     "status": "resolved"
+    },
+    "HASDESCRIPTION": {
+     "role": "category",
+     "name": "security_description",
+     "description": "Human-readable description of the held security, of the form 'Stock <TICKER>' (e.g., 'Stock AVGO', 'Stock GOOGL'). The ticker matches the referenced security.",
+     "status": "resolved"
+    },
+    "HOLDINGID": {
+     "role": "identifier",
+     "name": "holding_id",
+     "description": "Primary key of the holding row; synthetic sequential identifier starting at 500000000000.",
+     "status": "resolved"
+    },
+    "ISHELDBY": {
+     "role": "foreign_key",
+     "name": "account_id",
+     "description": "Foreign key to FINANCIALSERVICEACCOUNT.FINANCIALSERVICEACCOUNTID — the account that holds this position. Many holdings per account.",
+     "status": "resolved"
+    },
+    "REFERSTO": {
+     "role": "foreign_key",
+     "name": "security_id",
+     "description": "Foreign key to the security being held. Accepted joins exist to SECURITY.SECURITYID, LISTEDSECURITY.LISTEDSECURITYID, and FINANCIALINSTRUMENT.FINANCIALINSTRUMENTID, all sharing the same ID range (1001000-1005649), suggesting these are alternative representations of the same underlying security registry; the exact target table is therefore tentative, but the meaning (the referenced security/financial instrument held) is clear.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "IMPAIREDFINANCINGRECEIVABLES": {
+   "table": {
+    "name": "IMPAIREDFINANCINGRECEIVABLES",
+    "purpose": "Table for impaired financing receivables (loans/receivables classified as impaired, per credit-loss disclosures). Related to FINANCINGRECEIVABLES and its credit-quality/allowance tables. The table is empty, so meanings rest on naming conventions and the surrounding schema only."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "IMPAIREDFINANCINGRECEIVABLESID": {
+     "role": "identifier",
+     "name": "impaired_financing_receivables_id",
+     "description": "Primary key identifier for a row in this table (one impaired financing receivable record). No data present to confirm format or semantics.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "INCOMETAXCONTINGENCY": {
+   "table": {
+    "name": "INCOMETAXCONTINGENCY",
+    "purpose": "Likely stores income tax contingencies (uncertain tax positions) recognized as liabilities, e.g. per FIN 48/ASC 740-10 disclosures. However, the table is empty (0 rows) and no column data is available, so this is inferred from the name and the surrounding XBRL-style financial reporting schema only. Each row would presumably represent one income tax contingency item for an entity/period."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "INCOMETAXCONTINGENCYID": {
+     "role": "identifier",
+     "name": "Income Tax Contingency ID",
+     "description": "Primary key identifying each income tax contingency record. Declared BIGINT and flagged as the table's primary key, but the table has no rows, so no value evidence exists.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "INDEFINITELIVEDINTANGIBLEASSETS": {
+   "table": {
+    "name": "INDEFINITELIVEDINTANGIBLEASSETS",
+    "purpose": "Table for indefinite-lived intangible assets (e.g., trademarks, licenses) disclosures. Table is empty (0 rows), so meanings are inferred from names and the XBRL-style financial reporting schema context only; no value evidence exists. Each row would represent one indefinite-lived intangible asset disclosure instance for a reporting entity/period. This is tentative because no data confirms it."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "Has name",
+     "description": "Likely a boolean flag indicating whether the indefinite-lived intangible asset has a name/label. No data (100% null, 0 rows), so this is inferred from the name alone; could alternatively indicate whether a name element is present in the disclosure. Marked tentative.",
+     "status": "tentative"
+    },
+    "INDEFINITELIVEDINTANGIBLEASSETSID": {
+     "role": "identifier",
+     "name": "Indefinite-lived intangible assets ID",
+     "description": "Primary key identifier for a row in this table (declared BIGINT, detected primary key). No sample values exist to confirm format or semantics.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "INDUSTRYSECTORCLASSIFICATIONSCHEME": {
+   "table": {
+    "name": "INDUSTRYSECTORCLASSIFICATIONSCHEME",
+    "purpose": "A lookup/reference table defining an industry sector classification scheme. The single row identifies the scheme used by the database's industry sector classifiers as the Standard Industrial Classification (SIC) system. Likely referenced by INDUSTRYSECTORCLASSIFIER, though no join was detected in this dataset (only one row)."
+   },
+   "columns": {
+    "HASDESCRIPTION": {
+     "role": "code",
+     "name": "scheme_description",
+     "description": "A code/identifier describing the classification scheme; value 'SIC_SCHEME' indicates the Standard Industrial Classification scheme. With only one row, the exact semantics (internal code vs. free-text description) are tentative.",
+     "status": "tentative"
+    },
+    "HASNAME": {
+     "role": "code",
+     "name": "scheme_name",
+     "description": "Short name of the classification scheme; value 'SIC' = Standard Industrial Classification.",
+     "status": "resolved"
+    },
+    "INDUSTRYSECTORCLASSIFICATIONSCHEMEID": {
+     "role": "identifier",
+     "name": "industry_sector_classification_scheme_id",
+     "description": "Primary key identifying the classification scheme; surrogate integer key (value 1 for the SIC scheme).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "INDUSTRYSECTORCLASSIFIER": {
+   "table": {
+    "name": "INDUSTRYSECTORCLASSIFIER",
+    "purpose": "Lookup table of industry sector classification codes (SIC-style 4-digit codes) with their industry descriptions and the broad sector (formal name) each belongs to. Each row is one industry classification; corporations are classified by these codes (referenced by CORPORATION.ISCLASSIFIEDBY). The scheme is defined by INDUSTRYSECTORCLASSIFICATIONSCHEME (ISDEFINEDBY = 1)."
+   },
+   "columns": {
+    "HASDESCRIPTION": {
+     "role": "free_text",
+     "name": "industry_description",
+     "description": "Human-readable description of the industry classification, e.g. 'Electric Lighting & Wiring Equipment', 'Life Insurance'. Unique per row.",
+     "status": "resolved"
+    },
+    "HASFORMALNAME": {
+     "role": "category",
+     "name": "sector_name",
+     "description": "Broad sector / division name the industry belongs to, e.g. 'Manufacturing', 'Services', 'Finance, Insurance and Real Estate' (SIC division-level names).",
+     "status": "resolved"
+    },
+    "HASNUMERICCODE": {
+     "role": "code",
+     "name": "sic_code",
+     "description": "4-digit numeric industry classification code (SIC-style), 100-9995. Duplicate of INDUSTRYSECTORCLASSIFIERID and HASUNIQUEIDENTIFIER.",
+     "status": "resolved"
+    },
+    "HASUNIQUEIDENTIFIER": {
+     "role": "code",
+     "name": "industry_code_identifier",
+     "description": "Unique identifier for the industry classification; identical values to the SIC code and the primary key.",
+     "status": "resolved"
+    },
+    "INDUSTRYSECTORCLASSIFIERID": {
+     "role": "identifier",
+     "name": "industry_sector_classifier_id",
+     "description": "Primary key; the 4-digit SIC-style industry code identifying the industry classification. Referenced by CORPORATION.ISCLASSIFIEDBY to classify corporations.",
+     "status": "resolved"
+    },
+    "ISDEFINEDBY": {
+     "role": "foreign_key",
+     "name": "classification_scheme_id",
+     "description": "Reference to the classification scheme that defines these codes; constant value 1, presumably the single row of INDUSTRYSECTORCLASSIFICATIONSCHEME. Alternative reading: it could be a simple flag/indicator rather than a foreign key, but the constant value 1 and the presence of a scheme table make the foreign-key reading most plausible.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "INTANGIBLEASSETSANDGOODWILL": {
+   "table": {
+    "name": "INTANGIBLEASSETSANDGOODWILL",
+    "purpose": "Table for intangible assets and goodwill disclosures (XBRL-style financial reporting data). It is empty (0 rows), so its content cannot be verified; the meaning is inferred from the name and the surrounding financial-reporting schema only. Likely holds per-entity/period amounts for intangible assets and goodwill, with a primary key ID and a name/description attribute (HASNAME)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "Has name",
+     "description": "Likely a boolean flag indicating whether the intangible assets and goodwill item has a name/label. No data present (100% null, 0 rows), so this is unverified.",
+     "status": "tentative"
+    },
+    "INTANGIBLEASSETSANDGOODWILLID": {
+     "role": "identifier",
+     "name": "Intangible assets and goodwill ID",
+     "description": "Primary key identifier for a row in this table. The table is empty, so no values exist to confirm, but its declared BIGINT type and primary-key detection support this reading.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "INTERESTANDOTHERINCOME": {
+   "table": {
+    "name": "INTERESTANDOTHERINCOME",
+    "purpose": "Likely represents interest and other non-operating income line items (an XBRL-style financial reporting fact table), but the table is empty (0 rows), so this is inferred from the name and the surrounding financial-reporting schema only. No data evidence is available to confirm the row meaning or units."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "INTERESTANDOTHERINCOMEID": {
+     "role": "identifier",
+     "name": "INTERESTANDOTHERINCOMEID",
+     "description": "Surrogate primary key identifying a row in the INTERESTANDOTHERINCOME table. Detected as the primary key, but the table has no rows, so no value evidence exists.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "INTERESTCOSTSINCURRED": {
+   "table": {
+    "name": "INTERESTCOSTSINCURRED",
+    "purpose": "Likely a fact/detail table for interest costs incurred (e.g., interest expense recognized on debt), part of a financial-reporting schema (XBRL-style). No rows exist, so meaning is inferred from the table name and surrounding schema only; mark as tentative overall."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "INTERESTCOSTSINCURREDID": {
+     "role": "identifier",
+     "name": "interest costs incurred id",
+     "description": "Primary key of the table; a surrogate identifier for an interest-costs-incurred record. No data present, so type/meaning beyond identifier role is unverified.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "INVENTORYCURRENT": {
+   "table": {
+    "name": "INVENTORYCURRENT",
+    "purpose": "Represents the 'Inventory, Net' line item (current asset) reported on balance sheets in financial reports. Each row is one instance of that element for a filing, with an ID linking into the ELEMENTSOFFINANCIALREPORT table. This appears to be XBRL-derived data (the HASNAME value 'InventoryNet' is the standard XBRL element name)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "category",
+     "name": "XBRL element name",
+     "description": "The standardized element/tag name identifying this fact. Constant value 'InventoryNet', the US-GAAP XBRL element for net inventory (a current asset).",
+     "status": "resolved"
+    },
+    "INVENTORYCURRENTID": {
+     "role": "identifier",
+     "name": "Inventory (net) fact ID",
+     "description": "Primary key for this table; one-to-one with ELEMENTSOFFINANCIALREPORT.ELEMENTSOFFINANCIALREPORTID, identifying the individual reported InventoryNet fact/element instance.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "INVENTORYNONCURRENT": {
+   "table": {
+    "name": "INVENTORYNONCURRENT",
+    "purpose": "Non-current inventory balances reported on the balance sheet (inventory not expected to be sold within one year). The table is empty, so the meaning is inferred from its name and the surrounding XBRL-style financial reporting schema (e.g., INVENTORYCURRENT, OTHERASSETSNONCURRENT). Marked tentative because no row data confirms it."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "INVENTORYNONCURRENTID": {
+     "role": "identifier",
+     "name": "inventory_noncurrent_id",
+     "description": "Primary key identifier for a non-current inventory record. Declared BIGINT and detected as the table's primary key, but the table has no rows, so no value evidence exists.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "INVESTMENTINCOME": {
+   "table": {
+    "name": "INVESTMENTINCOME",
+    "purpose": "Table for investment income line items (income earned from investments, e.g. interest, dividends, gains on securities). It is empty, so its purpose is inferred from the name and the surrounding financial-reporting schema (XBRL-style tables such as INTERESTANDOTHERINCOME, GAINLOSSONINVESTMENTS, MARKETABLESECURITIES). Each row would represent one investment income amount reported for an entity/period. The exact semantics cannot be confirmed without data."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "INVESTMENTINCOMEID": {
+     "role": "identifier",
+     "name": "INVESTMENTINCOMEID",
+     "description": "Primary key identifier for a row in the INVESTMENTINCOME table. Detected as the primary key, but the table has no rows, so the identifier's format and semantics (e.g. surrogate key vs. composite encoding) cannot be verified.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "INVESTMENTSANDOTHERNONCURRENTASSETS": {
+   "table": {
+    "name": "INVESTMENTSANDOTHERNONCURRENTASSETS",
+    "purpose": "Table for investments and other non-current assets, likely from XBRL/SEC financial reporting data. It is empty (0 rows), so its content cannot be verified; the meaning is inferred from the table name and the surrounding financial-reporting schema only. The two columns suggest a name/label attribute plus a surrogate primary key, consistent with a dimension-style lookup table for non-current investments and other assets line items (cf. AVAILABLEFORSALESECURITIES, EQUITYMETHODINVESTMENTS, OTHERASSETSNONCURRENT)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "INVESTMENTSANDOTHERNONCURRENTASSETSID": {
+     "role": "identifier",
+     "name": "Investments and other non-current assets ID",
+     "description": "Surrogate primary key for the table (detected as primary key). No values exist to confirm, but its declaration as the table's primary key supports it being a unique row identifier.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "LIABILITY": {
+   "table": {
+    "name": "LIABILITY",
+    "purpose": "Represents liability concepts/elements in financial statements, primarily the XBRL element \"LiabilitiesAndStockholdersEquity\" (and occasionally \"Liabilities\" and \"LiabilitiesCurrent\"), each row being a distinct instance of such an element occurrence, keyed to financial statement element tables."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "category",
+     "name": "element_name",
+     "description": "The XBRL/financial statement element name that the liability instance represents. Three values: 'LiabilitiesAndStockholdersEquity' (99.9%), 'Liabilities', and 'LiabilitiesCurrent'.",
+     "status": "resolved"
+    },
+    "LIABILITYID": {
+     "role": "identifier",
+     "name": "liability_id",
+     "description": "Primary key; unique surrogate identifier for each liability element occurrence. Also serves as a foreign key (one-to-one) to ELEMENTOFFINANCIALSTATEMENT and ELEMENTSOFFINANCIALREPORT, indicating this table is a typed extension of those element tables.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "LINEOFCREDITFACILITY": {
+   "table": {
+    "name": "LINEOFCREDITFACILITY",
+    "purpose": "Table for line of credit facility disclosures (likely from XBRL/financial reporting data, given the other tables). It is empty (0 rows), so its contents cannot be verified. It appears to hold instances of line-of-credit facilities, identified by a surrogate ID and a name flag, but no data exists to confirm the row grain or semantics."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "LINEOFCREDITFACILITYID": {
+     "role": "identifier",
+     "name": "Line of credit facility ID",
+     "description": "Declared primary key; surrogate identifier for a line of credit facility record. No rows exist to confirm.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "LISTEDSECURITY": {
+   "table": {
+    "name": "LISTEDSECURITY",
+    "purpose": "A security listed on an exchange: each row is one listed security (stock, preferred, etc.) with its ticker, listing date, issuing corporation, and a last traded value reference. Referenced by HOLDING and SECURITIESTRANSACTION, so it is the master list of tradable securities in this financial-reporting database."
+   },
+   "columns": {
+    "HASLASTTRADEDVALUE": {
+     "role": "foreign_key",
+     "name": "last_traded_value_id",
+     "description": "Reference to MONETARYAMOUNT.MONETARYAMOUNTID holding the security's last traded (market) value. One-to-one with that table. The raw values are surrogate IDs (1000-5649), not amounts themselves.",
+     "status": "resolved"
+    },
+    "HASLEGALNAME": {
+     "role": "foreign_key",
+     "name": "issuer_legal_name",
+     "description": "Legal name of the issuing corporation; references CORPORATION.HASLEGALNAME (many listed securities to one corporation, e.g. multiple share classes/preferred issues of the same company).",
+     "status": "resolved"
+    },
+    "HASLISTINGDATE": {
+     "role": "date",
+     "name": "listing_date",
+     "description": "Date the security was listed on its exchange, ranging from 1970 to 2018.",
+     "status": "resolved"
+    },
+    "HASTICKERSYMBOL": {
+     "role": "code",
+     "name": "ticker_symbol",
+     "description": "Exchange ticker symbol of the security (e.g. TOL, KMR, SHO.PRD — the '.PRD' suffix indicates a preferred issue). Nearly unique per row.",
+     "status": "resolved"
+    },
+    "LISTEDSECURITYID": {
+     "role": "foreign_key",
+     "name": "listed_security_id",
+     "description": "Primary key / surrogate identifier for the listed security (1001000-1005649). Referenced by HOLDING.REFERSTO and SECURITIESTRANSACTION.REFERSTO.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "LONGLIVEDASSETSHELDFORSALE": {
+   "table": {
+    "name": "LONGLIVEDASSETSHELDFORSALE",
+    "purpose": "Likely a disclosure table for long-lived assets classified as held for sale (per its name and the surrounding XBRL-style financial reporting tables such as LONGLIVEDASSETSTOBEABANDONED and ASSETIMPAIRMENTCHARGES). However, the table is empty (0 rows), so the meaning cannot be confirmed from data; the interpretation rests solely on the table name and database context. Each row would presumably represent one held-for-sale asset disclosure instance for a reporting entity/period, but this is unverified."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "LONGLIVEDASSETSHELDFORSALEID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "LONGLIVEDASSETSTOBEABANDONED": {
+   "table": {
+    "name": "LONGLIVEDASSETSTOBEABANDONED",
+    "purpose": "Table for long-lived assets to be abandoned (disclosure of assets the entity intends to abandon). The table is empty (0 rows), so meanings rest on names and the XBRL-style schema of the surrounding database only. Related tables LONGLIVEDASSETSHELDFORSALE and ASSETRETIREMENTOBLIGATIONDISCLOSURE support this reading, but no value evidence exists."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has name",
+     "description": "Likely a boolean flag indicating whether the abandoned-asset item has a name/label. No data (100% null, 0 rows), so this is inferred from the name only.",
+     "status": "tentative"
+    },
+    "LONGLIVEDASSETSTOBEABANDONEDID": {
+     "role": "identifier",
+     "name": "long-lived assets to be abandoned ID",
+     "description": "Primary key / surrogate identifier for a row in this table. No data present; inferred from the name and its detection as the table's primary key.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "LONGTERMDEBT": {
+   "table": {
+    "name": "LONGTERMDEBT",
+    "purpose": "Represents the 'Long-Term Debt, Noncurrent' financial statement element as reported in financial reports (likely XBRL-tagged filings). Each row is an instance/occurrence of this element tied to a disclosure or financial report fact. The table itself carries no amounts; it appears to be a classification/element table whose rows are referenced by fact tables elsewhere (e.g., ELEMENTSOFFINANCIALREPORT, DISCLOSURE)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "category",
+     "name": "element_name",
+     "description": "The name of the financial statement element this row represents. Constant value 'LongTermDebtNoncurrent', i.e., the XBRL element for long-term debt classified as noncurrent (due beyond one year).",
+     "status": "resolved"
+    },
+    "LONGTERMDEBTID": {
+     "role": "identifier",
+     "name": "long_term_debt_id",
+     "description": "Primary key uniquely identifying each long-term debt (noncurrent) element instance. It joins one-to-one to ELEMENTSOFFINANCIALREPORT.ELEMENTSOFFINANCIALREPORTID and DISCLOSURE.DISCLOSUREID, suggesting this table is a typed extension of those generic element/disclosure records.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "LONGTERMDEBTMATURITIES": {
+   "table": {
+    "name": "LONGTERMDEBTMATURITIES",
+    "purpose": "Long-term debt maturities disclosure: the schedule of principal amounts of long-term debt due in each future period, as disclosed in financial statement footnotes. Table is empty, so meaning is inferred from name and the surrounding XBRL-style financial reporting schema only."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has_name",
+     "description": "Likely a boolean flag indicating whether the maturity schedule entry has a name/label. No data present; meaning is tentative based on the name alone.",
+     "status": "tentative"
+    },
+    "LONGTERMDEBTMATURITIESID": {
+     "role": "identifier",
+     "name": "long_term_debt_maturities_id",
+     "description": "Primary key identifier for a row in the long-term debt maturities schedule. Declared BIGINT and detected as the table's primary key, but the table has no rows so no value evidence exists.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "LONGTERMPURCHASECOMMITMENT": {
+   "table": {
+    "name": "LONGTERMPURCHASECOMMITMENT",
+    "purpose": "Long-term purchase commitments (likely a disclosure table for unconditional purchase obligations extending beyond one year, per SEC XBRL taxonomy). The table is empty (0 rows), so meanings rest on names and the surrounding XBRL-style schema only. It likely relates to COMMITMENTSCONTINGENCIESANDGUARANTEES or RECORDEDUNCONDITIONALPURCHASEOBLIGATION, though no joins were detected to confirm this."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has_name",
+     "description": "Presumably a boolean flag indicating whether the long-term purchase commitment has a name/label. No data present (100% null, 0 distinct values), so this is inferred from the column name only.",
+     "status": "tentative"
+    },
+    "LONGTERMPURCHASECOMMITMENTID": {
+     "role": "identifier",
+     "name": "long_term_purchase_commitment_id",
+     "description": "Primary key identifier for a long-term purchase commitment record. Declared BIGINT and detected as the table's primary key, but the table is empty so no values exist to confirm.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "LOSS": {
+   "table": {
+    "name": "LOSS",
+    "purpose": "A fact/instance table for losses reported in financial statements; every row is a loss whose XBRL element name is 'NetIncomeLoss', i.e. it records instances of net income (loss) figures tagged in filings. The table appears to be part of an XBRL/SEC-filing derived model, where LOSSID identifies each reported loss fact and HASNAME gives the element name of the loss concept. Given only two columns, the actual monetary amounts and the reporting entity/period are not stored here (likely in related tables not joined to this one)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "category",
+     "name": "element_name",
+     "description": "The XBRL/financial-statement element name of the loss concept. All 14,198 rows have the single value 'NetIncomeLoss', indicating this table stores facts tagged as net income (loss).",
+     "status": "resolved"
+    },
+    "LOSSID": {
+     "role": "identifier",
+     "name": "loss_id",
+     "description": "Primary key; a synthetic or internal identifier for an individual reported loss (net income/loss) fact. No joins to other tables were detected, so it cannot be confirmed which table holds the associated amount, entity, or period.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "MARKETABLESECURITIES": {
+   "table": {
+    "name": "MARKETABLESECURITIES",
+    "purpose": "Table for marketable securities (short-term investments held by the reporting entity), likely from a financial reporting taxonomy (XBRL-style). The table is empty, so meanings rest on names and the surrounding schema only. Each row would represent one marketable security or disclosure fact about one, identified by MARKETABLESECURITIESID. Related tables include AVAILABLEFORSALESECURITIES, HELDTOMATURITYSECURITIES, TRADINGSECURITIESANDOTHERTRADINGASSETS, SECURITY, and FINANCIALINSTRUMENT, suggesting this is one category in a securities/investments hierarchy."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "MARKETABLESECURITIESID": {
+     "role": "identifier",
+     "name": "marketable_securities_id",
+     "description": "Primary key identifying a row in the MARKETABLESECURITIES table (surrogate identifier for a marketable security record). No data present, but its primary-key detection and naming convention support this.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "MONETARYAMOUNT": {
+   "table": {
+    "name": "MONETARYAMOUNT",
+    "purpose": "A reusable value object representing a monetary amount (with an associated currency), instantiated by other tables such as SECURITIESTRANSACTION.HASPRICE and LISTEDSECURITY.HASLASTTRADEDVALUE. Each row is one monetary amount instance identified by MONETARYAMOUNTID."
+   },
+   "columns": {
+    "HASAMOUNT": {
+     "role": "numeric",
+     "name": "amount",
+     "description": "The numeric value of the monetary amount. Values range roughly 1.04 to 199.84 with a near-uniform distribution centered near 100, consistent with synthetic/test data rather than real financial figures. Null for ~99.5% of rows, suggesting most instances are placeholders or that the amount is populated only when used (e.g., as a price or last traded value).",
+     "status": "resolved"
+    },
+    "HASCURRENCY": {
+     "role": "boolean",
+     "name": "has_currency",
+     "description": "Constant flag = 1 on every row. Likely a discriminator/indicator that this monetary amount carries a currency (i.e., a link to the CURRENCY table exists), though no join to CURRENCY was detected, so its exact semantics cannot be confirmed from the data; an alternative reading is that it is simply a fixed structural marker of the MONETARYAMOUNT type.",
+     "status": "tentative"
+    },
+    "MONETARYAMOUNTID": {
+     "role": "identifier",
+     "name": "monetary_amount_id",
+     "description": "Primary key of the table; unique identifier for each monetary amount instance. Referenced one-to-one by SECURITIESTRANSACTION.HASPRICE (the price of a securities transaction) and LISTEDSECURITY.HASLASTTRADEDVALUE (the last traded value of a listed security).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "NETPERIODICBENEFITCOSTNOTYETRECOGNIZED": {
+   "table": {
+    "name": "NETPERIODICBENEFITCOSTNOTYETRECOGNIZED",
+    "purpose": "Likely a disclosure table for the portion of net periodic benefit (pension) cost not yet recognized in earnings, consistent with the XBRL-style naming of the surrounding database (e.g., COSTSOFRETIREMENTPLANS, DEFINEDBENEFITPLANAMOUNTSRECOGNIZEDINOTHERCOMPREHENSIVEINCOMELOSS). However, the table is empty (0 rows) and no column data exists, so this reading rests solely on the table name and cannot be confirmed from values. Marked tentative for the table as a whole; column meanings are unresolved."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "NETPERIODICBENEFITCOSTNOTYETRECOGNIZEDID": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "NEWACCOUNTINGPRONOUNCEMENTEARLYADOPTION": {
+   "table": {
+    "name": "NEWACCOUNTINGPRONOUNCEMENTEARLYADOPTION",
+    "purpose": "Records whether an entity early-adopted new accounting pronouncements (a disclosure concept from financial reporting, e.g. XBRL 'New Accounting Pronouncements, Early Adopted'). The table is empty, so meanings are inferred from names and the surrounding financial-reporting schema only. Each row would represent one early-adoption disclosure instance, identified by a surrogate ID and a name/description flag or label."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has_name",
+     "description": "Likely a boolean flag indicating whether the early-adoption disclosure has a name/label (e.g. whether a specific pronouncement is named). No data present to confirm; could alternatively be a text name field, but the boolean role guess and 'HAS' prefix support the flag reading.",
+     "status": "tentative"
+    },
+    "NEWACCOUNTINGPRONOUNCEMENTEARLYADOPTIONID": {
+     "role": "identifier",
+     "name": "new_accounting_pronouncement_early_adoption_id",
+     "description": "Surrogate primary key uniquely identifying each new-accounting-pronouncement early-adoption record. Table is empty, so no values observed, but the ID suffix and primary-key detection support this.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "NONCONTROLLINGINTEREST": {
+   "table": {
+    "name": "NONCONTROLLINGINTEREST",
+    "purpose": "Table for noncontrolling interest (minority interest) disclosures, part of an XBRL/financial-reporting schema. The table is empty (0 rows), so meanings rest on names and schema context only. Likely one row per noncontrolling interest disclosure instance, keyed by NONCONTROLLINGINTERESTID, with HASNAME flagging whether the interest holder is named."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "HASNAME",
+     "description": "Likely a boolean flag indicating whether the noncontrolling interest holder is identified by name. No data exists (100% null, 0 distinct values), so this cannot be confirmed; it could alternatively indicate whether a name element is present in the disclosure.",
+     "status": "tentative"
+    },
+    "NONCONTROLLINGINTERESTID": {
+     "role": "identifier",
+     "name": "NONCONTROLLINGINTERESTID",
+     "description": "Surrogate primary key identifying a noncontrolling interest record. Declared BIGINT and flagged as the table's primary key, but the table is empty so no value evidence exists.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "OPERATINGLOSSCARRYFORWARDS": {
+   "table": {
+    "name": "OPERATINGLOSSCARRYFORWARDS",
+    "purpose": "Table for operating loss carryforward disclosures (tax attribute of a reporting entity, e.g. NOL carryforwards with amounts and expiration). The table is empty, so the row-level meaning is inferred from the name and the surrounding XBRL-style financial reporting schema only. Related tables such as TAXCREDITCARRYFORWARD, DEFERREDTAXASSETSANDLIABILITIES, and CORPORATION support this reading."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has name",
+     "description": "Likely a boolean flag indicating whether the operating loss carryforward has a name/label (e.g. a jurisdiction or component name). No data present; the reading is based only on the column name and its boolean role guess.",
+     "status": "tentative"
+    },
+    "OPERATINGLOSSCARRYFORWARDSID": {
+     "role": "identifier",
+     "name": "operating loss carryforwards ID",
+     "description": "Surrogate primary key identifying a row in this table. Detected as the primary key; no data or joins observed.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "OTHERASSETS": {
+   "table": {
+    "name": "OTHERASSETS",
+    "purpose": "Table for other assets (likely a XBRL/financial-reporting style fact table for the 'Other Assets' line item). The table is empty (0 rows), so its meaning is inferred only from its name and the surrounding financial-reporting schema; no data evidence exists. Each row would presumably represent one reported 'Other Assets' fact/instance for an entity and period."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "OTHERASSETSID": {
+     "role": "identifier",
+     "name": "OTHERASSETSID",
+     "description": "Primary key of the OTHERASSETS table; a surrogate integer identifier for a row representing an other-assets record. No sample values exist (table is empty), so the exact semantics beyond 'unique row identifier' cannot be confirmed.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "OTHERASSETSANDOTHERLIABILITIES": {
+   "table": {
+    "name": "OTHERASSETSANDOTHERLIABILITIES",
+    "purpose": "Table for other assets and other liabilities disclosures (XBRL-style financial reporting data). It is empty, so its purpose is inferred from its name and the surrounding financial-reporting tables only. Each row presumably represents one reported fact or disclosure item about other assets and other liabilities for an entity/period, but this cannot be confirmed from data. The table has no rows and no joins to other tables, so its relationships are unresolved."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has name",
+     "description": "Likely a boolean flag indicating whether the other assets/liabilities item has a name/label. No data is present (100% null, 0 distinct values), so this is inferred from the column name only and cannot be confirmed.",
+     "status": "tentative"
+    },
+    "OTHERASSETSANDOTHERLIABILITIESID": {
+     "role": "identifier",
+     "name": "other assets and other liabilities id",
+     "description": "Primary key identifier for a row in this table. The table is empty, so no values exist to confirm format or semantics, but its name and primary-key detection support it being a surrogate identifier for an other assets/other liabilities record.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "OTHERASSETSDISCLOSURE": {
+   "table": {
+    "name": "OTHERASSETSDISCLOSURE",
+    "purpose": "Disclosure table for other assets (likely XBRL-style financial reporting data, given the database's taxonomy of financial statement concepts). Empty table: 0 rows, so meaning is inferred from schema context only. Each row would represent a disclosure fact about other assets for a reporting entity/period, identified by OTHERASSETSDISCLOSUREID. Related tables OTHERASSETS, OTHERASSETSNONCURRENT, and OTHERASSETSANDOTHERLIABILITIES exist in the database, supporting this reading. Marked tentative because the table contains no data to confirm."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has_name",
+     "description": "Likely a boolean flag indicating whether the other-assets disclosure has a name/label. Unresolved in detail: column is entirely empty (100% null, no values), so the exact semantics cannot be confirmed. The name suggests a flag for presence of a name, but this is only weakly supported.",
+     "status": "tentative"
+    },
+    "OTHERASSETSDISCLOSUREID": {
+     "role": "identifier",
+     "name": "other_assets_disclosure_id",
+     "description": "Primary key identifier for a row in the other-assets disclosure table; a surrogate BIGINT ID. No joins detected and no data present, so beyond being the PK, its external meaning (e.g., whether it references a disclosure or entity table) is unresolved.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "OTHERASSETSNONCURRENT": {
+   "table": {
+    "name": "OTHERASSETSNONCURRENT",
+    "purpose": "Table for 'Other assets, non-current' line items, likely from XBRL/financial-report data (us-gaap:OtherAssetsNoncurrent). It is currently empty (0 rows), so meanings rest on naming conventions and the surrounding financial-statement schema, not on observed values. Each row would presumably represent a reported non-current other assets amount for an entity/period, identified by a surrogate key."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "OTHERASSETSNONCURRENTID": {
+     "role": "boolean",
+     "name": "OTHERASSETSNONCURRENTID",
+     "description": "Surrogate primary key for the OTHERASSETSNONCURRENT table; a unique integer identifier for each row (each reported other-assets-noncurrent fact). Declared as the primary key, but the table is empty so no values exist to confirm.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "OTHERLIABILITIESDISCLOSURE": {
+   "table": {
+    "name": "OTHERLIABILITIESDISCLOSURE",
+    "purpose": "Likely a disclosure table for other liabilities (supporting detail/breakdown of other liabilities reported in financial statement notes). The table is empty (0 rows), so meaning is inferred only from its name and the surrounding XBRL-style financial reporting schema; no value evidence exists. The two columns suggest a disclosure entity with a name/label and a surrogate primary key, but this cannot be confirmed from data."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "OTHERLIABILITIESDISCLOSUREID": {
+     "role": "identifier",
+     "name": "other_liabilities_disclosure_id",
+     "description": "Surrogate primary key identifying a row in the other liabilities disclosure table. Detected as the table's primary key, but the table is empty so no value evidence exists; the meaning is inferred from the column name and PK detection only.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "OTHERNONOPERATINGINCOMEEXPENSE": {
+   "table": {
+    "name": "OTHERNONOPERATINGINCOMEEXPENSE",
+    "purpose": "Table intended to hold other nonoperating income and expense line items (XBRL concept OtherNonoperatingIncomeExpense) from financial reports. The table is empty (0 rows), so its meaning is inferred only from its name and the surrounding financial-reporting schema; no data evidence exists to confirm it. Each row would presumably represent one reported other nonoperating income/expense amount for an entity/period, with a surrogate primary key OTHERNONOPERATINGINCOMEEXPENSEID and a name/label field HASNAME. This is tentative: the table could also be a pure XBRL element/definition table rather than a fact table, but the ID column pattern suggests a fact or element instance table. No columns can be resolved from data because the table contains no rows."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "OTHERNONOPERATINGINCOMEEXPENSEID": {
+     "role": "boolean",
+     "name": "OTHERNONOPERATINGINCOMEEXPENSEID",
+     "description": "Surrogate primary key for the OTHERNONOPERATINGINCOMEEXPENSE table (declared BIGINT, detected as primary key). The table is empty, so no value evidence exists, but the naming convention (table name + ID suffix) and primary-key detection support this reading. The suggested boolean role is clearly wrong and ignored.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "OTHEROWNERSHIPINTERESTS": {
+   "table": {
+    "name": "OTHEROWNERSHIPINTERESTS",
+    "purpose": "Table is empty (0 rows), so its content cannot be verified from data. Based on the name and the surrounding financial-reporting tables, it likely stores disclosure facts about ownership interests other than standard equity/noncontrolling interests (e.g., other ownership interests in entities, XBRL 'Other Ownership Interests' concept). This is tentative; no data evidence exists."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "OTHEROWNERSHIPINTERESTSID": {
+     "role": "identifier",
+     "name": "Other Ownership Interests ID",
+     "description": "Surrogate primary key for the OTHEROWNERSHIPINTERESTS table. Declared BIGINT and flagged as primary key, but the table has no rows, so this is inferred from metadata only.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "OTHERTHANTEMPORARYIMPAIRMENTCREDITLOSSESRECOGNIZEDINEARNINGS": {
+   "table": {
+    "name": "OTHERTHANTEMPORARYIMPAIRMENTCREDITLOSSESRECOGNIZEDINEARNINGS",
+    "purpose": "Appears to be a disclosure table for other-than-temporary impairment (OTTI) credit losses recognized in earnings, consistent with US GAAP credit-loss/impairment disclosures (cf. ALLOWANCEFORCREDITLOSSES, IMPAIREDFINANCINGRECEIVABLES). The table is empty (0 rows), so the row grain cannot be confirmed from data; it likely holds one record per impairment/credit-loss disclosure instance per entity and period, with a boolean flag indicating whether the item has a name/label. This is tentative, based on the table name and the surrounding XBRL-style financial-reporting schema only."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "OTHERTHANTEMPORARYIMPAIRMENTCREDITLOSSESRECOGNIZEDINEARNINGSID": {
+     "role": "identifier",
+     "name": "other_than_temporary_impairment_credit_losses_recognized_in_earnings_id",
+     "description": "Primary key / surrogate identifier for a row in this other-than-temporary impairment credit losses recognized in earnings disclosure table. Declared BIGINT and flagged as the table's primary key, but the table is empty so no values exist to confirm.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "PERSON": {
+   "table": {
+    "name": "PERSON",
+    "purpose": "Master table of individual persons (natural people) in the database, storing demographic attributes: name parts, gender, date of birth, and country of citizenship and place of birth. Referenced by AUTONOMOUSAGENT (one-to-one), ADDRESS, and FINANCIALSERVICEACCOUNT, suggesting persons act as agents, address holders, and owners of financial service accounts. The 400000000000-based ID range and synthetic-looking names indicate generated/test data."
+   },
+   "columns": {
+    "HASCITIZENSHIP": {
+     "role": "foreign_key",
+     "name": "citizenship_country_id",
+     "description": "Foreign key to COUNTRY.COUNTRYID identifying the person's country of citizenship.",
+     "status": "resolved"
+    },
+    "HASDATEOFBIRTH": {
+     "role": "date",
+     "name": "date_of_birth",
+     "description": "The person's date of birth; values span 1940-10-23 to 1979-08-21.",
+     "status": "resolved"
+    },
+    "HASFIRSTNAME": {
+     "role": "category",
+     "name": "first_name",
+     "description": "The person's given (first) name.",
+     "status": "resolved"
+    },
+    "HASGENDER": {
+     "role": "category",
+     "name": "gender",
+     "description": "The person's gender, recorded as 'Male' or 'Female'.",
+     "status": "resolved"
+    },
+    "HASLASTNAME": {
+     "role": "category",
+     "name": "last_name",
+     "description": "The person's family (last) name.",
+     "status": "resolved"
+    },
+    "HASMIDDLENAMEORINITIAL": {
+     "role": "category",
+     "name": "middle_name_or_initial",
+     "description": "The person's middle name or initial; nullable (about 35% null, i.e., not everyone has one). Sample values look like full given names rather than initials.",
+     "status": "resolved"
+    },
+    "HASPERSONNAME": {
+     "role": "category",
+     "name": "full_name",
+     "description": "The person's full name (first + last, apparently excluding the middle name, based on sample rows). Nearly unique per row.",
+     "status": "resolved"
+    },
+    "HASPLACEOFBIRTH": {
+     "role": "foreign_key",
+     "name": "place_of_birth_country_id",
+     "description": "Foreign key to COUNTRY.COUNTRYID identifying the person's country of birth.",
+     "status": "resolved"
+    },
+    "PERSONID": {
+     "role": "foreign_key",
+     "name": "person_id",
+     "description": "Primary key of the PERSON table; surrogate identifier in the range 400000000000-400000050099. Referenced one-to-one by AUTONOMOUSAGENT and by ADDRESS.ISINDEXTO and FINANCIALSERVICEACCOUNT.ISOWNEDBY.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "PHONENUMBER": {
+   "table": {
+    "name": "PHONENUMBER",
+    "purpose": "Stores phone numbers (contact information), likely extracted from SEC filings or similar documents, with each row a distinct phone number string and a surrogate identifier. The table appears to belong to a contact-data model alongside ADDRESS, EMAILADDRESS, PERSON, CORPORATION, etc."
+   },
+   "columns": {
+    "HASVALUE": {
+     "role": "identifier",
+     "name": "phone_number",
+     "description": "The phone number itself, stored as free-form text in various formats: US formats like '214-436-8765', '(281) 207-3200', '3026744600', and international formats like '966384863735' (Saudi Arabia) and '1835907754753' (US/Canada with country code). The numeric statistics are artifacts of parsing these strings as integers and are not meaningful. ~5% null. Not unique (some numbers repeat), so it is a value column, not a key.",
+     "status": "resolved"
+    },
+    "PHONENUMBERID": {
+     "role": "identifier",
+     "name": "phone_number_id",
+     "description": "Surrogate primary key for the phone number. Two ID ranges exist: small values starting at 1000 (likely original/seeded rows) and values around 800000000000 (likely bulk-loaded rows). Unique, non-null.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "POSTALADDRESS": {
+   "table": {
+    "name": "POSTALADDRESS",
+    "purpose": "Stores postal (mailing) addresses: street lines, city, state, postal code, and a reference to a country. Each row is one postal address, linked one-to-one to a row in the ADDRESS table. Some rows appear to be synthetically generated test data (nonsense street lines, mismatched city/state/country)."
+   },
+   "columns": {
+    "HASADDRESSLINE1": {
+     "role": "category",
+     "name": "address_line_1",
+     "description": "First street address line (street number and street name). Mostly real addresses, but many rows contain synthetic nonsense strings (e.g. '96 jig', '582 needles gravediggers fighter'), indicating generated test data.",
+     "status": "resolved"
+    },
+    "HASADDRESSLINE2": {
+     "role": "category",
+     "name": "address_line_2",
+     "description": "Second address line (suite, floor, mail stop, etc.), mostly 'SUITE n'. Null for ~99% of rows.",
+     "status": "resolved"
+    },
+    "HASCITY": {
+     "role": "category",
+     "name": "city",
+     "description": "City or town name of the address. Mixed case and some non-US cities (Kiev, Budapest), consistent with international addresses and synthetic data.",
+     "status": "resolved"
+    },
+    "HASCOUNTRY": {
+     "role": "foreign_key",
+     "name": "country_id",
+     "description": "Foreign key to COUNTRY.COUNTRYID identifying the country of the address. Value 237 (likely United States) dominates.",
+     "status": "resolved"
+    },
+    "HASPOSTALCODE": {
+     "role": "category",
+     "name": "postal_code",
+     "description": "Postal/ZIP code, stored as text (includes hyphenated ZIP+4 like '94304-1000' and leading zeros like '05627'). Some values (max 951342125) are out of range, likely synthetic.",
+     "status": "resolved"
+    },
+    "HASSTATE": {
+     "role": "category",
+     "name": "state_or_province",
+     "description": "State, province, or region. Mixed formats: full names ('Indiana', 'Alaska') and two-letter codes ('TX', 'CA'). In synthetic rows the state is inconsistent with the city/country.",
+     "status": "resolved"
+    },
+    "POSTALADDRESSID": {
+     "role": "identifier",
+     "name": "postal_address_id",
+     "description": "Primary key of the postal address. Also references ADDRESS.ADDRESSID one-to-one (the ADDRESS table links entities to these addresses).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "PREFERREDSTOCK": {
+   "table": {
+    "name": "PREFERREDSTOCK",
+    "purpose": "Preferred stock (preference shares) issued by an entity, likely part of an XBRL/financial-reporting schema covering equity instruments. The table is empty, so the meaning is inferred from its name and the surrounding financial-reporting tables only. Each row would represent one class/instance of preferred stock reported in a filing."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has_name",
+     "description": "Likely a boolean flag indicating whether the preferred stock has a (class) name. No data is present to confirm this; the name and 100% null rate are the only evidence.",
+     "status": "tentative"
+    },
+    "PREFERREDSTOCKID": {
+     "role": "identifier",
+     "name": "preferred_stock_id",
+     "description": "Primary key identifier for a preferred stock record. Detected as the table's primary key, but the table has no rows and no joins, so its semantics beyond being a surrogate key are unverified.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "PRODUCTWARRANTYLIABILITY": {
+   "table": {
+    "name": "PRODUCTWARRANTYLIABILITY",
+    "purpose": "Product warranty liability disclosure table (XBRL-style financial reporting schema, likely from SEC/EDGAR taxonomy). Table is empty, so meaning is inferred from name and database context only. Each row would represent a product warranty liability amount recognized/disclosed by a reporting entity for a period."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has_name",
+     "description": "Likely a boolean flag indicating whether the warranty liability item has an associated name/label. No data present; meaning is tentative based on the column name alone.",
+     "status": "tentative"
+    },
+    "PRODUCTWARRANTYLIABILITYID": {
+     "role": "identifier",
+     "name": "product_warranty_liability_id",
+     "description": "Primary key identifier for a product warranty liability record. No data present; inferred from the column name and its detection as the table's primary key.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "PROPERTYMANAGEMENTFEE": {
+   "table": {
+    "name": "PROPERTYMANAGEMENTFEE",
+    "purpose": "Likely represents property management fees charged for managed real estate properties, in a database derived from XBRL/financial reporting concepts (cf. REALESTATEPROPERTIES, RENTEXPENSE). However, the table is empty (0 rows), so this is inferred from the name and database context only, not from data. The row grain (per property, per period, per contract) cannot be determined without data or joins to other tables (none were detected). Mark this interpretation tentative overall."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "PROPERTYMANAGEMENTFEEID": {
+     "role": "identifier",
+     "name": "property_management_fee_id",
+     "description": "Primary key identifier for a property management fee record. Detected as the table's primary key, but the table has no rows and no joins to other tables, so its semantics beyond being a surrogate identifier are unverified.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "PROPERTYPLANTANDEQUIPMENT": {
+   "table": {
+    "name": "PROPERTYPLANTANDEQUIPMENT",
+    "purpose": "Table for property, plant and equipment (fixed assets) records. The table is empty (0 rows), so its meaning is inferred only from its name and the surrounding XBRL-style financial reporting schema. It likely stores PP&E asset line items (e.g., land, buildings, machinery) with amounts, though no columns for amounts or asset categories are present in the provided data, so this cannot be confirmed."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "PROPERTYPLANTANDEQUIPMENTID": {
+     "role": "identifier",
+     "name": "PROPERTYPLANTANDEQUIPMENTID",
+     "description": "Primary key identifier for a property, plant and equipment record. Declared BIGINT and detected as the table's primary key, but the table has no rows and no joins to other tables, so its usage cannot be verified.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "PROPERTYPLANTANDEQUIPMENTINCOMESTATEMENTDISCLOSURES": {
+   "table": {
+    "name": "PROPERTYPLANTANDEQUIPMENTINCOMESTATEMENTDISCLOSURES",
+    "purpose": "Likely stores income-statement-related disclosure facts about property, plant and equipment (e.g., depreciation expense, gains/losses on disposals) as reported in financial statement notes. The table is empty (0 rows), so the purpose is inferred from the name and the surrounding XBRL-style financial reporting schema only, not from data. Related tables PROPERTYPLANTANDEQUIPMENT and PROPERTYPLANTANDEQUIPMENTUSEFULLIVES support this reading."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "PROPERTYPLANTANDEQUIPMENTINCOMESTATEMENTDISCLOSURESID": {
+     "role": "identifier",
+     "name": "property_plant_and_equipment_income_statement_disclosures_id",
+     "description": "Surrogate primary key for this disclosure table (declared BIGINT, detected as the table's primary key). The table is empty, so no values or joins are observed, but the naming convention and PK detection strongly support it being an auto-incremented identifier.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "PROPERTYPLANTANDEQUIPMENTUSEFULLIVES": {
+   "table": {
+    "name": "PROPERTYPLANTANDEQUIPMENTUSEFULLIVES",
+    "purpose": "Likely stores the estimated useful lives (e.g., in years) assigned to property, plant and equipment asset classes for depreciation purposes. The table is empty, so this is inferred from the name and the surrounding XBRL-style financial reporting schema (e.g., PROPERTYPLANTANDEQUIPMENT, ASSET tables). Marked tentative because no rows exist to confirm the row grain or contents."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "PROPERTYPLANTANDEQUIPMENTUSEFULLIVESID": {
+     "role": "identifier",
+     "name": "PROPERTYPLANTANDEQUIPMENTUSEFULLIVESID",
+     "description": "Primary key identifier for a row in this table (surrogate BIGINT id). Confirmed as primary key by the profile; the table is empty so no values exist, but the ID role is supported by the name and PK detection.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "PROPERTYSUBJECTTOORAVAILABLEFOROPERATINGLEASE": {
+   "table": {
+    "name": "PROPERTYSUBJECTTOORAVAILABLEFOROPERATINGLEASE",
+    "purpose": "Table for properties subject to or available for operating lease (likely a disclosure/extension table from XBRL-style financial reporting, related to lease disclosures). The table is empty (0 rows), so meanings are inferred from names and the database context only; no value evidence exists. The two columns appear to be a surrogate primary key and a name/label attribute, but this cannot be confirmed from data."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has_name",
+     "description": "Likely a boolean flag indicating whether the property (or lease arrangement) has a name. No data present (100% null, 0 distinct values), so this is inferred solely from the column name; the exact semantics cannot be verified.",
+     "status": "tentative"
+    },
+    "PROPERTYSUBJECTTOORAVAILABLEFOROPERATINGLEASEID": {
+     "role": "identifier",
+     "name": "property_subject_to_or_available_for_operating_lease_id",
+     "description": "Surrogate primary key identifying a row in this table, i.e., a specific property subject to or available for operating lease. Declared BIGINT and flagged as the table's primary key, but the table is empty so no value evidence exists.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "REALESTATEPROPERTIES": {
+   "table": {
+    "name": "REALESTATEPROPERTIES",
+    "purpose": "Table for real estate properties, likely a subtype/extension of the ASSET or PROPERTYPLANTANDEQUIPMENT concepts in this XBRL-style financial reporting schema. The table is empty (0 rows), so its meaning is inferred only from its name and its position among related tables (PROPERTYPLANTANDEQUIPMENT, PROPERTYSUBJECTTOORAVAILABLEFOROPERATINGLEASE, SALELEASEBACKTRANSACTION, RENTEXPENSE, PROPERTYMANAGEMENTFEE). It most plausibly records real estate property assets held by the reporting entity. No row-level evidence is available to confirm this."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "REALESTATEPROPERTIESID": {
+     "role": "identifier",
+     "name": "Real estate properties ID",
+     "description": "Primary key of the REALESTATEPROPERTIES table; a surrogate identifier for a real estate property record. The table is empty, so no value evidence exists, but the column is detected as the primary key and its name matches the table, which supports it being the row identifier.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "REALIZEDGAINLOSS": {
+   "table": {
+    "name": "REALIZEDGAINLOSS",
+    "purpose": "Realized gains and losses (likely on investments or securities), consistent with the XBRL-style financial reporting schema of this database (cf. REALIZEDGAINLOSSONINVESTMENTS, UNREALIZEDGAINLOSSONINVESTMENTS). The table is empty, so the meaning is inferred from naming conventions and sibling tables only. Each row would represent one realized gain/loss item reported in a financial statement context. Marked tentative because no data exists to confirm the exact scope (investments vs. other assets)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "REALIZEDGAINLOSSID": {
+     "role": "identifier",
+     "name": "realized gain/loss ID",
+     "description": "Primary key identifier for a realized gain/loss record. Declared BIGINT and detected as the table's primary key; no data present to confirm further.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "REALIZEDGAINLOSSONINVESTMENTS": {
+   "table": {
+    "name": "REALIZEDGAINLOSSONINVESTMENTS",
+    "purpose": "Table for realized gains or losses on investments (XBRL-style financial reporting data). It is empty, so its purpose is inferred from the name and the surrounding financial-reporting tables only. Likely stores, per reporting period, the realized gain/loss amount recognized on sale or disposal of investments, possibly distinguishing whether the investment had a name/identifier (HASNAME). Related tables include REALIZEDGAINLOSS, GAINLOSSONINVESTMENTS, and UNREALIZEDGAINLOSSONINVESTMENTS, suggesting a taxonomy of gain/loss disclosures. This is tentative because the table contains no rows to confirm the row grain or units."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "REALIZEDGAINLOSSONINVESTMENTSID": {
+     "role": "identifier",
+     "name": "REALIZEDGAINLOSSONINVESTMENTSID",
+     "description": "Primary key of the table; a surrogate BIGINT identifier for a realized gain/loss on investments record. No data present, so nothing beyond its PK role can be confirmed.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "RECONCILIATIONOFOPERATINGPROFITLOSSFROMSEGMENTSTOCONSOLIDATED": {
+   "table": {
+    "name": "RECONCILIATIONOFOPERATINGPROFITLOSSFROMSEGMENTSTOCONSOLIDATED",
+    "purpose": "Appears to be a disclosure table for the reconciliation of operating profit (loss) reported by reportable segments to the consolidated operating profit (loss), per segment reporting disclosures (ASC 280). The table is empty (0 rows), so the meaning is inferred from the name and the surrounding XBRL-style financial reporting schema only; no value evidence exists."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "RECONCILIATIONOFOPERATINGPROFITLOSSFROMSEGMENTSTOCONSOLIDATEDID": {
+     "role": "identifier",
+     "name": "RECONCILIATIONOFOPERATINGPROFITLOSSFROMSEGMENTSTOCONSOLIDATEDID",
+     "description": "Primary key / surrogate identifier for a row of the segment-to-consolidated operating profit (loss) reconciliation disclosure.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "RECORDEDUNCONDITIONALPURCHASEOBLIGATION": {
+   "table": {
+    "name": "RECORDEDUNCONDITIONALPURCHASEOBLIGATION",
+    "purpose": "Likely stores recorded (recognized on the balance sheet) unconditional purchase obligations, an XBRL disclosure concept (cf. sibling tables UNRECORDEDUNCONDITIONALPURCHASEOBLIGATION and UNRECORDEDUNCONDITIONALPURCHASEOBLIGATIONSDISCLOSURE). The table is empty (0 rows), so the meaning is inferred from naming conventions and related tables only, not from data. Each row would presumably represent one recorded unconditional purchase obligation (or an amount of such obligations) reported by an entity in a filing. This reading is tentative because no data confirms it."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "RECORDEDUNCONDITIONALPURCHASEOBLIGATIONID": {
+     "role": "identifier",
+     "name": "RECORDEDUNCONDITIONALPURCHASEOBLIGATIONID",
+     "description": "Surrogate primary key identifying a row in this table (a recorded unconditional purchase obligation record). It is detected as the primary key, but with no rows and no joins observed, its semantics beyond a unique identifier are unverified.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "REDEEMABLENONCONTROLLINGINTEREST": {
+   "table": {
+    "name": "REDEEMABLENONCONTROLLINGINTEREST",
+    "purpose": "Likely stores redeemable noncontrolling interest (equity interests in subsidiaries held by third parties that the parent is obligated to redeem), a US GAAP XBRL-style disclosure table. However, the table is empty (0 rows), so this is inferred from the name and the surrounding financial-reporting schema only, not from data. The row grain cannot be confirmed (probably one redeemable NCI per entity/period)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "REDEEMABLENONCONTROLLINGINTERESTID": {
+     "role": "identifier",
+     "name": "Redeemable noncontrolling interest ID",
+     "description": "Primary key identifier for a redeemable noncontrolling interest record. Detected as the table's primary key, but the table has no rows, so its semantics (surrogate key vs. reference to another table) cannot be verified.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "RELATEDPARTYTRANSACTIONSBYRELATEDPARTY": {
+   "table": {
+    "name": "RELATEDPARTYTRANSACTIONSBYRELATEDPARTY",
+    "purpose": "Likely stores related-party transaction disclosures broken down by related party (an XBRL-style disclosure table, consistent with the other financial-reporting tables in this database). The table is empty (0 rows), so the meaning is inferred from the table and column names and the database context, not from data. Each row would presumably represent one related-party transaction (or transaction aggregate) attributed to a specific related party in a filing/report."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "RELATEDPARTYTRANSACTIONSBYRELATEDPARTYID": {
+     "role": "identifier",
+     "name": "RELATEDPARTYTRANSACTIONSBYRELATEDPARTYID",
+     "description": "Surrogate primary key for this table (declared BIGINT, detected as the primary key). No data exists to confirm, but the naming convention (table name + 'ID') matches the identifier pattern used across this database.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "RENTEXPENSE": {
+   "table": {
+    "name": "RENTEXPENSE",
+    "purpose": "Likely stores rent expense amounts (an operating expense line item), but the table is empty (0 rows) and has only two columns, so its content and grain cannot be confirmed from data. The database context (REALESTATEPROPERTIES, PROPERTYSUBJECTTOORAVAILABLEFOROPERATINGLEASE, SALELEASEBACKTRANSACTION, EXPENSE) suggests it relates to rent expense disclosures for leased real estate, but this is inferred from naming context only, not from data."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "RENTEXPENSEID": {
+     "role": "identifier",
+     "name": "RENTEXPENSEID",
+     "description": "Primary key of the RENTEXPENSE table; presumably a surrogate identifier for a rent expense record. No rows exist, so no value evidence is available, but its PK detection and naming convention support this reading.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "RESTRICTEDCASHANDCASHEQUIVALENTS": {
+   "table": {
+    "name": "RESTRICTEDCASHANDCASHEQUIVALENTS",
+    "purpose": "Table for restricted cash and cash equivalents disclosures (XBRL-style financial reporting data). It is empty (0 rows), so its meaning is inferred from the table name and the surrounding financial-reporting schema only. Likely stores, per reporting entity/period, amounts of cash and cash equivalents whose use is restricted, and the reason/name for the restriction (HASNAME). The related tables CASHANDCASHEQUIVALENTS, CASHANDCASHEQUIVALENTSDISCLOSURE, and CASHCASHEQUIVALENTSANDSHORTTERMINVESTMENTS support this reading. Because there is no data, the exact row grain (per entity, per period, per restriction) cannot be confirmed; the table is effectively unused in this database instance."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has_restriction_name",
+     "description": "Despite the VARCHAR declaration, the name and role suggest a boolean flag indicating whether the restricted cash item has a name/label for its restriction. No data exists (100% null, 0 distinct values), so this cannot be verified; the meaning is inferred solely from the column name.",
+     "status": "tentative"
+    },
+    "RESTRICTEDCASHANDCASHEQUIVALENTSID": {
+     "role": "identifier",
+     "name": "restricted_cash_and_cash_equivalents_id",
+     "description": "Primary key of the table; a surrogate identifier for a restricted cash and cash equivalents record. No data exists, so nothing beyond its PK role can be confirmed.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "RESTRUCTURINGANDRELATEDCOSTS": {
+   "table": {
+    "name": "RESTRUCTURINGANDRELATEDCOSTS",
+    "purpose": "Likely a disclosure table for restructuring and related costs (e.g., business acquisition/integration restructuring charges) as reported in financial statements. The table is empty (0 rows), so the meaning is inferred from the name and the surrounding XBRL-style financial reporting schema only; no value evidence exists. Related table BUSINESSACQUISITIONINTEGRATIONRESTRUCTURINGANDOTHERRELATEDCOSTS suggests this table holds restructuring cost line items or disclosures, possibly per entity/period, with a surrogate primary key and a name/label attribute (HASNAME)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "RESTRUCTURINGANDRELATEDCOSTSID": {
+     "role": "identifier",
+     "name": "restructuring_and_related_costs_id",
+     "description": "Surrogate primary key for the restructuring and related costs table. Declared BIGINT and detected as the primary key, but the table is empty so no value evidence exists.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "REVENUE": {
+   "table": {
+    "name": "REVENUE",
+    "purpose": "Represents revenue line items reported in financial statements, each row being a specific revenue element (e.g. 'Revenues' or 'SalesRevenueNet') as tagged in financial reports (XBRL-style element names). The REVENUEID links to financial statement element tables."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "category",
+     "name": "revenue_element_name",
+     "description": "The name/label of the revenue concept as reported in financial statements. Two values observed: 'Revenues' (total revenues) and 'SalesRevenueNet' (net sales revenue), matching XBRL element names for revenue line items.",
+     "status": "resolved"
+    },
+    "REVENUEID": {
+     "role": "identifier",
+     "name": "revenue_id",
+     "description": "Primary key identifying a revenue element instance. One-to-one references to ELEMENTOFFINANCIALSTATEMENT.ELEMENTOFFINANCIALSTATEMENTID and ELEMENTSOFFINANCIALREPORT.ELEMENTSOFFINANCIALREPORTID, indicating each revenue row corresponds to a financial statement element/report element.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SALELEASEBACKTRANSACTION": {
+   "table": {
+    "name": "SALELEASEBACKTRANSACTION",
+    "purpose": "Records sale-leaseback transactions, where a company sells an asset (typically real estate) and simultaneously leases it back. The table is empty, so the meaning is inferred from the table name and the surrounding XBRL-style financial reporting schema only. Each row would represent one disclosed sale-leaseback transaction. This is tentative: no data exists to confirm the row grain or which entity/period it belongs to."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "SALELEASEBACKTRANSACTIONID": {
+     "role": "identifier",
+     "name": "sale_leaseback_transaction_id",
+     "description": "Primary key identifier for a sale-leaseback transaction record. Detected as the table's primary key, but the table has no rows, so no value evidence exists.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SECURITIESTRANSACTION": {
+   "table": {
+    "name": "SECURITIESTRANSACTION",
+    "purpose": "Records individual securities transactions (trades): each row is one transaction of a given security, with a quantity, a price (as a monetary amount), a settlement date, the exchange/market type, and the financial service account that facilitated it. The HASTYPE lookup maps to FINANCIALMARKET (NYSE/NASDAQ/AMEX), so the 'type' is the market on which the trade occurred. The REFERSTO target is ambiguous among SECURITY, LISTEDSECURITY, and FINANCIALINSTRUMENT (all accepted by LLM only); it is the security being traded."
+   },
+   "columns": {
+    "HASCOUNT": {
+     "role": "numeric",
+     "name": "quantity / number of units traded",
+     "description": "Count of securities units in the transaction, ranging 100-5000. Declared DOUBLE but values are integers.",
+     "status": "resolved"
+    },
+    "HASPRICE": {
+     "role": "numeric",
+     "name": "transaction price (monetary amount)",
+     "description": "Foreign key to MONETARYAMOUNT.MONETARYAMOUNTID (one-to-one); the price of the transaction expressed as a monetary amount record. The ID itself is not a currency value.",
+     "status": "resolved"
+    },
+    "HASSETTLEMENTDATE": {
+     "role": "date",
+     "name": "settlement date",
+     "description": "Timestamp when the transaction settles; all values fall between 2015-06-15 and 2016-06-15.",
+     "status": "resolved"
+    },
+    "HASTYPE": {
+     "role": "category",
+     "name": "market / exchange type",
+     "description": "Foreign key to FINANCIALMARKET.FINANCIALMARKETID; values 1=NYSE, 2=NASDAQ (3=AMEX unused). Despite the name 'type', the lookup shows it denotes the financial market of the transaction.",
+     "status": "resolved"
+    },
+    "ISFACILITATEDBY": {
+     "role": "foreign_key",
+     "name": "facilitating financial service account",
+     "description": "Foreign key to FINANCIALSERVICEACCOUNT.FINANCIALSERVICEACCOUNTID; the brokerage/service account that facilitated the transaction.",
+     "status": "resolved"
+    },
+    "REFERSTO": {
+     "role": "foreign_key",
+     "name": "traded security",
+     "description": "Foreign key to the security being traded. Joins are accepted (LLM only) to SECURITY.SECURITYID, LISTEDSECURITY.LISTEDSECURITYID, and FINANCIALINSTRUMENT.FINANCIALINSTRUMENTID; the exact target table is ambiguous, though the ID range (1001000-1005649) and context suggest a security/listed security identifier.",
+     "status": "tentative"
+    },
+    "SECURITIESTRANSACTIONID": {
+     "role": "identifier",
+     "name": "securities transaction ID",
+     "description": "Primary key; unique identifier for each securities transaction.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SECURITY": {
+   "table": {
+    "name": "SECURITY",
+    "purpose": "Registry of securities (financial instruments traded on a market), each identified by a security ID, linked to the party that provides/quotes it and the exchange it trades on. Referenced by HOLDING and SECURITIESTRANSACTION."
+   },
+   "columns": {
+    "ISPROVIDEDBY": {
+     "role": "foreign_key",
+     "name": "ISPROVIDEDBY",
+     "description": "Identifier of the entity that provides/issues or quotes the security; likely a reference to a party/entity table (e.g. CORPORATION or FINANCIALINSTRUMENT provider), though no accepted join was detected, so the exact target table is unresolved. Values are integer IDs in the 1000-3323 range.",
+     "status": "tentative"
+    },
+    "ISTRADEDON": {
+     "role": "foreign_key",
+     "name": "ISTRADEDON",
+     "description": "Foreign key to FINANCIALMARKET.FINANCIALMARKETID indicating the exchange the security trades on: 1 = NYSE, 2 = NASDAQ, 3 = AMEX.",
+     "status": "resolved"
+    },
+    "SECURITYID": {
+     "role": "identifier",
+     "name": "SECURITYID",
+     "description": "Primary key of the table; unique identifier for each security (values in the 1001000-1005649 range). Referenced by HOLDING.REFERSTO and SECURITIESTRANSACTION.REFERSTO.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SHAREBASEDCOMPENSATIONACTIVITY": {
+   "table": {
+    "name": "SHAREBASEDCOMPENSATIONACTIVITY",
+    "purpose": "Share-based compensation activity table (likely a rollforward of share-based payment awards such as options or restricted stock units). The table is empty, so the meaning is inferred from its name and the surrounding XBRL-style financial reporting schema; no row-level evidence is available to confirm the row grain or the specific award type covered. Related tables include option-grant and restricted-stock-unit activity tables, suggesting this is a generic parent/activity table for share-based compensation award movements (granted, vested, exercised, forfeited)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "SHAREBASEDCOMPENSATIONACTIVITYID": {
+     "role": "identifier",
+     "name": "SHAREBASEDCOMPENSATIONACTIVITYID",
+     "description": "Primary key identifier for a share-based compensation activity record. Declared BIGINT and flagged as the table's primary key, which supports it being a surrogate key. No values exist to confirm whether it is a surrogate key or references an external identifier.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSGRANTSINPERIODGRANTDATEINTRINSICVALUE": {
+   "table": {
+    "name": "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSGRANTSINPERIODGRANTDATEINTRINSICVALUE",
+    "purpose": "Likely a disclosure table for share-based compensation: intrinsic value of stock option awards granted during the period, as of the grant date (XBRL-style naming, e.g. us-gaap ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGrantDateIntrinsicValue). The table is empty (0 rows), so this is inferred from the name and sibling tables only, not from data."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSGRANTSINPERIODGRANTDATEINTRINSICVALUEID": {
+     "role": "identifier",
+     "name": "Intrinsic value record ID",
+     "description": "Surrogate primary key for this disclosure table. The table is empty, so no value evidence exists; the meaning is inferred from the primary-key flag and the table name.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSGRANTSINPERIODWEIGHTEDAVERAGEGRANTDATEFAIRVALUE": {
+   "table": {
+    "name": "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSGRANTSINPERIODWEIGHTEDAVERAGEGRANTDATEFAIRVALUE",
+    "purpose": "XBRL-style disclosure table for the weighted-average grant-date fair value of stock option awards granted during a period under share-based compensation arrangements. The table is empty (0 rows), so meanings rest on the element names and the surrounding XBRL-tagged schema only; no value evidence exists. The companion table ...GRANTSINPERIODGRANTDATEINTRINSICVALUE suggests this holds the fair-value counterpart of the grants-in-period disclosure (e.g., ASC 718 option grant disclosures)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSGRANTSINPERIODWEIGHTEDAVERAGEGRANTDATEFAIRVALUEID": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Surrogate primary key for this disclosure table. The table has no rows, so no value evidence exists; the meaning is inferred from the name suffix 'ID' and its detection as the primary key.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSVESTEDANDEXPECTEDTOVESTEXERCISABLE": {
+   "table": {
+    "name": "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSVESTEDANDEXPECTEDTOVESTEXERCISABLE",
+    "purpose": "Likely a disclosure table for share-based compensation: stock options that are vested and expected to vest, and exercisable (per US GAAP / XBRL taxonomy, e.g. ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsVestedAndExpectedToVestExercisable). However, the table is empty (0 rows) and only two columns exist, so the exact content cannot be confirmed from data. The name strongly suggests an XBRL-tagged fact table for exercisable vested-and-expected-to-vest stock options, but the specific measures (counts, weighted-average exercise price, etc.) are absent from the schema. Marked tentative because no data supports it."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSVESTEDANDEXPECTEDTOVESTEXERCISABLEID": {
+     "role": "identifier",
+     "name": "ID",
+     "description": "Primary key / surrogate identifier for rows in this share-based compensation options disclosure table. The table is empty, so no value evidence exists; the ID role is inferred from the column name suffix and its detection as the table's primary key.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSVESTEDANDEXPECTEDTOVESTOUTSTANDINGANDEXERCISABLE": {
+   "table": {
+    "name": "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSVESTEDANDEXPECTEDTOVESTOUTSTANDINGANDEXERCISABLE",
+    "purpose": "XBRL-style disclosure table for share-based compensation: stock options that are vested and expected to vest, and their outstanding and exercisable counts/values. The table is empty (0 rows), so meanings rest on the name and the database context (SEC/XBRL financial-reporting schema with sibling tables for option grants, exercisable options, and RSU awards)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDOPTIONSVESTEDANDEXPECTEDTOVESTOUTSTANDINGANDEXERCISABLEID": {
+     "role": "identifier",
+     "name": "Record ID",
+     "description": "Primary key identifying one row of this share-based compensation options disclosure (vested/expected-to-vest, outstanding and exercisable). The table is empty, so this is inferred from the primary-key flag and naming convention only.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST": {
+   "table": {
+    "name": "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST",
+    "purpose": "XBRL-style disclosure table for restricted stock units (RSUs) vested and expected to vest under share-based payment awards. Table is empty (0 rows), so meanings rest on naming conventions and sibling tables only. Each row would represent one RSU award disclosure fact (e.g., number of units vested/expected to vest, weighted-average grant-date fair value) for an entity and period."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has name",
+     "description": "Likely a boolean flag indicating whether the disclosure item has a name/label. No data present (100% null, 0 distinct values), so this is inferred from the name only.",
+     "status": "tentative"
+    },
+    "SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVESTID": {
+     "role": "identifier",
+     "name": "RSUs vested and expected to vest disclosure ID",
+     "description": "Surrogate primary key for this table (declared BIGINT, flagged as primary key). No rows exist, so no value evidence is available; meaning is inferred from the name and PK detection.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SHAREBASEDCOMPENSATIONRESTRICTEDSTOCKUNITSAWARDACTIVITY": {
+   "table": {
+    "name": "SHAREBASEDCOMPENSATIONRESTRICTEDSTOCKUNITSAWARDACTIVITY",
+    "purpose": "Share-based compensation: restricted stock unit (RSU) award activity. The table is empty (0 rows), so the meaning is inferred from the table name and the surrounding XBRL-style financial reporting schema only; no value evidence exists. It likely records the roll-forward/activity of RSU awards (granted, vested, forfeited, outstanding) per reporting period and entity, consistent with sibling tables like SHAREBASEDCOMPENSATIONACTIVITY and SHAREBASEDCOMPENSATIONARRANGEMENTBYSHAREBASEDPAYMENTAWARDRESTRICTEDSTOCKUNITSVESTEDANDEXPECTEDTOVEST."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "SHAREBASEDCOMPENSATIONRESTRICTEDSTOCKUNITSAWARDACTIVITYID": {
+     "role": "identifier",
+     "name": "RSU award activity record ID",
+     "description": "Surrogate primary key for the RSU award activity table. The table is empty, so no value evidence exists; the meaning rests solely on the naming convention (table name + 'ID') and its detection as primary key.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SHORTTERMDEBT": {
+   "table": {
+    "name": "SHORTTERMDEBT",
+    "purpose": "Short-term debt / current portion of debt obligations, likely a fact or disclosure table in an XBRL-style financial reporting database. The table is empty (0 rows), so the meaning is inferred from the name and the surrounding financial-reporting schema only; no value evidence exists. Each row would presumably represent one short-term debt item reported by an entity for a period."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "SHORTTERMDEBTID": {
+     "role": "identifier",
+     "name": "SHORTTERMDEBTID",
+     "description": "Primary key identifier for a short-term debt record. Declared BIGINT and detected as the table's primary key, but the table is empty so no value evidence exists.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "STOCKHOLDERSEQUITY": {
+   "table": {
+    "name": "STOCKHOLDERSEQUITY",
+    "purpose": "Junction/typing table asserting that an EQUITY instance is of the specific class 'StockholdersEquity' (total stockholders' equity as reported on balance sheets). Each row links an equity record to its XBRL-style element name. Likely derived from XBRL/SEC filing data given the naming conventions of the database."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "category",
+     "name": "element_name",
+     "description": "The class/element name assigned to the equity record. Constant value 'StockholdersEquity' for every row, indicating this table classifies its parent EQUITY records as stockholders' equity.",
+     "status": "resolved"
+    },
+    "STOCKHOLDERSEQUITYID": {
+     "role": "identifier",
+     "name": "stockholders_equity_id",
+     "description": "Primary key of this table; also serves as the identifier of the corresponding EQUITY record (one-to-one with EQUITY.EQUITYID, which references it). Each value identifies one stockholders' equity fact/instance.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "SUBSEQUENTEVENTS": {
+   "table": {
+    "name": "SUBSEQUENTEVENTS",
+    "purpose": "Subsequent events disclosure (events occurring after the balance sheet date but before financial statements are issued), likely from XBRL/SEC filing data. Table is empty (0 rows), so meanings rest on naming conventions only. The database appears to be an XBRL financial-reporting schema, so this table likely stores subsequent-event disclosure facts per filing/context, with SUBSEQUENTEVENTSID as its key and HASNAME flagging whether the event has a name/description. However, with no data, the specific row grain cannot be confirmed."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "SUBSEQUENTEVENTSID": {
+     "role": "identifier",
+     "name": "SUBSEQUENTEVENTSID",
+     "description": "Primary key identifier for a subsequent-events record. Declared BIGINT and flagged as the table's primary key, but no rows exist to confirm its format or whether it is a surrogate key or a reference to a disclosure/filing entity.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "TAXCREDITCARRYFORWARD": {
+   "table": {
+    "name": "TAXCREDITCARRYFORWARD",
+    "purpose": "Table for tax credit carryforwards (tax credits not yet used that can offset future tax liabilities). The table is empty (0 rows), so meanings rest on names and schema context only. It appears to be part of an XBRL/financial-reporting data model (many companion tables like OPERATINGLOSSCARRYFORWARDS, DEFERREDTAXASSETSANDLIABILITIES)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "TAXCREDITCARRYFORWARDID": {
+     "role": "identifier",
+     "name": "Tax credit carryforward ID",
+     "description": "Primary key identifier for a tax credit carryforward record. Declared BIGINT and marked primary key, but no data exists to confirm its values or usage.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "TRADINGSECURITIESANDOTHERTRADINGASSETS": {
+   "table": {
+    "name": "TRADINGSECURITIESANDOTHERTRADINGASSETS",
+    "purpose": "Table for trading securities and other trading assets disclosures (XBRL-style financial reporting schema). Table is empty, so purpose is inferred from the name and the surrounding financial-reporting tables only; no row data confirms it."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has name",
+     "description": "Likely a boolean flag indicating whether the trading securities/other trading assets item has a name. No data (100% null, 0 rows), so this is inferred from the column name only.",
+     "status": "tentative"
+    },
+    "TRADINGSECURITIESANDOTHERTRADINGASSETSID": {
+     "role": "identifier",
+     "name": "trading securities and other trading assets ID",
+     "description": "Primary key identifier for a row in this table. No data present; meaning inferred from the name and primary-key detection only.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "TREASURYSTOCK": {
+   "table": {
+    "name": "TREASURYSTOCK",
+    "purpose": "Treasury stock (company's own repurchased shares) information, likely from XBRL/financial reporting data. Table is empty (0 rows), so meanings rest on names and schema context only."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has_name",
+     "description": "Likely a boolean flag indicating whether the treasury stock entry has a name/label. No data present to confirm.",
+     "status": "tentative"
+    },
+    "TREASURYSTOCKID": {
+     "role": "identifier",
+     "name": "treasury_stock_id",
+     "description": "Primary key identifier for a treasury stock record. No data present to confirm.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "UNREALIZEDGAINLOSSONINVESTMENTS": {
+   "table": {
+    "name": "UNREALIZEDGAINLOSSONINVESTMENTS",
+    "purpose": "Table for unrealized gains or losses on investments (XBRL-style financial reporting element). Table is empty, so purpose is inferred from the name and the surrounding financial-reporting schema only; no row-level evidence exists."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "UNREALIZEDGAINLOSSONINVESTMENTSID": {
+     "role": "identifier",
+     "name": "Unrealized gain/loss on investments ID",
+     "description": "Primary key identifier for a row in this table (surrogate key for an unrealized gain/loss on investments record). Declared BIGINT and detected as the table's primary key; the table is empty so no value evidence exists, but the ID role is supported by the primary-key detection and naming convention.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "UNREALIZEDLOSSONINVESTMENTS": {
+   "table": {
+    "name": "UNREALIZEDLOSSONINVESTMENTS",
+    "purpose": "Likely stores unrealized losses on investments (XBRL-style financial reporting data, e.g. us-gaap UnrealizedLossOnInvestments concept). The table is empty (0 rows), so meaning is inferred from the name and the surrounding financial-reporting schema only. Each row would presumably represent an unrealized loss amount on investments for an entity/period, but this cannot be confirmed from data."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "UNREALIZEDLOSSONINVESTMENTSID": {
+     "role": "identifier",
+     "name": "UNREALIZEDLOSSONINVESTMENTSID",
+     "description": "Primary key / surrogate identifier for a row in this table, i.e. an identifier for an unrealized-loss-on-investments record. Declared BIGINT and detected as the primary key, but the table has no rows so no value behavior can be verified.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "UNRECORDEDUNCONDITIONALPURCHASEOBLIGATION": {
+   "table": {
+    "name": "UNRECORDEDUNCONDITIONALPURCHASEOBLIGATION",
+    "purpose": "Likely stores unrecorded unconditional purchase obligations (off-balance-sheet purchase commitments) as disclosed in financial filings, but the table is empty (0 rows) so this cannot be confirmed from data. It presumably relates to UNRECORDEDUNCONDITIONALPURCHASEOBLIGATIONSDISCLOSURE and contrasts with RECORDEDUNCONDITIONALPURCHASEOBLIGATION. The table name and database context (SEC/financial reporting schema) support this reading, but no row-level evidence exists."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "UNRECORDEDUNCONDITIONALPURCHASEOBLIGATIONID": {
+     "role": "identifier",
+     "name": "Unrecorded unconditional purchase obligation ID",
+     "description": "Primary key identifier for a row representing an unrecorded unconditional purchase obligation. Inferred from the column name and its detection as the table's primary key; no data exists to confirm.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "UNRECORDEDUNCONDITIONALPURCHASEOBLIGATIONSDISCLOSURE": {
+   "table": {
+    "name": "UNRECORDEDUNCONDITIONALPURCHASEOBLIGATIONSDISCLOSURE",
+    "purpose": "Disclosure table for unrecorded unconditional purchase obligations (e.g., purchase commitments not yet recognized as liabilities, as required in commitments-and-contingencies footnotes). Table is empty (0 rows), so meanings are inferred from naming conventions and the related RECORDEDUNCONDITIONALPURCHASEOBLIGATION table only. Related table UNRECORDEDUNCONDITIONALPURCHASEOBLIGATION likely holds the per-period amounts, with this table holding disclosure-level attributes (e.g., whether the obligation has a name/counterparty)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "has_name",
+     "description": "Flag indicating whether the unrecorded unconditional purchase obligation (or its disclosure) has a name/counterparty label. No data present; inferred from the boolean role guess and name only.",
+     "status": "tentative"
+    },
+    "UNRECORDEDUNCONDITIONALPURCHASEOBLIGATIONSDISCLOSUREID": {
+     "role": "identifier",
+     "name": "unrecorded_unconditional_purchase_obligations_disclosure_id",
+     "description": "Primary key identifier for a row in this disclosure table. No data present; inferred from the primary-key flag and naming convention.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "VALUATIONALLOWANCE": {
+   "table": {
+    "name": "VALUATIONALLOWANCE",
+    "purpose": "Likely stores valuation allowance data (e.g., deferred tax valuation allowances), given the table name and the presence of related tables like DEFERREDTAXASSETSANDLIABILITIES and VALUATIONANDQUALIFYINGACCOUNTSDISCLOSURE. However, the table is empty (0 rows), so this cannot be confirmed from data."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "VALUATIONALLOWANCEID": {
+     "role": "identifier",
+     "name": "VALUATIONALLOWANCEID",
+     "description": "Surrogate primary key for the valuation allowance table. Detected as the primary key, but the table has no rows, so its meaning beyond a unique identifier cannot be confirmed.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "VALUATIONANDQUALIFYINGACCOUNTSDISCLOSURE": {
+   "table": {
+    "name": "VALUATIONANDQUALIFYINGACCOUNTSDISCLOSURE",
+    "purpose": "Likely a disclosure table for valuation and qualifying accounts (e.g., allowances, valuation allowances reconciliations), consistent with the XBRL-style naming of the other tables. However, the table is empty (0 rows) and only two columns exist, so its exact content cannot be confirmed from data. The table itself is unresolved beyond its name suggesting a valuation/qualifying accounts disclosure structure."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "VALUATIONANDQUALIFYINGACCOUNTSDISCLOSUREID": {
+     "role": "identifier",
+     "name": "Valuation and Qualifying Accounts Disclosure ID",
+     "description": "Primary key identifier for rows of this disclosure table. The table is empty, so no data confirms its semantics, but the name and primary-key detection support it being a surrogate identifier.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "VIRTUALADDRESS": {
+   "table": {
+    "name": "VIRTUALADDRESS",
+    "purpose": "A bridge/lookup table mapping virtual address identifiers to physical addresses; each row represents one virtual address entry that links (one-to-one) to a record in the ADDRESS table. The dual-range ID values suggest two source systems or two batches of records merged into one table, but the evidence does not reveal the business meaning of a 'virtual address' beyond its link to ADDRESS."
+   },
+   "columns": {
+    "VIRTUALADDRESSID": {
+     "role": "identifier",
+     "name": "Virtual address ID",
+     "description": "Primary key of the VIRTUALADDRESS table, uniquely identifying each virtual address row. It is referenced one-to-one by ADDRESS.VIRTUALADDRESS and itself references ADDRESS.ADDRESSID one-to-one, so it effectively aliases a physical address record. Values fall into two clusters: small sequential integers (1000+) and large values in the 800000000000-850000049999 range, indicating two ID allocation schemes (likely two source systems or an import batch), but the exact provenance is unresolved.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "WEIGHTEDAVERAGENUMBEROFSHARES": {
+   "table": {
+    "name": "WEIGHTEDAVERAGENUMBEROFSHARES",
+    "purpose": "Likely stores the weighted average number of shares outstanding (the denominator used in earnings-per-share computations) per reporting period. The table is empty (0 rows), so this is inferred from the name and the surrounding XBRL-style financial reporting schema (e.g., ANTIDILUTIVESECURITIESEXCLUDEDFROMCOMPUTATIONOFEARNINGSPERSHARE) rather than from data. Marked tentative because no rows confirm the row grain (per period, per share class, basic vs. diluted)."
+   },
+   "columns": {
+    "HASNAME": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "WEIGHTEDAVERAGENUMBEROFSHARESID": {
+     "role": "identifier",
+     "name": "WeightedAverageNumberOfSharesId",
+     "description": "Primary key identifier for a weighted-average-share-count record. The table is empty, so the key is inferred from its name, BIGINT type, and primary-key detection; no data confirms it.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 9,
+  "columns_changed": 7
+ }
+}

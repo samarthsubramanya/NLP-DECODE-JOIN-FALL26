@@ -72,6 +72,12 @@ Graph, built greedily like HoPF [Report]: highest score first, one edge per colu
 Stage 3 adds graphs.llm = accepted + llm_accept. Every candidate keeps its score parts, weights,
 penalties and the target's 2a score, so any edge, and the LLM prompt for a band record, can be traced.
 
+Repair (--repair-isolated K, off by default) [Ours]: a table with rows and no edge in graphs.stats gets up to K
+extra band records from out/overlaps, one per partner table, ranked by name similarity (when names are used), then
+share and number of shared values. Integer pairs need both columns sparse (density at most pk_source_max_density),
+since dense ids overlap by chance. These records skip the gates and the score (it is fixed mid-band), so Stage 3's
+LLM decides each one; "partial_overlap": true marks them.
+
 Choices the sources leave open (all in DEFAULTS):
   - the name comparison uses the same lower-case, letters-and-digits form as Stage 2a;
   - when names are off and the adaptive shift fires, both moves go to overlap (40 + 20 + 15);
@@ -89,6 +95,7 @@ Output: out/joins/<dataset>/<run>/<db_id>.json
 """
 import argparse
 import json
+import math
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -119,6 +126,7 @@ DEFAULTS = {
     "dist_no_accept_below": 0.3,      # d below this: final score capped at accept + delta - 1; None: no cap
     "g4_ratio": None,                 # G4 off: source rows < ratio * target rows ...
     "g4_multiplier": None,            # ... multiplies the score by this
+    "repair_isolated": 0,             # partner tables per isolated table; 0: off
     "keys_run": "frozen",
 }
 
@@ -330,7 +338,45 @@ def assemble(records, include, cfg):
     return edges
 
 
-def score_database(profile, keys, cfg=DEFAULTS):
+def repair_records(graph, profile, keys, overlaps, cfg, use_names):
+    """Band records for the tables with rows that graph leaves without a join (see the module docstring)."""
+    tables = profile["tables"]
+    joined = {e[side]["table"] for e in graph for side in ("source", "target")}
+    isolated = {t for t, tp in tables.items() if tp["rows"] and t not in joined}
+
+    def usable(o):
+        return all(tables[t]["columns"][c]["family"] != "int" or sparse_key(tables[t]["columns"][c], cfg)
+                   for t, c in (o["a"], o["b"]))
+
+    def evidence(o):
+        (ta, ca), (tb, cb) = o["a"], o["b"]
+        names = max(name_similarity(ca, tb, cb, cfg)[0], name_similarity(cb, ta, ca, cfg)[0]) if use_names else 0
+        return 2 * names + o["shared"] / min(o["a_distinct"], o["b_distinct"]) + math.log10(o["shared"]) / 4
+
+    ranked = sorted(filter(usable, overlaps), key=lambda o: (-evidence(o), o["a"], o["b"]))
+    chosen = {}
+    for t in sorted(isolated):
+        partners = set()
+        for o in ranked:
+            if t in (o["a"][0], o["b"][0]) and len(partners) < cfg["repair_isolated"]:
+                other = o["b"][0] if o["a"][0] == t else o["a"][0]
+                if other not in partners:
+                    partners.add(other)
+                    chosen[(tuple(o["a"]), tuple(o["b"]))] = o
+    records = []
+    for o in chosen.values():
+        # the column with fewer values is the source: it is the one more of whose values can be found
+        s, t = ("a", "b") if o["a_distinct"] <= o["b_distinct"] else ("b", "a")
+        p = tables[o[s][0]]["columns"][o[s][1]]
+        pair = {"source": o[s], "target": o[t], "containment": o["shared"] / o[f"{s}_distinct"],
+                "coverage": o["shared"] / o[f"{t}_distinct"], "source_unique": p["distinct"] == p["rows"] - p["nulls"]}
+        records.append({**make_record(pair, profile, keys, use_names), "partial_overlap": True, "decision": "band",
+                        "parts": {"overlap": round(pair["containment"], 4)}, "penalties": {}, "fan_out": 1.0,
+                        "score": cfg["accept"] + cfg["delta"] / 2})
+    return records
+
+
+def score_database(profile, keys, cfg=DEFAULTS, overlaps=()):
     use_names = keys["use_names"]
     records, passed = [], []
     for pair in profile.get("containment", []):
@@ -349,6 +395,8 @@ def score_database(profile, keys, cfg=DEFAULTS):
             r["decision"] = decide(r["score"], cfg)
     for r in records:
         r.setdefault("decision", "rejected_gate")
+    if cfg["repair_isolated"]:
+        records += repair_records(assemble(records, {"accepted", "band"}, cfg), profile, keys, overlaps, cfg, use_names)
     records.sort(key=lambda r: (ORDER[r["decision"]], -r.get("score", 0), r["source"]["table"], r["source"]["column"],
                                 r["target"]["table"], r["target"]["column"]))
     counts = defaultdict(int)
@@ -400,6 +448,8 @@ def add_args(ap):
                     help="G9 hard gate, off by default: integer source range / target range at least this (e.g. 0.1)")
     ap.add_argument("--g4-ratio", type=float, help="G4 on: source rows < ratio x target rows ...")
     ap.add_argument("--g4-multiplier", type=float, help="... multiplies the score by this (needs --g4-ratio)")
+    ap.add_argument("--repair-isolated", type=int, default=DEFAULTS["repair_isolated"],
+                    help="band records from out/overlaps for tables left without a join, up to this many partners each")
     ap.add_argument("--reprofile", action="store_true", help="recompute Stage 1 profiles")
 
 
@@ -408,7 +458,7 @@ def config_from(args):
             "max_targets": args.max_targets, "self_refs": args.self_refs, "keys_run": args.keys_run,
             "pk_source_max_density": None if args.pk_source_max_density < 0 else args.pk_source_max_density,
             "min_range_span": None if args.min_range_span is None or args.min_range_span < 0 else args.min_range_span,
-            "dist_no_accept_below": args.dist_no_accept_below,
+            "dist_no_accept_below": args.dist_no_accept_below, "repair_isolated": args.repair_isolated,
             "g4_ratio": args.g4_ratio, "g4_multiplier": args.g4_multiplier}
 
 
@@ -427,7 +477,11 @@ def main():
         if not keys_path.exists():
             sys.exit(f"{keys_path.relative_to(ROOT)} is missing; run src/primary_keys.py --dataset {args.dataset} "
                      f"--run {args.keys_run} first")
-        joins = score_database(load_profile(args.dataset, db, args.reprofile), json.loads(keys_path.read_text()), cfg)
+        overlaps = []
+        if cfg["repair_isolated"]:
+            overlaps = json.loads((ROOT / "out" / "overlaps" / args.dataset / f"{db['db_id']}.json").read_text())
+        joins = score_database(load_profile(args.dataset, db, args.reprofile), json.loads(keys_path.read_text()), cfg,
+                               overlaps)
         c = joins["counts"]
         print(f"  joins {db['db_id']}: {c.get('accepted', 0)} accepted, {c.get('band', 0)} in the LLM band, "
               f"{c.get('rejected_score', 0)} below {cfg['accept']:g}, {c.get('rejected_gate', 0)} gated out; "

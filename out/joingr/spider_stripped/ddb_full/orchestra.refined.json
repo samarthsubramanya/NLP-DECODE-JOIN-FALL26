@@ -1,0 +1,194 @@
+{
+ "db_id": "orchestra",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 3,
+ "tables": {
+  "conductor": {
+   "table": {
+    "name": "conductor",
+    "purpose": "One row per orchestra conductor, listing their name, age, nationality and years of work (tenure). Referenced one-to-one by the orchestra table, which assigns a conductor to each orchestra."
+   },
+   "columns": {
+    "Age": {
+     "role": "numeric",
+     "name": "Age",
+     "description": "Age of the conductor in years (range 40-63).",
+     "status": "resolved"
+    },
+    "Conductor_ID": {
+     "role": "identifier",
+     "name": "Conductor ID",
+     "description": "Primary key identifying the conductor; referenced one-to-one by orchestra.Conductor_ID.",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Name",
+     "description": "Full name of the conductor (e.g. Antal Doráti, Pierre Boulez).",
+     "status": "resolved"
+    },
+    "Nationality": {
+     "role": "category",
+     "name": "Nationality",
+     "description": "Conductor's nationality as a country code/name: USA, UK, or France.",
+     "status": "resolved"
+    },
+    "Year_of_Work": {
+     "role": "numeric",
+     "name": "Years of work",
+     "description": "Number of years the conductor has worked (likely tenure/experience as a conductor), ranging 6-21. Could alternatively be a year count relative to some start point, but values are clearly durations, not calendar years.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "orchestra": {
+   "table": {
+    "name": "orchestra",
+    "purpose": "Catalog of orchestras, each with its principal conductor, record company, main recording format, and founding year. Referenced by performance and linked to conductor."
+   },
+   "columns": {
+    "Conductor_ID": {
+     "role": "foreign_key",
+     "name": "Conductor ID",
+     "description": "Identifier of the orchestra's conductor; references conductor.Conductor_ID (one-to-one).",
+     "status": "resolved"
+    },
+    "Major_Record_Format": {
+     "role": "code",
+     "name": "Major Record Format",
+     "description": "Physical format(s) in which the orchestra's recordings were mainly issued: CD, LP, or DVD; 'CD / LP' indicates both.",
+     "status": "resolved"
+    },
+    "Orchestra": {
+     "role": "identifier",
+     "name": "Orchestra Name",
+     "description": "Full name of the orchestra (e.g., Chicago Symphony Orchestra).",
+     "status": "resolved"
+    },
+    "Orchestra_ID": {
+     "role": "foreign_key",
+     "name": "Orchestra ID",
+     "description": "Primary key of the orchestra row; referenced by performance.Orchestra_ID.",
+     "status": "resolved"
+    },
+    "Record_Company": {
+     "role": "identifier",
+     "name": "Record Company",
+     "description": "Record label(s) the orchestra recorded with; occasionally two labels separated by '/'.",
+     "status": "resolved"
+    },
+    "Year_of_Founded": {
+     "role": "code",
+     "name": "Year of Founded",
+     "description": "Founding year of the orchestra. Note: values (2002-2009) are implausibly recent for these historic orchestras, so the column may actually record something else (e.g., year of a recording or of an award); the declared meaning is not fully supported by the data.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "performance": {
+   "table": {
+    "name": "performance",
+    "purpose": "TV broadcast performance records: one row per episode/broadcast of a televised orchestra competition show, with UK-style official viewing figures (ratings in millions, audience share, weekly rank) per episode in June, each linked to an orchestra and referenced by the show table."
+   },
+   "columns": {
+    "Date": {
+     "role": "date",
+     "name": "Broadcast date",
+     "description": "Day and month of the broadcast (day + month only, no year). Values like '10 June', '16 June'; one date ('17 June') appears twice, likely two episodes that day.",
+     "status": "resolved"
+    },
+    "Official_ratings_(millions)": {
+     "role": "numeric",
+     "name": "Official ratings (millions of viewers)",
+     "description": "Official audience measurement for the episode, in millions of viewers (5.2 to 11.58, mean ~8.4).",
+     "status": "resolved"
+    },
+    "Orchestra_ID": {
+     "role": "foreign_key",
+     "name": "Orchestra ID",
+     "description": "Foreign key to orchestra.Orchestra_ID, identifying the orchestra featured in that episode/performance. One-to-one with the orchestra lookup (e.g. 2 = Columbia Symphony Orchestra, 4 = Royal Danish Orchestra).",
+     "status": "resolved"
+    },
+    "Performance_ID": {
+     "role": "identifier",
+     "name": "Performance ID",
+     "description": "Primary key of the table; unique identifier for each performance/episode. Referenced one-to-one by show.Performance_ID.",
+     "status": "resolved"
+    },
+    "Share": {
+     "role": "numeric",
+     "name": "Audience share",
+     "description": "Percentage of total TV audience watching the episode (stored as text with % sign), ranging roughly 22.7% to 43.7%.",
+     "status": "resolved"
+    },
+    "Type": {
+     "role": "category",
+     "name": "Episode type",
+     "description": "Stage of the competition the episode represents: 'Auditions 1'–'5', 'Semi-final 3', 'Live final results', 'Series average'.",
+     "status": "resolved"
+    },
+    "Weekly_rank": {
+     "role": "numeric",
+     "name": "Weekly rank",
+     "description": "The episode's ranking among that week's TV broadcasts by viewership (stored as text; includes 'TBC' = to be confirmed for at least one episode).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "show": {
+   "table": {
+    "name": "show",
+    "purpose": "Despite the name 'show', the values (Scottish football grounds like Hampden Park, Fir Park, St. Mirren Park; attendance figures; T/F results) indicate this table records football matches: one row per match, with the venue, attendance, result, and a link to a performance (match date/round). The table name and column names appear to be mislabeled or coded; the underlying semantics are match records, tentatively for a Scottish football competition (possibly a concert/show series at football grounds is also conceivable, hence tentative)."
+   },
+   "columns": {
+    "Attendance": {
+     "role": "numeric",
+     "name": "Attendance",
+     "description": "Number of spectators at the event/match (crowd size). Integer counts ranging 555–2431 in the sample.",
+     "status": "resolved"
+    },
+    "If_first_show": {
+     "role": "category",
+     "name": "Venue",
+     "description": "Despite the name, values are venue names (Hampden Park, Fir Park, St. Mirren Park, Glebe Park), so this is the venue where the show/performance took place. The joined performance table documents TV broadcast episodes of an orchestra competition, so these may be venues hosting the performances; the literal name suggesting a 'first show' flag does not match the data, and the exact intent of the name remains unclear, but the venue meaning is clear.",
+     "status": "tentative"
+    },
+    "Performance_ID": {
+     "role": "foreign_key",
+     "name": "Performance_ID",
+     "description": "Foreign key to performance.Performance_ID, identifying the performance/date (e.g. 10 June, 12 June) this show/match belongs to. One-to-one with performance in this sample.",
+     "status": "resolved"
+    },
+    "Result": {
+     "role": "boolean",
+     "name": "Result",
+     "description": "Boolean outcome stored as 'T'/'F'. Given the join to performance (TV broadcast episodes of an orchestra competition), this could indicate whether the show/performance was a success, or a win/loss outcome if the rows are matches. Which polarity and semantic applies cannot be confirmed from the data alone.",
+     "status": "tentative"
+    },
+    "Show_ID": {
+     "role": "identifier",
+     "name": "Show_ID",
+     "description": "Primary key of the table; unique identifier for each show/match row.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 3,
+  "columns_changed": 2
+ }
+}

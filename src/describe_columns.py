@@ -96,6 +96,10 @@ DEFAULTS = {
 }
 
 VERDICTS = ("accept", "reject", "abstain")
+# added to a candidate only when Stage 2b's repair proposed it, so every other prompt stays as it was
+PARTIAL_NOTE = ("Proposed because this table has no other join. The tables may be samples or truncated extracts of "
+                "larger tables, so low containment alone is not evidence against the join: judge whether the two "
+                "columns hold the same identifiers. Shared common values, such as first names, cities or years, are not a join.")
 STATUSES = ("resolved", "tentative", "unresolved")
 ROLES = ("identifier", "foreign_key", "date", "numeric", "category", "code", "free_text", "boolean")
 
@@ -207,7 +211,8 @@ def adjudication_payload(rec, profile, joins, cfg):
         side[role] = {"table": t, "column": c, "table_rows": tp["rows"],
                       "profile": column_evidence(tp["columns"][c], cfg),
                       "other_columns": [x for x in tp["columns"] if x != c], "sample_rows": rows_of(tp, cfg)}
-    return {**side, "source_is_primary_key": rec["source_is_pk"],
+    return {**side, **({"note": PARTIAL_NOTE} if rec.get("partial_overlap") else {}),
+            "source_is_primary_key": rec["source_is_pk"],
             "target_is_primary_key": rec["target_is_pk"], "target_pk_score": rec["target_pk_score"],
             "containment": round(rec["containment"], 3), "coverage": round(rec["coverage"], 3),
             "cardinality": rec["cardinality"], "join_score": round(rec["score"], 1),
@@ -244,7 +249,8 @@ def group_payload(recs, profile, joins, cfg):
                           "target_is_primary_key": rec["target_is_pk"], "target_pk_score": rec["target_pk_score"],
                           "containment": round(rec["containment"], 3), "coverage": round(rec["coverage"], 3),
                           "cardinality": rec["cardinality"], "join_score": round(rec["score"], 1),
-                          "join_score_parts": rec["parts"], "penalties": rec["penalties"], "fan_out": rec["fan_out"]}
+                          "join_score_parts": rec["parts"], "penalties": rec["penalties"], "fan_out": rec["fan_out"],
+                          **({"note": PARTIAL_NOTE} if rec.get("partial_overlap") else {})}
     return {"source": {"table": s["table"], "column": s["column"], "table_rows": tp["rows"],
                        "is_primary_key": recs[0]["source_is_pk"],
                        "profile": column_evidence(tp["columns"][s["column"]], cfg),

@@ -1,0 +1,154 @@
+{
+ "db_id": "employee_hire_evaluation",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 3,
+ "tables": {
+  "employee": {
+   "table": {
+    "name": "employee",
+    "purpose": "One row per employee, identified by Employee_ID, with name, age, and city/team. Names are English rugby players and 'City' values are English rugby club names, suggesting a sports-related dataset (possibly employees assigned to club branches/teams). Referenced by hiring (one-to-one) and evaluation (many evaluations per employee)."
+   },
+   "columns": {
+    "Age": {
+     "role": "numeric",
+     "name": "Age",
+     "description": "Employee's age in years (range 23-43, mean ~32).",
+     "status": "resolved"
+    },
+    "City": {
+     "role": "category",
+     "name": "City",
+     "description": "Location/grouping of the employee. Values are English rugby club names (Bath, Bristol, Leicester, Sale, Wasps) rather than plain cities, so it may actually denote the club/team or branch the employee belongs to; the column name 'City' is only partially supported.",
+     "status": "tentative"
+    },
+    "Employee_ID": {
+     "role": "identifier",
+     "name": "Employee_ID",
+     "description": "Primary key; unique employee identifier (1-10). Referenced one-to-one by hiring.Employee_ID and one-to-many by evaluation.Employee_ID.",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "identifier",
+     "name": "Name",
+     "description": "Employee's full name (first + last). All values are names of English rugby union players.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "evaluation": {
+   "table": {
+    "name": "evaluation",
+    "purpose": "Records annual bonus awards given to employees, one row per employee per award year, linking to the employee table via Employee_ID."
+   },
+   "columns": {
+    "Bonus": {
+     "role": "numeric",
+     "name": "Bonus",
+     "description": "Monetary bonus amount awarded to the employee, in whole currency units (e.g., pounds/dollars); values range 2900-4000.",
+     "status": "resolved"
+    },
+    "Employee_ID": {
+     "role": "foreign_key",
+     "name": "Employee_ID",
+     "description": "Identifier of the employee who received the bonus; references employee.Employee_ID (many-to-one).",
+     "status": "resolved"
+    },
+    "Year_awarded": {
+     "role": "numeric",
+     "name": "Year_awarded",
+     "description": "Calendar year in which the bonus was awarded (2011-2018).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "hiring": {
+   "table": {
+    "name": "hiring",
+    "purpose": "Records each employee's shop assignment: which shop they were hired into, whether the position is full-time, and the year they started. One row per employee (one_to_one with employee)."
+   },
+   "columns": {
+    "Employee_ID": {
+     "role": "identifier",
+     "name": "Employee ID",
+     "description": "Identifier of the employee; references employee.Employee_ID (one_to_one). Serves as this table's logical key.",
+     "status": "resolved"
+    },
+    "Is_full_time": {
+     "role": "boolean",
+     "name": "Is full time",
+     "description": "Whether the employee's position is full-time ('T') or part-time ('F'), stored as text.",
+     "status": "resolved"
+    },
+    "Shop_ID": {
+     "role": "foreign_key",
+     "name": "Shop ID",
+     "description": "Identifier of the shop the employee works at; references shop.Shop_ID (many_to_one).",
+     "status": "resolved"
+    },
+    "Start_from": {
+     "role": "category",
+     "name": "Start year",
+     "description": "Year the employee started working at the shop (values 2003–2013, stored as text).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "shop": {
+   "table": {
+    "name": "shop",
+    "purpose": "Despite the table name 'shop', the data is clearly a list of Finnish football clubs (Veikkausliiga teams) with their home stadium, city, and head coach. Each row is one club. The 'shop' naming is likely a mislabeled or disguised table; it is referenced by 'hiring' via Shop_ID, which likely stores club employees/staff."
+   },
+   "columns": {
+    "District": {
+     "role": "category",
+     "name": "Home stadium",
+     "description": "Name of the club's home stadium/venue (e.g. Finnair Stadium for HJK, Veritas Stadion for FC Inter, Tapiolan Urheilupuisto for FC Honka). The column name 'District' is misleading; values are stadium names, one per club.",
+     "status": "resolved"
+    },
+    "Location": {
+     "role": "category",
+     "name": "Home city",
+     "description": "Finnish city where the club is based (Helsinki, Espoo, Turku, Lahti, Jakobstad, etc.), matching the stadium location.",
+     "status": "resolved"
+    },
+    "Manager_name": {
+     "role": "category",
+     "name": "Head coach / manager",
+     "description": "Full name of the club's head coach (e.g. Antti Muurinen at HJK, Job Dragtsma at FC Inter, Mika Lehkosuo at FC Honka).",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Club name",
+     "description": "Name of the football club (HJK, FC Honka, FC Inter, FC Haka, KuPS, IFK Mariehamn, etc.), all Finnish Veikkausliiga clubs.",
+     "status": "resolved"
+    },
+    "Number_products": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "Shop_ID": {
+     "role": "identifier",
+     "name": "Club ID",
+     "description": "Primary key, integer 1-9, one per club. Referenced by hiring.Shop_ID, so the 'hiring' table links staff/employees to clubs.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

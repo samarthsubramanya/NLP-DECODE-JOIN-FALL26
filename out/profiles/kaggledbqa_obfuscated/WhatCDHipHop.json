@@ -1,0 +1,1142 @@
+{
+ "containment": [
+  {
+   "containment": 1.0,
+   "coverage": 0.3711054481873477,
+   "dist": 0.4226503080695855,
+   "dist_buckets": [
+    13175,
+    11779,
+    12053,
+    13433,
+    9413,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "intersection": 59853,
+   "source": [
+    "tags",
+    "col_002"
+   ],
+   "source_distinct": 59853,
+   "source_unique": false,
+   "target": [
+    "tags",
+    "col_001"
+   ],
+   "target_distinct": 161283
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.017459992683667838,
+   "dist": 0.00907512626262652,
+   "dist_buckets": [
+    2725,
+    75,
+    10,
+    4,
+    2,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "intersection": 2816,
+   "source": [
+    "torrents",
+    "col_002"
+   ],
+   "source_distinct": 2816,
+   "source_unique": false,
+   "target": [
+    "tags",
+    "col_001"
+   ],
+   "target_distinct": 161283
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.00023561069672563135,
+   "dist": 0.0,
+   "dist_buckets": [
+    38,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "intersection": 38,
+   "source": [
+    "torrents",
+    "col_004"
+   ],
+   "source_distinct": 38,
+   "source_unique": false,
+   "target": [
+    "tags",
+    "col_001"
+   ],
+   "target_distinct": 161283
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.46947911435179157,
+   "dist": 0.41553345630261584,
+   "dist_buckets": [
+    16129,
+    16129,
+    16129,
+    16128,
+    11204,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "intersection": 75719,
+   "source": [
+    "torrents",
+    "col_007"
+   ],
+   "source_distinct": 75719,
+   "source_unique": true,
+   "target": [
+    "tags",
+    "col_001"
+   ],
+   "target_distinct": 161283
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.7904621033030019,
+   "dist": 0.9784104389086595,
+   "dist_buckets": [
+    6480,
+    5974,
+    5553,
+    5488,
+    5408,
+    5843,
+    6015,
+    6360,
+    6494,
+    6238
+   ],
+   "intersection": 59853,
+   "source": [
+    "tags",
+    "col_002"
+   ],
+   "source_distinct": 59853,
+   "source_unique": false,
+   "target": [
+    "torrents",
+    "col_007"
+   ],
+   "target_distinct": 75719
+  },
+  {
+   "containment": 0.9996448863636364,
+   "coverage": 0.03717693049300704,
+   "dist": 0.03576080521018332,
+   "dist_buckets": [
+    2538,
+    177,
+    62,
+    18,
+    10,
+    4,
+    5,
+    0,
+    1,
+    0
+   ],
+   "intersection": 2815,
+   "source": [
+    "torrents",
+    "col_002"
+   ],
+   "source_distinct": 2816,
+   "source_unique": false,
+   "target": [
+    "torrents",
+    "col_007"
+   ],
+   "target_distinct": 75719
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.0005018555448434343,
+   "dist": 0.0,
+   "dist_buckets": [
+    38,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "intersection": 38,
+   "source": [
+    "torrents",
+    "col_004"
+   ],
+   "source_distinct": 38,
+   "source_unique": false,
+   "target": [
+    "torrents",
+    "col_007"
+   ],
+   "target_distinct": 75719
+  }
+ ],
+ "dataset": "kaggledbqa_obfuscated",
+ "db_id": "WhatCDHipHop",
+ "duckdb_file": "kaggledbqa/obfuscated/decode_join_kaggledbqa_obfuscated.duckdb",
+ "duckdb_schema": "kaggledbqa_30d35f1d61f421494231",
+ "seed": 42,
+ "tables": {
+  "tags": {
+   "columns": {
+    "col_001": {
+     "declared_type": "BIGINT",
+     "distinct": 161283,
+     "family": "int",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 161282.0,
+      "mean": 80641.0,
+      "min": 0.0,
+      "p25": 40320.5,
+      "p50": 80641.0,
+      "p75": 120961.5
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 161283,
+     "sample_values": [
+      "51579",
+      "39332",
+      "62930",
+      "18366",
+      "96430",
+      "106328",
+      "88088",
+      "13975",
+      "150516",
+      "107174"
+     ],
+     "text": {
+      "avg_len": 5.311086723337239,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0",
+       1
+      ],
+      [
+       "1",
+       1
+      ],
+      [
+       "10",
+       1
+      ],
+      [
+       "100",
+       1
+      ],
+      [
+       "1000",
+       1
+      ],
+      [
+       "10000",
+       1
+      ],
+      [
+       "100000",
+       1
+      ],
+      [
+       "100001",
+       1
+      ],
+      [
+       "100002",
+       1
+      ],
+      [
+       "100003",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 6.2002814927797725e-06
+    },
+    "col_002": {
+     "declared_type": "BIGINT",
+     "distinct": 59853,
+     "family": "int",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.7904621033030019,
+      "max": 75718.0,
+      "mean": 38970.360217753885,
+      "min": 0.0,
+      "p25": 19832.5,
+      "p50": 40420.0,
+      "p75": 58269.5
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "int",
+     "rows": 161283,
+     "sample_values": [
+      "62930",
+      "18366",
+      "13975",
+      "55344",
+      "18244",
+      "14886",
+      "64589",
+      "16585",
+      "27409",
+      "44270"
+     ],
+     "text": {
+      "avg_len": 4.84939516254038,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "30468",
+       24
+      ],
+      [
+       "17248",
+       21
+      ],
+      [
+       "28159",
+       21
+      ],
+      [
+       "48575",
+       21
+      ],
+      [
+       "53833",
+       21
+      ],
+      [
+       "57095",
+       21
+      ],
+      [
+       "71617",
+       21
+      ],
+      [
+       "10664",
+       19
+      ],
+      [
+       "11068",
+       19
+      ],
+      [
+       "37978",
+       19
+      ]
+     ],
+     "uniqueness": 0.3711054481873477,
+     "zero_rate": 1.8600844478339316e-05
+    },
+    "col_003": {
+     "declared_type": "VARCHAR",
+     "distinct": 3678,
+     "family": "text",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 8.060365940613703e-05,
+     "position": 2,
+     "role": "text",
+     "rows": 161283,
+     "sample_values": [
+      "maxi.single",
+      "makiza",
+      "turkish",
+      "pelican.fly",
+      "hus",
+      "booty",
+      "reggae.fusion",
+      "featured.album",
+      "goth",
+      "greymontrecords"
+     ],
+     "text": {
+      "avg_len": 7.86115210516525,
+      "code_share": 0.0005146648477708191,
+      "composite_share": 0.20232529298691634,
+      "date_shape_share": 0.0,
+      "max_len": 38,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "electronic",
+       12681
+      ],
+      [
+       "2010s",
+       10039
+      ],
+      [
+       "instrumental",
+       5622
+      ],
+      [
+       "freely.available",
+       5092
+      ],
+      [
+       "experimental",
+       4809
+      ],
+      [
+       "1990s",
+       4736
+      ],
+      [
+       "beats",
+       4619
+      ],
+      [
+       "pop",
+       4104
+      ],
+      [
+       "2000s",
+       3746
+      ],
+      [
+       "rhythm.and.blues",
+       3546
+      ]
+     ],
+     "uniqueness": 0.022804635330444002,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 161283,
+   "sample_rows": [
+    {
+     "col_001": 840,
+     "col_002": 386,
+     "col_003": "pop"
+    },
+    {
+     "col_001": 1712,
+     "col_002": 787,
+     "col_003": "dance"
+    },
+    {
+     "col_001": 15290,
+     "col_002": 6943,
+     "col_003": "french"
+    },
+    {
+     "col_001": 17870,
+     "col_002": 8161,
+     "col_003": "rhythm.and.blues"
+    },
+    {
+     "col_001": 19874,
+     "col_002": 9105,
+     "col_003": "rock"
+    }
+   ]
+  },
+  "torrents": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 69692,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 2.6413449728601804e-05,
+     "position": 0,
+     "role": "text",
+     "rows": 75719,
+     "sample_values": [
+      "a full life",
+      "ph theme (remixes)",
+      "polyshufflez remixes",
+      "yonder works (and then some)",
+      "sic them youngins on &#39;em",
+      "queen&#39;s speech ep",
+      "momentary comfort",
+      "heart wars",
+      "die reime der anderen",
+      "goldfish ep"
+     ],
+     "text": {
+      "avg_len": 18.819366852886407,
+      "code_share": 0.004279091881611791,
+      "composite_share": 0.008531769615806225,
+      "date_shape_share": 6.603536854339184e-05,
+      "max_len": 687,
+      "min_len": 1,
+      "space_share": 0.810703012533513,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "greatest hits",
+       57
+      ],
+      [
+       "remixes",
+       28
+      ],
+      [
+       "untitled",
+       24
+      ],
+      [
+       "ep",
+       20
+      ],
+      [
+       "one",
+       17
+      ],
+      [
+       "instrumentals",
+       15
+      ],
+      [
+       "the album",
+       14
+      ],
+      [
+       "icon",
+       13
+      ],
+      [
+       "crazy",
+       12
+      ],
+      [
+       "life",
+       12
+      ]
+     ],
+     "uniqueness": 0.9204030692428584,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "BIGINT",
+     "distinct": 2816,
+     "family": "int",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.036830678280886237,
+      "max": 76457.0,
+      "mean": 207.05779262800618,
+      "min": 0.0,
+      "p25": 11.0,
+      "p50": 30.0,
+      "p75": 94.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "int",
+     "rows": 75719,
+     "sample_values": [
+      "3773",
+      "153",
+      "40",
+      "755",
+      "308",
+      "1768",
+      "2891",
+      "11325",
+      "10035",
+      "1539"
+     ],
+     "text": {
+      "avg_len": 2.05204770269021,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2",
+       2044
+      ],
+      [
+       "3",
+       1946
+      ],
+      [
+       "4",
+       1942
+      ],
+      [
+       "5",
+       1857
+      ],
+      [
+       "6",
+       1803
+      ],
+      [
+       "1",
+       1708
+      ],
+      [
+       "7",
+       1591
+      ],
+      [
+       "9",
+       1550
+      ],
+      [
+       "8",
+       1522
+      ],
+      [
+       "12",
+       1511
+      ]
+     ],
+     "uniqueness": 0.03719013721787134,
+     "zero_rate": 0.012176600324885432
+    },
+    "col_003": {
+     "declared_type": "VARCHAR",
+     "distinct": 31287,
+     "family": "text",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 9.244707405010632e-05,
+     "position": 2,
+     "role": "text",
+     "rows": 75719,
+     "sample_values": [
+      "baauer & just blaze",
+      "bizzey",
+      "troy puma",
+      "volodia",
+      "ezekey",
+      "darmo",
+      "outlaw posse",
+      "earmint & elfamail",
+      "psych squared",
+      "yoggyone"
+     ],
+     "text": {
+      "avg_len": 11.320266272189349,
+      "code_share": 0.0012547548605240913,
+      "composite_share": 0.030206572273879965,
+      "date_shape_share": 0.0,
+      "max_len": 75,
+      "min_len": 1,
+      "space_share": 0.6534499154691462,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "various artists",
+       6381
+      ],
+      [
+       "dj screw",
+       353
+      ],
+      [
+       "eminem",
+       132
+      ],
+      [
+       "2pac",
+       127
+      ],
+      [
+       "lil wayne",
+       120
+      ],
+      [
+       "kanye west",
+       113
+      ],
+      [
+       "beastie boys",
+       108
+      ],
+      [
+       "drake",
+       108
+      ],
+      [
+       "snoop dogg",
+       92
+      ],
+      [
+       "gucci mane",
+       91
+      ]
+     ],
+     "uniqueness": 0.4131988008293823,
+     "zero_rate": 0.0
+    },
+    "col_004": {
+     "declared_type": "BIGINT",
+     "distinct": 38,
+     "family": "int",
+     "name": "col_004",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 2016.0,
+      "mean": 2008.576658434475,
+      "min": 1979.0,
+      "p25": 2005.0,
+      "p50": 2011.0,
+      "p75": 2014.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "int",
+     "rows": 75719,
+     "sample_values": [
+      "1985",
+      "1994",
+      "1988",
+      "2006",
+      "1980",
+      "1995",
+      "1999",
+      "2001",
+      "2012",
+      "2013"
+     ],
+     "text": {
+      "avg_len": 4.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2015",
+       8852
+      ],
+      [
+       "2012",
+       6952
+      ],
+      [
+       "2013",
+       6751
+      ],
+      [
+       "2014",
+       6360
+      ],
+      [
+       "2016",
+       6089
+      ],
+      [
+       "2011",
+       5328
+      ],
+      [
+       "2010",
+       4277
+      ],
+      [
+       "2009",
+       3352
+      ],
+      [
+       "2008",
+       2836
+      ],
+      [
+       "2007",
+       2312
+      ]
+     ],
+     "uniqueness": 0.0005018555448434343,
+     "zero_rate": 0.0
+    },
+    "col_005": {
+     "declared_type": "VARCHAR",
+     "distinct": 15,
+     "family": "text",
+     "name": "col_005",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0024696575496242685,
+     "position": 4,
+     "role": "text",
+     "rows": 75719,
+     "sample_values": [
+      "live album",
+      "mixtape",
+      "ep",
+      "soundtrack",
+      "single",
+      "album",
+      "unknown",
+      "concert recording",
+      "demo",
+      "remix"
+     ],
+     "text": {
+      "avg_len": 5.540697982312133,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 2,
+      "space_share": 0.020918286289254885,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "album",
+       35233
+      ],
+      [
+       "single",
+       12228
+      ],
+      [
+       "ep",
+       10260
+      ],
+      [
+       "compilation",
+       5691
+      ],
+      [
+       "mixtape",
+       5620
+      ],
+      [
+       "remix",
+       1887
+      ],
+      [
+       "anthology",
+       1373
+      ],
+      [
+       "dj mix",
+       1099
+      ],
+      [
+       "bootleg",
+       976
+      ],
+      [
+       "soundtrack",
+       578
+      ]
+     ],
+     "uniqueness": 0.00019810087296451352,
+     "zero_rate": 0.0
+    },
+    "col_006": {
+     "declared_type": "BIGINT",
+     "distinct": 75719,
+     "family": "int",
+     "name": "col_006",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.0010324287536350575,
+      "max": 73340658.0,
+      "mean": 56084753.82976532,
+      "min": 5.0,
+      "p25": 71862299.5,
+      "p50": 72490953.0,
+      "p75": 72975497.5
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "int",
+     "rows": 75719,
+     "sample_values": [
+      "668189",
+      "73310652",
+      "541785",
+      "736246",
+      "72953756",
+      "387528",
+      "238237",
+      "72584082",
+      "72826838",
+      "25062"
+     ],
+     "text": {
+      "avg_len": 7.489718564693142,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "100001",
+       1
+      ],
+      [
+       "100032",
+       1
+      ],
+      [
+       "100067",
+       1
+      ],
+      [
+       "100133",
+       1
+      ],
+      [
+       "100150",
+       1
+      ],
+      [
+       "100158",
+       1
+      ],
+      [
+       "100166",
+       1
+      ],
+      [
+       "100197",
+       1
+      ],
+      [
+       "100204",
+       1
+      ],
+      [
+       "100231",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_007": {
+     "declared_type": "BIGINT",
+     "distinct": 75719,
+     "family": "int",
+     "name": "col_007",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 75718.0,
+      "mean": 37859.0,
+      "min": 0.0,
+      "p25": 18929.5,
+      "p50": 37859.0,
+      "p75": 56788.5
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 6,
+     "role": "int",
+     "rows": 75719,
+     "sample_values": [
+      "51579",
+      "39332",
+      "62930",
+      "18366",
+      "13975",
+      "55344",
+      "32970",
+      "18244",
+      "14886",
+      "26549"
+     ],
+     "text": {
+      "avg_len": 4.853273286757617,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0",
+       1
+      ],
+      [
+       "1",
+       1
+      ],
+      [
+       "10",
+       1
+      ],
+      [
+       "100",
+       1
+      ],
+      [
+       "1000",
+       1
+      ],
+      [
+       "10000",
+       1
+      ],
+      [
+       "10001",
+       1
+      ],
+      [
+       "10002",
+       1
+      ],
+      [
+       "10003",
+       1
+      ],
+      [
+       "10004",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 1.3206724864300902e-05
+    }
+   },
+   "rows": 75719,
+   "sample_rows": [
+    {
+     "col_001": "put your hands together",
+     "col_002": 13,
+     "col_003": "d mob",
+     "col_004": 1989,
+     "col_005": "single",
+     "col_006": 72542579,
+     "col_007": 840
+    },
+    {
+     "col_001": "the predator",
+     "col_002": 5057,
+     "col_003": "ice cube",
+     "col_004": 1992,
+     "col_005": "album",
+     "col_006": 54823,
+     "col_007": 1712
+    },
+    {
+     "col_001": "cheers",
+     "col_002": 1559,
+     "col_003": "obie trice",
+     "col_004": 2003,
+     "col_005": "album",
+     "col_006": 68027,
+     "col_007": 15290
+    },
+    {
+     "col_001": "ukina (&#28014;&#12365;&#21517;)",
+     "col_002": 6,
+     "col_003": "hime (\u59eb)",
+     "col_004": 2004,
+     "col_005": "album",
+     "col_006": 72944540,
+     "col_007": 17870
+    },
+    {
+     "col_001": "the rose",
+     "col_002": 2,
+     "col_003": "ayesha",
+     "col_004": 2005,
+     "col_005": "single",
+     "col_006": 72920410,
+     "col_007": 19874
+    }
+   ]
+  }
+ }
+}

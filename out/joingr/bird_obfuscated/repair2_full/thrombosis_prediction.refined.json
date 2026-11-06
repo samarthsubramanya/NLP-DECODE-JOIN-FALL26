@@ -1,0 +1,430 @@
+{
+ "db_id": "thrombosis_prediction",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "repair2",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 1,
+ "tables": {
+  "Examination": {
+   "table": {
+    "name": "Examination",
+    "purpose": "Clinical examination/visit record for a rheumatology/autoimmune-disease cohort (mostly SLE, Sjögren's, RA, MCTD patients), capturing visit date, lab/serology findings, ANA results, diagnosis, and disease complications."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "patient_id",
+     "description": "Likely a patient identifier (7-digit hospital-style ID, near-unique across rows). No joins detected to Patient/Laboratory, so the link is not confirmed; could alternatively be a visit/exam record number.",
+     "status": "tentative"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "examination_date",
+     "description": "Date of the examination/visit, ranging 1989-04-18 to 1998-04-17.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "crp",
+     "description": "A lab value with median 0.8 and values like 17.3, 59.6 — plausibly C-reactive protein (mg/dL), where 0 is normal. Max 2150.3 is an outlier or different unit. Not confirmed; could be another inflammatory marker.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "ana_titer",
+     "description": "Values are exclusively powers of two (0, 4, 16, 64, 256, 1024, 4096), the classic pattern of an immunofluorescence antibody titer (e.g., ANA titer expressed as reciprocal dilution); 0 = negative/not done.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "code",
+     "name": "ana_pattern",
+     "description": "Comma-separated codes S, P, D (also lowercase 'p', and 'P.D' typo) — plausibly ANA staining patterns: S = speckled, P = peripheral/rim, D = diffuse/homogeneous. Multiple patterns can co-occur. Not confirmed against a lookup.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_008": {
+     "role": "code",
+     "name": "diagnosis",
+     "description": "Diagnosis at examination: SLE, SjS (Sjögren's), RA, MCTD, DM, plus qualifiers like 'WHOIV' (WHO class IV lupus nephritis), 'ITP', 'LA(-)', 'susp' (suspected).",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_010": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_011": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_012": {
+     "role": "code",
+     "name": "complications",
+     "description": "Disease complications/comorbid events: CNS lupus, brain infarction, AMI, PH (pulmonary hypertension), thrombocytopenia, DVT, thrombophlebitis, abortion, etc. Mostly null (no complication).",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "complication_count",
+     "description": "Small count 0-3, mostly 0 — plausibly the number of complications recorded for the visit (matches col_012 being mostly null). Could alternatively be a severity grade.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Laboratory": {
+   "table": {
+    "name": "Laboratory",
+    "purpose": "Laboratory results (blood chemistry, hematology and urinalysis panels) per patient visit, linked to Patient; the birth dates (1981-1999) and value ranges suggest a pediatric (likely nephrology) cohort, since many columns (urea, creatinine, complement, urine dipstick, urine culture) fit kidney-disease workups. One row = one patient's lab panel on one occasion."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "patient_id",
+     "description": "Identifier of the patient; references Patient.col_001 (many lab rows per patient).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "date_of_birth",
+     "description": "Patient date of birth (all values 1981-1999, consistent with a pediatric cohort).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "",
+     "description": "Integer, median 295, range 25-67080. Distribution resembles a blood count (e.g. platelets x10^3/uL) but the huge maximum leaves this uncertain.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "urine_ph",
+     "description": "Values cluster 6.7-7.6 within 0-9.9, exactly the urine pH scale; likely urine dipstick pH.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "age_years",
+     "description": "Median 14, bulk 11-17, consistent with patient age in years given 1981-1999 births; a few large outliers (max 152) argue against certainty.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "",
+     "description": "Integer, median 198, range 37-568. Could be total cholesterol or glucose (mg/dL); both fit the distribution.",
+     "status": "tentative"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_015": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_016": {
+     "role": "numeric",
+     "name": "blood_glucose",
+     "description": "Median 102, range 62-499, 88% null; distribution fits fasting/random blood glucose in mg/dL, but sparseness weakens the evidence.",
+     "status": "tentative"
+    },
+    "col_017": {
+     "role": "numeric",
+     "name": "urea",
+     "description": "Median 7.0, range 0.9-35.2 mmol/L; fits serum urea (elevated in renal patients). Could also be another nitrogen waste analyte.",
+     "status": "tentative"
+    },
+    "col_018": {
+     "role": "numeric",
+     "name": "potassium",
+     "description": "Median 4.3, range 0.4-6.6; classic serum potassium (mmol/L) distribution.",
+     "status": "tentative"
+    },
+    "col_019": {
+     "role": "numeric",
+     "name": "hemoglobin",
+     "description": "Median 12.5, range 1.3-18.9 g/dL; typical hemoglobin concentration.",
+     "status": "resolved"
+    },
+    "col_020": {
+     "role": "numeric",
+     "name": "hematocrit",
+     "description": "Median 38.1, range 3.0-56.0; consistently ~3x col_019, i.e. packed cell volume (%).",
+     "status": "resolved"
+    },
+    "col_021": {
+     "role": "numeric",
+     "name": "platelet_count",
+     "description": "Median 248, range 5-5844 (x10^3/uL); fits platelet count with thrombocytosis outliers, though extreme maxima leave some doubt.",
+     "status": "tentative"
+    },
+    "col_022": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_023": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_024": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_025": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_026": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_027": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_028": {
+     "role": "code",
+     "name": "urine_glucose_dipstick",
+     "description": "Semiquantitative codes: '-' (negative), 'TR' (trace), numeric gradings and '>=1000' (mg/dL) — pattern of a urine glucose dipstick.",
+     "status": "tentative"
+    },
+    "col_029": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_030": {
+     "role": "numeric",
+     "name": "tibc",
+     "description": "Sparse, median 343, range 1-1765; fits total iron binding capacity (ug/dL), but could be another binding-protein measure.",
+     "status": "tentative"
+    },
+    "col_031": {
+     "role": "numeric",
+     "name": "serum_iron",
+     "description": "Sparse, median 152, range 0-1573; plausibly serum iron (ug/dL) completing an iron panel with col_029/col_030, but identity uncertain.",
+     "status": "tentative"
+    },
+    "col_032": {
+     "role": "code",
+     "name": "urine_protein",
+     "description": "Mixed qualitative/quantitative: '-', '<0.3', '<0.2', '+', '2+' — pattern of a urine protein (dipstick/quantification) result.",
+     "status": "tentative"
+    },
+    "col_033": {
+     "role": "code",
+     "name": "urine_dipstick_qualitative",
+     "description": "Values '-', '+', '2+', '+-' — a qualitative dipstick grade (e.g. ketones or bilirubin); specific strip parameter unknown.",
+     "status": "tentative"
+    },
+    "col_034": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_035": {
+     "role": "numeric",
+     "name": "complement_c3",
+     "description": "Median 69, range 15-196, 61% null; fits serum C3 (low in glomerulonephritis), but could be another protein.",
+     "status": "tentative"
+    },
+    "col_036": {
+     "role": "numeric",
+     "name": "complement_c4",
+     "description": "Median 21, range 3-80; fits serum C4, paired with col_035; identity uncertain.",
+     "status": "tentative"
+    },
+    "col_037": {
+     "role": "code",
+     "name": "microbiology_titer_1",
+     "description": "Values 'negative', 0, and powers of two (1,4,16,64,256) — semiquantitative culture/serology titers. One of a block of six similar columns (col_037-col_042), likely organism-specific results; individual identities unknown.",
+     "status": "tentative"
+    },
+    "col_038": {
+     "role": "code",
+     "name": "microbiology_titer_2",
+     "description": "Same pattern as col_037 ('negative', 0, 1, 2, 8); specific organism/test unknown.",
+     "status": "tentative"
+    },
+    "col_039": {
+     "role": "code",
+     "name": "microbiology_titer_3",
+     "description": "Same pattern as col_037 ('negative', 0, 1, 4, 16); specific test unknown.",
+     "status": "tentative"
+    },
+    "col_040": {
+     "role": "code",
+     "name": "microbiology_titer_4",
+     "description": "Same pattern as col_037 ('negative', 0, 1, 16, 64); specific test unknown.",
+     "status": "tentative"
+    },
+    "col_041": {
+     "role": "code",
+     "name": "microbiology_titer_5",
+     "description": "Same pattern as col_037 ('negative', 0, 1, 2, 32); specific test unknown.",
+     "status": "tentative"
+    },
+    "col_042": {
+     "role": "code",
+     "name": "microbiology_titer_6",
+     "description": "Same pattern as col_037 ('negative', 0); specific test unknown.",
+     "status": "tentative"
+    },
+    "col_043": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_044": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Patient": {
+   "table": {
+    "name": "Patient",
+    "purpose": "Rheumatology patient registry: one row per patient, with demographics, diagnosis dates, a serology flag, and diagnoses (SLE, Sjögren's, RA, Behçet's, PSS etc.). Referenced by Laboratory results."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "patient_id",
+     "description": "Primary key; unique patient identifier. Referenced by Laboratory.col_001 (many laboratory rows per patient).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "sex",
+     "description": "Sex: F (1023), M (202), blank (13). Strong female predominance consistent with autoimmune/rheumatic disease cohorts.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "date_of_birth",
+     "description": "Patient date of birth (range 1912–2007, mostly 1930s–1960s).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "diagnosis_date",
+     "description": "Date of diagnosis/registration, concentrated 1991–1998. Could be first-visit or diagnosis date; the exact event is not distinguishable from the data.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "onset_date",
+     "description": "Disease onset or symptom-onset date (1972–1998, earlier and sparser than col_004, ~20% missing). Could alternatively be a follow-up/last-visit date, but earlier-than-diagnosis values favor onset.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "code",
+     "name": "rheumatoid_factor",
+     "description": "Serology flag, likely rheumatoid factor (or ANA) result: '-' negative (713), '+' positive (488), '+(' weak/ambiguous positive (3), blank (34). Which antibody is not determinable from the data.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "diagnosis",
+     "description": "Diagnosis(es), free text with abbreviations of rheumatic/autoimmune diseases: SLE (systemic lupus erythematosus), SJS (Sjögren's syndrome), RA (rheumatoid arthritis), BEHCET, PSS (progressive systemic sclerosis / primary Sjögren's), DM (dermatomyositis), PN (polyarteritis nodosa) etc.; multiple diagnoses comma-separated.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 2,
+  "columns_changed": 0
+ }
+}

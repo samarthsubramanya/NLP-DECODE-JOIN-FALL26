@@ -1,0 +1,911 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.9416222543975848,
+   "decision": "accepted",
+   "dist": 0.9669422088449766,
+   "dist_buckets": [
+    3125,
+    3185,
+    3174,
+    3168,
+    3166,
+    3175,
+    3134,
+    3126,
+    3079,
+    2234
+   ],
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.9669,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 99.3388,
+   "score_before_fan_out": 99.3388,
+   "source": {
+    "column": "col_001",
+    "table": "yearmonth"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "customers"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.07645206438068579,
+   "decision": "accepted",
+   "dist": 0.7571828121027206,
+   "dist_buckets": [
+    76,
+    79,
+    48,
+    10,
+    33,
+    82,
+    62,
+    20,
+    13,
+    14
+   ],
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.7572,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 95.1437,
+   "score_before_fan_out": 95.1437,
+   "source": {
+    "column": "col_006",
+    "table": "transactions_1k"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "gasstations"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.01592680447305998,
+   "decision": "accepted",
+   "dist": 0.7779926928863101,
+   "dist_buckets": [
+    70,
+    78,
+    83,
+    58,
+    46,
+    51,
+    31,
+    40,
+    53,
+    7
+   ],
+   "fan_out": 1.0,
+   "parts": {
+    "cardinality": 0.9671,
+    "distribution": 0.778,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 95.0666,
+   "score_before_fan_out": 95.0666,
+   "source": {
+    "column": "col_004",
+    "table": "transactions_1k"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "customers"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.3942470389170897,
+   "decision": "accepted",
+   "dist": 0.4034334763948497,
+   "dist_buckets": [
+    53,
+    53,
+    47,
+    44,
+    36,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.4034,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 74.8584,
+   "score_before_fan_out": 88.0687,
+   "source": {
+    "column": "col_002",
+    "table": "gasstations"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "products"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.233,
+   "decision": "llm_reject",
+   "dist": 0.19933237958989036,
+   "dist_buckets": [
+    87,
+    83,
+    63,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "dist_capped": true,
+   "fan_out": 0.85,
+   "llm": {
+    "adjudication": "grouped",
+    "decision": "reject",
+    "group_size": 1,
+    "model": "glm-5-3",
+    "reason": "The source is a low-cardinality small-integer attribute (233 distinct, values 1-290, heavily skewed toward 1-4) in a gas-station table, while the target is a unique transaction ID sequence 1-1000; the full containment is just an artifact of small integers overlapping, and a gas station attribute cannot reference individual transaction IDs.",
+    "reasoning_effort": "low"
+   },
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.1993,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 69,
+   "score_before_fan_out": 83.9866,
+   "source": {
+    "column": "col_002",
+    "table": "gasstations"
+   },
+   "source_is_pk": false,
+   "target": {
+    "column": "col_001",
+    "table": "transactions_1k"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.047377326565143825,
+   "decision": "llm_abstain",
+   "dist": 0.24603174603174605,
+   "dist_buckets": [
+    21,
+    1,
+    0,
+    0,
+    0,
+    6,
+    0,
+    0,
+    0,
+    0
+   ],
+   "dist_capped": true,
+   "fan_out": 1.0,
+   "llm": {
+    "adjudication": "grouped",
+    "decision": "abstain",
+    "group_size": 1,
+    "model": "glm-5-3",
+    "reason": "Full containment is uninformative since the target is a dense 1-630 ID range that would contain any small-int column, and the source's heavy skew toward values 2 and 5 suggests a code or quantity rather than a product reference, but the evidence is too thin to rule a real product-key join out.",
+    "reasoning_effort": "low"
+   },
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.246,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 69,
+   "score_before_fan_out": 84.9206,
+   "source": {
+    "column": "col_007",
+    "table": "transactions_1k"
+   },
+   "source_is_pk": false,
+   "target": {
+    "column": "col_001",
+    "table": "products"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9879518072289156,
+   "coverage": 0.13874788494077833,
+   "decision": "llm_accept",
+   "dist": 0.10569105691056913,
+   "dist_buckets": [
+    53,
+    21,
+    7,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "dist_capped": true,
+   "fan_out": 1.0,
+   "llm": {
+    "adjudication": "grouped",
+    "decision": "accept",
+    "group_size": 1,
+    "model": "glm-5-3",
+    "reason": "col_008 values (0\u2013264, 83 distinct) are almost fully contained in the products primary key (containment 0.988) with many-to-one cardinality, consistent with a product/fee ID on transactions; the only weak part is the skewed distribution, which is natural for transaction frequencies.",
+    "reasoning_effort": "low"
+   },
+   "parts": {
+    "cardinality": 1.0,
+    "distribution": 0.1057,
+    "nulls": 1.0,
+    "overlap": 0.988,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 69,
+   "score_before_fan_out": 81.6319,
+   "source": {
+    "column": "col_008",
+    "table": "transactions_1k"
+   },
+   "source_is_pk": false,
+   "target": {
+    "column": "col_001",
+    "table": "products"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0,
+   "weights_used": {
+    "cardinality": 15,
+    "distribution": 20,
+    "name": 0,
+    "nulls": 10,
+    "overlap": 40,
+    "target_key": 15
+   }
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.518369489153254,
+   "coverage": 0.09127876528757586,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    2963,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "gasstations"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "customers"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 101.25
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8197424892703863,
+   "coverage": 0.033414975507347795,
+   "decision": "rejected_gate",
+   "dist": 0.0,
+   "dist_buckets": [
+    191,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_002",
+    "table": "gasstations"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "gasstations"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9255499153976311,
+   "coverage": 0.0956962911126662,
+   "decision": "rejected_gate",
+   "dist": 0.0004062563477555958,
+   "dist_buckets": [
+    546,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "products"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "gasstations"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.591,
+   "decision": "rejected_gate",
+   "dist": 0.5531114871216394,
+   "dist_buckets": [
+    100,
+    100,
+    100,
+    97,
+    96,
+    92,
+    6,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "products"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "transactions_1k"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.956,
+   "coverage": 0.16724982505248426,
+   "decision": "rejected_gate",
+   "dist": 0.0892608089260809,
+   "dist_buckets": [
+    572,
+    384,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "transactions_1k"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "gasstations"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.591,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "dist": 0.9983079526226735,
+   "dist_buckets": [
+    60,
+    59,
+    59,
+    59,
+    59,
+    59,
+    59,
+    59,
+    59,
+    59
+   ],
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "col_001",
+    "table": "transactions_1k"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "products"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.028,
+   "decision": "rejected_gate",
+   "dist": 0.1428571428571428,
+   "dist_buckets": [
+    22,
+    0,
+    0,
+    6,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_007",
+    "table": "transactions_1k"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "transactions_1k"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.9879518072289156,
+   "coverage": 0.082,
+   "decision": "rejected_gate",
+   "dist": 0.03794037940379402,
+   "dist_buckets": [
+    69,
+    12,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "reason": "same table",
+   "source": {
+    "column": "col_008",
+    "table": "transactions_1k"
+   },
+   "target": {
+    "column": "col_001",
+    "table": "transactions_1k"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "dist_no_accept_below": 0.3,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "ddb",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_range_span": null,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "pk_source_max_density": 0.5,
+  "r_cap": 2,
+  "repair_isolated": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 4,
+  "band": 3,
+  "rejected_gate": 8
+ },
+ "db_id": "debit_card_specializing",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9416222543975848,
+    "decision": "accepted",
+    "score": 99.3388,
+    "source": {
+     "column": "col_001",
+     "table": "yearmonth"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "customers"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.07645206438068579,
+    "decision": "accepted",
+    "score": 95.1437,
+    "source": {
+     "column": "col_006",
+     "table": "transactions_1k"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "gasstations"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.01592680447305998,
+    "decision": "accepted",
+    "score": 95.0666,
+    "source": {
+     "column": "col_004",
+     "table": "transactions_1k"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "customers"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.3942470389170897,
+    "decision": "accepted",
+    "score": 74.8584,
+    "source": {
+     "column": "col_002",
+     "table": "gasstations"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "products"
+    }
+   }
+  ],
+  "llm": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9416222543975848,
+    "decision": "accepted",
+    "score": 99.3388,
+    "source": {
+     "column": "col_001",
+     "table": "yearmonth"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "customers"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.07645206438068579,
+    "decision": "accepted",
+    "score": 95.1437,
+    "source": {
+     "column": "col_006",
+     "table": "transactions_1k"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "gasstations"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.01592680447305998,
+    "decision": "accepted",
+    "score": 95.0666,
+    "source": {
+     "column": "col_004",
+     "table": "transactions_1k"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "customers"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.3942470389170897,
+    "decision": "accepted",
+    "score": 74.8584,
+    "source": {
+     "column": "col_002",
+     "table": "gasstations"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "products"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9879518072289156,
+    "coverage": 0.13874788494077833,
+    "decision": "llm_accept",
+    "score": 69,
+    "source": {
+     "column": "col_008",
+     "table": "transactions_1k"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "products"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.9416222543975848,
+    "decision": "accepted",
+    "score": 99.3388,
+    "source": {
+     "column": "col_001",
+     "table": "yearmonth"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "customers"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.07645206438068579,
+    "decision": "accepted",
+    "score": 95.1437,
+    "source": {
+     "column": "col_006",
+     "table": "transactions_1k"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "gasstations"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.01592680447305998,
+    "decision": "accepted",
+    "score": 95.0666,
+    "source": {
+     "column": "col_004",
+     "table": "transactions_1k"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "customers"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.3942470389170897,
+    "decision": "accepted",
+    "score": 74.8584,
+    "source": {
+     "column": "col_002",
+     "table": "gasstations"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "products"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.233,
+    "decision": "band",
+    "score": 69,
+    "source": {
+     "column": "col_002",
+     "table": "gasstations"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "transactions_1k"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.047377326565143825,
+    "decision": "band",
+    "score": 69,
+    "source": {
+     "column": "col_007",
+     "table": "transactions_1k"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "products"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 0.9879518072289156,
+    "coverage": 0.13874788494077833,
+    "decision": "band",
+    "score": 69,
+    "source": {
+     "column": "col_008",
+     "table": "transactions_1k"
+    },
+    "target": {
+     "column": "col_001",
+     "table": "products"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.0,
+ "keys_run": "ddb",
+ "use_names": false,
+ "weights": {
+  "cardinality": 15,
+  "distribution": 20,
+  "name": 0,
+  "nulls": 10,
+  "overlap": 40,
+  "target_key": 15
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "db_id": "network_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "Friend": {
+   "table": {
+    "name": "Friend",
+    "purpose": "Friendship pairs between high schoolers: each row links one student (col_001) to another student (col_002) they are friends with, referencing the Highschooler table. Likely the classic social-network schema (Highschooler, Friend, Likes)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "student_id",
+     "description": "ID of one high schooler in the friendship pair; references Highschooler.col_001 (student ID).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "friend_id",
+     "description": "ID of the other high schooler in the friendship pair; references Highschooler.col_001 (student ID). Which of the two columns is 'student' vs 'friend' is arbitrary since friendship is symmetric.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Highschooler": {
+   "table": {
+    "name": "Highschooler",
+    "purpose": "A lookup/entity table of high school students, one row per student, referenced by the Friend and Likes tables (which record friendships and likes between students)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "student_id",
+     "description": "Primary key: unique numeric identifier for each high school student. Referenced by Friend and Likes tables to identify the student in a friendship or like relationship.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "name",
+     "description": "The student's first name. Not unique (e.g., Gabriel and Jordan appear twice).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "grade",
+     "description": "The student's grade level (year in school), values 9-12 (freshman through senior), evenly distributed with 4 students per grade.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Likes": {
+   "table": {
+    "name": "Likes",
+    "purpose": "Edge table recording which high schooler likes which high schooler (a social-network 'likes' relation). Each row is a directed like from one student to another; col_001 is the liker and col_002 the liked student. The primary key on col_001 suggests each student appears as a liker at most once in this sample, though the table likely allows multiple likes in general."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "liker_id",
+     "description": "ID of the high schooler who likes someone (the source of the like). References Highschooler.col_001 (student ID). Declared primary key here, so each student appears as a liker at most once.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "liked_id",
+     "description": "ID of the high schooler who is liked (the target of the like). References Highschooler.col_001. Many-to-one: several students can like the same person (e.g. 1468 and 1709 are each liked twice).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 0,
+  "columns_changed": 0
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "db_id": "GeoNuclearData",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 0,
+ "tables": {
+  "nuclear_power_plants": {
+   "table": {
+    "name": "nuclear_power_plants",
+    "purpose": "One row per nuclear power reactor unit worldwide, with location, status, reactor type, lifecycle dates, capacity, and data provenance. Appears to be derived from a public reactor database (e.g. IAEA PRIS / World Nuclear Association)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "reactor_id",
+     "description": "Primary key; a numeric identifier for each reactor unit (unique across all 788 rows).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "reactor_name",
+     "description": "Name of the reactor unit, typically plant name plus unit number, e.g. 'Hope Creek-1', 'Shin-Kori-4'. Unique per row.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "latitude",
+     "description": "Latitude of the plant site in decimal degrees (range consistent with -90..90; e.g. 39.467 for Hope Creek). Empty for 41 rows.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "longitude",
+     "description": "Longitude of the plant site in decimal degrees, negative west of Greenwich (e.g. -75.535 for Hope Creek). Empty for 41 rows.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "country",
+     "description": "Country where the reactor is located (40 distinct values, e.g. United States, France, Japan).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "status",
+     "description": "Lifecycle status of the unit: Operational, Shutdown, Planned, Under Construction, Suspended/Cancelled Construction.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "code",
+     "name": "reactor_type",
+     "description": "Reactor type code: PWR, BWR, PHWR, GCR (gas-cooled), LWGR (RBMK), FBR (fast breeder), HWLWR, HWGCR, HTGR, etc. Empty for some planned units.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "reactor_model",
+     "description": "Specific reactor design/model, e.g. 'BWR-4 (Mark 1)', 'APR-1400', 'VVER V-320', 'MAGNOX', 'CANDU 200'. Empty for 114 rows.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "date",
+     "name": "construction_start_date",
+     "description": "Date construction began (ISO date). Empty for 94 rows (planned units not yet started). Some values are approximate (e.g. '1970-01-01').",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "date",
+     "name": "first_criticality_or_grid_connection_date",
+     "description": "Date the unit achieved first criticality or was connected to the grid. Empty for 168 rows (not yet built). Could alternatively be commercial-operation date; the exact milestone is tentative.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "date",
+     "name": "shutdown_date",
+     "description": "Date the unit was permanently shut down; empty for 615 rows (units still operating or never built). Sample values include 1979-03-28 (Three Mile Island) and 2011-08-06.",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "capacity_mw",
+     "description": "Net (or gross) electrical capacity in megawatts; e.g. 1067 for Hope Creek, 1340 for Shin-Kori-4, 18 for the KNK-II prototype. Empty for 90 rows.",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "code",
+     "name": "last_updated",
+     "description": "Timestamp when the record was last updated (ISO 8601 with timezone offset). Many records share bulk-update timestamps (e.g. 2015-05-24T04:51:xx+03:00), indicating batch edits.",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "category",
+     "name": "source",
+     "description": "Data provenance: which references the row's data came from — WNA (World Nuclear Association), IAEA, wikipedia, or combinations.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

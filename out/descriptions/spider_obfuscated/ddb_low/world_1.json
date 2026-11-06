@@ -1,0 +1,186 @@
+{
+ "db_id": "world_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "city": {
+   "table": {
+    "name": "city",
+    "purpose": "World cities with their country, first-level administrative subdivision (state/province/region) and population. This is the classic MySQL 'world' sample database city table (ID, Name, CountryCode, District, Population)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key; unique surrogate identifier for each city row (1..4079).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "name",
+     "description": "City name (e.g. 'Lubao', 'Matsumoto'). Not unique; some names repeat across countries.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "country_code",
+     "description": "ISO 3166-1 alpha-3 country code (CHN, IND, USA, ...), referencing the country table.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "district",
+     "description": "First-level administrative subdivision of the country the city is in (state/province/region), e.g. 'Central Luzon', 'Nagano', 'California'.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "population",
+     "description": "City population in persons; ranges from 42 to 10,500,000.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "country": {
+   "table": {
+    "name": "country",
+    "purpose": "Reference table of world countries (one row per country), with geography, demographics, economy, and government attributes. This is the classic MySQL 'world' sample database's country table; it is referenced by city (country each city belongs to) and countrylanguage (country each language is spoken in)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "country_code",
+     "description": "Primary key: 3-letter ISO 3166-1 alpha-3 country code (e.g. ABW=Aruba, GBR=United Kingdom, LAO=Laos). Referenced by city.col_003 and countrylanguage.col_001.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "country_name",
+     "description": "English name of the country (e.g. 'Afghanistan', 'Sierra Leone'). Unique per row.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "continent",
+     "description": "Continent the country belongs to; 7 values: Africa, Asia, Europe, North America, South America, Oceania, Antarctica.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "region",
+     "description": "Sub-continental region within the continent (e.g. 'Caribbean', 'Eastern Africa', 'Southeast Asia', 'Western Africa').",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "surface_area_km2",
+     "description": "Land area of the country in square kilometers (range 0.4 to 17,075,400; e.g. Laos 236,800, Sierra Leone 71,740).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "independence_year",
+     "description": "Year the country gained independence (e.g. 1960, 1991, 1776 for USA). Null for territories that are not independent (e.g. British Indian Ocean Territory). The negative minimum (-1523) is odd and may be a data artifact (e.g. an ancient date encoded oddly); the join to city.col_001 is spurious.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "population",
+     "description": "Country population in persons (range 0 to ~1.28 billion; e.g. Laos 5,433,000, Sierra Leone 4,854,000).",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "numeric",
+     "name": "life_expectancy_years",
+     "description": "Average life expectancy in years (range 37.2–83.5, mean ~66.5; e.g. Laos 53.1, Sierra Leone 45.3). Null for uninhabited/unknown territories.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "gnp",
+     "description": "Gross National Product, in millions of US dollars (e.g. Laos 1292, Sierra Leone 746; 0 for territories without an economy).",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "gnp_old",
+     "description": "Older/previous GNP figure, in millions of US dollars, same magnitude as col_009 (e.g. Laos 1746 vs current 1292). Null for ~25% of rows. Exact vintage (previous year vs older source) is not determinable from the data.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "identifier",
+     "name": "local_name",
+     "description": "Country name in local language(s) or non-English form (e.g. 'Afganistan/Afqanestan', 'Al-Jaza'ir/Algérie', 'Lao').",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "category",
+     "name": "government_form",
+     "description": "Form of government (e.g. 'Republic', 'Constitutional Monarchy', 'Dependent Territory of the UK', 'Monarchy (Sultanate)').",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "identifier",
+     "name": "head_of_state",
+     "description": "Name of the head of state (e.g. 'Elisabeth II' for Commonwealth realms, 'Jacques Chirac', 'Khamtay Siphandone'). Data reflects ~2000-2005 era.",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "identifier",
+     "name": "capital_city_id",
+     "description": "Foreign key to city.col_001 identifying the country's capital city (one-to-one join accepted by statistics; null for territories without a capital).",
+     "status": "resolved"
+    },
+    "col_015": {
+     "role": "identifier",
+     "name": "iso_code_2",
+     "description": "2-letter ISO 3166-1 alpha-2 country code (e.g. 'LA' for Laos, 'SL' for Sierra Leone, 'IO' for British Indian Ocean Territory).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "countrylanguage": {
+   "table": {
+    "name": "countrylanguage",
+    "purpose": "Languages spoken in each country: one row per (country, language) pair, with whether the language is official and the percentage of the population speaking it. Classic MySQL 'world' sample database table."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "country_code",
+     "description": "ISO 3-letter country code (e.g. IND, USA, CAN), referencing country.col_001; many languages per country.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "language",
+     "description": "Name of the language spoken in the country (e.g. Urdu, English, Creole English).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "boolean",
+     "name": "is_official",
+     "description": "Whether the language is official in the country: 'T' = true (official), 'F' = false (not official).",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "numeric",
+     "name": "percentage",
+     "description": "Percentage (0-100) of the country's population that speaks the language; 100.0 means the whole population.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

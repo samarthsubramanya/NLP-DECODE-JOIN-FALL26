@@ -1,0 +1,830 @@
+{
+ "accept": 70,
+ "db_id": "financial",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "account": {
+   "candidate_keys": [
+    {
+     "column": "account_id",
+     "score": 125.0
+    }
+   ],
+   "columns": {
+    "account_id": {
+     "base": 85.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "card.card_id",
+       "disp.account_id",
+       "district.A9",
+       "loan.account_id",
+       "order.account_id",
+       "trans.account_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 125.0
+    },
+    "date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "district_id": {
+     "base": 50.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.01711111111111111
+     },
+     "phi": 0.85,
+     "score": 17.0
+    },
+    "frequency": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0006666666666666666
+     },
+     "phi": 0.7,
+     "score": 6.3
+    }
+   },
+   "evidence": "score",
+   "primary_key": "account_id"
+  },
+  "card": {
+   "candidate_keys": [
+    {
+     "column": "card_id",
+     "score": 125.0
+    }
+   ],
+   "columns": {
+    "card_id": {
+     "base": 85.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "account.district_id",
+       "client.district_id",
+       "district.district_id",
+       "district.A5",
+       "district.A6",
+       "district.A14",
+       "loan.duration"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 125.0
+    },
+    "disp_id": {
+     "base": 85.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 28.9
+    },
+    "issued": {
+     "base": 28.052,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.38104135525660193,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6804932735426009
+     },
+     "phi": 0.55,
+     "score": 15.429
+    },
+    "type": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0033632286995515697
+     },
+     "phi": 0.7,
+     "score": 6.3
+    }
+   },
+   "evidence": "score",
+   "primary_key": "card_id"
+  },
+  "client": {
+   "candidate_keys": [
+    {
+     "column": "client_id",
+     "score": 125.0
+    }
+   ],
+   "columns": {
+    "birth_date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "client_id": {
+     "base": 85.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "card.card_id",
+       "disp.client_id",
+       "district.A9",
+       "loan.duration"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 125.0
+    },
+    "district_id": {
+     "base": 50.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.014341590612777053
+     },
+     "phi": 0.55,
+     "score": 11.0
+    },
+    "gender": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.00037250884708511827
+     },
+     "phi": 0.85,
+     "score": 16.15
+    }
+   },
+   "evidence": "score",
+   "primary_key": "client_id"
+  },
+  "disp": {
+   "candidate_keys": [
+    {
+     "column": "disp_id",
+     "score": 125.0
+    }
+   ],
+   "columns": {
+    "account_id": {
+     "base": 70.693,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.7138614680987563,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8381449059415161
+     },
+     "phi": 0.7,
+     "score": 19.794
+    },
+    "client_id": {
+     "base": 85.0,
+     "boost": 20,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "card.card_id",
+       "client.client_id",
+       "district.A9",
+       "loan.duration"
+      ],
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 45.9
+    },
+    "disp_id": {
+     "base": 85.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "card.card_id",
+       "card.disp_id",
+       "district.A9",
+       "loan.duration"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 125.0
+    },
+    "type": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.00037250884708511827
+     },
+     "phi": 0.55,
+     "score": 10.45
+    }
+   },
+   "evidence": "score",
+   "primary_key": "disp_id"
+  },
+  "district": {
+   "candidate_keys": [
+    {
+     "column": "district_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "A10": {
+     "base": 52.682,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.8636363636363636,
+      "name": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.9090909090909091
+     },
+     "phi": 0.55,
+     "score": 28.975
+    },
+    "A11": {
+     "base": 64.351,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.987012987012987,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.987012987012987
+     },
+     "phi": 0.55,
+     "score": 35.393
+    },
+    "A12": {
+     "rejected": "has nulls"
+    },
+    "A13": {
+     "base": 56.794,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.9458874458874459,
+      "name": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.948051948051948
+     },
+     "phi": 0.55,
+     "score": 31.237
+    },
+    "A14": {
+     "base": 22.54,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.15079365079365073,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5714285714285714
+     },
+     "phi": 0.55,
+     "score": 12.397
+    },
+    "A15": {
+     "rejected": "has nulls"
+    },
+    "A16": {
+     "base": 64.351,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.987012987012987,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.987012987012987
+     },
+     "phi": 0.55,
+     "score": 35.393
+    },
+    "A2": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    },
+    "A3": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.1038961038961039
+     },
+     "phi": 0.7,
+     "score": 6.3
+    },
+    "A4": {
+     "base": 69.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 18.975
+    },
+    "A5": {
+     "base": 38.877,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.39754689754689754,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.6883116883116883
+     },
+     "phi": 0.55,
+     "score": 21.383
+    },
+    "A6": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.4675324675324675
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "A7": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.22077922077922077
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "A8": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.07792207792207792
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "A9": {
+     "base": 30.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.14285714285714285
+     },
+     "phi": 0.55,
+     "score": 16.5
+    },
+    "district_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "account.district_id",
+       "client.district_id",
+       "district.A6",
+       "district.A9",
+       "loan.duration"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "district_id"
+  },
+  "loan": {
+   "candidate_keys": [
+    {
+     "column": "loan_id",
+     "score": 105.0
+    }
+   ],
+   "columns": {
+    "account_id": {
+     "base": 85.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 28.9
+    },
+    "amount": {
+     "rejected": "blacklist: financial (amount)"
+    },
+    "date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "duration": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.007331378299120235
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "loan_id": {
+     "base": 85.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 105.0
+    },
+    "payments": {
+     "base": 51.027,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.7305311176278919,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.8460410557184751
+     },
+     "phi": 0.55,
+     "score": 28.065
+    },
+    "status": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.005865102639296188
+     },
+     "phi": 0.55,
+     "score": 10.45
+    }
+   },
+   "evidence": "score",
+   "primary_key": "loan_id"
+  },
+  "order": {
+   "candidate_keys": [
+    {
+     "column": "order_id",
+     "score": 105.0
+    }
+   ],
+   "columns": {
+    "account_id": {
+     "base": 43.523,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.1704613746801971,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5807448616906197
+     },
+     "phi": 0.85,
+     "score": 14.798
+    },
+    "account_to": {
+     "base": 64.807,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.9961366094884871,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9961366094884871
+     },
+     "phi": 0.55,
+     "score": 35.644
+    },
+    "amount": {
+     "rejected": "blacklist: financial (amount)"
+    },
+    "bank_to": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.00200896306598671
+     },
+     "phi": 0.7,
+     "score": 13.3
+    },
+    "k_symbol": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0007726781023025807
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "order_id": {
+     "base": 85.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 105.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "order_id"
+  },
+  "trans": {
+   "candidate_keys": [
+    {
+     "column": "trans_id",
+     "score": 125.0
+    }
+   ],
+   "columns": {
+    "account": {
+     "rejected": "has nulls"
+    },
+    "account_id": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.004260072705240836
+     },
+     "phi": 0.85,
+     "score": 11.9
+    },
+    "amount": {
+     "rejected": "blacklist: financial (amount)"
+    },
+    "balance": {
+     "rejected": "blacklist: financial (balance)"
+    },
+    "bank": {
+     "rejected": "has nulls"
+    },
+    "date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "k_symbol": {
+     "rejected": "has nulls"
+    },
+    "operation": {
+     "rejected": "has nulls"
+    },
+    "trans_id": {
+     "base": 85.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "loan.duration"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 125.0
+    },
+    "type": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 2.8400484701605574e-06
+     },
+     "phi": 0.55,
+     "score": 10.45
+    }
+   },
+   "evidence": "score",
+   "primary_key": "trans_id"
+  }
+ },
+ "use_names": true
+}

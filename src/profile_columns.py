@@ -15,8 +15,11 @@ Usage:
     python src/profile_columns.py --dataset bird
     python src/profile_columns.py --dataset spider --databases concert_singer pets_1
 
+    python src/profile_columns.py --dataset beaver --overlaps    # partial value overlaps only
+
 Input:  out/filtered/<dataset>/databases.json   (written by filter_for_multitable_datasets.py)
 Output: out/profiles/<dataset>/<db_id>.json
+        out/overlaps/<dataset>/<db_id>.json   (--overlaps; read by foreign_keys.py --repair-isolated)
 """
 import argparse
 import json
@@ -53,6 +56,9 @@ DEFAULTS = {
     "containment_store_min": 0.5,   # pairs below this are not written
     "dist_max_buckets": 10,         # quantile-EMD distribution term: at most this many target buckets ...
     "dist_min_buckets": 5,          # ... and fewer than this many means no evidence (dist = None)
+    "overlap_min_distinct": 5,      # partial_overlaps: columns with fewer distinct values are skipped
+    "overlap_min_shared": 10,       # ... and a pair needs this many shared values
+    "overlap_min_share": 0.05,      # ... and this share of the smaller column's values
 }
 
 
@@ -320,6 +326,37 @@ def containment(con, schema, tables, cfg):
     return out
 
 
+def partial_overlaps(con, schema, tables, cfg=DEFAULTS):
+    """Shared distinct values between same-family columns of different tables, with no key-like target needed.
+
+    containment() only sees pairs into a unique, null-free column at 50% or more. Tables cut to a row cap
+    independently (BEAVER dw: 10,000 rows) break both: a real parent key loses rows, so few values match, and
+    join columns between two fact tables have no unique end. Thousands of shared key values still can't be chance.
+    """
+    def values(table, col, fam):
+        c = q(col)
+        e = f"TRY_CAST({c} AS BIGINT)" if fam == "int" else f"trim(CAST({c} AS VARCHAR))"
+        rows = con.execute(f"SELECT DISTINCT {e} FROM {q(schema)}.{q(table)} "
+                           f"WHERE {c} IS NOT NULL AND NOT list_contains(?, CAST({c} AS VARCHAR))", [cfg["placeholders"]])
+        return {r[0] for r in rows.fetchall() if r[0] is not None}
+
+    cols = {(t, c): values(t, c, p["family"]) for t, tp in tables.items() for c, p in tp["columns"].items()
+            if p["family"] in KEY_FAMILIES and p["role"] not in ("boolean", "date", "float")
+            and p["distinct"] >= cfg["overlap_min_distinct"]}
+    keys, out = sorted(cols), []
+    for i, a in enumerate(keys):       # ponytail: all pairs in memory, fine for ~1,000 columns; bucket by value if not
+        fam = tables[a[0]]["columns"][a[1]]["family"]
+        for b in keys[i + 1:]:
+            if a[0] == b[0] or tables[b[0]]["columns"][b[1]]["family"] != fam:
+                continue
+            shared = len(cols[a] & cols[b])
+            if shared >= cfg["overlap_min_shared"] \
+                    and shared >= cfg["overlap_min_share"] * min(len(cols[a]), len(cols[b])):
+                out.append({"a": list(a), "b": list(b), "a_distinct": len(cols[a]), "b_distinct": len(cols[b]),
+                            "shared": shared})
+    return out
+
+
 def profile_database(con, schema, tables, cfg=DEFAULTS, db_id=None, log=print):
     """Profiles every listed table of one DuckDB schema. `con` is any DuckDB connection."""
     start = time.time()
@@ -347,6 +384,7 @@ def main():
     ap.add_argument("--databases", nargs="*", help="only these db_ids")
     ap.add_argument("--seed", type=int, default=DEFAULTS["seed"])
     ap.add_argument("--force", action="store_true", help="re-profile databases that already have a file")
+    ap.add_argument("--overlaps", action="store_true", help="write out/overlaps from the existing profiles and stop")
     args = ap.parse_args()
 
     cfg = {**DEFAULTS, "seed": args.seed}
@@ -358,6 +396,14 @@ def main():
         if args.databases and db["db_id"] not in args.databases:
             continue
         path = out_dir / f"{db['db_id']}.json"
+        if args.overlaps:
+            pairs = partial_overlaps(open_db(db["duckdb_file"]), db["duckdb_schema"],
+                                     json.loads(path.read_text())["tables"], cfg)
+            target = ROOT / "out" / "overlaps" / args.dataset / f"{db['db_id']}.json"
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(json.dumps(pairs))
+            print(f"  overlaps {db['db_id']}: {len(pairs)} pairs")
+            continue
         if path.exists() and not args.force:
             print(f"  skip {db['db_id']} (exists, use --force)")
             continue

@@ -1,0 +1,58 @@
+{
+ "db_id": "GreaterManchesterCrime",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 0,
+ "tables": {
+  "GreaterManchesterCrime": {
+   "table": {
+    "name": "GreaterManchesterCrime",
+    "purpose": "Records of individual crimes reported in Greater Manchester during August 2018, with location, crime category and investigation outcome (UK police street-level crime data, as published via data.police.uk)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "crime_id",
+     "description": "Unique identifier for each recorded crime. Values are 12-hex-digit strings formatted like MAC addresses (e.g. 00:08:EE:1A:EC:80); this is the standard anonymised ID format used in UK police street crime data. Primary key, one value per row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "month_or_reported_timestamp",
+     "description": "Timestamp of the crime record, ranging 2018-08-01 to 2018-08-30, so effectively the date the crime occurred or was recorded during August 2018. The exact semantics (occurrence vs. reporting time) cannot be distinguished from the data alone.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "location",
+     "description": "Approximate street-level location of the crime, phrased as 'On or near <street/landmark>' (e.g. 'On or near Parking Area', 'On or near Heron Drive'), as used in UK police street crime data to anonymise exact locations.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "lsoa_code_and_name",
+     "description": "Lower Layer Super Output Area (LSOA) of the crime, given as '<district> <code>' (e.g. 'Manchester 055B', 'Bolton 035C'). These are ONS census geography codes for Greater Manchester districts.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "crime_type",
+     "description": "Crime category, one of 13 UK police crime classifications (e.g. 'Violence and sexual offences', 'Public order', 'Burglary').",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "outcome_status",
+     "description": "Investigation outcome for the crime, one of the standard UK police outcome descriptions (e.g. 'Investigation complete; no suspect identified', 'Under investigation', 'Offender given a caution').",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}
