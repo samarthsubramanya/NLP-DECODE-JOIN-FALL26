@@ -23,7 +23,9 @@ from duckdb_driver import open_db               # noqa: E402
 from grade_beaver import ddl_labels, prf        # noqa: E402
 from grade_fiben import sql_fks                 # noqa: E402
 
-HARNESS = ROOT.parent / "decode-join/artifacts/graphs"
+HARNESS = ROOT / "artifacts/graphs"
+if not HARNESS.exists():      # graphs built in the older sibling checkout
+    HARNESS = ROOT.parent / "decode-join/artifacts/graphs"
 
 
 def graph_fks(base):
@@ -40,16 +42,13 @@ def graph_fks(base):
     return out
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--dataset", required=True)
-    ap.add_argument("--run", required=True, help="out/descriptions/<dataset>/<run>")
-    args = ap.parse_args()
-    base = labels.documented(args.dataset)
+def load_gold(dataset):
+    """({db: documented schema}, name mapping or None, gold(db) -> {frozenset pair})."""
+    base = labels.documented(dataset)
     dbs = json.loads((ROOT / f"out/filtered/{base}/databases.json").read_text())
     schemas = {d["db_id"]: d["duckdb_schema"] for d in dbs}
     con = open_db(dbs[0]["duckdb_file"])
-    mapping = labels.position_mapping(con, schemas) if args.dataset.endswith("_obfuscated") else None
+    mapping = labels.position_mapping(con, schemas) if dataset.endswith("_obfuscated") else None
     from_graph = graph_fks(base) if base in ("beaver", "kaggledbqa") else {}
 
     def gold(db):
@@ -61,6 +60,16 @@ def main():
             return ddl_labels(con, db)[1]
         return from_graph.get(db.lower(), set())
 
+    return schemas, mapping, gold
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--dataset", required=True)
+    ap.add_argument("--run", required=True, help="out/descriptions/<dataset>/<run>")
+    args = ap.parse_args()
+    base = labels.documented(args.dataset)
+    schemas, mapping, gold = load_gold(args.dataset)
     total = {g: Counter() for g in ("stats", "llm")}
     per_db, band, declared = {}, Counter(), Counter()
     for db in schemas:

@@ -70,7 +70,7 @@ Merged beats dense alone everywhere it can, and cuts losses from 149 to 16 quest
 
 ## Does the repair generalize? Truncation test
 
-`evals/truncate_tables.py` cuts every table independently to a share of its rows, recreating BEAVER's condition on BIRD and Spider. The repair's settings were not changed. Both arms use Stage 3 joins with no descriptions (`joins_only` export), one run per cell. Results are in `out/eval/truncation/`.
+`evals/truncate_tables.py` cuts every table independently to a share of its rows, recreating BEAVER's condition on BIRD and Spider; `evals/run_truncation.sh` runs the whole test. The repair's settings were not changed. Both arms use Stage 3 joins with no descriptions (`joins_only` export), one run per cell. Results are in `out/eval/truncation/`.
 
 Join F1 and walk PR@15, without → with the repair:
 

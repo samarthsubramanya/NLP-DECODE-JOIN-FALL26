@@ -24,7 +24,7 @@ Written 2026-11-06. Nothing here has been run or built yet, apart from the read-
 
 ## 2. Baseline numbers from the existing `ddb` runs
 
-Scripts: `/private/tmp/claude-501/-Users-samarthms-NLP/2f10857a-a2f9-4566-bf12-38c3dc574873/scratchpad/rq3/analyze.py` and `ceil.py`. "False" means not in gold. BEAVER dw gold is JoinGR's own edges, not declared FKs, so its false joins may be real joins.
+Script: `evals/join_attribution.py` (the fix ceilings came from a one-off analysis). "False" means not in gold. BEAVER dw gold is JoinGR's own edges, not declared FKs, so its false joins may be real joins.
 
 **Why gold FKs are missed (named runs):**
 
@@ -64,13 +64,12 @@ Obfuscated name figures were discarded: `col_NNN` names match each other by cons
 ## 3. Plan
 
 ### Step 1: abstention and attribution report (no LLM, about an hour)
-- Move the gold loading in `evals/grade_joins_all.py` into a `load_gold(dataset)` function. Behaviour unchanged; re-check that it still reproduces .892 / .813 / .633.
-- Add `evals/join_attribution.py` from the two scratch scripts. It prints the section 2 tables per dataset.
+- `evals/join_attribution.py` prints the section 2 tables per dataset.
 - This already answers the "does abstaining stop false joins" half on clean data.
 - Check how many gold SQL questions touch an empty table. If almost none, the empty-table joins matter for join F1 but not for retrieval, which sets the priority of Fix D.
 
 ### Step 2: sparsity sweep harness (no LLM)
-`evals/sparsity_sweep.py`. Follow the scratch-copy approach of `perturb_values.py` and `hide_tables.py`: nothing lands in `out/`.
+`evals/sparsity_sweep.py`, extending `evals/run_truncation.sh` (the `row_sample` mode already exists there). Follow the scratch-copy approach of `perturb_values.py` and `hide_tables.py`: nothing lands in `out/`.
 
 For each point: copy the schema into a temp DuckDB, apply the change, then call `profile_database` (takes any connection), `primary_keys.score_database`, and `foreign_keys.score_database`. Grade `graphs.direct` and `graphs.stats`. Append one line to `out/eval/sparsity/sweep.jsonl`.
 

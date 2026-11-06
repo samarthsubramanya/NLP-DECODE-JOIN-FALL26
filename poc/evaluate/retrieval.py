@@ -12,7 +12,7 @@ from baselines import index as bl_index, run as bl_run
 from baselines.joingr import RESULTS, load_graph, save_graph
 
 
-def to_scoring_space(g, baseline, names):
+def to_scoring_space(g, baseline, names, queries=None):
     by_name = {n["node_name"].lower(): nid for nid, n in baseline["nodes"].items()}
     base_table = baseline["table_node_map"]["by_node"]
 
@@ -43,7 +43,8 @@ def to_scoring_space(g, baseline, names):
             "key_nodes": [new_id[x] for x in entry["key_nodes"]], "all_nodes": [new_id[x] for x in entry["all_nodes"]],
         }
     out = {"nodes": nodes, "edges": edges, "edge_to_nodes": edge_to_nodes, "node_to_edges": node_to_edges,
-           "table_node_map": {"by_table": by_table, "by_node": by_node}, "queries": baseline["queries"]}
+           "table_node_map": {"by_table": by_table, "by_node": by_node},
+           "queries": baseline["queries"] if queries is None else queries}
     return out, unmatched
 
 

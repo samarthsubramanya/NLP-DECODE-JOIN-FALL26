@@ -42,23 +42,39 @@ Early check: if the documented vs undocumented gap is tiny on Spider, we spend t
 
 ## Running it
 
-**Layout.** Scoring expects these folders side by side: `quartile/` (this code), `decode-join/` (JoinGR harness), `JoinGR-E656/` (JoinGR, unchanged) and `data/decode-join-duckdb/` (benchmarks).
+Run everything from this folder. Stages 1–2b need no LLM and no GPU.
 
-**Dependencies.** Python 3.11 or later:
+### 1. Setup
+
+Expected layout, with this repository as `quartile/`:
+
+```text
+code/
+  quartile/                  this repository
+  data/decode-join-duckdb/   benchmark DuckDB files
+  JoinGR-E656/               JoinGR, unchanged (retrieval only)
+  datasets/                  raw KaggleDBQA and FIBEN (retrieval only)
+```
+
+Python 3.11 or later:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-**Data.** Download the DuckDB benchmark files (about 20 GB). `src/duckdb_driver.py` reads this folder first, or `$DECODE_JOIN_DUCKDB_DIR`, and otherwise downloads from Hugging Face.
+Download the benchmark files (about 20 GB). `src/duckdb_driver.py` reads this folder, or `$DECODE_JOIN_DUCKDB_DIR`, and otherwise downloads each file from Hugging Face when first used.
 
 ```bash
 hf download SuhxsReddy/decode-join-duckdb --repo-type dataset --local-dir ../data/decode-join-duckdb
 ```
 
-**LLM.** Stages 3 and 4 use `glm-5-3` on ASU's Voyager gateway. Put `VOYAGER_API_KEY=...` in `.env`. Replies are cached in `out/llm_cache/`. Stages 1–2b need no LLM.
+For Stages 3 and 4, put `VOYAGER_API_KEY=...` in `.env`. They use `glm-5-3` on ASU's Voyager gateway. Replies are cached in `out/llm_cache/`, so reruns are free.
 
-**Run one dataset.** Use `spider`, `bird`, `beaver`, `kaggledbqa` or `fiben`, with `_stripped` or `_obfuscated` for the other settings. Add `--no-names` to Stage 2a for obfuscated datasets.
+The work lists in `out/filtered/` are committed, so no filtering step is needed. **Don't re-run the filter for KaggleDBQA:** 4 of its 8 databases were added by hand so the retrieval pool matches JoinGR's, and the filter removes them.
+
+### 2. Run the pipeline
+
+Datasets are `bird`, `spider`, `beaver`, `kaggledbqa` and `fiben`, each also with `_stripped` or `_obfuscated`. For obfuscated datasets, add `--no-names` to Stage 2a.
 
 ```bash
 python src/profile_columns.py --dataset bird --force
@@ -68,28 +84,62 @@ python src/describe_columns.py --dataset bird --joins-run ddb --run ddb_low --re
 python src/export_joingr.py --dataset bird --stage3-run ddb_low --run ddb_full --reasoning-effort low --workers 8
 ```
 
-**Repair for truncated data (optional).** Tables left with no join get candidates from shared values:
+Add `--databases <id> ...` to any stage to run only some databases, and `--no-describe` to Stage 3 when only joins matter.
+
+**Optional repair for truncated data.** Tables left with no join get candidates from shared values. It's off unless you pass the flag. Run the first command once, then use the second in place of the normal Stage 2b:
 
 ```bash
 python src/profile_columns.py --dataset beaver --overlaps
 python src/foreign_keys.py --dataset beaver --keys-run ddb --run repair2 --repair-isolated 2
 ```
 
-**Evaluate.**
+### 3. Grade joins
 
 ```bash
 python evals/grade_joins_all.py --dataset bird --run ddb_low
+python evals/join_attribution.py --dataset bird --run ddb_low
 ```
+
+Grading `beaver` and `kaggledbqa` needs the graphs from the next step.
+
+### 4. Score retrieval
+
+One-time setup per benchmark, shown for `kaggledbqa`. JoinGR ships graphs for `bird`, `spider` and `beaver`, so run `build_graph` only for `kaggledbqa` and `fiben`. The first `index` run downloads the encoders.
 
 ```bash
-cd ../decode-join && python ../quartile/evals/score_joingr.py pipeline bird ddb_full
+python -m baselines.build_graph --dataset kaggledbqa
+python -m baselines.settings --dataset kaggledbqa --setting documented stripped
+python -m baselines.index --dataset kaggledbqa --setting documented
+python -m baselines.index --dataset kaggledbqa --setting stripped
 ```
 
-**Tests.**
+Then score JoinGR alone and the pipeline's graph. This reports dense (`vanilla`), walk (`heuristic`) and `merged`, and saves per-question rankings in `results/`.
+
+```bash
+python evals/score_joingr.py alone kaggledbqa stripped
+python evals/score_joingr.py pipeline kaggledbqa_stripped ddb_full
+python evals/rescued_lost.py kaggledbqa stripped ddb_full
+```
+
+### 5. Other experiments
+
+Truncation test (needs the LLM and the retrieval setup):
+
+```bash
+evals/run_truncation.sh /tmp/trunc 0.5 0 bird bird_obfuscated
+```
+
+Batching (`--batch-columns`, `--batch-candidates`) is off by default. We don't recommend it; see `docs/stage3_summary.md`.
+
+### 6. Tests
 
 ```bash
 python -m pytest tests -q
 ```
+
+### Results
+
+Saved scores are in `out/eval/`, and the write-ups are in `docs/`: `ddb_eval_2026-11-05.md` (all benchmarks), `beaver_repair_2026-11-06.md` (repair, merged ranking, truncation test), `rq3_plan.md` (sparsity plan).
 
 ## Where things are
 

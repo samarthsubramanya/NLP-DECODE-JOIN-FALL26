@@ -9,5 +9,12 @@ out/llm_cache/
 docs/ush/
 
 # Generated artifacts and evaluation outputs
-/out/
+/out/*
 /results/
+# kept: the work lists every stage reads, and the small result files the docs and report cite
+!/out/eval/
+!/out/filtered/
+/out/filtered/*/*
+!/out/filtered/*/databases.json
+!/out/filtered/*/summary.json
+!/out/filtered/fiben/questions.jsonl

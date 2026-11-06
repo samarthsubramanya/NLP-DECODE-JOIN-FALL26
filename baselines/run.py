@@ -8,6 +8,7 @@ which stay the same in every setting, obfuscated included.
 vanilla    dense retrieval: tables ranked by their best-matching column
 heuristic  JoinGR's untrained walk with the repo's default settings
 trained    JoinGR's learned scorer, frozen; optional (see rank_trained)
+merged     heuristic, keeping 2 of the top 15 for the best dense tables it missed
 """
 
 import argparse
@@ -49,7 +50,15 @@ def rank_trained(question, model, ctx):
     raise NotImplementedError
 
 
-METHODS = {"vanilla": rank_vanilla, "heuristic": rank_heuristic, "trained": rank_trained}
+def rank_merged(question, model, ctx, budget=15, dense_slots=2):
+    """The walk's top tables, with the last dense_slots of the budget going to the best dense tables it missed."""
+    walk, dense = rank_heuristic(question, model, ctx), rank_vanilla(question, model, ctx)
+    head = walk[:budget - dense_slots]
+    extra = [t for t in dense if t not in head][:dense_slots]
+    return head + extra + [t for t in walk + dense if t not in head and t not in extra]
+
+
+METHODS = {"vanilla": rank_vanilla, "heuristic": rank_heuristic, "trained": rank_trained, "merged": rank_merged}
 
 
 def rank_columns(query_vec, tables, ctx, table_budget=15):
@@ -113,9 +122,11 @@ def evaluate(dataset, setting, encoder, method):
         row = {"i": i, "gold": sorted(gold_fixed), "ranked": ranked[:max(KS)], "n_ranked": len(ranked)}
 
         # Questions with no gold columns (SELECT count(*), unparsable SQL) are left out of column metrics.
-        if gold_columns and gold_columns.get(i):
+        # A query subset (e.g. the PoC's filtered questions) carries its index in the full gold file.
+        gi = q.get("gold_index", i)
+        if gold_columns and gold_columns.get(gi):
             cols = rank_columns(embed_query(q["question"], model), ranked, ctx)
-            score(cols, gold_columns[i], scores_cols)
+            score(cols, gold_columns[gi], scores_cols)
             row["ranked_columns"] = cols[:max(KS)]
         per_query.append(row)
 

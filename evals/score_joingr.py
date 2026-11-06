@@ -1,8 +1,8 @@
 """Retrieval scores through the JoinGR harness, same questions and metrics for every row.
 
-Run from code/decode-join (the harness's home) with its venv:
-    python ../quartile/evals/score_joingr.py alone <benchmark> <documented|stripped|obfuscated>
-    python ../quartile/evals/score_joingr.py pipeline <dataset variant> <run under out/joingr/<dataset>/>
+Run from quartile/, after the README's retrieval setup:
+    python evals/score_joingr.py alone <benchmark> <documented|stripped|obfuscated>
+    python evals/score_joingr.py pipeline <dataset variant> <run under out/joingr/<dataset>/>
 
 Questions: the harness's list for the benchmark, keeping those with 2+ gold tables; each keeps its index
 in the full list so gold columns line up. BEAVER is dw only: it is the only BEAVER database JoinGR has a
@@ -27,7 +27,7 @@ sys.path[len(sys.path):] = [str(Q / "src"), str(Q / "evals")]
 import labels                                                           # noqa: E402
 from duckdb_driver import open_db                                       # noqa: E402
 
-ENCODERS, METHODS = ("minilm", "bge"), ("vanilla", "heuristic")
+ENCODERS, METHODS = ("minilm", "bge"), ("vanilla", "heuristic", "merged")
 
 
 def real_names(dataset):
