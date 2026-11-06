@@ -106,6 +106,19 @@ PRESETS = {
     ),
 }
 
+# stripped and obfuscated variants: same questions, other DuckDB file. Stripped drops declared keys;
+# obfuscated also renames columns col_NNN by position (table names kept, so the SQL still resolves).
+# Spider and BEAVER share one file per variant; questions stay in the documented file's *_metadata.
+for name, stripped, obfuscated in (
+    ("spider", "decode_join_stripped.duckdb", "decode_join_obfuscated.duckdb"),
+    ("beaver", "decode_join_stripped.duckdb", "decode_join_obfuscated.duckdb"),
+    ("kaggledbqa", "decode_join_kaggledbqa_stripped.duckdb",
+     "kaggledbqa/obfuscated/decode_join_kaggledbqa_obfuscated.duckdb"),
+    ("fiben", "decode_join_fiben_stripped.duckdb", "fiben/obfuscated/decode_join_fiben_obfuscated.duckdb"),
+):
+    for setting, file in (("stripped", stripped), ("obfuscated", obfuscated)):
+        PRESETS[f"{name}_{setting}"] = dict(PRESETS[name], db_file=file, questions_db_file=PRESETS[name]["db_file"])
+
 DEFAULTS = dict(
     db_file=None, questions_db_file=None, mapping=None, questions=None, sql_field="sql", db_field=None,
     question_field="question", id_field=None, gold_tables_field=None, dialect="",
