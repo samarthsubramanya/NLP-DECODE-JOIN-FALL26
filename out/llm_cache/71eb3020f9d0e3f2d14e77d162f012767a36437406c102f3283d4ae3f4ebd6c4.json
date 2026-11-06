@@ -1,1 +1,0 @@
-{"model": "glm-5-3", "text": "{\"decision\": \"reject\", \"reason\": \"users.DownVotes is a per-user count of downvotes (98% zeros, small integers 0\u20131920) whose values only overlap posts.Id by chance because the dense integer primary key spans 1\u2013115378, with near-zero coverage (0.001) and no semantic connection between a vote tally and a post identifier.\"}"}

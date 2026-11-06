@@ -1,1 +1,0 @@
-{"model": "glm-5-3", "text": "{\"decision\": \"reject\", \"reason\": \"users.DownVotes is a per-user aggregate count (98% zeros, small integers up to 1920) whose values overlap the dense surrogate key votes.Id (1\u201343538) purely by chance, so joining a vote count to an individual vote's identifier is semantically meaningless.\"}"}
