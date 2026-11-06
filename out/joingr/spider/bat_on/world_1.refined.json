@@ -1,0 +1,190 @@
+{
+ "db_id": "world_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "city": {
+   "table": {
+    "name": "city",
+    "purpose": "World cities with their country, district and population (MySQL world sample database)."
+   },
+   "columns": {
+    "CountryCode": {
+     "role": "foreign_key",
+     "name": "Country code",
+     "description": "ISO 3-letter country code identifying the country the city belongs to; references country.Code.",
+     "status": "resolved"
+    },
+    "District": {
+     "role": "category",
+     "name": "District",
+     "description": "State, province or region within the country that the city is located in (e.g. California, Punjab, Nagano).",
+     "status": "resolved"
+    },
+    "ID": {
+     "role": "identifier",
+     "name": "City ID",
+     "description": "Primary key; unique numeric identifier of the city. Referenced by country.Capital to point at a country's capital city.",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "City name",
+     "description": "Name of the city (e.g. Matsumoto, Lubao).",
+     "status": "resolved"
+    },
+    "Population": {
+     "role": "numeric",
+     "name": "City population",
+     "description": "Number of inhabitants of the city; ranges from 42 to 10,500,000.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "country": {
+   "table": {
+    "name": "country",
+    "purpose": "Reference table of world countries with demographic, geographic and political attributes."
+   },
+   "columns": {
+    "Capital": {
+     "role": "foreign_key",
+     "name": "Capital city ID",
+     "description": "ID of the country's capital city; references city.ID. Null for territories without a capital.",
+     "status": "resolved"
+    },
+    "Code": {
+     "role": "identifier",
+     "name": "Country code (ISO 3-letter)",
+     "description": "Primary key; ISO 3166-1 alpha-3 country code (e.g. ABW, USA).",
+     "status": "resolved"
+    },
+    "Code2": {
+     "role": "code",
+     "name": "Country code (ISO 2-letter)",
+     "description": "ISO 3166-1 alpha-2 country code (e.g. AD, US).",
+     "status": "resolved"
+    },
+    "Continent": {
+     "role": "category",
+     "name": "Continent",
+     "description": "Continent the country lies in: Africa, Asia, Europe, North America, South America, Oceania, (Antarctica).",
+     "status": "resolved"
+    },
+    "GNP": {
+     "role": "numeric",
+     "name": "Gross National Product",
+     "description": "Country's GNP, presumably in millions of US dollars (values like 82710 for large economies, 0 for tiny territories); alternatively it could be in plain US dollars, but the magnitudes favour millions.",
+     "status": "tentative"
+    },
+    "GNPOld": {
+     "role": "numeric",
+     "name": "Old GNP",
+     "description": "Gross National Product from an earlier reference year, same unit as GNP; null for ~25% of countries. Alternative reading: GNP before some event or in local currency, but the same-unit earlier-year interpretation fits best.",
+     "status": "tentative"
+    },
+    "GovernmentForm": {
+     "role": "category",
+     "name": "Government form",
+     "description": "Type of government, e.g. Republic, Constitutional Monarchy, Dependent Territory of the UK.",
+     "status": "resolved"
+    },
+    "HeadOfState": {
+     "role": "category",
+     "name": "Head of state",
+     "description": "Name of the country's head of state (data circa 2000s: George W. Bush, Jacques Chirac, Elisabeth II).",
+     "status": "resolved"
+    },
+    "IndepYear": {
+     "role": "numeric",
+     "name": "Independence year",
+     "description": "Year the country became independent; negative values for BCE dates (e.g. -1523). Null for dependent territories.",
+     "status": "resolved"
+    },
+    "LifeExpectancy": {
+     "role": "numeric",
+     "name": "Life expectancy",
+     "description": "Average life expectancy at birth in years (37.2–83.5).",
+     "status": "resolved"
+    },
+    "LocalName": {
+     "role": "category",
+     "name": "Local name",
+     "description": "Country's name in its local language(s) (e.g. 'Lao', 'Al-Jaza’ir/Algérie').",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Country name",
+     "description": "English name of the country.",
+     "status": "resolved"
+    },
+    "Population": {
+     "role": "numeric",
+     "name": "Country population",
+     "description": "Number of inhabitants of the country; 0 for uninhabited territories, up to ~1.28 billion.",
+     "status": "resolved"
+    },
+    "Region": {
+     "role": "category",
+     "name": "Region",
+     "description": "Geographic sub-region within the continent (e.g. Caribbean, Western Africa, Southeast Asia).",
+     "status": "resolved"
+    },
+    "SurfaceArea": {
+     "role": "numeric",
+     "name": "Surface area",
+     "description": "Country's area in square kilometers (0.4 to 17,075,400).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "countrylanguage": {
+   "table": {
+    "name": "countrylanguage",
+    "purpose": "Languages spoken in each country, with share of population and official status."
+   },
+   "columns": {
+    "CountryCode": {
+     "role": "foreign_key",
+     "name": "Country code",
+     "description": "ISO 3-letter country code; references country.Code. Together with Language forms the row identity.",
+     "status": "resolved"
+    },
+    "IsOfficial": {
+     "role": "boolean",
+     "name": "Is official language",
+     "description": "Whether the language is an official language of the country ('T' = true, 'F' = false).",
+     "status": "resolved"
+    },
+    "Language": {
+     "role": "category",
+     "name": "Language",
+     "description": "Name of a language spoken in the country (e.g. English, Urdu, Oromo).",
+     "status": "resolved"
+    },
+    "Percentage": {
+     "role": "numeric",
+     "name": "Percentage of speakers",
+     "description": "Share of the country's population speaking the language, in percent (0–100).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 1,
+  "columns_changed": 2
+ }
+}

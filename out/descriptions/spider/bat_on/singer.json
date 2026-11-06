@@ -1,0 +1,92 @@
+{
+ "db_id": "singer",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 1,
+ "tables": {
+  "singer": {
+   "table": {
+    "name": "singer",
+    "purpose": "One row per singer/artist, with personal and financial attributes; referenced by the song table via Singer_ID. Note: the 'Name' values (Christy Walton, Alice Walton, Iris Fontbona, Gina Rinehart, etc.) are actually names of wealthy businesspeople/billionaires, not singers, so the data appears synthetic or mislabeled despite the table name and join structure suggesting singers."
+   },
+   "columns": {
+    "Birth_Year": {
+     "role": "category",
+     "name": "Birth_Year",
+     "description": "Year of birth of the person (1940-1962).",
+     "status": "resolved"
+    },
+    "Citizenship": {
+     "role": "category",
+     "name": "Citizenship",
+     "description": "Country of citizenship (e.g. United States, Australia, Chile, France, Germany).",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Name",
+     "description": "Full name of the person. Values are names of well-known billionaires (Waltons, Gina Rinehart, etc.), inconsistent with a table of singers; likely synthetic sample data.",
+     "status": "tentative"
+    },
+    "Net_Worth_Millions": {
+     "role": "numeric",
+     "name": "Net_Worth_Millions",
+     "description": "Net worth in millions of (presumably US) dollars, ranging 12.7 to 30.0.",
+     "status": "resolved"
+    },
+    "Singer_ID": {
+     "role": "identifier",
+     "name": "Singer_ID",
+     "description": "Primary key identifying each singer; referenced by song.Singer_ID.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "song": {
+   "table": {
+    "name": "song",
+    "purpose": "One row per song, with its title, sales, chart performance, and the singer who performed it (foreign key to singer)."
+   },
+   "columns": {
+    "Highest_Position": {
+     "role": "numeric",
+     "name": "Highest_Position",
+     "description": "Highest chart position reached by the song (1 = number one; values 1 and 3).",
+     "status": "resolved"
+    },
+    "Sales": {
+     "role": "numeric",
+     "name": "Sales",
+     "description": "Sales figure for the song, in units/copies (261,000 to 1,094,000).",
+     "status": "resolved"
+    },
+    "Singer_ID": {
+     "role": "identifier",
+     "name": "Singer_ID",
+     "description": "Foreign key to singer.Singer_ID identifying the performing singer; some singers have multiple songs.",
+     "status": "resolved"
+    },
+    "Song_ID": {
+     "role": "identifier",
+     "name": "Song_ID",
+     "description": "Primary key identifying each song.",
+     "status": "resolved"
+    },
+    "Title": {
+     "role": "category",
+     "name": "Title",
+     "description": "Title of the song (e.g. 'Cha Cha Slide', 'Do They Know It's Christmas').",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

@@ -1,0 +1,98 @@
+{
+ "db_id": "poker_player",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 2,
+ "tables": {
+  "people": {
+   "table": {
+    "name": "people",
+    "purpose": "Registry of individuals (volleyball players, judging by names/heights) with personal attributes; each row is one person, referenced by the poker_player table."
+   },
+   "columns": {
+    "Birth_Date": {
+     "role": "date",
+     "name": "Birth_Date",
+     "description": "Date of birth of the person, stored as text in the format 'Month Day, Year' (e.g. 'May 26, 1986').",
+     "status": "resolved"
+    },
+    "Height": {
+     "role": "numeric",
+     "name": "Height",
+     "description": "Height of the person in centimeters (values 182-207, consistent with tall athletes).",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Name",
+     "description": "Full name of the person (first and last name, e.g. 'Aleksey Ostapenko').",
+     "status": "resolved"
+    },
+    "Nationality": {
+     "role": "category",
+     "name": "Nationality",
+     "description": "Country of nationality of the person; observed values 'Russia' (6) and 'Bulgaria' (1).",
+     "status": "resolved"
+    },
+    "People_ID": {
+     "role": "identifier",
+     "name": "People_ID",
+     "description": "Primary key of the people table; unique identifier for each person. Referenced one-to-one by poker_player.People_ID.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "poker_player": {
+   "table": {
+    "name": "poker_player",
+    "purpose": "Poker career statistics for a subset of people from the people table; each row is one poker player."
+   },
+   "columns": {
+    "Best_Finish": {
+     "role": "numeric",
+     "name": "Best_Finish",
+     "description": "Best finishing position in a tournament (1 = first place, values 1-3). The statistical join to people.People_ID is spurious (a finish position coincidentally matching IDs); it is not a real reference.",
+     "status": "resolved"
+    },
+    "Earnings": {
+     "role": "numeric",
+     "name": "Earnings",
+     "description": "Total tournament prize money earned, in dollars (values ~104,871 to ~596,462).",
+     "status": "resolved"
+    },
+    "Final_Table_Made": {
+     "role": "numeric",
+     "name": "Final_Table_Made",
+     "description": "Number of final tables the player has reached (values 10-42).",
+     "status": "resolved"
+    },
+    "Money_Rank": {
+     "role": "numeric",
+     "name": "Money_Rank",
+     "description": "Player's ranking by career earnings (all-time money list rank; values 58-166, lower is better).",
+     "status": "resolved"
+    },
+    "People_ID": {
+     "role": "identifier",
+     "name": "People_ID",
+     "description": "Foreign key to people.People_ID identifying the person who is this poker player; one-to-one with the people table.",
+     "status": "resolved"
+    },
+    "Poker_Player_ID": {
+     "role": "identifier",
+     "name": "Poker_Player_ID",
+     "description": "Primary key of the poker_player table; unique identifier for each poker player.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

@@ -1,0 +1,390 @@
+{
+ "db_id": "dog_kennels",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 6,
+ "tables": {
+  "Breeds": {
+   "table": {
+    "name": "Breeds",
+    "purpose": "Lookup table of dog breeds, referenced by the Dogs table. Each row is one breed with a short code and its full name."
+   },
+   "columns": {
+    "breed_code": {
+     "role": "code",
+     "name": "breed_code",
+     "description": "Primary key. Short three-letter code identifying a dog breed (e.g. ESK = Eskimo, HUS = Husky, BUL = Bulldog). Referenced by Dogs.breed_code.",
+     "status": "resolved"
+    },
+    "breed_name": {
+     "role": "category",
+     "name": "breed_name",
+     "description": "Full display name of the breed corresponding to the breed code.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Charges": {
+   "table": {
+    "name": "Charges",
+    "purpose": "Lookup/price list of veterinary charges: each row is a billable charge type with a fixed amount (likely in whole currency units, e.g. cents or dollars). Used to price treatments for dogs in a veterinary clinic database (related tables: Dogs, Owners, Treatments, Treatment_Types, Professionals)."
+   },
+   "columns": {
+    "charge_amount": {
+     "role": "numeric",
+     "name": "charge_amount",
+     "description": "Price of the charge in whole currency units (e.g. dollars or cents; unit not determinable from data). Values: 98, 322, 640.",
+     "status": "tentative"
+    },
+    "charge_id": {
+     "role": "identifier",
+     "name": "charge_id",
+     "description": "Primary key of the charge; surrogate integer identifier.",
+     "status": "resolved"
+    },
+    "charge_type": {
+     "role": "category",
+     "name": "charge_type",
+     "description": "Name of the charge category, e.g. 'Daily Accommodation', 'Drugs', 'Health Check'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Dogs": {
+   "table": {
+    "name": "Dogs",
+    "purpose": "Animal-shelter / kennel register: one row per dog, tracking its arrival at the facility, adoption by an owner, and departure, with breed, size, and physical attributes. Referenced by Treatments for medical care records."
+   },
+   "columns": {
+    "abandoned_yn": {
+     "role": "boolean",
+     "name": "abandoned_flag",
+     "description": "Flag indicating whether the dog was abandoned (1) or not (0); 3 of 15 dogs are flagged as abandoned.",
+     "status": "resolved"
+    },
+    "age": {
+     "role": "numeric",
+     "name": "age_years",
+     "description": "Age of the dog in whole years (values 1-9).",
+     "status": "resolved"
+    },
+    "breed_code": {
+     "role": "code",
+     "name": "breed_code",
+     "description": "Foreign key to Breeds.breed_code; three-letter code for the dog's breed (ESK=Eskimo, HUS=Husky, BUL=Bulldog).",
+     "status": "resolved"
+    },
+    "date_adopted": {
+     "role": "date",
+     "name": "adoption_date",
+     "description": "Timestamp when the dog was adopted; all values fall in Feb-Mar 2018, after arrival and before/at departure.",
+     "status": "resolved"
+    },
+    "date_arrived": {
+     "role": "date",
+     "name": "arrival_date",
+     "description": "Timestamp when the dog arrived at the shelter/kennel (Apr 2017 - Jan 2018).",
+     "status": "resolved"
+    },
+    "date_departed": {
+     "role": "date",
+     "name": "departure_date",
+     "description": "Timestamp when the dog left the facility; all departures cluster on 2018-03-24/25, suggesting a batch export or closing event rather than individual departures. Alternative reading: ordinary individual departure dates that merely coincide in this small sample.",
+     "status": "tentative"
+    },
+    "date_of_birth": {
+     "role": "date",
+     "name": "date_of_birth",
+     "description": "Dog's date of birth (2008-2018).",
+     "status": "resolved"
+    },
+    "dog_id": {
+     "role": "identifier",
+     "name": "dog_id",
+     "description": "Primary key identifying each dog; referenced by Treatments.dog_id.",
+     "status": "resolved"
+    },
+    "gender": {
+     "role": "boolean",
+     "name": "gender",
+     "description": "Binary gender flag (0/1); which value maps to male vs female is not determinable from the data.",
+     "status": "tentative"
+    },
+    "name": {
+     "role": "free_text",
+     "name": "name",
+     "description": "Dog's given name; all unique in this sample.",
+     "status": "resolved"
+    },
+    "owner_id": {
+     "role": "identifier",
+     "name": "owner_id",
+     "description": "Foreign key to Owners.owner_id, the adopting owner; some owners have multiple dogs (e.g. owner 14 with 3).",
+     "status": "resolved"
+    },
+    "size_code": {
+     "role": "code",
+     "name": "size_code",
+     "description": "Foreign key to Sizes.size_code; dog's size category (SML=Small, MED=Medium, LGE=Large).",
+     "status": "resolved"
+    },
+    "weight": {
+     "role": "numeric",
+     "name": "weight",
+     "description": "Dog's weight, numeric 1.39-9.8; unit not stated (likely kg, though values are low for large dogs, so possibly a synthetic or scaled value).",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Owners": {
+   "table": {
+    "name": "Owners",
+    "purpose": "Pet owners registered at a veterinary clinic; each row is one dog owner with contact and address details, referenced by the Dogs table."
+   },
+   "columns": {
+    "cell_number": {
+     "role": "free_text",
+     "name": "cell_number",
+     "description": "Owner's mobile phone number, stored as text in varied formats (with extensions, country codes, punctuation).",
+     "status": "resolved"
+    },
+    "city": {
+     "role": "free_text",
+     "name": "city",
+     "description": "Owner's city of residence.",
+     "status": "resolved"
+    },
+    "email_address": {
+     "role": "free_text",
+     "name": "email_address",
+     "description": "Owner's email address.",
+     "status": "resolved"
+    },
+    "first_name": {
+     "role": "free_text",
+     "name": "first_name",
+     "description": "Owner's first (given) name.",
+     "status": "resolved"
+    },
+    "home_phone": {
+     "role": "free_text",
+     "name": "home_phone",
+     "description": "Owner's home/landline phone number, stored as text in varied formats.",
+     "status": "resolved"
+    },
+    "last_name": {
+     "role": "free_text",
+     "name": "last_name",
+     "description": "Owner's last (family) name.",
+     "status": "resolved"
+    },
+    "owner_id": {
+     "role": "identifier",
+     "name": "owner_id",
+     "description": "Primary key identifying the owner; referenced by Dogs.owner_id (one owner may have many dogs).",
+     "status": "resolved"
+    },
+    "state": {
+     "role": "free_text",
+     "name": "state",
+     "description": "Owner's U.S. state of residence (names written without spaces, e.g. 'NorthDakota', 'NewYork').",
+     "status": "resolved"
+    },
+    "street": {
+     "role": "free_text",
+     "name": "street",
+     "description": "Owner's street address including house number, street name, and unit/apartment/suite.",
+     "status": "resolved"
+    },
+    "zip_code": {
+     "role": "free_text",
+     "name": "zip_code",
+     "description": "Owner's U.S. ZIP code (5-digit, stored as text with leading zeros).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Professionals": {
+   "table": {
+    "name": "Professionals",
+    "purpose": "Staff members of a veterinary clinic (veterinarians and other employees) who perform treatments on dogs; each row is one professional, referenced by the Treatments table."
+   },
+   "columns": {
+    "cell_number": {
+     "role": "free_text",
+     "name": "cell_number",
+     "description": "Mobile phone number of the professional, stored as text in varied formats (with extensions, parentheses, dashes).",
+     "status": "resolved"
+    },
+    "city": {
+     "role": "free_text",
+     "name": "city",
+     "description": "City of the professional's address.",
+     "status": "resolved"
+    },
+    "email_address": {
+     "role": "free_text",
+     "name": "email_address",
+     "description": "Email address of the professional.",
+     "status": "resolved"
+    },
+    "first_name": {
+     "role": "free_text",
+     "name": "first_name",
+     "description": "Given name of the professional.",
+     "status": "resolved"
+    },
+    "home_phone": {
+     "role": "free_text",
+     "name": "home_phone",
+     "description": "Home/landline phone number of the professional, stored as text in varied formats.",
+     "status": "resolved"
+    },
+    "last_name": {
+     "role": "free_text",
+     "name": "last_name",
+     "description": "Family name of the professional.",
+     "status": "resolved"
+    },
+    "professional_id": {
+     "role": "identifier",
+     "name": "professional_id",
+     "description": "Primary key identifying the professional; referenced by Treatments.professional_id (the professional who performed each treatment).",
+     "status": "resolved"
+    },
+    "role_code": {
+     "role": "category",
+     "name": "role_code",
+     "description": "Job role of the professional: 'Veterenarian' (sic, misspelled Veterinarian) or 'Employee' (non-veterinarian staff).",
+     "status": "resolved"
+    },
+    "state": {
+     "role": "category",
+     "name": "state",
+     "description": "US state of the professional's address (full state names, sometimes without spaces, e.g. 'NorthCarolina').",
+     "status": "resolved"
+    },
+    "street": {
+     "role": "free_text",
+     "name": "street",
+     "description": "Street portion of the professional's mailing address; values often embed city/state/ZIP on following lines, so the column is not strictly street-only.",
+     "status": "resolved"
+    },
+    "zip_code": {
+     "role": "free_text",
+     "name": "zip_code",
+     "description": "US ZIP code of the professional's address (5-digit, stored as text with leading zeros).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Sizes": {
+   "table": {
+    "name": "Sizes",
+    "purpose": "Lookup table of dog size categories, referenced by Dogs.size_code. Each row is one size category with a code and its full description."
+   },
+   "columns": {
+    "size_code": {
+     "role": "code",
+     "name": "size_code",
+     "description": "Primary key. Abbreviated size category code: SML = Small, MED = Medium, LGE = Large. Referenced by Dogs.size_code.",
+     "status": "resolved"
+    },
+    "size_description": {
+     "role": "category",
+     "name": "size_description",
+     "description": "Full label of the size category corresponding to the code (Small, Medium, Large).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Treatment_Types": {
+   "table": {
+    "name": "Treatment_Types",
+    "purpose": "Lookup table of treatment/service types offered to dogs (e.g., exams, vaccinations, walks), referenced by the Treatments table in a veterinary/dog-care database."
+   },
+   "columns": {
+    "treatment_type_code": {
+     "role": "code",
+     "name": "treatment_type_code",
+     "description": "Short code identifying the treatment type (EXAM, VAC, WALK); primary key, referenced by Treatments.treatment_type_code.",
+     "status": "resolved"
+    },
+    "treatment_type_description": {
+     "role": "code",
+     "name": "treatment_type_description",
+     "description": "Human-readable description of the treatment type (e.g., 'Physical examination', 'Vaccination', 'Take for a Walk').",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Treatments": {
+   "table": {
+    "name": "Treatments",
+    "purpose": "Records individual treatment/medical service events performed on dogs by professionals, with the type of treatment, date, and cost. Each row is one treatment event for one dog by one professional."
+   },
+   "columns": {
+    "cost_of_treatment": {
+     "role": "numeric",
+     "name": "cost_of_treatment",
+     "description": "Cost charged for the treatment event, in whole currency units (e.g., dollars). Values range 139–945 with a median of 429; no decimals observed, so the exact currency is unknown.",
+     "status": "resolved"
+    },
+    "date_of_treatment": {
+     "role": "date",
+     "name": "date_of_treatment",
+     "description": "Timestamp (date and time) when the treatment was performed. Stored as VARCHAR but values are valid timestamps; range 2018-02-26 to 2018-03-24.",
+     "status": "resolved"
+    },
+    "dog_id": {
+     "role": "foreign_key",
+     "name": "dog_id",
+     "description": "Foreign key to Dogs.dog_id identifying the dog that received the treatment (many treatments per dog).",
+     "status": "resolved"
+    },
+    "professional_id": {
+     "role": "foreign_key",
+     "name": "professional_id",
+     "description": "Foreign key to Professionals.professional_id identifying the staff member who performed the treatment.",
+     "status": "resolved"
+    },
+    "treatment_id": {
+     "role": "identifier",
+     "name": "treatment_id",
+     "description": "Primary key; unique identifier for each treatment event (1–15).",
+     "status": "resolved"
+    },
+    "treatment_type_code": {
+     "role": "foreign_key",
+     "name": "treatment_type_code",
+     "description": "Foreign key to Treatment_Types.treatment_type_code. Codes: EXAM = Physical examination, VAC = Vaccination, WALK = Take for a Walk.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 1,
+  "columns_changed": 1
+ }
+}

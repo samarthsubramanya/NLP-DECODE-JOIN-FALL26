@@ -1,0 +1,196 @@
+{
+ "db_id": "tvshow",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 5,
+ "tables": {
+  "Cartoon": {
+   "table": {
+    "name": "Cartoon",
+    "purpose": "Episode list for an animated TV series (evidently 'Batman: The Brave and the Bold', given the episode titles, directors, and 2008–2009 air dates). Each row is one episode with its title, production code, credits, air date, and the channel it aired on."
+   },
+   "columns": {
+    "Channel": {
+     "role": "foreign_key",
+     "name": "channel_id",
+     "description": "Identifier of the TV channel the episode aired on; references TV_Channel.id (e.g. 701, 704, 707 are music-content channels). Stored as text but numeric in the 700s.",
+     "status": "resolved"
+    },
+    "Directed_by": {
+     "role": "category",
+     "name": "directed_by",
+     "description": "Name of the episode's director (Ben Jones, Brandon Vietti, or Michael Chang).",
+     "status": "resolved"
+    },
+    "Original_air_date": {
+     "role": "category",
+     "name": "original_air_date",
+     "description": "Date the episode first aired, e.g. 'December12,2008' (US format, month name + day + year, stored as text without spaces).",
+     "status": "resolved"
+    },
+    "Production_code": {
+     "role": "category",
+     "name": "production_code",
+     "description": "Episode production code, sequential integers 101–112 (season 1, episodes 1–12).",
+     "status": "resolved"
+    },
+    "Title": {
+     "role": "category",
+     "name": "title",
+     "description": "Title of the episode, e.g. 'Day of the Dark Knight!', 'Fall of the Blue Beetle!'.",
+     "status": "resolved"
+    },
+    "Written_by": {
+     "role": "category",
+     "name": "written_by",
+     "description": "Name of the episode's writer(s), e.g. 'J. M. DeMatteis', 'Steven Melching'.",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "foreign_key",
+     "name": "episode_id",
+     "description": "Primary key; sequential episode identifier 1–12. The TV_series table's Share, Rating, and Viewers_m columns appear to reference it (likely per-episode ratings/viewership data), though the exact semantics of that link are not fully evidenced.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "TV_Channel": {
+   "table": {
+    "name": "TV_Channel",
+    "purpose": "A catalog of music TV channels (mostly Italian Sky/MTV music channels), each row describing one channel: its name, country, language, content genre, broadcast technical parameters, and subscription package. Referenced by TV_series and Cartoon via Channel id, so it serves as the channel dimension for TV series and cartoons broadcast on these channels."
+   },
+   "columns": {
+    "Content": {
+     "role": "category",
+     "name": "Content",
+     "description": "Genre of the channel's content. All rows are 'music', so this catalog holds only music channels.",
+     "status": "resolved"
+    },
+    "Country": {
+     "role": "category",
+     "name": "Country",
+     "description": "Country of origin/broadcast of the channel (Italy, United Kingdom, Poland).",
+     "status": "resolved"
+    },
+    "Hight_definition_TV": {
+     "role": "boolean",
+     "name": "High_definition_TV",
+     "description": "Whether the channel broadcasts in high definition ('yes'/'no'). Column name is misspelled ('Hight').",
+     "status": "resolved"
+    },
+    "Language": {
+     "role": "category",
+     "name": "Language",
+     "description": "Primary broadcast language of the channel (Italian or English).",
+     "status": "resolved"
+    },
+    "Package_Option": {
+     "role": "category",
+     "name": "Package_Option",
+     "description": "Subscription package the channel belongs to (e.g. 'Sky Famiglia', 'Sky Famiglia + Sky HD') or 'no ( FTV )' meaning free-to-view, i.e. not part of a pay package.",
+     "status": "resolved"
+    },
+    "Pay_per_view_PPV": {
+     "role": "boolean",
+     "name": "Pay_per_view_PPV",
+     "description": "Whether the channel is pay-per-view ('yes'/'no'). All rows are 'no'.",
+     "status": "resolved"
+    },
+    "Pixel_aspect_ratio_PAR": {
+     "role": "category",
+     "name": "Pixel_aspect_ratio_PAR",
+     "description": "Pixel aspect ratio of the broadcast video signal: 4:3, 16:9, or both ('4:3 / 16:9').",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key; channel identifier (numeric, 700-728). Referenced by TV_series.Channel and Cartoon.Channel.",
+     "status": "resolved"
+    },
+    "series_name": {
+     "role": "identifier",
+     "name": "series_name",
+     "description": "Name of the TV channel (e.g. 'Sky Music', 'MTV Hits', 'Rock TV'). Despite the column name, values are channel names, not series names; unique per row.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "TV_series": {
+   "table": {
+    "name": "TV_series",
+    "purpose": "Episode-by-episode U.S. television ratings data for a 2007 TV series (episode titles such as 'Friendly Skies', 'Blowback', 'A Love of a Lifetime' match the NBC series Journeyman). Each row is one aired episode with its Nielsen ratings, viewership, and weekly rank."
+   },
+   "columns": {
+    "18_49_Rating_Share": {
+     "role": "code",
+     "name": "18_49_Rating_Share",
+     "description": "Nielsen adults 18-49 demographic rating and share, written as 'rating/share' (e.g. '2.4/6' = 2.4% of the 18-49 demographic watching, 6% of those watching TV at that time).",
+     "status": "resolved"
+    },
+    "Air_Date": {
+     "role": "date",
+     "name": "Air_Date",
+     "description": "Original U.S. broadcast date of the episode, stored as formatted text ('Month Day, Year'); all values fall in October-December 2007, a weekly air schedule.",
+     "status": "resolved"
+    },
+    "Channel": {
+     "role": "foreign_key",
+     "name": "Channel",
+     "description": "Identifier of the TV channel/network the episode aired on; references TV_Channel.id (values 700-728). The joined lookup table catalogs music TV channels (mostly Italian Sky/MTV music channels), which conflicts with a scripted U.S. drama series airing on NBC, so the exact channel identity is uncertain even though the join itself is valid.",
+     "status": "tentative"
+    },
+    "Episode": {
+     "role": "identifier",
+     "name": "Episode",
+     "description": "Title of the episode; unique per row, matching episode titles of the 2007 series Journeyman.",
+     "status": "resolved"
+    },
+    "Rating": {
+     "role": "numeric",
+     "name": "Rating",
+     "description": "Overall Nielsen household rating (percentage of households watching), ranging 3.0-5.8. The detected join to Cartoon.id is spurious (coincidental numeric overlap) and should be ignored.",
+     "status": "resolved"
+    },
+    "Share": {
+     "role": "numeric",
+     "name": "Share",
+     "description": "Overall Nielsen share (percentage of households watching TV at that time that were watching this episode), 5-9. The detected join to Cartoon.id is spurious and should be ignored.",
+     "status": "resolved"
+    },
+    "Viewers_m": {
+     "role": "numeric",
+     "name": "Viewers_m",
+     "description": "Number of viewers in millions (4.24-9.16). The detected join to Cartoon.id is spurious and should be ignored.",
+     "status": "resolved"
+    },
+    "Weekly_Rank": {
+     "role": "numeric",
+     "name": "Weekly_Rank",
+     "description": "Rank of the episode's viewership among all network primetime programs for that week (43-80, lower is better).",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Surrogate primary key, sequential 1-12, one per episode row.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 1,
+  "columns_changed": 1
+ }
+}

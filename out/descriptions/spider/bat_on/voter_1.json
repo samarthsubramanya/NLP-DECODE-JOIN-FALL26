@@ -1,0 +1,96 @@
+{
+ "db_id": "voter_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 1,
+ "tables": {
+  "AREA_CODE_STATE": {
+   "table": {
+    "name": "AREA_CODE_STATE",
+    "purpose": "Lookup table mapping North American telephone area codes to the US state (or territory) they belong to. One row per area code (305 rows, 201-989 range)."
+   },
+   "columns": {
+    "area_code": {
+     "role": "identifier",
+     "name": "area_code",
+     "description": "North American telephone area code (e.g. 201, 202, 203). Primary key of the table.",
+     "status": "resolved"
+    },
+    "state": {
+     "role": "code",
+     "name": "state",
+     "description": "Two-letter US state/territory code (e.g. CA, TX, FL) that the area code belongs to. Many area codes map to one state.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "CONTESTANTS": {
+   "table": {
+    "name": "CONTESTANTS",
+    "purpose": "Roster of contestants in a voting contest (11 contestants). One row per contestant."
+   },
+   "columns": {
+    "contestant_name": {
+     "role": "free_text",
+     "name": "contestant_name",
+     "description": "Full name of the contestant (first and last name).",
+     "status": "resolved"
+    },
+    "contestant_number": {
+     "role": "identifier",
+     "name": "contestant_number",
+     "description": "Contestant's identifying number, 1-11. Primary key, referenced by VOTES.contestant_number.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "VOTES": {
+   "table": {
+    "name": "VOTES",
+    "purpose": "Individual votes cast for contestants, apparently by phone (each vote records a phone number, state and timestamp). One row per vote; only 4 rows present, likely a sample."
+   },
+   "columns": {
+    "contestant_number": {
+     "role": "foreign_key",
+     "name": "contestant_number",
+     "description": "Number of the contestant being voted for; references CONTESTANTS.contestant_number.",
+     "status": "resolved"
+    },
+    "created": {
+     "role": "free_text",
+     "name": "created",
+     "description": "Timestamp when the vote was recorded, format 'YYYY-MM-DD HH:MM:SS' (all votes on 2018-03-09).",
+     "status": "resolved"
+    },
+    "phone_number": {
+     "role": "identifier",
+     "name": "phone_number",
+     "description": "10-digit US telephone number of the voter (e.g. 7182887233). Its first 3 digits are an area code that could be joined to AREA_CODE_STATE.",
+     "status": "resolved"
+    },
+    "state": {
+     "role": "code",
+     "name": "state",
+     "description": "Two-letter US state code of the voter (NY, CA, NJ). Note one value has a trailing newline ('NJ\\n'), indicating dirty data. Likely derived from the phone number's area code.",
+     "status": "resolved"
+    },
+    "vote_id": {
+     "role": "identifier",
+     "name": "vote_id",
+     "description": "Surrogate primary key of the vote record (values 1,2,3,5 - not fully contiguous).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

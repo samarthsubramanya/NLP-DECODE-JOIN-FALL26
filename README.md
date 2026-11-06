@@ -1,6 +1,6 @@
 # DECODE-JOIN
 
-Drft version
+Training-free recovery of keys, joins and column descriptions from undocumented databases, feeding an unchanged JoinGR. Stages 1–4 and end-to-end retrieval run on all five benchmarks. See `docs/ddb_eval_2026-11-05.md` and `docs/beaver_repair_2026-11-06.md` for results.
 
 ## The problem
 
@@ -39,6 +39,57 @@ BIRD, Spider, BEAVER, KaggleDBQA, FIBEN.
 6. **Week 8:** report.
 
 Early check: if the documented vs undocumented gap is tiny on Spider, we spend the rest of our effort on obfuscated BIRD/BEAVER.
+
+## Running it
+
+**Layout.** Scoring expects these folders side by side: `quartile/` (this code), `decode-join/` (JoinGR harness), `JoinGR-E656/` (JoinGR, unchanged) and `data/decode-join-duckdb/` (benchmarks).
+
+**Dependencies.** Python 3.11 or later:
+
+```bash
+pip install -r requirements.txt
+```
+
+**Data.** Download the DuckDB benchmark files (about 20 GB). `src/duckdb_driver.py` reads this folder first, or `$DECODE_JOIN_DUCKDB_DIR`, and otherwise downloads from Hugging Face.
+
+```bash
+hf download SuhxsReddy/decode-join-duckdb --repo-type dataset --local-dir ../data/decode-join-duckdb
+```
+
+**LLM.** Stages 3 and 4 use `glm-5-3` on ASU's Voyager gateway. Put `VOYAGER_API_KEY=...` in `.env`. Replies are cached in `out/llm_cache/`. Stages 1–2b need no LLM.
+
+**Run one dataset.** Use `spider`, `bird`, `beaver`, `kaggledbqa` or `fiben`, with `_stripped` or `_obfuscated` for the other settings. Add `--no-names` to Stage 2a for obfuscated datasets.
+
+```bash
+python src/profile_columns.py --dataset bird --force
+python src/primary_keys.py --dataset bird --run ddb
+python src/foreign_keys.py --dataset bird --keys-run ddb --run ddb
+python src/describe_columns.py --dataset bird --joins-run ddb --run ddb_low --reasoning-effort low --workers 8
+python src/export_joingr.py --dataset bird --stage3-run ddb_low --run ddb_full --reasoning-effort low --workers 8
+```
+
+**Repair for truncated data (optional).** Tables left with no join get candidates from shared values:
+
+```bash
+python src/profile_columns.py --dataset beaver --overlaps
+python src/foreign_keys.py --dataset beaver --keys-run ddb --run repair2 --repair-isolated 2
+```
+
+**Evaluate.**
+
+```bash
+python evals/grade_joins_all.py --dataset bird --run ddb_low
+```
+
+```bash
+cd ../decode-join && python ../quartile/evals/score_joingr.py pipeline bird ddb_full
+```
+
+**Tests.**
+
+```bash
+python -m pytest tests -q
+```
 
 ## Where things are
 

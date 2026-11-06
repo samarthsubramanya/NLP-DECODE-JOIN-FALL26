@@ -1,0 +1,84 @@
+{
+ "db_id": "network_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "Friend": {
+   "table": {
+    "name": "Friend",
+    "purpose": "Friendship edges between high school students: each row states that the student identified by student_id lists the student identified by friend_id as a friend. Both columns reference Highschooler.ID. Likely from the classic 'social network' schema (Highschooler, Friend, Likes). The relationship may be directional (student_id -> friend_id) unless reciprocal rows exist; with only 20 rows this cannot be confirmed, so directionality is tentative. The pair (student_id, friend_id) is the natural composite key; neither column alone is unique, consistent with an edge table rather than an entity table. The 4-digit IDs (1025-1934) match Highschooler.ID values, confirming the join evidence."
+   },
+   "columns": {
+    "friend_id": {
+     "role": "foreign_key",
+     "name": "friend_id",
+     "description": "ID of the Highschooler who is the friend (the target of the friendship). References Highschooler.ID; e.g. 1689 = Gabriel, 1709 = Cassandra, 1934 = Kyle. Not unique (students can have multiple friends), so it is not a primary key on its own.",
+     "status": "resolved"
+    },
+    "student_id": {
+     "role": "foreign_key",
+     "name": "student_id",
+     "description": "ID of the Highschooler who lists the friendship (the source student). References Highschooler.ID; e.g. 1689 = Gabriel, 1316 = Austin. Not unique (a student can list several friends). Whether the pair is directional (student lists friend) or symmetric cannot be proven from this sample alone, but the naming strongly suggests student_id is the listing student.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Highschooler": {
+   "table": {
+    "name": "Highschooler",
+    "purpose": "Directory of high school students, one row per student, referenced by the Friend and Likes tables which record friendships and crushes between students."
+   },
+   "columns": {
+    "ID": {
+     "role": "identifier",
+     "name": "student_id",
+     "description": "Unique numeric identifier for each high school student; primary key of the table, referenced by Friend.student_id, Friend.friend_id, Likes.student_id and Likes.liked_id.",
+     "status": "resolved"
+    },
+    "grade": {
+     "role": "category",
+     "name": "grade_level",
+     "description": "Student's school grade year, 9-12 (US high school freshman through senior).",
+     "status": "resolved"
+    },
+    "name": {
+     "role": "category",
+     "name": "first_name",
+     "description": "Student's first name; not unique (Gabriel and Jordan each appear twice), so it identifies a person only within the table alongside ID.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Likes": {
+   "table": {
+    "name": "Likes",
+    "purpose": "Edge table recording which highschooler likes which other highschooler; each row is a directed 'student X likes student Y' relation between two Highschooler records."
+   },
+   "columns": {
+    "liked_id": {
+     "role": "foreign_key",
+     "name": "liked_id",
+     "description": "ID of the Highschooler who is liked (the target of the like). References Highschooler.ID; values match student names in that lookup (e.g. 1689 = Gabriel, 1709 = Cassandra).",
+     "status": "resolved"
+    },
+    "student_id": {
+     "role": "foreign_key",
+     "name": "student_id",
+     "description": "ID of the Highschooler who expresses the like (the source). References Highschooler.ID (e.g. 1025 = John, 1316 = Austin). Marked as primary key by detection, but with only 10 rows and full uniqueness this is likely a composite key (student_id, liked_id) rather than a standalone key; treat as tentative.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

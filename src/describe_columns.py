@@ -87,6 +87,8 @@ DEFAULTS = {
     "joins_run": "default",
     "repeat": 0,                    # >0: ask again instead of replaying the cache (variance runs)
     "adjudication": "grouped",      # grouped: one call per source column; single: one per band record
+    "batch_columns": 0,             # >0: pack small tables into one describe (or refine) call up to this many columns
+    "batch_candidates": 0,          # >0: pack source groups into one grouped adjudication call up to this many targets
     "top_values": 5,
     "sample_values": 5,
     "sample_rows": 3,
@@ -175,6 +177,29 @@ status:
   unresolved not enough evidence; leave name and description empty
 
 Answer with JSON only, in the given schema, one entry per column under its exact key."""
+
+
+BATCH_DESCRIBE = DESCRIBE + """
+
+This request holds several tables of one database under "tables", and all its table names under "all_tables".
+Document each table on its own by the rules above, one entry per table under its exact key."""
+
+BATCH_ADJUDICATE = ADJUDICATE_GROUP + """
+
+This request holds several source columns under "sources", each with its own candidates. Judge each source on its
+own by the rules above, with one entry per source id and one decision per candidate id."""
+
+
+def pack(items, weight, budget):
+    """Consecutive items in chunks of total weight at most budget. An item over budget goes alone; budget 0: all alone."""
+    chunks, cur, total = [], [], 0
+    for x in items:
+        if cur and total + weight(x) > budget:
+            chunks.append(cur)
+            cur, total = [], 0
+        cur.append(x)
+        total += weight(x)
+    return chunks + [cur] if cur else chunks
 
 
 def clip(v, n):
@@ -273,12 +298,38 @@ def judge_group(llm, recs, profile, joins, cfg):
     payload = group_payload(recs, profile, joins, cfg)
     reply, effort = llm.complete("adjudicate", f"{s['table']}.{s['column']} ({len(recs)} targets)", ADJUDICATE_GROUP,
                                  json.dumps(payload, default=str), group_schema(payload["candidates"]))
+    return read_group(reply, payload["candidates"], effort, len(recs))
+
+
+def read_group(reply, ids, effort, size):
     got = (reply or {}).get("candidates") or {}
     out = []
-    for i in payload["candidates"]:
+    for i in ids:
         v = got.get(i) or {}
         out.append({"decision": v.get("decision") if v.get("decision") in VERDICTS else "abstain",
-                    "reason": v.get("reason", "unparsable reply"), "reasoning_effort": effort, "group_size": len(recs)})
+                    "reason": v.get("reason", "unparsable reply"), "reasoning_effort": effort, "group_size": size})
+    return out
+
+
+def judge_batch(llm, groups, profile, joins, cfg):
+    """Verdicts for several source groups in one call, in order. A source the reply leaves out is asked on its own."""
+    if len(groups) == 1:
+        return judge_group(llm, groups[0], profile, joins, cfg)
+    shared = ("weights", "acceptance_cutoff", "band")
+    payloads = {f"s{i}": group_payload(g, profile, joins, cfg) for i, g in enumerate(groups, 1)}
+    payload = {"sources": {k: {f: v for f, v in p.items() if f not in shared} for k, p in payloads.items()},
+               **{f: payloads["s1"][f] for f in shared}}
+    schema = {"name": "join_verdict_batch", "strict": True, "schema": {
+        "type": "object", "additionalProperties": False, "required": ["sources"],
+        "properties": {"sources": {"type": "object", "additionalProperties": False, "required": list(payloads),
+                                   "properties": {k: group_schema(p["candidates"])["schema"] for k, p in payloads.items()}}}}}
+    reply, effort = llm.complete("adjudicate", f"batch of {len(groups)} sources", BATCH_ADJUDICATE,
+                                 json.dumps(payload, default=str), schema)
+    out = []
+    for (k, p), g in zip(payloads.items(), groups):
+        one = ((reply or {}).get("sources") or {}).get(k)
+        whole = one and all(i in (one.get("candidates") or {}) for i in p["candidates"])
+        out += read_group(one, p["candidates"], effort, len(g)) if whole else judge_group(llm, g, profile, joins, cfg)
     return out
 
 
@@ -296,8 +347,8 @@ def adjudicate(llm, profile, keys, joins, cfg):
             for r in band:
                 groups.setdefault((r["source"]["table"], r["source"]["column"]), []).append(r)
             band = [r for g in groups.values() for r in g]
-            verdicts = [v for vs in pool.map(lambda g: judge_group(llm, g, profile, joins, cfg), groups.values())
-                        for v in vs]
+            chunks = pack(list(groups.values()), len, cfg["batch_candidates"])
+            verdicts = [v for vs in pool.map(lambda c: judge_batch(llm, c, profile, joins, cfg), chunks) for v in vs]
     for rec, v in zip(band, verdicts):
         rec["llm"] = {**v, "model": cfg["model"], "adjudication": cfg["adjudication"]}
         rec["decision"] = f"llm_{v['decision']}"
@@ -366,6 +417,10 @@ def describe_table(llm, profile, keys, links, table, cfg, use_values):
     cols = list(profile["tables"][table]["columns"])
     payload = description_payload(profile, keys, links, table, cfg, use_values)
     reply, effort = llm.complete("describe", table, DESCRIBE, json.dumps(payload, default=str), description_schema(cols))
+    return read_description(reply, cols, effort)
+
+
+def read_description(reply, cols, effort):
     reply = reply or {}
     got = reply.get("columns") or {}
     columns = {}
@@ -382,12 +437,33 @@ def describe_table(llm, profile, keys, links, table, cfg, use_values):
             "ok": bool(reply), "reasoning_effort": effort}
 
 
+def describe_batch(llm, profile, keys, links, tables, cfg, use_values):
+    """{table: description} for several tables in one call. A table the reply leaves out is asked on its own."""
+    if len(tables) == 1:
+        return {tables[0]: describe_table(llm, profile, keys, links, tables[0], cfg, use_values)}
+    cols = {t: list(profile["tables"][t]["columns"]) for t in tables}
+    payload = {"all_tables": list(profile["tables"]), "tables": {}}
+    for t in tables:
+        p = description_payload(profile, keys, links, t, cfg, use_values)
+        del p["other_tables"]
+        payload["tables"][t] = p
+    schema = {"name": "table_description_batch", "strict": True, "schema": {
+        "type": "object", "additionalProperties": False, "required": ["tables"],
+        "properties": {"tables": {"type": "object", "additionalProperties": False, "required": tables,
+                                  "properties": {t: description_schema(cols[t])["schema"] for t in tables}}}}}
+    reply, effort = llm.complete("describe", f"batch of {len(tables)} tables", BATCH_DESCRIBE,
+                                 json.dumps(payload, default=str), schema)
+    got = (reply or {}).get("tables") or {}
+    return {t: read_description(got[t], cols[t], effort) if got.get(t)
+            else describe_table(llm, profile, keys, links, t, cfg, use_values) for t in tables}
+
+
 def describe(llm, profile, keys, joins, cfg, use_values):
     links = column_joins(profile, joins["graphs"]["llm"], cfg, use_values)
+    chunks = pack(list(profile["tables"]), lambda t: len(profile["tables"][t]["columns"]), cfg["batch_columns"])
     with ThreadPoolExecutor(cfg["workers"]) as pool:
-        futures = {t: pool.submit(describe_table, llm, profile, keys, links, t, cfg, use_values)
-                   for t in profile["tables"]}
-        return {t: f.result() for t, f in futures.items()}
+        done = pool.map(lambda c: describe_batch(llm, profile, keys, links, c, cfg, use_values), chunks)
+        return {t: d for part in done for t, d in part.items()}
 
 
 # ------------------------------------------------------------------ LLM
@@ -463,6 +539,10 @@ def main():
     ap.add_argument("--reasoning-effort", default=DEFAULTS["reasoning_effort"],
                     choices=["none", "low", "medium", "high"])
     ap.add_argument("--workers", type=int, default=DEFAULTS["workers"])
+    ap.add_argument("--batch-columns", type=int, default=DEFAULTS["batch_columns"],
+                    help="pack small tables into one description call up to this many columns; 0: one call per table")
+    ap.add_argument("--batch-candidates", type=int, default=DEFAULTS["batch_candidates"],
+                    help="pack source columns into one grouped adjudication call up to this many targets; 0: one per source")
     ap.add_argument("--adjudication", default=DEFAULTS["adjudication"], choices=["grouped", "single"],
                     help="grouped: one call per source column with its competing band targets; single: one per record")
     ap.add_argument("--no-describe", action="store_true", help="step 1 only: judge the band and write graphs.llm")
@@ -474,7 +554,7 @@ def main():
     args = ap.parse_args()
     cfg = {**DEFAULTS, "model": args.model, "reasoning_effort": args.reasoning_effort,
            "workers": args.workers, "joins_run": args.joins_run, "adjudication": args.adjudication,
-           "repeat": args.repeat}
+           "repeat": args.repeat, "batch_columns": args.batch_columns, "batch_candidates": args.batch_candidates}
 
     out_dir = ROOT / "out" / "descriptions" / args.dataset / args.run
     (out_dir / "joins").mkdir(parents=True, exist_ok=True)
