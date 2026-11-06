@@ -296,3 +296,20 @@ def test_weights_always_sum_to_100():
     for use_names in (True, False):
         r = one(run(*shop(use_names=use_names)), ("orders", "customer_id"), ("customers", "customer_id"))
         assert sum(r["weights_used"].values()) == 100
+
+
+def test_repair_adds_band_records_for_isolated_tables_only():
+    a = col("a_key", family="text", role="code", distinct=100, rows=100)
+    b = col("a_key", family="text", role="code", distinct=80, rows=200)
+    dense = col("n", distinct=100, rows=100, numeric={"density": 1.0})
+    tables = {"one": table(100, a_key=a, n=dense), "two": table(200, a_key=b, n=dense), "empty": table(0, x=col("x"))}
+    profile = {"db_id": "d", "tables": tables, "containment": []}
+    keys = {"use_names": True, "tables": {t: {"primary_key": None, "columns": {c: {} for c in tp["columns"]}}
+                                          for t, tp in tables.items()}}
+    overlaps = [{"a": ["one", "a_key"], "b": ["two", "a_key"], "a_distinct": 100, "b_distinct": 80, "shared": 20},
+                {"a": ["one", "n"], "b": ["two", "n"], "a_distinct": 100, "b_distinct": 100, "shared": 100}]
+    assert not fk.score_database(profile, keys, CFG, overlaps)["candidates"]            # off by default
+    out = fk.score_database(profile, keys, {**CFG, "repair_isolated": 2}, overlaps)
+    (r,) = out["candidates"]                                                            # dense ints left out
+    assert r["decision"] == "band" and r["partial_overlap"] and r["source"]["table"] == "two"
+    assert r["containment"] == 0.25 and len(out["graphs"]["stats"]) == 1 and not out["graphs"]["direct"]
