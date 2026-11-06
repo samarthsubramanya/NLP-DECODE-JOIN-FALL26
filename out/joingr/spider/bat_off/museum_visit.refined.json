@@ -1,0 +1,118 @@
+{
+ "db_id": "museum_visit",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "museum": {
+   "table": {
+    "name": "museum",
+    "purpose": "Catalog of museums, one row per museum, with its name, staff size, and opening year. Referenced by the visit table (visits per museum)."
+   },
+   "columns": {
+    "Museum_ID": {
+     "role": "identifier",
+     "name": "Museum ID",
+     "description": "Primary key; unique numeric identifier for each museum. Referenced by visit.Museum_ID (each visit is to one museum). The joins to visitor.Level_of_membership and visit.visitor_ID are likely spurious statistical coincidences given the small value range.",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Museum name",
+     "description": "Full name of the museum; unique per row.",
+     "status": "resolved"
+    },
+    "Num_of_Staff": {
+     "role": "numeric",
+     "name": "Number of staff",
+     "description": "Count of staff members at the museum, ranging 12–62.",
+     "status": "resolved"
+    },
+    "Open_Year": {
+     "role": "numeric",
+     "name": "Opening year",
+     "description": "Year the museum opened (2000–2012), stored as text despite being numeric.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "visit": {
+   "table": {
+    "name": "visit",
+    "purpose": "Junction/fact table recording a visitor's visit to a museum: how many tickets were bought and the total amount spent. Each row is one visit by one visitor to one museum."
+   },
+   "columns": {
+    "Museum_ID": {
+     "role": "foreign_key",
+     "name": "Museum_ID",
+     "description": "Identifier of the museum visited; references museum.Museum_ID (many visits to one museum).",
+     "status": "resolved"
+    },
+    "Num_of_Ticket": {
+     "role": "numeric",
+     "name": "Num_of_Ticket",
+     "description": "Number of tickets purchased during the visit (integer count, 2-24).",
+     "status": "resolved"
+    },
+    "Total_spent": {
+     "role": "numeric",
+     "name": "Total_spent",
+     "description": "Total amount of money spent on the visit, presumably in the local currency (values 19.98-320.44).",
+     "status": "resolved"
+    },
+    "visitor_ID": {
+     "role": "foreign_key",
+     "name": "visitor_ID",
+     "description": "Identifier of the visitor making the visit; references visitor.ID (many visits to one visitor). The secondary join to museum.Museum_ID is spurious (coincidental numeric overlap).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "visitor": {
+   "table": {
+    "name": "visitor",
+    "purpose": "Registry of museum visitors/members, one row per visitor, linked to visits and to a museum via membership level code that references museum.Museum_ID."
+   },
+   "columns": {
+    "Age": {
+     "role": "numeric",
+     "name": "Age",
+     "description": "Age of the visitor in years (values 25-56).",
+     "status": "resolved"
+    },
+    "ID": {
+     "role": "identifier",
+     "name": "Visitor ID",
+     "description": "Primary key identifying each visitor; referenced by visit.visitor_ID.",
+     "status": "resolved"
+    },
+    "Level_of_membership": {
+     "role": "foreign_key",
+     "name": "Museum ID (membership level code)",
+     "description": "Despite its name, values join to museum.Museum_ID (e.g. 8 -> ZirMed Gateway Museum), so it identifies the museum the visitor is a member of, not a membership tier. The name suggests a membership level, but the accepted join and lookup pairs clearly map to museums.",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Visitor Name",
+     "description": "Full name of the visitor (sample values are footballer-like names, likely placeholder data).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 0,
+  "columns_changed": 0
+ }
+}

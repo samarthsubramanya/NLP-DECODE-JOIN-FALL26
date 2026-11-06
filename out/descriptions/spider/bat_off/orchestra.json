@@ -1,0 +1,190 @@
+{
+ "db_id": "orchestra",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 3,
+ "tables": {
+  "conductor": {
+   "table": {
+    "name": "conductor",
+    "purpose": "A directory of orchestra conductors: each row is one conductor with their age, nationality, and years of work (tenure/experience). Referenced by the orchestra table, which assigns a conductor to each orchestra."
+   },
+   "columns": {
+    "Age": {
+     "role": "numeric",
+     "name": "Age",
+     "description": "Age of the conductor in years (range 40-63).",
+     "status": "resolved"
+    },
+    "Conductor_ID": {
+     "role": "identifier",
+     "name": "Conductor_ID",
+     "description": "Primary key identifying each conductor; referenced one-to-one by orchestra.Conductor_ID.",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Name",
+     "description": "Full name of the conductor (e.g. 'Pierre Boulez', 'Colin Davis').",
+     "status": "resolved"
+    },
+    "Nationality": {
+     "role": "category",
+     "name": "Nationality",
+     "description": "Country of nationality of the conductor, as a short code/name (USA, UK, France).",
+     "status": "resolved"
+    },
+    "Year_of_Work": {
+     "role": "numeric",
+     "name": "Year_of_Work",
+     "description": "Number of years the conductor has worked (tenure/experience), range 6-21. The name suggests a calendar year, but values (6-21) clearly indicate a count of years, not a year.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "orchestra": {
+   "table": {
+    "name": "orchestra",
+    "purpose": "Catalog of orchestras, each with its principal conductor, record company, main recording format, and founding year of the ensemble (or of its recording relationship). One row per orchestra."
+   },
+   "columns": {
+    "Conductor_ID": {
+     "role": "foreign_key",
+     "name": "Conductor ID",
+     "description": "Reference to conductor.Conductor_ID, identifying the conductor associated with this orchestra (one-to-one).",
+     "status": "resolved"
+    },
+    "Major_Record_Format": {
+     "role": "code",
+     "name": "Major record format",
+     "description": "Physical format(s) in which the orchestra's recordings were primarily issued: CD, LP (vinyl), or DVD.",
+     "status": "resolved"
+    },
+    "Orchestra": {
+     "role": "free_text",
+     "name": "Orchestra name",
+     "description": "Full name of the orchestra (e.g., Chicago Symphony Orchestra, London Symphony Orchestra).",
+     "status": "resolved"
+    },
+    "Orchestra_ID": {
+     "role": "identifier",
+     "name": "Orchestra ID",
+     "description": "Primary key of the orchestra table; referenced by performance.Orchestra_ID.",
+     "status": "resolved"
+    },
+    "Record_Company": {
+     "role": "free_text",
+     "name": "Record company",
+     "description": "Record label(s) the orchestra recorded with (e.g., Decca Records, Deutsche Grammophon); occasionally two labels combined.",
+     "status": "resolved"
+    },
+    "Year_of_Founded": {
+     "role": "numeric",
+     "name": "Year of founded",
+     "description": "Year the orchestra was founded, stored as a number. Note: values (2002-2009) are implausibly recent for these historic orchestras, so it may instead record the year of a particular recording or of the row's data entry; the exact meaning is uncertain.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "performance": {
+   "table": {
+    "name": "performance",
+    "purpose": "TV broadcast performance records: one row per episode/broadcast of a talent-show-style series (auditions, semi-finals, final), with UK-style official viewing figures (ratings in millions, audience share, weekly rank) and an associated orchestra. Referenced by show and linked to orchestra."
+   },
+   "columns": {
+    "Date": {
+     "role": "date",
+     "name": "Broadcast date",
+     "description": "Day and month of the broadcast (year omitted). Values like '10 June', '16 June'; one date ('17 June') appears twice, likely two broadcasts that day (e.g. final and results show).",
+     "status": "resolved"
+    },
+    "Official_ratings_(millions)": {
+     "role": "numeric",
+     "name": "Official ratings (millions of viewers)",
+     "description": "Official audience measurement for the broadcast, in millions of viewers (5.2 to 11.58, mean ~8.4).",
+     "status": "resolved"
+    },
+    "Orchestra_ID": {
+     "role": "foreign_key",
+     "name": "Orchestra ID",
+     "description": "Foreign key to orchestra.Orchestra_ID, identifying the orchestra associated with this performance/episode.",
+     "status": "resolved"
+    },
+    "Performance_ID": {
+     "role": "foreign_key",
+     "name": "Performance ID",
+     "description": "Primary key of the table; identifier of the performance/episode, referenced by show.Performance_ID.",
+     "status": "resolved"
+    },
+    "Share": {
+     "role": "numeric",
+     "name": "Audience share",
+     "description": "Percentage of total TV audience watching this broadcast (stored as text with '%' sign), 22.7% to 43.7%.",
+     "status": "resolved"
+    },
+    "Type": {
+     "role": "category",
+     "name": "Episode type",
+     "description": "Stage of the competition the broadcast covers: 'Auditions 1'–'5', 'Semi-final 3', 'Live final results', 'Series average'.",
+     "status": "resolved"
+    },
+    "Weekly_rank": {
+     "role": "numeric",
+     "name": "Weekly rank",
+     "description": "The broadcast's ranking among all TV programmes that week (stored as text; includes 'TBC' = to be confirmed).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "show": {
+   "table": {
+    "name": "show",
+    "purpose": "Despite the name 'show', the values (Scottish football grounds like Hampden Park, Fir Park, St. Mirren Park, plus attendance figures and T/F results) indicate this table records football matches: one row per match, with the venue, attendance, result (win/loss flag), and a link to a performance (match date). The naming appears to be a disguised/renamed sports dataset rather than concert shows. Only 5 rows are visible, so the broader scope is tentative. The 'If_first_show' column holding venue names suggests the table may specifically track whether a match was the first show/fixture at a given ground, but the evidence is thin."
+   },
+   "columns": {
+    "Attendance": {
+     "role": "numeric",
+     "name": "Attendance",
+     "description": "Match attendance (number of spectators), ranging 555–2431 in the sample. Declared DOUBLE but integer-valued.",
+     "status": "resolved"
+    },
+    "If_first_show": {
+     "role": "category",
+     "name": "Venue",
+     "description": "Name of the stadium/venue where the match took place (Glebe Park, Fir Park, St. Mirren Park, Hampden Park — all Scottish football grounds). The column name suggests it may flag the venue of a first show, but the values are simply venue names; the exact intent of the name is unresolved.",
+     "status": "tentative"
+    },
+    "Performance_ID": {
+     "role": "foreign_key",
+     "name": "Performance_ID",
+     "description": "Foreign key to performance.Performance_ID, identifying the date/performance this match belongs to (one-to-one).",
+     "status": "resolved"
+    },
+    "Result": {
+     "role": "boolean",
+     "name": "Result",
+     "description": "Boolean flag (T/F), most plausibly whether the match result was a win (T) or not (F). Could alternatively mean e.g. home win vs. loss; the exact semantics are not fully determined.",
+     "status": "tentative"
+    },
+    "Show_ID": {
+     "role": "identifier",
+     "name": "Show_ID",
+     "description": "Primary key of the table; unique identifier for each match/show record.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

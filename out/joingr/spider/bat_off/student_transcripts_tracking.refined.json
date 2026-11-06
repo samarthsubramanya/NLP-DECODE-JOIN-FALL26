@@ -1,0 +1,462 @@
+{
+ "db_id": "student_transcripts_tracking",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 11,
+ "tables": {
+  "Addresses": {
+   "table": {
+    "name": "Addresses",
+    "purpose": "Postal addresses for students (permanent and current), part of a university enrollment database. One row per address, referenced by Students.permanent_address_id and Students.current_address_id. Data appears to be synthetic/fake (fictional cities, mismatched countries and US states)."
+   },
+   "columns": {
+    "address_id": {
+     "role": "identifier",
+     "name": "address_id",
+     "description": "Primary key, surrogate identifier for each address row.",
+     "status": "resolved"
+    },
+    "city": {
+     "role": "category",
+     "name": "city",
+     "description": "City name of the address. Values are fictional/synthetic city names (e.g. 'Goodwinhaven', 'Lake Laishafurt').",
+     "status": "resolved"
+    },
+    "country": {
+     "role": "category",
+     "name": "country",
+     "description": "Country of the address. Real country names, but randomly generated (inconsistent with the US state values in state_province_county), so likely synthetic data.",
+     "status": "resolved"
+    },
+    "line_1": {
+     "role": "category",
+     "name": "line_1",
+     "description": "First address line: street number, street name, and optionally unit designator (e.g. '0144 Lamar Plaza Apt. 346').",
+     "status": "resolved"
+    },
+    "line_2": {
+     "role": "category",
+     "name": "line_2",
+     "description": "Second address line: apartment/suite designator (e.g. 'Apt. 305', 'Suite 703').",
+     "status": "resolved"
+    },
+    "line_3": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "other_address_details": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "state_province_county": {
+     "role": "category",
+     "name": "state_province_county",
+     "description": "State/province/county of the address. Values are US state names (some concatenated without spaces, e.g. 'SouthDakota'), inconsistent with the country values — synthetic data.",
+     "status": "resolved"
+    },
+    "zip_postcode": {
+     "role": "identifier",
+     "name": "zip_postcode",
+     "description": "ZIP/postal code, stored as text. Values are 3-digit numeric strings (e.g. '068', '943'), clearly synthetic rather than real postal codes.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Courses": {
+   "table": {
+    "name": "Courses",
+    "purpose": "Catalog of courses offered; each row is one course, identified by course_id, with a short name and description. Referenced by Sections and Student_Enrolment_Courses, so it is the master course list for scheduling and enrolment. The data appears to be anonymized/synthetic (single-letter descriptions, abbreviated names)."
+   },
+   "columns": {
+    "course_description": {
+     "role": "category",
+     "name": "course_description",
+     "description": "Free-text description of the course. Values are single letters (q, l, p, v, b, ...), suggesting anonymized or placeholder data rather than real descriptions.",
+     "status": "resolved"
+    },
+    "course_id": {
+     "role": "identifier",
+     "name": "course_id",
+     "description": "Primary key of the Courses table; unique integer identifying each course (1-15). Referenced by Sections.course_id and Student_Enrolment_Courses.course_id.",
+     "status": "resolved"
+    },
+    "course_name": {
+     "role": "category",
+     "name": "course_name",
+     "description": "Short name/title of the course. Values are abbreviations of academic subjects (math, cal = calculus, db = databases, dl = deep learning, ds = data structures, os = operating systems, nlp, la = linear algebra, fr = French, en = English, ai).",
+     "status": "resolved"
+    },
+    "other_details": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Degree_Programs": {
+   "table": {
+    "name": "Degree_Programs",
+    "purpose": "Catalog of degree programs offered by the university; each row is one degree program (Bachelor, Master, or PhD) belonging to a department, which students enrol into via Student_Enrolment."
+   },
+   "columns": {
+    "degree_program_id": {
+     "role": "identifier",
+     "name": "degree_program_id",
+     "description": "Primary key uniquely identifying each degree program; referenced by Student_Enrolment.degree_program_id.",
+     "status": "resolved"
+    },
+    "degree_summary_description": {
+     "role": "category",
+     "name": "degree_summary_description",
+     "description": "Text description of the degree program. Values are placeholder/lorem-ipsum words (e.g. 'aperiam', 'architecto'), so the intended semantic content cannot be verified beyond being a free-text description.",
+     "status": "tentative"
+    },
+    "degree_summary_name": {
+     "role": "category",
+     "name": "degree_summary_name",
+     "description": "Degree level of the program: Bachelor, Master, or PHD.",
+     "status": "resolved"
+    },
+    "department_id": {
+     "role": "identifier",
+     "name": "department_id",
+     "description": "Foreign key to Departments.department_id; the department that offers the degree program.",
+     "status": "resolved"
+    },
+    "other_details": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Departments": {
+   "table": {
+    "name": "Departments",
+    "purpose": "Lookup table of academic departments at an institution; each row is one department. Referenced by Degree_Programs via department_id. Descriptions are placeholder (lorem-ipsum-like) filler text, so they carry no real semantic content."
+   },
+   "columns": {
+    "department_description": {
+     "role": "free_text",
+     "name": "department_description",
+     "description": "Free-text description of the department. Values are Latin filler words (e.g. 'consequatur', 'nihil'), suggesting placeholder/test data rather than real descriptions.",
+     "status": "resolved"
+    },
+    "department_id": {
+     "role": "foreign_key",
+     "name": "department_id",
+     "description": "Primary key of the Departments table; unique integer identifier for each department (1-15). Referenced by Degree_Programs.department_id.",
+     "status": "resolved"
+    },
+    "department_name": {
+     "role": "category",
+     "name": "department_name",
+     "description": "Name of the department (e.g. 'art', 'biology', 'computer science', 'math'). Unique across rows.",
+     "status": "resolved"
+    },
+    "other_details": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Sections": {
+   "table": {
+    "name": "Sections",
+    "purpose": "One row per course section (offering) of a course; each section belongs to a course and has a short name/label and a description. Likely referenced by enrolment/transcript tables to identify which section a student took."
+   },
+   "columns": {
+    "course_id": {
+     "role": "foreign_key",
+     "name": "course_id",
+     "description": "Identifier of the course this section belongs to; references Courses.course_id (many sections to one course).",
+     "status": "resolved"
+    },
+    "other_details": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "section_description": {
+     "role": "free_text",
+     "name": "section_description",
+     "description": "Free-text description of the section (values are placeholder lorem-ipsum words, so only the column's descriptive role is supported).",
+     "status": "resolved"
+    },
+    "section_id": {
+     "role": "foreign_key",
+     "name": "section_id",
+     "description": "Primary key; unique numeric identifier of the section.",
+     "status": "resolved"
+    },
+    "section_name": {
+     "role": "category",
+     "name": "section_name",
+     "description": "Short unique label for the section, one letter per section (a, b, c, ...), i.e. the section letter within a course.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Semesters": {
+   "table": {
+    "name": "Semesters",
+    "purpose": "Lookup table of academic semesters/terms (e.g. spring 2010, summer 2010, winter 2010), referenced by student enrolment records. One row per semester."
+   },
+   "columns": {
+    "other_details": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "semester_description": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "semester_id": {
+     "role": "boolean",
+     "name": "semester_id",
+     "description": "Primary key; unique integer identifier (1-15) for each semester. Referenced by Student_Enrolment.semester_id.",
+     "status": "resolved"
+    },
+    "semester_name": {
+     "role": "boolean",
+     "name": "semester_name",
+     "description": "Human-readable semester name in the form '<term> <year>' (e.g. spring 2018, summer 2010, winter 2010). Nearly unique; 'spring 2018' appears twice, suggesting it may not be a strict key.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Student_Enrolment": {
+   "table": {
+    "name": "Student_Enrolment",
+    "purpose": "One row per enrolment record: a student enrolled in a degree program in a specific semester. Courses taken under an enrolment are linked via Student_Enrolment_Courses."
+   },
+   "columns": {
+    "degree_program_id": {
+     "role": "foreign_key",
+     "name": "degree_program_id",
+     "description": "References Degree_Programs.degree_program_id; the degree program in which the student is enrolled for this enrolment.",
+     "status": "resolved"
+    },
+    "other_details": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "semester_id": {
+     "role": "foreign_key",
+     "name": "semester_id",
+     "description": "References Semesters.semester_id; the semester in which the enrolment takes place.",
+     "status": "resolved"
+    },
+    "student_enrolment_id": {
+     "role": "foreign_key",
+     "name": "student_enrolment_id",
+     "description": "Primary key of the table; unique identifier of the enrolment. Referenced by Student_Enrolment_Courses to attach courses to the enrolment.",
+     "status": "resolved"
+    },
+    "student_id": {
+     "role": "foreign_key",
+     "name": "student_id",
+     "description": "References Students.student_id; the student who is enrolled.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Student_Enrolment_Courses": {
+   "table": {
+    "name": "Student_Enrolment_Courses",
+    "purpose": "Junction/association table linking a student's enrolment record to the specific courses taken; each row is one course within a student's enrolment, identified by a unique student_course_id that is later referenced by transcript contents."
+   },
+   "columns": {
+    "course_id": {
+     "role": "foreign_key",
+     "name": "course_id",
+     "description": "Identifier of the course taken, referencing Courses.course_id (many-to-one). Values are small integers (2-14) matching course records with descriptions.",
+     "status": "resolved"
+    },
+    "student_course_id": {
+     "role": "foreign_key",
+     "name": "student_course_id",
+     "description": "Primary key of this table: unique identifier for one course within a student's enrolment. Referenced by Transcript_Contents.student_course_id, so it is the link between an enrolment course and its transcript entry. Value distribution is mixed (small integers and large 8-digit values), suggesting rows from different sources or seed data, but its uniqueness and reference support this meaning.",
+     "status": "resolved"
+    },
+    "student_enrolment_id": {
+     "role": "foreign_key",
+     "name": "student_enrolment_id",
+     "description": "Identifier of the student's enrolment record, referencing Student_Enrolment.student_enrolment_id (many-to-one). Several courses can belong to the same enrolment.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Students": {
+   "table": {
+    "name": "Students",
+    "purpose": "One row per student: personal identity and contact details, registration dates, and links to current and permanent addresses. Referenced by Student_Enrolment for enrolment records."
+   },
+   "columns": {
+    "cell_mobile_number": {
+     "role": "identifier",
+     "name": "cell_mobile_number",
+     "description": "Student's mobile phone number, stored in inconsistent formats (various punctuation and optional extensions).",
+     "status": "resolved"
+    },
+    "current_address_id": {
+     "role": "foreign_key",
+     "name": "current_address_id",
+     "description": "Foreign key to Addresses.address_id; the student's current (term-time) address.",
+     "status": "resolved"
+    },
+    "date_first_registered": {
+     "role": "date",
+     "name": "date_first_registered",
+     "description": "Timestamp when the student first registered at the institution. Note: values span 1971-2018, which is implausibly early for real registrations, suggesting synthetic/random data.",
+     "status": "tentative"
+    },
+    "date_left": {
+     "role": "date",
+     "name": "date_left",
+     "description": "Timestamp when the student left the institution. Note: values are not consistently after date_first_registered (e.g. row 7 registered 2018 but left 1997), so the data appears synthetic or corrupted; the intended meaning is likely the date the student left/graduated.",
+     "status": "tentative"
+    },
+    "email_address": {
+     "role": "identifier",
+     "name": "email_address",
+     "description": "Student's email address; unique per row, example-domain placeholder values.",
+     "status": "resolved"
+    },
+    "first_name": {
+     "role": "identifier",
+     "name": "first_name",
+     "description": "Student's first (given) name.",
+     "status": "resolved"
+    },
+    "last_name": {
+     "role": "identifier",
+     "name": "last_name",
+     "description": "Student's last (family) name.",
+     "status": "resolved"
+    },
+    "middle_name": {
+     "role": "identifier",
+     "name": "middle_name",
+     "description": "Student's middle name.",
+     "status": "resolved"
+    },
+    "other_student_details": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "permanent_address_id": {
+     "role": "foreign_key",
+     "name": "permanent_address_id",
+     "description": "Foreign key to Addresses.address_id; the student's permanent (home) address.",
+     "status": "resolved"
+    },
+    "ssn": {
+     "role": "identifier",
+     "name": "ssn",
+     "description": "Intended as the student's Social Security Number, but values are inconsistent (empty strings, 2-3 digit numbers, one 9-digit value), so it does not hold valid SSNs; likely a corrupted or synthetic identifier field.",
+     "status": "tentative"
+    },
+    "student_id": {
+     "role": "foreign_key",
+     "name": "student_id",
+     "description": "Primary key of the Students table; unique surrogate identifier for each student, referenced by Student_Enrolment.student_id.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Transcript_Contents": {
+   "table": {
+    "name": "Transcript_Contents",
+    "purpose": "Junction table linking transcripts to the individual student-course enrolments they contain; each row states that a given enrolled course appears on a given student's transcript."
+   },
+   "columns": {
+    "student_course_id": {
+     "role": "foreign_key",
+     "name": "student_course_id",
+     "description": "Identifier of a student's enrolment in a specific course (references Student_Enrolment_Courses.student_course_id, many-to-one). The value 0 appears repeatedly and may be a placeholder/unknown, but the evidence is insufficient to confirm this.",
+     "status": "resolved"
+    },
+    "transcript_id": {
+     "role": "foreign_key",
+     "name": "transcript_id",
+     "description": "Identifier of the transcript (references Transcripts.transcript_id, many-to-one) on which the referenced course enrolment is listed.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Transcripts": {
+   "table": {
+    "name": "Transcripts",
+    "purpose": "One row per academic transcript issued to a student; the transcript's line items (courses/grades) live in Transcript_Contents, which references this table via transcript_id. Likely links to students through Transcript_Contents or Student_Enrolment, though no direct join was detected."
+   },
+   "columns": {
+    "other_details": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "transcript_date": {
+     "role": "date",
+     "name": "transcript_date",
+     "description": "Timestamp when the transcript was issued/generated. Stored as VARCHAR but values parse as datetimes ranging from 1975 to 2013; all 15 values are distinct. The wide, seemingly random range suggests synthetic or seeded data, but the column's meaning as the transcript date is clear.",
+     "status": "resolved"
+    },
+    "transcript_id": {
+     "role": "identifier",
+     "name": "transcript_id",
+     "description": "Primary key of the Transcripts table; surrogate integer identifier (1-15, all unique). Referenced by Transcript_Contents.transcript_id, which holds the per-course entries of each transcript.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 9,
+  "columns_changed": 0
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "db_id": "network_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "Friend": {
+   "table": {
+    "name": "Friend",
+    "purpose": "Friendship pairs between high school students: each row links a student to one of their friends (both referencing Highschooler)."
+   },
+   "columns": {
+    "friend_id": {
+     "role": "foreign_key",
+     "name": "friend_id",
+     "description": "ID of the Highschooler who is the friend in the pair; references Highschooler.ID.",
+     "status": "resolved"
+    },
+    "student_id": {
+     "role": "foreign_key",
+     "name": "student_id",
+     "description": "ID of the Highschooler who has this friend; references Highschooler.ID.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Highschooler": {
+   "table": {
+    "name": "Highschooler",
+    "purpose": "Master list of high school students, one row per student, with their name and grade."
+   },
+   "columns": {
+    "ID": {
+     "role": "identifier",
+     "name": "ID",
+     "description": "Primary key; unique student identifier.",
+     "status": "resolved"
+    },
+    "grade": {
+     "role": "category",
+     "name": "grade",
+     "description": "School grade level of the student, 9-12 (US high school freshman through senior).",
+     "status": "resolved"
+    },
+    "name": {
+     "role": "free_text",
+     "name": "name",
+     "description": "Student's first name (some names repeat across different students).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Likes": {
+   "table": {
+    "name": "Likes",
+    "purpose": "Romantic-interest records: each row states that one high schooler likes another (references Highschooler on both sides)."
+   },
+   "columns": {
+    "liked_id": {
+     "role": "foreign_key",
+     "name": "liked_id",
+     "description": "ID of the Highschooler who is liked; references Highschooler.ID.",
+     "status": "resolved"
+    },
+    "student_id": {
+     "role": "foreign_key",
+     "name": "student_id",
+     "description": "ID of the Highschooler who likes the other student; references Highschooler.ID. Each student appears at most once as the liker.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 0,
+  "columns_changed": 0
+ }
+}

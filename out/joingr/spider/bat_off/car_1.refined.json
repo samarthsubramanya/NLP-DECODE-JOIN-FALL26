@@ -1,0 +1,214 @@
+{
+ "db_id": "car_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 5,
+ "tables": {
+  "car_makers": {
+   "table": {
+    "name": "car_makers",
+    "purpose": "Lookup table of automobile manufacturers; one row per maker, with its short name, full corporate name, and home country (FK to countries). Referenced by model_list.Maker to assign models to makers."
+   },
+   "columns": {
+    "Country": {
+     "role": "foreign_key",
+     "name": "country_id",
+     "description": "Foreign key to countries.CountryId — the maker's home country (e.g. 2=germany, 4=japan, 7=uk).",
+     "status": "resolved"
+    },
+    "FullName": {
+     "role": "free_text",
+     "name": "full_name",
+     "description": "Manufacturer's full corporate name (e.g. 'American Motor Company', 'General Motors', 'Daimler Benz').",
+     "status": "resolved"
+    },
+    "Id": {
+     "role": "foreign_key",
+     "name": "maker_id",
+     "description": "Primary key; unique maker identifier, referenced by model_list.Maker.",
+     "status": "resolved"
+    },
+    "Maker": {
+     "role": "free_text",
+     "name": "maker_short_name",
+     "description": "Short/lowercase maker name (e.g. 'gm', 'bmw', 'amc'), a compact label for the manufacturer.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "car_names": {
+   "table": {
+    "name": "car_names",
+    "purpose": "Maps each car model name (make + model, e.g. 'ford pinto') to a numeric ID, with the manufacturer (brand) extracted separately. Each row is one named car model variant; the ID links to the cars_data table's measurements."
+   },
+   "columns": {
+    "Make": {
+     "role": "identifier",
+     "name": "car_model_name",
+     "description": "Full car model name combining manufacturer and model (e.g. 'ford pinto', 'audi 4000', 'honda accord lx'). Despite the column name 'Make', it is not just the brand — it is the full model designation.",
+     "status": "resolved"
+    },
+    "MakeId": {
+     "role": "identifier",
+     "name": "car_model_id",
+     "description": "Primary key: unique numeric identifier (1-406) for each named car model. Referenced by cars_data (its Horsepower column appears to carry this ID, likely a mislabeled foreign key) to link specifications to the model name.",
+     "status": "resolved"
+    },
+    "Model": {
+     "role": "identifier",
+     "name": "manufacturer",
+     "description": "Manufacturer/brand name (e.g. 'ford', 'chevrolet', 'amc'), despite the column name 'Model'. References model_list.Model, which appears to be the maker/model list.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "cars_data": {
+   "table": {
+    "name": "cars_data",
+    "purpose": "Per-car technical/efficiency records (classic auto-mpg style dataset): one row per car model-year observation with fuel economy, engine specs, weight and acceleration."
+   },
+   "columns": {
+    "Accelerate": {
+     "role": "numeric",
+     "name": "Acceleration (0-60 mph time)",
+     "description": "Time to accelerate, in seconds; lower is faster. Range 8.0-24.8 s, typical ~15.5 s, consistent with 0-60 mph times for 1970s cars.",
+     "status": "resolved"
+    },
+    "Cylinders": {
+     "role": "category",
+     "name": "Number of engine cylinders",
+     "description": "Engine cylinder count: 3, 4, 5, 6, or 8.",
+     "status": "resolved"
+    },
+    "Edispl": {
+     "role": "numeric",
+     "name": "Engine displacement",
+     "description": "Engine displacement in cubic inches (cu in): range 68-455, values like 350, 318, 400, 455 match American engine displacements in cubic inches.",
+     "status": "resolved"
+    },
+    "Horsepower": {
+     "role": "numeric",
+     "name": "Engine horsepower",
+     "description": "Engine horsepower (46-230 hp). Declared VARCHAR but values are integers. The detected join to car_names.MakeId is spurious (statistics-only); horsepower is a measure, not a key.",
+     "status": "resolved"
+    },
+    "Id": {
+     "role": "identifier",
+     "name": "Row identifier",
+     "description": "Primary key, unique 1-406, one row per car record.",
+     "status": "resolved"
+    },
+    "MPG": {
+     "role": "numeric",
+     "name": "Fuel economy (miles per gallon)",
+     "description": "Fuel consumption in miles per gallon, 9.0-46.6, typical ~23. Declared VARCHAR but numeric.",
+     "status": "resolved"
+    },
+    "Weight": {
+     "role": "numeric",
+     "name": "Vehicle weight",
+     "description": "Curb weight in pounds (1613-5140 lb), consistent with 1970s passenger cars.",
+     "status": "resolved"
+    },
+    "Year": {
+     "role": "category",
+     "name": "Model year",
+     "description": "Model year of the car, 1970-1982.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "continents": {
+   "table": {
+    "name": "continents",
+    "purpose": "Lookup table of the world's continents, referenced by the countries table."
+   },
+   "columns": {
+    "ContId": {
+     "role": "identifier",
+     "name": "continent_id",
+     "description": "Primary key; numeric identifier for each continent (1-5). Referenced by countries.Continent.",
+     "status": "resolved"
+    },
+    "Continent": {
+     "role": "category",
+     "name": "continent_name",
+     "description": "Name of the continent: africa, america, asia, australia, europe.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "countries": {
+   "table": {
+    "name": "countries",
+    "purpose": "Lookup table of countries (15 rows), each with a name and the continent it belongs to; referenced by car_makers to indicate a maker's home country."
+   },
+   "columns": {
+    "Continent": {
+     "role": "foreign_key",
+     "name": "continent_id",
+     "description": "Foreign key to continents.ContId; identifies the continent the country belongs to (1=america, 2=europe, 3=asia, 4=africa, 5=australia).",
+     "status": "resolved"
+    },
+    "CountryId": {
+     "role": "identifier",
+     "name": "country_id",
+     "description": "Primary key; unique numeric identifier for each country. Referenced by car_makers.Country.",
+     "status": "resolved"
+    },
+    "CountryName": {
+     "role": "category",
+     "name": "country_name",
+     "description": "Unique lowercase name of the country (e.g. germany, japan, uk, new zealand).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "model_list": {
+   "table": {
+    "name": "model_list",
+    "purpose": "A catalog of car models, each row linking a model name to its manufacturer (car maker). Serves as the master list of models referenced by car_names."
+   },
+   "columns": {
+    "Maker": {
+     "role": "foreign_key",
+     "name": "maker_id",
+     "description": "Foreign key to car_makers.Id, identifying the manufacturer of the model (e.g. 4 = General Motors, 13 = Daimler Benz).",
+     "status": "resolved"
+    },
+    "Model": {
+     "role": "identifier",
+     "name": "model_name",
+     "description": "The model/make name of the car (e.g. 'buick', 'mercedes-benz', 'opel'). Values look like brand names rather than specific model names; referenced by car_names.Model.",
+     "status": "resolved"
+    },
+    "ModelId": {
+     "role": "identifier",
+     "name": "model_id",
+     "description": "Primary key of the table; unique numeric identifier for each model, range 1-36.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 0,
+  "columns_changed": 0
+ }
+}

@@ -1,0 +1,114 @@
+{
+ "db_id": "museum_visit",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 4,
+ "tables": {
+  "museum": {
+   "table": {
+    "name": "museum",
+    "purpose": "Lookup table of museums; one row per museum with its staff size and opening year."
+   },
+   "columns": {
+    "Museum_ID": {
+     "role": "identifier",
+     "name": "Museum ID",
+     "description": "Primary key identifying each museum; referenced by visit.Museum_ID.",
+     "status": "resolved"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Museum name",
+     "description": "Full name of the museum (e.g. 'Capital Plaza Museum').",
+     "status": "resolved"
+    },
+    "Num_of_Staff": {
+     "role": "numeric",
+     "name": "Number of staff",
+     "description": "Count of staff members employed at the museum (12–62).",
+     "status": "resolved"
+    },
+    "Open_Year": {
+     "role": "numeric",
+     "name": "Opening year",
+     "description": "Year the museum opened (2000–2012), stored as text.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "visit": {
+   "table": {
+    "name": "visit",
+    "purpose": "Fact table of museum visits: tickets bought and money spent by a visitor at a museum."
+   },
+   "columns": {
+    "Museum_ID": {
+     "role": "foreign_key",
+     "name": "Museum ID",
+     "description": "Foreign key to museum.Museum_ID identifying the visited museum.",
+     "status": "resolved"
+    },
+    "Num_of_Ticket": {
+     "role": "numeric",
+     "name": "Number of tickets",
+     "description": "Number of tickets purchased in the visit (2–24).",
+     "status": "resolved"
+    },
+    "Total_spent": {
+     "role": "numeric",
+     "name": "Total spent",
+     "description": "Total amount of money spent on the visit, in dollars (19.98–320.44).",
+     "status": "resolved"
+    },
+    "visitor_ID": {
+     "role": "foreign_key",
+     "name": "Visitor ID",
+     "description": "Foreign key to visitor.ID identifying the visitor who made the visit. (A statistical join to museum.Museum_ID also matched, but the visitor.ID join is the semantically correct one.)",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "visitor": {
+   "table": {
+    "name": "visitor",
+    "purpose": "Lookup table of visitors: each row is a person with age and membership level."
+   },
+   "columns": {
+    "Age": {
+     "role": "numeric",
+     "name": "Age",
+     "description": "Age of the visitor in years (25–56).",
+     "status": "resolved"
+    },
+    "ID": {
+     "role": "identifier",
+     "name": "Visitor ID",
+     "description": "Primary key identifying the visitor; referenced by visit.visitor_ID.",
+     "status": "resolved"
+    },
+    "Level_of_membership": {
+     "role": "numeric",
+     "name": "Level of membership",
+     "description": "Numeric membership level of the visitor (1–8), higher presumably meaning a higher tier. The statistical join to museum.Museum_ID is coincidental, not a real reference.",
+     "status": "tentative"
+    },
+    "Name": {
+     "role": "category",
+     "name": "Visitor name",
+     "description": "Full name of the visitor (e.g. 'Arjen Robben').",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

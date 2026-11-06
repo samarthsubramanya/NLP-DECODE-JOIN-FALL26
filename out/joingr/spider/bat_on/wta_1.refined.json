@@ -1,0 +1,304 @@
+{
+ "db_id": "wta_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 2,
+ "tables": {
+  "matches": {
+   "table": {
+    "name": "matches",
+    "purpose": "One row per completed singles tennis match (WTA women's tour, 2013-2017), with tournament metadata and pre-match attributes of the winner and loser (ranking, seed, age, height, hand, country)."
+   },
+   "columns": {
+    "best_of": {
+     "role": "category",
+     "name": "best_of",
+     "description": "Maximum number of sets in the match; always 3 (best-of-three) in this data.",
+     "status": "resolved"
+    },
+    "draw_size": {
+     "role": "category",
+     "name": "draw_size",
+     "description": "Number of players in the tournament's main draw (e.g. 128 for Grand Slams, 64, 32, 8, 4).",
+     "status": "resolved"
+    },
+    "loser_age": {
+     "role": "category",
+     "name": "loser_age",
+     "description": "Age of the losing player at match time, in years (fractional, computed from birth date).",
+     "status": "resolved"
+    },
+    "loser_entry": {
+     "role": "category",
+     "name": "loser_entry",
+     "description": "Entry type of the loser into the tournament (e.g. wildcard, qualifier); empty string for all rows here, i.e. direct entry.",
+     "status": "resolved"
+    },
+    "loser_hand": {
+     "role": "category",
+     "name": "loser_hand",
+     "description": "Playing hand of the loser: R = right-handed, L = left-handed.",
+     "status": "resolved"
+    },
+    "loser_ht": {
+     "role": "category",
+     "name": "loser_ht",
+     "description": "Height of the losing player, in centimeters (157-185).",
+     "status": "resolved"
+    },
+    "loser_id": {
+     "role": "category",
+     "name": "loser_id",
+     "description": "Identifier of the losing player; references players.player_id.",
+     "status": "resolved"
+    },
+    "loser_ioc": {
+     "role": "category",
+     "name": "loser_ioc",
+     "description": "IOC three-letter country code of the losing player (RUS, CZE, USA, ...).",
+     "status": "resolved"
+    },
+    "loser_name": {
+     "role": "category",
+     "name": "loser_name",
+     "description": "Full name of the losing player.",
+     "status": "resolved"
+    },
+    "loser_rank": {
+     "role": "category",
+     "name": "loser_rank",
+     "description": "World ranking of the losing player at the time of the match (1 = best).",
+     "status": "resolved"
+    },
+    "loser_rank_points": {
+     "role": "category",
+     "name": "loser_rank_points",
+     "description": "Ranking points of the losing player at the time of the match.",
+     "status": "resolved"
+    },
+    "loser_seed": {
+     "role": "category",
+     "name": "loser_seed",
+     "description": "Tournament seed of the losing player (1-32); unseeded players appear to be stored as 0/blank in the source but here values are 1-32.",
+     "status": "tentative"
+    },
+    "match_num": {
+     "role": "category",
+     "name": "match_num",
+     "description": "Match number within the tournament (ordering of matches in the draw); not unique across tournaments.",
+     "status": "resolved"
+    },
+    "minutes": {
+     "role": "category",
+     "name": "minutes",
+     "description": "Duration of the match in minutes (0-199; 0 likely a walkover/retirement default).",
+     "status": "resolved"
+    },
+    "round": {
+     "role": "category",
+     "name": "round",
+     "description": "Round of the match: F = final, SF = semifinal, QF = quarterfinal, R16/R32 = round of 16/32, RR = round robin.",
+     "status": "resolved"
+    },
+    "score": {
+     "role": "category",
+     "name": "score",
+     "description": "Match score in sets, from the winner's perspective, with tiebreak points in parentheses (e.g. '6-4 6-7(4) 6-1').",
+     "status": "resolved"
+    },
+    "surface": {
+     "role": "category",
+     "name": "surface",
+     "description": "Court surface of the tournament: Hard, Clay, or Grass.",
+     "status": "resolved"
+    },
+    "tourney_date": {
+     "role": "category",
+     "name": "tourney_date",
+     "description": "Start date of the tournament as YYYYMMDD integer (e31021-20170828).",
+     "status": "resolved"
+    },
+    "tourney_id": {
+     "role": "category",
+     "name": "tourney_id",
+     "description": "Tournament identifier, typically year plus a code (e.g. '2017-M006', '2016-540'); format varies across sources.",
+     "status": "resolved"
+    },
+    "tourney_level": {
+     "role": "category",
+     "name": "tourney_level",
+     "description": "Tournament tier code: I (Premier/International), G (Grand Slam), P (Premier), W (WTA Finals). Exact mapping of I vs P is plausible but not fully certain.",
+     "status": "tentative"
+    },
+    "tourney_name": {
+     "role": "category",
+     "name": "tourney_name",
+     "description": "Name of the tournament (Indian Wells, Us Open, Wimbledon, ...).",
+     "status": "resolved"
+    },
+    "winner_age": {
+     "role": "category",
+     "name": "winner_age",
+     "description": "Age of the winning player at match time, in years (fractional).",
+     "status": "resolved"
+    },
+    "winner_entry": {
+     "role": "category",
+     "name": "winner_entry",
+     "description": "Entry type of the winner into the tournament; empty string for all rows here, i.e. direct entry.",
+     "status": "resolved"
+    },
+    "winner_hand": {
+     "role": "category",
+     "name": "winner_hand",
+     "description": "Playing hand of the winner: R = right-handed, L = left-handed.",
+     "status": "resolved"
+    },
+    "winner_ht": {
+     "role": "category",
+     "name": "winner_ht",
+     "description": "Height of the winning player, in centimeters (159-185).",
+     "status": "resolved"
+    },
+    "winner_id": {
+     "role": "category",
+     "name": "winner_id",
+     "description": "Identifier of the winning player; references players.player_id.",
+     "status": "resolved"
+    },
+    "winner_ioc": {
+     "role": "category",
+     "name": "winner_ioc",
+     "description": "IOC three-letter country code of the winning player.",
+     "status": "resolved"
+    },
+    "winner_name": {
+     "role": "category",
+     "name": "winner_name",
+     "description": "Full name of the winning player.",
+     "status": "resolved"
+    },
+    "winner_rank": {
+     "role": "category",
+     "name": "winner_rank",
+     "description": "World ranking of the winning player at the time of the match (1 = best).",
+     "status": "resolved"
+    },
+    "winner_rank_points": {
+     "role": "category",
+     "name": "winner_rank_points",
+     "description": "Ranking points of the winning player at the time of the match.",
+     "status": "resolved"
+    },
+    "winner_seed": {
+     "role": "category",
+     "name": "winner_seed",
+     "description": "Tournament seed of the winning player (1-30).",
+     "status": "resolved"
+    },
+    "year": {
+     "role": "category",
+     "name": "year",
+     "description": "Year of the tournament (2013, 2016, 2017).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "players": {
+   "table": {
+    "name": "players",
+    "purpose": "Master list of tennis players (mostly women, WTA-style IDs) with birth date, country, name parts, and playing hand."
+   },
+   "columns": {
+    "birth_date": {
+     "role": "category",
+     "name": "birth_date",
+     "description": "Player's date of birth as YYYYMMDD (stored as text/union; empty string when unknown).",
+     "status": "resolved"
+    },
+    "country_code": {
+     "role": "category",
+     "name": "country_code",
+     "description": "Three-letter country/IOC-style code of the player's nationality (USA, ITA, ESP, ...; includes historical codes like FRG).",
+     "status": "resolved"
+    },
+    "first_name": {
+     "role": "category",
+     "name": "first_name",
+     "description": "Player's first (given) name(s); may include multiple given names.",
+     "status": "resolved"
+    },
+    "hand": {
+     "role": "category",
+     "name": "hand",
+     "description": "Playing hand: R = right, L = left, U = unknown, empty = missing.",
+     "status": "resolved"
+    },
+    "last_name": {
+     "role": "category",
+     "name": "last_name",
+     "description": "Player's last (family) name; may be compound (e.g. 'Van Renterghem', 'Delgado Valero').",
+     "status": "resolved"
+    },
+    "player_id": {
+     "role": "category",
+     "name": "player_id",
+     "description": "Unique player identifier (primary key); referenced by matches.winner_id and matches.loser_id.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "rankings": {
+   "table": {
+    "name": "rankings",
+    "purpose": "Historical world rankings snapshots for tennis players (ATP/WTA-style): each row is a player's rank, ranking points, and tournaments played as of a weekly ranking date, from 1987 to 2017."
+   },
+   "columns": {
+    "player_id": {
+     "role": "code",
+     "name": "player_id",
+     "description": "Identifier of the ranked player; references the players table (join not detected but values are player codes like 200009, 201305). Stored as text despite numeric-looking values.",
+     "status": "resolved"
+    },
+    "ranking": {
+     "role": "code",
+     "name": "ranking",
+     "description": "The player's world ranking position on the ranking date; 1 = best. Ranges 1-1507.",
+     "status": "resolved"
+    },
+    "ranking_date": {
+     "role": "code",
+     "name": "ranking_date",
+     "description": "Date of the ranking snapshot, encoded as YYYYMMDD integer (e.g. 20160307 = 2016-03-07). Spans 1987-01-19 to 2017-09-11, roughly weekly.",
+     "status": "resolved"
+    },
+    "ranking_points": {
+     "role": "code",
+     "name": "ranking_points",
+     "description": "Ranking points accumulated by the player on that date (0 to 13615). Low values dominate because most ranked players have few points.",
+     "status": "resolved"
+    },
+    "tours": {
+     "role": "code",
+     "name": "tours",
+     "description": "Number of tournaments (tour events) counted toward the player's ranking on that date; 0-41.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 1,
+  "columns_changed": 0
+ }
+}

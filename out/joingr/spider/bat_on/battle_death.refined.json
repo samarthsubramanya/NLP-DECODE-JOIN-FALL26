@@ -1,0 +1,154 @@
+{
+ "db_id": "battle_death",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "ddb",
+ "keys_run": "ddb",
+ "graph": "llm",
+ "edges": 3,
+ "tables": {
+  "battle": {
+   "table": {
+    "name": "battle",
+    "purpose": "Battles between the Bulgarian Empire and the Latin Empire (Fourth Crusade / Latin Romania era, c. 1205–1235), listing commanders on each side and the outcome. One row per battle or siege."
+   },
+   "columns": {
+    "bulgarian_commander": {
+     "role": "category",
+     "name": "bulgarian_commander",
+     "description": "Name of the commander of the Bulgarian forces in the battle; 'Unknown' when not recorded.",
+     "status": "resolved"
+    },
+    "date": {
+     "role": "category",
+     "name": "date",
+     "description": "Date of the battle, stored as free text with inconsistent precision (full day, month+year, or year only), e.g. '14 April 1205', 'June 1205', '1235'.",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the battle table; unique integer identifier for each battle.",
+     "status": "resolved"
+    },
+    "latin_commander": {
+     "role": "category",
+     "name": "latin_commander",
+     "description": "Name of the commander of the Latin (Crusader/Latin Empire) forces; 'Unknown' when not recorded.",
+     "status": "resolved"
+    },
+    "name": {
+     "role": "category",
+     "name": "name",
+     "description": "Name of the battle or siege, e.g. 'Battle of Adrianople', 'Siege of Constantinople'.",
+     "status": "resolved"
+    },
+    "result": {
+     "role": "category",
+     "name": "result",
+     "description": "Outcome of the battle: 'Bulgarian victory', 'Latin victory', or 'Two Year Truce'.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "death": {
+   "table": {
+    "name": "death",
+    "purpose": "Casualty counts (killed/injured) per incident, with a location note naming districts in central/eastern India (Chhattisgarh, Jharkhand, Bihar, Odisha). The rows most plausibly describe individual violent incidents (e.g. Naxalite/insurgency-related attacks) in India, not the medieval battles or ships elsewhere in this database. The column name 'caused_by_ship_id' and its joins to ship/battle are statistically accepted but semantically inconsistent with the Indian location notes, so its true meaning is unresolved."
+   },
+   "columns": {
+    "caused_by_ship_id": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the death table; unique integer identifier for each incident row.",
+     "status": "resolved"
+    },
+    "injured": {
+     "role": "category",
+     "name": "injured",
+     "description": "Number of people injured in the incident; 0 in 11 of 13 rows, max 9.",
+     "status": "resolved"
+    },
+    "killed": {
+     "role": "category",
+     "name": "killed",
+     "description": "Number of people killed in the incident; ranges 0–29.",
+     "status": "resolved"
+    },
+    "note": {
+     "role": "category",
+     "name": "location",
+     "description": "Location of the incident as 'district, state' in India (e.g. 'Dantewada, Chhattisgarh', 'Bokaro, Jharkhand'). The column is named 'note' but its values are consistently locations.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "ship": {
+   "table": {
+    "name": "ship",
+    "purpose": "Ships (mostly brigs, several Royal Navy) and how they were lost — captured, wrecked, scuttled or sunk — with locations in the English Channel, Mid-Atlantic and SW Approaches. One row per ship. The 'lost_in_battle' column points at battle ids, but those battles are medieval Bulgarian/Latin battles, so the reference is semantically inconsistent and its meaning is unresolved."
+   },
+   "columns": {
+    "disposition_of_ship": {
+     "role": "category",
+     "name": "disposition_of_ship",
+     "description": "How the ship was lost: 'Captured' (most common), 'Sank', 'Scuttled', or 'Wrecked'.",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the ship table; unique integer identifier for each ship.",
+     "status": "resolved"
+    },
+    "location": {
+     "role": "category",
+     "name": "location",
+     "description": "Sea area where the ship was lost: 'English Channel', 'Mid-Atlantic', or 'SW Approaches'.",
+     "status": "resolved"
+    },
+    "lost_in_battle": {
+     "role": "identifier",
+     "name": "battle_id",
+     "description": "Foreign key referencing battle.id, i.e. the battle in which the ship was lost. However, the referenced battles are medieval Bulgarian/Latin battles (c. 1205-1235), which is semantically inconsistent with these mostly 19th-century-style ships lost in the English Channel, Mid-Atlantic and SW Approaches; the join is statistically accepted but its true meaning remains unresolved.",
+     "status": "tentative"
+    },
+    "name": {
+     "role": "category",
+     "name": "name",
+     "description": "Name of the ship, e.g. 'HMS Avon', 'Lettice', 'Bacchus'.",
+     "status": "resolved"
+    },
+    "ship_type": {
+     "role": "category",
+     "name": "ship_type",
+     "description": "Rig/type of the vessel, mostly 'Brig', with gun counts in some rows ('18-gun Brig', '8 gun Brig').",
+     "status": "resolved"
+    },
+    "tonnage": {
+     "role": "category",
+     "name": "tonnage",
+     "description": "Tonnage of the ship as text; numeric where known ('225', '391') and the literal 't' (apparently a placeholder/unknown marker) in 5 of 7 rows.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ },
+ "refined": {
+  "tables_sent": 2,
+  "columns_changed": 1
+ }
+}
