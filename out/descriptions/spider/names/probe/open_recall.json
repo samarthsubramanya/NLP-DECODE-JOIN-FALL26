@@ -1,0 +1,1418 @@
+{
+ "battle_death": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "caused_by_ship_id",
+     "from_table": "death",
+     "to_column": "id",
+     "to_table": "ship"
+    },
+    {
+     "from_column": "lost_in_battle",
+     "from_table": "ship",
+     "to_column": "id",
+     "to_table": "battle"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  }
+ },
+ "car_1": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "Country",
+     "from_table": "car_makers",
+     "to_column": "CountryId",
+     "to_table": "countries"
+    },
+    {
+     "from_column": "MakeId",
+     "from_table": "car_names",
+     "to_column": "ModelId",
+     "to_table": "model_list"
+    },
+    {
+     "from_column": "Id",
+     "from_table": "cars_data",
+     "to_column": "MakeId",
+     "to_table": "car_names"
+    },
+    {
+     "from_column": "Continent",
+     "from_table": "countries",
+     "to_column": "ContId",
+     "to_table": "continents"
+    },
+    {
+     "from_column": "Maker",
+     "from_table": "model_list",
+     "to_column": "Id",
+     "to_table": "car_makers"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 5,
+     "predicted": 5,
+     "gold": 5,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 4,
+     "predicted": 5,
+     "gold": 5,
+     "precision": 0.8,
+     "recall": 0.8,
+     "f1": 0.8
+    },
+    "invalid": 0,
+    "table_pairs": 21
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 5,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 5,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 21
+   }
+  }
+ },
+ "concert_singer": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "Stadium_ID",
+     "from_table": "concert",
+     "to_column": "Stadium_ID",
+     "to_table": "stadium"
+    },
+    {
+     "from_column": "Singer_ID",
+     "from_table": "singer_in_concert",
+     "to_column": "Singer_ID",
+     "to_table": "singer"
+    },
+    {
+     "from_column": "concert_ID",
+     "from_table": "singer_in_concert",
+     "to_column": "concert_ID",
+     "to_table": "concert"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 3,
+     "predicted": 3,
+     "gold": 3,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 3,
+     "predicted": 3,
+     "gold": 3,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 10
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 3,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 3,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 10
+   }
+  }
+ },
+ "course_teach": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "Course_ID",
+     "from_table": "course_arrange",
+     "to_column": "Course_ID",
+     "to_table": "course"
+    },
+    {
+     "from_column": "Teacher_ID",
+     "from_table": "course_arrange",
+     "to_column": "Teacher_ID",
+     "to_table": "teacher"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  }
+ },
+ "cre_Doc_Template_Mgt": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "Template_ID",
+     "from_table": "Documents",
+     "to_column": "Template_ID",
+     "to_table": "Templates"
+    },
+    {
+     "from_column": "Document_ID",
+     "from_table": "Paragraphs",
+     "to_column": "Document_ID",
+     "to_table": "Documents"
+    },
+    {
+     "from_column": "Template_Type_Code",
+     "from_table": "Templates",
+     "to_column": "Template_Type_Code",
+     "to_table": "Ref_Template_Types"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 3,
+     "predicted": 3,
+     "gold": 3,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 3,
+     "predicted": 3,
+     "gold": 3,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 10
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 3,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 3,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 10
+   }
+  }
+ },
+ "dog_kennels": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "breed_code",
+     "from_table": "Dogs",
+     "to_column": "breed_code",
+     "to_table": "Breeds"
+    },
+    {
+     "from_column": "owner_id",
+     "from_table": "Dogs",
+     "to_column": "owner_id",
+     "to_table": "Owners"
+    },
+    {
+     "from_column": "size_code",
+     "from_table": "Dogs",
+     "to_column": "size_code",
+     "to_table": "Sizes"
+    },
+    {
+     "from_column": "dog_id",
+     "from_table": "Treatments",
+     "to_column": "dog_id",
+     "to_table": "Dogs"
+    },
+    {
+     "from_column": "professional_id",
+     "from_table": "Treatments",
+     "to_column": "professional_id",
+     "to_table": "Professionals"
+    },
+    {
+     "from_column": "treatment_type_code",
+     "from_table": "Treatments",
+     "to_column": "treatment_type_code",
+     "to_table": "Treatment_Types"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 6,
+     "predicted": 6,
+     "gold": 6,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 6,
+     "predicted": 6,
+     "gold": 6,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 36
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 6,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 6,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 36
+   }
+  }
+ },
+ "employee_hire_evaluation": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "Employee_ID",
+     "from_table": "evaluation",
+     "to_column": "Employee_ID",
+     "to_table": "employee"
+    },
+    {
+     "from_column": "Employee_ID",
+     "from_table": "hiring",
+     "to_column": "Employee_ID",
+     "to_table": "employee"
+    },
+    {
+     "from_column": "Shop_ID",
+     "from_table": "hiring",
+     "to_column": "Shop_ID",
+     "to_table": "shop"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 3,
+     "predicted": 3,
+     "gold": 3,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 3,
+     "predicted": 3,
+     "gold": 3,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 10
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 3,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 3,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 10
+   }
+  }
+ },
+ "flight_2": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "Airline",
+     "from_table": "flights",
+     "to_column": "Abbreviation",
+     "to_table": "airlines"
+    },
+    {
+     "from_column": "SourceAirport",
+     "from_table": "flights",
+     "to_column": "AirportCode",
+     "to_table": "airports"
+    },
+    {
+     "from_column": "DestAirport",
+     "from_table": "flights",
+     "to_column": "AirportCode",
+     "to_table": "airports"
+    },
+    {
+     "from_column": "CountryAbbrev",
+     "from_table": "airports",
+     "to_column": "Abbreviation",
+     "to_table": "airlines"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 1,
+     "predicted": 3,
+     "gold": 1,
+     "precision": 0.3333,
+     "recall": 1.0,
+     "f1": 0.5
+    },
+    "columns": {
+     "tp": 2,
+     "predicted": 4,
+     "gold": 2,
+     "precision": 0.5,
+     "recall": 1.0,
+     "f1": 0.6667
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 1,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  }
+ },
+ "museum_visit": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "Museum_ID",
+     "from_table": "visit",
+     "to_column": "Museum_ID",
+     "to_table": "museum"
+    },
+    {
+     "from_column": "visitor_ID",
+     "from_table": "visit",
+     "to_column": "ID",
+     "to_table": "visitor"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  }
+ },
+ "network_1": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "student_id",
+     "from_table": "Friend",
+     "to_column": "ID",
+     "to_table": "Highschooler"
+    },
+    {
+     "from_column": "friend_id",
+     "from_table": "Friend",
+     "to_column": "ID",
+     "to_table": "Highschooler"
+    },
+    {
+     "from_column": "student_id",
+     "from_table": "Likes",
+     "to_column": "ID",
+     "to_table": "Highschooler"
+    },
+    {
+     "from_column": "liked_id",
+     "from_table": "Likes",
+     "to_column": "ID",
+     "to_table": "Highschooler"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 4,
+     "predicted": 4,
+     "gold": 4,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 4,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  }
+ },
+ "orchestra": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "Conductor_ID",
+     "from_table": "orchestra",
+     "to_column": "Conductor_ID",
+     "to_table": "conductor"
+    },
+    {
+     "from_column": "Orchestra_ID",
+     "from_table": "performance",
+     "to_column": "Orchestra_ID",
+     "to_table": "orchestra"
+    },
+    {
+     "from_column": "Performance_ID",
+     "from_table": "show",
+     "to_column": "Performance_ID",
+     "to_table": "performance"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 3,
+     "predicted": 3,
+     "gold": 3,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 3,
+     "predicted": 3,
+     "gold": 3,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 10
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 3,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 3,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 10
+   }
+  }
+ },
+ "pets_1": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "PetID",
+     "from_table": "Has_Pet",
+     "to_column": "PetID",
+     "to_table": "Pets"
+    },
+    {
+     "from_column": "StuID",
+     "from_table": "Has_Pet",
+     "to_column": "StuID",
+     "to_table": "Student"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  }
+ },
+ "poker_player": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "People_ID",
+     "from_table": "poker_player",
+     "to_column": "People_ID",
+     "to_table": "people"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 3
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 1,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 1,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 3
+   }
+  }
+ },
+ "real_estate_properties": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "feature_id",
+     "from_table": "Other_Property_Features",
+     "to_column": "feature_id",
+     "to_table": "Other_Available_Features"
+    },
+    {
+     "from_column": "property_id",
+     "from_table": "Other_Property_Features",
+     "to_column": "property_id",
+     "to_table": "Properties"
+    },
+    {
+     "from_column": "feature_type_code",
+     "from_table": "Other_Available_Features",
+     "to_column": "feature_type_code",
+     "to_table": "Ref_Feature_Types"
+    },
+    {
+     "from_column": "property_type_code",
+     "from_table": "Properties",
+     "to_column": "property_type_code",
+     "to_table": "Ref_Property_Types"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 4,
+     "predicted": 4,
+     "gold": 4,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 4,
+     "predicted": 4,
+     "gold": 4,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 15
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 4,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 4,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 15
+   }
+  }
+ },
+ "singer": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "Singer_ID",
+     "from_table": "song",
+     "to_column": "Singer_ID",
+     "to_table": "singer"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 1,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 3
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 1,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 1,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 3
+   }
+  }
+ },
+ "student_transcripts_tracking": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "department_id",
+     "from_table": "Degree_Programs",
+     "to_column": "department_id",
+     "to_table": "Departments"
+    },
+    {
+     "from_column": "course_id",
+     "from_table": "Sections",
+     "to_column": "course_id",
+     "to_table": "Courses"
+    },
+    {
+     "from_column": "degree_program_id",
+     "from_table": "Student_Enrolment",
+     "to_column": "degree_program_id",
+     "to_table": "Degree_Programs"
+    },
+    {
+     "from_column": "semester_id",
+     "from_table": "Student_Enrolment",
+     "to_column": "semester_id",
+     "to_table": "Semesters"
+    },
+    {
+     "from_column": "student_id",
+     "from_table": "Student_Enrolment",
+     "to_column": "student_id",
+     "to_table": "Students"
+    },
+    {
+     "from_column": "course_id",
+     "from_table": "Student_Enrolment_Courses",
+     "to_column": "course_id",
+     "to_table": "Courses"
+    },
+    {
+     "from_column": "student_enrolment_id",
+     "from_table": "Student_Enrolment_Courses",
+     "to_column": "student_enrolment_id",
+     "to_table": "Student_Enrolment"
+    },
+    {
+     "from_column": "current_address_id",
+     "from_table": "Students",
+     "to_column": "address_id",
+     "to_table": "Addresses"
+    },
+    {
+     "from_column": "permanent_address_id",
+     "from_table": "Students",
+     "to_column": "address_id",
+     "to_table": "Addresses"
+    },
+    {
+     "from_column": "student_course_id",
+     "from_table": "Transcript_Contents",
+     "to_column": "student_course_id",
+     "to_table": "Student_Enrolment_Courses"
+    },
+    {
+     "from_column": "transcript_id",
+     "from_table": "Transcript_Contents",
+     "to_column": "transcript_id",
+     "to_table": "Transcripts"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 10,
+     "predicted": 10,
+     "gold": 10,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 11,
+     "predicted": 11,
+     "gold": 11,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 66
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 10,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 11,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 66
+   }
+  }
+ },
+ "tvshow": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "Channel",
+     "from_table": "Cartoon",
+     "to_column": "series_name",
+     "to_table": "TV_Channel"
+    },
+    {
+     "from_column": "Channel",
+     "from_table": "TV_series",
+     "to_column": "series_name",
+     "to_table": "TV_Channel"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  }
+ },
+ "voter_1": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "contestant_number",
+     "from_table": "VOTES",
+     "to_column": "contestant_number",
+     "to_table": "CONTESTANTS"
+    },
+    {
+     "from_column": "state",
+     "from_table": "VOTES",
+     "to_column": "state",
+     "to_table": "AREA_CODE_STATE"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  }
+ },
+ "world_1": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "CountryCode",
+     "from_table": "city",
+     "to_column": "Code",
+     "to_table": "country"
+    },
+    {
+     "from_column": "Capital",
+     "from_table": "country",
+     "to_column": "ID",
+     "to_table": "city"
+    },
+    {
+     "from_column": "CountryCode",
+     "from_table": "countrylanguage",
+     "to_column": "Code",
+     "to_table": "country"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 2,
+     "predicted": 3,
+     "gold": 2,
+     "precision": 0.6667,
+     "recall": 1.0,
+     "f1": 0.8
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  }
+ },
+ "wta_1": {
+  "probe": {
+   "reply": [
+    {
+     "from_column": "winner_id",
+     "from_table": "matches",
+     "to_column": "player_id",
+     "to_table": "players"
+    },
+    {
+     "from_column": "loser_id",
+     "from_table": "matches",
+     "to_column": "player_id",
+     "to_table": "players"
+    },
+    {
+     "from_column": "player_id",
+     "from_table": "rankings",
+     "to_column": "player_id",
+     "to_table": "players"
+    }
+   ],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 2,
+     "predicted": 2,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "columns": {
+     "tp": 3,
+     "predicted": 3,
+     "gold": 3,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  },
+  "control": {
+   "reply": [],
+   "ok": true,
+   "score": {
+    "tables": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 2,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "columns": {
+     "tp": 0,
+     "predicted": 0,
+     "gold": 3,
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0
+    },
+    "invalid": 0,
+    "table_pairs": 6
+   }
+  }
+ }
+}

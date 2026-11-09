@@ -1,0 +1,194 @@
+{
+ "accept": 70,
+ "db_id": "toxicology",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "atom": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 100.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 80.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "referenced_by": [
+       "connected.col_001",
+       "connected.col_002"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "col_002": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.03600097299927025
+     },
+     "phi": 0.85,
+     "score": 20.188
+    },
+    "col_003": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0017027487229384578
+     },
+     "phi": 0.7,
+     "score": 7.875
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "bond": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 100.0
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 80.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "referenced_by": [
+       "connected.col_003"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 100.0
+    },
+    "col_002": {
+     "base": 23.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0358671944422005
+     },
+     "phi": 0.85,
+     "score": 20.188
+    },
+    "col_003": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  },
+  "connected": {
+   "candidate_keys": [],
+   "columns": {
+    "col_001": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.4961628564504403
+     },
+     "phi": 1.0,
+     "score": 17.5
+    },
+    "col_002": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.4961628564504403
+     },
+     "phi": 0.85,
+     "score": 14.875
+    },
+    "col_003": {
+     "base": 17.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.5
+     },
+     "phi": 0.7,
+     "score": 12.25
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "molecule": {
+   "candidate_keys": [
+    {
+     "column": "col_001",
+     "score": 86.25
+    }
+   ],
+   "columns": {
+    "col_001": {
+     "base": 86.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 86.25
+    },
+    "col_002": {
+     "rejected": "mostly empty or zero"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "col_001"
+  }
+ },
+ "use_names": false
+}

@@ -1,0 +1,461 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.6666666666666666,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5833,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 79.6875,
+   "score_before_fan_out": 93.75,
+   "source": {
+    "column": "Shop_ID",
+    "table": "hiring"
+   },
+   "target": {
+    "column": "Shop_ID",
+    "table": "shop"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.7,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 78.625,
+   "score_before_fan_out": 92.5,
+   "source": {
+    "column": "Employee_ID",
+    "table": "hiring"
+   },
+   "target": {
+    "column": "Employee_ID",
+    "table": "employee"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.5,
+   "decision": "accepted",
+   "fan_out": 0.75,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.6,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 70.5,
+   "score_before_fan_out": 94.0,
+   "source": {
+    "column": "Employee_ID",
+    "table": "evaluation"
+   },
+   "target": {
+    "column": "Employee_ID",
+    "table": "employee"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.6,
+   "decision": "band",
+   "fan_out": 0.85,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5833,
+    "name": 0.3,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 67.7875,
+   "score_before_fan_out": 79.75,
+   "source": {
+    "column": "Shop_ID",
+    "table": "hiring"
+   },
+   "target": {
+    "column": "Employee_ID",
+    "table": "employee"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.7777777777777778,
+   "decision": "band",
+   "fan_out": 0.85,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.5,
+    "name": 0.3,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 66.725,
+   "score_before_fan_out": 78.5,
+   "source": {
+    "column": "Employee_ID",
+    "table": "hiring"
+   },
+   "target": {
+    "column": "Shop_ID",
+    "table": "shop"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8,
+   "coverage": 0.4444444444444444,
+   "decision": "rejected_score",
+   "fan_out": 0.75,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.6,
+    "name": 0.3,
+    "nulls": 1.0,
+    "overlap": 0.8,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 54.0,
+   "score_before_fan_out": 72.0,
+   "source": {
+    "column": "Employee_ID",
+    "table": "evaluation"
+   },
+   "target": {
+    "column": "Shop_ID",
+    "table": "shop"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8,
+   "coverage": 0.5714285714285714,
+   "decision": "rejected_score",
+   "fan_out": 0.75,
+   "name_via": "column",
+   "parts": {
+    "cardinality": 0.6,
+    "name": 1.0,
+    "nulls": 1.0,
+    "overlap": 0.8,
+    "target_key": 0.0
+   },
+   "penalties": {},
+   "score": 53.25,
+   "score_before_fan_out": 71.0,
+   "source": {
+    "column": "Employee_ID",
+    "table": "evaluation"
+   },
+   "target": {
+    "column": "Employee_ID",
+    "table": "hiring"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 34.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.7,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "Employee_ID",
+    "table": "employee"
+   },
+   "target": {
+    "column": "Employee_ID",
+    "table": "hiring"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 34.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.9,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "Employee_ID",
+    "table": "employee"
+   },
+   "target": {
+    "column": "Shop_ID",
+    "table": "shop"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8333333333333334,
+   "coverage": 0.7142857142857143,
+   "decision": "rejected_gate",
+   "reason": "same table",
+   "source": {
+    "column": "Shop_ID",
+    "table": "hiring"
+   },
+   "target": {
+    "column": "Employee_ID",
+    "table": "hiring"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 34.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.9,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "Shop_ID",
+    "table": "shop"
+   },
+   "target": {
+    "column": "Employee_ID",
+    "table": "employee"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 140.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.7777777777777778,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's dense primary key",
+   "source": {
+    "column": "Shop_ID",
+    "table": "shop"
+   },
+   "target": {
+    "column": "Employee_ID",
+    "table": "hiring"
+   },
+   "target_is_pk": false,
+   "target_pk_score": 34.0
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "frozen",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "pk_source_max_density": null,
+  "r_cap": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 3,
+  "band": 2,
+  "rejected_gate": 5,
+  "rejected_score": 2
+ },
+ "db_id": "employee_hire_evaluation",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.6666666666666666,
+    "decision": "accepted",
+    "score": 79.6875,
+    "source": {
+     "column": "Shop_ID",
+     "table": "hiring"
+    },
+    "target": {
+     "column": "Shop_ID",
+     "table": "shop"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.7,
+    "decision": "accepted",
+    "score": 78.625,
+    "source": {
+     "column": "Employee_ID",
+     "table": "hiring"
+    },
+    "target": {
+     "column": "Employee_ID",
+     "table": "employee"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5,
+    "decision": "accepted",
+    "score": 70.5,
+    "source": {
+     "column": "Employee_ID",
+     "table": "evaluation"
+    },
+    "target": {
+     "column": "Employee_ID",
+     "table": "employee"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.6666666666666666,
+    "decision": "accepted",
+    "score": 79.6875,
+    "source": {
+     "column": "Shop_ID",
+     "table": "hiring"
+    },
+    "target": {
+     "column": "Shop_ID",
+     "table": "shop"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.7,
+    "decision": "accepted",
+    "score": 78.625,
+    "source": {
+     "column": "Employee_ID",
+     "table": "hiring"
+    },
+    "target": {
+     "column": "Employee_ID",
+     "table": "employee"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.5,
+    "decision": "accepted",
+    "score": 70.5,
+    "source": {
+     "column": "Employee_ID",
+     "table": "evaluation"
+    },
+    "target": {
+     "column": "Employee_ID",
+     "table": "employee"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.6,
+    "decision": "band",
+    "score": 67.7875,
+    "source": {
+     "column": "Shop_ID",
+     "table": "hiring"
+    },
+    "target": {
+     "column": "Employee_ID",
+     "table": "employee"
+    }
+   },
+   {
+    "cardinality": "one_to_one",
+    "containment": 1.0,
+    "coverage": 0.7777777777777778,
+    "decision": "band",
+    "score": 66.725,
+    "source": {
+     "column": "Employee_ID",
+     "table": "hiring"
+    },
+    "target": {
+     "column": "Shop_ID",
+     "table": "shop"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.1429,
+ "keys_run": "frozen",
+ "use_names": true,
+ "weights": {
+  "cardinality": 15,
+  "name": 20,
+  "nulls": 10,
+  "overlap": 40,
+  "target_key": 15
+ }
+}

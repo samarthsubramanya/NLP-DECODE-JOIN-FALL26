@@ -1,0 +1,363 @@
+{
+ "label": "adj_grouped_low_rep1",
+ "primary_keys": {
+  "tp": 64,
+  "predicted": 64,
+  "gold": 66,
+  "precision": 1.0,
+  "recall": 0.9697,
+  "f1": 0.9846
+ },
+ "joins": {
+  "direct": {
+   "tp": 82,
+   "predicted": 145,
+   "gold": 104,
+   "precision": 0.5655,
+   "recall": 0.7885,
+   "f1": 0.6586
+  },
+  "stats": {
+   "tp": 98,
+   "predicted": 604,
+   "gold": 104,
+   "precision": 0.1623,
+   "recall": 0.9423,
+   "f1": 0.2768
+  },
+  "llm": {
+   "tp": 98,
+   "predicted": 162,
+   "gold": 104,
+   "precision": 0.6049,
+   "recall": 0.9423,
+   "f1": 0.7368
+  }
+ },
+ "band_verdicts": {
+  "llm_accept|not_gold": 1,
+  "llm_accept|gold": 16,
+  "llm_reject|not_gold": 442
+ },
+ "per_db": {
+  "california_schools": {
+   "joins": {
+    "direct": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    },
+    "stats": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    },
+    "llm": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    }
+   },
+   "gold_fks": 2
+  },
+  "card_games": {
+   "joins": {
+    "direct": {
+     "tp": 4,
+     "predicted": 14,
+     "gold": 4,
+     "precision": 0.2857,
+     "recall": 1.0,
+     "f1": 0.4444
+    },
+    "stats": {
+     "tp": 4,
+     "predicted": 44,
+     "gold": 4,
+     "precision": 0.0909,
+     "recall": 1.0,
+     "f1": 0.1667
+    },
+    "llm": {
+     "tp": 4,
+     "predicted": 14,
+     "gold": 4,
+     "precision": 0.2857,
+     "recall": 1.0,
+     "f1": 0.4444
+    }
+   },
+   "gold_fks": 4
+  },
+  "codebase_community": {
+   "joins": {
+    "direct": {
+     "tp": 8,
+     "predicted": 21,
+     "gold": 13,
+     "precision": 0.381,
+     "recall": 0.6154,
+     "f1": 0.4706
+    },
+    "stats": {
+     "tp": 12,
+     "predicted": 70,
+     "gold": 13,
+     "precision": 0.1714,
+     "recall": 0.9231,
+     "f1": 0.2892
+    },
+    "llm": {
+     "tp": 12,
+     "predicted": 26,
+     "gold": 13,
+     "precision": 0.4615,
+     "recall": 0.9231,
+     "f1": 0.6154
+    }
+   },
+   "gold_fks": 13
+  },
+  "debit_card_specializing": {
+   "joins": {
+    "direct": {
+     "tp": 1,
+     "predicted": 7,
+     "gold": 1,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "f1": 0.25
+    },
+    "stats": {
+     "tp": 1,
+     "predicted": 7,
+     "gold": 1,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "f1": 0.25
+    },
+    "llm": {
+     "tp": 1,
+     "predicted": 7,
+     "gold": 1,
+     "precision": 0.1429,
+     "recall": 1.0,
+     "f1": 0.25
+    }
+   },
+   "gold_fks": 1
+  },
+  "european_football_2": {
+   "joins": {
+    "direct": {
+     "tp": 20,
+     "predicted": 38,
+     "gold": 31,
+     "precision": 0.5263,
+     "recall": 0.6452,
+     "f1": 0.5797
+    },
+    "stats": {
+     "tp": 29,
+     "predicted": 308,
+     "gold": 31,
+     "precision": 0.0942,
+     "recall": 0.9355,
+     "f1": 0.1711
+    },
+    "llm": {
+     "tp": 29,
+     "predicted": 47,
+     "gold": 31,
+     "precision": 0.617,
+     "recall": 0.9355,
+     "f1": 0.7436
+    }
+   },
+   "gold_fks": 31
+  },
+  "financial": {
+   "joins": {
+    "direct": {
+     "tp": 7,
+     "predicted": 7,
+     "gold": 8,
+     "precision": 1.0,
+     "recall": 0.875,
+     "f1": 0.9333
+    },
+    "stats": {
+     "tp": 8,
+     "predicted": 23,
+     "gold": 8,
+     "precision": 0.3478,
+     "recall": 1.0,
+     "f1": 0.5161
+    },
+    "llm": {
+     "tp": 8,
+     "predicted": 8,
+     "gold": 8,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "gold_fks": 8
+  },
+  "formula_1": {
+   "joins": {
+    "direct": {
+     "tp": 18,
+     "predicted": 18,
+     "gold": 19,
+     "precision": 1.0,
+     "recall": 0.9474,
+     "f1": 0.973
+    },
+    "stats": {
+     "tp": 18,
+     "predicted": 108,
+     "gold": 19,
+     "precision": 0.1667,
+     "recall": 0.9474,
+     "f1": 0.2835
+    },
+    "llm": {
+     "tp": 18,
+     "predicted": 18,
+     "gold": 19,
+     "precision": 1.0,
+     "recall": 0.9474,
+     "f1": 0.973
+    }
+   },
+   "gold_fks": 19
+  },
+  "student_club": {
+   "joins": {
+    "direct": {
+     "tp": 8,
+     "predicted": 8,
+     "gold": 8,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "stats": {
+     "tp": 8,
+     "predicted": 8,
+     "gold": 8,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "llm": {
+     "tp": 8,
+     "predicted": 8,
+     "gold": 8,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "gold_fks": 8
+  },
+  "superhero": {
+   "joins": {
+    "direct": {
+     "tp": 11,
+     "predicted": 27,
+     "gold": 11,
+     "precision": 0.4074,
+     "recall": 1.0,
+     "f1": 0.5789
+    },
+    "stats": {
+     "tp": 11,
+     "predicted": 29,
+     "gold": 11,
+     "precision": 0.3793,
+     "recall": 1.0,
+     "f1": 0.55
+    },
+    "llm": {
+     "tp": 11,
+     "predicted": 27,
+     "gold": 11,
+     "precision": 0.4074,
+     "recall": 1.0,
+     "f1": 0.5789
+    }
+   },
+   "gold_fks": 11
+  },
+  "thrombosis_prediction": {
+   "joins": {
+    "direct": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    },
+    "stats": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    },
+    "llm": {
+     "tp": 1,
+     "predicted": 1,
+     "gold": 2,
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6667
+    }
+   },
+   "gold_fks": 2
+  },
+  "toxicology": {
+   "joins": {
+    "direct": {
+     "tp": 3,
+     "predicted": 3,
+     "gold": 5,
+     "precision": 1.0,
+     "recall": 0.6,
+     "f1": 0.75
+    },
+    "stats": {
+     "tp": 5,
+     "predicted": 5,
+     "gold": 5,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "llm": {
+     "tp": 5,
+     "predicted": 5,
+     "gold": 5,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    }
+   },
+   "gold_fks": 5
+  }
+ }
+}

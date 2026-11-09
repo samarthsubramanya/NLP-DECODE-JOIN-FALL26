@@ -1,0 +1,188 @@
+{
+ "db_id": "debit_card_specializing",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 7,
+ "tables": {
+  "customers": {
+   "table": {
+    "name": "",
+    "purpose": "t01 is an entity table (32,461 rows) keyed by a surrogate integer ID (col_001). Each row carries two low-cardinality categorical codes (col_002 with 3 values, col_003 with 2 values). The table is referenced by t05 and t04, suggesting it is a parent/lookup entity. The specific domain cannot be determined from the evidence: the code values (YDB/MGD/ZGD, XHZ/BTC) are opaque and no other table names or value semantics are available. The table's meaning is unresolved beyond 'categorized entities'."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key; unique surrogate integer identifier for each row (range 3–53314, no nulls). Referenced by t05.col_001 and t04.col_004.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "gasstations": {
+   "table": {
+    "name": "",
+    "purpose": "t02 is a child/detail table (5,716 rows) whose rows each reference a parent entity in t03 (also joinable to t04). Each row carries an ID, a foreign key to a parent, and two coded classification fields. The exact business domain cannot be determined from the data: all text values are opaque codes with no readable labels, and no lookup tables with key->label pairs are available. The table's meaning is therefore only partially resolved: it is clearly a many-to-one detail/transaction table keyed by col_001, but what it documents is unknown."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "row_id",
+     "description": "Primary key of t02. Unique integer identifier for each row (range 44-5772, no gaps pattern discernible). Referenced by t04.col_006, meaning rows of t04 point back to rows of this table, so t02 is itself a parent of t04.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "parent_id",
+     "description": "Foreign key referencing t03.col_001 (and equivalently t04.col_001), many-to-one. 233 distinct parent values, heavily skewed (value 3 used by 1,462 rows). Identifies which parent entity in t03 each row belongs to. What the parent entities are is unknown.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "products": {
+   "table": {
+    "name": "products",
+    "purpose": "A lookup/entity table of 591 rows, each with a unique numeric id and a text label. It is referenced by t02 and t04, so it acts as a master list of named items (e.g. works, titles, or entities) that other tables point to. The exact domain cannot be determined because the text values appear to be obfuscated/scrambled strings rather than readable names, and no other table context is given. The table itself is therefore only tentatively identified as a name/title reference table."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the table. A unique integer from 1 to 630 with no nulls, one row per value (591 distinct over 591 rows). It is referenced by t02.col_002, t04.col_007 and t04.col_008, so it identifies each row of this table for other tables to point at. The gaps in the 1-630 range suggest some rows were deleted or the sequence is sparse.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "",
+     "description": "A free-text label/name attached to each row. It is nearly unique (529 distinct in 591 rows), non-null, and the repeated values (e.g. 'Wypgpij hqwhj' appearing 4 times) look like short generic phrases rather than unique identifiers. The values contain accented characters, abbreviations, parenthetical qualifiers like '(nbccsxgi)' and '(wubcgpjwigm cbptci)', and formatting markers like '**...**', which is consistent with titles or display names (e.g. of works, documents, or organizations) with disambiguating qualifiers. However, the strings appear to be encoded/anonymized (they are not readable words in any obvious language), so the precise meaning — whether these are film titles, book titles, article headlines, or something else — cannot be confirmed from the data. Alternative reading: a name field for arbitrary entities (people, organizations) rather than works.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "transactions_1k": {
+   "table": {
+    "name": "",
+    "purpose": "Each row is a transaction/event record (1000 rows, surrogate integer key, a date, a timestamp-like text field, several foreign keys to t01, t02, t03, and a monetary-looking amount). The exact business domain cannot be determined from the data; names are opaque and no lookup labels are provided."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Surrogate primary key; sequential integers 1-1000, one per row. Referenced by t02.col_002.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "date",
+     "description": "Date of the record, stored as text in ISO format. Only 4 distinct dates (2068-08-23 to 2068-08-26), so the table covers a 4-day window. The year 2068 is likely a shifted/anonymized or mis-parsed date.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "category",
+     "name": "amount",
+     "description": "Monetary-looking amount (2 decimal places, range 1.76 to 5762.49, median ~354). Plausibly a transaction value or price; the currency and exact semantics are unknown, so only the 'numeric amount' reading is supported.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "yearmonth": {
+   "table": {
+    "name": "yearmonth",
+    "purpose": "Monthly monetary records per entity (account/customer) identified by col_001, one row per entity per month, with a monetary amount that can be negative (suggesting balances, net amounts, or adjustments). The entity key references t01, so t05 is a fact/detail table keyed on (entity, month)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "entity_id",
+     "description": "Identifier of the entity (e.g., account or customer) this monthly record belongs to. Many-to-one reference to t01.col_001; each id appears ~12-13 times, consistent with one row per month per entity.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "period_ym",
+     "description": "Year-month period in YYYYMM format (values 201112 through 201311), stored as a string. Marks the month of the record.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "amount",
+     "description": "Monetary amount for the entity in that month. Highly variable, mostly positive (median ~1766) but with negative values down to -582092.86, suggesting a balance, net cash flow, or transaction total that can be negative (debits/overdrafts). Exact business meaning (balance vs. monthly total) is unresolved.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

@@ -1,0 +1,390 @@
+{
+ "accept": 70,
+ "db_id": "tvshow",
+ "tables": {
+  "Cartoon": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 86.875
+    }
+   ],
+   "columns": {
+    "Channel": {
+     "base": 56.736,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.5277777777777778,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.75
+     },
+     "phi": 0.55,
+     "score": 31.205
+    },
+    "Directed_by": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.25
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "Original_air_date": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 40.562
+    },
+    "Production_code": {
+     "base": 86.875,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 47.781
+    },
+    "Title": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    },
+    "Written_by": {
+     "base": 33.241,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.3518518518518518,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.55,
+     "score": 18.282
+    },
+    "id": {
+     "base": 86.875,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 86.875
+    }
+   },
+   "primary_key": "id"
+  },
+  "TV_Channel": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 86.25
+    }
+   ],
+   "columns": {
+    "Content": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.06666666666666667
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "Country": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.2
+     },
+     "phi": 0.7,
+     "score": 7.875
+    },
+    "Hight_definition_TV": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.13333333333333333
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "Language": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.13333333333333333
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "Package_Option": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.26666666666666666
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "Pay_per_view_PPV": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.06666666666666667
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "Pixel_aspect_ratio_PAR": {
+     "base": 11.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 6.188
+    },
+    "id": {
+     "base": 86.25,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 86.25
+    },
+    "series_name": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    }
+   },
+   "primary_key": "id"
+  },
+  "TV_series": {
+   "candidate_keys": [
+    {
+     "column": "id",
+     "score": 86.875
+    }
+   ],
+   "columns": {
+    "18_49_Rating_Share": {
+     "base": 50.486,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.5277777777777778,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.75
+     },
+     "phi": 0.55,
+     "score": 27.767
+    },
+    "Air_Date": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 51.625
+    },
+    "Channel": {
+     "base": 56.736,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.5277777777777778,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.75
+     },
+     "phi": 0.55,
+     "score": 31.205
+    },
+    "Episode": {
+     "base": 73.75,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 62.688
+    },
+    "Rating": {
+     "base": 73.981,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7037037037037038,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.8333333333333334
+     },
+     "phi": 0.55,
+     "score": 40.69
+    },
+    "Share": {
+     "base": 18.125,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.3333333333333333
+     },
+     "phi": 0.55,
+     "score": 9.969
+    },
+    "Viewers_m": {
+     "base": 92.5,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 50.875
+    },
+    "Weekly_Rank": {
+     "base": 80.625,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 44.344
+    },
+    "id": {
+     "base": 86.875,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 86.875
+    }
+   },
+   "primary_key": "id"
+  }
+ },
+ "use_names": false
+}

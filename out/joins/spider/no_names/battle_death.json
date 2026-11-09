@@ -1,0 +1,467 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.75,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 85.0,
+   "score_before_fan_out": 100.0,
+   "source": {
+    "column": "caused_by_ship_id",
+    "table": "death"
+   },
+   "target": {
+    "column": "id",
+    "table": "battle"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.8571428571428571,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 1.0,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 85.0,
+   "score_before_fan_out": 100.0,
+   "source": {
+    "column": "caused_by_ship_id",
+    "table": "death"
+   },
+   "target": {
+    "column": "id",
+    "table": "ship"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 85.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.625,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 0.7,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 81.175,
+   "score_before_fan_out": 95.5,
+   "source": {
+    "column": "lost_in_battle",
+    "table": "ship"
+   },
+   "target": {
+    "column": "id",
+    "table": "battle"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.38461538461538464,
+   "decision": "accepted",
+   "fan_out": 0.85,
+   "parts": {
+    "cardinality": 0.7,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 81.175,
+   "score_before_fan_out": 95.5,
+   "source": {
+    "column": "lost_in_battle",
+    "table": "ship"
+   },
+   "target": {
+    "column": "id",
+    "table": "death"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 85.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.6153846153846154,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's primary key",
+   "source": {
+    "column": "id",
+    "table": "battle"
+   },
+   "target": {
+    "column": "id",
+    "table": "death"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 85.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.875,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's primary key",
+   "source": {
+    "column": "id",
+    "table": "battle"
+   },
+   "target": {
+    "column": "id",
+    "table": "ship"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 85.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 0.46153846153846156,
+   "decision": "rejected_gate",
+   "reason": "same table",
+   "source": {
+    "column": "caused_by_ship_id",
+    "table": "death"
+   },
+   "target": {
+    "column": "id",
+    "table": "death"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 85.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.6153846153846154,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's primary key",
+   "source": {
+    "column": "id",
+    "table": "death"
+   },
+   "target": {
+    "column": "id",
+    "table": "battle"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 0.5384615384615384,
+   "coverage": 1.0,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's primary key",
+   "source": {
+    "column": "id",
+    "table": "death"
+   },
+   "target": {
+    "column": "id",
+    "table": "ship"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 85.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.6666666666666666,
+   "coverage": 0.15384615384615385,
+   "decision": "rejected_gate",
+   "reason": "same table",
+   "source": {
+    "column": "injured",
+    "table": "death"
+   },
+   "target": {
+    "column": "id",
+    "table": "death"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 85.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.5,
+   "coverage": 0.5,
+   "decision": "rejected_gate",
+   "reason": "G6: containment 0.500 < 0.75",
+   "source": {
+    "column": "killed",
+    "table": "death"
+   },
+   "target": {
+    "column": "id",
+    "table": "battle"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.5,
+   "coverage": 0.3076923076923077,
+   "decision": "rejected_gate",
+   "reason": "same table",
+   "source": {
+    "column": "killed",
+    "table": "death"
+   },
+   "target": {
+    "column": "id",
+    "table": "death"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 85.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.875,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's primary key",
+   "source": {
+    "column": "id",
+    "table": "ship"
+   },
+   "target": {
+    "column": "id",
+    "table": "battle"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 100.0
+  },
+  {
+   "cardinality": "one_to_one",
+   "containment": 1.0,
+   "coverage": 0.5384615384615384,
+   "decision": "rejected_gate",
+   "reason": "G8: the source is its table's primary key",
+   "source": {
+    "column": "id",
+    "table": "ship"
+   },
+   "target": {
+    "column": "id",
+    "table": "death"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 85.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 0.8,
+   "coverage": 0.5714285714285714,
+   "decision": "rejected_gate",
+   "reason": "same table",
+   "source": {
+    "column": "lost_in_battle",
+    "table": "ship"
+   },
+   "target": {
+    "column": "id",
+    "table": "ship"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 85.0
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "no_names",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "r_cap": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 4,
+  "rejected_gate": 11
+ },
+ "db_id": "battle_death",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.75,
+    "decision": "accepted",
+    "score": 85.0,
+    "source": {
+     "column": "caused_by_ship_id",
+     "table": "death"
+    },
+    "target": {
+     "column": "id",
+     "table": "battle"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.8571428571428571,
+    "decision": "accepted",
+    "score": 85.0,
+    "source": {
+     "column": "caused_by_ship_id",
+     "table": "death"
+    },
+    "target": {
+     "column": "id",
+     "table": "ship"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.625,
+    "decision": "accepted",
+    "score": 81.175,
+    "source": {
+     "column": "lost_in_battle",
+     "table": "ship"
+    },
+    "target": {
+     "column": "id",
+     "table": "battle"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.38461538461538464,
+    "decision": "accepted",
+    "score": 81.175,
+    "source": {
+     "column": "lost_in_battle",
+     "table": "ship"
+    },
+    "target": {
+     "column": "id",
+     "table": "death"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.75,
+    "decision": "accepted",
+    "score": 85.0,
+    "source": {
+     "column": "caused_by_ship_id",
+     "table": "death"
+    },
+    "target": {
+     "column": "id",
+     "table": "battle"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.8571428571428571,
+    "decision": "accepted",
+    "score": 85.0,
+    "source": {
+     "column": "caused_by_ship_id",
+     "table": "death"
+    },
+    "target": {
+     "column": "id",
+     "table": "ship"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.625,
+    "decision": "accepted",
+    "score": 81.175,
+    "source": {
+     "column": "lost_in_battle",
+     "table": "ship"
+    },
+    "target": {
+     "column": "id",
+     "table": "battle"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 0.38461538461538464,
+    "decision": "accepted",
+    "score": 81.175,
+    "source": {
+     "column": "lost_in_battle",
+     "table": "ship"
+    },
+    "target": {
+     "column": "id",
+     "table": "death"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.0,
+ "keys_run": "no_names",
+ "use_names": false,
+ "weights": {
+  "cardinality": 15,
+  "nulls": 10,
+  "overlap": 60,
+  "target_key": 15
+ }
+}

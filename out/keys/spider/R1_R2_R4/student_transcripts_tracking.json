@@ -1,0 +1,968 @@
+{
+ "accept": 70,
+ "db_id": "student_transcripts_tracking",
+ "rules": [
+  "R1",
+  "R2",
+  "R4"
+ ],
+ "tables": {
+  "Addresses": {
+   "candidate_keys": [
+    {
+     "column": "address_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "address_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Courses.course_id",
+       "Degree_Programs.degree_program_id",
+       "Degree_Programs.department_id",
+       "Departments.department_id",
+       "Sections.section_id",
+       "Sections.course_id",
+       "Semesters.semester_id",
+       "Student_Enrolment.student_enrolment_id",
+       "Student_Enrolment.degree_program_id",
+       "Student_Enrolment.semester_id",
+       "Student_Enrolment.student_id",
+       "Student_Enrolment_Courses.course_id",
+       "Student_Enrolment_Courses.student_enrolment_id",
+       "Students.student_id",
+       "Students.current_address_id",
+       "Students.permanent_address_id",
+       "Transcript_Contents.transcript_id",
+       "Transcripts.transcript_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "city": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "country": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "line_1": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    },
+    "line_2": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 20.65
+    },
+    "line_3": {
+     "rejected": "has nulls"
+    },
+    "other_address_details": {
+     "rejected": "has nulls"
+    },
+    "state_province_county": {
+     "base": 47.704,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7740740740740741,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8666666666666667
+     },
+     "phi": 0.55,
+     "score": 26.237
+    },
+    "zip_postcode": {
+     "base": 89.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 48.95
+    }
+   },
+   "evidence": "score",
+   "primary_key": "address_id"
+  },
+  "Courses": {
+   "candidate_keys": [
+    {
+     "column": "course_id",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "course_description": {
+     "rejected": "blacklist: descriptive text (description)"
+    },
+    "course_id": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Addresses.address_id",
+       "Degree_Programs.degree_program_id",
+       "Degree_Programs.department_id",
+       "Departments.department_id",
+       "Sections.section_id",
+       "Sections.course_id",
+       "Semesters.semester_id",
+       "Student_Enrolment.student_enrolment_id",
+       "Student_Enrolment.degree_program_id",
+       "Student_Enrolment.semester_id",
+       "Student_Enrolment.student_id",
+       "Student_Enrolment_Courses.course_id",
+       "Student_Enrolment_Courses.student_enrolment_id",
+       "Students.student_id",
+       "Students.current_address_id",
+       "Students.permanent_address_id",
+       "Transcript_Contents.transcript_id",
+       "Transcripts.transcript_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "course_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    },
+    "other_details": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "course_id"
+  },
+  "Degree_Programs": {
+   "candidate_keys": [
+    {
+     "column": "degree_program_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "degree_program_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Addresses.address_id",
+       "Courses.course_id",
+       "Degree_Programs.department_id",
+       "Departments.department_id",
+       "Sections.section_id",
+       "Sections.course_id",
+       "Semesters.semester_id",
+       "Student_Enrolment.student_enrolment_id",
+       "Student_Enrolment.degree_program_id",
+       "Student_Enrolment.semester_id",
+       "Student_Enrolment.student_id",
+       "Student_Enrolment_Courses.course_id",
+       "Student_Enrolment_Courses.student_enrolment_id",
+       "Students.student_id",
+       "Students.current_address_id",
+       "Students.permanent_address_id",
+       "Transcript_Contents.transcript_id",
+       "Transcripts.transcript_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "degree_summary_description": {
+     "rejected": "blacklist: descriptive text (description, summary)"
+    },
+    "degree_summary_name": {
+     "rejected": "blacklist: descriptive text (summary)"
+    },
+    "department_id": {
+     "base": 52.593,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.3518518518518518,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.85,
+     "score": 17.881
+    },
+    "other_details": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "degree_program_id"
+  },
+  "Departments": {
+   "candidate_keys": [
+    {
+     "column": "department_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "department_description": {
+     "rejected": "blacklist: descriptive text (description)"
+    },
+    "department_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Addresses.address_id",
+       "Courses.course_id",
+       "Degree_Programs.degree_program_id",
+       "Degree_Programs.department_id",
+       "Sections.section_id",
+       "Sections.course_id",
+       "Semesters.semester_id",
+       "Student_Enrolment.student_enrolment_id",
+       "Student_Enrolment.degree_program_id",
+       "Student_Enrolment.semester_id",
+       "Student_Enrolment.student_id",
+       "Student_Enrolment_Courses.course_id",
+       "Student_Enrolment_Courses.student_enrolment_id",
+       "Students.student_id",
+       "Students.current_address_id",
+       "Students.permanent_address_id",
+       "Transcript_Contents.transcript_id",
+       "Transcripts.transcript_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "department_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    },
+    "other_details": {
+     "rejected": "has nulls"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "department_id"
+  },
+  "Sections": {
+   "candidate_keys": [
+    {
+     "column": "section_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "course_id": {
+     "base": 59.63,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.49259259259259247,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.7333333333333333
+     },
+     "phi": 0.85,
+     "score": 50.685
+    },
+    "other_details": {
+     "rejected": "has nulls"
+    },
+    "section_description": {
+     "rejected": "blacklist: descriptive text (description)"
+    },
+    "section_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Addresses.address_id",
+       "Courses.course_id",
+       "Degree_Programs.degree_program_id",
+       "Degree_Programs.department_id",
+       "Departments.department_id",
+       "Sections.course_id",
+       "Semesters.semester_id",
+       "Student_Enrolment.student_enrolment_id",
+       "Student_Enrolment.degree_program_id",
+       "Student_Enrolment.semester_id",
+       "Student_Enrolment.student_id",
+       "Student_Enrolment_Courses.course_id",
+       "Student_Enrolment_Courses.student_enrolment_id",
+       "Students.student_id",
+       "Students.current_address_id",
+       "Students.permanent_address_id",
+       "Transcript_Contents.transcript_id",
+       "Transcripts.transcript_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "section_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 20.65
+    }
+   },
+   "evidence": "score",
+   "primary_key": "section_id"
+  },
+  "Semesters": {
+   "candidate_keys": [
+    {
+     "column": "semester_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "other_details": {
+     "rejected": "has nulls"
+    },
+    "semester_description": {
+     "rejected": "blacklist: descriptive text (description)"
+    },
+    "semester_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Addresses.address_id",
+       "Courses.course_id",
+       "Degree_Programs.degree_program_id",
+       "Degree_Programs.department_id",
+       "Departments.department_id",
+       "Sections.section_id",
+       "Sections.course_id",
+       "Student_Enrolment.student_enrolment_id",
+       "Student_Enrolment.degree_program_id",
+       "Student_Enrolment.semester_id",
+       "Student_Enrolment.student_id",
+       "Student_Enrolment_Courses.course_id",
+       "Student_Enrolment_Courses.student_enrolment_id",
+       "Students.student_id",
+       "Students.current_address_id",
+       "Students.permanent_address_id",
+       "Transcript_Contents.transcript_id",
+       "Transcripts.transcript_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "semester_name": {
+     "base": 54.741,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.914814814814815,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9333333333333333
+     },
+     "phi": 0.85,
+     "score": 46.53
+    }
+   },
+   "evidence": "score",
+   "primary_key": "semester_id"
+  },
+  "Student_Enrolment": {
+   "candidate_keys": [
+    {
+     "column": "student_enrolment_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "degree_program_id": {
+     "base": 45.556,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.21111111111111108,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6
+     },
+     "phi": 0.85,
+     "score": 15.489
+    },
+    "other_details": {
+     "rejected": "has nulls"
+    },
+    "semester_id": {
+     "base": 45.556,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.21111111111111108,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6
+     },
+     "phi": 0.7,
+     "score": 12.756
+    },
+    "student_enrolment_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Addresses.address_id",
+       "Courses.course_id",
+       "Degree_Programs.degree_program_id",
+       "Degree_Programs.department_id",
+       "Departments.department_id",
+       "Sections.section_id",
+       "Sections.course_id",
+       "Semesters.semester_id",
+       "Student_Enrolment.degree_program_id",
+       "Student_Enrolment.semester_id",
+       "Student_Enrolment.student_id",
+       "Student_Enrolment_Courses.course_id",
+       "Student_Enrolment_Courses.student_enrolment_id",
+       "Students.student_id",
+       "Students.current_address_id",
+       "Students.permanent_address_id",
+       "Transcript_Contents.transcript_id",
+       "Transcripts.transcript_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "student_id": {
+     "base": 38.519,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.07037037037037035,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5333333333333333
+     },
+     "phi": 0.55,
+     "score": 8.474
+    }
+   },
+   "evidence": "score",
+   "primary_key": "student_enrolment_id"
+  },
+  "Student_Enrolment_Courses": {
+   "candidate_keys": [
+    {
+     "column": "student_course_id",
+     "score": 105.0
+    }
+   ],
+   "columns": {
+    "course_id": {
+     "base": 52.593,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.3518518518518518,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.85,
+     "score": 44.704
+    },
+    "student_course_id": {
+     "base": 85.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "Transcript_Contents.student_course_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 105.0
+    },
+    "student_enrolment_id": {
+     "base": 45.556,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.21111111111111108,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6
+     },
+     "phi": 0.7,
+     "score": 12.756
+    }
+   },
+   "evidence": "score",
+   "primary_key": "student_course_id"
+  },
+  "Students": {
+   "candidate_keys": [
+    {
+     "column": "student_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "cell_mobile_number": {
+     "base": 79.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 43.45
+    },
+    "current_address_id": {
+     "base": 45.556,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.21111111111111108,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6
+     },
+     "phi": 0.85,
+     "score": 38.722
+    },
+    "date_first_registered": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "date_left": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "email_address": {
+     "rejected": "blacklist: descriptive text (address)"
+    },
+    "first_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "last_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "middle_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "other_student_details": {
+     "base": 54.741,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.914814814814815,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9333333333333333
+     },
+     "phi": 0.55,
+     "score": 30.107
+    },
+    "permanent_address_id": {
+     "base": 38.519,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.07037037037037035,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5333333333333333
+     },
+     "phi": 0.7,
+     "score": 26.963
+    },
+    "ssn": {
+     "base": 69.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 18.975
+    },
+    "student_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Addresses.address_id",
+       "Courses.course_id",
+       "Degree_Programs.degree_program_id",
+       "Degree_Programs.department_id",
+       "Departments.department_id",
+       "Sections.section_id",
+       "Sections.course_id",
+       "Semesters.semester_id",
+       "Student_Enrolment.student_enrolment_id",
+       "Student_Enrolment.degree_program_id",
+       "Student_Enrolment.semester_id",
+       "Student_Enrolment.student_id",
+       "Student_Enrolment_Courses.course_id",
+       "Student_Enrolment_Courses.student_enrolment_id",
+       "Students.current_address_id",
+       "Students.permanent_address_id",
+       "Transcript_Contents.transcript_id",
+       "Transcripts.transcript_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "student_id"
+  },
+  "Transcript_Contents": {
+   "candidate_keys": [],
+   "columns": {
+    "student_course_id": {
+     "base": 45.556,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.21111111111111108,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6
+     },
+     "phi": 1.0,
+     "score": 45.556
+    },
+    "transcript_id": {
+     "base": 52.593,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.3518518518518518,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.85,
+     "score": 17.881
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "Transcripts": {
+   "candidate_keys": [
+    {
+     "column": "transcript_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "other_details": {
+     "rejected": "has nulls"
+    },
+    "transcript_date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "transcript_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Addresses.address_id",
+       "Courses.course_id",
+       "Degree_Programs.degree_program_id",
+       "Degree_Programs.department_id",
+       "Departments.department_id",
+       "Sections.section_id",
+       "Sections.course_id",
+       "Semesters.semester_id",
+       "Student_Enrolment.student_enrolment_id",
+       "Student_Enrolment.degree_program_id",
+       "Student_Enrolment.semester_id",
+       "Student_Enrolment.student_id",
+       "Student_Enrolment_Courses.course_id",
+       "Student_Enrolment_Courses.student_enrolment_id",
+       "Students.student_id",
+       "Students.current_address_id",
+       "Students.permanent_address_id",
+       "Transcript_Contents.transcript_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "transcript_id"
+  }
+ },
+ "use_names": true
+}

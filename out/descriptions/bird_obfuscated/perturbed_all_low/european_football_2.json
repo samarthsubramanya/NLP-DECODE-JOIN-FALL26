@@ -1,0 +1,1276 @@
+{
+ "db_id": "european_football_2",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 309,
+ "tables": {
+  "Country": {
+   "table": {
+    "name": "Country",
+    "purpose": "Small table with one row per person/entity: an identifier and a short name. Each identifier matches a record in t02, whose lookup label is a full name whose first token equals this table's name column (e.g. id 1729 -> 'Nogxvos Yanrfna Xnvgen', first token 'Nogxvos' = col_002). So t01 appears to be a lightweight person/entity directory (identifier + given/first name), with fuller details held in t02 and related records in t03. The text values look obfuscated/encoded (consistent character-substitution, e.g. 'Fcvxj' decodes by rot13 to 'Spikw'), so exact real-world meanings of the strings cannot be confirmed, but their structural role is clear."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "person_id",
+     "description": "Primary key of t01; unique integer identifier (range 1-24558). One-to-one with t02.col_001, where the lookup label is a full person name whose first token matches col_002 in this table. Also referenced by t03.col_002 and t03.col_003 (many-to-one), so other records in t03 point back to these persons/entities.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "first_name",
+     "description": "Unique short text value per row, always equal to the first token of the corresponding full name in t02 (e.g. 'Nogxvos', 'Gnarvoj', 'Yqacegvx'). Most plausibly the given/first name of the person identified by col_001. Alternative reading: a short display label or nickname for the entity. Values appear character-substitution obfuscated, so the semantic content of the strings themselves cannot be verified.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "League": {
+   "table": {
+    "name": "League",
+    "purpose": "A small 11-row lookup/reference table. Each row is an entity with a unique numeric id, a link to a row in t01, and a unique text name. It is referenced by t03 (many rows in t03 point to one row here), so t02 likely enumerates a small set of categories or entities used to classify t03 records. The exact real-world meaning of the entities is obscured by obfuscated text values, so the table's subject remains unresolved beyond this structural role."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of t02. Unique integer identifier for each row (range 1-24558, all distinct, no nulls). Referenced by t03.col_002 and t03.col_003 (many-to-one), and one-to-one with t01.col_001 and t03.col_001.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "t01_id",
+     "description": "Foreign key to t01.col_001. Its values are identical to col_001 in every sample row, suggesting t02 and t01 share the same identifier space (possibly a 1:1 extension of t01, or the FK simply mirrors the PK). The lookup labels from t01 (e.g. 'Nogxvos', 'Gnarvoj', 'Yqacegvx') appear to be obfuscated entity names. Whether this is a genuine independent FK or a redundant copy of the PK is tentative.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "name",
+     "description": "Unique text label for each row (11 distinct values, no nulls). Values look like obfuscated names/titles (e.g. 'Nogxvos Yanrfna Xnvgen', 'Gnarvoj 6. Leosntxfgv'), some with numeric suffixes ('6', 'V', 'HQO Tvgant') suggesting versioned or numbered entities. The real-world meaning of the names cannot be recovered because the text is obfuscated.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Match": {
+   "table": {
+    "name": "match_results",
+    "purpose": "One row per match (fixture) of a football-style league competition: teams, season/round, date, score, lineups, and per-bookmaker betting odds. 25,979 matches across 8 seasons (col_004) of a league with 38 rounds per season (col_005) and 11 teams per season (col_002/col_003)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "match_id",
+     "description": "Synthetic primary key, sequential 1..25979, one per match row.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "home_team_id",
+     "description": "ID of the home team; references team tables t01/t02 (labels are obfuscated team names, e.g. 'Nogxvos', 'Tyvfo'). 11 distinct teams per season.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "away_team_id",
+     "description": "ID of the away team; same lookup as col_002. In samples col_002=col_003=1 for some rows, so home/away assignment is not fully certain, but the two-column team pair pattern strongly suggests home/away.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "code",
+     "name": "season",
+     "description": "Season identifier in the form 'YYYY/YYYY' with obfuscated digits (e.g. '0765/0762'); 8 distinct seasons.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "round",
+     "description": "Match round/matchday within the season, 1-38 (38 rounds, consistent with a double round-robin league).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "date",
+     "name": "match_date",
+     "description": "Kickoff/match date (dates are shifted into 2064-2072).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "identifier",
+     "name": "external_match_id",
+     "description": "Unique large integer per match (483129-2216672), likely an external/source-system match ID; not joined anywhere.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "foreign_key",
+     "name": "official_a_id",
+     "description": "ID of a match official/person (299 distinct, joins t06.col_002); could be referee or head coach. Two near-identical columns (col_008/col_009) suggest two officials per match.",
+     "status": "tentative"
+    },
+    "col_009": {
+     "role": "foreign_key",
+     "name": "official_b_id",
+     "description": "Second official/person ID, same domain as col_008 (299 distinct, joins t06.col_002); values differ slightly from col_008 per row.",
+     "status": "tentative"
+    },
+    "col_010": {
+     "role": "code",
+     "name": "home_goals",
+     "description": "Goals scored by the home side (0-10, mean 1.55).",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "code",
+     "name": "away_goals",
+     "description": "Goals scored by the away side (0-9, mean 1.16), lower than col_010 as expected for home advantage.",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "code",
+     "name": "status_flag",
+     "description": "Almost always 1 (24146), rarely 0 or 2; 7% null. Likely a match status/completed flag, but the coding is unverified.",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_014": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_015": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_016": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_017": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_018": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_019": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_020": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_021": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_022": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_023": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_024": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_025": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_026": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_027": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_028": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_029": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_030": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_031": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_032": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_033": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_034": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_035": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_036": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_037": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_038": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_039": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_040": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_041": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_042": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_043": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_044": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_045": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_046": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_047": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_048": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_049": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_050": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_051": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_052": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_053": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_054": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_055": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_056": {
+     "role": "foreign_key",
+     "name": "home_player_1_id",
+     "description": "Player ID (references t04.col_002) for home starting lineup slot 1; only ~906 distinct values, consistent with a goalkeeper pool. First of 11 home-player columns (col_056-col_066).",
+     "status": "tentative"
+    },
+    "col_057": {
+     "role": "foreign_key",
+     "name": "home_player_2_id",
+     "description": "Player ID (t04.col_002), home lineup slot 2.",
+     "status": "tentative"
+    },
+    "col_058": {
+     "role": "foreign_key",
+     "name": "home_player_3_id",
+     "description": "Player ID (t04.col_002), home lineup slot 3.",
+     "status": "tentative"
+    },
+    "col_059": {
+     "role": "foreign_key",
+     "name": "home_player_4_id",
+     "description": "Player ID (t04.col_002), home lineup slot 4.",
+     "status": "tentative"
+    },
+    "col_060": {
+     "role": "foreign_key",
+     "name": "home_player_5_id",
+     "description": "Player ID (t04.col_002), home lineup slot 5.",
+     "status": "tentative"
+    },
+    "col_061": {
+     "role": "foreign_key",
+     "name": "home_player_6_id",
+     "description": "Player ID (t04.col_002), home lineup slot 6.",
+     "status": "tentative"
+    },
+    "col_062": {
+     "role": "foreign_key",
+     "name": "home_player_7_id",
+     "description": "Player ID (t04.col_002), home lineup slot 7.",
+     "status": "tentative"
+    },
+    "col_063": {
+     "role": "foreign_key",
+     "name": "home_player_8_id",
+     "description": "Player ID (t04.col_002), home lineup slot 8.",
+     "status": "tentative"
+    },
+    "col_064": {
+     "role": "foreign_key",
+     "name": "home_player_9_id",
+     "description": "Player ID (t04.col_002), home lineup slot 9.",
+     "status": "tentative"
+    },
+    "col_065": {
+     "role": "foreign_key",
+     "name": "home_player_10_id",
+     "description": "Player ID (t04.col_002), home lineup slot 10.",
+     "status": "tentative"
+    },
+    "col_066": {
+     "role": "foreign_key",
+     "name": "home_player_11_id",
+     "description": "Player ID (t04.col_002), home lineup slot 11.",
+     "status": "tentative"
+    },
+    "col_067": {
+     "role": "foreign_key",
+     "name": "away_player_1_id",
+     "description": "Player ID (t04.col_002) for away starting lineup slot 1; ~926 distinct, consistent with a goalkeeper pool. First of 11 away-player columns (col_067-col_077).",
+     "status": "tentative"
+    },
+    "col_068": {
+     "role": "foreign_key",
+     "name": "away_player_2_id",
+     "description": "Player ID (t04.col_002), away lineup slot 2.",
+     "status": "tentative"
+    },
+    "col_069": {
+     "role": "foreign_key",
+     "name": "away_player_3_id",
+     "description": "Player ID (t04.col_002), away lineup slot 3.",
+     "status": "tentative"
+    },
+    "col_070": {
+     "role": "foreign_key",
+     "name": "away_player_4_id",
+     "description": "Player ID (t04.col_002), away lineup slot 4.",
+     "status": "tentative"
+    },
+    "col_071": {
+     "role": "foreign_key",
+     "name": "away_player_5_id",
+     "description": "Player ID (t04.col_002), away lineup slot 5.",
+     "status": "tentative"
+    },
+    "col_072": {
+     "role": "foreign_key",
+     "name": "away_player_6_id",
+     "description": "Player ID (t04.col_002), away lineup slot 6.",
+     "status": "tentative"
+    },
+    "col_073": {
+     "role": "foreign_key",
+     "name": "away_player_7_id",
+     "description": "Player ID (t04.col_002), away lineup slot 7.",
+     "status": "tentative"
+    },
+    "col_074": {
+     "role": "foreign_key",
+     "name": "away_player_8_id",
+     "description": "Player ID (t04.col_002), away lineup slot 8.",
+     "status": "tentative"
+    },
+    "col_075": {
+     "role": "foreign_key",
+     "name": "away_player_9_id",
+     "description": "Player ID (t04.col_002), away lineup slot 9.",
+     "status": "tentative"
+    },
+    "col_076": {
+     "role": "foreign_key",
+     "name": "away_player_10_id",
+     "description": "Player ID (t04.col_002), away lineup slot 10.",
+     "status": "tentative"
+    },
+    "col_077": {
+     "role": "foreign_key",
+     "name": "away_player_11_id",
+     "description": "Player ID (t04.col_002), away lineup slot 11.",
+     "status": "tentative"
+    },
+    "col_078": {
+     "role": "free_text",
+     "name": "xml_detail_1",
+     "description": "XML fragment (obfuscated tag names, root '<gqvx>' ~ 'deck') holding structured match detail; empty tag '<gqvx />' in ~993 rows. Present for ~55% of matches. Exact content unresolved.",
+     "status": "tentative"
+    },
+    "col_079": {
+     "role": "free_text",
+     "name": "xml_detail_2",
+     "description": "XML fragment (root '<tuqcqo>' ~ 'goal'), often empty; part of the same per-match XML detail block (col_078-col_085).",
+     "status": "tentative"
+    },
+    "col_080": {
+     "role": "free_text",
+     "name": "xml_detail_3",
+     "description": "XML fragment (root '<tuqcqbb>' ~ 'goala'), often empty; per-match XML detail block.",
+     "status": "tentative"
+    },
+    "col_081": {
+     "role": "free_text",
+     "name": "xml_detail_4",
+     "description": "XML fragment (root '<bqexzqrrfc>' ~ 'ordeal/goal-related), often empty; per-match XML detail block.",
+     "status": "tentative"
+    },
+    "col_082": {
+     "role": "free_text",
+     "name": "xml_detail_5",
+     "description": "XML fragment (root '<zvas>' ~ 'mnf'), often empty; per-match XML detail block.",
+     "status": "tentative"
+    },
+    "col_083": {
+     "role": "free_text",
+     "name": "xml_detail_6",
+     "description": "XML fragment (root '<zaqtt>' ~ 'mnpg'), often empty; per-match XML detail block.",
+     "status": "tentative"
+    },
+    "col_084": {
+     "role": "free_text",
+     "name": "xml_detail_7",
+     "description": "XML fragment (root '<zqaona>' ~ 'mnctq'), often empty; per-match XML detail block.",
+     "status": "tentative"
+    },
+    "col_085": {
+     "role": "free_text",
+     "name": "xml_detail_8",
+     "description": "XML fragment (root '<yqttnttfqo>' ~ 'ldggashx'), often empty; per-match XML detail block.",
+     "status": "tentative"
+    },
+    "col_086": {
+     "role": "numeric",
+     "name": "bookmaker1_home_odds",
+     "description": "Decimal betting odds, home win, bookmaker 1 (typical 1.5-3, outliers to 26). First of a home/draw/away odds triplet (col_086-088).",
+     "status": "tentative"
+    },
+    "col_087": {
+     "role": "numeric",
+     "name": "bookmaker1_draw_odds",
+     "description": "Decimal betting odds, draw, bookmaker 1 (typical ~3.2-3.6).",
+     "status": "tentative"
+    },
+    "col_088": {
+     "role": "numeric",
+     "name": "bookmaker1_away_odds",
+     "description": "Decimal betting odds, away win, bookmaker 1 (typical 2.5-5.5).",
+     "status": "tentative"
+    },
+    "col_089": {
+     "role": "numeric",
+     "name": "bookmaker2_home_odds",
+     "description": "Decimal betting odds, home win, bookmaker 2 (triplet col_089-091).",
+     "status": "tentative"
+    },
+    "col_090": {
+     "role": "numeric",
+     "name": "bookmaker2_draw_odds",
+     "description": "Decimal betting odds, draw, bookmaker 2.",
+     "status": "tentative"
+    },
+    "col_091": {
+     "role": "numeric",
+     "name": "bookmaker2_away_odds",
+     "description": "Decimal betting odds, away win, bookmaker 2.",
+     "status": "tentative"
+    },
+    "col_092": {
+     "role": "numeric",
+     "name": "bookmaker3_home_odds",
+     "description": "Decimal betting odds, home win, bookmaker 3 (triplet col_092-094).",
+     "status": "tentative"
+    },
+    "col_093": {
+     "role": "numeric",
+     "name": "bookmaker3_draw_odds",
+     "description": "Decimal betting odds, draw, bookmaker 3.",
+     "status": "tentative"
+    },
+    "col_094": {
+     "role": "numeric",
+     "name": "bookmaker3_away_odds",
+     "description": "Decimal betting odds, away win, bookmaker 3.",
+     "status": "tentative"
+    },
+    "col_095": {
+     "role": "numeric",
+     "name": "bookmaker4_home_odds",
+     "description": "Decimal betting odds, home win, bookmaker 4 (triplet col_095-097).",
+     "status": "tentative"
+    },
+    "col_096": {
+     "role": "numeric",
+     "name": "bookmaker4_draw_odds",
+     "description": "Decimal betting odds, draw, bookmaker 4.",
+     "status": "tentative"
+    },
+    "col_097": {
+     "role": "numeric",
+     "name": "bookmaker4_away_odds",
+     "description": "Decimal betting odds, away win, bookmaker 4.",
+     "status": "tentative"
+    },
+    "col_098": {
+     "role": "numeric",
+     "name": "bookmaker5_home_odds",
+     "description": "Decimal betting odds, home win, bookmaker 5 (triplet col_098-100; only ~43% coverage).",
+     "status": "tentative"
+    },
+    "col_099": {
+     "role": "numeric",
+     "name": "bookmaker5_draw_odds",
+     "description": "Decimal betting odds, draw, bookmaker 5.",
+     "status": "tentative"
+    },
+    "col_100": {
+     "role": "numeric",
+     "name": "bookmaker5_away_odds",
+     "description": "Decimal betting odds, away win, bookmaker 5.",
+     "status": "tentative"
+    },
+    "col_101": {
+     "role": "numeric",
+     "name": "bookmaker6_home_odds",
+     "description": "Decimal betting odds, home win, bookmaker 6 (triplet col_101-103).",
+     "status": "tentative"
+    },
+    "col_102": {
+     "role": "numeric",
+     "name": "bookmaker6_draw_odds",
+     "description": "Decimal betting odds, draw, bookmaker 6.",
+     "status": "tentative"
+    },
+    "col_103": {
+     "role": "numeric",
+     "name": "bookmaker6_away_odds",
+     "description": "Decimal betting odds, away win, bookmaker 6.",
+     "status": "tentative"
+    },
+    "col_104": {
+     "role": "numeric",
+     "name": "bookmaker7_home_odds",
+     "description": "Decimal betting odds, home win, bookmaker 7 (triplet col_104-106; ~66% coverage).",
+     "status": "tentative"
+    },
+    "col_105": {
+     "role": "numeric",
+     "name": "bookmaker7_draw_odds",
+     "description": "Decimal betting odds, draw, bookmaker 7.",
+     "status": "tentative"
+    },
+    "col_106": {
+     "role": "numeric",
+     "name": "bookmaker7_away_odds",
+     "description": "Decimal betting odds, away win, bookmaker 7.",
+     "status": "tentative"
+    },
+    "col_107": {
+     "role": "numeric",
+     "name": "bookmaker8_home_odds",
+     "description": "Decimal betting odds, home win, bookmaker 8 (triplet col_107-109).",
+     "status": "tentative"
+    },
+    "col_108": {
+     "role": "numeric",
+     "name": "bookmaker8_draw_odds",
+     "description": "Decimal betting odds, draw, bookmaker 8.",
+     "status": "tentative"
+    },
+    "col_109": {
+     "role": "numeric",
+     "name": "bookmaker8_away_odds",
+     "description": "Decimal betting odds, away win, bookmaker 8.",
+     "status": "tentative"
+    },
+    "col_110": {
+     "role": "numeric",
+     "name": "bookmaker9_home_odds",
+     "description": "Decimal betting odds, home win, bookmaker 9 (triplet col_110-112; ~55% coverage).",
+     "status": "tentative"
+    },
+    "col_111": {
+     "role": "numeric",
+     "name": "bookmaker9_draw_odds",
+     "description": "Decimal betting odds, draw, bookmaker 9.",
+     "status": "tentative"
+    },
+    "col_112": {
+     "role": "numeric",
+     "name": "bookmaker9_away_odds",
+     "description": "Decimal betting odds, away win, bookmaker 9.",
+     "status": "tentative"
+    },
+    "col_113": {
+     "role": "numeric",
+     "name": "bookmaker10_home_odds",
+     "description": "Decimal betting odds, home win, bookmaker 10 (triplet col_113-115; ~55% coverage).",
+     "status": "tentative"
+    },
+    "col_114": {
+     "role": "numeric",
+     "name": "bookmaker10_draw_odds",
+     "description": "Decimal betting odds, draw, bookmaker 10.",
+     "status": "tentative"
+    },
+    "col_115": {
+     "role": "numeric",
+     "name": "bookmaker10_away_odds",
+     "description": "Decimal betting odds, away win, bookmaker 10.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Player": {
+   "table": {
+    "name": "players",
+    "purpose": "One row per player (likely basketball, given height 157–208 cm and weight 117–243 lbs). Contains a surrogate primary key, a player identifier, a name, a date, height in centimeters, and weight in pounds that references a lookup table."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "player_id",
+     "description": "Surrogate primary key; unique sequential integer (1–11075) identifying each player row. Referenced by many columns in t03, t05 and t07, so those tables hold per-player attributes keyed to this table.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "player_external_id",
+     "description": "A second unique player identifier (range 2625–750584), distinct from the surrogate key. Referenced by a block of columns in t03 (col_056–col_077) and t05.col_003, suggesting those tables store alternative per-player keys or per-player values keyed on this identifier.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "player_name",
+     "description": "Player full name (free text, near-unique, e.g. 'Zaftcfvo Ufsvxgq', 'Ifiq'); values appear obfuscated/anonymized but the pattern (first + optional last name) clearly indicates a person name.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "player_alt_id",
+     "description": "Another unique integer identifier per player (range 2–234141), referenced by t05.col_002. Its relationship to col_002 (both unique per row) is unclear; it may be an ID from a different source system.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "height_cm",
+     "description": "Height in centimeters (157.48–208.28, only multiples of 2.54, i.e. whole inches converted to cm; median 182.88 cm = 6 ft). Consistent with athlete/player height.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "weight_lb",
+     "description": "Body weight in pounds (117–243, integers, median 168). References t03.col_001, t05.col_001 and t07.col_001, which appear to be small lookup tables (likely weight-to-metric or weight-class mappings). The pound unit is inferred from the integer values paired with heights in the athlete range; kilograms would also fit the range, so the exact unit is tentative.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Player_Attributes": {
+   "table": {
+    "name": "",
+    "purpose": "Fact/observation table with one row per record keyed by a surrogate ID, a date (2063-2072, likely synthetic/shifted), two entity references into t04, two categorical flags, and ~35 numeric measurement columns. The many numeric columns in the 1-97 range with percent-like distributions suggest per-variable scores or sensor readings (e.g. daily environmental/quality metrics), but the exact domain cannot be determined from the data alone. It is referenced by t03, t04, t06 and t07, so it appears to be the central measurement table of the database. The exact subject matter is unresolved; the structure (date + station-like IDs + many numeric series) is consistent with daily readings per site per date, but names are opaque and values are anonymized/coded (e.g. 'afguc', 'rnsfer')."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "record_id",
+     "description": "Surrogate primary key; sequential 1..183978, unique, referenced one-to-one by t06 and by many columns of t03/t04/t07 (those are likely denormalized copies of this key rather than true lookups).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "site_id_a",
+     "description": "Foreign key to t04.col_004; ~11k distinct values, each appearing on many rows. Likely an entity identifier such as a station/site/region ID. Exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "site_id_b",
+     "description": "Foreign key to t04.col_002; ~11k distinct values. A second entity reference (e.g. a different station or area ID). Exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "observation_date",
+     "description": "Date of the record, range 2063-02-22 to 2072-07-07 (future dates, so likely synthetic or offset data); 197 distinct dates, some heavily repeated, suggesting batch/daily observations.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "binary_flag",
+     "description": "Two-valued categorical flag ('afguc' ~75%, 'xnbc' ~25%). Likely a binary indicator (e.g. type/status), but the codes are opaque so the semantics are unresolved.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_015": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_016": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_017": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_018": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_019": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_020": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_021": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_022": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_023": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_024": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_025": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_026": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_027": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_028": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_029": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_030": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_031": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_032": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_033": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_034": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_035": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_036": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_037": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_038": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_039": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_040": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_041": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_042": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Team": {
+   "table": {
+    "name": "",
+    "purpose": "t06 appears to be a small reference/lookup table of entities (299 rows), each with a primary identifier, a secondary identifier, an optional third identifier, a display name, and a short 3-letter code derived from the name. It is referenced by many columns of t03 (which look like per-entity foreign keys) and joins one-to-one to t05.col_001, suggesting t05 is a companion/extension table of the same entities. The exact real-world domain (e.g. organizations, airports, teams) cannot be determined because all text values are obfuscated/anonymized; the entity type remains unresolved."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "entity_id",
+     "description": "Primary key of t06. Unique integer identifier for each entity row. Referenced by ~40 columns of t03 (many_to_one), so t03 stores per-entity references to this table. Also joins one-to-one to t05.col_001, indicating t05 holds a companion record for each entity.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "secondary_id",
+     "description": "Second unique integer identifier for each entity (distinct 299, uniqueness 1.0). Values are in a different range (min 1601, median ~8655, max 274581) than col_001. It is referenced by t03.col_008 and t03.col_009, so t03 also stores this identifier in some columns. Its semantic difference from col_001 (e.g. internal vs external id, or id in another system) cannot be determined from the data.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_004": {
+     "role": "free_text",
+     "name": "entity_name",
+     "description": "Text name of the entity (e.g. 'Tfnov', 'Zntnov', 'Uflnaofvo'). Nearly unique per row (296 distinct of 299). Values appear obfuscated/anonymized, so the real naming convention (person, organization, place) cannot be recovered, but the column clearly serves as the display name.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "entity_code",
+     "description": "Three-letter uppercase code derived from the name in col_004 (e.g. 'Tfnov' -> 'TFN', 'Zntnov' -> 'ZNT', 'Uflnaofvo' -> 'UFL'), apparently the first three letters of the name. Not fully unique (259 distinct), so it is a short abbreviation rather than a key.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Team_Attributes": {
+   "table": {
+    "name": "",
+    "purpose": "Each row appears to be an assessment/evaluation record (likely a student grade or performance record): a primary key, two entity IDs, a term date, and a series of numeric scores in the 20-80 range paired with low-cardinality categorical/text flags. The exact domain cannot be confirmed from the opaque names and coded text values, so the table meaning is tentative. The date column holds only 6 distinct dates (Feb 22 and mid-Sep, years 2066-2071), consistent with academic term/semester dates, though the years suggest shifted/anonymized dates. The text values appear to be encoded/anonymized category labels (possibly Caesar-shifted words such as 'Unknown'); their meanings cannot be verified, so those columns are unresolved. The numeric columns in the 20-80 range behave like scores/grades, but the many-to-one joins to t03/t04/t05.col_001 (whose value ranges are unknown) prevent confirming whether they are foreign keys or measures; they are marked tentative as scores, with the alternative reading being references to a lookup/ID table that happens to contain small integers. Note: the 'joins' on these small-integer columns to t03.col_001/t04.col_001/t05.col_001 are statistically accepted but semantically dubious, since the columns look like bounded scores rather than IDs; this is stated in the column descriptions where relevant."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "record_id",
+     "description": "Primary key of t07; sequential integer 1-1458, unique, no nulls. Referenced by many columns of t05 (and t03.col_005, t04.col_007), i.e. other tables point to this record.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "entity_id_a",
+     "description": "Integer ID (1-112513, 285 distinct) referencing t05.col_001 (many-to-one). Likely the identifier of a person/student or entity that this record belongs to; repeated ~5 times each, consistent with one entity having multiple records (e.g. one per subject/term).",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "entity_id_b",
+     "description": "Integer ID (1601-274581, 288 distinct) referencing t05.col_001, t03.col_001 and t04.col_001. A second entity reference, possibly a class/group/instructor ID. The overlapping joins suggest t03/t04/t05 share an ID space; exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "term_date",
+     "description": "Date with only 6 distinct values: Feb 22 and mid-Sep dates across years 2066-2071, evenly distributed (~242-245 rows each). Pattern matches academic term/semester start or exam dates; the future years indicate the dates are anonymized/shifted. Alternative reading: a batch/cycle date.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "score_1",
+     "description": "Integer 20-80, ~57 distinct, roughly uniform. Looks like a score/grade. The accepted joins to t03.col_001/t04.col_001/t05.col_001 are likely spurious (small integers matching an ID column); treat as a measure, not a key.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_007": {
+     "role": "numeric",
+     "name": "score_2_optional",
+     "description": "Integer 24-77, 66.5% null. Same score-like distribution as the other numeric columns; the high null rate suggests an optional/conditional score (e.g. a retake or conditional assessment). Joins to ID columns likely spurious.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "score_3",
+     "description": "Integer 20-80, score-like measure. Joins to ID columns likely spurious.",
+     "status": "tentative"
+    },
+    "col_010": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_011": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "score_4",
+     "description": "Integer 21-80, score-like measure. Joins to ID columns likely spurious.",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "score_5",
+     "description": "Integer 20-80, score-like measure. Joins to ID columns likely spurious.",
+     "status": "tentative"
+    },
+    "col_015": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_016": {
+     "role": "numeric",
+     "name": "score_6",
+     "description": "Integer 22-80, score-like measure. Joins to ID columns likely spurious.",
+     "status": "tentative"
+    },
+    "col_017": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_018": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_019": {
+     "role": "numeric",
+     "name": "score_7",
+     "description": "Integer 23-72, score-like measure (slightly lower range than the others). Joins to ID columns likely spurious.",
+     "status": "tentative"
+    },
+    "col_020": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_021": {
+     "role": "numeric",
+     "name": "score_8",
+     "description": "Integer 24-72, score-like measure. Joins to ID columns likely spurious.",
+     "status": "tentative"
+    },
+    "col_022": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_023": {
+     "role": "numeric",
+     "name": "score_9",
+     "description": "Integer 29-73, score-like measure. Joins to ID columns likely spurious.",
+     "status": "tentative"
+    },
+    "col_024": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_025": {
+     "role": "category",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

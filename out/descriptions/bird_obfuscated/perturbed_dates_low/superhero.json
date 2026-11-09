@@ -1,0 +1,298 @@
+{
+ "db_id": "superhero",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 29,
+ "tables": {
+  "alignment": {
+   "table": {
+    "name": "",
+    "purpose": "Small lookup table mapping a numeric code (1-4) to a qualitative rating label (Good, Bad, Neutral, N/A). Referenced by t09, so it likely serves as a status/rating lookup for that table. The exact domain (e.g., credit rating, review score, health status) cannot be determined from the data alone."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "rating_code",
+     "description": "Primary key: small integer code (1-4) identifying each rating category. Referenced by t09.col_004 and t09.col_010.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "rating_label",
+     "description": "Text label for the rating code: 'Good', 'Bad', 'Neutral', or 'N/A' (not applicable). One label per code.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "attribute": {
+   "table": {
+    "name": "attribute_type",
+    "purpose": "Small lookup table of six character/power attribute categories (e.g. Intelligence, Speed, Durability, Combat, Power, Strength), referenced by other tables as a foreign key."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "attribute_id",
+     "description": "Primary key; sequential integer identifier for each attribute category. Referenced by t05.col_002, t09.col_004, and t09.col_010.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "attribute_name",
+     "description": "Unique name of the attribute category (Intelligence, Speed, Durability, Combat, Power, and one more unseen value, likely Strength).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "colour": {
+   "table": {
+    "name": "colour",
+    "purpose": "A small lookup/reference table of colors (35 distinct entries), keyed by an integer ID. Values like 'Strawberry Blond', 'Auburn', 'Black/Blue' suggest it catalogs natural hair colors, though it also contains general colors (Magenta, Pink, Silver, Gold), so it is best described as a general color lookup list. It is referenced by several columns in t05 and t09, which likely store color IDs."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "color_id",
+     "description": "Primary key: unique integer identifier for a color entry, ranging 1-35 with no gaps. Referenced by t05.col_002 and multiple columns of t09 (col_004 through col_010), which presumably store color references.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "color_name",
+     "description": "Unique name of the color, e.g. 'Black', 'Brown/Black', 'Strawberry Blond', 'Auburn', 'Magenta', 'Pink', 'Silver'. The mix of hair-color-like names and generic color names suggests a general color lookup; the exact scope (hair colors vs. all colors) is tentative.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "gender": {
+   "table": {
+    "name": "gender",
+    "purpose": "Small lookup table mapping a numeric code to a gender/sex label (1=Male, 2=Female, 3=N/A). Likely referenced by other tables that store a gender code, though no explicit joins were detected in this table's data."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "gender_code",
+     "description": "Primary key: numeric code for the gender category (1=Male, 2=Female, 3=N/A).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "gender_label",
+     "description": "Human-readable gender label: 'Male', 'Female', or 'N/A' (not available / unspecified).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "hero_attribute": {
+   "table": {
+    "name": "hero_attribute_scores",
+    "purpose": "Per-hero rating scores for each of six attributes (Intelligence, Strength, Speed, Durability, Power, Combat); one row per hero-attribute combination (623 heroes x 6 attributes = 3738 rows)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "hero_id",
+     "description": "Identifier of the hero being rated; references t09.col_001 (the heroes table). 623 distinct heroes, each appearing 6 times (once per attribute).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "attribute_id",
+     "description": "Identifier of the rated attribute; references t02.col_001, whose labels include Intelligence, Speed, Durability, Power, Combat (and presumably Strength as id 2). Exactly 6 values, each appearing 623 times.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "numeric",
+     "name": "score",
+     "description": "Rating value for the hero on that attribute, on a 5-100 scale (min 5, max 100, mean ~52). Common values are multiples of 5, suggesting scores are given in steps of 5.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "hero_power": {
+   "table": {
+    "name": "",
+    "purpose": "t06 appears to be a junction/association table linking two entities: one identified by t09 (via col_001) and one identified by t10 (via col_002). Each row represents a relationship between a t09 record and a t10 record. The exact business meaning of the relationship cannot be determined from the data alone. Note: col_002 also joins to t09.col_001, so t09 may be a shared lookup keyed by small integer ids used by both t10 and this table, or the join to t09 is coincidental overlap of small integer ranges — this is unresolved."
+   },
+   "columns": {
+    "col_001": {
+     "role": "foreign_key",
+     "name": "t09_reference_id",
+     "description": "Integer identifier referencing t09.col_001 (many-to-one). Values range 1-756 with 652 distinct values, each appearing a handful of times (max 49). It identifies which t09 record this association row belongs to. The underlying entity (e.g., product, customer, account) is unknown.",
+     "status": "tentative"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "t10_reference_id",
+     "description": "Integer identifier referencing t10.col_001 (many-to-one). Values range 1-167 with 167 distinct values, moderately repeated (top value 358 of 5825 rows). It identifies which t10 record this association row belongs to. It also statistically joins to t09.col_001; whether that is a genuine relationship or an artifact of overlapping small-integer id ranges is unresolved. The underlying entity is unknown.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "publisher": {
+   "table": {
+    "name": "franchise_owner",
+    "purpose": "Lookup table of franchises/creators (media and entertainment properties and their owners/creators), referenced by other tables. Each row is a distinct franchise, publisher, studio, or creator name with a numeric id. Exact business meaning is tentative given opaque table names, but values (DC Comics, George Lucas, J. K. Rowling, Sony Pictures, Shueisha, Microsoft) strongly suggest a list of intellectual-property franchises and their owning/creating entities, likely from a movie/media dataset (e.g. MovieGalaxies-style franchise list)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "franchise_id",
+     "description": "Primary key; sequential integer identifier 1-25 for each franchise/creator entry. Referenced by t05.col_002 and t09.col_009 (many-to-one), so other tables point to this list.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "franchise_name",
+     "description": "Unique name of the franchise owner/creator: comic publishers (DC Comics, Dark Horse, Wildstorm), studios (ABC Studios, Sony Pictures, SyFy), and individual creators (George Lucas, J. K. Rowling). One value is an empty string, meaning one row has no recorded name. Could be read as 'owner' rather than 'franchise' name; the exact label is tentative but the content is clearly media-franchise entities.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "race": {
+   "table": {
+    "name": "race",
+    "purpose": "A lookup table of character species/race categories (e.g., Alien, Mutant, Vampire, Android, Demi-God, Inhuman, Spartoi, Symbiote), apparently for a superhero-character database. Each row is one species/race label, referenced by character records in t09. The value \"-\" likely denotes an unspecified/unknown race. The exact meaning of the table name t08 is opaque, but the content strongly supports a species/race reference list (61 distinct races)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "race_id",
+     "description": "Primary key; sequential integer identifier (1-61) for each species/race entry. Referenced by several columns of t09 (col_005 through col_009), which appear to store race-related attributes of characters keyed to this table.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "race_name",
+     "description": "Unique name of the species/race (e.g., Alien, Alpha, Amazon, Android, Mutant, Demi-God, Vampire, Symbiote, Inhuman, Spartoi, 'Human / Radiation'). The single value '-' likely represents an unknown/unspecified race.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "superhero": {
+   "table": {
+    "name": "superhero",
+    "purpose": "One row per fictional superhero/villain character (comic, film, TV), with attributes such as real identity, alignment, physical traits, publisher, height and weight. This is the central character table referenced by t05 and t06."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "character_id",
+     "description": "Primary key; unique surrogate identifier for each character (1-756).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "name",
+     "description": "Character's superhero/villain alias, e.g. 'Green Lantern V', 'Iceman', 'Scorpia'.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "identifier",
+     "name": "full_name",
+     "description": "Character's real/secret identity (full personal name), e.g. 'Jessica Viviana Cruz', 'Barbara Gordon'. '-' or null when unknown.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "alignment",
+     "description": "Moral alignment, foreign key to t01 lookup: 1=Good, 2=Bad, 3=Neutral.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "category",
+     "name": "eye_color_id",
+     "description": "Eye color, foreign key to t03 color lookup (21 distinct colors).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "category",
+     "name": "hair_color_id",
+     "description": "Hair color, foreign key to t03 color lookup (26 distinct colors).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "category",
+     "name": "skin_color_id",
+     "description": "Skin color, foreign key to t03 color lookup; overwhelmingly a single default value (id 1, ~91%), consistent with skin color being rarely specified. Alternative reading: some other rarely-varying color attribute, but skin color fits the classic superhero schema.",
+     "status": "tentative"
+    },
+    "col_008": {
+     "role": "category",
+     "name": "race_id",
+     "description": "Character race/species, foreign key to t08 race lookup (61 distinct, e.g. Human/Radiation, Inhuman, Spartoi, Talokite, Zombie).",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "category",
+     "name": "publisher_id",
+     "description": "Publisher/creator of the character, foreign key to t07 lookup (e.g. DC Comics, Microsoft, Shueisha, Team Epic TV, Titan Books).",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "category",
+     "name": "alignment_2",
+     "description": "Second 3-valued alignment-like code (1/2/3 with distribution 504/212/28, nearly matching col_004's 519/203/28), likely a duplicate or re-encoded alignment (Good/Bad/Neutral). Could alternatively be a second alignment field from a different source; exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "height_cm",
+     "description": "Character height in centimeters (median 178, typical human range; outliers like 30480 cm for giant characters; 0 = unknown).",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "weight_kg",
+     "description": "Character weight in kilograms (median 72, human-typical; extreme outliers up to 90,000,000 kg; 0 = unknown).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "superpower": {
+   "table": {
+    "name": "superpower",
+    "purpose": "Lookup table of superpowers/powers (e.g., 'Invisibility', 'Accelerated Healing'), one per row, referenced by other tables such as hero attributes and appearances."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "superpower_id",
+     "description": "Primary key; surrogate integer identifier for each superpower (1-167, sequential).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "superpower_name",
+     "description": "Unique human-readable name of the superpower (e.g., 'Invisibility', 'Stamina', 'Power Nullifier').",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

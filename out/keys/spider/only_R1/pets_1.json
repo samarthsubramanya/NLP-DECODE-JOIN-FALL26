@@ -1,0 +1,220 @@
+{
+ "accept": 70,
+ "db_id": "pets_1",
+ "rules": [
+  "R1"
+ ],
+ "tables": {
+  "Has_Pet": {
+   "candidate_keys": [],
+   "columns": {
+    "PetID": {
+     "base": 100.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 34.0
+    },
+    "StuID": {
+     "base": 67.593,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.3518518518518518,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 0.6666666666666666
+     },
+     "phi": 1.0,
+     "score": 67.593
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  },
+  "Pets": {
+   "candidate_keys": [
+    {
+     "column": "PetID",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "PetID": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "PetType": {
+     "base": 26.593,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.3518518518518518,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6666666666666666
+     },
+     "phi": 0.85,
+     "score": 22.604
+    },
+    "pet_age": {
+     "rejected": "blacklist: quantity (age)"
+    },
+    "weight": {
+     "rejected": "blacklist: quantity (weight)"
+    }
+   },
+   "evidence": "score",
+   "primary_key": "PetID"
+  },
+  "Student": {
+   "candidate_keys": [
+    {
+     "column": "StuID",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "Advisor": {
+     "base": 18.105,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.06209150326797387,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5294117647058824
+     },
+     "phi": 0.55,
+     "score": 9.958
+    },
+    "Age": {
+     "rejected": "blacklist: quantity (age)"
+    },
+    "Fname": {
+     "base": 30.732,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.4346405228758171,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.7058823529411765
+     },
+     "phi": 0.7,
+     "score": 21.512
+    },
+    "LName": {
+     "base": 52.464,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.8692810457516339,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9117647058823529
+     },
+     "phi": 0.85,
+     "score": 44.594
+    },
+    "Major": {
+     "base": 15.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.17647058823529413
+     },
+     "phi": 0.55,
+     "score": 8.25
+    },
+    "Sex": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.058823529411764705
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "StuID": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Has_Pet.StuID"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "city_code": {
+     "base": 25.209,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.12418300653594774,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.5588235294117647
+     },
+     "phi": 0.55,
+     "score": 13.865
+    }
+   },
+   "evidence": "score",
+   "primary_key": "StuID"
+  }
+ },
+ "use_names": true
+}

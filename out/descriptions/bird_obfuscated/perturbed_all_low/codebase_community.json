@@ -1,0 +1,518 @@
+{
+ "db_id": "codebase_community",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "frozen_no_names",
+ "keys_run": "frozen_no_names",
+ "graph": "llm",
+ "edges": 63,
+ "tables": {
+  "badges": {
+   "table": {
+    "name": "",
+    "purpose": "t01 is a central entity table (one row per record, ~79,851 rows) referenced by many other tables (t02–t08) via its primary key col_001. Its exact business meaning is unresolved: the text values are opaque/coded strings and the dates fall in a synthetic future range (2066–2070), so no concrete domain can be inferred. It likely represents the main 'parent' entity of the database, with each row holding a category-like label (col_003) and a timestamp (col_004)."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of t01; unique integer identifier for each row. Referenced by foreign keys in t02, t03, t04, t05, t06, t07, and t08, confirming it is the table's surrogate key.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "parent_id",
+     "description": "Integer foreign key referencing t07.col_001 and t03.col_001 (many-to-one). With ~31% uniqueness, many rows share the same target, so it groups t01 rows under entities in t07/t03. The specific meaning of the referenced entity is unresolved.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "category",
+     "name": "label",
+     "description": "Low-cardinality text field (153 distinct values) with values like 'Gijpasi', 'Gjnnkziaz', 'Apoikz'. Behaves like a category/type/classification code, but the values are opaque coded strings, so the actual meaning of each category is unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "created_at",
+     "description": "Timestamp per row (2066-07-19 to 2070-09-14), mostly unique, stored as text. Functions as a per-record event/creation timestamp. The future-dated range suggests synthetic or offset data; the specific event it marks (creation vs. other event) is unresolved.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "comments": {
+   "table": {
+    "name": "comments",
+    "purpose": "Forum/community message posts. Each row is one post: an author, free-text body (obfuscated English), a timestamp, a parent thread/topic, and a reply/score count. The text is encoded with a letter-substitution cipher (e.g. \"Ihdst ckj fazc mjrh!\" = \"Thank you very much!\", \"Fawrkma ik iha goia!\" = \"Welcome to the fold!\"), but the content is clearly conversational forum posts mentioning users (@mentions), code (`backticks`), and community discussion."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "post_id",
+     "description": "Primary key of the post; unique sequential integer identifier. Referenced by t03, t04, t05 (child records such as replies, votes, edits).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "author_id",
+     "description": "Identifier of the user who wrote the post; references user tables t05.col_001 / t03.col_001. ~53k distinct authors, some very prolific (top author has 45 posts).",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "reply_count",
+     "description": "Small non-negative count per post (0-90, 77% zeros). Most plausibly the number of replies/comments to the post; could alternatively be a score/vote count, but the heavy zero-inflation fits a reply count best.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "free_text",
+     "name": "body",
+     "description": "Full text of the post, in obfuscated English (substitution cipher). Contains @mentions, quoted code snippets, and conversational forum content. Near-unique per row.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "created_at",
+     "description": "Creation timestamp of the post (dates are synthetic/future-shifted, 2065-2070). Nearly unique, consistent with per-post creation time.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "thread_id",
+     "description": "Identifier of the thread/topic the post belongs to; references t07.col_001 (and statistically t03.col_001). ~13.6k distinct threads, 1.6% null (orphan/standalone posts).",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "free_text",
+     "name": "author_display_name",
+     "description": "Mostly null (98.4%). Values look like usernames ('jgaz23101' decodes to 'user23101') and a few display names/place names. Plausibly an optional display name or location for the post author; the exact meaning is not fully determinable.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "postHistory": {
+   "table": {
+    "name": "postHistory",
+    "purpose": "Posts table of a Q&A/forum database (Stack Overflow-like). Each row is one post (question, answer, or similar) with its body text, author, creation timestamp, close/duplicate status, and tags. Text content is obfuscated/letter-substituted, but structure is clear: col_007 is the post body, col_008 holds close notices (e.g. \"apoiap ioiwa\" = \"closed as ...\", \"dppap N rhdzdriazg os ukpc\" = \"closed N duplicate of ...\"), col_009 holds tag lists (\"jgaz...\" = \"tag...\")."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "post_id",
+     "description": "Primary key of the post; unique integer identifier, referenced by many other tables (comments, votes, revisions, etc.).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "category",
+     "name": "post_type_id",
+     "description": "Small-integer category code (25 distinct values, 1..38) referencing lookup tables t01/t02/t05. Most likely the post type (question/answer/wiki/etc.), though the relatively large number of distinct values leaves room for another reading such as a site or category code.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "owner_user_id",
+     "description": "Id of the user who authored the post; references the users table (t02.col_001). Repeats ~0.3 per user, consistent with users owning multiple posts.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "identifier",
+     "name": "post_guid",
+     "description": "UUID-style unique identifier for the post (letters substituted, but format is 8-4-4-4-12 hex-like groups). Not a join key.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "creation_date",
+     "description": "Creation timestamp of the post (dates shifted ~40 years into the future, range 2065-2070, likely anonymized).",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "last_editor_user_id",
+     "description": "Id of the user who last edited the post; references t07.col_001. Value -1 (present in data) conventionally denotes a system/community user; 7% null means never edited.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "free_text",
+     "name": "body",
+     "description": "Full text body of the post (obfuscated prose, includes markup-like fragments such as <...> tags and links). Empty string for ~8% of rows.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "free_text",
+     "name": "close_notice",
+     "description": "Close/duplicate status text. Empty for ~60% of rows; non-empty values are close reasons such as 'closed as ...' and 'closed N duplicate of ...' (obfuscated: 'apoiap ioiwa', 'dppap N rhdzdriazg os ukpc').",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "free_text",
+     "name": "tags",
+     "description": "Tag labels attached to the post (obfuscated values like 'jgaz23101' = 'tag23101'); empty for ~98% of rows, consistent with tags only on questions.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "postLinks": {
+   "table": {
+    "name": "",
+    "purpose": "t04 is a transactional/event table (likely orders or similar) with a surrogate primary key, a timestamp, two entity references (probably customer and seller/party, both pointing into t05), and a status/type flag with values 1 and 3. The exact business domain cannot be determined from the data alone; entity names are unresolved."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Surrogate primary key of the table; unique integer identifier for each row (transaction/event).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "date",
+     "name": "created_at",
+     "description": "Timestamp of the event/transaction, ranging 2066-07-21 to 2070-09-13 (dates appear shifted into the future, likely anonymized/synthetic data). One timestamp dominates (234 rows on 2069-02-18 03:03:17), suggesting a bulk load or batch event.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "party_a_id",
+     "description": "Foreign key referencing t05.col_001 (many-to-one). Identifies one of the two entities involved in each row, likely a customer or account. Exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "party_b_id",
+     "description": "Foreign key referencing t05.col_001 (many-to-one). Second entity reference; in sample rows it is often close to col_003 (e.g. 25189 vs 25181), suggesting a related but distinct party, e.g. counterpart/seller. Exact meaning unresolved.",
+     "status": "tentative"
+    },
+    "col_005": {
+     "role": "code",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "posts": {
+   "table": {
+    "name": "posts",
+    "purpose": "Q&A forum posts (Stack Overflow-style): questions and answers with body, score, tags, owner/editor users, and lifecycle timestamps. One row per post; other tables (t02/t03/t06/t07/t08) reference posts by id, and t01/t02/t03 look like user tables referenced by owner/editor columns."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "post_id",
+     "description": "Primary key of the post; unique integer id referenced by many other tables.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "code",
+     "name": "post_type_id",
+     "description": "Post type code: 1 = question (~43k rows), 2 = answer (~48k rows); rare values 4-7 likely wiki/moderator/privilege wiki types. References lookup tables t01/t02/t03.",
+     "status": "resolved"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "parent_post_id",
+     "description": "For answers (16% of rows), the id of the parent question; null for questions. One-to-one with t02/t03 ids suggests those tables hold questions.",
+     "status": "resolved"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "creation_date",
+     "description": "Timestamp when the post was created (dates are shifted ~40 years into the future, likely anonymized).",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "score",
+     "description": "Net vote score of the post (upvotes minus downvotes); range -19 to 192, mostly 0-4.",
+     "status": "resolved"
+    },
+    "col_006": {
+     "role": "foreign_key",
+     "name": "owner_user_id",
+     "description": "Id of the user who created the post; null for ~53% of rows (deleted/anonymized owners). References user tables t02/t03. Could alternatively be a different user reference, but owner is the most common such column.",
+     "status": "tentative"
+    },
+    "col_007": {
+     "role": "free_text",
+     "name": "body",
+     "description": "Full post body as HTML/XML markup (text is obfuscated/anonymized).",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "foreign_key",
+     "name": "last_editor_user_id",
+     "description": "Id of the user who last edited the post (-1 often denotes the community user); references t07 (users).",
+     "status": "tentative"
+    },
+    "col_009": {
+     "role": "date",
+     "name": "last_activity_date",
+     "description": "Timestamp of last activity on the post; always populated, >= creation date.",
+     "status": "resolved"
+    },
+    "col_010": {
+     "role": "free_text",
+     "name": "title",
+     "description": "Post title; null for ~53% of rows, matching answers (which have no title).",
+     "status": "resolved"
+    },
+    "col_011": {
+     "role": "code",
+     "name": "tags",
+     "description": "Space/angle-bracket delimited tag list for questions (e.g. '<tag1><tag2>'); null rate matches questions only.",
+     "status": "resolved"
+    },
+    "col_012": {
+     "role": "numeric",
+     "name": "answer_count",
+     "description": "Number of answers on a question; null for answers themselves (null rate matches the answer share).",
+     "status": "resolved"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "comment_count",
+     "description": "Number of comments on the post; always populated, mostly 0-3.",
+     "status": "resolved"
+    },
+    "col_014": {
+     "role": "numeric",
+     "name": "favorite_count",
+     "description": "Number of times the post was favorited/bookmarked; null for most rows (only popular questions have favorites).",
+     "status": "tentative"
+    },
+    "col_015": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_016": {
+     "role": "date",
+     "name": "last_edit_date",
+     "description": "Timestamp of the last edit; null when never edited (~51%).",
+     "status": "tentative"
+    },
+    "col_017": {
+     "role": "date",
+     "name": "closed_date",
+     "description": "Timestamp when the post was closed; null for ~97% of posts (only closed questions have it).",
+     "status": "tentative"
+    },
+    "col_018": {
+     "role": "foreign_key",
+     "name": "related_post_id",
+     "description": "Reference to another post (joins to t02/t03 post ids); present for ~52% of rows. Likely a duplicate-of / linked-post reference, but the exact semantics are not provable from the data.",
+     "status": "tentative"
+    },
+    "col_019": {
+     "role": "date",
+     "name": "deletion_date",
+     "description": "Timestamp when the post was deleted; null for ~98% of rows.",
+     "status": "tentative"
+    },
+    "col_020": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_021": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "tags": {
+   "table": {
+    "name": "",
+    "purpose": "t06 is a child/detail table keyed by col_001 (1032 rows). Each row carries a unique opaque text token (col_002), a many-to-one reference to a parent table (col_003, matching keys in t01, t03 and t05), and an optional pair of consecutive integers (col_004/col_005) that are always null together and differ by exactly 1, suggesting a bounded range (e.g., start/end positions or a versioned pair). The underlying domain cannot be determined from the data; all names and values are opaque codes."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of t06; unique integer identifier for each row (1–1869, 1032 distinct values, no nulls).",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "identifier",
+     "name": "code",
+     "description": "Unique opaque text token per row (e.g., 'uwkrtose', 'kfazpognazgoks'). Likely a human- or system-assigned code/name; the actual semantics of the token are unreadable.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "foreign_key",
+     "name": "parent_id",
+     "description": "Many-to-one foreign key. Statistically it matches keys in t01.col_001, t03.col_001 and t05.col_001, so the true target table is ambiguous; it most plausibly references one parent entity (272 distinct values, skewed toward small ids).",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_005": {
+     "role": "foreign_key",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "users": {
+   "table": {
+    "name": "social_media_user_profiles",
+    "purpose": "One row per social-media user account (Twitter-like service): profile metadata such as screen name, bio, location, website, follower/friend/status counts, plus account IDs and crawl timestamps. Text values are obfuscated/encoded, but URL patterns (\"hiin://\" = http://, \".rkm\" = .com, search/profile URL structures) and bio fragments (\"O dm d ...\" = \"I am a ...\") clearly indicate user profiles of a microblogging service."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "profile_id",
+     "description": "Primary key of this table; unique integer row identifier (surrogate key). Referenced by t01, t02, t03 and t05 as a foreign key pointing at individual profiles.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "source_id",
+     "description": "Foreign key to t01/t03/t05 primary keys (many-to-one). 965 distinct values with heavy skew (1, 101, 6, 11, 16 dominate), suggesting a batch/crawl/source grouping the profiles were collected under. Exact semantics of the referenced entity are not visible from this table.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "date",
+     "name": "created_at",
+     "description": "Timestamp (2066-2070 range, synthetic/anonymized dates) stored as text; near-unique per row. Most plausibly the account creation time, as it is always earlier than or close to col_005 in the samples.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "category",
+     "name": "screen_name",
+     "description": "User handle/screen name. Values are short mixed-case tokens, some with a numeric suffix pattern (e.g. 'jgaz97547', 'jgaz037'), consistent with usernames rather than free text.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "date",
+     "name": "collected_at",
+     "description": "Second timestamp per row, always >= col_003 in samples and spanning the same range. Likely the time the profile was crawled/updated. Alternative reading: last-status/last-tweet time.",
+     "status": "tentative"
+    },
+    "col_006": {
+     "role": "free_text",
+     "name": "url",
+     "description": "The user's declared website URL (\"hiin://\" = http://, \".rkm\" = .com; e.g. 'hiin://lll.ekkewa.rkm' = http://www.…). ~80% null, matching the optional 'url' profile field.",
+     "status": "resolved"
+    },
+    "col_007": {
+     "role": "free_text",
+     "name": "location",
+     "description": "Free-text user location field: 'City, ST' patterns ('Ldghoseiks, PR' ~ 'Philadelphia, PA', 'Ndwasfowwa, SC' ~ 'Washington, DC'), region names, and abbreviations. ~71% null, consistent with an optional location field.",
+     "status": "resolved"
+    },
+    "col_008": {
+     "role": "free_text",
+     "name": "description",
+     "description": "User bio/description. Values are wrapped in markup tags (<n>…</n>, with embedded links <d hzax=\"…\"> = <a href=\"…\">) and read as first-person self-descriptions ('O dm d ...' = 'I am a ...'). ~77% null, matching an optional bio field.",
+     "status": "resolved"
+    },
+    "col_009": {
+     "role": "numeric",
+     "name": "followers_count",
+     "description": "Non-negative count, mostly 0 with a long tail (max 20932). Joins to t01/t03/t05 keys are spurious (small ints overlap key ranges). Given the sibling columns, most plausibly the follower count. Could equally be friends or statuses count; the trio col_009/col_010/col_011 are follower/friend/post counts in some order.",
+     "status": "tentative"
+    },
+    "col_010": {
+     "role": "numeric",
+     "name": "friends_count",
+     "description": "Non-negative count, mostly 0, max 11442. One of the profile count trio (followers/friends/statuses); exact assignment among the trio is not determinable from this table alone.",
+     "status": "tentative"
+    },
+    "col_011": {
+     "role": "numeric",
+     "name": "favorites_count",
+     "description": "Non-negative count, almost always 0, max 1920. Its much smaller magnitude compared to col_009/col_010 suggests a sparser counter such as favorites/likes or listed count rather than statuses.",
+     "status": "tentative"
+    },
+    "col_012": {
+     "role": "identifier",
+     "name": "account_id",
+     "description": "Unique per-row large integer (up to ~5M, plus a -1 sentinel), distinct from col_001. Most plausibly the native user/account ID from the source platform, kept alongside the local surrogate key.",
+     "status": "tentative"
+    },
+    "col_013": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_014": {
+     "role": "free_text",
+     "name": "profile_search_url",
+     "description": "URLs pointing at the platform's search/profile pages (e.g. 'hiing://lll.ezdfdidz.rkm/dfdidz/?g=206&p=…' ~ http://www.search.…/search/…, and mobile profile links 'hiin://ezdnh.xdraukkt.rkm/<id>/norijza'). ~59% null. Likely a canonical profile or search URL captured during crawling; the exact field (e.g. expanded profile URL vs. background image URL) is not determinable.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "votes": {
+   "table": {
+    "name": "",
+    "purpose": "A transactional/fact table (38,930 rows) keyed by a surrogate ID, linking entities from t05/t03/t01 via a shared key, with a date and two sparse numeric attributes. Exact domain is unresolved due to opaque names and no lookup labels."
+   },
+   "columns": {
+    "col_001": {
+     "role": "identifier",
+     "name": "row_id",
+     "description": "Surrogate primary key; unique integer 1-43538 with no gaps pattern, referenced by t05.col_013 (many-to-one from t05's side), so each row here can be referenced by rows in t05.",
+     "status": "resolved"
+    },
+    "col_002": {
+     "role": "foreign_key",
+     "name": "entity_id",
+     "description": "Foreign key to a shared entity key (t05.col_001, t03.col_001, t01.col_001 all accept it), i.e. an identifier of some party/object (e.g. customer or account) appearing in multiple tables. 8,584 distinct values, so each entity has on average ~4.5 rows here.",
+     "status": "tentative"
+    },
+    "col_003": {
+     "role": "code",
+     "name": "type_code",
+     "description": "Small categorical code (10 distinct values, 1-16, dominated by 2 with ~86%). Joins statistically to the same entity key tables, but with only 10 values it more likely encodes a type/status/category of the row. The specific meanings of the codes are unknown.",
+     "status": "tentative"
+    },
+    "col_004": {
+     "role": "date",
+     "name": "transaction_date",
+     "description": "Date of the event/row, ranging 2066-07-19 to 2067-05-01 (about 9.5 months, 287 distinct days). The future-dated years suggest a shifted/anonymized date axis; treated as a plain date attribute.",
+     "status": "resolved"
+    },
+    "col_005": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "col_006": {
+     "role": "numeric",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

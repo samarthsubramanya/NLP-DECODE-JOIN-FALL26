@@ -1,0 +1,284 @@
+{
+ "db_id": "real_estate_properties",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "default",
+ "keys_run": "frozen",
+ "graph": "llm",
+ "edges": 5,
+ "tables": {
+  "Other_Available_Features": {
+   "table": {
+    "name": "Other_Available_Features",
+    "purpose": "A small lookup/reference table of optional property features (e.g. air conditioning, swimming pool, burglar alarm) that can be attached to properties via the junction table Other_Property_Features. Each feature is classified by a feature type (Amenity or Security) from Ref_Feature_Types. Part of a real-estate database alongside Properties and Ref_Property_Types. Note: with only 3 rows, the full feature catalogue may be incomplete or the table may be a sample; the IDs starting at 2 suggest feature_id 1 exists elsewhere or was deleted, but this is unconfirmed."
+   },
+   "columns": {
+    "feature_description": {
+     "role": "free_text",
+     "name": "feature_description",
+     "description": "Human-readable description of the feature, e.g. 'Air Conditioning.', 'Swimming Pool.', 'Burglar Alarm'.",
+     "status": "resolved"
+    },
+    "feature_id": {
+     "role": "identifier",
+     "name": "feature_id",
+     "description": "Primary key of this lookup table; surrogate integer identifying a property feature. Referenced by Other_Property_Features.feature_id, which links properties to their features.",
+     "status": "resolved"
+    },
+    "feature_name": {
+     "role": "code",
+     "name": "feature_name",
+     "description": "Short machine-style name/code for the feature (e.g. 'AirCon', 'Pool', 'BurglarAlarm'); unique per row.",
+     "status": "resolved"
+    },
+    "feature_type_code": {
+     "role": "foreign_key",
+     "name": "feature_type_code",
+     "description": "Foreign key to Ref_Feature_Types.feature_type_code, classifying the feature as 'Amenity' (e.g. Pool) or 'Security' (e.g. Burglar Alarm).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Other_Property_Features": {
+   "table": {
+    "name": "Other_Property_Features",
+    "purpose": "Junction/association table linking properties to optional features (from Other_Available_Features), with a per-property free-text description of each feature. Each row represents one feature attached to one property."
+   },
+   "columns": {
+    "feature_id": {
+     "role": "foreign_key",
+     "name": "feature_id",
+     "description": "Identifier of the feature type associated with the property; references Other_Available_Features.feature_id (e.g. 2 = Air Conditioning, 3 = Swimming Pool, 4 = Burglar Alarm). The statistical join to Properties.property_id is spurious (same column name, unrelated semantics).",
+     "status": "resolved"
+    },
+    "property_feature_description": {
+     "role": "free_text",
+     "name": "property_feature_description",
+     "description": "Free-text description of the feature as it applies to this property (e.g. notes or details). Values are placeholder/lorem-ipsum-like words, so the exact semantic content cannot be confirmed, but the column is clearly a per-row descriptive text field.",
+     "status": "tentative"
+    },
+    "property_id": {
+     "role": "foreign_key",
+     "name": "property_id",
+     "description": "Identifier of the property that has this feature; references Properties.property_id.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Properties": {
+   "table": {
+    "name": "Properties",
+    "purpose": "One row per real-estate property for sale: its identity (id, name, address, type, room count), listing and sale dates, and the three price points of a transaction (vendor's asking price, buyer's offer, agreed selling price). Type-specific feature columns (apt_/hse_/fld_/shp_/oth_ prefixed) exist per property type, but only the two apartment feature columns carry data, and their values look like placeholder text. Additional features are stored in the related Other_Property_Features table."
+   },
+   "columns": {
+    "agreed_selling_price": {
+     "role": "numeric",
+     "name": "agreed_selling_price",
+     "description": "Final price at which the property was sold, stored as a union-typed value (numeric or text). Values range from 0 to ~244 million with decimals; 0 likely means not sold / no agreed price. Currency unit is not evident from the data.",
+     "status": "resolved"
+    },
+    "apt_feature_1": {
+     "role": "category",
+     "name": "apt_feature_1",
+     "description": "First feature attribute specific to Apartment-type properties (prefix 'apt' matches the Apartment property_type_code). Values are short lowercase words ('aut', 'est', 'fuga', 'consequatur'...) that look like Lorem-ipsum filler, so the intended content (e.g. a feature code or label) cannot be determined; only the apartment-specific scoping is supported by evidence.",
+     "status": "tentative"
+    },
+    "apt_feature_2": {
+     "role": "category",
+     "name": "apt_feature_2",
+     "description": "Second feature attribute specific to Apartment-type properties. Same caveat as apt_feature_1: values are Lorem-ipsum-like words, so the actual meaning of the feature is unclear; the apartment-specific scoping is plausible from the 'apt' prefix.",
+     "status": "tentative"
+    },
+    "apt_feature_3": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "buyer_offered_price": {
+     "role": "numeric",
+     "name": "buyer_offered_price",
+     "description": "Price offered by the buyer for the property, stored as a union-typed value. Values range from 0 to ~14 million; 0 likely means no offer made. Currency unit not evident.",
+     "status": "resolved"
+    },
+    "date_on_market": {
+     "role": "date",
+     "name": "date_on_market",
+     "description": "Date (with time) the property was listed/placed on the market, as a text timestamp 'YYYY-MM-DD HH:MM:SS'. Range 1976-2017.",
+     "status": "resolved"
+    },
+    "date_sold": {
+     "role": "date",
+     "name": "date_sold",
+     "description": "Date (with time) the property was sold, as a text timestamp 'YYYY-MM-DD HH:MM:SS'. Range 1971-2012. Note: some sold dates precede the on-market date, so the data appears synthetic or inconsistent.",
+     "status": "resolved"
+    },
+    "fld_feature_1": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "fld_feature_2": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "fld_feature_3": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "hse_feature_1": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "hse_feature_2": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "hse_feature_3": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "oth_feature_1": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "oth_feature_2": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "oth_feature_3": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "other_property_details": {
+     "role": "free_text",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "property_address": {
+     "role": "free_text",
+     "name": "property_address",
+     "description": "Full postal address of the property, stored as text with an embedded newline separating street line from city, state and ZIP (e.g. '092 Paucek Highway Apt. 772\\nEast Erika, IA 61358'). Unique per row.",
+     "status": "resolved"
+    },
+    "property_id": {
+     "role": "identifier",
+     "name": "property_id",
+     "description": "Primary key of the Properties table; sequential integer 1-15, one per property. Referenced by Other_Property_Features (property_id / feature_id), which stores additional per-property features.",
+     "status": "resolved"
+    },
+    "property_name": {
+     "role": "free_text",
+     "name": "property_name",
+     "description": "Short display name of the property (e.g. 'avalon', 'chelsea', 'high line', 'the cole'), likely a building/development name. Unique per row.",
+     "status": "resolved"
+    },
+    "property_type_code": {
+     "role": "code",
+     "name": "property_type_code",
+     "description": "Code classifying the property type; references Ref_Property_Types.property_type_code. Values: House, Apartment, Field, Shop, Other (lookup gives descriptions such as 'House, Bungalow, etc.'). The type also determines which prefixed feature columns (hse_/apt_/fld_/shp_/oth_) apply.",
+     "status": "resolved"
+    },
+    "room_count": {
+     "role": "numeric",
+     "name": "room_count",
+     "description": "Number of rooms in the property, integer 1-9 (mean ~5.7).",
+     "status": "resolved"
+    },
+    "shp_feature_1": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "shp_feature_2": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "shp_feature_3": {
+     "role": "boolean",
+     "name": "",
+     "description": "",
+     "status": "unresolved"
+    },
+    "vendor_requested_price": {
+     "role": "numeric",
+     "name": "vendor_requested_price",
+     "description": "Asking price requested by the vendor (seller), stored as a union-typed value. Values range from ~78 to ~661 million; unique per row. Currency unit not evident.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Ref_Feature_Types": {
+   "table": {
+    "name": "Ref_Feature_Types",
+    "purpose": "Reference/lookup table classifying property features into types (currently Amenity and Security), used to categorize rows in Other_Available_Features and related feature tables for the Properties database."
+   },
+   "columns": {
+    "feature_type_code": {
+     "role": "category",
+     "name": "feature_type_code",
+     "description": "Primary key code identifying the category of a property feature; the two known values are 'Amenity' (e.g. pool) and 'Security' (e.g. burglar alarm). Referenced by Other_Available_Features.feature_type_code.",
+     "status": "resolved"
+    },
+    "feature_type_name": {
+     "role": "category",
+     "name": "feature_type_name",
+     "description": "Human-readable label/description of the feature type, including an example ('Amenity, eg Pool.', 'Securiyt, eg Burglar Alarm.' — the latter containing a typo of 'Security').",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Ref_Property_Types": {
+   "table": {
+    "name": "Ref_Property_Types",
+    "purpose": "Lookup/reference table of property type categories used to classify properties in the Properties table; each row is one property type with its code and description."
+   },
+   "columns": {
+    "property_type_code": {
+     "role": "category",
+     "name": "property_type_code",
+     "description": "Primary key code identifying a property category (Apartment, Field, House, Other, Shop); referenced by Properties.property_type_code.",
+     "status": "resolved"
+    },
+    "property_type_description": {
+     "role": "category",
+     "name": "property_type_description",
+     "description": "Human-readable description of the property type, listing examples covered by the category (e.g. 'House, Bungalow, etc.').",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

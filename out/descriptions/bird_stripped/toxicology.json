@@ -1,0 +1,118 @@
+{
+ "db_id": "toxicology",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "default",
+ "keys_run": "frozen",
+ "graph": "llm",
+ "edges": 5,
+ "tables": {
+  "atom": {
+   "table": {
+    "name": "atom",
+    "purpose": "One row per atom in a chemical structure dataset: each atom is identified within its molecule (TR###_n), carries its chemical element, and links to its parent molecule via molecule_id. Atoms are connected to each other through the connected table (which references atom_id from both sides), and bonds are described in the bond table."
+   },
+   "columns": {
+    "atom_id": {
+     "role": "identifier",
+     "name": "atom_id",
+     "description": "Unique identifier of an atom; composed of the parent molecule code (e.g. TR031) plus an underscore and a per-molecule atom index (e.g. _31). Primary key of the atom table; referenced by connected.atom_id and connected.atom_id2.",
+     "status": "resolved"
+    },
+    "element": {
+     "role": "category",
+     "name": "element",
+     "description": "Chemical element symbol of the atom, lowercase (h = hydrogen, c = carbon, o = oxygen, n = nitrogen, cl = chlorine, etc.; 21 distinct elements including p, zn, br, si).",
+     "status": "resolved"
+    },
+    "molecule_id": {
+     "role": "foreign_key",
+     "name": "molecule_id",
+     "description": "Identifier of the molecule the atom belongs to; foreign key to molecule.molecule_id. Each atom belongs to exactly one molecule (444 molecules, up to ~174 atoms each).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "bond": {
+   "table": {
+    "name": "bond",
+    "purpose": "Chemical bonds between atoms in molecules. Each row is one bond in one molecule, linking two atoms (identified by their indices in bond_id) with a bond order (single, double, or triple). The bond_id atom indices presumably join to atom records via the 'connected' table, which references bond_id."
+   },
+   "columns": {
+    "bond_id": {
+     "role": "identifier",
+     "name": "bond_id",
+     "description": "Primary key identifying a chemical bond. Encoded as <molecule_id>_<atom_index_1>_<atom_index_2>, where the two numbers are the indices of the bonded atoms within the molecule (e.g. TR365_13_14 is the bond between atoms 13 and 14 of molecule TR365).",
+     "status": "resolved"
+    },
+    "bond_type": {
+     "role": "category",
+     "name": "bond_type",
+     "description": "Bond order notation in standard chemical notation: '-' = single bond (10528 rows), '=' = double bond (1844 rows), '#' = triple bond (6 rows).",
+     "status": "resolved"
+    },
+    "molecule_id": {
+     "role": "foreign_key",
+     "name": "molecule_id",
+     "description": "Foreign key to molecule.molecule_id; the molecule (TR-prefixed code) that contains this bond. Each molecule has multiple bonds (444 molecules, 12379 bonds).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "connected": {
+   "table": {
+    "name": "connected",
+    "purpose": "Edge/association table linking pairs of atoms to the bond between them: each row states that atom atom_id and atom atom_id2 are joined by bond bond_id. It materializes the atom–bond–atom relationship (likely one row per bond endpoint, so each bond appears twice with endpoints swapped), enabling traversal of molecular connectivity between the atom and bond tables."
+   },
+   "columns": {
+    "atom_id": {
+     "role": "foreign_key",
+     "name": "atom_id",
+     "description": "First atom of a bonded pair. Composite key with atom_id2 and bond_id; each row represents one connection between two atoms. Values are molecule-prefixed atom identifiers (e.g. TR018_11 = atom 11 of molecule TR018). References atom.atom_id.",
+     "status": "resolved"
+    },
+    "atom_id2": {
+     "role": "foreign_key",
+     "name": "atom_id2",
+     "description": "Second atom of the bonded pair; references atom.atom_id. Together with atom_id it identifies the two endpoints of the bond referenced by bond_id.",
+     "status": "resolved"
+    },
+    "bond_id": {
+     "role": "foreign_key",
+     "name": "bond_id",
+     "description": "Identifier of the bond connecting atom_id and atom_id2; references bond.bond_id. Encoded as <molecule>_<atom1>_<atom2> (e.g. TR018_11_12). Duplicated values (top count 2) suggest each bond appears twice, once per direction/endpoint ordering.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "molecule": {
+   "table": {
+    "name": "molecule",
+    "purpose": "One row per molecule in a chemical structure dataset. Each molecule has a unique ID (TRnnn) and a charge sign label ('+' cation or '-' anion). Its atoms and bonds are stored in the atom and bond tables, linked via molecule_id; the 'connected' table likely records connectivity between molecules or components."
+   },
+   "columns": {
+    "label": {
+     "role": "category",
+     "name": "charge_sign",
+     "description": "Charge sign of the molecule: '-' for negatively charged (anionic) molecules, '+' for positively charged (cationic) molecules. Binary flag, 191 negative vs 152 positive.",
+     "status": "resolved"
+    },
+    "molecule_id": {
+     "role": "identifier",
+     "name": "molecule_id",
+     "description": "Primary key identifying each molecule, formatted as 'TR' followed by a zero-padded number (e.g. TR000, TR477). Referenced by atom.molecule_id and bond.molecule_id, which store the atoms and bonds belonging to each molecule.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

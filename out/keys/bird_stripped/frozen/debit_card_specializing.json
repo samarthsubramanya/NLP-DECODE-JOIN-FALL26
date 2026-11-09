@@ -1,0 +1,337 @@
+{
+ "accept": 70,
+ "db_id": "debit_card_specializing",
+ "rules": [
+  "R1",
+  "R4",
+  "R5"
+ ],
+ "tables": {
+  "customers": {
+   "candidate_keys": [
+    {
+     "column": "CustomerID",
+     "score": 125.0
+    }
+   ],
+   "columns": {
+    "Currency": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 6.161239641415853e-05
+     },
+     "phi": 0.7,
+     "score": 13.3
+    },
+    "CustomerID": {
+     "base": 85.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "referenced_by": [
+       "transactions_1k.CustomerID",
+       "yearmonth.CustomerID"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 125.0
+    },
+    "Segment": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 9.24185946212378e-05
+     },
+     "phi": 0.85,
+     "score": 16.15
+    }
+   },
+   "evidence": "score",
+   "primary_key": "CustomerID"
+  },
+  "gasstations": {
+   "candidate_keys": [
+    {
+     "column": "GasStationID",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "ChainID": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0407627711686494
+     },
+     "phi": 0.85,
+     "score": 29.75
+    },
+    "Country": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.0003498950314905528
+     },
+     "phi": 0.7,
+     "score": 13.3
+    },
+    "GasStationID": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "transactions_1k.TransactionID",
+       "transactions_1k.GasStationID"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "Segment": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.0008747375787263821
+     },
+     "phi": 0.55,
+     "score": 4.95
+    }
+   },
+   "evidence": "score",
+   "primary_key": "GasStationID"
+  },
+  "products": {
+   "candidate_keys": [
+    {
+     "column": "ProductID",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "Description": {
+     "rejected": "blacklist: descriptive text (description)"
+    },
+    "ProductID": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "gasstations.ChainID",
+       "transactions_1k.ProductID",
+       "transactions_1k.Amount"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "ProductID"
+  },
+  "transactions_1k": {
+   "candidate_keys": [
+    {
+     "column": "TransactionID",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "Amount": {
+     "rejected": "blacklist: financial (amount)"
+    },
+    "CardID": {
+     "base": 77.433,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.8486666666666668,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.902
+     },
+     "phi": 0.55,
+     "score": 42.588
+    },
+    "CustomerID": {
+     "base": 36.794,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.03588888888888893,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.517
+     },
+     "phi": 0.55,
+     "score": 8.095
+    },
+    "Date": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "GasStationID": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.437
+     },
+     "phi": 0.55,
+     "score": 7.7
+    },
+    "Price": {
+     "rejected": "blacklist: financial (price)"
+    },
+    "ProductID": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.028
+     },
+     "phi": 0.55,
+     "score": 7.7
+    },
+    "Time": {
+     "rejected": "blacklist: date/time (time)"
+    },
+    "TransactionID": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "gasstations.ChainID",
+       "products.ProductID",
+       "transactions_1k.ProductID",
+       "transactions_1k.Amount"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    }
+   },
+   "evidence": "score",
+   "primary_key": "TransactionID"
+  },
+  "yearmonth": {
+   "candidate_keys": [],
+   "columns": {
+    "Consumption": {
+     "base": 33.584,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.3,
+      "f_u": 0.48167319797607694,
+      "name": 0.0,
+      "pattern": 0.3333333333333333,
+      "pattern_kind": "composite",
+      "u": 0.7281609885149838
+     },
+     "phi": 0.7,
+     "score": 23.509
+    },
+    "CustomerID": {
+     "base": 35.0,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.0,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.07974807061119489
+     },
+     "phi": 1.0,
+     "score": 14.0
+    },
+    "Date": {
+     "rejected": "blacklist: date/time (date)"
+    }
+   },
+   "evidence": null,
+   "primary_key": null
+  }
+ },
+ "use_names": true
+}

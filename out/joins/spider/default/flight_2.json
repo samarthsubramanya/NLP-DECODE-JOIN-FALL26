@@ -1,0 +1,230 @@
+{
+ "adaptive": false,
+ "candidates": [
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.8,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 96.0,
+   "score_before_fan_out": 96.0,
+   "source": {
+    "column": "Airline",
+    "table": "flights"
+   },
+   "target": {
+    "column": "uid",
+    "table": "airlines"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 120.0
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.4211,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 88.4211,
+   "score_before_fan_out": 88.4211,
+   "source": {
+    "column": "DestAirport",
+    "table": "flights"
+   },
+   "target": {
+    "column": "AirportCode",
+    "table": "airports"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 92.65
+  },
+  {
+   "cardinality": "many_to_one",
+   "containment": 1.0,
+   "coverage": 1.0,
+   "decision": "accepted",
+   "fan_out": 1.0,
+   "name_via": "table_column",
+   "parts": {
+    "cardinality": 1.0,
+    "name": 0.4211,
+    "nulls": 1.0,
+    "overlap": 1.0,
+    "target_key": 1.0
+   },
+   "penalties": {},
+   "score": 88.4211,
+   "score_before_fan_out": 88.4211,
+   "source": {
+    "column": "SourceAirport",
+    "table": "flights"
+   },
+   "target": {
+    "column": "AirportCode",
+    "table": "airports"
+   },
+   "target_is_pk": true,
+   "target_pk_score": 92.65
+  }
+ ],
+ "config": {
+  "accept": 60,
+  "adaptive_k_zero_share": 0.4,
+  "containment_min": 0.75,
+  "delta": 10,
+  "fan_out": [
+   1.0,
+   0.85,
+   0.75,
+   0.65
+  ],
+  "g4_multiplier": null,
+  "g4_ratio": null,
+  "incompatible_penalty": 0.5,
+  "keys_run": "frozen",
+  "long_text_len": 64,
+  "max_targets": 3,
+  "min_source_distinct": 2,
+  "name_contains": 0.8,
+  "never_source_roles": [
+   "boolean",
+   "free_text",
+   "float"
+  ],
+  "null_high": 0.7,
+  "null_low": 0.3,
+  "orphan_max": 0.2,
+  "orphan_penalty": 0.7,
+  "r_cap": 2,
+  "self_refs": false
+ },
+ "counts": {
+  "accepted": 3
+ },
+ "db_id": "flight_2",
+ "graphs": {
+  "direct": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 96.0,
+    "source": {
+     "column": "Airline",
+     "table": "flights"
+    },
+    "target": {
+     "column": "uid",
+     "table": "airlines"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 88.4211,
+    "source": {
+     "column": "DestAirport",
+     "table": "flights"
+    },
+    "target": {
+     "column": "AirportCode",
+     "table": "airports"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 88.4211,
+    "source": {
+     "column": "SourceAirport",
+     "table": "flights"
+    },
+    "target": {
+     "column": "AirportCode",
+     "table": "airports"
+    }
+   }
+  ],
+  "stats": [
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 96.0,
+    "source": {
+     "column": "Airline",
+     "table": "flights"
+    },
+    "target": {
+     "column": "uid",
+     "table": "airlines"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 88.4211,
+    "source": {
+     "column": "DestAirport",
+     "table": "flights"
+    },
+    "target": {
+     "column": "AirportCode",
+     "table": "airports"
+    }
+   },
+   {
+    "cardinality": "many_to_one",
+    "containment": 1.0,
+    "coverage": 1.0,
+    "decision": "accepted",
+    "score": 88.4211,
+    "source": {
+     "column": "SourceAirport",
+     "table": "flights"
+    },
+    "target": {
+     "column": "AirportCode",
+     "table": "airports"
+    }
+   }
+  ]
+ },
+ "k_zero_share": 0.0,
+ "keys_run": "frozen",
+ "use_names": true,
+ "weights": {
+  "cardinality": 15,
+  "name": 20,
+  "nulls": 10,
+  "overlap": 40,
+  "target_key": 15
+ }
+}

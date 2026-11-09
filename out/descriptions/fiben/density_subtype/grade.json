@@ -1,0 +1,119 @@
+{
+ "primary_keys": {
+  "tp": 39,
+  "predicted": 41,
+  "gold": 150,
+  "precision": 0.9512,
+  "recall": 0.26,
+  "f1": 0.4084,
+  "recall_tables_with_rows": 1.0,
+  "single_key_tables_with_rows": 39,
+  "r5_name_only": {
+   "predicted": 111,
+   "correct": 111
+  }
+ },
+ "query_join_pairs": 30,
+ "declared_fks": 159,
+ "fk_subsets": {
+  "vs_declared_fks": 159,
+  "vs_fks_with_rows": 48,
+  "vs_fks_in_containment": 46
+ },
+ "joins": {
+  "direct": {
+   "edges": 30,
+   "query_join_recall": 0.5,
+   "query_join_recall_weighted": 0.5986,
+   "vs_declared_fks": {
+    "tp": 17,
+    "predicted": 30,
+    "gold": 159,
+    "precision": 0.5667,
+    "recall": 0.1069,
+    "f1": 0.1799
+   },
+   "vs_fks_with_rows": {
+    "tp": 17,
+    "predicted": 30,
+    "gold": 48,
+    "precision": 0.5667,
+    "recall": 0.3542,
+    "f1": 0.4359
+   },
+   "vs_fks_in_containment": {
+    "tp": 17,
+    "predicted": 30,
+    "gold": 46,
+    "precision": 0.5667,
+    "recall": 0.3696,
+    "f1": 0.4474
+   }
+  },
+  "stats": {
+   "edges": 83,
+   "query_join_recall": 0.7667,
+   "query_join_recall_weighted": 0.914,
+   "vs_declared_fks": {
+    "tp": 36,
+    "predicted": 83,
+    "gold": 159,
+    "precision": 0.4337,
+    "recall": 0.2264,
+    "f1": 0.2975
+   },
+   "vs_fks_with_rows": {
+    "tp": 36,
+    "predicted": 83,
+    "gold": 48,
+    "precision": 0.4337,
+    "recall": 0.75,
+    "f1": 0.5496
+   },
+   "vs_fks_in_containment": {
+    "tp": 36,
+    "predicted": 83,
+    "gold": 46,
+    "precision": 0.4337,
+    "recall": 0.7826,
+    "f1": 0.5581
+   }
+  },
+  "llm": {
+   "edges": 57,
+   "query_join_recall": 0.7,
+   "query_join_recall_weighted": 0.8888,
+   "vs_declared_fks": {
+    "tp": 33,
+    "predicted": 57,
+    "gold": 159,
+    "precision": 0.5789,
+    "recall": 0.2075,
+    "f1": 0.3056
+   },
+   "vs_fks_with_rows": {
+    "tp": 33,
+    "predicted": 57,
+    "gold": 48,
+    "precision": 0.5789,
+    "recall": 0.6875,
+    "f1": 0.6286
+   },
+   "vs_fks_in_containment": {
+    "tp": 33,
+    "predicted": 57,
+    "gold": 46,
+    "precision": 0.5789,
+    "recall": 0.7174,
+    "f1": 0.6408
+   }
+  }
+ },
+ "band_verdicts": {
+  "llm_abstain|other": 5,
+  "llm_accept|fk": 16,
+  "llm_accept|other": 12,
+  "llm_reject|fk": 3,
+  "llm_reject|other": 18
+ }
+}

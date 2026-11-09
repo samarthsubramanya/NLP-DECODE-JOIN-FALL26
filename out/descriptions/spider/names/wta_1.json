@@ -1,0 +1,300 @@
+{
+ "db_id": "wta_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "default",
+ "keys_run": "frozen",
+ "graph": "llm",
+ "edges": 2,
+ "tables": {
+  "matches": {
+   "table": {
+    "name": "matches",
+    "purpose": "One row per completed singles match on the WTA (women's professional tennis) tour, mostly 2016-2017, recording the tournament (id, name, date, surface, level, draw size, round), the match itself (score, duration, best-of format, match number), and pre-match attributes of both the winner and the loser (player id/name, ranking and ranking points, seed, age, height, hand, country, entry type)."
+   },
+   "columns": {
+    "best_of": {
+     "role": "category",
+     "name": "best_of",
+     "description": "Maximum number of sets in the match; always 3, i.e. best-of-three format (standard for WTA).",
+     "status": "resolved"
+    },
+    "draw_size": {
+     "role": "category",
+     "name": "draw_size",
+     "description": "Number of players in the tournament's main draw (singles draw bracket size), e.g. 128 for Grand Slams, 64 or 32 for smaller events.",
+     "status": "resolved"
+    },
+    "loser_age": {
+     "role": "numeric",
+     "name": "loser_age",
+     "description": "Age of the losing player in years at the time of the match, computed to high precision (fractional years).",
+     "status": "resolved"
+    },
+    "loser_entry": {
+     "role": "code",
+     "name": "loser_entry",
+     "description": "How the losing player entered the draw (e.g. wildcard, qualifier). Empty in all rows here, so the specific code vocabulary is unverified.",
+     "status": "tentative"
+    },
+    "loser_hand": {
+     "role": "code",
+     "name": "loser_hand",
+     "description": "Playing hand of the losing player: R = right-handed, L = left-handed.",
+     "status": "resolved"
+    },
+    "loser_ht": {
+     "role": "numeric",
+     "name": "loser_ht",
+     "description": "Height of the losing player in centimeters (range 157-185, consistent with female players).",
+     "status": "resolved"
+    },
+    "loser_id": {
+     "role": "foreign_key",
+     "name": "loser_id",
+     "description": "Identifier of the losing player; references players.player_id (many-to-one).",
+     "status": "resolved"
+    },
+    "loser_ioc": {
+     "role": "code",
+     "name": "loser_ioc",
+     "description": "Three-letter IOC country code of the losing player's nationality (RUS, CZE, USA, ESP, GER, ...).",
+     "status": "resolved"
+    },
+    "loser_name": {
+     "role": "category",
+     "name": "loser_name",
+     "description": "Full name of the losing player (WTA players such as Svetlana Kuznetsova, Angelique Kerber).",
+     "status": "resolved"
+    },
+    "loser_rank": {
+     "role": "numeric",
+     "name": "loser_rank",
+     "description": "WTA singles ranking of the losing player at the time of the match (1 = world No. 1).",
+     "status": "resolved"
+    },
+    "loser_rank_points": {
+     "role": "numeric",
+     "name": "loser_rank_points",
+     "description": "WTA ranking points of the losing player at the time of the match.",
+     "status": "resolved"
+    },
+    "loser_seed": {
+     "role": "numeric",
+     "name": "loser_seed",
+     "description": "Tournament seeding of the losing player (1 = top seed); unseeded players presumably null/0 but not observed here.",
+     "status": "resolved"
+    },
+    "match_num": {
+     "role": "numeric",
+     "name": "match_num",
+     "description": "Match number within the tournament (sequential identifier of the match in the event's schedule); not unique across tournaments, so not a global primary key.",
+     "status": "resolved"
+    },
+    "minutes": {
+     "role": "numeric",
+     "name": "minutes",
+     "description": "Duration of the match in minutes (0-199; the 0 value likely indicates a walkover/retirement or missing data).",
+     "status": "resolved"
+    },
+    "round": {
+     "role": "code",
+     "name": "round",
+     "description": "Round of the match within the tournament: F = final, SF = semifinal, QF = quarterfinal, R16/R32/R64 = round of 16/32/64, RR = round robin.",
+     "status": "resolved"
+    },
+    "score": {
+     "role": "category",
+     "name": "score",
+     "description": "Match score in sets, winner's games first, e.g. '6-4 6-4'; tiebreak scores in parentheses, e.g. '6-7(4)'.",
+     "status": "resolved"
+    },
+    "surface": {
+     "role": "category",
+     "name": "surface",
+     "description": "Court surface of the tournament: Hard, Clay, or Grass.",
+     "status": "resolved"
+    },
+    "tourney_date": {
+     "role": "numeric",
+     "name": "tourney_date",
+     "description": "Start date of the tournament encoded as an integer YYYYMMDD (e.g. 20160815 = 2016-08-15).",
+     "status": "resolved"
+    },
+    "tourney_id": {
+     "role": "category",
+     "name": "tourney_id",
+     "description": "Identifier of the tournament, typically year plus a code (e.g. '2016-M024', '2017-M006'); some rows use a longer legacy format ('2013-W-WT-TUR-01A-2013').",
+     "status": "resolved"
+    },
+    "tourney_level": {
+     "role": "code",
+     "name": "tourney_level",
+     "description": "Tournament tier code. Values I, G, P, W: G = Grand Slam, P = Premier, I = International (WTA tiers), W = WTA Finals/year-end championships. Exact mapping is plausible but not confirmed from data alone.",
+     "status": "tentative"
+    },
+    "tourney_name": {
+     "role": "category",
+     "name": "tourney_name",
+     "description": "Name of the tournament (Indian Wells, Us Open, Wimbledon, Singapore, ...).",
+     "status": "resolved"
+    },
+    "winner_age": {
+     "role": "numeric",
+     "name": "winner_age",
+     "description": "Age of the winning player in years at the time of the match, computed to high precision (fractional years).",
+     "status": "resolved"
+    },
+    "winner_entry": {
+     "role": "code",
+     "name": "winner_entry",
+     "description": "How the winning player entered the draw (e.g. wildcard, qualifier). Empty in all rows here, so the specific code vocabulary is unverified.",
+     "status": "tentative"
+    },
+    "winner_hand": {
+     "role": "code",
+     "name": "winner_hand",
+     "description": "Playing hand of the winning player: R = right-handed, L = left-handed.",
+     "status": "resolved"
+    },
+    "winner_ht": {
+     "role": "numeric",
+     "name": "winner_ht",
+     "description": "Height of the winning player in centimeters (range 159-185).",
+     "status": "resolved"
+    },
+    "winner_id": {
+     "role": "foreign_key",
+     "name": "winner_id",
+     "description": "Identifier of the winning player; references players.player_id (many-to-one).",
+     "status": "resolved"
+    },
+    "winner_ioc": {
+     "role": "code",
+     "name": "winner_ioc",
+     "description": "Three-letter IOC country code of the winning player's nationality (USA, RUS, CZE, ROU, GER, ...).",
+     "status": "resolved"
+    },
+    "winner_name": {
+     "role": "category",
+     "name": "winner_name",
+     "description": "Full name of the winning player (WTA players such as Angelique Kerber, Simona Halep, Serena Williams).",
+     "status": "resolved"
+    },
+    "winner_rank": {
+     "role": "numeric",
+     "name": "winner_rank",
+     "description": "WTA singles ranking of the winning player at the time of the match (1 = world No. 1).",
+     "status": "resolved"
+    },
+    "winner_rank_points": {
+     "role": "numeric",
+     "name": "winner_rank_points",
+     "description": "WTA ranking points of the winning player at the time of the match.",
+     "status": "resolved"
+    },
+    "winner_seed": {
+     "role": "numeric",
+     "name": "winner_seed",
+     "description": "Tournament seeding of the winning player (1 = top seed).",
+     "status": "resolved"
+    },
+    "year": {
+     "role": "numeric",
+     "name": "year",
+     "description": "Year of the tournament (2013, 2016, 2017), matching the year prefix of tourney_date.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "players": {
+   "table": {
+    "name": "players",
+    "purpose": "Registry of tennis players: one row per player with identity (first/last name), date of birth, nationality code, and playing hand. Each player is identified by player_id, which is referenced by the matches table (winner_id / loser_id) and presumably the rankings table, linking players to their match results and ranking entries. The ID range starting at 200001 and the mix of historical country codes (FRG) and birth dates from 1943 to 1999 suggest a long-running professional/ITF-style tennis dataset covering both male and female players (given names like Anna, Maria, Caroline alongside Andrea)."
+   },
+   "columns": {
+    "birth_date": {
+     "role": "code",
+     "name": "birth_date",
+     "description": "Player's date of birth stored as a text string in YYYYMMDD format (e.g. '19970313' = 1997-03-13). Empty string means unknown. The declared UNION type suggests mixed storage; sample rows show it also appears as an integer like 19430430, but the inferred type is text.",
+     "status": "resolved"
+    },
+    "country_code": {
+     "role": "code",
+     "name": "country_code",
+     "description": "Three-letter country/nationality code of the player, largely IOC-style codes (USA, ITA, ESP, GER, JPN, RUS, BEL, NED). Some values are historical or non-standard codes (FRG = West Germany, ECA = Central African Republic, HAI = Haiti, HON = Honduras), consistent with a tennis federation dataset spanning decades.",
+     "status": "resolved"
+    },
+    "first_name": {
+     "role": "code",
+     "name": "first_name",
+     "description": "Player's given name(s); may include compound names (e.g. 'Maria Jose', 'Katia Monserrat'). Never null, though empty string may occur.",
+     "status": "resolved"
+    },
+    "hand": {
+     "role": "code",
+     "name": "hand",
+     "description": "Playing hand: 'R' = right-handed, 'L' = left-handed, 'U' = unknown/unspecified, empty string = missing. 'U' dominates (69%), indicating hand is mostly unrecorded.",
+     "status": "resolved"
+    },
+    "last_name": {
+     "role": "code",
+     "name": "last_name",
+     "description": "Player's surname, which may be compound (e.g. 'Van Renterghem', 'Delgado Valero').",
+     "status": "resolved"
+    },
+    "player_id": {
+     "role": "code",
+     "name": "player_id",
+     "description": "Unique numeric identifier for the player; primary key of the table. Referenced by matches.winner_id and matches.loser_id, so each row is a player who can appear in match results. IDs range from 200001 to 220672.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "rankings": {
+   "table": {
+    "name": "rankings",
+    "purpose": "Historical world rankings snapshots for tennis players: one row per player per ranking release date (weekly, 1987–2017), giving the player's rank position, ranking points, and number of tournaments counted. Joins to players (and matches) via player_id."
+   },
+   "columns": {
+    "player_id": {
+     "role": "foreign_key",
+     "name": "player_id",
+     "description": "Identifier of the ranked player. Text-typed but numeric-looking codes (e.g. 200009, 211996). Each player appears on many ranking dates (2776 distinct players over 510k rows). No explicit join was detected, but it almost certainly joins to players.player_id (and possibly matches) — the join metadata simply wasn't captured.",
+     "status": "resolved"
+    },
+    "ranking": {
+     "role": "code",
+     "name": "ranking",
+     "description": "The player's world ranking position on that date; 1 = best. Range 1–1507, consistent with a professional tennis (ATP/WTA-style) ranking list.",
+     "status": "resolved"
+    },
+    "ranking_date": {
+     "role": "code",
+     "name": "ranking_date",
+     "description": "Date of the ranking publication, encoded as an integer YYYYMMDD (e.g. 20160307 = 2016-03-07). Range 19870119–20170911, i.e. weekly ranking releases from 1987 to 2017.",
+     "status": "resolved"
+    },
+    "ranking_points": {
+     "role": "numeric",
+     "name": "ranking_points",
+     "description": "Number of ranking points the player held on that date (rolling 52-week points total; max 13615 is consistent with ATP-era point values). Low values dominate because most ranked players have few points.",
+     "status": "resolved"
+    },
+    "tours": {
+     "role": "numeric",
+     "name": "tours",
+     "description": "Count of tournaments whose results count toward the player's ranking points on that date (0–41). In tennis ranking systems only a limited number of best tournaments count, so this is the number of tournaments included in the points calculation. Alternative reading: number of tournaments played in the ranking period; the two readings overlap and the data alone cannot fully separate them.",
+     "status": "tentative"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

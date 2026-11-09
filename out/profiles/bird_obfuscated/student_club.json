@@ -1,0 +1,4103 @@
+{
+ "containment": [
+  {
+   "containment": 1.0,
+   "coverage": 0.46153846153846156,
+   "dist": 0.9148148148148147,
+   "dist_buckets": [
+    3,
+    2,
+    3,
+    3,
+    2,
+    3,
+    0,
+    1,
+    4,
+    3
+   ],
+   "intersection": 24,
+   "source": [
+    "expense",
+    "col_007"
+   ],
+   "source_distinct": 24,
+   "source_unique": false,
+   "target": [
+    "budget",
+    "col_001"
+   ],
+   "target_distinct": 52
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.40476190476190477,
+   "dist": 0.9071895424836601,
+   "dist_buckets": [
+    1,
+    3,
+    2,
+    2,
+    0,
+    0,
+    4,
+    1,
+    2,
+    2
+   ],
+   "intersection": 17,
+   "source": [
+    "attendance",
+    "col_001"
+   ],
+   "source_distinct": 17,
+   "source_unique": false,
+   "target": [
+    "event",
+    "col_001"
+   ],
+   "target_distinct": 42
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.5476190476190477,
+   "dist": 0.8560386473429952,
+   "dist_buckets": [
+    3,
+    3,
+    3,
+    2,
+    2,
+    3,
+    3,
+    1,
+    0,
+    3
+   ],
+   "intersection": 23,
+   "source": [
+    "budget",
+    "col_007"
+   ],
+   "source_distinct": 23,
+   "source_unique": false,
+   "target": [
+    "event",
+    "col_001"
+   ],
+   "target_distinct": 42
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.23008849557522124,
+   "dist": 0.9282051282051282,
+   "dist_buckets": [
+    2,
+    3,
+    2,
+    3,
+    2,
+    5,
+    3,
+    0,
+    2,
+    4
+   ],
+   "intersection": 26,
+   "source": [
+    "member",
+    "col_009"
+   ],
+   "source_distinct": 26,
+   "source_unique": false,
+   "target": [
+    "major",
+    "col_001"
+   ],
+   "target_distinct": 113
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.9090909090909091,
+   "dist": 0.9703703703703703,
+   "dist_buckets": [
+    3,
+    3,
+    4,
+    3,
+    3,
+    3,
+    2,
+    3,
+    3,
+    3
+   ],
+   "intersection": 30,
+   "source": [
+    "attendance",
+    "col_002"
+   ],
+   "source_distinct": 30,
+   "source_unique": false,
+   "target": [
+    "member",
+    "col_001"
+   ],
+   "target_distinct": 33
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.09090909090909091,
+   "dist": 0.6962962962962963,
+   "dist_buckets": [
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
+   ],
+   "intersection": 3,
+   "source": [
+    "expense",
+    "col_006"
+   ],
+   "source_distinct": 3,
+   "source_unique": false,
+   "target": [
+    "member",
+    "col_001"
+   ],
+   "target_distinct": 33
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.9393939393939394,
+   "dist": 0.9304659498207885,
+   "dist_buckets": [
+    3,
+    4,
+    4,
+    3,
+    3,
+    3,
+    3,
+    3,
+    2,
+    3
+   ],
+   "intersection": 31,
+   "source": [
+    "income",
+    "col_006"
+   ],
+   "source_distinct": 31,
+   "source_unique": false,
+   "target": [
+    "member",
+    "col_001"
+   ],
+   "target_distinct": 33
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.0007880220646178094,
+   "dist": 0.7070707070707072,
+   "dist_buckets": [
+    9,
+    2,
+    6,
+    2,
+    4,
+    2,
+    3,
+    1,
+    2,
+    2
+   ],
+   "intersection": 33,
+   "source": [
+    "member",
+    "col_008"
+   ],
+   "source_distinct": 33,
+   "source_unique": true,
+   "target": [
+    "zip_code",
+    "col_001"
+   ],
+   "target_distinct": 41877
+  }
+ ],
+ "dataset": "bird_obfuscated",
+ "db_id": "student_club",
+ "duckdb_file": "bird_dev_obfuscated.duckdb",
+ "duckdb_schema": "bird_student_club",
+ "seed": 42,
+ "tables": {
+  "attendance": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 17,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "text",
+     "rows": 326,
+     "sample_values": [
+      "recoVo6dFSzG1ypX7",
+      "recI43CzsZ0Q625ma",
+      "recGxVCwaLW3mDIa3",
+      "rec2N69DMcrqN9PJC",
+      "recvCUOytx5jPw7kh",
+      "recLKj8BbTNqxFbTb",
+      "reckYL4xtQWpkTJ8k",
+      "reczhS8wix6Kzbp9P",
+      "recLrY8kyOR1PcZeF",
+      "recEVTik3MlqbvLFi"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "recLKj8BbTNqxFbTb",
+       30
+      ],
+      [
+       "recykdvf4LgsyA3wZ",
+       30
+      ],
+      [
+       "recEVTik3MlqbvLFi",
+       29
+      ],
+      [
+       "recI43CzsZ0Q625ma",
+       27
+      ],
+      [
+       "reciRZdAqNIKuMC96",
+       27
+      ],
+      [
+       "reczhS8wix6Kzbp9P",
+       27
+      ],
+      [
+       "recmbOVHSyzXQZpQr",
+       25
+      ],
+      [
+       "recggMW2eyCYceNcy",
+       23
+      ],
+      [
+       "rec5XDvJLyxDsGZWc",
+       20
+      ],
+      [
+       "rec2N69DMcrqN9PJC",
+       17
+      ]
+     ],
+     "uniqueness": 0.05214723926380368,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 30,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 326,
+     "sample_values": [
+      "reco0mr8dXTgs5wWA",
+      "recT92PyyZCGq1R68",
+      "recL4aEZBZoPk9NYx",
+      "rec3pH4DxMcWHMRB7",
+      "recsTO4OZIF9rbubk",
+      "rec75vvFxgYtHmqxY",
+      "recWh2lJVOT6HjChK",
+      "reccSUPwy30AeZLEb",
+      "recro8T1MPMwRadVH",
+      "rec2a03QXbFQAUZ7X"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "recD078PnS3x2doBe",
+       16
+      ],
+      [
+       "recro8T1MPMwRadVH",
+       16
+      ],
+      [
+       "rec4BLdZHS2Blfp4v",
+       14
+      ],
+      [
+       "recEFd8s6pkrTt4Pz",
+       14
+      ],
+      [
+       "recTjHY5xXhvkCdVT",
+       14
+      ],
+      [
+       "recZ4PkGERzl9ziHO",
+       14
+      ],
+      [
+       "recP6DJPyi5donvXL",
+       13
+      ],
+      [
+       "rec28ORZgcm1dtqBZ",
+       12
+      ],
+      [
+       "rec75vvFxgYtHmqxY",
+       12
+      ],
+      [
+       "recT92PyyZCGq1R68",
+       12
+      ]
+     ],
+     "uniqueness": 0.09202453987730061,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 326,
+   "sample_rows": [
+    {
+     "col_001": "recLKj8BbTNqxFbTb",
+     "col_002": "recxBj3tjKTGHqucS"
+    },
+    {
+     "col_001": "recggMW2eyCYceNcy",
+     "col_002": "recT92PyyZCGq1R68"
+    },
+    {
+     "col_001": "recvCUOytx5jPw7kh",
+     "col_002": "recZ4PkGERzl9ziHO"
+    },
+    {
+     "col_001": "recykdvf4LgsyA3wZ",
+     "col_002": "recro8T1MPMwRadVH"
+    },
+    {
+     "col_001": "reczhS8wix6Kzbp9P",
+     "col_002": "recVsoJJHFI8bgtfw"
+    }
+   ]
+  },
+  "budget": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 52,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "text",
+     "rows": 52,
+     "sample_values": [
+      "recjcVh1VW33HXFFf",
+      "recTUGXxhTaFZ2qkg",
+      "recMc8TbR76rmUSHG",
+      "recjpAeh0324DqHtB",
+      "recXGXXRruuAY1JNN",
+      "recca5tkvdQgoLKZz",
+      "rectoPMq4aQQikNEe",
+      "recl41vHHNtegoZFY",
+      "rec4DYUKBHMPZXWB2",
+      "recQf86wBWXvebEBO"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "rec0QmEc3cSQFQ6V2",
+       1
+      ],
+      [
+       "rec1bG6HSft7XIvTP",
+       1
+      ],
+      [
+       "rec1z6ISJU2HdIsVm",
+       1
+      ],
+      [
+       "rec33PFqxLtnp80RJ",
+       1
+      ],
+      [
+       "rec4DYUKBHMPZXWB2",
+       1
+      ],
+      [
+       "rec4yM47hEjVVsCuq",
+       1
+      ],
+      [
+       "rec59vErJo51glQRb",
+       1
+      ],
+      [
+       "rec5V70sIuIgpOzDT",
+       1
+      ],
+      [
+       "recFZ47e0eVqcQD9O",
+       1
+      ],
+      [
+       "recHzdM40gk9a6AdY",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 5,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 52,
+     "sample_values": [
+      "Food",
+      "Advertisement",
+      "Parking",
+      "Speaker Gifts",
+      "Club T-Shirts"
+     ],
+     "text": {
+      "avg_len": 8.384615384615385,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 13,
+      "min_len": 4,
+      "space_share": 0.15384615384615385,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Food",
+       22
+      ],
+      [
+       "Advertisement",
+       15
+      ],
+      [
+       "Parking",
+       7
+      ],
+      [
+       "Speaker Gifts",
+       7
+      ],
+      [
+       "Club T-Shirts",
+       1
+      ]
+     ],
+     "uniqueness": 0.09615384615384616,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "declared_type": "DOUBLE",
+     "distinct": 17,
+     "family": "float",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 327.07,
+      "mean": 40.11634615384616,
+      "min": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 54.25
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "float",
+     "rows": 52,
+     "sample_values": [
+      "122.33",
+      "13.45",
+      "122.06",
+      "327.07",
+      "173.06",
+      "0.0",
+      "121.14",
+      "295.12",
+      "74.59",
+      "54.25"
+     ],
+     "text": {
+      "avg_len": 3.923076923076923,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0.0",
+       28
+      ],
+      [
+       "20.2",
+       3
+      ],
+      [
+       "54.25",
+       3
+      ],
+      [
+       "6.0",
+       3
+      ],
+      [
+       "13.45",
+       2
+      ],
+      [
+       "67.81",
+       2
+      ],
+      [
+       "101.94",
+       1
+      ],
+      [
+       "121.14",
+       1
+      ],
+      [
+       "122.06",
+       1
+      ],
+      [
+       "122.33",
+       1
+      ]
+     ],
+     "uniqueness": 0.3269230769230769,
+     "zero_rate": 0.5384615384615384
+    },
+    "col_004": {
+     "declared_type": "DOUBLE",
+     "distinct": 22,
+     "family": "float",
+     "name": "col_004",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 150.0,
+      "mean": 40.65288461538462,
+      "min": -24.25,
+      "p25": 4.66,
+      "p50": 20.0,
+      "p75": 55.0
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "float",
+     "rows": 52,
+     "sample_values": [
+      "25.0",
+      "27.94",
+      "0.409999999999997",
+      "0.75",
+      "27.67",
+      "20.0",
+      "4.0",
+      "28.86",
+      "-0.199999999999999",
+      "75.0"
+     ],
+     "text": {
+      "avg_len": 5.826923076923077,
+      "code_share": 1.0,
+      "composite_share": 0.9038461538461539,
+      "date_shape_share": 0.0,
+      "max_len": 18,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "150.0",
+       8
+      ],
+      [
+       "10.0",
+       4
+      ],
+      [
+       "20.0",
+       4
+      ],
+      [
+       "25.0",
+       4
+      ],
+      [
+       "55.0",
+       4
+      ],
+      [
+       "75.0",
+       4
+      ],
+      [
+       "-0.199999999999999",
+       3
+      ],
+      [
+       "0.75",
+       3
+      ],
+      [
+       "4.0",
+       3
+      ],
+      [
+       "11.55",
+       2
+      ]
+     ],
+     "uniqueness": 0.4230769230769231,
+     "zero_rate": 0.0
+    },
+    "col_005": {
+     "declared_type": "BIGINT",
+     "distinct": 9,
+     "family": "int",
+     "name": "col_005",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.026392961876832845,
+      "max": 350.0,
+      "mean": 80.76923076923077,
+      "min": 10.0,
+      "p25": 20.0,
+      "p50": 55.0,
+      "p75": 150.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "int",
+     "rows": 52,
+     "sample_values": [
+      "10",
+      "300",
+      "150",
+      "25",
+      "75",
+      "350",
+      "55",
+      "155",
+      "20"
+     ],
+     "text": {
+      "avg_len": 2.326923076923077,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "150",
+       14
+      ],
+      [
+       "10",
+       7
+      ],
+      [
+       "20",
+       7
+      ],
+      [
+       "25",
+       7
+      ],
+      [
+       "55",
+       7
+      ],
+      [
+       "75",
+       7
+      ],
+      [
+       "155",
+       1
+      ],
+      [
+       "300",
+       1
+      ],
+      [
+       "350",
+       1
+      ]
+     ],
+     "uniqueness": 0.17307692307692307,
+     "zero_rate": 0.0
+    },
+    "col_006": {
+     "declared_type": "VARCHAR",
+     "distinct": 3,
+     "family": "text",
+     "name": "col_006",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "text",
+     "rows": 52,
+     "sample_values": [
+      "Closed",
+      "Planning",
+      "Open"
+     ],
+     "text": {
+      "avg_len": 5.384615384615385,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Open",
+       23
+      ],
+      [
+       "Closed",
+       22
+      ],
+      [
+       "Planning",
+       7
+      ]
+     ],
+     "uniqueness": 0.057692307692307696,
+     "zero_rate": 0.0
+    },
+    "col_007": {
+     "declared_type": "VARCHAR",
+     "distinct": 23,
+     "family": "text",
+     "name": "col_007",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 6,
+     "role": "text",
+     "rows": 52,
+     "sample_values": [
+      "recwM7GMBSLDlb1Ix",
+      "recHaMmaKyfktt5fW",
+      "recI43CzsZ0Q625ma",
+      "recs4x1BYWAsU2SKg",
+      "recLKj8BbTNqxFbTb",
+      "rec0Si5cQ4rJRVzd6",
+      "reczhS8wix6Kzbp9P",
+      "recLrY8kyOR1PcZeF",
+      "recEVTik3MlqbvLFi",
+      "recggMW2eyCYceNcy"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "rec2mJrCofveboaz6",
+       4
+      ],
+      [
+       "recAlAwtBZ0Fqbr5K",
+       4
+      ],
+      [
+       "recEVTik3MlqbvLFi",
+       4
+      ],
+      [
+       "recHaMmaKyfktt5fW",
+       4
+      ],
+      [
+       "recI43CzsZ0Q625ma",
+       4
+      ],
+      [
+       "reciRZdAqNIKuMC96",
+       4
+      ],
+      [
+       "recs4x1BYWAsU2SKg",
+       4
+      ],
+      [
+       "rec0Si5cQ4rJRVzd6",
+       2
+      ],
+      [
+       "recY3Yesu24bRK7tr",
+       2
+      ],
+      [
+       "recerGvehRmgO0obW",
+       2
+      ]
+     ],
+     "uniqueness": 0.4423076923076923,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 52,
+   "sample_rows": [
+    {
+     "col_001": "recXaqLgIlsJ4eppc",
+     "col_002": "Advertisement",
+     "col_003": 0.0,
+     "col_004": 75.0,
+     "col_005": 75,
+     "col_006": "Open",
+     "col_007": "recs4x1BYWAsU2SKg"
+    },
+    {
+     "col_001": "recdGqhxapehMT00E",
+     "col_002": "Food",
+     "col_003": 0.0,
+     "col_004": 20.0,
+     "col_005": 20,
+     "col_006": "Open",
+     "col_007": "rec0akZnLLpGUloLH"
+    },
+    {
+     "col_001": "recsI0IzpUuxl2bPh",
+     "col_002": "Advertisement",
+     "col_003": 67.81,
+     "col_004": 7.19,
+     "col_005": 75,
+     "col_006": "Closed",
+     "col_007": "recEVTik3MlqbvLFi"
+    },
+    {
+     "col_001": "rectoPMq4aQQikNEe",
+     "col_002": "Advertisement",
+     "col_003": 0.0,
+     "col_004": 75.0,
+     "col_005": 75,
+     "col_006": "Planning",
+     "col_007": "rec2mJrCofveboaz6"
+    },
+    {
+     "col_001": "recziC0Fccvve12RF",
+     "col_002": "Parking",
+     "col_003": 0.0,
+     "col_004": 10.0,
+     "col_005": 10,
+     "col_006": "Open",
+     "col_007": "recAlAwtBZ0Fqbr5K"
+    }
+   ]
+  },
+  "event": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 42,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "text",
+     "rows": 42,
+     "sample_values": [
+      "recLePFQvYN36qANI",
+      "recoVo6dFSzG1ypX7",
+      "recwM7GMBSLDlb1Ix",
+      "recHaMmaKyfktt5fW",
+      "recI43CzsZ0Q625ma",
+      "recGxVCwaLW3mDIa3",
+      "rec2N69DMcrqN9PJC",
+      "recvCUOytx5jPw7kh",
+      "recqh5zxHuDpKUu0i",
+      "recs4x1BYWAsU2SKg"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "rec0Si5cQ4rJRVzd6",
+       1
+      ],
+      [
+       "rec0akZnLLpGUloLH",
+       1
+      ],
+      [
+       "rec0dZPcWXF0QjNnE",
+       1
+      ],
+      [
+       "rec180D2MI4EpckHy",
+       1
+      ],
+      [
+       "rec2N69DMcrqN9PJC",
+       1
+      ],
+      [
+       "rec2mJrCofveboaz6",
+       1
+      ],
+      [
+       "rec5XDvJLyxDsGZWc",
+       1
+      ],
+      [
+       "recAlAwtBZ0Fqbr5K",
+       1
+      ],
+      [
+       "recEVTik3MlqbvLFi",
+       1
+      ],
+      [
+       "recGxVCwaLW3mDIa3",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 39,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 42,
+     "sample_values": [
+      "February Speaker",
+      "Fall Budget Review",
+      "Officers meeting - October",
+      "Kid's Care",
+      "Spring Elections",
+      "September Speaker",
+      "Spring Budget Review",
+      "Lacrosse game",
+      "September Meeting",
+      "Community Theater"
+     ],
+     "text": {
+      "avg_len": 16.642857142857142,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 28,
+      "min_len": 9,
+      "space_share": 0.9761904761904762,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Community Theater",
+       2
+      ],
+      [
+       "Football game",
+       2
+      ],
+      [
+       "Laugh Out Loud",
+       2
+      ],
+      [
+       "April Meeting",
+       1
+      ],
+      [
+       "April Speaker",
+       1
+      ],
+      [
+       "Baseball game",
+       1
+      ],
+      [
+       "Fall Budget Review",
+       1
+      ],
+      [
+       "Fall Elections",
+       1
+      ],
+      [
+       "February Meeting",
+       1
+      ],
+      [
+       "February Speaker",
+       1
+      ]
+     ],
+     "uniqueness": 0.9285714285714286,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "date_range": [
+      "2019-09-01 07:00:00",
+      "2020-05-05 12:00:00"
+     ],
+     "declared_type": "VARCHAR",
+     "distinct": 41,
+     "family": "date",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "date",
+     "rows": 42,
+     "sample_values": [
+      "2019-11-21T02:00:00",
+      "2019-10-10T06:00:00",
+      "2020-02-26T12:00:00",
+      "2019-09-12T06:00:00",
+      "2019-09-01T07:00:00",
+      "2020-05-05T12:00:00",
+      "2020-01-28T12:00:00",
+      "2020-04-21T12:00:00",
+      "2019-09-10T12:00:00",
+      "2019-10-22T12:00:00"
+     ],
+     "text": {
+      "avg_len": 19.0,
+      "code_share": 0.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 19,
+      "min_len": 19,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2020-03-10T12:00:00",
+       2
+      ],
+      [
+       "2019-09-01T07:00:00",
+       1
+      ],
+      [
+       "2019-09-03T12:00:00",
+       1
+      ],
+      [
+       "2019-09-07T03:00:00",
+       1
+      ],
+      [
+       "2019-09-10T09:30:00",
+       1
+      ],
+      [
+       "2019-09-10T12:00:00",
+       1
+      ],
+      [
+       "2019-09-12T06:00:00",
+       1
+      ],
+      [
+       "2019-09-19T02:00:00",
+       1
+      ],
+      [
+       "2019-09-24T12:00:00",
+       1
+      ],
+      [
+       "2019-10-05T12:00:00",
+       1
+      ]
+     ],
+     "uniqueness": 0.9761904761904762,
+     "zero_rate": 0.0
+    },
+    "col_004": {
+     "declared_type": "VARCHAR",
+     "distinct": 8,
+     "family": "text",
+     "name": "col_004",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "text",
+     "rows": 42,
+     "sample_values": [
+      "Budget",
+      "Game",
+      "Community Service",
+      "Social",
+      "Election",
+      "Guest Speaker",
+      "Meeting",
+      "Registration"
+     ],
+     "text": {
+      "avg_len": 8.547619047619047,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 4,
+      "space_share": 0.2619047619047619,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Meeting",
+       16
+      ],
+      [
+       "Guest Speaker",
+       7
+      ],
+      [
+       "Game",
+       6
+      ],
+      [
+       "Community Service",
+       4
+      ],
+      [
+       "Social",
+       4
+      ],
+      [
+       "Budget",
+       2
+      ],
+      [
+       "Election",
+       2
+      ],
+      [
+       "Registration",
+       1
+      ]
+     ],
+     "uniqueness": 0.19047619047619047,
+     "zero_rate": 0.0
+    },
+    "col_005": {
+     "declared_type": "VARCHAR",
+     "distinct": 15,
+     "family": "text",
+     "name": "col_005",
+     "null_rate": 0.5238095238095238,
+     "nulls": 22,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "free_text",
+     "rows": 42,
+     "sample_values": [
+      "Attend school teams baseball game as a group.",
+      "Attend school Woman's Lacrosse game as a group.",
+      "Volunteer opportunity to remove graffiti in town.",
+      "Volunteer opportunity to pack backpacks for underprivileged youth.",
+      "Volunteer opportunity to help paint new home.",
+      "Students can stop by the table to get information on the club and register.",
+      "Attend school teams Lacrosse game as a group.",
+      "Attend Women's soccer game as a group.",
+      "Officers and Budget Committee only",
+      "Semester social event. Optional attendance."
+     ],
+     "text": {
+      "avg_len": 52.45,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 102,
+      "min_len": 24,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "All active members can vote for new officers between 4pm-8pm.",
+       2
+      ],
+      [
+       "Attend school football game as a group.",
+       2
+      ],
+      [
+       "Members and alumni can attend a community theater play at a reduced price. Active membership required.",
+       2
+      ],
+      [
+       "Officers and Budget Committee only",
+       2
+      ],
+      [
+       "Semester social event. Optional attendance.",
+       2
+      ],
+      [
+       "Attend Women's soccer game as a group.",
+       1
+      ],
+      [
+       "Attend school Woman's Lacrosse game as a group.",
+       1
+      ],
+      [
+       "Attend school teams Lacrosse game as a group.",
+       1
+      ],
+      [
+       "Attend school teams baseball game as a group.",
+       1
+      ],
+      [
+       "Monthly officers meeting",
+       1
+      ]
+     ],
+     "uniqueness": 0.75,
+     "zero_rate": 0.0
+    },
+    "col_006": {
+     "declared_type": "VARCHAR",
+     "distinct": 12,
+     "family": "text",
+     "name": "col_006",
+     "null_rate": 0.14285714285714285,
+     "nulls": 6,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "text",
+     "rows": 42,
+     "sample_values": [
+      "Campus Common",
+      "Various locations",
+      "258 S. Maple St.",
+      "Campus Baseball Stadium",
+      "Campus Football stadium",
+      "900 E. Washington St.",
+      "Conference Room BA 452",
+      "MU 215",
+      "Campus Soccer/Lacrosse stadium",
+      "100 W. Main Street"
+     ],
+     "text": {
+      "avg_len": 13.083333333333334,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 30,
+      "min_len": 6,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "MU 215",
+       19
+      ],
+      [
+       "Campus Soccer/Lacrosse stadium",
+       3
+      ],
+      [
+       "100 W. Main Street",
+       2
+      ],
+      [
+       "900 E. Washington St.",
+       2
+      ],
+      [
+       "Campus Football stadium",
+       2
+      ],
+      [
+       "Conference Room BA 452",
+       2
+      ],
+      [
+       "1308 106th Ave.",
+       1
+      ],
+      [
+       "258 S. Maple St.",
+       1
+      ],
+      [
+       "45 N. Smith St.",
+       1
+      ],
+      [
+       "Campus Baseball Stadium",
+       1
+      ]
+     ],
+     "uniqueness": 0.3333333333333333,
+     "zero_rate": 0.0
+    },
+    "col_007": {
+     "declared_type": "VARCHAR",
+     "distinct": 3,
+     "family": "text",
+     "name": "col_007",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 6,
+     "role": "text",
+     "rows": 42,
+     "sample_values": [
+      "Closed",
+      "Planning",
+      "Open"
+     ],
+     "text": {
+      "avg_len": 5.904761904761905,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Closed",
+       18
+      ],
+      [
+       "Open",
+       13
+      ],
+      [
+       "Planning",
+       11
+      ]
+     ],
+     "uniqueness": 0.07142857142857142,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 42,
+   "sample_rows": [
+    {
+     "col_001": "rec180D2MI4EpckHy",
+     "col_002": "Officers meeting - March",
+     "col_003": "2020-03-10T09:30:00",
+     "col_004": "Meeting",
+     "col_005": null,
+     "col_006": null,
+     "col_007": "Planning"
+    },
+    {
+     "col_001": "recSdU7jGu57676tT",
+     "col_002": "Habitat for Humanity",
+     "col_003": "2020-03-19T01:00:00",
+     "col_004": "Community Service",
+     "col_005": "Volunteer opportunity to help paint new home.",
+     "col_006": "258 S. Maple St.",
+     "col_007": "Planning"
+    },
+    {
+     "col_001": "receBpqENOUMQYsIP",
+     "col_002": "Lacrosse game",
+     "col_003": "2020-03-10T12:00:00",
+     "col_004": "Game",
+     "col_005": "Attend school teams Lacrosse game as a group.",
+     "col_006": "Campus Soccer/Lacrosse stadium",
+     "col_007": "Planning"
+    },
+    {
+     "col_001": "recsgSUqFCJqekzL5",
+     "col_002": "Food Bank",
+     "col_003": "2019-11-21T02:00:00",
+     "col_004": "Community Service",
+     "col_005": "Volunteer opportunity to sort donations for distribution.",
+     "col_006": "1308 106th Ave.",
+     "col_007": "Closed"
+    },
+    {
+     "col_001": "rectsBOijA23838qh",
+     "col_002": "Spring Budget Review",
+     "col_003": "2020-01-12T03:00:00",
+     "col_004": "Budget",
+     "col_005": "Officers and Budget Committee only",
+     "col_006": "Conference Room BA 452",
+     "col_007": "Open"
+    }
+   ]
+  },
+  "expense": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 32,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "text",
+     "rows": 32,
+     "sample_values": [
+      "receRmFWtS9xJdkL2",
+      "reckyNexGnIVMiNGn",
+      "reccYcUpPCTpMXUbB",
+      "recNQk5EsFhOWLl4R",
+      "rec1oMgNFt7Y0G40x",
+      "recnK8dKtLnRpm34U",
+      "reccb1HM5bxQG3mLF",
+      "recbzLA8PuklutV4x",
+      "recJnyr7Z1CjAlHgA",
+      "rec7gUiykKKW4RaJS"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "rec017x6R3hQqkLAo",
+       1
+      ],
+      [
+       "rec1nIjoZKTYayqZ6",
+       1
+      ],
+      [
+       "rec1oMgNFt7Y0G40x",
+       1
+      ],
+      [
+       "rec4Zg7WEmfiHXcnC",
+       1
+      ],
+      [
+       "rec7gUiykKKW4RaJS",
+       1
+      ],
+      [
+       "recBqNAd2axwvbSUd",
+       1
+      ],
+      [
+       "recHPdtBtpThSA9lq",
+       1
+      ],
+      [
+       "recILV3eykJuWc489",
+       1
+      ],
+      [
+       "recIudsuLiDpzK8Io",
+       1
+      ],
+      [
+       "recJnyr7Z1CjAlHgA",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 12,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 32,
+     "sample_values": [
+      "Alumni Glass",
+      "Club shirts",
+      "Travel Mug",
+      "Water, cookies, chips",
+      "Water, chips, cookies",
+      "Posters",
+      "Bakery - Donuts, muffins",
+      "Parking",
+      "Water, Cookies",
+      "Water, Veggie tray, supplies"
+     ],
+     "text": {
+      "avg_len": 11.875,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 28,
+      "min_len": 5,
+      "space_share": 0.5,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Pizza",
+       7
+      ],
+      [
+       "Posters",
+       6
+      ],
+      [
+       "Water, chips, cookies",
+       5
+      ],
+      [
+       "Parking",
+       3
+      ],
+      [
+       "Water, Cookies",
+       3
+      ],
+      [
+       "Travel Mug",
+       2
+      ],
+      [
+       "Alumni Glass",
+       1
+      ],
+      [
+       "Bakery - Donuts, muffins",
+       1
+      ],
+      [
+       "Club shirts",
+       1
+      ],
+      [
+       "Post Cards, Posters",
+       1
+      ]
+     ],
+     "uniqueness": 0.375,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "date_range": [
+      "2019-08-20 00:00:00",
+      "2019-11-19 00:00:00"
+     ],
+     "declared_type": "VARCHAR",
+     "distinct": 17,
+     "family": "date",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "date",
+     "rows": 32,
+     "sample_values": [
+      "2019-09-01",
+      "2019-08-20",
+      "2019-09-15",
+      "2019-09-18",
+      "2019-09-03",
+      "2019-11-14",
+      "2019-09-04",
+      "2019-10-22",
+      "2019-10-01",
+      "2019-11-19"
+     ],
+     "text": {
+      "avg_len": 10.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 10,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2019-09-03",
+       3
+      ],
+      [
+       "2019-09-10",
+       3
+      ],
+      [
+       "2019-09-24",
+       3
+      ],
+      [
+       "2019-10-08",
+       3
+      ],
+      [
+       "2019-10-22",
+       3
+      ],
+      [
+       "2019-11-05",
+       3
+      ],
+      [
+       "2019-11-19",
+       3
+      ],
+      [
+       "2019-11-04",
+       2
+      ],
+      [
+       "2019-08-20",
+       1
+      ],
+      [
+       "2019-09-01",
+       1
+      ]
+     ],
+     "uniqueness": 0.53125,
+     "zero_rate": 0.0
+    },
+    "col_004": {
+     "declared_type": "DOUBLE",
+     "distinct": 21,
+     "family": "float",
+     "name": "col_004",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "max": 295.12,
+      "mean": 65.1890625,
+      "min": 6.0,
+      "p25": 20.2,
+      "p50": 54.25,
+      "p75": 70.645
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "float",
+     "rows": 32,
+     "sample_values": [
+      "92.82",
+      "13.45",
+      "62.6",
+      "122.06",
+      "61.52",
+      "113.33",
+      "295.12",
+      "74.59",
+      "59.73",
+      "54.25"
+     ],
+     "text": {
+      "avg_len": 4.84375,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "20.2",
+       3
+      ],
+      [
+       "54.25",
+       3
+      ],
+      [
+       "6.0",
+       3
+      ],
+      [
+       "13.45",
+       2
+      ],
+      [
+       "50.13",
+       2
+      ],
+      [
+       "51.81",
+       2
+      ],
+      [
+       "59.73",
+       2
+      ],
+      [
+       "67.81",
+       2
+      ],
+      [
+       "103.62",
+       1
+      ],
+      [
+       "113.33",
+       1
+      ]
+     ],
+     "uniqueness": 0.65625,
+     "zero_rate": 0.0
+    },
+    "col_005": {
+     "declared_type": "VARCHAR",
+     "distinct": 1,
+     "family": "text",
+     "name": "col_005",
+     "null_rate": 0.03125,
+     "nulls": 1,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "boolean",
+     "rows": 32,
+     "sample_values": [
+      "true"
+     ],
+     "text": {
+      "avg_len": 4.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "true",
+       31
+      ]
+     ],
+     "uniqueness": 0.03225806451612903,
+     "zero_rate": 0.0
+    },
+    "col_006": {
+     "declared_type": "VARCHAR",
+     "distinct": 3,
+     "family": "text",
+     "name": "col_006",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "text",
+     "rows": 32,
+     "sample_values": [
+      "recro8T1MPMwRadVH",
+      "rec4BLdZHS2Blfp4v",
+      "recD078PnS3x2doBe"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "rec4BLdZHS2Blfp4v",
+       12
+      ],
+      [
+       "recD078PnS3x2doBe",
+       11
+      ],
+      [
+       "recro8T1MPMwRadVH",
+       9
+      ]
+     ],
+     "uniqueness": 0.09375,
+     "zero_rate": 0.0
+    },
+    "col_007": {
+     "declared_type": "VARCHAR",
+     "distinct": 24,
+     "family": "text",
+     "name": "col_007",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 6,
+     "role": "text",
+     "rows": 32,
+     "sample_values": [
+      "recTUGXxhTaFZ2qkg",
+      "recMc8TbR76rmUSHG",
+      "recca5tkvdQgoLKZz",
+      "recZdw5TjWrRTj4kp",
+      "recr60T1tLsfdICV8",
+      "reczf4LoOK6z7oOec",
+      "recJOc7f9KgpgJm5q",
+      "recutlCwBNym7tS12",
+      "rec1bG6HSft7XIvTP",
+      "recexNBMuCY9emh6y"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "recca5tkvdQgoLKZz",
+       3
+      ],
+      [
+       "rec1bG6HSft7XIvTP",
+       2
+      ],
+      [
+       "rec5V70sIuIgpOzDT",
+       2
+      ],
+      [
+       "recexNBMuCY9emh6y",
+       2
+      ],
+      [
+       "recr60T1tLsfdICV8",
+       2
+      ],
+      [
+       "recwXIiKoBMjXJsGZ",
+       2
+      ],
+      [
+       "reczf4LoOK6z7oOec",
+       2
+      ],
+      [
+       "rec0QmEc3cSQFQ6V2",
+       1
+      ],
+      [
+       "rec1z6ISJU2HdIsVm",
+       1
+      ],
+      [
+       "recJOc7f9KgpgJm5q",
+       1
+      ]
+     ],
+     "uniqueness": 0.75,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 32,
+   "sample_rows": [
+    {
+     "col_001": "rec4Zg7WEmfiHXcnC",
+     "col_002": "Posters",
+     "col_003": "2019-10-10",
+     "col_004": 67.81,
+     "col_005": "true",
+     "col_006": "rec4BLdZHS2Blfp4v",
+     "col_007": "recsI0IzpUuxl2bPh"
+    },
+    {
+     "col_001": "recYO5hxM6fIVQ44n",
+     "col_002": "Club shirts",
+     "col_003": "2019-09-18",
+     "col_004": 295.12,
+     "col_005": "true",
+     "col_006": "recro8T1MPMwRadVH",
+     "col_007": "recRQdaiKCxFAlPCy"
+    },
+    {
+     "col_001": "recc9M5QT9BWofBj0",
+     "col_002": "Water, chips, cookies",
+     "col_003": "2019-10-22",
+     "col_004": 61.52,
+     "col_005": "true",
+     "col_006": "rec4BLdZHS2Blfp4v",
+     "col_007": "recr60T1tLsfdICV8"
+    },
+    {
+     "col_001": "reckyNexGnIVMiNGn",
+     "col_002": "Travel Mug",
+     "col_003": "2019-10-15",
+     "col_004": 13.45,
+     "col_005": "true",
+     "col_006": "rec4BLdZHS2Blfp4v",
+     "col_007": "recZuCiQzCDAs4zDQ"
+    },
+    {
+     "col_001": "recnK8dKtLnRpm34U",
+     "col_002": "Pizza",
+     "col_003": "2019-09-24",
+     "col_004": 113.33,
+     "col_005": "true",
+     "col_006": "recro8T1MPMwRadVH",
+     "col_007": "rec5V70sIuIgpOzDT"
+    }
+   ]
+  },
+  "income": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 36,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "text",
+     "rows": 36,
+     "sample_values": [
+      "recCRWMfFqifuKMc6",
+      "recihQPJWBjlTlS5i",
+      "recbCZLKaq6fihDEu",
+      "recms6rgtCkMIYg1A",
+      "recOo362sJrXFv2az",
+      "recPG7h3YcEJpddEW",
+      "recmUxQVGCGs6NLV4",
+      "recN3WFwGR0c17xe2",
+      "recenMwUQktMpDTQc",
+      "reco9QqFb4mD5TRcW"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "rec0s9ZrO15zhzUeE",
+       1
+      ],
+      [
+       "rec7f5XMQZexgtQJo",
+       1
+      ],
+      [
+       "rec8BUJa8GXUjiglg",
+       1
+      ],
+      [
+       "rec8V9BPNIoewWt2z",
+       1
+      ],
+      [
+       "recCRWMfFqifuKMc6",
+       1
+      ],
+      [
+       "recMCFQxAiJXxrbsG",
+       1
+      ],
+      [
+       "recMFy9sJHhuPZ4cz",
+       1
+      ],
+      [
+       "recN3WFwGR0c17xe2",
+       1
+      ],
+      [
+       "recOo362sJrXFv2az",
+       1
+      ],
+      [
+       "recPG7h3YcEJpddEW",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "date_range": [
+      "2019-09-01 00:00:00",
+      "2019-10-31 00:00:00"
+     ],
+     "declared_type": "VARCHAR",
+     "distinct": 29,
+     "family": "date",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "date",
+     "rows": 36,
+     "sample_values": [
+      "2019-10-05",
+      "2019-09-11",
+      "2019-09-01",
+      "2019-09-21",
+      "2019-09-28",
+      "2019-09-13",
+      "2019-09-18",
+      "2019-09-25",
+      "2019-09-09",
+      "2019-10-04"
+     ],
+     "text": {
+      "avg_len": 10.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 10,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2019-09-25",
+       4
+      ],
+      [
+       "2019-10-31",
+       3
+      ],
+      [
+       "2019-09-09",
+       2
+      ],
+      [
+       "2019-09-18",
+       2
+      ],
+      [
+       "2019-09-01",
+       1
+      ],
+      [
+       "2019-09-04",
+       1
+      ],
+      [
+       "2019-09-06",
+       1
+      ],
+      [
+       "2019-09-08",
+       1
+      ],
+      [
+       "2019-09-11",
+       1
+      ],
+      [
+       "2019-09-12",
+       1
+      ]
+     ],
+     "uniqueness": 0.8055555555555556,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "declared_type": "BIGINT",
+     "distinct": 4,
+     "family": "int",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.0013554727211114877,
+      "max": 3000.0,
+      "mean": 162.5,
+      "min": 50.0,
+      "p25": 50.0,
+      "p50": 50.0,
+      "p75": 50.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "int",
+     "rows": 36,
+     "sample_values": [
+      "50",
+      "1000",
+      "3000",
+      "200"
+     ],
+     "text": {
+      "avg_len": 2.138888888888889,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "50",
+       33
+      ],
+      [
+       "1000",
+       1
+      ],
+      [
+       "200",
+       1
+      ],
+      [
+       "3000",
+       1
+      ]
+     ],
+     "uniqueness": 0.1111111111111111,
+     "zero_rate": 0.0
+    },
+    "col_004": {
+     "declared_type": "VARCHAR",
+     "distinct": 4,
+     "family": "text",
+     "name": "col_004",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "text",
+     "rows": 36,
+     "sample_values": [
+      "Fundraising",
+      "Sponsorship",
+      "Dues",
+      "School Appropration"
+     ],
+     "text": {
+      "avg_len": 4.805555555555555,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 19,
+      "min_len": 4,
+      "space_share": 0.027777777777777776,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Dues",
+       33
+      ],
+      [
+       "Fundraising",
+       1
+      ],
+      [
+       "School Appropration",
+       1
+      ],
+      [
+       "Sponsorship",
+       1
+      ]
+     ],
+     "uniqueness": 0.1111111111111111,
+     "zero_rate": 0.0
+    },
+    "col_005": {
+     "declared_type": "VARCHAR",
+     "distinct": 3,
+     "family": "text",
+     "name": "col_005",
+     "null_rate": 0.9166666666666666,
+     "nulls": 33,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "free_text",
+     "rows": 36,
+     "sample_values": [
+      "Annual funding from Student Government.",
+      "Secured donations to help pay for speaker gifts.",
+      "Ad revenue for use on flyers used to advertise upcoming events."
+     ],
+     "text": {
+      "avg_len": 50.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 63,
+      "min_len": 39,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Ad revenue for use on flyers used to advertise upcoming events.",
+       1
+      ],
+      [
+       "Annual funding from Student Government.",
+       1
+      ],
+      [
+       "Secured donations to help pay for speaker gifts.",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_006": {
+     "declared_type": "VARCHAR",
+     "distinct": 31,
+     "family": "text",
+     "name": "col_006",
+     "null_rate": 0.08333333333333333,
+     "nulls": 3,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "text",
+     "rows": 36,
+     "sample_values": [
+      "recT92PyyZCGq1R68",
+      "recL4aEZBZoPk9NYx",
+      "rec3pH4DxMcWHMRB7",
+      "recsTO4OZIF9rbubk",
+      "rec75vvFxgYtHmqxY",
+      "recWh2lJVOT6HjChK",
+      "reccSUPwy30AeZLEb",
+      "recro8T1MPMwRadVH",
+      "rec4BLdZHS2Blfp4v",
+      "recP6DJPyi5donvXL"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "rec3pH4DxMcWHMRB7",
+       2
+      ],
+      [
+       "rec4BLdZHS2Blfp4v",
+       2
+      ],
+      [
+       "rec1x5zBFIqoOuPW8",
+       1
+      ],
+      [
+       "rec280Sk7o31iG0Tx",
+       1
+      ],
+      [
+       "rec28ORZgcm1dtqBZ",
+       1
+      ],
+      [
+       "rec4O9rmGnLx3j8vt",
+       1
+      ],
+      [
+       "rec75vvFxgYtHmqxY",
+       1
+      ],
+      [
+       "recD078PnS3x2doBe",
+       1
+      ],
+      [
+       "recEFd8s6pkrTt4Pz",
+       1
+      ],
+      [
+       "recEymrwCUKxiiosI",
+       1
+      ]
+     ],
+     "uniqueness": 0.9393939393939394,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 36,
+   "sample_rows": [
+    {
+     "col_001": "rec8V9BPNIoewWt2z",
+     "col_002": "2019-10-02",
+     "col_003": 50,
+     "col_004": "Dues",
+     "col_005": null,
+     "col_006": "rec3pH4DxMcWHMRB7"
+    },
+    {
+     "col_001": "reccMyjWLJhKIWSeJ",
+     "col_002": "2019-09-25",
+     "col_003": 50,
+     "col_004": "Dues",
+     "col_005": null,
+     "col_006": "recttfySfQnYb68u3"
+    },
+    {
+     "col_001": "reciGUKgh5pDSQODm",
+     "col_002": "2019-10-31",
+     "col_003": 50,
+     "col_004": "Dues",
+     "col_005": null,
+     "col_006": "rec4O9rmGnLx3j8vt"
+    },
+    {
+     "col_001": "recphAFPbyclQY63d",
+     "col_002": "2019-10-05",
+     "col_003": 1000,
+     "col_004": "Sponsorship",
+     "col_005": "Ad revenue for use on flyers used to advertise upcoming events.",
+     "col_006": null
+    },
+    {
+     "col_001": "recqHWeEomHX3ytUe",
+     "col_002": "2019-10-04",
+     "col_003": 50,
+     "col_004": "Dues",
+     "col_005": null,
+     "col_006": "recsTO4OZIF9rbubk"
+    }
+   ]
+  },
+  "major": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 113,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "text",
+     "rows": 113,
+     "sample_values": [
+      "rec6pV6OC0wUsKqVE",
+      "reckd29hkJ9kXf5B3",
+      "rec3pZhvStMoNbVgy",
+      "recE5U2qZOYMmmnKZ",
+      "reckKqh5Ls0AAJOXD",
+      "rec8TIqmun4d5vsvN",
+      "recuN6taqCVkaZMZS",
+      "rec09LedkREyskCNv",
+      "recM49P8HxZMoyJZu",
+      "recT9LoDnC8ZvdPqM"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "rec06DF6vZ1CyPKpc",
+       1
+      ],
+      [
+       "rec09LedkREyskCNv",
+       1
+      ],
+      [
+       "rec0Eanv576RhQllI",
+       1
+      ],
+      [
+       "rec0xRZtkzxrg8kj2",
+       1
+      ],
+      [
+       "rec1N0upiVLy5esTO",
+       1
+      ],
+      [
+       "rec1SiX2nFrkbTleH",
+       1
+      ],
+      [
+       "rec2joRXA5HOSHE9a",
+       1
+      ],
+      [
+       "rec3pZhvStMoNbVgy",
+       1
+      ],
+      [
+       "rec42NIsgijDV6aDE",
+       1
+      ],
+      [
+       "rec6OKJlX4eg3hOLe",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 113,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 113,
+     "sample_values": [
+      "History",
+      "Anthropology",
+      "Art History",
+      "Agricultural Machinery Technology",
+      "Social Work",
+      "Management Information Systems",
+      "Chinese",
+      "Plant Science",
+      "Wildlife Ecology and Management",
+      "Geography"
+     ],
+     "text": {
+      "avg_len": 20.13274336283186,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 57,
+      "min_len": 3,
+      "space_share": 0.7079646017699115,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Accounting",
+       1
+      ],
+      [
+       "Aerospace Studies",
+       1
+      ],
+      [
+       "Agribusiness",
+       1
+      ],
+      [
+       "Agricultural Communication",
+       1
+      ],
+      [
+       "Agricultural Education",
+       1
+      ],
+      [
+       "Agricultural Machinery Technology",
+       1
+      ],
+      [
+       "Agricultural Science",
+       1
+      ],
+      [
+       "Agricultural Systems Technology",
+       1
+      ],
+      [
+       "Aircraft Maintenance Technician - Airframe and Powerplant",
+       1
+      ],
+      [
+       "American Studies",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "declared_type": "VARCHAR",
+     "distinct": 47,
+     "family": "text",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "free_text",
+     "rows": 113,
+     "sample_values": [
+      "Journalism and Communication Department",
+      "Human Development and Family Studies Department",
+      "School of Accountancy",
+      "Watershed Sciences Department",
+      "Applied Economics Department",
+      "Liberal Arts Program",
+      "Communicative Disorders and Deaf Education Department",
+      "Geosciences Department",
+      "School of Teacher Education and Leadership",
+      "Special Education and Rehabilitation Counseling Department"
+     ],
+     "text": {
+      "avg_len": 39.14159292035398,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 60,
+      "min_len": 16,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "School of Applied Sciences, Technology and Education",
+       21
+      ],
+      [
+       "Languages, Philosophy and Communication Studies Department",
+       8
+      ],
+      [
+       "Plants, Soils, and Climate Department",
+       6
+      ],
+      [
+       "Sociology, Social Work and Anthropology Department",
+       4
+      ],
+      [
+       "Wildland Resources Department",
+       4
+      ],
+      [
+       "Applied Economics Department",
+       3
+      ],
+      [
+       "Art and Design Department",
+       3
+      ],
+      [
+       "Chemistry and Biochemistry Department",
+       3
+      ],
+      [
+       "Environment and Society Department",
+       3
+      ],
+      [
+       "Mathematics and Statistics Department",
+       3
+      ]
+     ],
+     "uniqueness": 0.415929203539823,
+     "zero_rate": 0.0
+    },
+    "col_004": {
+     "declared_type": "VARCHAR",
+     "distinct": 8,
+     "family": "text",
+     "name": "col_004",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "free_text",
+     "rows": 113,
+     "sample_values": [
+      "College of Science",
+      "College of Natural Resources",
+      "College of Agriculture and Applied Sciences",
+      "College of Humanities and Social Sciences",
+      "School of Business",
+      "College of Education & Human Services",
+      "College of Engineering",
+      "College of the Arts"
+     ],
+     "text": {
+      "avg_len": 34.097345132743364,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 43,
+      "min_len": 18,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "College of Agriculture and Applied Sciences",
+       36
+      ],
+      [
+       "College of Humanities and Social Sciences",
+       24
+      ],
+      [
+       "College of Education & Human Services",
+       13
+      ],
+      [
+       "College of Science",
+       12
+      ],
+      [
+       "College of Natural Resources",
+       9
+      ],
+      [
+       "School of Business",
+       7
+      ],
+      [
+       "College of Engineering",
+       6
+      ],
+      [
+       "College of the Arts",
+       6
+      ]
+     ],
+     "uniqueness": 0.07079646017699115,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 113,
+   "sample_rows": [
+    {
+     "col_001": "recPzXGUwdTr2JQYW",
+     "col_002": "Environmental and Natural Resource Economics",
+     "col_003": "Applied Economics Department",
+     "col_004": "College of Agriculture and Applied Sciences"
+    },
+    {
+     "col_001": "recRobSaHLmdlYNb1",
+     "col_002": "History",
+     "col_003": "History Department",
+     "col_004": "College of Humanities and Social Sciences"
+    },
+    {
+     "col_001": "reclQ8BVvj2w4cQ4V",
+     "col_002": "Environmental Engineering",
+     "col_003": "Civil and Environmental Engineering Department",
+     "col_004": "College of Engineering"
+    },
+    {
+     "col_001": "recrVJyCL0EoMvn6V",
+     "col_002": "Computer Science",
+     "col_003": "Computer Science Department",
+     "col_004": "College of Science"
+    },
+    {
+     "col_001": "recz2waxrgL2KJEHe",
+     "col_002": "Art History",
+     "col_003": "Art and Design Department",
+     "col_004": "College of the Arts"
+    }
+   ]
+  },
+  "member": {
+   "columns": {
+    "col_001": {
+     "declared_type": "VARCHAR",
+     "distinct": 33,
+     "family": "text",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "text",
+     "rows": 33,
+     "sample_values": [
+      "reco0mr8dXTgs5wWA",
+      "recT92PyyZCGq1R68",
+      "recL4aEZBZoPk9NYx",
+      "rec3pH4DxMcWHMRB7",
+      "recsTO4OZIF9rbubk",
+      "rec75vvFxgYtHmqxY",
+      "recWh2lJVOT6HjChK",
+      "reccSUPwy30AeZLEb",
+      "recro8T1MPMwRadVH",
+      "rec2a03QXbFQAUZ7X"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "rec1x5zBFIqoOuPW8",
+       1
+      ],
+      [
+       "rec280Sk7o31iG0Tx",
+       1
+      ],
+      [
+       "rec28ORZgcm1dtqBZ",
+       1
+      ],
+      [
+       "rec2a03QXbFQAUZ7X",
+       1
+      ],
+      [
+       "rec3pH4DxMcWHMRB7",
+       1
+      ],
+      [
+       "rec4BLdZHS2Blfp4v",
+       1
+      ],
+      [
+       "rec4O9rmGnLx3j8vt",
+       1
+      ],
+      [
+       "rec75vvFxgYtHmqxY",
+       1
+      ],
+      [
+       "recD078PnS3x2doBe",
+       1
+      ],
+      [
+       "recEFd8s6pkrTt4Pz",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 33,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 33,
+     "sample_values": [
+      "Randy",
+      "Amy",
+      "Angela",
+      "Grant",
+      "Connor",
+      "Edwardo",
+      "Sacha",
+      "Keith",
+      "Adele",
+      "Maya"
+     ],
+     "text": {
+      "avg_len": 5.636363636363637,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 9,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Adela",
+       1
+      ],
+      [
+       "Adele",
+       1
+      ],
+      [
+       "Amy",
+       1
+      ],
+      [
+       "Angela",
+       1
+      ],
+      [
+       "Annabella",
+       1
+      ],
+      [
+       "Brent",
+       1
+      ],
+      [
+       "Carlo",
+       1
+      ],
+      [
+       "Casey",
+       1
+      ],
+      [
+       "Christof",
+       1
+      ],
+      [
+       "Connor",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "declared_type": "VARCHAR",
+     "distinct": 33,
+     "family": "text",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "text",
+     "rows": 33,
+     "sample_values": [
+      "Balentine",
+      "Dunlop",
+      "Gerke",
+      "Snay",
+      "Nielson",
+      "O'Gallagher",
+      "Ratcliffe",
+      "Cullen",
+      "Pierce",
+      "Mccray"
+     ],
+     "text": {
+      "avg_len": 6.333333333333333,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 11,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Allen",
+       1
+      ],
+      [
+       "Balentine",
+       1
+      ],
+      [
+       "Cullen",
+       1
+      ],
+      [
+       "Deleon",
+       1
+      ],
+      [
+       "Dunlop",
+       1
+      ],
+      [
+       "Firth",
+       1
+      ],
+      [
+       "Gerke",
+       1
+      ],
+      [
+       "Gilmour",
+       1
+      ],
+      [
+       "Guidi",
+       1
+      ],
+      [
+       "Harrison",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_004": {
+     "declared_type": "VARCHAR",
+     "distinct": 33,
+     "family": "text",
+     "name": "col_004",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "text",
+     "rows": 33,
+     "sample_values": [
+      "kevin.pierce@lpu.edu",
+      "elijah.allen@lpu.edu",
+      "christof.nielson@lpu.edu",
+      "luisa.guidi@lpu.edu",
+      "carlo.jacobs@lpu.edu",
+      "angela.sanders@lpu.edu",
+      "maya.mclean@lpu.edu",
+      "amy.firth@lpu.edu",
+      "tyler.hewitt@lpu.edu",
+      "brent.thomason@lpu.edu"
+     ],
+     "text": {
+      "avg_len": 20.87878787878788,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 25,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "adela.o'gallagher@lpu.edu",
+       1
+      ],
+      [
+       "adele.deleon@lpu.edu",
+       1
+      ],
+      [
+       "amy.firth@lpu.edu",
+       1
+      ],
+      [
+       "angela.sanders@lpu.edu",
+       1
+      ],
+      [
+       "annabella.warren@lpu.edu",
+       1
+      ],
+      [
+       "brent.thomason@lpu.edu",
+       1
+      ],
+      [
+       "carlo.jacobs@lpu.edu",
+       1
+      ],
+      [
+       "casey.mason@lpu.edu",
+       1
+      ],
+      [
+       "christof.nielson@lpu.edu",
+       1
+      ],
+      [
+       "connor.hilton@lpu.edu",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_005": {
+     "declared_type": "VARCHAR",
+     "distinct": 6,
+     "family": "text",
+     "name": "col_005",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "text",
+     "rows": 33,
+     "sample_values": [
+      "Member",
+      "Inactive",
+      "Secretary",
+      "Treasurer",
+      "President",
+      "Vice President"
+     ],
+     "text": {
+      "avg_len": 6.696969696969697,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 14,
+      "min_len": 6,
+      "space_share": 0.030303030303030304,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Member",
+       26
+      ],
+      [
+       "Inactive",
+       3
+      ],
+      [
+       "President",
+       1
+      ],
+      [
+       "Secretary",
+       1
+      ],
+      [
+       "Treasurer",
+       1
+      ],
+      [
+       "Vice President",
+       1
+      ]
+     ],
+     "uniqueness": 0.18181818181818182,
+     "zero_rate": 0.0
+    },
+    "col_006": {
+     "declared_type": "VARCHAR",
+     "distinct": 4,
+     "family": "text",
+     "name": "col_006",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "text",
+     "rows": 33,
+     "sample_values": [
+      "Medium",
+      "X-Large",
+      "Small",
+      "Large"
+     ],
+     "text": {
+      "avg_len": 5.787878787878788,
+      "code_share": 0.0,
+      "composite_share": 0.24242424242424243,
+      "date_shape_share": 0.0,
+      "max_len": 7,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Large",
+       13
+      ],
+      [
+       "Medium",
+       10
+      ],
+      [
+       "X-Large",
+       8
+      ],
+      [
+       "Small",
+       2
+      ]
+     ],
+     "uniqueness": 0.12121212121212122,
+     "zero_rate": 0.0
+    },
+    "col_007": {
+     "declared_type": "VARCHAR",
+     "distinct": 33,
+     "family": "text",
+     "name": "col_007",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 6,
+     "role": "text",
+     "rows": 33,
+     "sample_values": [
+      "475-555-3802",
+      "905-555-5035",
+      "928-555-2577",
+      "727-555-2732",
+      "738-555-2267",
+      "109-555-7016",
+      "260-555-4328",
+      "540-555-4152",
+      "809-555-3360",
+      "716-555-3845"
+     ],
+     "text": {
+      "avg_len": 12.121212121212121,
+      "code_share": 0.9393939393939394,
+      "composite_share": 0.9393939393939394,
+      "date_shape_share": 0.0,
+      "max_len": 14,
+      "min_len": 12,
+      "space_share": 0.06060606060606061,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "(651) 928-4507",
+       1
+      ],
+      [
+       "(701) 932-1903",
+       1
+      ],
+      [
+       "109-555-7016",
+       1
+      ],
+      [
+       "176-555-6720",
+       1
+      ],
+      [
+       "260-555-4328",
+       1
+      ],
+      [
+       "394-555-4909",
+       1
+      ],
+      [
+       "397-555-3444",
+       1
+      ],
+      [
+       "403-555-1310",
+       1
+      ],
+      [
+       "435-555-8128",
+       1
+      ],
+      [
+       "442-555-5882",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_008": {
+     "declared_type": "BIGINT",
+     "distinct": 33,
+     "family": "int",
+     "name": "col_008",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.00033925836066247905,
+      "max": 98290.0,
+      "mean": 37892.757575757576,
+      "min": 1020.0,
+      "p25": 12203.0,
+      "p50": 29440.0,
+      "p75": 58102.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 7,
+     "role": "int",
+     "rows": 33,
+     "sample_values": [
+      "98290",
+      "11554",
+      "92307",
+      "60047",
+      "12203",
+      "1020",
+      "14606",
+      "58102",
+      "10002",
+      "84003"
+     ],
+     "text": {
+      "avg_len": 4.848484848484849,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "10002",
+       1
+      ],
+      [
+       "1020",
+       1
+      ],
+      [
+       "11104",
+       1
+      ],
+      [
+       "11554",
+       1
+      ],
+      [
+       "12203",
+       1
+      ],
+      [
+       "14606",
+       1
+      ],
+      [
+       "21042",
+       1
+      ],
+      [
+       "21784",
+       1
+      ],
+      [
+       "21801",
+       1
+      ],
+      [
+       "22101",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_009": {
+     "declared_type": "VARCHAR",
+     "distinct": 26,
+     "family": "text",
+     "name": "col_009",
+     "null_rate": 0.030303030303030304,
+     "nulls": 1,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 8,
+     "role": "text",
+     "rows": 33,
+     "sample_values": [
+      "recuN6taqCVkaZMZS",
+      "rec09LedkREyskCNv",
+      "recT9LoDnC8ZvdPqM",
+      "recdIBgeU38UbV2sy",
+      "recVYIFAwjT91pnv7",
+      "recIzqYuV3wMONTgB",
+      "recObV24Ass2ouQHK",
+      "rec7BxKpjJ7bNph3O",
+      "rectOU2QnznthfWv7",
+      "recB3VldnYdFtttTk"
+     ],
+     "text": {
+      "avg_len": 17.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 17,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "recKJHO1P6ZC5m567",
+       3
+      ],
+      [
+       "recObV24Ass2ouQHK",
+       2
+      ],
+      [
+       "recdIBgeU38UbV2sy",
+       2
+      ],
+      [
+       "reclQ8BVvj2w4cQ4V",
+       2
+      ],
+      [
+       "recxRBSgVYeSEGvyo",
+       2
+      ],
+      [
+       "rec09LedkREyskCNv",
+       1
+      ],
+      [
+       "rec1N0upiVLy5esTO",
+       1
+      ],
+      [
+       "rec7BxKpjJ7bNph3O",
+       1
+      ],
+      [
+       "rec9CqGCGV8Y8rOSY",
+       1
+      ],
+      [
+       "recAiT3yTABWypvHu",
+       1
+      ]
+     ],
+     "uniqueness": 0.8125,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 33,
+   "sample_rows": [
+    {
+     "col_001": "rec2a03QXbFQAUZ7X",
+     "col_002": "Randy",
+     "col_003": "Woodard",
+     "col_004": "randy.woodard@lpu.edu",
+     "col_005": "Inactive",
+     "col_006": "X-Large",
+     "col_007": "490-555-8460",
+     "col_008": 8021,
+     "col_009": null
+    },
+    {
+     "col_001": "recT92PyyZCGq1R68",
+     "col_002": "Emily",
+     "col_003": "Jaquith",
+     "col_004": "emily.jaquith@lpu.edu",
+     "col_005": "Member",
+     "col_006": "Small",
+     "col_007": "540-555-4152",
+     "col_008": 79106,
+     "col_009": "recRA9IxLl6eKPsJX"
+    },
+    {
+     "col_001": "recWh2lJVOT6HjChK",
+     "col_002": "Tyler",
+     "col_003": "Hewitt",
+     "col_004": "tyler.hewitt@lpu.edu",
+     "col_005": "Member",
+     "col_006": "Large",
+     "col_007": "176-555-6720",
+     "col_008": 60089,
+     "col_009": "reclQ8BVvj2w4cQ4V"
+    },
+    {
+     "col_001": "reco0mr8dXTgs5wWA",
+     "col_002": "Keith",
+     "col_003": "Dunlop",
+     "col_004": "keith.dunlap@lpu.edu",
+     "col_005": "Member",
+     "col_006": "Large",
+     "col_007": "394-555-4909",
+     "col_008": 98290,
+     "col_009": "recVeoVlIsO6k6iUM"
+    },
+    {
+     "col_001": "recro8T1MPMwRadVH",
+     "col_002": "Elijah",
+     "col_003": "Allen",
+     "col_004": "elijah.allen@lpu.edu",
+     "col_005": "Treasurer",
+     "col_006": "X-Large",
+     "col_007": "724-555-5721",
+     "col_008": 21784,
+     "col_009": "recObV24Ass2ouQHK"
+    }
+   ]
+  },
+  "zip_code": {
+   "columns": {
+    "col_001": {
+     "declared_type": "BIGINT",
+     "distinct": 41877,
+     "family": "int",
+     "name": "col_001",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.4210859728506787,
+      "max": 99950.0,
+      "mean": 49615.97597726676,
+      "min": 501.0,
+      "p25": 26121.0,
+      "p50": 48850.0,
+      "p75": 73038.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 41877,
+     "sample_values": [
+      "51579",
+      "39332",
+      "62930",
+      "55344",
+      "32970",
+      "18244",
+      "14886",
+      "30043",
+      "15264",
+      "27409"
+     ],
+     "text": {
+      "avg_len": 4.918762088974855,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "10001",
+       1
+      ],
+      [
+       "10002",
+       1
+      ],
+      [
+       "10003",
+       1
+      ],
+      [
+       "10004",
+       1
+      ],
+      [
+       "10005",
+       1
+      ],
+      [
+       "10006",
+       1
+      ],
+      [
+       "10007",
+       1
+      ],
+      [
+       "10008",
+       1
+      ],
+      [
+       "10009",
+       1
+      ],
+      [
+       "1001",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "col_002": {
+     "declared_type": "VARCHAR",
+     "distinct": 3,
+     "family": "text",
+     "name": "col_002",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "text",
+     "rows": 41877,
+     "sample_values": [
+      "PO Box",
+      "Standard",
+      "Unique"
+     ],
+     "text": {
+      "avg_len": 7.4314778995630055,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 6,
+      "space_share": 0.22537431048069345,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Standard",
+       29973
+      ],
+      [
+       "PO Box",
+       9438
+      ],
+      [
+       "Unique",
+       2466
+      ]
+     ],
+     "uniqueness": 7.163836951070993e-05,
+     "zero_rate": 0.0
+    },
+    "col_003": {
+     "declared_type": "VARCHAR",
+     "distinct": 18729,
+     "family": "text",
+     "name": "col_003",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "text",
+     "rows": 41877,
+     "sample_values": [
+      "Powhatan",
+      "Palacios",
+      "Kankakee",
+      "Kettlersville",
+      "Kettleman City",
+      "Parker City",
+      "Gilead",
+      "Louisville",
+      "Happy",
+      "Roxboro"
+     ],
+     "text": {
+      "avg_len": 8.61191107290398,
+      "code_share": 0.0,
+      "composite_share": 0.00011939728251784989,
+      "date_shape_share": 0.0,
+      "max_len": 27,
+      "min_len": 3,
+      "space_share": 0.24488382644411014,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Washington",
+       300
+      ],
+      [
+       "Houston",
+       199
+      ],
+      [
+       "New York",
+       165
+      ],
+      [
+       "El Paso",
+       140
+      ],
+      [
+       "Dallas",
+       130
+      ],
+      [
+       "Atlanta",
+       116
+      ],
+      [
+       "Springfield",
+       111
+      ],
+      [
+       "Miami",
+       108
+      ],
+      [
+       "Sacramento",
+       105
+      ],
+      [
+       "Los Angeles",
+       96
+      ]
+     ],
+     "uniqueness": 0.4472383408553621,
+     "zero_rate": 0.0
+    },
+    "col_004": {
+     "declared_type": "VARCHAR",
+     "distinct": 2010,
+     "family": "text",
+     "name": "col_004",
+     "null_rate": 0.0021013921723141583,
+     "nulls": 88,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "text",
+     "rows": 41877,
+     "sample_values": [
+      "North Slope Borough",
+      "Las Piedras Municipio",
+      "Hodgeman County",
+      "Jersey County",
+      "Hoonah-Angoon Census Area",
+      "Knox County",
+      "Saguache County",
+      "Duchesne County",
+      "Currituck County",
+      "Outagamie County"
+     ],
+     "text": {
+      "avg_len": 14.335327478523057,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 39,
+      "min_len": 6,
+      "space_share": 0.9998564215463399,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Los Angeles County",
+       527
+      ],
+      [
+       "Jefferson County",
+       471
+      ],
+      [
+       "Washington County",
+       447
+      ],
+      [
+       "Montgomery County",
+       412
+      ],
+      [
+       "Orange County",
+       344
+      ],
+      [
+       "Franklin County",
+       331
+      ],
+      [
+       "Jackson County",
+       305
+      ],
+      [
+       "District of Columbia",
+       289
+      ],
+      [
+       "Wayne County",
+       254
+      ],
+      [
+       "Harris County",
+       249
+      ]
+     ],
+     "uniqueness": 0.04809878197611812,
+     "zero_rate": 0.0
+    },
+    "col_005": {
+     "declared_type": "VARCHAR",
+     "distinct": 52,
+     "family": "text",
+     "name": "col_005",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "text",
+     "rows": 41877,
+     "sample_values": [
+      "Mississippi",
+      "New Jersey",
+      "Arkansas",
+      "Maine",
+      "Nevada",
+      "Arizona",
+      "Nebraska",
+      "New York",
+      "Utah",
+      "Rhode Island"
+     ],
+     "text": {
+      "avg_len": 8.466055352580176,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 20,
+      "min_len": 4,
+      "space_share": 0.1792153210592927,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Texas",
+       2658
+      ],
+      [
+       "California",
+       2654
+      ],
+      [
+       "Pennsylvania",
+       2213
+      ],
+      [
+       "New York",
+       2208
+      ],
+      [
+       "Illinois",
+       1590
+      ],
+      [
+       "Florida",
+       1495
+      ],
+      [
+       "Ohio",
+       1447
+      ],
+      [
+       "Virginia",
+       1241
+      ],
+      [
+       "Missouri",
+       1173
+      ],
+      [
+       "Michigan",
+       1170
+      ]
+     ],
+     "uniqueness": 0.001241731738185639,
+     "zero_rate": 0.0
+    },
+    "col_006": {
+     "declared_type": "VARCHAR",
+     "distinct": 52,
+     "family": "text",
+     "name": "col_006",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "code",
+     "rows": 41877,
+     "sample_values": [
+      "TX",
+      "OK",
+      "VA",
+      "ID",
+      "PR",
+      "WY",
+      "NE",
+      "ND",
+      "FL",
+      "AL"
+     ],
+     "text": {
+      "avg_len": 2.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "TX",
+       2658
+      ],
+      [
+       "CA",
+       2654
+      ],
+      [
+       "PA",
+       2213
+      ],
+      [
+       "NY",
+       2208
+      ],
+      [
+       "IL",
+       1590
+      ],
+      [
+       "FL",
+       1495
+      ],
+      [
+       "OH",
+       1447
+      ],
+      [
+       "VA",
+       1241
+      ],
+      [
+       "MO",
+       1173
+      ],
+      [
+       "MI",
+       1170
+      ]
+     ],
+     "uniqueness": 0.001241731738185639,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 41877,
+   "sample_rows": [
+    {
+     "col_001": 2715,
+     "col_002": "Standard",
+     "col_003": "Dighton",
+     "col_004": "Bristol County",
+     "col_005": "Massachusetts",
+     "col_006": "MA"
+    },
+    {
+     "col_001": 4956,
+     "col_002": "Standard",
+     "col_003": "New Vineyard",
+     "col_004": "Franklin County",
+     "col_005": "Maine",
+     "col_006": "ME"
+    },
+    {
+     "col_001": 36091,
+     "col_002": "Standard",
+     "col_003": "Verbena",
+     "col_004": "Chilton County",
+     "col_005": "Alabama",
+     "col_006": "AL"
+    },
+    {
+     "col_001": 42377,
+     "col_002": "PO Box",
+     "col_003": "West Louisville",
+     "col_004": "Daviess County",
+     "col_005": "Kentucky",
+     "col_006": "KY"
+    },
+    {
+     "col_001": 46942,
+     "col_002": "PO Box",
+     "col_003": "Lake Cicott",
+     "col_004": "Cass County",
+     "col_005": "Indiana",
+     "col_006": "IN"
+    }
+   ]
+  }
+ }
+}

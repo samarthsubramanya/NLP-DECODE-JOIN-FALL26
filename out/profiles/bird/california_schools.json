@@ -1,0 +1,7423 @@
+{
+ "containment": [
+  {
+   "containment": 0.7853680035257823,
+   "coverage": 0.17844982976166635,
+   "dist": 0.9791744606559422,
+   "dist_buckets": [
+    190,
+    176,
+    257,
+    100,
+    177,
+    182,
+    167,
+    197,
+    161,
+    175
+   ],
+   "intersection": 1782,
+   "source": [
+    "satscores",
+    "cds"
+   ],
+   "source_distinct": 2269,
+   "source_unique": true,
+   "target": [
+    "frpm",
+    "CDSCode"
+   ],
+   "target_distinct": 9986
+  },
+  {
+   "containment": 0.5646273888951713,
+   "coverage": 1.0,
+   "dist": 0.9997329594766005,
+   "dist_buckets": [
+    999,
+    999,
+    999,
+    999,
+    999,
+    999,
+    998,
+    998,
+    998,
+    998
+   ],
+   "intersection": 9986,
+   "source": [
+    "schools",
+    "CDSCode"
+   ],
+   "source_distinct": 17686,
+   "source_unique": true,
+   "target": [
+    "frpm",
+    "CDSCode"
+   ],
+   "target_distinct": 9986
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.5646273888951713,
+   "dist": 0.980479337739502,
+   "dist_buckets": [
+    898,
+    954,
+    968,
+    1192,
+    872,
+    1133,
+    1126,
+    990,
+    861,
+    992
+   ],
+   "intersection": 9986,
+   "source": [
+    "frpm",
+    "CDSCode"
+   ],
+   "source_distinct": 9986,
+   "source_unique": true,
+   "target": [
+    "schools",
+    "CDSCode"
+   ],
+   "target_distinct": 17686
+  },
+  {
+   "containment": 1.0,
+   "coverage": 0.12829356553205926,
+   "dist": 0.9866118211644875,
+   "dist_buckets": [
+    216,
+    241,
+    271,
+    178,
+    228,
+    234,
+    244,
+    225,
+    184,
+    248
+   ],
+   "intersection": 2269,
+   "source": [
+    "satscores",
+    "cds"
+   ],
+   "source_distinct": 2269,
+   "source_unique": true,
+   "target": [
+    "schools",
+    "CDSCode"
+   ],
+   "target_distinct": 17686
+  }
+ ],
+ "dataset": "bird",
+ "db_id": "california_schools",
+ "duckdb_file": "decode_join_bird_dev.duckdb",
+ "duckdb_schema": "bird_california_schools",
+ "seed": 42,
+ "tables": {
+  "frpm": {
+   "columns": {
+    "2013-14 CALPADS Fall 1 Certification Status": {
+     "declared_type": "BIGINT",
+     "distinct": 1,
+     "family": "int",
+     "name": "2013-14 CALPADS Fall 1 Certification Status",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 1.0,
+      "mean": 1.0,
+      "min": 1.0,
+      "p25": 1.0,
+      "p50": 1.0,
+      "p75": 1.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 28,
+     "role": "boolean",
+     "rows": 9986,
+     "sample_values": [
+      "1"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1",
+       9986
+      ]
+     ],
+     "uniqueness": 0.0001001401962747847,
+     "zero_rate": 0.0
+    },
+    "Academic Year": {
+     "declared_type": "VARCHAR",
+     "distinct": 1,
+     "family": "text",
+     "name": "Academic Year",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "date",
+     "rows": 9986,
+     "sample_values": [
+      "2014-2015"
+     ],
+     "text": {
+      "avg_len": 9.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 1.0,
+      "max_len": 9,
+      "min_len": 9,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2014-2015",
+       9986
+      ]
+     ],
+     "uniqueness": 0.0001001401962747847,
+     "zero_rate": 0.0
+    },
+    "CDSCode": {
+     "declared_type": "VARCHAR",
+     "distinct": 9986,
+     "family": "int",
+     "name": "CDSCode",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.7328524648189773e-10,
+      "max": 58727695838305.0,
+      "mean": 29239035160209.81,
+      "min": 1100170109835.0,
+      "p25": 19647330109407.0,
+      "p50": 30666476085637.0,
+      "p75": 37737916081069.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "44698234432340",
+      "19647336060545",
+      "31669103130242",
+      "40754576101570",
+      "19644366012561",
+      "35675046095202",
+      "54768365431614",
+      "37735696038905",
+      "31668030129080",
+      "37679916117295"
+     ],
+     "text": {
+      "avg_len": 14.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 14,
+      "min_len": 14,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "01100170109835",
+       1
+      ],
+      [
+       "01100170112607",
+       1
+      ],
+      [
+       "01100170118489",
+       1
+      ],
+      [
+       "01100170123968",
+       1
+      ],
+      [
+       "01100170124172",
+       1
+      ],
+      [
+       "01100170125567",
+       1
+      ],
+      [
+       "01100170130401",
+       1
+      ],
+      [
+       "01100170130419",
+       1
+      ],
+      [
+       "01100176001788",
+       1
+      ],
+      [
+       "01100176002000",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Charter Funding Type": {
+     "declared_type": "VARCHAR",
+     "distinct": 3,
+     "family": "text",
+     "name": "Charter Funding Type",
+     "null_rate": 0.8831363909473262,
+     "nulls": 8819,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 14,
+     "role": "text",
+     "rows": 9986,
+     "sample_values": [
+      "Not in CS funding model",
+      "Directly funded",
+      "Locally funded"
+     ],
+     "text": {
+      "avg_len": 14.725792630676949,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 23,
+      "min_len": 14,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Directly funded",
+       838
+      ],
+      [
+       "Locally funded",
+       328
+      ],
+      [
+       "Not in CS funding model",
+       1
+      ]
+     ],
+     "uniqueness": 0.002570694087403599,
+     "zero_rate": 0.0
+    },
+    "Charter School (Y/N)": {
+     "declared_type": "BIGINT",
+     "distinct": 2,
+     "family": "int",
+     "name": "Charter School (Y/N)",
+     "null_rate": 0.004506308832365312,
+     "nulls": 45,
+     "numeric": {
+      "density": 1.0,
+      "max": 1.0,
+      "mean": 0.11739261643697817,
+      "min": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 12,
+     "role": "boolean",
+     "rows": 9986,
+     "sample_values": [
+      "1",
+      "0"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0",
+       8774
+      ],
+      [
+       "1",
+       1167
+      ]
+     ],
+     "uniqueness": 0.00020118700331958554,
+     "zero_rate": 0.878630082114961
+    },
+    "Charter School Number": {
+     "declared_type": "VARCHAR",
+     "distinct": 1152,
+     "family": "int",
+     "name": "Charter School Number",
+     "null_rate": 0.8831363909473262,
+     "nulls": 8819,
+     "numeric": {
+      "density": 0.6776470588235294,
+      "max": 1700.0,
+      "mean": 941.6884247171454,
+      "min": 1.0,
+      "p25": 553.0,
+      "p50": 989.0,
+      "p75": 1365.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 13,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "0878",
+      "0701",
+      "1470",
+      "0763",
+      "0900",
+      "0841",
+      "1539",
+      "1481",
+      "0997",
+      "1440"
+     ],
+     "text": {
+      "avg_len": 4.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "00D2",
+       7
+      ],
+      [
+       "0756",
+       6
+      ],
+      [
+       "00D1",
+       3
+      ],
+      [
+       "00D4",
+       3
+      ],
+      [
+       "0001",
+       1
+      ],
+      [
+       "0005",
+       1
+      ],
+      [
+       "0009",
+       1
+      ],
+      [
+       "0012",
+       1
+      ],
+      [
+       "0013",
+       1
+      ],
+      [
+       "0014",
+       1
+      ]
+     ],
+     "uniqueness": 0.987146529562982,
+     "zero_rate": 0.0
+    },
+    "County Code": {
+     "declared_type": "VARCHAR",
+     "distinct": 58,
+     "family": "int",
+     "name": "County Code",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.0,
+      "max": 58.0,
+      "mean": 28.58251552173042,
+      "min": 1.0,
+      "p25": 19.0,
+      "p50": 30.0,
+      "p75": 37.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "40",
+      "29",
+      "33",
+      "17",
+      "10",
+      "44",
+      "56",
+      "54",
+      "23",
+      "27"
+     ],
+     "text": {
+      "avg_len": 2.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "19",
+       2218
+      ],
+      [
+       "37",
+       755
+      ],
+      [
+       "30",
+       571
+      ],
+      [
+       "36",
+       543
+      ],
+      [
+       "33",
+       483
+      ],
+      [
+       "43",
+       409
+      ],
+      [
+       "34",
+       381
+      ],
+      [
+       "01",
+       379
+      ],
+      [
+       "10",
+       344
+      ],
+      [
+       "07",
+       268
+      ]
+     ],
+     "uniqueness": 0.005808131383937512,
+     "zero_rate": 0.0
+    },
+    "County Name": {
+     "declared_type": "VARCHAR",
+     "distinct": 58,
+     "family": "text",
+     "name": "County Name",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "text",
+     "rows": 9986,
+     "sample_values": [
+      "Lassen",
+      "Humboldt",
+      "Trinity",
+      "Napa",
+      "Colusa",
+      "Nevada",
+      "Contra Costa",
+      "Los Angeles",
+      "San Joaquin",
+      "Inyo"
+     ],
+     "text": {
+      "avg_len": 9.024734628479871,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 15,
+      "min_len": 4,
+      "space_share": 0.5112157019827759,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Los Angeles",
+       2218
+      ],
+      [
+       "San Diego",
+       755
+      ],
+      [
+       "Orange",
+       571
+      ],
+      [
+       "San Bernardino",
+       543
+      ],
+      [
+       "Riverside",
+       483
+      ],
+      [
+       "Santa Clara",
+       409
+      ],
+      [
+       "Sacramento",
+       381
+      ],
+      [
+       "Alameda",
+       379
+      ],
+      [
+       "Fresno",
+       344
+      ],
+      [
+       "Contra Costa",
+       268
+      ]
+     ],
+     "uniqueness": 0.005808131383937512,
+     "zero_rate": 0.0
+    },
+    "District Code": {
+     "declared_type": "BIGINT",
+     "distinct": 1012,
+     "family": "int",
+     "name": "District Code",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.015130447783509008,
+      "max": 76901.0,
+      "mean": 65651.53024233927,
+      "min": 10017.0,
+      "p25": 64733.0,
+      "p50": 67082.0,
+      "p75": 69625.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "71134",
+      "68577",
+      "66167",
+      "70797",
+      "69948",
+      "65375",
+      "64014",
+      "72694",
+      "69708",
+      "70995"
+     ],
+     "text": {
+      "avg_len": 5.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "64733",
+       996
+      ],
+      [
+       "68338",
+       225
+      ],
+      [
+       "61259",
+       121
+      ],
+      [
+       "68478",
+       117
+      ],
+      [
+       "62166",
+       106
+      ],
+      [
+       "67876",
+       86
+      ],
+      [
+       "64725",
+       85
+      ],
+      [
+       "67439",
+       82
+      ],
+      [
+       "67447",
+       74
+      ],
+      [
+       "67314",
+       66
+      ]
+     ],
+     "uniqueness": 0.10134187863008212,
+     "zero_rate": 0.0
+    },
+    "District Name": {
+     "declared_type": "VARCHAR",
+     "distinct": 1000,
+     "family": "text",
+     "name": "District Name",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 6,
+     "role": "text",
+     "rows": 9986,
+     "sample_values": [
+      "Fruitvale Elementary",
+      "Orange Unified",
+      "Nevada County Office of Education",
+      "Cascade Union Elementary",
+      "Horicon Elementary",
+      "Outside Creek Elementary",
+      "Centralia Elementary",
+      "Southern Humboldt Joint Unified",
+      "Rancho Santa Fe Elementary",
+      "San Benito High"
+     ],
+     "text": {
+      "avg_len": 19.558481874624473,
+      "code_share": 0.0,
+      "composite_share": 0.00340476667334268,
+      "date_shape_share": 0.0,
+      "max_len": 61,
+      "min_len": 6,
+      "space_share": 0.9831764470258362,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Los Angeles Unified",
+       996
+      ],
+      [
+       "San Diego Unified",
+       225
+      ],
+      [
+       "Oakland Unified",
+       121
+      ],
+      [
+       "San Francisco Unified",
+       117
+      ],
+      [
+       "Fresno Unified",
+       106
+      ],
+      [
+       "San Bernardino City Unified",
+       86
+      ],
+      [
+       "Long Beach Unified",
+       85
+      ],
+      [
+       "Sacramento City Unified",
+       82
+      ],
+      [
+       "San Juan Unified",
+       74
+      ],
+      [
+       "Elk Grove Unified",
+       66
+      ]
+     ],
+     "uniqueness": 0.1001401962747847,
+     "zero_rate": 0.0
+    },
+    "District Type": {
+     "declared_type": "VARCHAR",
+     "distinct": 8,
+     "family": "text",
+     "name": "District Type",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 8,
+     "role": "text",
+     "rows": 9986,
+     "sample_values": [
+      "Elementary School District",
+      "Non-School Locations",
+      "Unified School District",
+      "State Board of Education",
+      "High School District",
+      "Statewide Benefit Charter",
+      "County Office of Education (COE)",
+      "State Special Schools"
+     ],
+     "text": {
+      "avg_len": 23.850290406569197,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 32,
+      "min_len": 20,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Unified School District",
+       6744
+      ],
+      [
+       "Elementary School District",
+       2356
+      ],
+      [
+       "High School District",
+       529
+      ],
+      [
+       "County Office of Education (COE)",
+       334
+      ],
+      [
+       "State Board of Education",
+       10
+      ],
+      [
+       "Statewide Benefit Charter",
+       6
+      ],
+      [
+       "Non-School Locations",
+       4
+      ],
+      [
+       "State Special Schools",
+       3
+      ]
+     ],
+     "uniqueness": 0.0008011215701982776,
+     "zero_rate": 0.0
+    },
+    "Educational Option Type": {
+     "declared_type": "VARCHAR",
+     "distinct": 12,
+     "family": "text",
+     "name": "Educational Option Type",
+     "null_rate": 0.004506308832365312,
+     "nulls": 45,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 10,
+     "role": "text",
+     "rows": 9986,
+     "sample_values": [
+      "Home and Hospital",
+      "Opportunity School",
+      "State Special School",
+      "Juvenile Court School",
+      "Traditional",
+      "Continuation School",
+      "Special Education School",
+      "Youth Authority School",
+      "District Special Education Consortia School",
+      "Community Day School"
+     ],
+     "text": {
+      "avg_len": 12.3780303792375,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 43,
+      "min_len": 11,
+      "space_share": 0.125238909566442,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Traditional",
+       8696
+      ],
+      [
+       "Continuation School",
+       459
+      ],
+      [
+       "Alternative School of Choice",
+       259
+      ],
+      [
+       "Community Day School",
+       203
+      ],
+      [
+       "Special Education School",
+       128
+      ],
+      [
+       "County Community School",
+       84
+      ],
+      [
+       "Juvenile Court School",
+       74
+      ],
+      [
+       "Opportunity School",
+       24
+      ],
+      [
+       "District Special Education Consortia School",
+       4
+      ],
+      [
+       "Youth Authority School",
+       4
+      ]
+     ],
+     "uniqueness": 0.0012071220199175133,
+     "zero_rate": 0.0
+    },
+    "Enrollment (Ages 5-17)": {
+     "declared_type": "DOUBLE",
+     "distinct": 1845,
+     "family": "int",
+     "name": "Enrollment (Ages 5-17)",
+     "null_rate": 0.0014019627478469858,
+     "nulls": 14,
+     "numeric": {
+      "density": 0.3500284575981787,
+      "max": 5271.0,
+      "mean": 605.3251103088649,
+      "min": 1.0,
+      "p25": 291.0,
+      "p50": 517.5,
+      "p75": 746.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 23,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "1296.0",
+      "1029.0",
+      "718.0",
+      "1279.0",
+      "471.0",
+      "1242.0",
+      "1344.0",
+      "1354.0",
+      "1043.0",
+      "458.0"
+     ],
+     "text": {
+      "avg_len": 4.97503008423586,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1.0",
+       40
+      ],
+      [
+       "4.0",
+       36
+      ],
+      [
+       "6.0",
+       30
+      ],
+      [
+       "9.0",
+       30
+      ],
+      [
+       "7.0",
+       28
+      ],
+      [
+       "2.0",
+       25
+      ],
+      [
+       "10.0",
+       24
+      ],
+      [
+       "12.0",
+       23
+      ],
+      [
+       "13.0",
+       23
+      ],
+      [
+       "432.0",
+       23
+      ]
+     ],
+     "uniqueness": 0.18501805054151624,
+     "zero_rate": 0.0
+    },
+    "Enrollment (K-12)": {
+     "declared_type": "DOUBLE",
+     "distinct": 1882,
+     "family": "int",
+     "name": "Enrollment (K-12)",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.35289705606600413,
+      "max": 5333.0,
+      "mean": 620.8260564790706,
+      "min": 1.0,
+      "p25": 303.25,
+      "p50": 528.0,
+      "p75": 758.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 18,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "1029.0",
+      "718.0",
+      "471.0",
+      "2940.0",
+      "1242.0",
+      "1344.0",
+      "1354.0",
+      "1043.0",
+      "2039.0",
+      "458.0"
+     ],
+     "text": {
+      "avg_len": 4.994091728419788,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "4.0",
+       33
+      ],
+      [
+       "10.0",
+       29
+      ],
+      [
+       "1.0",
+       27
+      ],
+      [
+       "7.0",
+       25
+      ],
+      [
+       "2.0",
+       24
+      ],
+      [
+       "6.0",
+       24
+      ],
+      [
+       "9.0",
+       24
+      ],
+      [
+       "5.0",
+       23
+      ],
+      [
+       "546.0",
+       23
+      ],
+      [
+       "485.0",
+       22
+      ]
+     ],
+     "uniqueness": 0.18846384938914482,
+     "zero_rate": 0.0
+    },
+    "FRPM Count (Ages 5-17)": {
+     "declared_type": "DOUBLE",
+     "distinct": 1330,
+     "family": "int",
+     "name": "FRPM Count (Ages 5-17)",
+     "null_rate": 0.0072100941317844985,
+     "nulls": 72,
+     "numeric": {
+      "density": 0.3059581320450886,
+      "max": 4347.0,
+      "mean": 356.51432317934234,
+      "min": 1.0,
+      "p25": 98.0,
+      "p50": 279.0,
+      "p75": 502.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 26,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "1296.0",
+      "1029.0",
+      "718.0",
+      "471.0",
+      "1242.0",
+      "1354.0",
+      "1043.0",
+      "458.0",
+      "462.0",
+      "895.0"
+     ],
+     "text": {
+      "avg_len": 4.749848698809764,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "6.0",
+       61
+      ],
+      [
+       "1.0",
+       54
+      ],
+      [
+       "5.0",
+       52
+      ],
+      [
+       "2.0",
+       50
+      ],
+      [
+       "4.0",
+       48
+      ],
+      [
+       "8.0",
+       48
+      ],
+      [
+       "3.0",
+       47
+      ],
+      [
+       "9.0",
+       46
+      ],
+      [
+       "11.0",
+       39
+      ],
+      [
+       "12.0",
+       39
+      ]
+     ],
+     "uniqueness": 0.1341537220092798,
+     "zero_rate": 0.0
+    },
+    "FRPM Count (K-12)": {
+     "declared_type": "DOUBLE",
+     "distinct": 1361,
+     "family": "int",
+     "name": "FRPM Count (K-12)",
+     "null_rate": 0.005007009813739235,
+     "nulls": 50,
+     "numeric": {
+      "density": 0.3079882326318171,
+      "max": 4419.0,
+      "mean": 365.4796698872786,
+      "min": 1.0,
+      "p25": 104.0,
+      "p50": 285.0,
+      "p75": 510.25
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 21,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "1296.0",
+      "1029.0",
+      "718.0",
+      "1279.0",
+      "471.0",
+      "1043.0",
+      "458.0",
+      "462.0",
+      "895.0",
+      "370.0"
+     ],
+     "text": {
+      "avg_len": 4.765197262479871,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "6.0",
+       54
+      ],
+      [
+       "1.0",
+       52
+      ],
+      [
+       "8.0",
+       52
+      ],
+      [
+       "5.0",
+       50
+      ],
+      [
+       "16.0",
+       46
+      ],
+      [
+       "4.0",
+       45
+      ],
+      [
+       "2.0",
+       44
+      ],
+      [
+       "3.0",
+       43
+      ],
+      [
+       "9.0",
+       41
+      ],
+      [
+       "11.0",
+       39
+      ]
+     ],
+     "uniqueness": 0.13697665056360708,
+     "zero_rate": 0.0
+    },
+    "Free Meal Count (Ages 5-17)": {
+     "declared_type": "DOUBLE",
+     "distinct": 1205,
+     "family": "int",
+     "name": "Free Meal Count (Ages 5-17)",
+     "null_rate": 0.007810935309433206,
+     "nulls": 78,
+     "numeric": {
+      "density": 0.31185300207039335,
+      "max": 3864.0,
+      "mean": 304.0320952765442,
+      "min": 1.0,
+      "p25": 78.0,
+      "p50": 230.0,
+      "p75": 433.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 24,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "718.0",
+      "471.0",
+      "458.0",
+      "462.0",
+      "895.0",
+      "1255.0",
+      "370.0",
+      "2134.0",
+      "436.0",
+      "1417.0"
+     ],
+     "text": {
+      "avg_len": 4.6875252321356475,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "6.0",
+       63
+      ],
+      [
+       "1.0",
+       59
+      ],
+      [
+       "4.0",
+       58
+      ],
+      [
+       "5.0",
+       56
+      ],
+      [
+       "12.0",
+       55
+      ],
+      [
+       "9.0",
+       54
+      ],
+      [
+       "2.0",
+       53
+      ],
+      [
+       "8.0",
+       53
+      ],
+      [
+       "3.0",
+       52
+      ],
+      [
+       "11.0",
+       49
+      ]
+     ],
+     "uniqueness": 0.12161889382317319,
+     "zero_rate": 0.0
+    },
+    "Free Meal Count (K-12)": {
+     "declared_type": "DOUBLE",
+     "distinct": 1216,
+     "family": "int",
+     "name": "Free Meal Count (K-12)",
+     "null_rate": 0.005607850991387943,
+     "nulls": 56,
+     "numeric": {
+      "density": 0.30965113318054494,
+      "max": 3927.0,
+      "mean": 312.003524672709,
+      "min": 1.0,
+      "p25": 82.0,
+      "p50": 235.0,
+      "p75": 440.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 19,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "718.0",
+      "471.0",
+      "1354.0",
+      "458.0",
+      "860.0",
+      "462.0",
+      "895.0",
+      "370.0",
+      "436.0",
+      "1150.0"
+     ],
+     "text": {
+      "avg_len": 4.704733131923464,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1.0",
+       59
+      ],
+      [
+       "6.0",
+       58
+      ],
+      [
+       "8.0",
+       57
+      ],
+      [
+       "12.0",
+       55
+      ],
+      [
+       "4.0",
+       55
+      ],
+      [
+       "5.0",
+       50
+      ],
+      [
+       "9.0",
+       50
+      ],
+      [
+       "3.0",
+       47
+      ],
+      [
+       "7.0",
+       46
+      ],
+      [
+       "10.0",
+       45
+      ]
+     ],
+     "uniqueness": 0.12245720040281974,
+     "zero_rate": 0.0
+    },
+    "High Grade": {
+     "declared_type": "VARCHAR",
+     "distinct": 17,
+     "family": "int",
+     "name": "High Grade",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 1.3076923076923077,
+      "max": 13.0,
+      "mean": 7.780563947633434,
+      "min": 1.0,
+      "p25": 5.0,
+      "p50": 8.0,
+      "p75": 12.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 17,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "2",
+      "10",
+      "K",
+      "9",
+      "13",
+      "7",
+      "1",
+      "P",
+      "Post Secondary",
+      "8"
+     ],
+     "text": {
+      "avg_len": 1.2816943721209693,
+      "code_share": 0.9963949529341077,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 14,
+      "min_len": 1,
+      "space_share": 0.0001001401962747847,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "12",
+       2641
+      ],
+      [
+       "5",
+       2534
+      ],
+      [
+       "8",
+       2401
+      ],
+      [
+       "6",
+       2091
+      ],
+      [
+       "3",
+       68
+      ],
+      [
+       "4",
+       65
+      ],
+      [
+       "2",
+       40
+      ],
+      [
+       "Adult",
+       35
+      ],
+      [
+       "7",
+       30
+      ],
+      [
+       "1",
+       22
+      ]
+     ],
+     "uniqueness": 0.00170238333667134,
+     "zero_rate": 0.0
+    },
+    "IRC": {
+     "declared_type": "BIGINT",
+     "distinct": 2,
+     "family": "int",
+     "name": "IRC",
+     "null_rate": 0.004506308832365312,
+     "nulls": 45,
+     "numeric": {
+      "density": 1.0,
+      "max": 1.0,
+      "mean": 0.07333266270998894,
+      "min": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 15,
+     "role": "boolean",
+     "rows": 9986,
+     "sample_values": [
+      "1",
+      "0"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0",
+       9212
+      ],
+      [
+       "1",
+       729
+      ]
+     ],
+     "uniqueness": 0.00020118700331958554,
+     "zero_rate": 0.9224914880833166
+    },
+    "Low Grade": {
+     "declared_type": "VARCHAR",
+     "distinct": 15,
+     "family": "text",
+     "name": "Low Grade",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 16,
+     "role": "code",
+     "rows": 9986,
+     "sample_values": [
+      "2",
+      "10",
+      "K",
+      "9",
+      "7",
+      "1",
+      "P",
+      "8",
+      "12",
+      "Adult"
+     ],
+     "text": {
+      "avg_len": 1.0073102343280593,
+      "code_share": 0.9996995794111756,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "K",
+       6057
+      ],
+      [
+       "9",
+       1733
+      ],
+      [
+       "6",
+       1024
+      ],
+      [
+       "7",
+       651
+      ],
+      [
+       "P",
+       181
+      ],
+      [
+       "5",
+       99
+      ],
+      [
+       "4",
+       68
+      ],
+      [
+       "10",
+       44
+      ],
+      [
+       "1",
+       42
+      ],
+      [
+       "3",
+       38
+      ]
+     ],
+     "uniqueness": 0.0015021029441217705,
+     "zero_rate": 0.0
+    },
+    "NSLP Provision Status": {
+     "declared_type": "VARCHAR",
+     "distinct": 7,
+     "family": "text",
+     "name": "NSLP Provision Status",
+     "null_rate": 0.8150410574804726,
+     "nulls": 8139,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 11,
+     "role": "text",
+     "rows": 9986,
+     "sample_values": [
+      "Multiple Provision Types",
+      "Provision 3",
+      "Breakfast Provision 2",
+      "Provision 1",
+      "CEP",
+      "Lunch Provision 2",
+      "Provision 2"
+     ],
+     "text": {
+      "avg_len": 11.891716296697346,
+      "code_share": 0.09312398484028153,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 24,
+      "min_len": 3,
+      "space_share": 0.9068760151597185,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Provision 2",
+       1365
+      ],
+      [
+       "Breakfast Provision 2",
+       285
+      ],
+      [
+       "CEP",
+       172
+      ],
+      [
+       "Multiple Provision Types",
+       11
+      ],
+      [
+       "Provision 1",
+       7
+      ],
+      [
+       "Lunch Provision 2",
+       5
+      ],
+      [
+       "Provision 3",
+       2
+      ]
+     ],
+     "uniqueness": 0.003789929615592853,
+     "zero_rate": 0.0
+    },
+    "Percent (%) Eligible FRPM (Ages 5-17)": {
+     "declared_type": "DOUBLE",
+     "distinct": 8557,
+     "family": "float",
+     "name": "Percent (%) Eligible FRPM (Ages 5-17)",
+     "null_rate": 0.0072100941317844985,
+     "nulls": 72,
+     "numeric": {
+      "max": 1.0,
+      "mean": 0.6146177416194051,
+      "min": 0.00220507166482911,
+      "p25": 0.38805509868421023,
+      "p50": 0.687138696377845,
+      "p75": 0.8586898333488502
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 27,
+     "role": "float",
+     "rows": 9986,
+     "sample_values": [
+      "0.184070796460177",
+      "0.976608187134503",
+      "0.258503401360544",
+      "0.043343653250774",
+      "0.534351145038168",
+      "0.600547195622435",
+      "0.458149779735683",
+      "0.529325513196481",
+      "0.749565217391304",
+      "0.892209178228389"
+     ],
+     "text": {
+      "avg_len": 16.202239257615492,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 19,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1.0",
+       175
+      ],
+      [
+       "0.5",
+       40
+      ],
+      [
+       "0.666666666666667",
+       32
+      ],
+      [
+       "0.75",
+       31
+      ],
+      [
+       "0.857142857142857",
+       25
+      ],
+      [
+       "0.333333333333333",
+       21
+      ],
+      [
+       "0.8",
+       21
+      ],
+      [
+       "0.833333333333333",
+       16
+      ],
+      [
+       "0.888888888888889",
+       14
+      ],
+      [
+       "0.714285714285714",
+       13
+      ]
+     ],
+     "uniqueness": 0.8631228565664717,
+     "zero_rate": 0.0
+    },
+    "Percent (%) Eligible FRPM (K-12)": {
+     "declared_type": "DOUBLE",
+     "distinct": 8623,
+     "family": "float",
+     "name": "Percent (%) Eligible FRPM (K-12)",
+     "null_rate": 0.005007009813739235,
+     "nulls": 50,
+     "numeric": {
+      "max": 1.0,
+      "mean": 0.612085498447828,
+      "min": 0.00220507166482911,
+      "p25": 0.38674966842082775,
+      "p50": 0.682926829268293,
+      "p75": 0.857142857142857
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 22,
+     "role": "float",
+     "rows": 9986,
+     "sample_values": [
+      "0.184070796460177",
+      "0.256108597285068",
+      "0.824524312896406",
+      "0.976608187134503",
+      "0.831005586592179",
+      "0.258503401360544",
+      "0.685022026431718",
+      "0.616122004357298",
+      "0.964705882352941",
+      "0.693609022556391"
+     ],
+     "text": {
+      "avg_len": 16.194041867954912,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 19,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1.0",
+       160
+      ],
+      [
+       "0.5",
+       34
+      ],
+      [
+       "0.75",
+       33
+      ],
+      [
+       "0.8",
+       33
+      ],
+      [
+       "0.666666666666667",
+       30
+      ],
+      [
+       "0.857142857142857",
+       21
+      ],
+      [
+       "0.833333333333333",
+       17
+      ],
+      [
+       "0.888888888888889",
+       17
+      ],
+      [
+       "0.6",
+       16
+      ],
+      [
+       "0.333333333333333",
+       15
+      ]
+     ],
+     "uniqueness": 0.8678542673107891,
+     "zero_rate": 0.0
+    },
+    "Percent (%) Eligible Free (Ages 5-17)": {
+     "declared_type": "DOUBLE",
+     "distinct": 8552,
+     "family": "float",
+     "name": "Percent (%) Eligible Free (Ages 5-17)",
+     "null_rate": 0.007810935309433206,
+     "nulls": 78,
+     "numeric": {
+      "max": 1.0,
+      "mean": 0.531707796283816,
+      "min": 0.00179856115107914,
+      "p25": 0.296875,
+      "p50": 0.571990231801514,
+      "p75": 0.7630126290989783
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 25,
+     "role": "float",
+     "rows": 9986,
+     "sample_values": [
+      "0.29295154185022",
+      "0.824524312896406",
+      "0.886214442013129",
+      "0.939093484419263",
+      "0.51510333863275",
+      "0.911487758945386",
+      "0.688709677419355",
+      "0.505791505791506",
+      "0.113997113997114",
+      "0.297482837528604"
+     ],
+     "text": {
+      "avg_len": 16.23728300363343,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 19,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1.0",
+       140
+      ],
+      [
+       "0.5",
+       45
+      ],
+      [
+       "0.666666666666667",
+       33
+      ],
+      [
+       "0.75",
+       31
+      ],
+      [
+       "0.8",
+       23
+      ],
+      [
+       "0.833333333333333",
+       21
+      ],
+      [
+       "0.333333333333333",
+       19
+      ],
+      [
+       "0.6",
+       19
+      ],
+      [
+       "0.4",
+       17
+      ],
+      [
+       "0.625",
+       17
+      ]
+     ],
+     "uniqueness": 0.8631408962454582,
+     "zero_rate": 0.0
+    },
+    "Percent (%) Eligible Free (K-12)": {
+     "declared_type": "DOUBLE",
+     "distinct": 8658,
+     "family": "float",
+     "name": "Percent (%) Eligible Free (K-12)",
+     "null_rate": 0.005607850991387943,
+     "nulls": 56,
+     "numeric": {
+      "max": 1.0,
+      "mean": 0.5296390500259808,
+      "min": 0.00176056338028169,
+      "p25": 0.2959141042780745,
+      "p50": 0.5689350554404775,
+      "p75": 0.7603636436653516
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 20,
+     "role": "float",
+     "rows": 9986,
+     "sample_values": [
+      "0.670940170940171",
+      "0.401913875598086",
+      "0.904847396768402",
+      "0.911487758945386",
+      "0.258503401360544",
+      "0.639619883040936",
+      "0.454212454212454",
+      "0.458149779735683",
+      "0.133270321361059",
+      "0.11439842209073"
+     ],
+     "text": {
+      "avg_len": 16.211379657603224,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 19,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1.0",
+       127
+      ],
+      [
+       "0.75",
+       38
+      ],
+      [
+       "0.5",
+       37
+      ],
+      [
+       "0.666666666666667",
+       29
+      ],
+      [
+       "0.8",
+       29
+      ],
+      [
+       "0.714285714285714",
+       20
+      ],
+      [
+       "0.833333333333333",
+       20
+      ],
+      [
+       "0.6",
+       17
+      ],
+      [
+       "0.25",
+       15
+      ],
+      [
+       "0.333333333333333",
+       15
+      ]
+     ],
+     "uniqueness": 0.8719033232628399,
+     "zero_rate": 0.0
+    },
+    "School Code": {
+     "declared_type": "VARCHAR",
+     "distinct": 9942,
+     "family": "int",
+     "name": "School Code",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.0011033492676411033,
+      "max": 9010745.0,
+      "mean": 4336056.094231925,
+      "min": 0.0,
+      "p25": 1935941.75,
+      "p50": 6017739.0,
+      "p75": 6052433.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "int",
+     "rows": 9986,
+     "sample_values": [
+      "6120190",
+      "6097026",
+      "6109466",
+      "6011878",
+      "6012447",
+      "6117899",
+      "0109082",
+      "2430080",
+      "6099246",
+      "6037626"
+     ],
+     "text": {
+      "avg_len": 7.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 7,
+      "min_len": 7,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0000000",
+       45
+      ],
+      [
+       "0100016",
+       1
+      ],
+      [
+       "0100024",
+       1
+      ],
+      [
+       "0100040",
+       1
+      ],
+      [
+       "0100057",
+       1
+      ],
+      [
+       "0100065",
+       1
+      ],
+      [
+       "0100081",
+       1
+      ],
+      [
+       "0100099",
+       1
+      ],
+      [
+       "0100107",
+       1
+      ],
+      [
+       "0100115",
+       1
+      ]
+     ],
+     "uniqueness": 0.9955938313639094,
+     "zero_rate": 0.004506308832365312
+    },
+    "School Name": {
+     "declared_type": "VARCHAR",
+     "distinct": 8652,
+     "family": "text",
+     "name": "School Name",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 7,
+     "role": "text",
+     "rows": 9986,
+     "sample_values": [
+      "Calaveras Hills",
+      "Alta Elementary",
+      "Keith B. Bright High (Juvenile Hall)",
+      "Grace Hudson Elementary",
+      "Crestwood Street Elementary",
+      "Tulare Western High",
+      "Fruitvale Elementary",
+      "Clovis Community Day Elementary",
+      "Orville Wright Elementary",
+      "Lynhaven Elementary"
+     ],
+     "text": {
+      "avg_len": 22.007911075505707,
+      "code_share": 0.0005007009813739235,
+      "composite_share": 0.0003004205888243541,
+      "date_shape_share": 0.0,
+      "max_len": 85,
+      "min_len": 4,
+      "space_share": 0.9917885039054677,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "District Office",
+       45
+      ],
+      [
+       "Lincoln Elementary",
+       33
+      ],
+      [
+       "Washington Elementary",
+       28
+      ],
+      [
+       "Jefferson Elementary",
+       25
+      ],
+      [
+       "Roosevelt Elementary",
+       21
+      ],
+      [
+       "McKinley Elementary",
+       19
+      ],
+      [
+       "Franklin Elementary",
+       16
+      ],
+      [
+       "Wilson Elementary",
+       15
+      ],
+      [
+       "Madison Elementary",
+       12
+      ],
+      [
+       "Fremont Elementary",
+       11
+      ]
+     ],
+     "uniqueness": 0.8664129781694372,
+     "zero_rate": 0.0
+    },
+    "School Type": {
+     "declared_type": "VARCHAR",
+     "distinct": 17,
+     "family": "text",
+     "name": "School Type",
+     "null_rate": 0.004506308832365312,
+     "nulls": 45,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 9,
+     "role": "text",
+     "rows": 9986,
+     "sample_values": [
+      "Alternative Schools of Choice",
+      "Elementary Schools (Public)",
+      "Continuation High Schools",
+      "Junior High Schools (Public)",
+      "K-12 Schools (Public)",
+      "Opportunity Schools",
+      "Juvenile Court Schools",
+      "High Schools (Public)",
+      "High Schools In 1 School Dist. (Public)",
+      "County Community"
+     ],
+     "text": {
+      "avg_len": 27.493209938637964,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 41,
+      "min_len": 9,
+      "space_share": 0.9997988129966804,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Elementary Schools (Public)",
+       5584
+      ],
+      [
+       "High Schools (Public)",
+       1331
+      ],
+      [
+       "Intermediate/Middle Schools (Public)",
+       1299
+      ],
+      [
+       "Continuation High Schools",
+       459
+      ],
+      [
+       "Alternative Schools of Choice",
+       259
+      ],
+      [
+       "K-12 Schools (Public)",
+       240
+      ],
+      [
+       "Elemen Schools In 1 School Dist. (Public)",
+       206
+      ],
+      [
+       "District Community Day Schools",
+       203
+      ],
+      [
+       "Special Education Schools (Public)",
+       132
+      ],
+      [
+       "County Community",
+       75
+      ]
+     ],
+     "uniqueness": 0.0017100895282164772,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 9986,
+   "sample_rows": [
+    {
+     "2013-14 CALPADS Fall 1 Certification Status": 1,
+     "Academic Year": "2014-2015",
+     "CDSCode": "09618530934554",
+     "Charter Funding Type": null,
+     "Charter School (Y/N)": 0,
+     "Charter School Number": null,
+     "County Code": "09",
+     "County Name": "El Dorado",
+     "District Code": 61853,
+     "District Name": "El Dorado Union High",
+     "District Type": "High School District",
+     "Educational Option Type": "Continuation School",
+     "Enrollment (Ages 5-17)": 73.0,
+     "Enrollment (K-12)": 102.0,
+     "FRPM Count (Ages 5-17)": 46.0,
+     "FRPM Count (K-12)": 63.0,
+     "Free Meal Count (Ages 5-17)": 40.0,
+     "Free Meal Count (K-12)": 54.0,
+     "High Grade": "12",
+     "IRC": 0,
+     "Low Grade": "9",
+     "NSLP Provision Status": null,
+     "Percent (%) Eligible FRPM (Ages 5-17)": 0.63013698630137,
+     "Percent (%) Eligible FRPM (K-12)": 0.617647058823529,
+     "Percent (%) Eligible Free (Ages 5-17)": 0.547945205479452,
+     "Percent (%) Eligible Free (K-12)": 0.529411764705882,
+     "School Code": "0934554",
+     "School Name": "Independence Continuation",
+     "School Type": "Continuation High Schools"
+    },
+    {
+     "2013-14 CALPADS Fall 1 Certification Status": 1,
+     "Academic Year": "2014-2015",
+     "CDSCode": "16638910110858",
+     "Charter Funding Type": null,
+     "Charter School (Y/N)": 0,
+     "Charter School Number": null,
+     "County Code": "16",
+     "County Name": "Kings",
+     "District Code": 63891,
+     "District Name": "Corcoran Joint Unified",
+     "District Type": "Unified School District",
+     "Educational Option Type": "Alternative School of Choice",
+     "Enrollment (Ages 5-17)": 3.0,
+     "Enrollment (K-12)": 4.0,
+     "FRPM Count (Ages 5-17)": 2.0,
+     "FRPM Count (K-12)": 3.0,
+     "Free Meal Count (Ages 5-17)": 2.0,
+     "Free Meal Count (K-12)": 3.0,
+     "High Grade": "12",
+     "IRC": 0,
+     "Low Grade": "K",
+     "NSLP Provision Status": null,
+     "Percent (%) Eligible FRPM (Ages 5-17)": 0.666666666666667,
+     "Percent (%) Eligible FRPM (K-12)": 0.75,
+     "Percent (%) Eligible Free (Ages 5-17)": 0.666666666666667,
+     "Percent (%) Eligible Free (K-12)": 0.75,
+     "School Code": "0110858",
+     "School Name": "Corcoran Academy",
+     "School Type": "Alternative Schools of Choice"
+    },
+    {
+     "2013-14 CALPADS Fall 1 Certification Status": 1,
+     "Academic Year": "2014-2015",
+     "CDSCode": "34673140105916",
+     "Charter Funding Type": null,
+     "Charter School (Y/N)": 0,
+     "Charter School Number": null,
+     "County Code": "34",
+     "County Name": "Sacramento",
+     "District Code": 67314,
+     "District Name": "Elk Grove Unified",
+     "District Type": "Unified School District",
+     "Educational Option Type": "Traditional",
+     "Enrollment (Ages 5-17)": 2132.0,
+     "Enrollment (K-12)": 2190.0,
+     "FRPM Count (Ages 5-17)": 1518.0,
+     "FRPM Count (K-12)": 1566.0,
+     "Free Meal Count (Ages 5-17)": 1096.0,
+     "Free Meal Count (K-12)": 1136.0,
+     "High Grade": "12",
+     "IRC": 0,
+     "Low Grade": "9",
+     "NSLP Provision Status": null,
+     "Percent (%) Eligible FRPM (Ages 5-17)": 0.712007504690432,
+     "Percent (%) Eligible FRPM (K-12)": 0.715068493150685,
+     "Percent (%) Eligible Free (Ages 5-17)": 0.514071294559099,
+     "Percent (%) Eligible Free (K-12)": 0.518721461187215,
+     "School Code": "0105916",
+     "School Name": "Monterey Trail High",
+     "School Type": "High Schools (Public)"
+    },
+    {
+     "2013-14 CALPADS Fall 1 Certification Status": 1,
+     "Academic Year": "2014-2015",
+     "CDSCode": "37735693731221",
+     "Charter Funding Type": "Directly funded",
+     "Charter School (Y/N)": 1,
+     "Charter School Number": "0247",
+     "County Code": "37",
+     "County Name": "San Diego",
+     "District Code": 73569,
+     "District Name": "Oceanside Unified",
+     "District Type": "Unified School District",
+     "Educational Option Type": "Traditional",
+     "Enrollment (Ages 5-17)": 314.0,
+     "Enrollment (K-12)": 348.0,
+     "FRPM Count (Ages 5-17)": 161.0,
+     "FRPM Count (K-12)": 181.0,
+     "Free Meal Count (Ages 5-17)": 120.0,
+     "Free Meal Count (K-12)": 134.0,
+     "High Grade": "12",
+     "IRC": 1,
+     "Low Grade": "K",
+     "NSLP Provision Status": null,
+     "Percent (%) Eligible FRPM (Ages 5-17)": 0.512738853503185,
+     "Percent (%) Eligible FRPM (K-12)": 0.520114942528736,
+     "Percent (%) Eligible Free (Ages 5-17)": 0.382165605095541,
+     "Percent (%) Eligible Free (K-12)": 0.385057471264368,
+     "School Code": "3731221",
+     "School Name": "Pacific View Charter",
+     "School Type": "K-12 Schools (Public)"
+    },
+    {
+     "2013-14 CALPADS Fall 1 Certification Status": 1,
+     "Academic Year": "2014-2015",
+     "CDSCode": "50710685031521",
+     "Charter Funding Type": null,
+     "Charter School (Y/N)": 0,
+     "Charter School Number": null,
+     "County Code": "50",
+     "County Name": "Stanislaus",
+     "District Code": 71068,
+     "District Name": "Denair Unified",
+     "District Type": "Unified School District",
+     "Educational Option Type": "Traditional",
+     "Enrollment (Ages 5-17)": 293.0,
+     "Enrollment (K-12)": 312.0,
+     "FRPM Count (Ages 5-17)": 142.0,
+     "FRPM Count (K-12)": 155.0,
+     "Free Meal Count (Ages 5-17)": 110.0,
+     "Free Meal Count (K-12)": 122.0,
+     "High Grade": "12",
+     "IRC": 0,
+     "Low Grade": "9",
+     "NSLP Provision Status": null,
+     "Percent (%) Eligible FRPM (Ages 5-17)": 0.484641638225256,
+     "Percent (%) Eligible FRPM (K-12)": 0.496794871794872,
+     "Percent (%) Eligible Free (Ages 5-17)": 0.37542662116041,
+     "Percent (%) Eligible Free (K-12)": 0.391025641025641,
+     "School Code": "5031521",
+     "School Name": "Denair High",
+     "School Type": "High Schools (Public)"
+    }
+   ]
+  },
+  "satscores": {
+   "columns": {
+    "AvgScrMath": {
+     "declared_type": "BIGINT",
+     "distinct": 295,
+     "family": "int",
+     "name": "AvgScrMath",
+     "null_rate": 0.2626707800793301,
+     "nulls": 596,
+     "numeric": {
+      "density": 0.7177615571776156,
+      "max": 699.0,
+      "mean": 484.4608487746563,
+      "min": 289.0,
+      "p25": 442.0,
+      "p50": 483.0,
+      "p75": 524.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 8,
+     "role": "int",
+     "rows": 2269,
+     "sample_values": [
+      "307",
+      "406",
+      "555",
+      "532",
+      "620",
+      "502",
+      "548",
+      "456",
+      "547",
+      "402"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "462",
+       22
+      ],
+      [
+       "451",
+       21
+      ],
+      [
+       "445",
+       18
+      ],
+      [
+       "505",
+       18
+      ],
+      [
+       "471",
+       17
+      ],
+      [
+       "506",
+       17
+      ],
+      [
+       "449",
+       16
+      ],
+      [
+       "529",
+       16
+      ],
+      [
+       "446",
+       15
+      ],
+      [
+       "448",
+       15
+      ]
+     ],
+     "uniqueness": 0.1763299462044232,
+     "zero_rate": 0.0
+    },
+    "AvgScrRead": {
+     "declared_type": "BIGINT",
+     "distinct": 269,
+     "family": "int",
+     "name": "AvgScrRead",
+     "null_rate": 0.2626707800793301,
+     "nulls": 596,
+     "numeric": {
+      "density": 0.7774566473988439,
+      "max": 653.0,
+      "mean": 479.6993424985057,
+      "min": 308.0,
+      "p25": 439.0,
+      "p50": 481.0,
+      "p75": 520.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 7,
+     "role": "int",
+     "rows": 2269,
+     "sample_values": [
+      "308",
+      "610",
+      "406",
+      "555",
+      "532",
+      "642",
+      "620",
+      "502",
+      "324",
+      "548"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "498",
+       20
+      ],
+      [
+       "451",
+       19
+      ],
+      [
+       "516",
+       19
+      ],
+      [
+       "523",
+       18
+      ],
+      [
+       "433",
+       17
+      ],
+      [
+       "443",
+       17
+      ],
+      [
+       "491",
+       17
+      ],
+      [
+       "499",
+       17
+      ],
+      [
+       "434",
+       16
+      ],
+      [
+       "478",
+       16
+      ]
+     ],
+     "uniqueness": 0.1607890017931859,
+     "zero_rate": 0.0
+    },
+    "AvgScrWrite": {
+     "declared_type": "BIGINT",
+     "distinct": 267,
+     "family": "int",
+     "name": "AvgScrWrite",
+     "null_rate": 0.2626707800793301,
+     "nulls": 596,
+     "numeric": {
+      "density": 0.7416666666666667,
+      "max": 671.0,
+      "mean": 472.52898983861326,
+      "min": 312.0,
+      "p25": 433.0,
+      "p50": 471.0,
+      "p75": 508.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 9,
+     "role": "int",
+     "rows": 2269,
+     "sample_values": [
+      "406",
+      "555",
+      "532",
+      "502",
+      "548",
+      "456",
+      "547",
+      "415",
+      "402",
+      "506"
+     ],
+     "text": {
+      "avg_len": 3.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 3,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "442",
+       20
+      ],
+      [
+       "489",
+       20
+      ],
+      [
+       "468",
+       19
+      ],
+      [
+       "425",
+       18
+      ],
+      [
+       "449",
+       18
+      ],
+      [
+       "432",
+       17
+      ],
+      [
+       "446",
+       17
+      ],
+      [
+       "474",
+       17
+      ],
+      [
+       "476",
+       17
+      ],
+      [
+       "487",
+       17
+      ]
+     ],
+     "uniqueness": 0.15959354453078303,
+     "zero_rate": 0.0
+    },
+    "NumGE1500": {
+     "declared_type": "BIGINT",
+     "distinct": 368,
+     "family": "int",
+     "name": "NumGE1500",
+     "null_rate": 0.2626707800793301,
+     "nulls": 596,
+     "numeric": {
+      "density": 0.0630352860568688,
+      "max": 5837.0,
+      "mean": 111.0789001793186,
+      "min": 0.0,
+      "p25": 16.0,
+      "p50": 44.0,
+      "p75": 129.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 10,
+     "role": "int",
+     "rows": 2269,
+     "sample_values": [
+      "40",
+      "308",
+      "307",
+      "159",
+      "695",
+      "706",
+      "310",
+      "154",
+      "69",
+      "29"
+     ],
+     "text": {
+      "avg_len": 2.1631799163179917,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "11",
+       42
+      ],
+      [
+       "6",
+       39
+      ],
+      [
+       "15",
+       32
+      ],
+      [
+       "16",
+       31
+      ],
+      [
+       "3",
+       29
+      ],
+      [
+       "4",
+       29
+      ],
+      [
+       "8",
+       28
+      ],
+      [
+       "9",
+       26
+      ],
+      [
+       "2",
+       24
+      ],
+      [
+       "24",
+       24
+      ]
+     ],
+     "uniqueness": 0.2199641362821279,
+     "zero_rate": 0.007933010136624064
+    },
+    "NumTstTakr": {
+     "declared_type": "BIGINT",
+     "distinct": 547,
+     "family": "int",
+     "name": "NumTstTakr",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.02250473134205546,
+      "max": 24305.0,
+      "mean": 185.0978404583517,
+      "min": 0.0,
+      "p25": 9.0,
+      "p50": 83.0,
+      "p75": 226.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 6,
+     "role": "int",
+     "rows": 2269,
+     "sample_values": [
+      "153",
+      "40",
+      "308",
+      "307",
+      "406",
+      "159",
+      "695",
+      "275",
+      "310",
+      "1037"
+     ],
+     "text": {
+      "avg_len": 2.231379462318202,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0",
+       218
+      ],
+      [
+       "1",
+       123
+      ],
+      [
+       "2",
+       66
+      ],
+      [
+       "3",
+       51
+      ],
+      [
+       "4",
+       33
+      ],
+      [
+       "6",
+       27
+      ],
+      [
+       "9",
+       19
+      ],
+      [
+       "5",
+       18
+      ],
+      [
+       "10",
+       16
+      ],
+      [
+       "16",
+       15
+      ]
+     ],
+     "uniqueness": 0.24107536359629794,
+     "zero_rate": 0.09607756721022477
+    },
+    "cds": {
+     "declared_type": "VARCHAR",
+     "distinct": 2269,
+     "family": "int",
+     "name": "cds",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 3.9373545315245116e-11,
+      "max": 58727695838305.0,
+      "mean": 29139356956040.273,
+      "min": 1100170000000.0,
+      "p25": 19646911996438.0,
+      "p50": 30665973031853.0,
+      "p75": 38684780118141.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 2269,
+     "sample_values": [
+      "44698234432340",
+      "34673300113571",
+      "30664313030616",
+      "58727365830013",
+      "39686270130864",
+      "19647331932540",
+      "19642871930601",
+      "37684036120893",
+      "54105466119291",
+      "19647330117622"
+     ],
+     "text": {
+      "avg_len": 13.90700749228735,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 14,
+      "min_len": 13,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "10101080000000",
+       1
+      ],
+      [
+       "10101080109991",
+       1
+      ],
+      [
+       "10101080111682",
+       1
+      ],
+      [
+       "10101080119628",
+       1
+      ],
+      [
+       "10621170000000",
+       1
+      ],
+      [
+       "10621170113555",
+       1
+      ],
+      [
+       "10621170118018",
+       1
+      ],
+      [
+       "10621171030196",
+       1
+      ],
+      [
+       "10621171030469",
+       1
+      ],
+      [
+       "10621171030501",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "cname": {
+     "declared_type": "VARCHAR",
+     "distinct": 57,
+     "family": "text",
+     "name": "cname",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "text",
+     "rows": 2269,
+     "sample_values": [
+      "Lassen",
+      "Humboldt",
+      "Trinity",
+      "Napa",
+      "Colusa",
+      "Nevada",
+      "Contra Costa",
+      "Los Angeles",
+      "San Joaquin",
+      "Inyo"
+     ],
+     "text": {
+      "avg_len": 8.87395328338475,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 15,
+      "min_len": 4,
+      "space_share": 0.47994711326575584,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Los Angeles",
+       467
+      ],
+      [
+       "San Diego",
+       167
+      ],
+      [
+       "San Bernardino",
+       116
+      ],
+      [
+       "Riverside",
+       109
+      ],
+      [
+       "Orange",
+       106
+      ],
+      [
+       "Alameda",
+       91
+      ],
+      [
+       "Fresno",
+       84
+      ],
+      [
+       "Sacramento",
+       78
+      ],
+      [
+       "Santa Clara",
+       72
+      ],
+      [
+       "San Joaquin",
+       56
+      ]
+     ],
+     "uniqueness": 0.0251211987659762,
+     "zero_rate": 0.0
+    },
+    "dname": {
+     "declared_type": "VARCHAR",
+     "distinct": 520,
+     "family": "text",
+     "name": "dname",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "text",
+     "rows": 2269,
+     "sample_values": [
+      "Orange Unified",
+      "Nevada County Office of Education",
+      "Southern Humboldt Joint Unified",
+      "San Benito High",
+      "Blochman Union Elementary",
+      "Wheatland Union High",
+      "Shasta Union High",
+      "Albany City Unified",
+      "El Rancho Unified",
+      "Soledad Unified"
+     ],
+     "text": {
+      "avg_len": 19.976200969590128,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 50,
+      "min_len": 6,
+      "space_share": 0.996914940502424,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Los Angeles Unified",
+       202
+      ],
+      [
+       "San Diego Unified",
+       44
+      ],
+      [
+       "Oakland Unified",
+       27
+      ],
+      [
+       "San Francisco Unified",
+       26
+      ],
+      [
+       "Kern High",
+       22
+      ],
+      [
+       "East Side Union High",
+       20
+      ],
+      [
+       "Fresno Unified",
+       16
+      ],
+      [
+       "San Juan Unified",
+       16
+      ],
+      [
+       "Sweetwater Union High",
+       16
+      ],
+      [
+       "Sacramento City Unified",
+       15
+      ]
+     ],
+     "uniqueness": 0.22917584839136185,
+     "zero_rate": 0.0
+    },
+    "enroll12": {
+     "declared_type": "BIGINT",
+     "distinct": 835,
+     "family": "int",
+     "name": "enroll12",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.019272937103289093,
+      "max": 43324.0,
+      "mean": 419.5191714411635,
+      "min": 0.0,
+      "p25": 69.0,
+      "p50": 220.0,
+      "p75": 480.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "int",
+     "rows": 2269,
+     "sample_values": [
+      "153",
+      "40",
+      "755",
+      "308",
+      "610",
+      "307",
+      "2075",
+      "2556",
+      "159",
+      "695"
+     ],
+     "text": {
+      "avg_len": 2.7197003085059497,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "16",
+       22
+      ],
+      [
+       "29",
+       15
+      ],
+      [
+       "30",
+       15
+      ],
+      [
+       "36",
+       15
+      ],
+      [
+       "55",
+       15
+      ],
+      [
+       "14",
+       14
+      ],
+      [
+       "18",
+       14
+      ],
+      [
+       "38",
+       14
+      ],
+      [
+       "11",
+       13
+      ],
+      [
+       "12",
+       13
+      ]
+     ],
+     "uniqueness": 0.36800352578228296,
+     "zero_rate": 0.0022036139268400176
+    },
+    "rtype": {
+     "declared_type": "VARCHAR",
+     "distinct": 2,
+     "family": "text",
+     "name": "rtype",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "code",
+     "rows": 2269,
+     "sample_values": [
+      "S",
+      "D"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "S",
+       1749
+      ],
+      [
+       "D",
+       520
+      ]
+     ],
+     "uniqueness": 0.0008814455707360071,
+     "zero_rate": 0.0
+    },
+    "sname": {
+     "declared_type": "VARCHAR",
+     "distinct": 1665,
+     "family": "text",
+     "name": "sname",
+     "null_rate": 0.22917584839136185,
+     "nulls": 520,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "text",
+     "rows": 2269,
+     "sample_values": [
+      "Tulare Western High",
+      "Peninsula High",
+      "Humanities and Arts (HARTS) Academy of Los Angeles",
+      "Oakland Charter High",
+      "RAI Online Charter",
+      "San Marino High",
+      "Bell Gardens High",
+      "Frederick Douglass Academy High",
+      "Big Picture High School - Fresno",
+      "Oceanside High"
+     ],
+     "text": {
+      "avg_len": 21.2778730703259,
+      "code_share": 0.0005717552887364208,
+      "composite_share": 0.0011435105774728416,
+      "date_shape_share": 0.0,
+      "max_len": 50,
+      "min_len": 4,
+      "space_share": 0.9942824471126358,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Middle College High",
+       6
+      ],
+      [
+       "Foothill High",
+       5
+      ],
+      [
+       "Independence High",
+       5
+      ],
+      [
+       "John F. Kennedy High",
+       5
+      ],
+      [
+       "Centennial High",
+       3
+      ],
+      [
+       "Edison High",
+       3
+      ],
+      [
+       "El Camino High",
+       3
+      ],
+      [
+       "Golden Valley High",
+       3
+      ],
+      [
+       "Granite Hills High",
+       3
+      ],
+      [
+       "Independence High (Alternative)",
+       3
+      ]
+     ],
+     "uniqueness": 0.9519725557461407,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 2269,
+   "sample_rows": [
+    {
+     "AvgScrMath": 600,
+     "AvgScrRead": 545,
+     "AvgScrWrite": 556,
+     "NumGE1500": 267,
+     "NumTstTakr": 362,
+     "cds": "19650520000000",
+     "cname": "Los Angeles",
+     "dname": "Temple City Unified",
+     "enroll12": 557,
+     "rtype": "D",
+     "sname": null
+    },
+    {
+     "AvgScrMath": null,
+     "AvgScrRead": null,
+     "AvgScrWrite": null,
+     "NumGE1500": null,
+     "NumTstTakr": 3,
+     "cds": "24102490000000",
+     "cname": "Merced",
+     "dname": "Merced County Office of Education",
+     "enroll12": 343,
+     "rtype": "D",
+     "sname": null
+    },
+    {
+     "AvgScrMath": 446,
+     "AvgScrRead": 437,
+     "AvgScrWrite": 430,
+     "NumGE1500": 28,
+     "NumTstTakr": 128,
+     "cds": "37683383734431",
+     "cname": "San Diego",
+     "dname": "San Diego Unified",
+     "enroll12": 265,
+     "rtype": "S",
+     "sname": "Mission Bay High"
+    },
+    {
+     "AvgScrMath": 541,
+     "AvgScrRead": 577,
+     "AvgScrWrite": 553,
+     "NumGE1500": 77,
+     "NumTstTakr": 107,
+     "cds": "38684783830387",
+     "cname": "San Francisco",
+     "dname": "San Francisco Unified",
+     "enroll12": 167,
+     "rtype": "S",
+     "sname": "Asawa (Ruth) San Francisco School of the Arts, A P"
+    },
+    {
+     "AvgScrMath": 551,
+     "AvgScrRead": 538,
+     "AvgScrWrite": 533,
+     "NumGE1500": 385,
+     "NumTstTakr": 592,
+     "cds": "49709200000000",
+     "cname": "Sonoma",
+     "dname": "Santa Rosa High",
+     "enroll12": 2045,
+     "rtype": "D",
+     "sname": null
+    }
+   ]
+  },
+  "schools": {
+   "columns": {
+    "AdmEmail1": {
+     "declared_type": "VARCHAR",
+     "distinct": 10492,
+     "family": "text",
+     "name": "AdmEmail1",
+     "null_rate": 0.3399298880470429,
+     "nulls": 6012,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 41,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "cmcdon2@lausd.net",
+      "vargasj@mdusd.org",
+      "jbecchio@sbunified.org",
+      "jskulina@stancoe.org",
+      "sjezyk@scusd.net",
+      "suzanne.nicastro@manzanitacharterschool.com",
+      "omccormick@nvusd.org",
+      "louierocha@antioch.k12.ca.us",
+      "jcarpenter@sandi.net",
+      "jmayernik@ewcsd.org"
+     ],
+     "text": {
+      "avg_len": 22.32379647078979,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 49,
+      "min_len": 12,
+      "space_share": 8.566044200788077e-05,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "delphine.sherman@aspirepublicschools.org",
+       25
+      ],
+      [
+       "jcrawford@campbellusd.org",
+       11
+      ],
+      [
+       "snicol@yosemiteusd.org",
+       8
+      ],
+      [
+       "watkins_marsha@lacoe.edu",
+       8
+      ],
+      [
+       "ghawkins@frjusd.org",
+       7
+      ],
+      [
+       "kabston@k12.com",
+       7
+      ],
+      [
+       "dharford@summbears.net",
+       6
+      ],
+      [
+       "dnaranjo@mcusd.org",
+       6
+      ],
+      [
+       "jfranco@emsofl.com",
+       6
+      ],
+      [
+       "kmann@gvusd.org",
+       6
+      ]
+     ],
+     "uniqueness": 0.898749357546685,
+     "zero_rate": 0.0
+    },
+    "AdmEmail2": {
+     "declared_type": "VARCHAR",
+     "distinct": 382,
+     "family": "text",
+     "name": "AdmEmail2",
+     "null_rate": 0.9760262354404614,
+     "nulls": 17262,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 44,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "jskulina@stancoe.org",
+      "cwycoff@calistogaschools.org",
+      "tpinedo@emcsd.org",
+      "steve.martinez@rcharter.org",
+      "rgleason@montecitou.org",
+      "emily@newschoolsf.org",
+      "skok@beaumontusd.k12.ca.us",
+      "markus@caliberschools.org",
+      "rkattenhorn@fusd.org",
+      "ppomplin@horiconsd.org"
+     ],
+     "text": {
+      "avg_len": 22.91745283018868,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 40,
+      "min_len": 14,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "delphine.sherman@aspirepublicschools.org",
+       9
+      ],
+      [
+       "aatoian@maderacoe.us",
+       4
+      ],
+      [
+       "cindy.petersen@gcccharters.org",
+       4
+      ],
+      [
+       "jefflandry@sohumusd.com",
+       4
+      ],
+      [
+       "shambright@sccs.net",
+       4
+      ],
+      [
+       "steve.gocke@learn4life.org",
+       4
+      ],
+      [
+       "rromo@corningelementary.org",
+       3
+      ],
+      [
+       "wlaird@avhsd.org",
+       3
+      ],
+      [
+       "astringfellow@husd.com",
+       2
+      ],
+      [
+       "bbensen@fortuneschool.us",
+       2
+      ]
+     ],
+     "uniqueness": 0.9009433962264151,
+     "zero_rate": 0.0
+    },
+    "AdmEmail3": {
+     "declared_type": "VARCHAR",
+     "distinct": 42,
+     "family": "text",
+     "name": "AdmEmail3",
+     "null_rate": 0.9976252403030645,
+     "nulls": 17644,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 47,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "rlemmon@ghsd.k12.ca.us",
+      "cschmidt@mjusd.com",
+      "lydia.burgos@cvesd.org",
+      "jdeboer@learn4life.org",
+      "amos.nugent@gcccharters.org",
+      "gmunoz@piedmont.k12.ca.us",
+      "sarah.motsinger@cvesd.org",
+      "poxford@puesd.org",
+      "cwoodruff@temeculaprep.com",
+      "dyount@roselandsd.org"
+     ],
+     "text": {
+      "avg_len": 23.11904761904762,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 39,
+      "min_len": 14,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "amos.nugent@gcccharters.org",
+       1
+      ],
+      [
+       "andrew.estrada@cvesd.org",
+       1
+      ],
+      [
+       "arojas@lpvrop.org",
+       1
+      ],
+      [
+       "bbrown@gerberschool.org",
+       1
+      ],
+      [
+       "bfarren@harvestridgeschool.org",
+       1
+      ],
+      [
+       "blopez@santapaulaunified.org",
+       1
+      ],
+      [
+       "bmandelbaum@bcoe.org",
+       1
+      ],
+      [
+       "bwolk@husd.com",
+       1
+      ],
+      [
+       "cschmidt@mjusd.com",
+       1
+      ],
+      [
+       "cwoodruff@temeculaprep.com",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "AdmFName1": {
+     "declared_type": "VARCHAR",
+     "distinct": 2327,
+     "family": "text",
+     "name": "AdmFName1",
+     "null_rate": 0.33845979871084475,
+     "nulls": 5986,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 39,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Sharimar",
+      "Roxanne",
+      "Nikol",
+      "Contessa",
+      "Gregory",
+      "Kempton",
+      "Tobie",
+      "Gerri",
+      "Tiffany",
+      "Tricia"
+     ],
+     "text": {
+      "avg_len": 5.627179487179487,
+      "code_share": 0.0009401709401709402,
+      "composite_share": 0.0007692307692307692,
+      "date_shape_share": 0.0,
+      "max_len": 17,
+      "min_len": 2,
+      "space_share": 0.0062393162393162395,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "David",
+       158
+      ],
+      [
+       "Michael",
+       149
+      ],
+      [
+       "John",
+       137
+      ],
+      [
+       "Jennifer",
+       129
+      ],
+      [
+       "Lisa",
+       103
+      ],
+      [
+       "Robert",
+       88
+      ],
+      [
+       "Julie",
+       79
+      ],
+      [
+       "Mark",
+       79
+      ],
+      [
+       "Michelle",
+       79
+      ],
+      [
+       "Susan",
+       77
+      ]
+     ],
+     "uniqueness": 0.1988888888888889,
+     "zero_rate": 0.0
+    },
+    "AdmFName2": {
+     "declared_type": "VARCHAR",
+     "distinct": 285,
+     "family": "text",
+     "name": "AdmFName2",
+     "null_rate": 0.9756304421576388,
+     "nulls": 17255,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 42,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Tim",
+      "April",
+      "Michael",
+      "Grace",
+      "Jason",
+      "Tony",
+      "Rachel",
+      "Leilani",
+      "Veronica",
+      "Lisa"
+     ],
+     "text": {
+      "avg_len": 5.700696055684455,
+      "code_share": 0.0,
+      "composite_share": 0.002320185614849188,
+      "date_shape_share": 0.0,
+      "max_len": 15,
+      "min_len": 3,
+      "space_share": 0.0069605568445475635,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Steve",
+       12
+      ],
+      [
+       "Delphine",
+       9
+      ],
+      [
+       "Michael",
+       7
+      ],
+      [
+       "Tim",
+       7
+      ],
+      [
+       "Jeff",
+       6
+      ],
+      [
+       "Lisa",
+       6
+      ],
+      [
+       "Susan",
+       5
+      ],
+      [
+       "Avetik",
+       4
+      ],
+      [
+       "Christine",
+       4
+      ],
+      [
+       "Cindy",
+       4
+      ]
+     ],
+     "uniqueness": 0.6612529002320185,
+     "zero_rate": 0.0
+    },
+    "AdmFName3": {
+     "declared_type": "VARCHAR",
+     "distinct": 40,
+     "family": "text",
+     "name": "AdmFName3",
+     "null_rate": 0.9976252403030645,
+     "nulls": 17644,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 45,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Rachel",
+      "Lisa",
+      "Mark",
+      "Cindy",
+      "Portia",
+      "Lydia",
+      "Horacio",
+      "Barbara",
+      "Chris",
+      "Drew"
+     ],
+     "text": {
+      "avg_len": 5.333333333333333,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Eric",
+       2
+      ],
+      [
+       "Mark",
+       2
+      ],
+      [
+       "Alex",
+       1
+      ],
+      [
+       "Amos",
+       1
+      ],
+      [
+       "Andrew",
+       1
+      ],
+      [
+       "Barbara",
+       1
+      ],
+      [
+       "Beth",
+       1
+      ],
+      [
+       "Bianca",
+       1
+      ],
+      [
+       "Bree",
+       1
+      ],
+      [
+       "Bridget",
+       1
+      ]
+     ],
+     "uniqueness": 0.9523809523809523,
+     "zero_rate": 0.0
+    },
+    "AdmLName1": {
+     "declared_type": "VARCHAR",
+     "distinct": 6394,
+     "family": "text",
+     "name": "AdmLName1",
+     "null_rate": 0.33845979871084475,
+     "nulls": 5986,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 40,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Tamzarian",
+      "Palacios",
+      "Schaefer",
+      "Roberts-Murray",
+      "Ferber",
+      "Cherniss",
+      "Scheftner",
+      "Guerrero",
+      "Cass",
+      "Lysko"
+     ],
+     "text": {
+      "avg_len": 6.7157264957264955,
+      "code_share": 0.0,
+      "composite_share": 0.025128205128205128,
+      "date_shape_share": 0.0,
+      "max_len": 22,
+      "min_len": 2,
+      "space_share": 0.015213675213675214,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Johnson",
+       68
+      ],
+      [
+       "Smith",
+       66
+      ],
+      [
+       "Garcia",
+       62
+      ],
+      [
+       "Brown",
+       58
+      ],
+      [
+       "Martinez",
+       55
+      ],
+      [
+       "Gonzalez",
+       49
+      ],
+      [
+       "Rodriguez",
+       46
+      ],
+      [
+       "Williams",
+       45
+      ],
+      [
+       "Hernandez",
+       41
+      ],
+      [
+       "Sanchez",
+       41
+      ]
+     ],
+     "uniqueness": 0.5464957264957265,
+     "zero_rate": 0.0
+    },
+    "AdmLName2": {
+     "declared_type": "VARCHAR",
+     "distinct": 363,
+     "family": "text",
+     "name": "AdmLName2",
+     "null_rate": 0.9756304421576388,
+     "nulls": 17255,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 43,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Smith-Taranto",
+      "Anderson",
+      "Avalos",
+      "Leyland",
+      "Karnoski",
+      "Silva-Torres",
+      "Mullarkey",
+      "Marsolais",
+      "Clark",
+      "Garcia"
+     ],
+     "text": {
+      "avg_len": 6.610208816705336,
+      "code_share": 0.0,
+      "composite_share": 0.030162412993039442,
+      "date_shape_share": 0.0,
+      "max_len": 18,
+      "min_len": 3,
+      "space_share": 0.004640371229698376,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Sherman",
+       9
+      ],
+      [
+       "Jones",
+       5
+      ],
+      [
+       "Atoian",
+       4
+      ],
+      [
+       "Gocke",
+       4
+      ],
+      [
+       "Hambright",
+       4
+      ],
+      [
+       "Landry",
+       4
+      ],
+      [
+       "Petersen",
+       4
+      ],
+      [
+       "Wilson",
+       4
+      ],
+      [
+       "Gaston",
+       3
+      ],
+      [
+       "Johnson",
+       3
+      ]
+     ],
+     "uniqueness": 0.8422273781902552,
+     "zero_rate": 0.0
+    },
+    "AdmLName3": {
+     "declared_type": "VARCHAR",
+     "distinct": 42,
+     "family": "text",
+     "name": "AdmLName3",
+     "null_rate": 0.9976252403030645,
+     "nulls": 17644,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 46,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Woodruff",
+      "Saramago",
+      "Burgos",
+      "Kerns",
+      "Roulette",
+      "DeBoer",
+      "Yount",
+      "Schmidt",
+      "Zerpoli",
+      "Kriss"
+     ],
+     "text": {
+      "avg_len": 6.666666666666667,
+      "code_share": 0.0,
+      "composite_share": 0.023809523809523808,
+      "date_shape_share": 0.0,
+      "max_len": 15,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Andreasen",
+       1
+      ],
+      [
+       "Ayala",
+       1
+      ],
+      [
+       "Bergmann",
+       1
+      ],
+      [
+       "Bixby",
+       1
+      ],
+      [
+       "Brown",
+       1
+      ],
+      [
+       "Burgos",
+       1
+      ],
+      [
+       "Chang",
+       1
+      ],
+      [
+       "Crawford",
+       1
+      ],
+      [
+       "DeBoer",
+       1
+      ],
+      [
+       "Estrada",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "CDSCode": {
+     "declared_type": "VARCHAR",
+     "distinct": 17686,
+     "family": "int",
+     "name": "CDSCode",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 3.069019490724659e-10,
+      "max": 58727695838305.0,
+      "mean": 29117072973703.75,
+      "min": 1100170000000.0,
+      "p25": 19645681932145.75,
+      "p50": 30665973030694.0,
+      "p75": 39685695514868.5
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 0,
+     "role": "int",
+     "rows": 17686,
+     "sample_values": [
+      "44698234432340",
+      "43694274330346",
+      "19647336060545",
+      "19111976102248",
+      "45699144530184",
+      "31669103130242",
+      "40754576101570",
+      "19644366012561",
+      "37682886038954",
+      "35675046095202"
+     ],
+     "text": {
+      "avg_len": 14.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 14,
+      "min_len": 14,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "01100170000000",
+       1
+      ],
+      [
+       "01100170109835",
+       1
+      ],
+      [
+       "01100170112607",
+       1
+      ],
+      [
+       "01100170118489",
+       1
+      ],
+      [
+       "01100170123968",
+       1
+      ],
+      [
+       "01100170124172",
+       1
+      ],
+      [
+       "01100170125567",
+       1
+      ],
+      [
+       "01100170130302",
+       1
+      ],
+      [
+       "01100170130401",
+       1
+      ],
+      [
+       "01100170130419",
+       1
+      ]
+     ],
+     "uniqueness": 1.0,
+     "zero_rate": 0.0
+    },
+    "Charter": {
+     "declared_type": "BIGINT",
+     "distinct": 2,
+     "family": "int",
+     "name": "Charter",
+     "null_rate": 0.07740585774058577,
+     "nulls": 1369,
+     "numeric": {
+      "density": 1.0,
+      "max": 1.0,
+      "mean": 0.10596310596310596,
+      "min": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 22,
+     "role": "boolean",
+     "rows": 17686,
+     "sample_values": [
+      "1",
+      "0"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0",
+       14588
+      ],
+      [
+       "1",
+       1729
+      ]
+     ],
+     "uniqueness": 0.00012257155114297973,
+     "zero_rate": 0.824833201402239
+    },
+    "CharterNum": {
+     "declared_type": "VARCHAR",
+     "distinct": 1763,
+     "family": "int",
+     "name": "CharterNum",
+     "null_rate": 0.898168042519507,
+     "nulls": 15885,
+     "numeric": {
+      "density": 0.958673191952148,
+      "max": 1838.0,
+      "mean": 919.5861875350927,
+      "min": 0.0,
+      "p25": 460.0,
+      "p50": 917.0,
+      "p75": 1381.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 23,
+     "role": "int",
+     "rows": 17686,
+     "sample_values": [
+      "0878",
+      "0701",
+      "0400",
+      "0235",
+      "1470",
+      "0896",
+      "0763",
+      "1768",
+      "0900",
+      "0841"
+     ],
+     "text": {
+      "avg_len": 4.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 4,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "00D2",
+       8
+      ],
+      [
+       "0756",
+       6
+      ],
+      [
+       "00D1",
+       3
+      ],
+      [
+       "00D4",
+       3
+      ],
+      [
+       "0103",
+       2
+      ],
+      [
+       "0113",
+       2
+      ],
+      [
+       "0125",
+       2
+      ],
+      [
+       "0127",
+       2
+      ],
+      [
+       "0162",
+       2
+      ],
+      [
+       "0195",
+       2
+      ]
+     ],
+     "uniqueness": 0.9789006107717935,
+     "zero_rate": 5.6541897546081646e-05
+    },
+    "City": {
+     "declared_type": "VARCHAR",
+     "distinct": 1165,
+     "family": "text",
+     "name": "City",
+     "null_rate": 0.01656677598100192,
+     "nulls": 293,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 9,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Kettleman City",
+      "Hercules",
+      "Rosemead",
+      "Sylmar",
+      "Zenia",
+      "Fontana",
+      "Calpella",
+      "Westwood",
+      "Albion",
+      "Lompoc"
+     ],
+     "text": {
+      "avg_len": 9.018915655723568,
+      "code_share": 0.0,
+      "composite_share": 0.00022997757718622435,
+      "date_shape_share": 0.0,
+      "max_len": 25,
+      "min_len": 3,
+      "space_share": 0.40694532283102397,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Los Angeles",
+       837
+      ],
+      [
+       "San Diego",
+       427
+      ],
+      [
+       "San Jose",
+       407
+      ],
+      [
+       "Sacramento",
+       334
+      ],
+      [
+       "Fresno",
+       277
+      ],
+      [
+       "Oakland",
+       254
+      ],
+      [
+       "San Francisco",
+       253
+      ],
+      [
+       "Bakersfield",
+       203
+      ],
+      [
+       "Stockton",
+       198
+      ],
+      [
+       "Riverside",
+       122
+      ]
+     ],
+     "uniqueness": 0.06698096935548783,
+     "zero_rate": 0.0
+    },
+    "ClosedDate": {
+     "date_range": [
+      "1980-07-01 00:00:00",
+      "2016-09-01 00:00:00"
+     ],
+     "declared_type": "VARCHAR",
+     "distinct": 899,
+     "family": "date",
+     "name": "ClosedDate",
+     "null_rate": 0.6780504353726111,
+     "nulls": 11992,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 21,
+     "role": "date",
+     "rows": 17686,
+     "sample_values": [
+      "1991-06-14",
+      "2013-10-07",
+      "2009-06-10",
+      "1993-10-12",
+      "1990-10-29",
+      "2014-06-06",
+      "2016-08-31",
+      "2007-12-20",
+      "1998-06-30",
+      "2007-09-01"
+     ],
+     "text": {
+      "avg_len": 10.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 10,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1989-06-30",
+       2009
+      ],
+      [
+       "1987-06-22",
+       128
+      ],
+      [
+       "1986-11-04",
+       117
+      ],
+      [
+       "2015-06-30",
+       104
+      ],
+      [
+       "2016-06-30",
+       104
+      ],
+      [
+       "2013-06-30",
+       103
+      ],
+      [
+       "2010-06-30",
+       94
+      ],
+      [
+       "1998-06-30",
+       73
+      ],
+      [
+       "2011-06-30",
+       70
+      ],
+      [
+       "1987-11-23",
+       66
+      ]
+     ],
+     "uniqueness": 0.15788549350193185,
+     "zero_rate": 0.0
+    },
+    "County": {
+     "declared_type": "VARCHAR",
+     "distinct": 58,
+     "family": "text",
+     "name": "County",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 4,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Lassen",
+      "Humboldt",
+      "Trinity",
+      "Napa",
+      "Colusa",
+      "Nevada",
+      "Contra Costa",
+      "Los Angeles",
+      "San Joaquin",
+      "Inyo"
+     ],
+     "text": {
+      "avg_len": 8.919823589279655,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 15,
+      "min_len": 4,
+      "space_share": 0.4919145086509103,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Los Angeles",
+       3636
+      ],
+      [
+       "San Diego",
+       1139
+      ],
+      [
+       "Orange",
+       886
+      ],
+      [
+       "San Bernardino",
+       861
+      ],
+      [
+       "Santa Clara",
+       780
+      ],
+      [
+       "Alameda",
+       761
+      ],
+      [
+       "Riverside",
+       743
+      ],
+      [
+       "Sacramento",
+       622
+      ],
+      [
+       "Fresno",
+       620
+      ],
+      [
+       "Contra Costa",
+       465
+      ]
+     ],
+     "uniqueness": 0.0032794300576727354,
+     "zero_rate": 0.0
+    },
+    "DOC": {
+     "declared_type": "VARCHAR",
+     "distinct": 12,
+     "family": "int",
+     "name": "DOC",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "numeric": {
+      "density": 0.12,
+      "max": 99.0,
+      "mean": 48.549078367069995,
+      "min": 0.0,
+      "p25": 52.0,
+      "p50": 54.0,
+      "p75": 54.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 25,
+     "role": "int",
+     "rows": 17686,
+     "sample_values": [
+      "00",
+      "56",
+      "98",
+      "54",
+      "31",
+      "42",
+      "99",
+      "03",
+      "52",
+      "34"
+     ],
+     "text": {
+      "avg_len": 2.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "54",
+       10190
+      ],
+      [
+       "52",
+       4378
+      ],
+      [
+       "00",
+       1703
+      ],
+      [
+       "56",
+       1079
+      ],
+      [
+       "98",
+       156
+      ],
+      [
+       "02",
+       69
+      ],
+      [
+       "34",
+       49
+      ],
+      [
+       "58",
+       33
+      ],
+      [
+       "03",
+       11
+      ],
+      [
+       "99",
+       10
+      ]
+     ],
+     "uniqueness": 0.0006785027705529798,
+     "zero_rate": 0.09629085152097705
+    },
+    "DOCType": {
+     "declared_type": "VARCHAR",
+     "distinct": 12,
+     "family": "text",
+     "name": "DOCType",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 26,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Elementary School District",
+      "Non-School Locations",
+      "Joint Powers Authority (JPA)",
+      "Unified School District",
+      "Community College District",
+      "State Board of Education",
+      "High School District",
+      "Statewide Benefit Charter",
+      "County Office of Education (COE)",
+      "Administration Only"
+     ],
+     "text": {
+      "avg_len": 24.593859549926496,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 42,
+      "min_len": 19,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Unified School District",
+       10190
+      ],
+      [
+       "Elementary School District",
+       4378
+      ],
+      [
+       "County Office of Education (COE)",
+       1703
+      ],
+      [
+       "High School District",
+       1079
+      ],
+      [
+       "Regional Occupation Center/Program (ROC/P)",
+       156
+      ],
+      [
+       "State Board of Education",
+       69
+      ],
+      [
+       "Non-School Locations",
+       49
+      ],
+      [
+       "Community College District",
+       33
+      ],
+      [
+       "Statewide Benefit Charter",
+       11
+      ],
+      [
+       "Administration Only",
+       10
+      ]
+     ],
+     "uniqueness": 0.0006785027705529798,
+     "zero_rate": 0.0
+    },
+    "District": {
+     "declared_type": "VARCHAR",
+     "distinct": 1411,
+     "family": "text",
+     "name": "District",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 5,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "SBE - Edison Charter Academy",
+      "Fruitvale Elementary",
+      "Orange Unified",
+      "Nevada County Office of Education",
+      "Cascade Union Elementary",
+      "Mt. Bullion Youth Conservation",
+      "Horicon Elementary",
+      "Outside Creek Elementary",
+      "Centralia Elementary",
+      "Southern Humboldt Joint Unified"
+     ],
+     "text": {
+      "avg_len": 20.827943005767274,
+      "code_share": 0.0,
+      "composite_share": 0.0027140110822119192,
+      "date_shape_share": 0.0,
+      "max_len": 74,
+      "min_len": 6,
+      "space_share": 0.9850729390478344,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Los Angeles Unified",
+       1342
+      ],
+      [
+       "San Diego Unified",
+       326
+      ],
+      [
+       "Los Angeles County Special Ed",
+       297
+      ],
+      [
+       "Oakland Unified",
+       241
+      ],
+      [
+       "San Francisco Unified",
+       229
+      ],
+      [
+       "Fresno Unified",
+       151
+      ],
+      [
+       "Sacramento City Unified",
+       130
+      ],
+      [
+       "Los Angeles County Office of Education",
+       128
+      ],
+      [
+       "San Juan Unified",
+       122
+      ],
+      [
+       "Long Beach Unified",
+       119
+      ]
+     ],
+     "uniqueness": 0.0797806174375212,
+     "zero_rate": 0.0
+    },
+    "EILCode": {
+     "declared_type": "VARCHAR",
+     "distinct": 7,
+     "family": "text",
+     "name": "EILCode",
+     "null_rate": 0.07740585774058577,
+     "nulls": 1369,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 31,
+     "role": "code",
+     "rows": 17686,
+     "sample_values": [
+      "ELEMHIGH",
+      "ELEM",
+      "HS",
+      "A",
+      "PS",
+      "UG",
+      "INTMIDJR"
+     ],
+     "text": {
+      "avg_len": 3.835999264570693,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 8,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "ELEM",
+       7298
+      ],
+      [
+       "HS",
+       3367
+      ],
+      [
+       "UG",
+       2525
+      ],
+      [
+       "INTMIDJR",
+       1845
+      ],
+      [
+       "ELEMHIGH",
+       774
+      ],
+      [
+       "A",
+       352
+      ],
+      [
+       "PS",
+       156
+      ]
+     ],
+     "uniqueness": 0.000429000429000429,
+     "zero_rate": 0.0
+    },
+    "EILName": {
+     "declared_type": "VARCHAR",
+     "distinct": 7,
+     "family": "text",
+     "name": "EILName",
+     "null_rate": 0.07740585774058577,
+     "nulls": 1369,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 32,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Ungraded",
+      "Intermediate/Middle/Junior High",
+      "High School",
+      "Adult",
+      "Elementary-High Combination",
+      "Preschool",
+      "Elementary"
+     ],
+     "text": {
+      "avg_len": 12.960348103205247,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 31,
+      "min_len": 5,
+      "space_share": 0.3668566525709383,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Elementary",
+       7298
+      ],
+      [
+       "High School",
+       3367
+      ],
+      [
+       "Ungraded",
+       2525
+      ],
+      [
+       "Intermediate/Middle/Junior High",
+       1845
+      ],
+      [
+       "Elementary-High Combination",
+       774
+      ],
+      [
+       "Adult",
+       352
+      ],
+      [
+       "Preschool",
+       156
+      ]
+     ],
+     "uniqueness": 0.000429000429000429,
+     "zero_rate": 0.0
+    },
+    "EdOpsCode": {
+     "declared_type": "VARCHAR",
+     "distinct": 13,
+     "family": "text",
+     "name": "EdOpsCode",
+     "null_rate": 0.32291077688567227,
+     "nulls": 5711,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 29,
+     "role": "code",
+     "rows": 17686,
+     "sample_values": [
+      "ROP",
+      "YTH",
+      "HOMHOS",
+      "JUV",
+      "TRAD",
+      "CON",
+      "SSS",
+      "SPECON",
+      "COMM",
+      "SPEC"
+     ],
+     "text": {
+      "avg_len": 4.118830897703549,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 7,
+      "min_len": 3,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "TRAD",
+       10103
+      ],
+      [
+       "CON",
+       539
+      ],
+      [
+       "COMMDAY",
+       486
+      ],
+      [
+       "ALTSOC",
+       320
+      ],
+      [
+       "SPEC",
+       228
+      ],
+      [
+       "COMM",
+       133
+      ],
+      [
+       "JUV",
+       94
+      ],
+      [
+       "OPP",
+       47
+      ],
+      [
+       "ROP",
+       6
+      ],
+      [
+       "YTH",
+       6
+      ]
+     ],
+     "uniqueness": 0.0010855949895615866,
+     "zero_rate": 0.0
+    },
+    "EdOpsName": {
+     "declared_type": "VARCHAR",
+     "distinct": 13,
+     "family": "text",
+     "name": "EdOpsName",
+     "null_rate": 0.32291077688567227,
+     "nulls": 5711,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 30,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "ROP",
+      "Home and Hospital",
+      "Opportunity School",
+      "State Special School",
+      "Juvenile Court School",
+      "Traditional",
+      "Continuation School",
+      "Special Education School",
+      "Youth Authority School",
+      "District Special Education Consortia School"
+     ],
+     "text": {
+      "avg_len": 12.686012526096034,
+      "code_share": 0.0005010438413361169,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 43,
+      "min_len": 3,
+      "space_share": 0.15582463465553237,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Traditional",
+       10103
+      ],
+      [
+       "Continuation School",
+       539
+      ],
+      [
+       "Community Day School",
+       486
+      ],
+      [
+       "Alternative School of Choice",
+       320
+      ],
+      [
+       "Special Education School",
+       228
+      ],
+      [
+       "County Community School",
+       133
+      ],
+      [
+       "Juvenile Court School",
+       94
+      ],
+      [
+       "Opportunity School",
+       47
+      ],
+      [
+       "ROP",
+       6
+      ],
+      [
+       "Youth Authority School",
+       6
+      ]
+     ],
+     "uniqueness": 0.0010855949895615866,
+     "zero_rate": 0.0
+    },
+    "Ext": {
+     "declared_type": "VARCHAR",
+     "distinct": 379,
+     "family": "int",
+     "name": "Ext",
+     "null_rate": 0.969467375325116,
+     "nulls": 17146,
+     "numeric": {
+      "density": 0.0006014908720982827,
+      "max": 630100.0,
+      "mean": 6868.009259259259,
+      "min": 0.0,
+      "p25": 203.0,
+      "p50": 1320.5,
+      "p75": 5003.5
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 18,
+     "role": "int",
+     "rows": 17686,
+     "sample_values": [
+      "2881",
+      "153",
+      "5000",
+      "8998",
+      "1960",
+      "47299",
+      "2494",
+      "5661",
+      "154",
+      "8300"
+     ],
+     "text": {
+      "avg_len": 3.575925925925926,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 6,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "200",
+       20
+      ],
+      [
+       "201",
+       15
+      ],
+      [
+       "111",
+       9
+      ],
+      [
+       "352",
+       7
+      ],
+      [
+       "101",
+       6
+      ],
+      [
+       "203",
+       6
+      ],
+      [
+       "221",
+       6
+      ],
+      [
+       "220",
+       5
+      ],
+      [
+       "252",
+       5
+      ],
+      [
+       "1",
+       4
+      ]
+     ],
+     "uniqueness": 0.7018518518518518,
+     "zero_rate": 5.6541897546081646e-05
+    },
+    "FundingType": {
+     "declared_type": "VARCHAR",
+     "distinct": 3,
+     "family": "text",
+     "name": "FundingType",
+     "null_rate": 0.9071582042293339,
+     "nulls": 16044,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 24,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Not in CS funding model",
+      "Directly funded",
+      "Locally funded"
+     ],
+     "text": {
+      "avg_len": 14.749086479902559,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 23,
+      "min_len": 14,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Directly funded",
+       1176
+      ],
+      [
+       "Locally funded",
+       460
+      ],
+      [
+       "Not in CS funding model",
+       6
+      ]
+     ],
+     "uniqueness": 0.0018270401948842874,
+     "zero_rate": 0.0
+    },
+    "GSoffered": {
+     "declared_type": "VARCHAR",
+     "distinct": 94,
+     "family": "text",
+     "name": "GSoffered",
+     "null_rate": 0.21949564627388896,
+     "nulls": 3882,
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 33,
+     "role": "code",
+     "rows": 17686,
+     "sample_values": [
+      "4-12",
+      "3-6",
+      "10-12",
+      "5-12",
+      "10",
+      "3-12",
+      "7-Adult",
+      "K",
+      "K-4",
+      "9"
+     ],
+     "text": {
+      "avg_len": 3.327731092436975,
+      "code_share": 0.9706606780643292,
+      "composite_share": 0.9491451753115039,
+      "date_shape_share": 0.0,
+      "max_len": 16,
+      "min_len": 1,
+      "space_share": 0.00021732831063459867,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "K-5",
+       2724
+      ],
+      [
+       "9-12",
+       2368
+      ],
+      [
+       "K-6",
+       2362
+      ],
+      [
+       "K-8",
+       1292
+      ],
+      [
+       "6-8",
+       1123
+      ],
+      [
+       "K-12",
+       674
+      ],
+      [
+       "7-12",
+       570
+      ],
+      [
+       "7-8",
+       432
+      ],
+      [
+       "Adult",
+       380
+      ],
+      [
+       "P",
+       189
+      ]
+     ],
+     "uniqueness": 0.006809620399884092,
+     "zero_rate": 0.0
+    },
+    "GSserved": {
+     "declared_type": "VARCHAR",
+     "distinct": 81,
+     "family": "text",
+     "name": "GSserved",
+     "null_rate": 0.3247201176071469,
+     "nulls": 5743,
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 34,
+     "role": "code",
+     "rows": 17686,
+     "sample_values": [
+      "4-12",
+      "3-6",
+      "10-12",
+      "2",
+      "5-12",
+      "10",
+      "3-12",
+      "K",
+      "K-4",
+      "9"
+     ],
+     "text": {
+      "avg_len": 3.270283848279327,
+      "code_share": 1.0,
+      "composite_share": 0.970694130452985,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "K-5",
+       2688
+      ],
+      [
+       "K-6",
+       2221
+      ],
+      [
+       "9-12",
+       1672
+      ],
+      [
+       "K-8",
+       1024
+      ],
+      [
+       "6-8",
+       1019
+      ],
+      [
+       "7-8",
+       433
+      ],
+      [
+       "10-12",
+       335
+      ],
+      [
+       "K-12",
+       330
+      ],
+      [
+       "7-12",
+       246
+      ],
+      [
+       "11-12",
+       156
+      ]
+     ],
+     "uniqueness": 0.006782215523737754,
+     "zero_rate": 0.0
+    },
+    "LastUpdate": {
+     "date_range": [
+      "1999-06-24 00:00:00",
+      "2016-10-12 00:00:00"
+     ],
+     "declared_type": "VARCHAR",
+     "distinct": 757,
+     "family": "date",
+     "name": "LastUpdate",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 48,
+     "role": "date",
+     "rows": 17686,
+     "sample_values": [
+      "2012-09-19",
+      "2016-08-03",
+      "2016-01-12",
+      "2015-07-22",
+      "2009-07-28",
+      "2014-09-08",
+      "2013-08-27",
+      "2013-10-07",
+      "2009-06-10",
+      "2015-02-24"
+     ],
+     "text": {
+      "avg_len": 10.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 10,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "2015-06-18",
+       4455
+      ],
+      [
+       "1999-06-24",
+       3201
+      ],
+      [
+       "2013-07-02",
+       555
+      ],
+      [
+       "2009-01-30",
+       504
+      ],
+      [
+       "2016-03-03",
+       387
+      ],
+      [
+       "2015-06-23",
+       355
+      ],
+      [
+       "2009-10-02",
+       248
+      ],
+      [
+       "2016-07-19",
+       199
+      ],
+      [
+       "2016-08-23",
+       197
+      ],
+      [
+       "2016-07-01",
+       162
+      ]
+     ],
+     "uniqueness": 0.04280221644238381,
+     "zero_rate": 0.0
+    },
+    "Latitude": {
+     "declared_type": "DOUBLE",
+     "distinct": 11436,
+     "family": "float",
+     "name": "Latitude",
+     "null_rate": 0.2727015718647518,
+     "nulls": 4823,
+     "numeric": {
+      "max": 44.219305,
+      "mean": 36.00771538910067,
+      "min": 32.547737,
+      "p25": 33.994248,
+      "p50": 35.678047,
+      "p75": 37.825079
+     },
+     "pattern": "composite",
+     "placeholder_rate": 0.0,
+     "position": 37,
+     "role": "float",
+     "rows": 17686,
+     "sample_values": [
+      "33.849523",
+      "32.695466",
+      "33.84314",
+      "36.553608",
+      "38.401648",
+      "34.045828",
+      "33.957824",
+      "33.969363",
+      "32.752076",
+      "38.766357"
+     ],
+     "text": {
+      "avg_len": 8.834641996423851,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 9,
+      "min_len": 4,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "34.275868",
+       10
+      ],
+      [
+       "34.155695",
+       8
+      ],
+      [
+       "33.978494",
+       7
+      ],
+      [
+       "32.719461",
+       6
+      ],
+      [
+       "34.039171",
+       6
+      ],
+      [
+       "34.660165",
+       6
+      ],
+      [
+       "37.472658",
+       6
+      ],
+      [
+       "38.511957",
+       6
+      ],
+      [
+       "38.72032",
+       6
+      ],
+      [
+       "38.906665",
+       6
+      ]
+     ],
+     "uniqueness": 0.8890616496929177,
+     "zero_rate": 0.0
+    },
+    "Longitude": {
+     "declared_type": "DOUBLE",
+     "distinct": 11278,
+     "family": "float",
+     "name": "Longitude",
+     "null_rate": 0.2727015718647518,
+     "nulls": 4823,
+     "numeric": {
+      "max": -83.781133,
+      "mean": -119.69425543838966,
+      "min": -124.28481,
+      "p25": -121.70335,
+      "p50": -119.31288,
+      "p75": -117.99291
+     },
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 38,
+     "role": "float",
+     "rows": 17686,
+     "sample_values": [
+      "-121.843",
+      "-122.60772",
+      "-118.2509",
+      "-117.88885",
+      "-117.12589",
+      "-121.35597",
+      "-118.34487",
+      "-117.74859",
+      "-117.66625",
+      "-117.08846"
+     ],
+     "text": {
+      "avg_len": 9.871180906475939,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 6,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "-118.79798",
+       10
+      ],
+      [
+       "-118.83089",
+       8
+      ],
+      [
+       "-117.38054",
+       7
+      ],
+      [
+       "-117.15366",
+       6
+      ],
+      [
+       "-118.17547",
+       6
+      ],
+      [
+       "-118.21119",
+       6
+      ],
+      [
+       "-118.22541",
+       6
+      ],
+      [
+       "-119.902",
+       6
+      ],
+      [
+       "-120.13465",
+       6
+      ],
+      [
+       "-120.86639",
+       6
+      ]
+     ],
+     "uniqueness": 0.8767783565264713,
+     "zero_rate": 0.0
+    },
+    "Magnet": {
+     "declared_type": "BIGINT",
+     "distinct": 2,
+     "family": "int",
+     "name": "Magnet",
+     "null_rate": 0.4000904670360737,
+     "nulls": 7076,
+     "numeric": {
+      "density": 1.0,
+      "max": 1.0,
+      "mean": 0.04891611687087653,
+      "min": 0.0,
+      "p25": 0.0,
+      "p50": 0.0,
+      "p75": 0.0
+     },
+     "pattern": "gapless_int",
+     "placeholder_rate": 0.0,
+     "position": 36,
+     "role": "boolean",
+     "rows": 17686,
+     "sample_values": [
+      "1",
+      "0"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0",
+       10091
+      ],
+      [
+       "1",
+       519
+      ]
+     ],
+     "uniqueness": 0.00018850141376060322,
+     "zero_rate": 0.5705642881375099
+    },
+    "MailCity": {
+     "declared_type": "VARCHAR",
+     "distinct": 1132,
+     "family": "text",
+     "name": "MailCity",
+     "null_rate": 0.01651023408345584,
+     "nulls": 292,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 14,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Kettleman City",
+      "Hercules",
+      "Rosemead",
+      "Sylmar",
+      "Fontana",
+      "Calpella",
+      "Westwood",
+      "Albion",
+      "Lompoc",
+      "Anderson"
+     ],
+     "text": {
+      "avg_len": 8.981430378291364,
+      "code_share": 0.0,
+      "composite_share": 0.00022996435552489363,
+      "date_shape_share": 0.0,
+      "max_len": 22,
+      "min_len": 3,
+      "space_share": 0.39996550534667125,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Los Angeles",
+       835
+      ],
+      [
+       "San Diego",
+       434
+      ],
+      [
+       "San Jose",
+       401
+      ],
+      [
+       "Sacramento",
+       337
+      ],
+      [
+       "Oakland",
+       288
+      ],
+      [
+       "Fresno",
+       273
+      ],
+      [
+       "San Francisco",
+       254
+      ],
+      [
+       "Bakersfield",
+       202
+      ],
+      [
+       "Stockton",
+       180
+      ],
+      [
+       "Riverside",
+       125
+      ]
+     ],
+     "uniqueness": 0.0650799126135449,
+     "zero_rate": 0.0
+    },
+    "MailState": {
+     "declared_type": "VARCHAR",
+     "distinct": 1,
+     "family": "text",
+     "name": "MailState",
+     "null_rate": 0.01651023408345584,
+     "nulls": 292,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 16,
+     "role": "code",
+     "rows": 17686,
+     "sample_values": [
+      "CA"
+     ],
+     "text": {
+      "avg_len": 2.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "CA",
+       17394
+      ]
+     ],
+     "uniqueness": 5.749108888122341e-05,
+     "zero_rate": 0.0
+    },
+    "MailStrAbr": {
+     "declared_type": "VARCHAR",
+     "distinct": 12429,
+     "family": "text",
+     "name": "MailStrAbr",
+     "null_rate": 0.01651023408345584,
+     "nulls": 292,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 13,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "31390 Sierra Del Sol",
+      "306 East Tuolumne St.",
+      "Star Rt. Box 1",
+      "605 Sunnyslope Ave.",
+      "2940 Lake Tahoe Blvd.",
+      "9751 Cypress Ave.",
+      "14438 West Telegraph Rd.",
+      "42875 Gatewood St.",
+      "11450 Sharp Ave.",
+      "965 North Sunnyside Ave."
+     ],
+     "text": {
+      "avg_len": 17.368517879728643,
+      "code_share": 0.0,
+      "composite_share": 5.749108888122341e-05,
+      "date_shape_share": 0.0,
+      "max_len": 70,
+      "min_len": 4,
+      "space_share": 0.9995975623778315,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1234 Arcadia Ave.",
+       36
+      ],
+      [
+       "5130 Riverside Dr.",
+       35
+      ],
+      [
+       "2985 Bear St., Bldg. A",
+       33
+      ],
+      [
+       "PO Box 32",
+       33
+      ],
+      [
+       "1001 22nd Ave., Ste. 100",
+       32
+      ],
+      [
+       "PO Box 307",
+       31
+      ],
+      [
+       "300 South C St.",
+       30
+      ],
+      [
+       "1301 East Orangethorpe Ave.",
+       29
+      ],
+      [
+       "600 West Grand Ave.",
+       27
+      ],
+      [
+       "10365 Keller Ave.",
+       25
+      ]
+     ],
+     "uniqueness": 0.7145567437047258,
+     "zero_rate": 0.0
+    },
+    "MailStreet": {
+     "declared_type": "VARCHAR",
+     "distinct": 12395,
+     "family": "text",
+     "name": "MailStreet",
+     "null_rate": 0.01651023408345584,
+     "nulls": 292,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 12,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "1302 South Third Street",
+      "31390 Sierra Del Sol",
+      "100 North Jack Tone Road",
+      "1144 West Lacey Boulevard",
+      "6578 Santa Teresa Boulevard",
+      "25890 Fremont Road",
+      "44924 North Fifth Street, East",
+      "PO Box 489",
+      "32737 Bel Aire Street",
+      "2425 Jefferson Street"
+     ],
+     "text": {
+      "avg_len": 19.206507991261354,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 70,
+      "min_len": 4,
+      "space_share": 0.9995975623778315,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1234 Arcadia Avenue",
+       36
+      ],
+      [
+       "5130 Riverside Drive",
+       35
+      ],
+      [
+       "2985 Bear Street, Building A",
+       33
+      ],
+      [
+       "PO Box 32",
+       33
+      ],
+      [
+       "1001 22nd Avenue, Suite 100",
+       32
+      ],
+      [
+       "PO Box 307",
+       31
+      ],
+      [
+       "300 South C Street",
+       30
+      ],
+      [
+       "1301 East Orangethorpe Avenue",
+       29
+      ],
+      [
+       "600 West Grand Avenue",
+       27
+      ],
+      [
+       "10365 Keller Avenue",
+       25
+      ]
+     ],
+     "uniqueness": 0.7126020466827642,
+     "zero_rate": 0.0
+    },
+    "MailZip": {
+     "declared_type": "VARCHAR",
+     "distinct": 10298,
+     "family": "text",
+     "name": "MailZip",
+     "null_rate": 0.01651023408345584,
+     "nulls": 292,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 15,
+     "role": "code",
+     "rows": 17686,
+     "sample_values": [
+      "90011-1031",
+      "92584-8972",
+      "95673-4327",
+      "92129-2334",
+      "95404-3646",
+      "91402-4917",
+      "92562-1903",
+      "95133-2068",
+      "95670-0545",
+      "93668-0457"
+     ],
+     "text": {
+      "avg_len": 8.384212946993216,
+      "code_share": 1.0,
+      "composite_share": 0.6768425893986432,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "94606",
+       51
+      ],
+      [
+       "91710-4130",
+       34
+      ],
+      [
+       "92626-4300",
+       32
+      ],
+      [
+       "90266",
+       30
+      ],
+      [
+       "90017",
+       28
+      ],
+      [
+       "91723",
+       28
+      ],
+      [
+       "92084",
+       28
+      ],
+      [
+       "95336-0032",
+       28
+      ],
+      [
+       "93257",
+       26
+      ],
+      [
+       "94558",
+       26
+      ]
+     ],
+     "uniqueness": 0.5920432332988387,
+     "zero_rate": 0.0
+    },
+    "NCESDist": {
+     "declared_type": "VARCHAR",
+     "distinct": 1193,
+     "family": "int",
+     "name": "NCESDist",
+     "null_rate": 0.058238154472464096,
+     "nulls": 1030,
+     "numeric": {
+      "density": 0.013090182911441017,
+      "max": 691137.0,
+      "mean": 627945.3946926033,
+      "min": 600001.0,
+      "p25": 612330.0,
+      "p50": 623610.0,
+      "p75": 634410.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 1,
+     "role": "int",
+     "rows": 17686,
+     "sample_values": [
+      "0636972",
+      "0600112",
+      "0626880",
+      "0607710",
+      "0619700",
+      "0642300",
+      "0600025",
+      "0637950",
+      "0633570",
+      "0609870"
+     ],
+     "text": {
+      "avg_len": 7.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 7,
+      "min_len": 7,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "0622710",
+       1342
+      ],
+      [
+       "0634320",
+       326
+      ],
+      [
+       "0628050",
+       241
+      ],
+      [
+       "0634410",
+       229
+      ],
+      [
+       "0614550",
+       151
+      ],
+      [
+       "0633840",
+       130
+      ],
+      [
+       "0691078",
+       128
+      ],
+      [
+       "0634620",
+       122
+      ],
+      [
+       "0622500",
+       119
+      ],
+      [
+       "0634170",
+       117
+      ]
+     ],
+     "uniqueness": 0.07162584053794428,
+     "zero_rate": 0.0
+    },
+    "NCESSchool": {
+     "declared_type": "VARCHAR",
+     "distinct": 12321,
+     "family": "int",
+     "name": "NCESSchool",
+     "null_rate": 0.2849711636322515,
+     "nulls": 5040,
+     "numeric": {
+      "density": 0.87988288223952,
+      "max": 14003.0,
+      "mean": 6888.1127629289895,
+      "min": 1.0,
+      "p25": 3278.25,
+      "p50": 6633.5,
+      "p75": 10722.75
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 2,
+     "role": "int",
+     "rows": 17686,
+     "sample_values": [
+      "13975",
+      "05627",
+      "06757",
+      "13359",
+      "05360",
+      "02705",
+      "03480",
+      "13981",
+      "01470",
+      "01785"
+     ],
+     "text": {
+      "avg_len": 5.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 5,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "12271",
+       3
+      ],
+      [
+       "00042",
+       2
+      ],
+      [
+       "00374",
+       2
+      ],
+      [
+       "00399",
+       2
+      ],
+      [
+       "00401",
+       2
+      ],
+      [
+       "00405",
+       2
+      ],
+      [
+       "00406",
+       2
+      ],
+      [
+       "00407",
+       2
+      ],
+      [
+       "00409",
+       2
+      ],
+      [
+       "00523",
+       2
+      ]
+     ],
+     "uniqueness": 0.9743001739680531,
+     "zero_rate": 0.0
+    },
+    "OpenDate": {
+     "date_range": [
+      "1850-07-01 00:00:00",
+      "2017-09-22 00:00:00"
+     ],
+     "declared_type": "VARCHAR",
+     "distinct": 1406,
+     "family": "date",
+     "name": "OpenDate",
+     "null_rate": 0.07740585774058577,
+     "nulls": 1369,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 20,
+     "role": "date",
+     "rows": 17686,
+     "sample_values": [
+      "1999-01-01",
+      "1999-08-19",
+      "1999-07-25",
+      "1997-08-27",
+      "2001-10-15",
+      "1990-11-26",
+      "1908-07-01",
+      "2001-08-22",
+      "1997-01-22",
+      "2014-09-08"
+     ],
+     "text": {
+      "avg_len": 10.0,
+      "code_share": 1.0,
+      "composite_share": 1.0,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 10,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1980-07-01",
+       10679
+      ],
+      [
+       "2005-09-06",
+       55
+      ],
+      [
+       "2004-09-07",
+       46
+      ],
+      [
+       "2003-09-02",
+       43
+      ],
+      [
+       "2004-08-30",
+       43
+      ],
+      [
+       "2006-09-05",
+       43
+      ],
+      [
+       "2000-09-05",
+       42
+      ],
+      [
+       "2007-08-20",
+       42
+      ],
+      [
+       "2001-09-04",
+       41
+      ],
+      [
+       "1993-09-01",
+       40
+      ]
+     ],
+     "uniqueness": 0.08616780045351474,
+     "zero_rate": 0.0
+    },
+    "Phone": {
+     "declared_type": "VARCHAR",
+     "distinct": 10632,
+     "family": "text",
+     "name": "Phone",
+     "null_rate": 0.33749858645256137,
+     "nulls": 5969,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 17,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "(818) 514-4566",
+      "(760) 788-5120",
+      "(661) 589-3933",
+      "(530) 749-4000",
+      "(909) 606-8531",
+      "(209) 556-1600",
+      "(562) 420-7731",
+      "(530) 934-6640",
+      "(951) 276-7670",
+      "(510) 618-4380"
+     ],
+     "text": {
+      "avg_len": 14.0,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 14,
+      "min_len": 14,
+      "space_share": 1.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "(805) 581-0202",
+       13
+      ],
+      [
+       "(619) 243-5014",
+       10
+      ],
+      [
+       "(562) 698-8121",
+       9
+      ],
+      [
+       "(559) 683-4667",
+       8
+      ],
+      [
+       "(530) 233-7201",
+       7
+      ],
+      [
+       "(530) 283-6500",
+       7
+      ],
+      [
+       "(530) 625-5600",
+       7
+      ],
+      [
+       "(650) 329-2800",
+       7
+      ],
+      [
+       "(209) 742-0290",
+       6
+      ],
+      [
+       "(209) 830-6363",
+       6
+      ]
+     ],
+     "uniqueness": 0.9073995049927456,
+     "zero_rate": 0.0
+    },
+    "SOC": {
+     "declared_type": "VARCHAR",
+     "distinct": 20,
+     "family": "int",
+     "name": "SOC",
+     "null_rate": 0.07740585774058577,
+     "nulls": 1369,
+     "numeric": {
+      "density": 0.21978021978021978,
+      "max": 98.0,
+      "mean": 56.40810197953055,
+      "min": 8.0,
+      "p25": 60.0,
+      "p50": 60.0,
+      "p75": 65.0
+     },
+     "pattern": "int",
+     "placeholder_rate": 0.0,
+     "position": 27,
+     "role": "int",
+     "rows": 17686,
+     "sample_values": [
+      "69",
+      "10",
+      "65",
+      "63",
+      "98",
+      "14",
+      "09",
+      "13",
+      "31",
+      "64"
+     ],
+     "text": {
+      "avg_len": 2.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "60",
+       7591
+      ],
+      [
+       "66",
+       1776
+      ],
+      [
+       "62",
+       1652
+      ],
+      [
+       "68",
+       754
+      ],
+      [
+       "09",
+       750
+      ],
+      [
+       "69",
+       615
+      ],
+      [
+       "70",
+       551
+      ],
+      [
+       "10",
+       500
+      ],
+      [
+       "63",
+       500
+      ],
+      [
+       "65",
+       438
+      ]
+     ],
+     "uniqueness": 0.0012257155114297972,
+     "zero_rate": 0.0
+    },
+    "SOCType": {
+     "declared_type": "VARCHAR",
+     "distinct": 20,
+     "family": "text",
+     "name": "SOCType",
+     "null_rate": 0.07740585774058577,
+     "nulls": 1369,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 28,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Alternative Schools of Choice",
+      "Elementary Schools (Public)",
+      "Other County Or District Programs",
+      "Continuation High Schools",
+      "Junior High Schools (Public)",
+      "K-12 Schools (Public)",
+      "Opportunity Schools",
+      "Juvenile Court Schools",
+      "High Schools (Public)",
+      "High Schools In 1 School Dist. (Public)"
+     ],
+     "text": {
+      "avg_len": 26.732916590059446,
+      "code_share": 0.0,
+      "composite_share": 0.005270576699148127,
+      "date_shape_share": 0.0,
+      "max_len": 41,
+      "min_len": 7,
+      "space_share": 0.9780596923454067,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Elementary Schools (Public)",
+       7591
+      ],
+      [
+       "High Schools (Public)",
+       1776
+      ],
+      [
+       "Intermediate/Middle Schools (Public)",
+       1652
+      ],
+      [
+       "Continuation High Schools",
+       754
+      ],
+      [
+       "Special Education Schools (Public)",
+       750
+      ],
+      [
+       "District Community Day Schools",
+       615
+      ],
+      [
+       "Adult Education Centers",
+       551
+      ],
+      [
+       "Alternative Schools of Choice",
+       500
+      ],
+      [
+       "County Community",
+       500
+      ],
+      [
+       "K-12 Schools (Public)",
+       438
+      ]
+     ],
+     "uniqueness": 0.0012257155114297972,
+     "zero_rate": 0.0
+    },
+    "School": {
+     "declared_type": "VARCHAR",
+     "distinct": 13875,
+     "family": "text",
+     "name": "School",
+     "null_rate": 0.07740585774058577,
+     "nulls": 1369,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 6,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Calaveras Hills",
+      "Alta Elementary",
+      "Glenn County Opportunity",
+      "Double Peak",
+      "Highland Junior High",
+      "Keith B. Bright High (Juvenile Hall)",
+      "Grace Hudson Elementary",
+      "Crestwood Street Elementary",
+      "Aspire Firestone Academy Charter",
+      "Irvine Unified - Other Special Programs"
+     ],
+     "text": {
+      "avg_len": 22.448673162958876,
+      "code_share": 0.0005515719801434088,
+      "composite_share": 0.0014095728381442667,
+      "date_shape_share": 0.0,
+      "max_len": 89,
+      "min_len": 4,
+      "space_share": 0.9892137034994178,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Lincoln Elementary",
+       48
+      ],
+      [
+       "Washington Elementary",
+       48
+      ],
+      [
+       "Jefferson Elementary",
+       33
+      ],
+      [
+       "Franklin Elementary",
+       25
+      ],
+      [
+       "Roosevelt Elementary",
+       25
+      ],
+      [
+       "McKinley Elementary",
+       23
+      ],
+      [
+       "Wilson Elementary",
+       20
+      ],
+      [
+       "Madison Elementary",
+       18
+      ],
+      [
+       "Garfield Elementary",
+       15
+      ],
+      [
+       "Grant Elementary",
+       15
+      ]
+     ],
+     "uniqueness": 0.8503401360544217,
+     "zero_rate": 0.0
+    },
+    "State": {
+     "declared_type": "VARCHAR",
+     "distinct": 1,
+     "family": "text",
+     "name": "State",
+     "null_rate": 0.01656677598100192,
+     "nulls": 293,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 11,
+     "role": "code",
+     "rows": 17686,
+     "sample_values": [
+      "CA"
+     ],
+     "text": {
+      "avg_len": 2.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 2,
+      "min_len": 2,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "CA",
+       17393
+      ]
+     ],
+     "uniqueness": 5.749439429655609e-05,
+     "zero_rate": 0.0
+    },
+    "StatusType": {
+     "declared_type": "VARCHAR",
+     "distinct": 4,
+     "family": "text",
+     "name": "StatusType",
+     "null_rate": 0.0,
+     "nulls": 0,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 3,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "Closed",
+      "Merged",
+      "Active",
+      "Pending"
+     ],
+     "text": {
+      "avg_len": 6.000678502770553,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 7,
+      "min_len": 6,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "Active",
+       11708
+      ],
+      [
+       "Closed",
+       4518
+      ],
+      [
+       "Merged",
+       1448
+      ],
+      [
+       "Pending",
+       12
+      ]
+     ],
+     "uniqueness": 0.00022616759018432659,
+     "zero_rate": 0.0
+    },
+    "Street": {
+     "declared_type": "VARCHAR",
+     "distinct": 13593,
+     "family": "text",
+     "name": "Street",
+     "null_rate": 0.016623317878548004,
+     "nulls": 294,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 7,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "1302 South Third Street",
+      "31390 Sierra Del Sol",
+      "516 Shasta Boulevard",
+      "8230 Wells Avenue",
+      "254 East E Street",
+      "100 North Jack Tone Road",
+      "1144 West Lacey Boulevard",
+      "2540 Alamo Pintado Avenue",
+      "8255 Beach Street",
+      "6578 Santa Teresa Boulevard"
+     ],
+     "text": {
+      "avg_len": 19.776391444342227,
+      "code_share": 0.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 62,
+      "min_len": 5,
+      "space_share": 0.99971251149954,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1398 Sperber Road",
+       12
+      ],
+      [
+       "3939 13th Street",
+       9
+      ],
+      [
+       "6767 Green Valley Road",
+       9
+      ],
+      [
+       "Star Route",
+       9
+      ],
+      [
+       "360 Nevada Street",
+       8
+      ],
+      [
+       "50 Moreland Road",
+       8
+      ],
+      [
+       "674 Allard Avenue",
+       8
+      ],
+      [
+       "10401 Main Street",
+       7
+      ],
+      [
+       "1111 Las Gallinas Avenue",
+       7
+      ],
+      [
+       "12300 Anderson Valley Way",
+       7
+      ]
+     ],
+     "uniqueness": 0.781566237350506,
+     "zero_rate": 0.0
+    },
+    "StreetAbr": {
+     "declared_type": "VARCHAR",
+     "distinct": 13633,
+     "family": "text",
+     "name": "StreetAbr",
+     "null_rate": 0.016623317878548004,
+     "nulls": 294,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 8,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "434 South Grevillea Ave.",
+      "31390 Sierra Del Sol",
+      "306 East Tuolumne St.",
+      "Star Rt. Box 1",
+      "605 Sunnyslope Ave.",
+      "20 School St.",
+      "2940 Lake Tahoe Blvd.",
+      "9751 Cypress Ave.",
+      "14438 West Telegraph Rd.",
+      "42875 Gatewood St."
+     ],
+     "text": {
+      "avg_len": 17.8139374425023,
+      "code_share": 0.0,
+      "composite_share": 5.749770009199632e-05,
+      "date_shape_share": 0.0,
+      "max_len": 59,
+      "min_len": 5,
+      "space_share": 0.99971251149954,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "1398 Sperber Rd.",
+       12
+      ],
+      [
+       "3939 13th St.",
+       9
+      ],
+      [
+       "6767 Green Valley Rd.",
+       9
+      ],
+      [
+       "Star Rt.",
+       9
+      ],
+      [
+       "360 Nevada St.",
+       8
+      ],
+      [
+       "50 Moreland Rd.",
+       8
+      ],
+      [
+       "674 Allard Ave.",
+       8
+      ],
+      [
+       "10401 Main St.",
+       7
+      ],
+      [
+       "1111 Las Gallinas Ave.",
+       7
+      ],
+      [
+       "12300 Anderson Valley Way",
+       7
+      ]
+     ],
+     "uniqueness": 0.7838661453541859,
+     "zero_rate": 0.0
+    },
+    "Virtual": {
+     "declared_type": "VARCHAR",
+     "distinct": 3,
+     "family": "text",
+     "name": "Virtual",
+     "null_rate": 0.38832975234648875,
+     "nulls": 6868,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 35,
+     "role": "code",
+     "rows": 17686,
+     "sample_values": [
+      "P",
+      "F",
+      "N"
+     ],
+     "text": {
+      "avg_len": 1.0,
+      "code_share": 1.0,
+      "composite_share": 0.0,
+      "date_shape_share": 0.0,
+      "max_len": 1,
+      "min_len": 1,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "N",
+       9703
+      ],
+      [
+       "P",
+       1046
+      ],
+      [
+       "F",
+       69
+      ]
+     ],
+     "uniqueness": 0.00027731558513588466,
+     "zero_rate": 0.0
+    },
+    "Website": {
+     "declared_type": "VARCHAR",
+     "distinct": 4082,
+     "family": "text",
+     "name": "Website",
+     "null_rate": 0.6062422254890875,
+     "nulls": 10722,
+     "pattern": "other",
+     "placeholder_rate": 0.0,
+     "position": 19,
+     "role": "text",
+     "rows": 17686,
+     "sample_values": [
+      "www.CalAPS.org",
+      "www.sanandreashs.org",
+      "www.yrekausd.net",
+      "http://schools.cvesd.org/schools/finney/",
+      "http://wilcox.palermoschools.org/",
+      "www.cnusd.k12.ca.us/toes",
+      "www.iusd.org/sp",
+      "www.sbceo.org/about_sbceo/specialed.shtml",
+      "www.gerberschool.org",
+      "http://butterfieldbobcats.org"
+     ],
+     "text": {
+      "avg_len": 21.724870763928777,
+      "code_share": 0.0,
+      "composite_share": 0.7873348650201034,
+      "date_shape_share": 0.0,
+      "max_len": 96,
+      "min_len": 9,
+      "space_share": 0.00014359563469270534,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "www.fusd.net",
+       49
+      ],
+      [
+       "www.pusd.org",
+       46
+      ],
+      [
+       "www.vusd.org",
+       42
+      ],
+      [
+       "www.compton.k12.ca.us",
+       41
+      ],
+      [
+       "www.fcusd.org",
+       38
+      ],
+      [
+       "www.dsusd.us",
+       36
+      ],
+      [
+       "www.nmusd.us",
+       35
+      ],
+      [
+       "www.aspirepublicschools.org",
+       34
+      ],
+      [
+       "www.fsusd.org",
+       32
+      ],
+      [
+       "www.mantecausd.net",
+       32
+      ]
+     ],
+     "uniqueness": 0.5861573808156232,
+     "zero_rate": 0.0
+    },
+    "Zip": {
+     "declared_type": "VARCHAR",
+     "distinct": 11184,
+     "family": "text",
+     "name": "Zip",
+     "null_rate": 0.01656677598100192,
+     "nulls": 293,
+     "pattern": "code",
+     "placeholder_rate": 0.0,
+     "position": 10,
+     "role": "code",
+     "rows": 17686,
+     "sample_values": [
+      "90011-1031",
+      "92584-8972",
+      "95673-4327",
+      "95307-4134",
+      "92129-2334",
+      "95404-3646",
+      "91402-4917",
+      "93230-4334",
+      "92562-1903",
+      "95133-2068"
+     ],
+     "text": {
+      "avg_len": 8.580750876789512,
+      "code_share": 1.0,
+      "composite_share": 0.7161501753579026,
+      "date_shape_share": 0.0,
+      "max_len": 10,
+      "min_len": 5,
+      "space_share": 0.0,
+      "uuid_share": 0.0
+     },
+     "top_values": [
+      [
+       "91723",
+       26
+      ],
+      [
+       "94558",
+       25
+      ],
+      [
+       "95959",
+       25
+      ],
+      [
+       "90266",
+       22
+      ],
+      [
+       "90278",
+       22
+      ],
+      [
+       "92345",
+       22
+      ],
+      [
+       "94903",
+       21
+      ],
+      [
+       "93618-1825",
+       20
+      ],
+      [
+       "95482",
+       20
+      ],
+      [
+       "95501",
+       20
+      ]
+     ],
+     "uniqueness": 0.6430173058126832,
+     "zero_rate": 0.0
+    }
+   },
+   "rows": 17686,
+   "sample_rows": [
+    {
+     "AdmEmail1": null,
+     "AdmEmail2": null,
+     "AdmEmail3": null,
+     "AdmFName1": null,
+     "AdmFName2": null,
+     "AdmFName3": null,
+     "AdmLName1": null,
+     "AdmLName2": null,
+     "AdmLName3": null,
+     "CDSCode": "04100416068332",
+     "Charter": 0,
+     "CharterNum": null,
+     "City": "Oroville",
+     "ClosedDate": "1984-07-09",
+     "County": "Butte",
+     "DOC": "00",
+     "DOCType": "County Office of Education (COE)",
+     "District": "Butte County Office of Education",
+     "EILCode": "UG",
+     "EILName": "Ungraded",
+     "EdOpsCode": null,
+     "EdOpsName": null,
+     "Ext": null,
+     "FundingType": null,
+     "GSoffered": null,
+     "GSserved": null,
+     "LastUpdate": "1999-06-24",
+     "Latitude": null,
+     "Longitude": null,
+     "Magnet": null,
+     "MailCity": "Oroville",
+     "MailState": "CA",
+     "MailStrAbr": "5A County Center Dr.",
+     "MailStreet": "5A County Center Drive",
+     "MailZip": "95965",
+     "NCESDist": "0691002",
+     "NCESSchool": null,
+     "OpenDate": "1980-07-01",
+     "Phone": null,
+     "SOC": "09",
+     "SOCType": "Special Education Schools (Public)",
+     "School": "Development Center for Handicapped",
+     "State": "CA",
+     "StatusType": "Closed",
+     "Street": "5A County Center Drive",
+     "StreetAbr": "5A County Center Dr.",
+     "Virtual": null,
+     "Website": null,
+     "Zip": "95965"
+    },
+    {
+     "AdmEmail1": "tfrazier@fcoe.org",
+     "AdmEmail2": null,
+     "AdmEmail3": null,
+     "AdmFName1": "Trina",
+     "AdmFName2": null,
+     "AdmFName3": null,
+     "AdmLName1": "Frazier",
+     "AdmLName2": null,
+     "AdmLName3": null,
+     "CDSCode": "10101080119867",
+     "Charter": 0,
+     "CharterNum": null,
+     "City": "Fresno",
+     "ClosedDate": null,
+     "County": "Fresno",
+     "DOC": "00",
+     "DOCType": "County Office of Education (COE)",
+     "District": "Fresno County Office of Education",
+     "EILCode": "ELEM",
+     "EILName": "Elementary",
+     "EdOpsCode": "TRAD",
+     "EdOpsName": "Traditional",
+     "Ext": null,
+     "FundingType": null,
+     "GSoffered": "P",
+     "GSserved": "K",
+     "LastUpdate": "2015-04-02",
+     "Latitude": 36.735686,
+     "Longitude": -119.79037,
+     "Magnet": null,
+     "MailCity": "Fresno",
+     "MailState": "CA",
+     "MailStrAbr": "1111 Van Ness Ave.",
+     "MailStreet": "1111 Van Ness Avenue",
+     "MailZip": "93721-2002",
+     "NCESDist": "0691007",
+     "NCESSchool": "12597",
+     "OpenDate": "2009-05-26",
+     "Phone": "(559) 265-3010",
+     "SOC": "08",
+     "SOCType": "Preschool",
+     "School": "Fresno COE District-Wide Preschool",
+     "State": "CA",
+     "StatusType": "Active",
+     "Street": "1111 Van Ness Avenue",
+     "StreetAbr": "1111 Van Ness Ave.",
+     "Virtual": "N",
+     "Website": "www.fcoe.org",
+     "Zip": "93721-2002"
+    },
+    {
+     "AdmEmail1": null,
+     "AdmEmail2": null,
+     "AdmEmail3": null,
+     "AdmFName1": null,
+     "AdmFName2": null,
+     "AdmFName3": null,
+     "AdmLName1": null,
+     "AdmLName2": null,
+     "AdmLName3": null,
+     "CDSCode": "21654822133635",
+     "Charter": 0,
+     "CharterNum": null,
+     "City": null,
+     "ClosedDate": "1989-06-30",
+     "County": "Marin",
+     "DOC": "56",
+     "DOCType": "High School District",
+     "District": "Tamalpais Union High",
+     "EILCode": "UG",
+     "EILName": "Ungraded",
+     "EdOpsCode": null,
+     "EdOpsName": null,
+     "Ext": null,
+     "FundingType": null,
+     "GSoffered": null,
+     "GSserved": null,
+     "LastUpdate": "1999-06-24",
+     "Latitude": null,
+     "Longitude": null,
+     "Magnet": null,
+     "MailCity": null,
+     "MailState": null,
+     "MailStrAbr": null,
+     "MailStreet": null,
+     "MailZip": null,
+     "NCESDist": "0638790",
+     "NCESSchool": null,
+     "OpenDate": "1980-07-01",
+     "Phone": null,
+     "SOC": "70",
+     "SOCType": "Adult Education Centers",
+     "School": "Tamalpais Adult Evening High S",
+     "State": null,
+     "StatusType": "Closed",
+     "Street": null,
+     "StreetAbr": null,
+     "Virtual": null,
+     "Website": null,
+     "Zip": null
+    },
+    {
+     "AdmEmail1": "lee.fleming@bonsallusd.com",
+     "AdmEmail2": null,
+     "AdmEmail3": null,
+     "AdmFName1": "Lee",
+     "AdmFName2": null,
+     "AdmFName3": null,
+     "AdmLName1": "Fleming",
+     "AdmLName2": null,
+     "AdmLName3": null,
+     "CDSCode": "37768510129320",
+     "Charter": 0,
+     "CharterNum": null,
+     "City": "Bonsall",
+     "ClosedDate": null,
+     "County": "San Diego",
+     "DOC": "54",
+     "DOCType": "Unified School District",
+     "District": "Bonsall Unified",
+     "EILCode": "HS",
+     "EILName": "High School",
+     "EdOpsCode": "TRAD",
+     "EdOpsName": "Traditional",
+     "Ext": null,
+     "FundingType": null,
+     "GSoffered": "9-12",
+     "GSserved": "9-10",
+     "LastUpdate": "2015-06-18",
+     "Latitude": 33.296238,
+     "Longitude": -117.17648,
+     "Magnet": 0,
+     "MailCity": "Bonsall",
+     "MailState": "CA",
+     "MailStrAbr": "7350 West Lilac Rd.",
+     "MailStreet": "7350 West Lilac Road",
+     "MailZip": "92003-4316",
+     "NCESDist": "0601426",
+     "NCESSchool": "13751",
+     "OpenDate": "2014-08-25",
+     "Phone": "(760) 631-5209",
+     "SOC": "66",
+     "SOCType": "High Schools (Public)",
+     "School": "Bonsall High",
+     "State": "CA",
+     "StatusType": "Active",
+     "Street": "7350 West Lilac Road",
+     "StreetAbr": "7350 West Lilac Rd.",
+     "Virtual": "N",
+     "Website": "www.bonsallhs.com",
+     "Zip": "92003-4316"
+    },
+    {
+     "AdmEmail1": null,
+     "AdmEmail2": null,
+     "AdmEmail3": null,
+     "AdmFName1": null,
+     "AdmFName2": null,
+     "AdmFName3": null,
+     "AdmLName1": null,
+     "AdmLName2": null,
+     "AdmLName3": null,
+     "CDSCode": "44698230124735",
+     "Charter": 0,
+     "CharterNum": null,
+     "City": "Santa Cruz",
+     "ClosedDate": "2016-06-30",
+     "County": "Santa Cruz",
+     "DOC": "56",
+     "DOCType": "High School District",
+     "District": "Santa Cruz City High",
+     "EILCode": "HS",
+     "EILName": "High School",
+     "EdOpsCode": "COMMDAY",
+     "EdOpsName": "Community Day School",
+     "Ext": null,
+     "FundingType": null,
+     "GSoffered": "7-12",
+     "GSserved": "11-12",
+     "LastUpdate": "2016-07-06",
+     "Latitude": 36.98721,
+     "Longitude": -121.99598,
+     "Magnet": 0,
+     "MailCity": "Santa Cruz",
+     "MailState": "CA",
+     "MailStrAbr": "319 La Fonda Ave.",
+     "MailStreet": "319 La Fonda Avenue",
+     "MailZip": "95062-1430",
+     "NCESDist": "0635600",
+     "NCESSchool": "12904",
+     "OpenDate": "2011-08-31",
+     "Phone": null,
+     "SOC": "69",
+     "SOCType": "District Community Day Schools",
+     "School": "Sequoia Academy",
+     "State": "CA",
+     "StatusType": "Closed",
+     "Street": "319 La Fonda Avenue",
+     "StreetAbr": "319 La Fonda Ave.",
+     "Virtual": "N",
+     "Website": "www.sccs.santacruz.k12.ca.us",
+     "Zip": "95062-1430"
+    }
+   ]
+  }
+ }
+}

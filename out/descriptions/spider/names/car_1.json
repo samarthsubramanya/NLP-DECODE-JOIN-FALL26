@@ -1,0 +1,210 @@
+{
+ "db_id": "car_1",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "default",
+ "keys_run": "frozen",
+ "graph": "llm",
+ "edges": 7,
+ "tables": {
+  "car_makers": {
+   "table": {
+    "name": "car_makers",
+    "purpose": "One row per automobile manufacturer: its id, short maker slug, full company name, and home country (FK to countries). Referenced by model_list, which links makers to their car models."
+   },
+   "columns": {
+    "Country": {
+     "role": "foreign_key",
+     "name": "country_id",
+     "description": "Foreign key to countries.CountryId — the home country of the car maker (e.g. 2=germany, 4=japan, 7=uk).",
+     "status": "resolved"
+    },
+    "FullName": {
+     "role": "identifier",
+     "name": "full_name",
+     "description": "Full official/display name of the car manufacturer (e.g. 'General Motors', 'Daimler Benz').",
+     "status": "resolved"
+    },
+    "Id": {
+     "role": "foreign_key",
+     "name": "id",
+     "description": "Primary key of the car maker; referenced by model_list.Maker.",
+     "status": "resolved"
+    },
+    "Maker": {
+     "role": "identifier",
+     "name": "maker",
+     "description": "Short, lowercase maker identifier/slug (e.g. 'gm', 'bmw', 'amc'); the join to model_list.Model is likely spurious since model_list.Model holds model names, not maker slugs.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "car_names": {
+   "table": {
+    "name": "car_names",
+    "purpose": "Maps each car entry (one row per car model-year variant, 406 total) to its full display name and its manufacturer. It is the naming/identity table for the cars_data measurements (MPG, horsepower, etc.), with the manufacturer normalized via model_list. This is the classic 'auto-mpg' style car dataset."
+   },
+   "columns": {
+    "Make": {
+     "role": "identifier",
+     "name": "car_model_name",
+     "description": "Full name of the car model, combining manufacturer and model name (e.g. 'amc matador', 'audi 4000'). Not unique: the same name can appear multiple times, likely once per model year variant.",
+     "status": "resolved"
+    },
+    "MakeId": {
+     "role": "identifier",
+     "name": "car_id",
+     "description": "Primary key of this table; a surrogate ID (1-406, one per row). Referenced by cars_data (e.g. its Horsepower/MPG rows join to it), so it identifies each car entry across the database.",
+     "status": "resolved"
+    },
+    "Model": {
+     "role": "identifier",
+     "name": "make",
+     "description": "Manufacturer/make name (e.g. 'ford', 'chevrolet'), extracted from the full car name. References model_list.Model, which appears to be the lookup of distinct makes/models.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "cars_data": {
+   "table": {
+    "name": "cars_data",
+    "purpose": "Per-car technical specifications (fuel economy, cylinders, displacement, horsepower, weight, acceleration, model year) — the classic UCI 'auto-mpg' dataset, one row per car model/year. Links to car_names/model_list/car_makers via Id, though no explicit foreign key was detected here."
+   },
+   "columns": {
+    "Accelerate": {
+     "role": "numeric",
+     "name": "Acceleration (0–60 mph, seconds)",
+     "description": "0-to-60 mph acceleration time in seconds (classic 'auto-mpg' dataset field). Range 8.0–24.8 s, mean ~15.5 s; lower values = faster cars.",
+     "status": "resolved"
+    },
+    "Cylinders": {
+     "role": "category",
+     "name": "Cylinders",
+     "description": "Number of engine cylinders (3, 4, 5, 6, or 8).",
+     "status": "resolved"
+    },
+    "Edispl": {
+     "role": "numeric",
+     "name": "Engine displacement (cubic inches)",
+     "description": "Engine displacement in cubic inches (68–455 cu in, e.g. 350, 400, 455 match classic American V8 displacements).",
+     "status": "resolved"
+    },
+    "Horsepower": {
+     "role": "numeric",
+     "name": "Horsepower",
+     "description": "Engine horsepower (46–230 hp). Declared VARCHAR but values are integers; the statistical join to car_names.MakeId is spurious — horsepower is a measure, not a foreign key.",
+     "status": "resolved"
+    },
+    "Id": {
+     "role": "identifier",
+     "name": "Id",
+     "description": "Primary key; one row per car model observation (406 rows, unique 1–406).",
+     "status": "resolved"
+    },
+    "MPG": {
+     "role": "numeric",
+     "name": "Fuel economy (miles per gallon)",
+     "description": "Fuel economy in miles per gallon (9.0–46.6). Declared VARCHAR but numeric; the join to car_names.MakeId is spurious.",
+     "status": "resolved"
+    },
+    "Weight": {
+     "role": "numeric",
+     "name": "Weight (pounds)",
+     "description": "Vehicle curb weight in pounds (1613–5140 lb).",
+     "status": "resolved"
+    },
+    "Year": {
+     "role": "category",
+     "name": "Model year",
+     "description": "Model year of the car (1970–1982).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "continents": {
+   "table": {
+    "name": "continents",
+    "purpose": "A small lookup table listing the five continents (america, europe, asia, africa, australia). Each row is one continent, identified by ContId, which is referenced by the countries table to indicate which continent a country belongs to."
+   },
+   "columns": {
+    "ContId": {
+     "role": "identifier",
+     "name": "ContId",
+     "description": "Primary key of the continents lookup table; a small integer identifier (1-5) for each continent. Referenced by countries.Continent as a foreign key.",
+     "status": "resolved"
+    },
+    "Continent": {
+     "role": "category",
+     "name": "Continent",
+     "description": "Name of the continent, lowercase text; one of africa, america, asia, australia, europe. Note that 'america' covers both North and South America as a single value.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "countries": {
+   "table": {
+    "name": "countries",
+    "purpose": "Lookup table of countries (one row per country) with its continent; referenced by car_makers to indicate where each car maker is based."
+   },
+   "columns": {
+    "Continent": {
+     "role": "foreign_key",
+     "name": "Continent",
+     "description": "Foreign key to continents.ContId identifying the continent the country belongs to (1=america, 2=europe, 3=asia, 4=africa, 5=australia).",
+     "status": "resolved"
+    },
+    "CountryId": {
+     "role": "foreign_key",
+     "name": "CountryId",
+     "description": "Primary key; unique numeric identifier of the country, referenced by car_makers.Country.",
+     "status": "resolved"
+    },
+    "CountryName": {
+     "role": "category",
+     "name": "CountryName",
+     "description": "Unique lowercase name of the country (e.g. germany, japan, uk).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "model_list": {
+   "table": {
+    "name": "model_list",
+    "purpose": "Catalog of 36 car models/makes, each linked to its manufacturer (car_makers) and referenced by car_names; maps model names to numeric model IDs and maker IDs."
+   },
+   "columns": {
+    "Maker": {
+     "role": "foreign_key",
+     "name": "Maker",
+     "description": "Foreign key to car_makers.Id identifying the manufacturer of the model (e.g. 4 = General Motors, 13 = Daimler Benz).",
+     "status": "resolved"
+    },
+    "Model": {
+     "role": "identifier",
+     "name": "Model",
+     "description": "Unique lowercase model/make name (e.g. 'buick', 'mercedes-benz', 'opel'); referenced by car_names.Model to link named cars to their maker.",
+     "status": "resolved"
+    },
+    "ModelId": {
+     "role": "foreign_key",
+     "name": "ModelId",
+     "description": "Primary key of the table; surrogate identifier for each car model, values 1-36, one per row.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

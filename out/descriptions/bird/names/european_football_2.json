@@ -1,0 +1,1276 @@
+{
+ "db_id": "european_football_2",
+ "model": "glm-5-3",
+ "reasoning_effort": "low",
+ "use_values": true,
+ "joins_run": "default",
+ "keys_run": "frozen",
+ "graph": "llm",
+ "edges": 47,
+ "tables": {
+  "Country": {
+   "table": {
+    "name": "Country",
+    "purpose": "Lookup table of countries covered by the database (11 European football countries such as England, Germany, Spain, France). Each row is one country, identified by an opaque numeric id that League and Match reference to indicate where a league or match takes place. Part of a European football (soccer) dataset alongside League, Match, Player, Player_Attributes, Team, and Team_Attributes (matches the well-known European Soccer Database schema)."
+   },
+   "columns": {
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Primary key of the country; an opaque numeric identifier (not a standard ISO code, since values like 1729 for England don't match ISO 3166-1 numeric). Referenced by Match.country_id, Match.league_id, and League.country_id, so it identifies the country a league/match belongs to.",
+     "status": "resolved"
+    },
+    "name": {
+     "role": "category",
+     "name": "name",
+     "description": "Name of the country (e.g., England, Germany, Portugal). Unique across the 11 rows, one per country.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "League": {
+   "table": {
+    "name": "League",
+    "purpose": "Lookup table of the 11 European football (soccer) leagues covered by the database, one row per league, each tied to a country in Country and referenced by Match. Likely part of a football match/player dataset (resembling the European Soccer Database)."
+   },
+   "columns": {
+    "country_id": {
+     "role": "foreign_key",
+     "name": "country_id",
+     "description": "Identifier of the country in which the league is based; foreign key to Country.id. In this dataset each league maps one-to-one to a country, and the value is identical to the league's own id.",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "foreign_key",
+     "name": "id",
+     "description": "Primary key of the league; unique identifier used by Match.league_id and Match.country_id. Values mirror the country_id of the league's country (e.g. 1729 = England Premier League).",
+     "status": "resolved"
+    },
+    "name": {
+     "role": "category",
+     "name": "name",
+     "description": "Full name of the football league, combining country and league name (e.g. 'England Premier League', 'Germany 1. Bundesliga').",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Match": {
+   "table": {
+    "name": "Match",
+    "purpose": "One row per professional football (soccer) match: teams, final score, league/season/matchday, date, both teams' starting lineups with formation coordinates, per-bookmaker pre-match 1X2 betting odds, and XML event data (goals, cards, corners, crosses, fouls, shots, possession). Covers ~26k matches across 11 European leagues, 2008–2016."
+   },
+   "columns": {
+    "B365A": {
+     "role": "numeric",
+     "name": "bet365_away_win_odds",
+     "description": "Pre-match decimal odds from bookmaker Bet365 for an away-team win. H/D/A suffix = home/draw/away outcome. Values are typical 1.04–51.0 decimal odds; null when the bookmaker did not quote that match.",
+     "status": "resolved"
+    },
+    "B365D": {
+     "role": "numeric",
+     "name": "bet365_draw_odds",
+     "description": "Pre-match decimal odds from Bet365 for a draw.",
+     "status": "resolved"
+    },
+    "B365H": {
+     "role": "numeric",
+     "name": "bet365_home_win_odds",
+     "description": "Pre-match decimal odds from Bet365 for a home-team win.",
+     "status": "resolved"
+    },
+    "BSA": {
+     "role": "numeric",
+     "name": "blue_square_away_win_odds",
+     "description": "Pre-match decimal odds from bookmaker Blue Square for an away-team win.",
+     "status": "tentative"
+    },
+    "BSD": {
+     "role": "numeric",
+     "name": "blue_square_draw_odds",
+     "description": "Pre-match decimal odds from Blue Square for a draw.",
+     "status": "tentative"
+    },
+    "BSH": {
+     "role": "numeric",
+     "name": "blue_square_home_win_odds",
+     "description": "Pre-match decimal odds from Blue Square for a home-team win.",
+     "status": "tentative"
+    },
+    "BWA": {
+     "role": "numeric",
+     "name": "betwin_away_win_odds",
+     "description": "Pre-match decimal odds from bookmaker Bet&Win (BWin) for an away-team win.",
+     "status": "tentative"
+    },
+    "BWD": {
+     "role": "numeric",
+     "name": "betwin_draw_odds",
+     "description": "Pre-match decimal odds from Bet&Win for a draw.",
+     "status": "tentative"
+    },
+    "BWH": {
+     "role": "numeric",
+     "name": "betwin_home_win_odds",
+     "description": "Pre-match decimal odds from Bet&Win for a home-team win.",
+     "status": "tentative"
+    },
+    "GBA": {
+     "role": "numeric",
+     "name": "gamebookers_away_win_odds",
+     "description": "Pre-match decimal odds from bookmaker Gamebookers for an away-team win.",
+     "status": "tentative"
+    },
+    "GBD": {
+     "role": "numeric",
+     "name": "gamebookers_draw_odds",
+     "description": "Pre-match decimal odds from Gamebookers for a draw.",
+     "status": "tentative"
+    },
+    "GBH": {
+     "role": "numeric",
+     "name": "gamebookers_home_win_odds",
+     "description": "Pre-match decimal odds from Gamebookers for a home-team win.",
+     "status": "tentative"
+    },
+    "IWA": {
+     "role": "numeric",
+     "name": "interwetten_away_win_odds",
+     "description": "Pre-match decimal odds from bookmaker Interwetten for an away-team win.",
+     "status": "tentative"
+    },
+    "IWD": {
+     "role": "numeric",
+     "name": "interwetten_draw_odds",
+     "description": "Pre-match decimal odds from Interwetten for a draw.",
+     "status": "tentative"
+    },
+    "IWH": {
+     "role": "numeric",
+     "name": "interwetten_home_win_odds",
+     "description": "Pre-match decimal odds from Interwetten for a home-team win.",
+     "status": "tentative"
+    },
+    "LBA": {
+     "role": "numeric",
+     "name": "ladbrokes_away_win_odds",
+     "description": "Pre-match decimal odds from bookmaker Ladbrokes for an away-team win.",
+     "status": "tentative"
+    },
+    "LBD": {
+     "role": "numeric",
+     "name": "ladbrokes_draw_odds",
+     "description": "Pre-match decimal odds from Ladbrokes for a draw.",
+     "status": "tentative"
+    },
+    "LBH": {
+     "role": "numeric",
+     "name": "ladbrokes_home_win_odds",
+     "description": "Pre-match decimal odds from Ladbrokes for a home-team win.",
+     "status": "tentative"
+    },
+    "PSA": {
+     "role": "numeric",
+     "name": "pinnacle_away_win_odds",
+     "description": "Pre-match decimal odds from bookmaker Pinnacle Sports for an away-team win. Higher precision (two-decimal, e.g. 3.02) and higher null rate (57%) fit Pinnacle's pricing style and later market entry.",
+     "status": "tentative"
+    },
+    "PSD": {
+     "role": "numeric",
+     "name": "pinnacle_draw_odds",
+     "description": "Pre-match decimal odds from Pinnacle Sports for a draw.",
+     "status": "tentative"
+    },
+    "PSH": {
+     "role": "numeric",
+     "name": "pinnacle_home_win_odds",
+     "description": "Pre-match decimal odds from Pinnacle Sports for a home-team win.",
+     "status": "tentative"
+    },
+    "SJA": {
+     "role": "numeric",
+     "name": "stan_james_away_win_odds",
+     "description": "Pre-match decimal odds from bookmaker Stan James for an away-team win.",
+     "status": "tentative"
+    },
+    "SJD": {
+     "role": "numeric",
+     "name": "stan_james_draw_odds",
+     "description": "Pre-match decimal odds from Stan James for a draw.",
+     "status": "tentative"
+    },
+    "SJH": {
+     "role": "numeric",
+     "name": "stan_james_home_win_odds",
+     "description": "Pre-match decimal odds from Stan James for a home-team win.",
+     "status": "tentative"
+    },
+    "VCA": {
+     "role": "numeric",
+     "name": "vc_bet_away_win_odds",
+     "description": "Pre-match decimal odds from bookmaker VC Bet (BetVictor) for an away-team win.",
+     "status": "tentative"
+    },
+    "VCD": {
+     "role": "numeric",
+     "name": "vc_bet_draw_odds",
+     "description": "Pre-match decimal odds from VC Bet for a draw.",
+     "status": "tentative"
+    },
+    "VCH": {
+     "role": "numeric",
+     "name": "vc_bet_home_win_odds",
+     "description": "Pre-match decimal odds from VC Bet for a home-team win.",
+     "status": "tentative"
+    },
+    "WHA": {
+     "role": "numeric",
+     "name": "william_hill_away_win_odds",
+     "description": "Pre-match decimal odds from bookmaker William Hill for an away-team win.",
+     "status": "tentative"
+    },
+    "WHD": {
+     "role": "numeric",
+     "name": "william_hill_draw_odds",
+     "description": "Pre-match decimal odds from William Hill for a draw.",
+     "status": "tentative"
+    },
+    "WHH": {
+     "role": "numeric",
+     "name": "william_hill_home_win_odds",
+     "description": "Pre-match decimal odds from William Hill for a home-team win.",
+     "status": "tentative"
+    },
+    "away_player_1": {
+     "role": "foreign_key",
+     "name": "away_player_1_id",
+     "description": "player_api_id of the away team's starting player in lineup slot 1 (goalkeeper, per the paired Y1=1 coordinate). References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "away_player_10": {
+     "role": "foreign_key",
+     "name": "away_player_10_id",
+     "description": "player_api_id of the away team's starting player in lineup slot 10. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "away_player_11": {
+     "role": "foreign_key",
+     "name": "away_player_11_id",
+     "description": "player_api_id of the away team's starting player in lineup slot 11. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "away_player_2": {
+     "role": "foreign_key",
+     "name": "away_player_2_id",
+     "description": "player_api_id of the away team's starting player in lineup slot 2. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "away_player_3": {
+     "role": "foreign_key",
+     "name": "away_player_3_id",
+     "description": "player_api_id of the away team's starting player in lineup slot 3. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "away_player_4": {
+     "role": "foreign_key",
+     "name": "away_player_4_id",
+     "description": "player_api_id of the away team's starting player in lineup slot 4. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "away_player_5": {
+     "role": "foreign_key",
+     "name": "away_player_5_id",
+     "description": "player_api_id of the away team's starting player in lineup slot 5. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "away_player_6": {
+     "role": "foreign_key",
+     "name": "away_player_6_id",
+     "description": "player_api_id of the away team's starting player in lineup slot 6. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "away_player_7": {
+     "role": "foreign_key",
+     "name": "away_player_7_id",
+     "description": "player_api_id of the away team's starting player in lineup slot 7. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "away_player_8": {
+     "role": "foreign_key",
+     "name": "away_player_8_id",
+     "description": "player_api_id of the away team's starting player in lineup slot 8. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "away_player_9": {
+     "role": "foreign_key",
+     "name": "away_player_9_id",
+     "description": "player_api_id of the away team's starting player in lineup slot 9. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "away_player_X1": {
+     "role": "numeric",
+     "name": "away_player_1_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the away team's player in lineup slot 1; together with away_player_Y1 it encodes the player's position on the pitch. X1 is almost always 1 (goalkeeper).",
+     "status": "resolved"
+    },
+    "away_player_X10": {
+     "role": "numeric",
+     "name": "away_player_10_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the away team's player in lineup slot 10.",
+     "status": "resolved"
+    },
+    "away_player_X11": {
+     "role": "numeric",
+     "name": "away_player_11_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the away team's player in lineup slot 11.",
+     "status": "resolved"
+    },
+    "away_player_X2": {
+     "role": "numeric",
+     "name": "away_player_2_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the away team's player in lineup slot 2; typically 2 (defensive line).",
+     "status": "resolved"
+    },
+    "away_player_X3": {
+     "role": "numeric",
+     "name": "away_player_3_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the away team's player in lineup slot 3; typically 4.",
+     "status": "resolved"
+    },
+    "away_player_X4": {
+     "role": "numeric",
+     "name": "away_player_4_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the away team's player in lineup slot 4; typically 6.",
+     "status": "resolved"
+    },
+    "away_player_X5": {
+     "role": "numeric",
+     "name": "away_player_5_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the away team's player in lineup slot 5; typically 8.",
+     "status": "resolved"
+    },
+    "away_player_X6": {
+     "role": "numeric",
+     "name": "away_player_6_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the away team's player in lineup slot 6; varies 1–9 with formation.",
+     "status": "resolved"
+    },
+    "away_player_X7": {
+     "role": "numeric",
+     "name": "away_player_7_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the away team's player in lineup slot 7; varies 1–9 with formation.",
+     "status": "resolved"
+    },
+    "away_player_X8": {
+     "role": "numeric",
+     "name": "away_player_8_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the away team's player in lineup slot 8; varies 1–9 with formation.",
+     "status": "resolved"
+    },
+    "away_player_X9": {
+     "role": "numeric",
+     "name": "away_player_9_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the away team's player in lineup slot 9; varies 1–9 with formation.",
+     "status": "resolved"
+    },
+    "away_player_Y1": {
+     "role": "numeric",
+     "name": "away_player_1_y_coordinate",
+     "description": "Formation Y (vertical pitch row) coordinate of the away team's player in lineup slot 1; almost always 1 (goalkeeper).",
+     "status": "resolved"
+    },
+    "away_player_Y10": {
+     "role": "numeric",
+     "name": "away_player_10_y_coordinate",
+     "description": "Formation Y (vertical pitch row) coordinate of the away team's player in lineup slot 10; typically 8–10 (forwards).",
+     "status": "resolved"
+    },
+    "away_player_Y11": {
+     "role": "numeric",
+     "name": "away_player_11_y_coordinate",
+     "description": "Formation Y (vertical pitch row) coordinate of the away team's player in lineup slot 11; typically 10–11 (forwards).",
+     "status": "resolved"
+    },
+    "away_player_Y2": {
+     "role": "numeric",
+     "name": "away_player_2_y_coordinate",
+     "description": "Formation Y coordinate of the away team's player in lineup slot 2; constant 3 (defensive line).",
+     "status": "resolved"
+    },
+    "away_player_Y3": {
+     "role": "numeric",
+     "name": "away_player_3_y_coordinate",
+     "description": "Formation Y coordinate of the away team's player in lineup slot 3; almost always 3.",
+     "status": "resolved"
+    },
+    "away_player_Y4": {
+     "role": "numeric",
+     "name": "away_player_4_y_coordinate",
+     "description": "Formation Y coordinate of the away team's player in lineup slot 4; almost always 3.",
+     "status": "resolved"
+    },
+    "away_player_Y5": {
+     "role": "numeric",
+     "name": "away_player_5_y_coordinate",
+     "description": "Formation Y coordinate of the away team's player in lineup slot 5; usually 3, sometimes 7 (midfield in a back-3 formation).",
+     "status": "resolved"
+    },
+    "away_player_Y6": {
+     "role": "numeric",
+     "name": "away_player_6_y_coordinate",
+     "description": "Formation Y coordinate of the away team's player in lineup slot 6; typically 6–7 (midfield).",
+     "status": "resolved"
+    },
+    "away_player_Y7": {
+     "role": "numeric",
+     "name": "away_player_7_y_coordinate",
+     "description": "Formation Y coordinate of the away team's player in lineup slot 7; typically 6–7 (midfield).",
+     "status": "resolved"
+    },
+    "away_player_Y8": {
+     "role": "numeric",
+     "name": "away_player_8_y_coordinate",
+     "description": "Formation Y coordinate of the away team's player in lineup slot 8; typically 7–8 (midfield/attack).",
+     "status": "resolved"
+    },
+    "away_player_Y9": {
+     "role": "numeric",
+     "name": "away_player_9_y_coordinate",
+     "description": "Formation Y coordinate of the away team's player in lineup slot 9; typically 7–10 (attack).",
+     "status": "resolved"
+    },
+    "away_team_api_id": {
+     "role": "foreign_key",
+     "name": "away_team_id",
+     "description": "team_api_id of the away (visiting) team. References Team.team_api_id; the joins to Player/Player_Attributes are spurious coincidences.",
+     "status": "resolved"
+    },
+    "away_team_goal": {
+     "role": "numeric",
+     "name": "away_team_goals",
+     "description": "Final number of goals scored by the away team (0–9).",
+     "status": "resolved"
+    },
+    "card": {
+     "role": "free_text",
+     "name": "card_events_xml",
+     "description": "XML blob listing the match's card (yellow/red) events, each with minute (elapsed), card type comment (y/r) and event metadata; '<card />' means no cards. Null for matches without event data.",
+     "status": "resolved"
+    },
+    "corner": {
+     "role": "free_text",
+     "name": "corner_events_xml",
+     "description": "XML blob listing the match's corner events with minute and event metadata; '<corner />' means none.",
+     "status": "resolved"
+    },
+    "country_id": {
+     "role": "foreign_key",
+     "name": "country_id",
+     "description": "Foreign key to Country.id — the country in which the match was played (11 European countries: England, Germany, Portugal, Spain, Switzerland, etc.).",
+     "status": "resolved"
+    },
+    "cross": {
+     "role": "free_text",
+     "name": "cross_events_xml",
+     "description": "XML blob listing the match's cross events with minute and event metadata; '<cross />' means none.",
+     "status": "resolved"
+    },
+    "date": {
+     "role": "date",
+     "name": "match_date",
+     "description": "Kick-off date of the match (stored as text, date-only, 2008-07-18 to 2016-05-25).",
+     "status": "resolved"
+    },
+    "foulcommit": {
+     "role": "free_text",
+     "name": "foul_events_xml",
+     "description": "XML blob listing the match's foul events with minute, coordinates and event metadata; '<foulcommit />' means none.",
+     "status": "resolved"
+    },
+    "goal": {
+     "role": "free_text",
+     "name": "goal_events_xml",
+     "description": "XML blob listing the match's goal events with minute, goal type comment (n = normal, dg = drop goal style/own-goal codes, p = penalty etc.) and scorer metadata; '<goal />' means no goals.",
+     "status": "resolved"
+    },
+    "home_player_1": {
+     "role": "foreign_key",
+     "name": "home_player_1_id",
+     "description": "player_api_id of the home team's starting player in lineup slot 1 (goalkeeper, per Y1=1). References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "home_player_10": {
+     "role": "foreign_key",
+     "name": "home_player_10_id",
+     "description": "player_api_id of the home team's starting player in lineup slot 10. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "home_player_11": {
+     "role": "foreign_key",
+     "name": "home_player_11_id",
+     "description": "player_api_id of the home team's starting player in lineup slot 11. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "home_player_2": {
+     "role": "foreign_key",
+     "name": "home_player_2_id",
+     "description": "player_api_id of the home team's starting player in lineup slot 2. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "home_player_3": {
+     "role": "foreign_key",
+     "name": "home_player_3_id",
+     "description": "player_api_id of the home team's starting player in lineup slot 3. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "home_player_4": {
+     "role": "foreign_key",
+     "name": "home_player_4_id",
+     "description": "player_api_id of the home team's starting player in lineup slot 4. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "home_player_5": {
+     "role": "foreign_key",
+     "name": "home_player_5_id",
+     "description": "player_api_id of the home team's starting player in lineup slot 5. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "home_player_6": {
+     "role": "foreign_key",
+     "name": "home_player_6_id",
+     "description": "player_api_id of the home team's starting player in lineup slot 6. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "home_player_7": {
+     "role": "foreign_key",
+     "name": "home_player_7_id",
+     "description": "player_api_id of the home team's starting player in lineup slot 7. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "home_player_8": {
+     "role": "foreign_key",
+     "name": "home_player_8_id",
+     "description": "player_api_id of the home team's starting player in lineup slot 8. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "home_player_9": {
+     "role": "foreign_key",
+     "name": "home_player_9_id",
+     "description": "player_api_id of the home team's starting player in lineup slot 9. References Player.player_api_id.",
+     "status": "resolved"
+    },
+    "home_player_X1": {
+     "role": "numeric",
+     "name": "home_player_1_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the home team's player in lineup slot 1; almost always 1 (goalkeeper).",
+     "status": "resolved"
+    },
+    "home_player_X10": {
+     "role": "numeric",
+     "name": "home_player_10_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the home team's player in lineup slot 10.",
+     "status": "resolved"
+    },
+    "home_player_X11": {
+     "role": "numeric",
+     "name": "home_player_11_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the home team's player in lineup slot 11.",
+     "status": "resolved"
+    },
+    "home_player_X2": {
+     "role": "numeric",
+     "name": "home_player_2_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the home team's player in lineup slot 2; typically 2 (defensive line).",
+     "status": "resolved"
+    },
+    "home_player_X3": {
+     "role": "numeric",
+     "name": "home_player_3_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the home team's player in lineup slot 3; typically 4.",
+     "status": "resolved"
+    },
+    "home_player_X4": {
+     "role": "numeric",
+     "name": "home_player_4_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the home team's player in lineup slot 4; typically 6.",
+     "status": "resolved"
+    },
+    "home_player_X5": {
+     "role": "numeric",
+     "name": "home_player_5_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the home team's player in lineup slot 5; typically 8.",
+     "status": "resolved"
+    },
+    "home_player_X6": {
+     "role": "numeric",
+     "name": "home_player_6_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the home team's player in lineup slot 6; varies 1–9 with formation.",
+     "status": "resolved"
+    },
+    "home_player_X7": {
+     "role": "numeric",
+     "name": "home_player_7_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the home team's player in lineup slot 7; varies 1–9 with formation.",
+     "status": "resolved"
+    },
+    "home_player_X8": {
+     "role": "numeric",
+     "name": "home_player_8_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the home team's player in lineup slot 8; varies 1–9 with formation.",
+     "status": "resolved"
+    },
+    "home_player_X9": {
+     "role": "numeric",
+     "name": "home_player_9_x_coordinate",
+     "description": "Formation X (horizontal) coordinate of the home team's player in lineup slot 9; varies 1–9 with formation.",
+     "status": "resolved"
+    },
+    "home_player_Y1": {
+     "role": "numeric",
+     "name": "home_player_1_y_coordinate",
+     "description": "Formation Y (vertical pitch row) coordinate of the home team's player in lineup slot 1; almost always 1 (goalkeeper).",
+     "status": "resolved"
+    },
+    "home_player_Y10": {
+     "role": "numeric",
+     "name": "home_player_10_y_coordinate",
+     "description": "Formation Y coordinate of the home team's player in lineup slot 10; typically 8–10 (forwards).",
+     "status": "resolved"
+    },
+    "home_player_Y11": {
+     "role": "numeric",
+     "name": "home_player_11_y_coordinate",
+     "description": "Formation Y coordinate of the home team's player in lineup slot 11; typically 10–11 (forwards).",
+     "status": "resolved"
+    },
+    "home_player_Y2": {
+     "role": "numeric",
+     "name": "home_player_2_y_coordinate",
+     "description": "Formation Y coordinate of the home team's player in lineup slot 2; constant 3 (defensive line).",
+     "status": "resolved"
+    },
+    "home_player_Y3": {
+     "role": "numeric",
+     "name": "home_player_3_y_coordinate",
+     "description": "Formation Y coordinate of the home team's player in lineup slot 3; almost always 3.",
+     "status": "resolved"
+    },
+    "home_player_Y4": {
+     "role": "numeric",
+     "name": "home_player_4_y_coordinate",
+     "description": "Formation Y coordinate of the home team's player in lineup slot 4; almost always 3.",
+     "status": "resolved"
+    },
+    "home_player_Y5": {
+     "role": "numeric",
+     "name": "home_player_5_y_coordinate",
+     "description": "Formation Y coordinate of the home team's player in lineup slot 5; usually 3, sometimes 7 (midfield in a back-3 formation).",
+     "status": "resolved"
+    },
+    "home_player_Y6": {
+     "role": "numeric",
+     "name": "home_player_6_y_coordinate",
+     "description": "Formation Y coordinate of the home team's player in lineup slot 6; typically 6–7 (midfield).",
+     "status": "resolved"
+    },
+    "home_player_Y7": {
+     "role": "numeric",
+     "name": "home_player_7_y_coordinate",
+     "description": "Formation Y coordinate of the home team's player in lineup slot 7; typically 6–7 (midfield).",
+     "status": "resolved"
+    },
+    "home_player_Y8": {
+     "role": "numeric",
+     "name": "home_player_8_y_coordinate",
+     "description": "Formation Y coordinate of the home team's player in lineup slot 8; typically 7–8 (midfield/attack).",
+     "status": "resolved"
+    },
+    "home_player_Y9": {
+     "role": "numeric",
+     "name": "home_player_9_y_coordinate",
+     "description": "Formation Y coordinate of the home team's player in lineup slot 9; typically 7–10 (attack).",
+     "status": "resolved"
+    },
+    "home_team_api_id": {
+     "role": "foreign_key",
+     "name": "home_team_id",
+     "description": "team_api_id of the home team. References Team.team_api_id; the joins to Player/Player_Attributes are spurious coincidences.",
+     "status": "resolved"
+    },
+    "home_team_goal": {
+     "role": "numeric",
+     "name": "home_team_goals",
+     "description": "Final number of goals scored by the home team (0–10).",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "identifier",
+     "name": "match_id",
+     "description": "Surrogate primary key of the match row (1–25979, no gaps).",
+     "status": "resolved"
+    },
+    "league_id": {
+     "role": "foreign_key",
+     "name": "league_id",
+     "description": "Foreign key to League.id — the league/competition in which the match was played (11 European leagues such as England Premier League, Spain LIGA BBVA, Germany 1. Bundesliga).",
+     "status": "resolved"
+    },
+    "match_api_id": {
+     "role": "identifier",
+     "name": "match_api_id",
+     "description": "External API identifier of the match (unique per row, ~483129–2216672); the natural key used by the source data provider.",
+     "status": "resolved"
+    },
+    "possession": {
+     "role": "free_text",
+     "name": "possession_events_xml",
+     "description": "XML blob listing the match's possession data, typically per-interval home/away possession percentages (homepos/awaypos); '<possession />' means no data.",
+     "status": "resolved"
+    },
+    "season": {
+     "role": "category",
+     "name": "season",
+     "description": "Season label in 'YYYY/YYYY' format (2008/2009 through 2015/2016) indicating the competition season the match belongs to.",
+     "status": "resolved"
+    },
+    "shotoff": {
+     "role": "free_text",
+     "name": "shot_off_target_events_xml",
+     "description": "XML blob listing the match's shots off target with minute and event metadata; '<shotoff />' means none.",
+     "status": "resolved"
+    },
+    "shoton": {
+     "role": "free_text",
+     "name": "shot_on_target_events_xml",
+     "description": "XML blob listing the match's shots on target with minute and event metadata; '<shoton />' means none.",
+     "status": "resolved"
+    },
+    "stage": {
+     "role": "numeric",
+     "name": "matchday",
+     "description": "Round/matchday number within the league season (1–38, matching a 38-round league format).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Player": {
+   "table": {
+    "name": "Player",
+    "purpose": "One row per football (soccer) player: identity (name, birthday), physical attributes (height in cm, weight in lbs), and two external identifiers — one for the match-statistics API (player_api_id, used in Match lineups and Player_Attributes) and one for the FIFA/EA Sports API (player_fifa_api_id, used in Player_Attributes). The internal id is the surrogate primary key. Part of a European soccer database alongside Country, League, Match, Team, Player_Attributes, Team_Attributes. Note: the join from Player.id to Team_Attributes/Match team columns reported by statistics is spurious (id coincidentally matches team_api_id values); the meaningful joins are via player_api_id and player_fifa_api_id to Player_Attributes and the Match home/away_player_N columns."
+   },
+   "columns": {
+    "birthday": {
+     "role": "date",
+     "name": "birthday",
+     "description": "Player's date of birth (stored as datetime with zero time part). Range 1967–1999 fits professional footballers.",
+     "status": "resolved"
+    },
+    "height": {
+     "role": "numeric",
+     "name": "height",
+     "description": "Player's height in centimeters (values like 182.88, 187.96 are inch-to-cm conversions; range 157.48–208.28 cm).",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Surrogate primary key of the Player table; unique row identifier with no external meaning.",
+     "status": "resolved"
+    },
+    "player_api_id": {
+     "role": "identifier",
+     "name": "player_api_id",
+     "description": "External API identifier for the player (source dataset's API, e.g. the European Soccer Database's data provider). Referenced by Player_Attributes and by the per-position player columns in Match (home_player_1..11, away_player_1..11).",
+     "status": "resolved"
+    },
+    "player_fifa_api_id": {
+     "role": "identifier",
+     "name": "player_fifa_api_id",
+     "description": "Player's identifier in the FIFA (EA Sports) API; joins to Player_Attributes.player_fifa_api_id.",
+     "status": "resolved"
+    },
+    "player_name": {
+     "role": "category",
+     "name": "player_name",
+     "description": "Player's full (or common) name; not unique — 10848 distinct names for 11060 players (e.g. 'Danilo' appears 7 times for different players).",
+     "status": "resolved"
+    },
+    "weight": {
+     "role": "numeric",
+     "name": "weight",
+     "description": "Player's weight in pounds (integer, range 117–243, mean ~168, consistent with lbs rather than kg).",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Player_Attributes": {
+   "table": {
+    "name": "Player_Attributes",
+    "purpose": "Time-series of FIFA/EA football (soccer) player ratings. Each row is one snapshot of a player's skill attributes (overall rating, potential, and ~35 individual skill ratings on a 1-99 scale, plus preferred foot and attacking/defensive work rates) as of a given rating date. A player has one row per rating update (roughly per FIFA release, 2007-2016). Players are linked to the Player table via player_api_id / player_fifa_api_id. This matches the well-known 'European Soccer Database' schema (Country, League, Match, Player, Team, Team_Attributes)."
+   },
+   "columns": {
+    "acceleration": {
+     "role": "category",
+     "name": "acceleration",
+     "description": "FIFA-style player attribute rating (1-99 scale): acceleration, i.e. how quickly the player reaches top speed. One row per player per rating date.",
+     "status": "resolved"
+    },
+    "aggression": {
+     "role": "category",
+     "name": "aggression",
+     "description": "FIFA-style attribute rating (1-99): aggression of the player in duels/tackles.",
+     "status": "resolved"
+    },
+    "agility": {
+     "role": "category",
+     "name": "agility",
+     "description": "FIFA-style attribute rating (1-99): agility, i.e. movement nimbleness.",
+     "status": "resolved"
+    },
+    "attacking_work_rate": {
+     "role": "category",
+     "name": "attacking_work_rate",
+     "description": "Player's attacking work rate as a category: low / medium / high. Contains dirty values ('None', 'norm', 'stoc', 'le') indicating data-quality issues in the source.",
+     "status": "resolved"
+    },
+    "balance": {
+     "role": "category",
+     "name": "balance",
+     "description": "FIFA-style attribute rating (1-99): balance of the player.",
+     "status": "resolved"
+    },
+    "ball_control": {
+     "role": "category",
+     "name": "ball_control",
+     "description": "FIFA-style attribute rating (1-99): ball control skill.",
+     "status": "resolved"
+    },
+    "crossing": {
+     "role": "category",
+     "name": "crossing",
+     "description": "FIFA-style attribute rating (1-99): crossing skill.",
+     "status": "resolved"
+    },
+    "curve": {
+     "role": "category",
+     "name": "curve",
+     "description": "FIFA-style attribute rating (1-99): ability to curve the ball (passing/shooting).",
+     "status": "resolved"
+    },
+    "date": {
+     "role": "category",
+     "name": "rating_date",
+     "description": "Date on which this set of player ratings was recorded (FIFA/EA rating update date). 197 distinct dates between 2007-02-22 and 2016-07-07; each player has multiple rows, one per rating date.",
+     "status": "resolved"
+    },
+    "defensive_work_rate": {
+     "role": "category",
+     "name": "defensive_work_rate",
+     "description": "Player's defensive work rate as a category: low / medium / high. Heavily polluted with junk values ('_0', 'o', '2', '9', 'es', '7'), indicating data-quality problems in the source.",
+     "status": "resolved"
+    },
+    "dribbling": {
+     "role": "category",
+     "name": "dribbling",
+     "description": "FIFA-style attribute rating (1-99): dribbling skill.",
+     "status": "resolved"
+    },
+    "finishing": {
+     "role": "category",
+     "name": "finishing",
+     "description": "FIFA-style attribute rating (1-99): finishing skill (scoring in front of goal).",
+     "status": "resolved"
+    },
+    "free_kick_accuracy": {
+     "role": "category",
+     "name": "free_kick_accuracy",
+     "description": "FIFA-style attribute rating (1-99): free kick accuracy.",
+     "status": "resolved"
+    },
+    "gk_diving": {
+     "role": "category",
+     "name": "gk_diving",
+     "description": "FIFA-style goalkeeper attribute rating (1-99): diving. Very low values for most rows because most players are not goalkeepers.",
+     "status": "resolved"
+    },
+    "gk_handling": {
+     "role": "category",
+     "name": "gk_handling",
+     "description": "FIFA-style goalkeeper attribute rating (1-99): handling of the ball.",
+     "status": "resolved"
+    },
+    "gk_kicking": {
+     "role": "category",
+     "name": "gk_kicking",
+     "description": "FIFA-style goalkeeper attribute rating (1-99): kicking (goal kicks/distribution).",
+     "status": "resolved"
+    },
+    "gk_positioning": {
+     "role": "category",
+     "name": "gk_positioning",
+     "description": "FIFA-style goalkeeper attribute rating (1-99): positioning.",
+     "status": "resolved"
+    },
+    "gk_reflexes": {
+     "role": "category",
+     "name": "gk_reflexes",
+     "description": "FIFA-style goalkeeper attribute rating (1-99): reflexes.",
+     "status": "resolved"
+    },
+    "heading_accuracy": {
+     "role": "category",
+     "name": "heading_accuracy",
+     "description": "FIFA-style attribute rating (1-99): heading accuracy.",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "category",
+     "name": "id",
+     "description": "Surrogate primary key of this table; unique row identifier with no external meaning. The listed joins to Match/Team_Attributes are spurious (accepted only by a statistics heuristic, not semantically valid).",
+     "status": "resolved"
+    },
+    "interceptions": {
+     "role": "category",
+     "name": "interceptions",
+     "description": "FIFA-style attribute rating (1-99): interception ability.",
+     "status": "resolved"
+    },
+    "jumping": {
+     "role": "category",
+     "name": "jumping",
+     "description": "FIFA-style attribute rating (1-99): jumping ability.",
+     "status": "resolved"
+    },
+    "long_passing": {
+     "role": "category",
+     "name": "long_passing",
+     "description": "FIFA-style attribute rating (1-99): long passing skill.",
+     "status": "resolved"
+    },
+    "long_shots": {
+     "role": "category",
+     "name": "long_shots",
+     "description": "FIFA-style attribute rating (1-99): long shot skill.",
+     "status": "resolved"
+    },
+    "marking": {
+     "role": "category",
+     "name": "marking",
+     "description": "FIFA-style attribute rating (1-99): marking ability (man-marking in defense).",
+     "status": "resolved"
+    },
+    "overall_rating": {
+     "role": "category",
+     "name": "overall_rating",
+     "description": "Overall player rating (33-94, FIFA-style 1-99 scale): the aggregate rating of the player at the given date.",
+     "status": "resolved"
+    },
+    "penalties": {
+     "role": "category",
+     "name": "penalties",
+     "description": "FIFA-style attribute rating (1-99): penalty taking skill.",
+     "status": "resolved"
+    },
+    "player_api_id": {
+     "role": "category",
+     "name": "player_api_id",
+     "description": "Foreign key to Player.player_api_id; identifies the player this rating row belongs to. Each player appears in many rows (one per rating date).",
+     "status": "resolved"
+    },
+    "player_fifa_api_id": {
+     "role": "category",
+     "name": "player_fifa_api_id",
+     "description": "Foreign key to Player.player_fifa_api_id; the player's FIFA/EA identifier, alternative join key to the Player table.",
+     "status": "resolved"
+    },
+    "positioning": {
+     "role": "category",
+     "name": "positioning",
+     "description": "FIFA-style attribute rating (1-99): positioning (off-the-ball positioning).",
+     "status": "resolved"
+    },
+    "potential": {
+     "role": "category",
+     "name": "potential",
+     "description": "FIFA-style potential rating (39-97): the projected maximum overall rating the player can reach.",
+     "status": "resolved"
+    },
+    "preferred_foot": {
+     "role": "category",
+     "name": "preferred_foot",
+     "description": "Player's preferred kicking foot: 'right' or 'left'.",
+     "status": "resolved"
+    },
+    "reactions": {
+     "role": "category",
+     "name": "reactions",
+     "description": "FIFA-style attribute rating (1-99): reaction speed.",
+     "status": "resolved"
+    },
+    "short_passing": {
+     "role": "category",
+     "name": "short_passing",
+     "description": "FIFA-style attribute rating (1-99): short passing skill.",
+     "status": "resolved"
+    },
+    "shot_power": {
+     "role": "category",
+     "name": "shot_power",
+     "description": "FIFA-style attribute rating (1-99): shot power.",
+     "status": "resolved"
+    },
+    "sliding_tackle": {
+     "role": "category",
+     "name": "sliding_tackle",
+     "description": "FIFA-style attribute rating (1-99): sliding tackle skill. The listed joins to Match.id / Player.id / Team_Attributes.id are spurious (numeric coincidence accepted by a statistics heuristic, not real references).",
+     "status": "resolved"
+    },
+    "sprint_speed": {
+     "role": "category",
+     "name": "sprint_speed",
+     "description": "FIFA-style attribute rating (1-99): top sprint speed.",
+     "status": "resolved"
+    },
+    "stamina": {
+     "role": "category",
+     "name": "stamina",
+     "description": "FIFA-style attribute rating (1-99): stamina/endurance.",
+     "status": "resolved"
+    },
+    "standing_tackle": {
+     "role": "category",
+     "name": "standing_tackle",
+     "description": "FIFA-style attribute rating (1-99): standing tackle skill.",
+     "status": "resolved"
+    },
+    "strength": {
+     "role": "category",
+     "name": "strength",
+     "description": "FIFA-style attribute rating (1-99): physical strength.",
+     "status": "resolved"
+    },
+    "vision": {
+     "role": "category",
+     "name": "vision",
+     "description": "FIFA-style attribute rating (1-99): vision (ability to spot passes/opportunities).",
+     "status": "resolved"
+    },
+    "volleys": {
+     "role": "category",
+     "name": "volleys",
+     "description": "FIFA-style attribute rating (1-99): volley skill.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Team": {
+   "table": {
+    "name": "Team",
+    "purpose": "Reference/dimension table of 299 football (soccer) clubs, each row one team, with internal id, external API and FIFA identifiers, and long/short names. Teams are referenced by Match (home/away team) and presumably Team_Attributes."
+   },
+   "columns": {
+    "id": {
+     "role": "identifier",
+     "name": "id",
+     "description": "Synthetic surrogate primary key for the team row; internal identifier with no external meaning.",
+     "status": "resolved"
+    },
+    "team_api_id": {
+     "role": "identifier",
+     "name": "team_api_id",
+     "description": "External team identifier from the football data API (e.g. the European Soccer Database's data provider); used by Match.home_team_api_id and Match.away_team_api_id to link matches to teams.",
+     "status": "resolved"
+    },
+    "team_fifa_api_id": {
+     "role": "identifier",
+     "name": "team_fifa_api_id",
+     "description": "Team identifier from the FIFA (video game / EA Sports) dataset; ~3.7% null and a few duplicates, so it is an optional, imperfect cross-reference to FIFA team data.",
+     "status": "resolved"
+    },
+    "team_long_name": {
+     "role": "category",
+     "name": "team_long_name",
+     "description": "Full official name of the football club (e.g. 'Siena', 'Hibernian', 'Villarreal CF').",
+     "status": "resolved"
+    },
+    "team_short_name": {
+     "role": "category",
+     "name": "team_short_name",
+     "description": "Three-letter abbreviation of the club name (e.g. 'SIE', 'CES', 'HIB'), not unique across teams.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  },
+  "Team_Attributes": {
+   "table": {
+    "name": "Team_Attributes",
+    "purpose": "Periodic snapshots (6 dates between 2010 and 2015) of each football team's tactical/playing-style ratings, as sourced from the FIFA video game series: build-up play (speed, dribbling, passing, positioning), chance creation (crossing, passing, shooting, positioning) and defence (pressure, aggression, team width, defender line). Each row is one team at one snapshot date, keyed by team_api_id / team_fifa_api_id linking to the Team table. Numeric ratings (roughly 20-80) are paired with categorical class labels; buildUpPlayDribbling is null in about two-thirds of rows while its class is always present."
+   },
+   "columns": {
+    "buildUpPlayDribbling": {
+     "role": "foreign_key",
+     "name": "buildUpPlayDribbling",
+     "description": "Numeric rating (roughly 20-80) of how much the team relies on dribbling during build-up play. Null for ~66% of rows (the class column is always populated, so the raw number was often not recorded).",
+     "status": "resolved"
+    },
+    "buildUpPlayDribblingClass": {
+     "role": "category",
+     "name": "buildUpPlayDribblingClass",
+     "description": "Categorical banding of build-up dribbling: Little / Normal / Lots.",
+     "status": "resolved"
+    },
+    "buildUpPlayPassing": {
+     "role": "foreign_key",
+     "name": "buildUpPlayPassing",
+     "description": "Numeric rating (20-80) of passing tendency in build-up play; higher values correspond to the Short passing class.",
+     "status": "resolved"
+    },
+    "buildUpPlayPassingClass": {
+     "role": "category",
+     "name": "buildUpPlayPassingClass",
+     "description": "Categorical banding of build-up passing style: Short / Mixed / Long.",
+     "status": "resolved"
+    },
+    "buildUpPlayPositioningClass": {
+     "role": "category",
+     "name": "buildUpPlayPositioningClass",
+     "description": "Build-up play positioning style: Organised or Free Form.",
+     "status": "resolved"
+    },
+    "buildUpPlaySpeed": {
+     "role": "foreign_key",
+     "name": "buildUpPlaySpeed",
+     "description": "Numeric rating (20-80) of the speed of build-up play; higher values correspond to the Fast class.",
+     "status": "resolved"
+    },
+    "buildUpPlaySpeedClass": {
+     "role": "category",
+     "name": "buildUpPlaySpeedClass",
+     "description": "Categorical banding of build-up speed: Slow / Balanced / Fast.",
+     "status": "resolved"
+    },
+    "chanceCreationCrossing": {
+     "role": "foreign_key",
+     "name": "chanceCreationCrossing",
+     "description": "Numeric rating (20-80) of how much the team uses crosses to create chances; higher values correspond to the Lots class.",
+     "status": "resolved"
+    },
+    "chanceCreationCrossingClass": {
+     "role": "category",
+     "name": "chanceCreationCrossingClass",
+     "description": "Categorical banding of crossing in chance creation: Little / Normal / Lots.",
+     "status": "resolved"
+    },
+    "chanceCreationPassing": {
+     "role": "foreign_key",
+     "name": "chanceCreationPassing",
+     "description": "Numeric rating (21-80) of the risk level of passing in chance creation; higher values correspond to the Risky class.",
+     "status": "resolved"
+    },
+    "chanceCreationPassingClass": {
+     "role": "category",
+     "name": "chanceCreationPassingClass",
+     "description": "Categorical banding of chance-creation passing: Safe / Normal / Risky.",
+     "status": "resolved"
+    },
+    "chanceCreationPositioningClass": {
+     "role": "category",
+     "name": "chanceCreationPositioningClass",
+     "description": "Chance-creation positioning style: Organised or Free Form.",
+     "status": "resolved"
+    },
+    "chanceCreationShooting": {
+     "role": "foreign_key",
+     "name": "chanceCreationShooting",
+     "description": "Numeric rating (22-80) of how much the team shoots when creating chances; higher values correspond to the Lots class.",
+     "status": "resolved"
+    },
+    "chanceCreationShootingClass": {
+     "role": "category",
+     "name": "chanceCreationShootingClass",
+     "description": "Categorical banding of shooting in chance creation: Little / Normal / Lots.",
+     "status": "resolved"
+    },
+    "date": {
+     "role": "foreign_key",
+     "name": "date",
+     "description": "Date on which this set of team attributes was recorded. Only 6 distinct dates (roughly twice a year, Feb and Sep, 2010-2015), i.e. periodic snapshots of each team's tactical ratings.",
+     "status": "resolved"
+    },
+    "defenceAggression": {
+     "role": "foreign_key",
+     "name": "defenceAggression",
+     "description": "Numeric rating (24-72) of defensive aggression; higher values correspond to the Press class.",
+     "status": "resolved"
+    },
+    "defenceAggressionClass": {
+     "role": "category",
+     "name": "defenceAggressionClass",
+     "description": "Categorical banding of defensive aggression: Contain / Press / Double (team aggression).",
+     "status": "resolved"
+    },
+    "defenceDefenderLineClass": {
+     "role": "category",
+     "name": "defenceDefenderLineClass",
+     "description": "Defensive line behaviour: Cover or Offside Trap.",
+     "status": "resolved"
+    },
+    "defencePressure": {
+     "role": "foreign_key",
+     "name": "defencePressure",
+     "description": "Numeric rating (23-72) of how high up the pitch the team applies defensive pressure; higher values correspond to the High class.",
+     "status": "resolved"
+    },
+    "defencePressureClass": {
+     "role": "category",
+     "name": "defencePressureClass",
+     "description": "Categorical banding of defensive pressure: Deep / Medium / High.",
+     "status": "resolved"
+    },
+    "defenceTeamWidth": {
+     "role": "foreign_key",
+     "name": "defenceTeamWidth",
+     "description": "Numeric rating (29-73) of the team's defensive width; higher values correspond to the Wide class. The listed joins to Match.id / Player.id / Player_Attributes.id are spurious statistical matches, not real relationships.",
+     "status": "resolved"
+    },
+    "defenceTeamWidthClass": {
+     "role": "category",
+     "name": "defenceTeamWidthClass",
+     "description": "Categorical banding of defensive team width: Narrow / Normal / Wide.",
+     "status": "resolved"
+    },
+    "id": {
+     "role": "foreign_key",
+     "name": "id",
+     "description": "Surrogate primary key of the team-attributes snapshot row.",
+     "status": "resolved"
+    },
+    "team_api_id": {
+     "role": "foreign_key",
+     "name": "team_api_id",
+     "description": "Identifier of the team this attribute snapshot belongs to, matching Team.team_api_id in the Team table (288 distinct teams, ~6 snapshots each). The listed joins to Player/Match ids are spurious numeric coincidences.",
+     "status": "resolved"
+    },
+    "team_fifa_api_id": {
+     "role": "foreign_key",
+     "name": "team_fifa_api_id",
+     "description": "FIFA (video-game / EA) identifier of the same team, matching Team.team_fifa_api_id. The listed join to Player_Attributes.id is spurious.",
+     "status": "resolved"
+    }
+   },
+   "ok": true,
+   "reasoning_effort": "low"
+  }
+ }
+}

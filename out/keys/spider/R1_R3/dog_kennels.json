@@ -1,0 +1,865 @@
+{
+ "accept": 70,
+ "db_id": "dog_kennels",
+ "rules": [
+  "R1",
+  "R3"
+ ],
+ "tables": {
+  "Breeds": {
+   "candidate_keys": [
+    {
+     "column": "breed_code",
+     "score": 89.0
+    }
+   ],
+   "columns": {
+    "breed_code": {
+     "base": 69.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "Dogs.breed_code"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 89.0
+    },
+    "breed_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    }
+   },
+   "evidence": "score",
+   "primary_key": "breed_code"
+  },
+  "Charges": {
+   "candidate_keys": [
+    {
+     "column": "charge_id",
+     "score": 120.0
+    }
+   ],
+   "columns": {
+    "charge_amount": {
+     "base": 65.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 22.75
+    },
+    "charge_id": {
+     "base": 100.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 120.0
+    },
+    "charge_type": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    }
+   },
+   "evidence": "score",
+   "primary_key": "charge_id"
+  },
+  "Dogs": {
+   "candidate_keys": [
+    {
+     "column": "dog_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "abandoned_yn": {
+     "rejected": "mostly empty or zero"
+    },
+    "age": {
+     "base": 22.519,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.07037037037037035,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.5333333333333333
+     },
+     "phi": 0.55,
+     "score": 12.385
+    },
+    "breed_code": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "date_adopted": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "date_arrived": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "date_departed": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "date_of_birth": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "dog_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Charges.charge_id",
+       "Dogs.owner_id",
+       "Dogs.age",
+       "Dogs.weight",
+       "Owners.owner_id",
+       "Professionals.professional_id",
+       "Treatments.treatment_id",
+       "Treatments.dog_id",
+       "Treatments.professional_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "gender": {
+     "rejected": "mostly empty or zero"
+    },
+    "name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "owner_id": {
+     "base": 66.667,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.6333333333333334,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8
+     },
+     "phi": 0.85,
+     "score": 22.667
+    },
+    "size_code": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 10.45
+    },
+    "weight": {
+     "base": 74.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 20.35
+    }
+   },
+   "evidence": "score",
+   "primary_key": "dog_id"
+  },
+  "Owners": {
+   "candidate_keys": [
+    {
+     "column": "owner_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "cell_number": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "city": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "email_address": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "first_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    },
+    "home_phone": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "last_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 20.65
+    },
+    "owner_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Charges.charge_id",
+       "Dogs.dog_id",
+       "Dogs.owner_id",
+       "Dogs.age",
+       "Dogs.weight",
+       "Professionals.professional_id",
+       "Treatments.treatment_id",
+       "Treatments.dog_id",
+       "Treatments.professional_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "state": {
+     "base": 54.741,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.914814814814815,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.9333333333333333
+     },
+     "phi": 0.55,
+     "score": 30.107
+    },
+    "street": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "zip_code": {
+     "base": 69.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 18.975
+    }
+   },
+   "evidence": "score",
+   "primary_key": "owner_id"
+  },
+  "Professionals": {
+   "candidate_keys": [
+    {
+     "column": "professional_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "cell_number": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "city": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "email_address": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "first_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.7,
+     "score": 20.65
+    },
+    "home_phone": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "last_name": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "professional_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Charges.charge_id",
+       "Dogs.dog_id",
+       "Dogs.owner_id",
+       "Dogs.age",
+       "Dogs.weight",
+       "Owners.owner_id",
+       "Treatments.treatment_id",
+       "Treatments.dog_id",
+       "Treatments.professional_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "role_code": {
+     "base": 9.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.13333333333333333
+     },
+     "phi": 0.85,
+     "score": 7.65
+    },
+    "state": {
+     "base": 47.704,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.7740740740740741,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.8666666666666667
+     },
+     "phi": 0.55,
+     "score": 26.237
+    },
+    "street": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 16.225
+    },
+    "zip_code": {
+     "base": 69.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 18.975
+    }
+   },
+   "evidence": "score",
+   "primary_key": "professional_id"
+  },
+  "Sizes": {
+   "candidate_keys": [
+    {
+     "column": "size_code",
+     "score": 89.0
+    }
+   ],
+   "columns": {
+    "size_code": {
+     "base": 69.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "Dogs.size_code"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 89.0
+    },
+    "size_description": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    }
+   },
+   "evidence": "score",
+   "primary_key": "size_code"
+  },
+  "Treatment_Types": {
+   "candidate_keys": [
+    {
+     "column": "treatment_type_code",
+     "score": 89.0
+    }
+   ],
+   "columns": {
+    "treatment_type_code": {
+     "base": 69.0,
+     "boost": 20,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "referenced_by": [
+       "Treatments.treatment_type_code"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 89.0
+    },
+    "treatment_type_description": {
+     "base": 59.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.85,
+     "score": 25.075
+    }
+   },
+   "evidence": "score",
+   "primary_key": "treatment_type_code"
+  },
+  "Treatments": {
+   "candidate_keys": [
+    {
+     "column": "treatment_id",
+     "score": 140.0
+    }
+   ],
+   "columns": {
+    "cost_of_treatment": {
+     "base": 65.0,
+     "boost": 0,
+     "multipliers": {
+      "atypical_name": 0.5
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 0.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 1.0
+     },
+     "phi": 0.55,
+     "score": 17.875
+    },
+    "date_of_treatment": {
+     "rejected": "blacklist: date/time (date)"
+    },
+    "dog_id": {
+     "base": 45.556,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.21111111111111108,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.6
+     },
+     "phi": 0.85,
+     "score": 15.489
+    },
+    "professional_id": {
+     "base": 38.519,
+     "boost": 0,
+     "multipliers": {
+      "fk_likelihood": 0.4
+     },
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 0.07037037037037035,
+      "name": 1.0,
+      "pattern": 0.0,
+      "pattern_kind": "none",
+      "u": 0.5333333333333333
+     },
+     "phi": 0.7,
+     "score": 10.785
+    },
+    "treatment_id": {
+     "base": 100.0,
+     "boost": 40,
+     "multipliers": {},
+     "parts": {
+      "dtype": 1.0,
+      "f_u": 1.0,
+      "name": 1.0,
+      "pattern": 1.0,
+      "pattern_kind": "sequential_int",
+      "referenced_by": [
+       "Charges.charge_id",
+       "Dogs.dog_id",
+       "Dogs.owner_id",
+       "Dogs.age",
+       "Dogs.weight",
+       "Owners.owner_id",
+       "Professionals.professional_id",
+       "Treatments.dog_id",
+       "Treatments.professional_id"
+      ],
+      "u": 1.0
+     },
+     "phi": 1.0,
+     "score": 140.0
+    },
+    "treatment_type_code": {
+     "base": 19.0,
+     "boost": 0,
+     "multipliers": {},
+     "parts": {
+      "dtype": 0.6,
+      "f_u": 0.0,
+      "name": 0.0,
+      "pattern": 0.6666666666666666,
+      "pattern_kind": "natural_code",
+      "u": 0.2
+     },
+     "phi": 0.55,
+     "score": 10.45
+    }
+   },
+   "evidence": "score",
+   "primary_key": "treatment_id"
+  }
+ },
+ "use_names": true
+}
