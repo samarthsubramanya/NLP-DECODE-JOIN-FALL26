@@ -9,8 +9,6 @@ A self-join counts as one table.
 
 Usage (presets fill in the defaults for our five datasets; any flag overrides them):
     python src/filter_for_multitable_datasets.py --preset bird   --out out/filtered/bird_dev
-    python src/filter_for_multitable_datasets.py --preset bird_stripped   --out out/filtered/bird_stripped
-    python src/filter_for_multitable_datasets.py --preset bird_obfuscated --out out/filtered/bird_obfuscated
     python src/filter_for_multitable_datasets.py --preset spider --out out/filtered/spider_dev
     python src/filter_for_multitable_datasets.py --preset beaver --out out/filtered/beaver
     python src/filter_for_multitable_datasets.py --preset kaggledbqa \
@@ -34,8 +32,6 @@ Usage (presets fill in the defaults for our five datasets; any flag overrides th
     none           no check, every table name in the SQL counts
 
 --db-file is a file name in the HF repo (opened through duckdb_driver.open_db) or a local path.
---questions-db-file reads duckdb:/stored: questions from another file (the stripped and
-obfuscated BIRD files have no bird_metadata, so their presets read dev.json from the documented one).
 --mapping is the dataset's schema_mapping.csv; both formats are understood
 (source_path,duckdb_schema for Spider/KaggleDBQA/FIBEN, source_database,target_schema
 for BIRD/BEAVER). Without a mapping the database id is used as the schema name.
@@ -68,20 +64,6 @@ PRESETS = {
         questions=["stored:bird_metadata/dev.json"], sql_field="SQL", db_field="db_id",
         question_field="question", id_field="question_id", dialect="sqlite",
     ),
-    # the same data without bird_metadata or declared keys; dev.json is read from the documented file
-    "bird_stripped": dict(
-        db_file="decode_join_bird_dev_stripped.duckdb", questions_db_file="decode_join_bird_dev.duckdb",
-        mapping="data/bird/schema_mapping.csv",
-        questions=["stored:bird_metadata/dev.json"], sql_field="SQL", db_field="db_id",
-        question_field="question", id_field="question_id", dialect="sqlite",
-    ),
-    # stripped, and columns renamed col_NNN by position (table names kept, so the SQL still resolves)
-    "bird_obfuscated": dict(
-        db_file="bird_dev_obfuscated.duckdb", questions_db_file="decode_join_bird_dev.duckdb",
-        mapping="data/bird/schema_mapping.csv",
-        questions=["stored:bird_metadata/dev.json"], sql_field="SQL", db_field="db_id",
-        question_field="question", id_field="question_id", dialect="sqlite",
-    ),
     "spider": dict(
         db_file="decode_join.duckdb", mapping="data/spider/schema_mapping.csv",
         questions=["stored:spider_metadata/dev.json"], sql_field="query", db_field="db_id",
@@ -107,7 +89,7 @@ PRESETS = {
 }
 
 DEFAULTS = dict(
-    db_file=None, questions_db_file=None, mapping=None, questions=None, sql_field="sql", db_field=None,
+    db_file=None, mapping=None, questions=None, sql_field="sql", db_field=None,
     question_field="question", id_field=None, gold_tables_field=None, dialect="",
     default_db=None, schema_source="duckdb", min_tables=2,
 )
@@ -233,7 +215,6 @@ def annotated_tables(value):
 # -------------------------------------------------------------------- main
 def run(a):
     con = connect(a.db_file) if a.db_file else None
-    questions_con = connect(a.questions_db_file) if a.questions_db_file else con
     if a.schema_source == "duckdb" and con is None:
         raise SystemExit("--schema-source duckdb needs --db-file")
     mapping = a.mapping
@@ -247,7 +228,7 @@ def run(a):
     per_db = defaultdict(lambda: dict(questions=0, gold_tables=set()))
 
     for source in a.questions:
-        for index, row in enumerate(load_questions(source, questions_con)):
+        for index, row in enumerate(load_questions(source, con)):
             db_id = row.get(a.db_field) if a.db_field else None
             db_id = db_id if db_id is not None else a.default_db
             qid = row.get(a.id_field) if a.id_field else None
@@ -361,7 +342,6 @@ def main():
     p.add_argument("--default-db", help="database id for rows without --db-field (single-database datasets)")
     p.add_argument("--dialect", help="sqlglot dialect of the gold SQL: sqlite, mysql, postgres, ...")
     p.add_argument("--db-file")
-    p.add_argument("--questions-db-file", help="DuckDB file for duckdb:/stored: questions (default: --db-file)")
     p.add_argument("--mapping")
     p.add_argument("--schema-source")
     p.add_argument("--min-tables", type=int)

@@ -1,1 +1,0 @@
-{"model": "glm-5-3", "text": "{\"decision\": \"reject\", \"reason\": \"badges.UserId semantically references users (postHistory even has its own UserId column for that), while postHistory.Id is a dense sequential primary key for revision events whose 1..386848 range mechanically covers ~90% of any small-integer column, so the 0.9 containment is exactly what chance predicts.\"}"}
