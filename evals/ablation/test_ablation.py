@@ -127,3 +127,9 @@ def test_from_stage2b_copies_the_chosen_graph_without_llm(tmp_path, monkeypatch)
     variants.from_stage2b(["--dataset", "toy", "--joins-run", "r2b", "--graph", "direct", "--run", "x"])
     out = json.loads((tmp_path / "out/descriptions/toy/x/joins/db.json").read_text())
     assert out["graphs"]["llm"] == [1] and out["keys_run"] == "k"
+
+
+def test_read_jsonl_skips_progress_lines(tmp_path):
+    p = tmp_path / "r.jsonl"
+    p.write_text('fiben/x/bge: 374 nodes -> /tmp\n{"run": "a"}\nBatches: 100%\n')
+    assert table.read_jsonl(p) == [{"run": "a"}]

@@ -24,7 +24,8 @@ COLS = ["Config", "Edge P", "Edge R", "Edge F1", "Edges", "False pos.", "Δ F1",
 
 
 def read_jsonl(path):
-    return [json.loads(line) for line in Path(path).read_text().splitlines() if line.strip()]
+    """JSON lines only: score_joingr.py also prints progress lines, which `tee` saves alongside."""
+    return [json.loads(line) for line in Path(path).read_text().splitlines() if line.lstrip().startswith("{")]
 
 
 def fp(j):

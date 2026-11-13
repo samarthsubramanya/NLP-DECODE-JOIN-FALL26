@@ -75,11 +75,39 @@ A2 retrieval needs its export. Walk = JoinGR heuristic walk.
   reports auto-accept F1 −.511 on BIRD obfuscated without the distribution term. A1 here repeats it through the LLM
   and JoinGR so the effect on retrieval is measured, not estimated.
 
+## Result 1 — FIBEN stripped, no LLM (2026-11-12)
+
+Stage 1–2b rerun locally; FULL reproduces the saved `ddb` numbers exactly (59 edges, 25 false, F1 .635).
+Graphs exported with `--no-descriptions` (zero LLM calls); retrieval = bge, 300 questions.
+
+| Config | Edge P | Edge R | Edge F1 | Edges | False pos. | Walk PR@15 | Merged PR@15 | Col R@15 |
+|---|---|---|---|---|---|---|---|---|
+| FULL, band accepted (no LLM) | .576 | .708 | .635 | 59 | 25 | .847 | .847 | .369 |
+| FULL, heuristics only | .750 | .312 | .441 | 20 | 5 | .277 | .380 | .370 |
+| −QuantileMD, band accepted | .434 | .750 | .550 | 83 | 47 | .837 | .823 | .369 |
+| −QuantileMD, heuristics only | .567 | .354 | .436 | 30 | 13 | .730 | .820 | .369 |
+
+For reference, the team's FULL run with LLM verification and descriptions (`ddb_full`) scores .850 walk PR@15.
+
+- **QuantileMD cuts false joins nearly in half** (47 → 25) when the band is accepted, but the walk moves only .010:
+  on FIBEN, JoinGR's walk tolerates extra wrong edges.
+- **Without a verifier, QuantileMD costs retrieval.** Heuristics-only walk PR@15 is .277 with it and .730 without.
+  Two true joins explain it, both to hub tables many questions pass through:
+  - `LISTEDSECURITY.HASLASTTRADEDVALUE → MONETARYAMOUNT.MONETARYAMOUNTID`: distribution similarity 0.0, so the
+    low-distribution cap holds it in the band (61.5). A child column that references one slice of a shared ID range
+    looks "different" by quantiles even when the join is real.
+  - `CORPORATION.ISDOMICILEDIN → COUNTRY.COUNTRYID`: distribution 0.9 (a good match), yet the score falls from
+    70.6 to 69.3, just under the auto-accept line (70). A threshold-edge effect, not a mismatch.
+- **Implication:** QuantileMD is a precision filter that relies on a downstream check (LLM or band acceptance) to
+  recover the true joins it demotes. Shared-ID-range ("hub") targets are its main false-negative pattern.
+- **Open:** A1 with LLM verification (needs Voyager) tests whether the LLM recovers those two joins.
+
 ## Run the full ablation
 
 ```bash
 python -m pytest evals/ablation -q                  # no data, no LLM
 bash evals/ablation/run_ablation.sh fiben_stripped  # needs the team's ddb runs, the DuckDB files, VOYAGER_API_KEY
+# no-LLM path: variants.py from-stage2b + export_joingr.py --no-descriptions (see Result 1)
 bash evals/ablation/run_ablation.sh bird_stripped
 ```
 
