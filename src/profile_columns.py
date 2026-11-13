@@ -59,6 +59,8 @@ DEFAULTS = {
     "overlap_min_distinct": 5,      # partial_overlaps: columns with fewer distinct values are skipped
     "overlap_min_shared": 10,       # ... and a pair needs this many shared values
     "overlap_min_share": 0.05,      # ... and this share of the smaller column's values
+    "dense_pick": 5,                # each table's N densest key-family columns may be keys despite nulls,
+                                    # if unique among their non-null values; 0 = off
 }
 
 
@@ -224,10 +226,28 @@ def _plain(v):
     return v if v is None or isinstance(v, (int, float, str, bool)) else str(v)
 
 
+def key_family(prof):
+    return prof["family"] in KEY_FAMILIES and prof["role"] not in NOT_KEY_ROLES
+
+
 def key_like(prof):
-    """Could be a key: rows, no nulls, every value distinct, not a boolean/date/float/free text."""
-    return (prof["rows"] > 0 and prof["nulls"] == 0 and prof["distinct"] == prof["rows"]
-            and prof["family"] in KEY_FAMILIES and prof["role"] not in NOT_KEY_ROLES)
+    """Could be a key: rows, every value distinct, not a boolean/date/float/free text. No nulls, unless
+    mark_dense_picks chose the column, in which case it only has to be unique among its non-null values."""
+    non_null = prof["rows"] - prof["nulls"]
+    unique = prof["distinct"] == (non_null if prof.get("dense_pick") else prof["rows"])
+    return non_null > 0 and (prof["nulls"] == 0 or prof.get("dense_pick", False)) and unique and key_family(prof)
+
+
+def mark_dense_picks(table, n):
+    """Flag every table's n densest key-family columns (fewest nulls; ties: more distinct values, then position)
+    with "dense_pick": True. Such a column may be a key with nulls, if unique among its non-null values."""
+    cols = table["columns"].values()
+    if not n or not table["rows"]:
+        return
+    ranked = sorted((p for p in cols if key_family(p) and p["nulls"] < p["rows"]),
+                    key=lambda p: (p["nulls"], -p["distinct"], p["position"]))
+    for p in ranked[:n]:
+        p["dense_pick"] = True
 
 
 def quantile_emd(counts):
@@ -368,6 +388,7 @@ def profile_database(con, schema, tables, cfg=DEFAULTS, db_id=None, log=print):
             "columns": {c["name"]: profile_column(con, schema, table, c, cfg) for c in cols},
             "sample_rows": sample_rows(con, schema, table, cfg["sample_rows"], cfg["seed"]),
         }
+        mark_dense_picks(out[table], cfg["dense_pick"])
     pairs = containment(con, schema, out, cfg)
     n_cols = sum(len(t["columns"]) for t in out.values())
     log(f"  profile {db_id or schema}: {len(out)} tables, {n_cols} columns, {len(pairs)} containment pairs, "

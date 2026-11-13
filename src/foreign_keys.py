@@ -117,16 +117,17 @@ DEFAULTS = {
     "orphan_penalty": 0.7,
     "incompatible_penalty": 0.5,
     "fan_out": [1.0, 0.85, 0.75, 0.65],   # psi for 1, 2, 3, 4+ kept targets
-    "min_source_distinct": 2,
+    "min_source_distinct": None,      # prefilter off (null_check); 2 = the old "fewer than 2 distinct" rule
     "long_text_len": 64,
     "never_source_roles": ["boolean", "free_text", "float"],
     "self_refs": False,
-    "pk_source_max_density": 0.5,     # G8 spares primary keys this sparse (int only); None: G8 absolute
+    "pk_source_max_density": None,    # G8 absolute (null_check); 0.5 spares sparse int primary keys
     "min_range_span": None,           # G9, int pairs; None: off (the soft distribution term replaced it)
     "dist_no_accept_below": 0.3,      # d below this: final score capped at accept + delta - 1; None: no cap
     "g4_ratio": None,                 # G4 off: source rows < ratio * target rows ...
     "g4_multiplier": None,            # ... multiplies the score by this
     "repair_isolated": 0,             # partner tables per isolated table; 0: off
+    "g1": False,                      # G1 off (null_check): targets rejected by 2a may still be targets
     "keys_run": "frozen",
 }
 
@@ -210,13 +211,13 @@ def gate(pair, profile, keys, cfg, use_names):
     if keys["tables"][st]["primary_key"] == sc and not sparse_key(a, cfg):
         return "G8: the source is its table's dense primary key"
     rejected = keys["tables"][tt]["columns"][tc].get("rejected")
-    if rejected:
+    if rejected and cfg["g1"]:
         return f"G1: target not eligible ({rejected})"
     if use_names and tc.lower() == "rowguid":
         return "G3: rowguid target"
     if a["role"] in cfg["never_source_roles"]:
         return f"prefilter: source role {a['role']}"
-    if a["distinct"] < cfg["min_source_distinct"]:
+    if cfg["min_source_distinct"] is not None and a["distinct"] < cfg["min_source_distinct"]:
         return "prefilter: fewer than 2 distinct values"
     if (a.get("text") or {}).get("avg_len", 0) > cfg["long_text_len"]:
         return f"prefilter: average length over {cfg['long_text_len']}"
@@ -456,7 +457,7 @@ def add_args(ap):
 def config_from(args):
     return {**DEFAULTS, "accept": args.accept, "delta": args.delta, "containment_min": args.containment_min,
             "max_targets": args.max_targets, "self_refs": args.self_refs, "keys_run": args.keys_run,
-            "pk_source_max_density": None if args.pk_source_max_density < 0 else args.pk_source_max_density,
+            "pk_source_max_density": None if args.pk_source_max_density is None or args.pk_source_max_density < 0 else args.pk_source_max_density,
             "min_range_span": None if args.min_range_span is None or args.min_range_span < 0 else args.min_range_span,
             "dist_no_accept_below": args.dist_no_accept_below, "repair_isolated": args.repair_isolated,
             "g4_ratio": args.g4_ratio, "g4_multiplier": args.g4_multiplier}

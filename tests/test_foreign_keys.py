@@ -68,11 +68,12 @@ def test_g8_primary_key_is_never_a_source():
 
 
 def test_g8_spares_a_sparse_integer_key_unless_absolute():
-    """A subclass table reusing its parent's key: scattered values (density 0.01) pass G8; numbered 1..n do not."""
+    """A subclass table reusing its parent's key: scattered values (density 0.01) pass G8; numbered 1..n do not.
+    null_check makes G8 absolute by default, so the exception is tested with it switched back on."""
     for density, gated in ((0.01, False), (0.5, False), (0.9, True)):
         profile, keys = shop([pair(("orders", "order_id"), ("customers", "customer_id"), source_unique=True)])
         profile["tables"]["orders"]["columns"]["order_id"]["numeric"] = {"density": density}
-        r = one(run(profile, keys), ("orders", "order_id"), ("customers", "customer_id"))
+        r = one(run(profile, keys, pk_source_max_density=0.5), ("orders", "order_id"), ("customers", "customer_id"))
         assert (r["decision"] == "rejected_gate" and r["reason"].startswith("G8")) == gated, density
     profile["tables"]["orders"]["columns"]["order_id"]["numeric"] = {"density": 0.01}
     r = one(run(profile, keys, pk_source_max_density=None), ("orders", "order_id"), ("customers", "customer_id"))
@@ -83,8 +84,10 @@ def test_g1_target_rejected_by_2a_is_gated_out():
     profile, keys = shop([pair(("customers", "region_id"), ("orders", "customer_id"))])
     profile["tables"]["customers"]["columns"]["region_id"] = col("region_id", position=1)
     keys["tables"]["customers"]["columns"]["region_id"] = {"score": 10.0}
-    r = one(run(profile, keys), ("customers", "region_id"), ("orders", "customer_id"))
+    r = one(run(profile, keys, g1=True), ("customers", "region_id"), ("orders", "customer_id"))
     assert r["decision"] == "rejected_gate" and r["reason"].startswith("G1")
+    r = one(run(profile, keys), ("customers", "region_id"), ("orders", "customer_id"))   # null_check: G1 off
+    assert not r.get("reason", "").startswith("G1")
 
 
 def test_same_table_excluded_unless_self_refs():
@@ -108,7 +111,9 @@ def test_prefilters():
     assert "role boolean" in one(run(profile, keys), ("orders", "customer_id"), ("customers", "customer_id"))["reason"]
     profile, keys = shop()
     profile["tables"]["orders"]["columns"]["customer_id"]["distinct"] = 1
-    assert "fewer than 2" in one(run(profile, keys), ("orders", "customer_id"), ("customers", "customer_id"))["reason"]
+    assert "fewer than 2" in one(run(profile, keys, min_source_distinct=2), ("orders", "customer_id"),
+                                 ("customers", "customer_id"))["reason"]
+    assert one(run(profile, keys), ("orders", "customer_id"), ("customers", "customer_id"))["decision"] != "rejected_gate"
     profile, keys = shop()
     profile["tables"]["orders"]["columns"]["customer_id"]["text"] = {"avg_len": 80}
     assert "average length" in one(run(profile, keys), ("orders", "customer_id"), ("customers", "customer_id"))["reason"]
@@ -313,3 +318,20 @@ def test_repair_adds_band_records_for_isolated_tables_only():
     (r,) = out["candidates"]                                                            # dense ints left out
     assert r["decision"] == "band" and r["partial_overlap"] and r["source"]["table"] == "two"
     assert r["containment"] == 0.25 and len(out["graphs"]["stats"]) == 1 and not out["graphs"]["direct"]
+
+
+def test_dense_picks_are_each_tables_densest_key_columns():
+    """null_check: a table's N densest key-family columns may be keys, unique among their non-null values."""
+    from profile_columns import key_like, mark_dense_picks
+    def c(name, nulls, distinct, rows=10, position=0, role="int"):
+        return col(name, position=position, nulls=nulls, distinct=distinct, rows=rows, role=role)
+    t = table(10, a=c("a", 1, 9), b=c("b", 2, 7, position=1), e=c("e", 5, 5, position=2),
+              f=c("f", 0, 3, position=3, role="date"), g=c("g", 10, 0, position=4), h=c("h", 0, 10, position=5))
+    mark_dense_picks(t, 2)
+    picked = {n for n, p in t["columns"].items() if p.get("dense_pick")}
+    assert picked == {"h", "a"}                              # fewest nulls; the date and all-null columns never count
+    assert key_like(t["columns"]["a"]) and key_like(t["columns"]["h"])
+    assert not key_like(t["columns"]["e"])                   # unique among non-nulls, but not picked
+    t = table(10, b=c("b", 2, 7))
+    mark_dense_picks(t, 5)
+    assert not key_like(t["columns"]["b"])                   # picked, but repeats a value among non-nulls

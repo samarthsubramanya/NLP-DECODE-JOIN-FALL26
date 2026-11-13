@@ -41,7 +41,9 @@ Choices the paper leaves open (all in DEFAULTS, change them there or on the CLI)
   - natural key code = short code-like strings: profile role "code", or a VARCHAR whose
     values are all upper/digit codes without spaces up to code_max_len (e.g. BIRD CDSCode).
   - DuckDB stores SQLite TEXT as VARCHAR, so the TEXT score (0.2) only fires for BLOB.
-  - The null penalty is unreachable while reject_nulls is on (any null is a hard reject).
+  - null_check: a column with nulls is rejected unless Stage 1 marked it a dense pick (a table where every
+    column has a null keeps its 5 densest); u counts non-null rows, and the x0.7 null penalty applies.
+  - null_check: the "mostly empty or zero" rejection is off (empty_or_zero_max None).
   - The blacklist is matched on name tokens (snake_case/camelCase parts) and skipped for
     names that match the PK pattern, so payment_id or date_id are not rejected.
   - l_FK comes from names: 1.0 when the name minus its id suffix names another table
@@ -79,7 +81,7 @@ DEFAULTS = {
     "u_full": 0.95,
     "pk_name_pattern": r"[Ii][Dd]$",
     "reject_nulls": True,
-    "empty_or_zero_max": 0.5,         # "most values are empty or zero"
+    "empty_or_zero_max": None,        # "most values are empty or zero"; None: off (null_check)
     "seq_min_density": 0.9,
     "code_max_len": 20,
     "null_penalty": 0.7,
@@ -214,9 +216,9 @@ def referenced(profile, cfg):
 def hard_reject(prof, cfg, use_names):
     if prof["rows"] == 0:
         return "empty table"
-    if cfg["reject_nulls"] and prof["nulls"]:
+    if cfg["reject_nulls"] and prof["nulls"] and not prof.get("dense_pick"):
         return "has nulls"
-    if prof["placeholder_rate"] + prof["zero_rate"] > cfg["empty_or_zero_max"]:
+    if cfg["empty_or_zero_max"] is not None and prof["placeholder_rate"] + prof["zero_rate"] > cfg["empty_or_zero_max"]:
         return "mostly empty or zero"
     if use_names and not key_like_name(prof["name"], cfg):
         words = set(tokens(prof["name"]))
@@ -236,7 +238,7 @@ def score_column(prof, table, other_tables, cfg, use_names, referenced_by=()):
         total = sum(w.values())
         w = {k: v + spill * v / total for k, v in w.items()}
 
-    u = prof["distinct"] / prof["rows"]
+    u = prof["distinct"] / max(1, prof["rows"] - prof["nulls"])   # unique among non-null values
     p_points, p_kind = pattern_score(prof, cfg)
     parts = {"u": u, "f_u": f_u(u, cfg), "dtype": dtype_score(prof["declared_type"]),
              "pattern": p_points / 15, "pattern_kind": p_kind}
@@ -251,7 +253,7 @@ def score_column(prof, table, other_tables, cfg, use_names, referenced_by=()):
     mult = {}
     if prof["nulls"]:
         mult["nulls"] = cfg["null_penalty"]
-    boost = 0
+    boost, boost_parts = 0, {}
     if use_names:
         stem = id_stem(prof["name"], cfg)
         own = table_forms(table)
@@ -264,9 +266,10 @@ def score_column(prof, table, other_tables, cfg, use_names, referenced_by=()):
             mult["fk_likelihood"] = 1 - cfg["fk_penalty"] * l_fk
         surrogate = norm(prof["name"]) == "id" or (parts["name"] and stem in own)
         if surrogate and u >= cfg["u_full"] and parts["dtype"] >= 0.9:
-            boost = cfg["surrogate_boost"]
+            boost = boost_parts["surrogate"] = cfg["surrogate_boost"]
     if is_referenced:
         boost += cfg["ref_bonus"]
+        boost_parts["referenced"] = cfg["ref_bonus"]
 
     phis = cfg["position_multiplier"]
     phi = phis[min(prof["position"], len(phis) - 1)]
@@ -274,8 +277,8 @@ def score_column(prof, table, other_tables, cfg, use_names, referenced_by=()):
     for m in mult.values():
         s *= m
     s = (s + boost) * phi
-    return {"score": round(s, 3), "base": round(base, 3), "parts": parts,
-            "multipliers": mult, "boost": boost, "phi": phi}
+    return {"score": round(s, 3), "base": round(base, 3), "parts": parts, "weights": w,
+            "multipliers": mult, "boost": boost, "boost_parts": boost_parts, "phi": phi}
 
 
 def score_database(profile, cfg=DEFAULTS):
