@@ -17,7 +17,12 @@ Two commands:
 
       python evals/ablation/variants.py swap-graph --dataset fiben_stripped --from-run ddb_low --graph stats --run abl_nollm
 
-Both refuse to write into a folder that already exists, so no existing run can be overwritten.
+  from-stage2b  No-LLM path: put a Stage 2b run's graph (stats or direct) into a Stage-3-shaped folder so the
+              unchanged export_joingr.py --no-descriptions exports it with ZERO LLM calls (no descriptions, no refine).
+
+      python evals/ablation/variants.py from-stage2b --dataset fiben_stripped --joins-run abl_noqmd --graph stats --run abl_noqmd_nollm
+
+All refuse to write into a folder that already exists, so no existing run can be overwritten.
 """
 import argparse
 import json
@@ -99,7 +104,29 @@ def swap_graph(argv):
               f"full had {len(out['graphs']['llm_full'])})")
 
 
+def from_stage2b(argv):
+    ap = argparse.ArgumentParser(prog="variants.py from-stage2b")
+    ap.add_argument("--dataset", required=True)
+    ap.add_argument("--joins-run", required=True, help="Stage 2b run under out/joins/<dataset>/")
+    ap.add_argument("--graph", required=True, choices=["stats", "direct"])
+    ap.add_argument("--run", required=True, help="new run name under out/descriptions/<dataset>/")
+    args = ap.parse_args(argv)
+    src = ROOT / "out" / "joins" / args.dataset / args.joins_run
+    if not src.is_dir():
+        sys.exit(f"{src.relative_to(ROOT)} is missing; run Stage 2b first")
+    dst = fresh_dir(ROOT / "out" / "descriptions" / args.dataset / args.run)
+    (dst / "joins").mkdir()
+    for f in sorted(src.glob("*.json")):
+        joins = json.loads(f.read_text())
+        joins["graphs"]["llm"] = joins["graphs"][args.graph]
+        joins["ablation"] = f"stage2b graph={args.graph}, no LLM"
+        (dst / "joins" / f.name).write_text(json.dumps(joins, indent=1, sort_keys=True))
+        print(f"  {f.stem}: graphs.llm <- Stage 2b graphs.{args.graph} ({len(joins['graphs']['llm'])} edges)")
+
+
+COMMANDS = {"no-qmd": no_qmd, "swap-graph": swap_graph, "from-stage2b": from_stage2b}
+
 if __name__ == "__main__":
-    if len(sys.argv) < 2 or sys.argv[1] not in ("no-qmd", "swap-graph"):
+    if len(sys.argv) < 2 or sys.argv[1] not in COMMANDS:
         sys.exit(__doc__)
-    {"no-qmd": no_qmd, "swap-graph": swap_graph}[sys.argv[1]](sys.argv[2:])
+    COMMANDS[sys.argv[1]](sys.argv[2:])

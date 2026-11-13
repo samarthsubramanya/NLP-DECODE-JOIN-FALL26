@@ -117,3 +117,13 @@ def test_render_shows_change_from_full():
 def test_committed_table_matches_the_saved_ddb_results():
     rows = table.committed("bird_stripped")
     assert table.fp(rows[0]["joins"]) == 19 and table.fp(rows[1]["joins"]) == 99
+
+
+def test_from_stage2b_copies_the_chosen_graph_without_llm(tmp_path, monkeypatch):
+    monkeypatch.setattr(variants, "ROOT", tmp_path)
+    src = tmp_path / "out/joins/toy/r2b"
+    src.mkdir(parents=True)
+    (src / "db.json").write_text(json.dumps({"graphs": {"direct": [1], "stats": [1, 2]}, "keys_run": "k"}))
+    variants.from_stage2b(["--dataset", "toy", "--joins-run", "r2b", "--graph", "direct", "--run", "x"])
+    out = json.loads((tmp_path / "out/descriptions/toy/x/joins/db.json").read_text())
+    assert out["graphs"]["llm"] == [1] and out["keys_run"] == "k"
