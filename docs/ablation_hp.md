@@ -102,6 +102,40 @@ For reference, the team's FULL run with LLM verification and descriptions (`ddb_
   recover the true joins it demotes. Shared-ID-range ("hub") targets are its main false-negative pattern.
 - **Open:** A1 with LLM verification (needs Voyager) tests whether the LLM recovers those two joins.
 
+## Result 2 — BIRD stripped, no LLM (2026-11-12)
+
+FULL reproduces the saved `ddb` numbers (198 edges, 99 false). 1171 questions, bge.
+
+| Config | Edge P | Edge R | Edge F1 | Edges | False pos. | Walk PR@15 | Merged PR@15 | Col R@15 |
+|---|---|---|---|---|---|---|---|---|
+| FULL, band accepted (no LLM) | .500 | .952 | .656 | 198 | 99 | .950 | .986 | .594 |
+| FULL, heuristics only | .835 | .731 | .779 | 91 | 15 | .845 | .983 | .563 |
+| −QuantileMD, band accepted | .162 | .952 | .277 | 612 | 513 | .949 | .985 | .591 |
+| −QuantileMD, heuristics only | .561 | .798 | .659 | 148 | 65 | .890 | .985 | .572 |
+
+Team FULL with LLM verification + descriptions (`ddb_full`): 118 edges, 19 false, walk .950.
+
+- **Without QuantileMD the graph explodes:** 198 → 612 edges, false joins 99 → 513 (5×), F1 .656 → .277.
+  Same recall (.952), so every added edge is wrong. On FIBEN the same removal added 22 false joins; BIRD's many
+  integer ID columns with overlapping ranges are where value overlap alone cannot tell joins apart.
+- **Retrieval does not show it on BIRD stripped:** walk .950 → .949. Dense search alone already scores .948 here
+  (column names are kept in the stripped setting), so the walk has little to add or lose. Retrieval sensitivity to
+  false joins has to be tested where names are gone (obfuscated).
+- **Same heuristics-only pattern as FIBEN:** QuantileMD trades recall (.798 → .731) for precision (65 → 15 false),
+  and with no verifier the walk pays for it (.890 → .845).
+
+## Summary so far
+
+| | FIBEN stripped | BIRD stripped |
+|---|---|---|
+| False joins added by removing QuantileMD (band accepted) | +22 (25 → 47) | +414 (99 → 513) |
+| Walk PR@15 change from removing QuantileMD (band accepted) | −.010 | −.002 |
+| Walk PR@15 change from removing QuantileMD (heuristics only) | **+.453** | **+.045** |
+
+QuantileMD is the main guard against graph explosion. It depends on a later check (LLM or band acceptance) to
+recover the true joins it demotes; on its own it loses joins to hub tables. Next: obfuscated settings, where
+names are gone and retrieval should depend on the graph.
+
 ## Run the full ablation
 
 ```bash
