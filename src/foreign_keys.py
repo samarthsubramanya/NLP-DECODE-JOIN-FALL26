@@ -127,6 +127,9 @@ DEFAULTS = {
     "g4_ratio": None,                 # G4 off: source rows < ratio * target rows ...
     "g4_multiplier": None,            # ... multiplies the score by this
     "repair_isolated": 0,             # partner tables per isolated table; 0: off
+    "containment_adaptive": None,     # set (a floor, e.g. 0.5): containment into an int target is divided by
+                                      # the target's density max(density, floor), so a parent with missing rows
+                                      # (gaps in its id range) is not gated by G6 or the orphan penalty
     "g1": False,                      # G1 off (null_check): targets rejected by 2a may still be targets
     "keys_run": "frozen",
 }
@@ -377,10 +380,23 @@ def repair_records(graph, profile, keys, overlaps, cfg, use_names):
     return records
 
 
+def adapt_containment(pair, profile, floor):
+    """Containment expected from a true FK into a parent missing rows is about the parent's density
+    (distinct / id range): rescale by it, capped at 1. Only int targets with density below 1."""
+    (tt, tc) = pair["target"]
+    dens = ((profile["tables"][tt]["columns"][tc].get("numeric") or {}).get("density"))
+    if dens is None or dens >= 1:
+        return pair
+    return {**pair, "containment_raw": pair["containment"],
+            "containment": min(1.0, pair["containment"] / max(dens, floor))}
+
+
 def score_database(profile, keys, cfg=DEFAULTS, overlaps=()):
     use_names = keys["use_names"]
     records, passed = [], []
     for pair in profile.get("containment", []):
+        if cfg.get("containment_adaptive") is not None:
+            pair = adapt_containment(pair, profile, cfg["containment_adaptive"])
         reason = gate(pair, profile, keys, cfg, use_names)
         rec = make_record(pair, profile, keys, use_names)
         if reason:
