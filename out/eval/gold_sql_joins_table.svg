@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="840" viewBox="0 0 840 840" font-family="Helvetica, Arial, sans-serif">
+<rect width="100%" height="100%" fill="white"/><g transform="translate(0,167.0)">
+<text x="420.0" y="36" text-anchor="middle" font-size="19" font-weight="bold" fill="#1f2a36">Join recovery vs. our gold SQL (DECODE-JOIN, run ddb_low, LLM graph)</text>
+<rect x="20" y="60" width="800" height="36" fill="#2f3e4e" stroke="#d5dbe1"/>
+<text x="32" y="83.0" text-anchor="start" font-size="15" fill="white" font-weight="bold">Dataset</text>
+<text x="345.0" y="83.0" text-anchor="middle" font-size="15" fill="white" font-weight="bold">Gold-SQL joins</text>
+<text x="460.0" y="83.0" text-anchor="middle" font-size="15" fill="white" font-weight="bold">Precision</text>
+<text x="555.0" y="83.0" text-anchor="middle" font-size="15" fill="white" font-weight="bold">Recall</text>
+<text x="640.0" y="83.0" text-anchor="middle" font-size="15" fill="white" font-weight="bold">F1</text>
+<text x="750.0" y="83.0" text-anchor="middle" font-size="15" fill="white" font-weight="bold">Declared-FK F1</text>
+<rect x="20" y="96" width="800" height="36" fill="#f1f4f7" stroke="#d5dbe1"/>
+<text x="32" y="119.0" text-anchor="start" font-size="15" fill="#1f2a36">Spider</text>
+<text x="345.0" y="119.0" text-anchor="middle" font-size="15" fill="#1f2a36">57</text>
+<text x="460.0" y="119.0" text-anchor="middle" font-size="15" fill="#1f2a36">.736</text>
+<text x="555.0" y="119.0" text-anchor="middle" font-size="15" fill="#1f2a36">.930</text>
+<text x="640.0" y="119.0" text-anchor="middle" font-size="15" fill="#1f2a36" font-weight="bold">.822</text>
+<text x="750.0" y="119.0" text-anchor="middle" font-size="15" fill="#1f2a36">.889</text>
+<rect x="20" y="132" width="800" height="36" fill="#f1f4f7" stroke="#d5dbe1"/>
+<text x="32" y="155.0" text-anchor="start" font-size="15" fill="#1f2a36">Spider obfuscated</text>
+<text x="345.0" y="155.0" text-anchor="middle" font-size="15" fill="#1f2a36">57</text>
+<text x="460.0" y="155.0" text-anchor="middle" font-size="15" fill="#1f2a36">.529</text>
+<text x="555.0" y="155.0" text-anchor="middle" font-size="15" fill="#1f2a36">.807</text>
+<text x="640.0" y="155.0" text-anchor="middle" font-size="15" fill="#1f2a36" font-weight="bold">.639</text>
+<text x="750.0" y="155.0" text-anchor="middle" font-size="15" fill="#1f2a36">.667</text>
+<rect x="20" y="168" width="800" height="36" fill="white" stroke="#d5dbe1"/>
+<text x="32" y="191.0" text-anchor="start" font-size="15" fill="#1f2a36">BIRD</text>
+<text x="345.0" y="191.0" text-anchor="middle" font-size="15" fill="#1f2a36">101</text>
+<text x="460.0" y="191.0" text-anchor="middle" font-size="15" fill="#1f2a36">.703</text>
+<text x="555.0" y="191.0" text-anchor="middle" font-size="15" fill="#1f2a36">.822</text>
+<text x="640.0" y="191.0" text-anchor="middle" font-size="15" fill="#1f2a36" font-weight="bold">.758</text>
+<text x="750.0" y="191.0" text-anchor="middle" font-size="15" fill="#1f2a36">.892</text>
+<rect x="20" y="204" width="800" height="36" fill="white" stroke="#d5dbe1"/>
+<text x="32" y="227.0" text-anchor="start" font-size="15" fill="#1f2a36">BIRD obfuscated</text>
+<text x="345.0" y="227.0" text-anchor="middle" font-size="15" fill="#1f2a36">101</text>
+<text x="460.0" y="227.0" text-anchor="middle" font-size="15" fill="#1f2a36">.585</text>
+<text x="555.0" y="227.0" text-anchor="middle" font-size="15" fill="#1f2a36">.822</text>
+<text x="640.0" y="227.0" text-anchor="middle" font-size="15" fill="#1f2a36" font-weight="bold">.683</text>
+<text x="750.0" y="227.0" text-anchor="middle" font-size="15" fill="#1f2a36">.813</text>
+<rect x="20" y="240" width="800" height="36" fill="#f1f4f7" stroke="#d5dbe1"/>
+<text x="32" y="263.0" text-anchor="start" font-size="15" fill="#1f2a36">FIBEN</text>
+<text x="345.0" y="263.0" text-anchor="middle" font-size="15" fill="#1f2a36">30</text>
+<text x="460.0" y="263.0" text-anchor="middle" font-size="15" fill="#1f2a36">.420</text>
+<text x="555.0" y="263.0" text-anchor="middle" font-size="15" fill="#1f2a36">.700</text>
+<text x="640.0" y="263.0" text-anchor="middle" font-size="15" fill="#1f2a36" font-weight="bold">.525</text>
+<text x="750.0" y="263.0" text-anchor="middle" font-size="15" fill="#1f2a36">.633</text>
+<rect x="20" y="276" width="800" height="36" fill="#f1f4f7" stroke="#d5dbe1"/>
+<text x="32" y="299.0" text-anchor="start" font-size="15" fill="#1f2a36">FIBEN obfuscated</text>
+<text x="345.0" y="299.0" text-anchor="middle" font-size="15" fill="#1f2a36">30</text>
+<text x="460.0" y="299.0" text-anchor="middle" font-size="15" fill="#1f2a36">.338</text>
+<text x="555.0" y="299.0" text-anchor="middle" font-size="15" fill="#1f2a36">.800</text>
+<text x="640.0" y="299.0" text-anchor="middle" font-size="15" fill="#1f2a36" font-weight="bold">.475</text>
+<text x="750.0" y="299.0" text-anchor="middle" font-size="15" fill="#1f2a36">.672</text>
+<rect x="20" y="312" width="800" height="36" fill="white" stroke="#d5dbe1"/>
+<text x="32" y="335.0" text-anchor="start" font-size="15" fill="#1f2a36">BEAVER (dw only)</text>
+<text x="345.0" y="335.0" text-anchor="middle" font-size="15" fill="#1f2a36">99</text>
+<text x="460.0" y="335.0" text-anchor="middle" font-size="15" fill="#1f2a36">.105</text>
+<text x="555.0" y="335.0" text-anchor="middle" font-size="15" fill="#1f2a36">.364</text>
+<text x="640.0" y="335.0" text-anchor="middle" font-size="15" fill="#1f2a36" font-weight="bold">.163</text>
+<text x="750.0" y="335.0" text-anchor="middle" font-size="15" fill="#1f2a36">.233*</text>
+<rect x="20" y="348" width="800" height="36" fill="white" stroke="#d5dbe1"/>
+<text x="32" y="371.0" text-anchor="start" font-size="15" fill="#1f2a36">BEAVER obfuscated (dw only)</text>
+<text x="345.0" y="371.0" text-anchor="middle" font-size="15" fill="#1f2a36">99</text>
+<text x="460.0" y="371.0" text-anchor="middle" font-size="15" fill="#1f2a36">.059</text>
+<text x="555.0" y="371.0" text-anchor="middle" font-size="15" fill="#1f2a36">.263</text>
+<text x="640.0" y="371.0" text-anchor="middle" font-size="15" fill="#1f2a36" font-weight="bold">.097</text>
+<text x="750.0" y="371.0" text-anchor="middle" font-size="15" fill="#1f2a36">.161*</text>
+<rect x="20" y="384" width="800" height="36" fill="#f1f4f7" stroke="#d5dbe1"/>
+<text x="32" y="407.0" text-anchor="start" font-size="15" fill="#1f2a36">KaggleDBQA</text>
+<text x="345.0" y="407.0" text-anchor="middle" font-size="15" fill="#1f2a36">11</text>
+<text x="460.0" y="407.0" text-anchor="middle" font-size="15" fill="#1f2a36">.750</text>
+<text x="555.0" y="407.0" text-anchor="middle" font-size="15" fill="#1f2a36">.545</text>
+<text x="640.0" y="407.0" text-anchor="middle" font-size="15" fill="#1f2a36" font-weight="bold">.632</text>
+<text x="750.0" y="407.0" text-anchor="middle" font-size="15" fill="#1f2a36">.429</text>
+<rect x="20" y="420" width="800" height="36" fill="#f1f4f7" stroke="#d5dbe1"/>
+<text x="32" y="443.0" text-anchor="start" font-size="15" fill="#1f2a36">KaggleDBQA obfuscated</text>
+<text x="345.0" y="443.0" text-anchor="middle" font-size="15" fill="#1f2a36">11</text>
+<text x="460.0" y="443.0" text-anchor="middle" font-size="15" fill="#1f2a36">.667</text>
+<text x="555.0" y="443.0" text-anchor="middle" font-size="15" fill="#1f2a36">.545</text>
+<text x="640.0" y="443.0" text-anchor="middle" font-size="15" fill="#1f2a36" font-weight="bold">.600</text>
+<text x="750.0" y="443.0" text-anchor="middle" font-size="15" fill="#1f2a36">.400</text>
+<text x="20" y="478" font-size="12" fill="#555">Precision is a lower bound: gold SQL lists only joins some question uses.</text>
+<text x="20" y="496" font-size="12" fill="#555">* BEAVER declared-FK F1 is on nova+neutron (dw declares no FKs), so it is not comparable.</text>
+</g></svg>

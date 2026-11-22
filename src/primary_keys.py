@@ -251,7 +251,7 @@ def score_column(prof, table, other_tables, cfg, use_names, referenced_by=()):
     mult = {}
     if prof["nulls"]:
         mult["nulls"] = cfg["null_penalty"]
-    boost = 0
+    boost, boost_parts = 0, {}
     if use_names:
         stem = id_stem(prof["name"], cfg)
         own = table_forms(table)
@@ -264,9 +264,10 @@ def score_column(prof, table, other_tables, cfg, use_names, referenced_by=()):
             mult["fk_likelihood"] = 1 - cfg["fk_penalty"] * l_fk
         surrogate = norm(prof["name"]) == "id" or (parts["name"] and stem in own)
         if surrogate and u >= cfg["u_full"] and parts["dtype"] >= 0.9:
-            boost = cfg["surrogate_boost"]
+            boost = boost_parts["surrogate"] = cfg["surrogate_boost"]
     if is_referenced:
         boost += cfg["ref_bonus"]
+        boost_parts["referenced"] = cfg["ref_bonus"]
 
     phis = cfg["position_multiplier"]
     phi = phis[min(prof["position"], len(phis) - 1)]
@@ -274,8 +275,8 @@ def score_column(prof, table, other_tables, cfg, use_names, referenced_by=()):
     for m in mult.values():
         s *= m
     s = (s + boost) * phi
-    return {"score": round(s, 3), "base": round(base, 3), "parts": parts,
-            "multipliers": mult, "boost": boost, "phi": phi}
+    return {"score": round(s, 3), "base": round(base, 3), "parts": parts, "weights": w,
+            "multipliers": mult, "boost": boost, "boost_parts": boost_parts, "phi": phi}
 
 
 def score_database(profile, cfg=DEFAULTS):
