@@ -1,0 +1,721 @@
+{
+ "summary": {
+  "dataset": "spider_stripped",
+  "mode": "fk_null",
+  "rate": 0.9,
+  "gold": 63,
+  "stats": {
+   "tp": 41,
+   "predicted": 55,
+   "gold": 63,
+   "precision": 0.7455,
+   "recall": 0.6508,
+   "f1": 0.6949
+  },
+  "normal": {
+   "tp": 40,
+   "predicted": 49,
+   "gold": 63,
+   "precision": 0.8163,
+   "recall": 0.6349,
+   "f1": 0.7143
+  },
+  "widened": {
+   "tp": 53,
+   "predicted": 62,
+   "gold": 63,
+   "precision": 0.8548,
+   "recall": 0.8413,
+   "f1": 0.848
+  },
+  "added": 41,
+  "added_gold_accepted": 13,
+  "added_other_accepted": 0
+ },
+ "per_db": [
+  {
+   "db": "battle_death",
+   "gold": 2,
+   "stats": [
+    0,
+    0
+   ],
+   "normal": {
+    "tp": 0,
+    "predicted": 0,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 1,
+    "predicted": 1,
+    "band": 2,
+    "added": 2,
+    "verdicts": {
+     "accept": 1,
+     "reject": 1,
+     "abstain": 0
+    },
+    "band_gold": 1,
+    "added_gold_accepted": 1,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "car_1",
+   "gold": 5,
+   "stats": [
+    2,
+    3
+   ],
+   "normal": {
+    "tp": 2,
+    "predicted": 2,
+    "band": 1,
+    "added": 0,
+    "verdicts": {
+     "accept": 0,
+     "reject": 1,
+     "abstain": 0
+    },
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 4,
+    "predicted": 4,
+    "band": 6,
+    "added": 5,
+    "verdicts": {
+     "accept": 2,
+     "reject": 3,
+     "abstain": 1
+    },
+    "band_gold": 3,
+    "added_gold_accepted": 2,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "concert_singer",
+   "gold": 3,
+   "stats": [
+    1,
+    1
+   ],
+   "normal": {
+    "tp": 1,
+    "predicted": 1,
+    "band": 1,
+    "added": 0,
+    "verdicts": {
+     "accept": 1,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 1,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 3,
+    "predicted": 3,
+    "band": 4,
+    "added": 3,
+    "verdicts": {
+     "accept": 3,
+     "reject": 1,
+     "abstain": 0
+    },
+    "band_gold": 3,
+    "added_gold_accepted": 2,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "course_teach",
+   "gold": 2,
+   "stats": [
+    2,
+    4
+   ],
+   "normal": {
+    "tp": 2,
+    "predicted": 2,
+    "band": 4,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 2,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 2,
+    "predicted": 2,
+    "band": 6,
+    "added": 2,
+    "verdicts": {
+     "accept": 2,
+     "reject": 4,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "cre_Doc_Template_Mgt",
+   "gold": 3,
+   "stats": [
+    3,
+    3
+   ],
+   "normal": {
+    "tp": 3,
+    "predicted": 3,
+    "band": 2,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 3,
+    "predicted": 3,
+    "band": 2,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "dog_kennels",
+   "gold": 6,
+   "stats": [
+    5,
+    5
+   ],
+   "normal": {
+    "tp": 5,
+    "predicted": 5,
+    "band": 2,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 6,
+    "predicted": 6,
+    "band": 6,
+    "added": 4,
+    "verdicts": {
+     "accept": 3,
+     "reject": 3,
+     "abstain": 0
+    },
+    "band_gold": 3,
+    "added_gold_accepted": 1,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "employee_hire_evaluation",
+   "gold": 3,
+   "stats": [
+    3,
+    3
+   ],
+   "normal": {
+    "tp": 2,
+    "predicted": 2,
+    "band": 3,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 0,
+     "abstain": 1
+    },
+    "band_gold": 3,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 3,
+    "predicted": 3,
+    "band": 6,
+    "added": 3,
+    "verdicts": {
+     "accept": 3,
+     "reject": 3,
+     "abstain": 0
+    },
+    "band_gold": 3,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "flight_2",
+   "gold": 2,
+   "stats": [
+    2,
+    3
+   ],
+   "normal": {
+    "tp": 2,
+    "predicted": 3,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 2,
+    "predicted": 3,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "museum_visit",
+   "gold": 2,
+   "stats": [
+    2,
+    4
+   ],
+   "normal": {
+    "tp": 2,
+    "predicted": 3,
+    "band": 3,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 1,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 2,
+    "predicted": 3,
+    "band": 4,
+    "added": 1,
+    "verdicts": {
+     "accept": 2,
+     "reject": 2,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "network_1",
+   "gold": 4,
+   "stats": [
+    4,
+    4
+   ],
+   "normal": {
+    "tp": 4,
+    "predicted": 4,
+    "band": 3,
+    "added": 0,
+    "verdicts": {
+     "accept": 3,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 3,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 4,
+    "predicted": 4,
+    "band": 3,
+    "added": 0,
+    "verdicts": {
+     "accept": 3,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 3,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "orchestra",
+   "gold": 3,
+   "stats": [
+    1,
+    2
+   ],
+   "normal": {
+    "tp": 1,
+    "predicted": 2,
+    "band": 1,
+    "added": 0,
+    "verdicts": {
+     "accept": 1,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 1,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 2,
+    "predicted": 3,
+    "band": 3,
+    "added": 2,
+    "verdicts": {
+     "accept": 2,
+     "reject": 1,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 1,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "pets_1",
+   "gold": 2,
+   "stats": [
+    0,
+    0
+   ],
+   "normal": {
+    "tp": 0,
+    "predicted": 0,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 0,
+    "predicted": 0,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "poker_player",
+   "gold": 1,
+   "stats": [
+    1,
+    2
+   ],
+   "normal": {
+    "tp": 1,
+    "predicted": 2,
+    "band": 1,
+    "added": 0,
+    "verdicts": {
+     "accept": 1,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 1,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 1,
+    "predicted": 2,
+    "band": 1,
+    "added": 0,
+    "verdicts": {
+     "accept": 1,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 1,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "real_estate_properties",
+   "gold": 4,
+   "stats": [
+    3,
+    3
+   ],
+   "normal": {
+    "tp": 3,
+    "predicted": 3,
+    "band": 1,
+    "added": 0,
+    "verdicts": {
+     "accept": 1,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 1,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 3,
+    "predicted": 3,
+    "band": 2,
+    "added": 1,
+    "verdicts": {
+     "accept": 1,
+     "reject": 1,
+     "abstain": 0
+    },
+    "band_gold": 1,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "singer",
+   "gold": 1,
+   "stats": [
+    1,
+    2
+   ],
+   "normal": {
+    "tp": 1,
+    "predicted": 1,
+    "band": 1,
+    "added": 0,
+    "verdicts": {
+     "accept": 0,
+     "reject": 1,
+     "abstain": 0
+    },
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 1,
+    "predicted": 1,
+    "band": 1,
+    "added": 0,
+    "verdicts": {
+     "accept": 0,
+     "reject": 1,
+     "abstain": 0
+    },
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "student_transcripts_tracking",
+   "gold": 11,
+   "stats": [
+    5,
+    5
+   ],
+   "normal": {
+    "tp": 5,
+    "predicted": 5,
+    "band": 4,
+    "added": 0,
+    "verdicts": {
+     "accept": 4,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 4,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 11,
+    "predicted": 11,
+    "band": 22,
+    "added": 18,
+    "verdicts": {
+     "accept": 10,
+     "reject": 12,
+     "abstain": 0
+    },
+    "band_gold": 10,
+    "added_gold_accepted": 6,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "tvshow",
+   "gold": 2,
+   "stats": [
+    2,
+    5
+   ],
+   "normal": {
+    "tp": 2,
+    "predicted": 5,
+    "band": 2,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 1,
+    "predicted": 4,
+    "band": 2,
+    "added": 0,
+    "verdicts": {
+     "accept": 1,
+     "reject": 0,
+     "abstain": 1
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "voter_1",
+   "gold": 2,
+   "stats": [
+    0,
+    0
+   ],
+   "normal": {
+    "tp": 0,
+    "predicted": 0,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 0,
+    "predicted": 0,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "world_1",
+   "gold": 2,
+   "stats": [
+    2,
+    4
+   ],
+   "normal": {
+    "tp": 2,
+    "predicted": 4,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 2,
+    "predicted": 4,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "wta_1",
+   "gold": 3,
+   "stats": [
+    2,
+    2
+   ],
+   "normal": {
+    "tp": 2,
+    "predicted": 2,
+    "band": 2,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 2,
+    "predicted": 2,
+    "band": 2,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  }
+ ]
+}

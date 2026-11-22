@@ -46,7 +46,7 @@ from duckdb_driver import LOCAL_DIR             # noqa: E402
 from grade_beaver import prf                    # noqa: E402
 from grade_beaver import query_joins            # noqa: E402
 from grade_joins_all import load_gold           # noqa: E402
-from profile_columns import DEFAULTS as P_DEFAULTS, key_like, mark_dense_picks, profile_database, q  # noqa: E402
+from profile_columns import DEFAULTS as P_DEFAULTS, key_like, mark_dense_picks, mark_near_unique, profile_database, q  # noqa: E402
 
 POINTS = [("clean", 0)] + [("pk_null", r) for r in (0.001, 0.01, 0.1)] + \
          [("fk_null", r) for r in (0.5, 0.9)] + [("row_sample", r) for r in (0.5, 0.1)]
@@ -120,28 +120,53 @@ def perturb(con, mode, rate, cols, tables, seed):
             con.execute(f"DELETE FROM s.{q(t)} WHERE rowid NOT IN ({pick(t, max(1, math.ceil(rate * rows)), seed)})")
 
 
-def variant_profile(prof, n=0, null_max=None):
-    """The profile as Stage 1 would write it under one dense-pick rule. `prof` was profiled with every
-    key-family column a dense pick, so its containment pairs cover every candidate target; the flags are
-    re-marked (n = top-n rule, null_max = null-rate cap, neither = quartile's strict rule) and the pairs
-    filtered to the targets that are key-like under that rule."""
+def variant_profile(prof, n=0, null_max=None, fallback=False, near_unique=None, store_min=0.5):
+    """The profile as Stage 1 would write it under one rule set. `prof` is a superset (every key-family column a
+    dense pick, near-unique columns flagged, pairs stored down to SUPER_STORE), so its pairs cover every candidate
+    target; flags are re-marked and the pairs filtered to the targets key-like under this rule set and to
+    containment >= store_min (the profiler's containment_store_min)."""
     p = copy.deepcopy(prof)
     for t in p["tables"].values():
         for c in t["columns"].values():
             c.pop("dense_pick", None)
-        mark_dense_picks(t, n, null_max)
+            c.pop("near_unique", None)
+        mark_near_unique(t, near_unique)
+        mark_dense_picks(t, n, null_max, fallback)
     ok = {(t, c) for t, v in p["tables"].items() for c, x in v["columns"].items() if key_like(x)}
-    p["containment"] = [r for r in p["containment"] if tuple(r["target"]) in ok]
+    p["containment"] = [r for r in p["containment"] if tuple(r["target"]) in ok and r["containment"] >= store_min]
     return p
 
 
-NULL_MAX, ADAPT_FLOOR = 0.2, 0.5
+SUPER_STORE, SUPER_NEAR_UNIQUE = 0.1, 0.98
+CAP = {"null_max": 0.2}
+CAPF = {**CAP, "fallback": True}
+ADAPT = {"containment_adaptive": 0.5}
 VARIANTS = [   # name, profile rule, Stage 2a overrides, Stage 2b overrides
     ("strict", {}, {"reject_nulls": True, "empty_or_zero_max": 0.5}, {}),
     ("tolerant", {"n": 5}, {}, {}),
-    ("cap", {"null_max": NULL_MAX}, {}, {}),                                       # suggestion 2a
-    ("cap_adapt", {"null_max": NULL_MAX}, {}, {"containment_adaptive": ADAPT_FLOOR}),  # 2a + 2b
+    ("cap", CAP, {}, {}),                                                          # 2a as first run
+    ("cap_adapt", CAP, {}, ADAPT),                                                 # 2a + 2b as first run
+    ("capf", CAPF, {}, {}),                                                        # 2a + fallback
+    ("capf_adapt", CAPF, {}, ADAPT),
+    ("capf_adapt9", CAPF, {}, {**ADAPT, "adaptive_max_density": 0.9}),             # adapt gappy targets only
+    ("capf_gate", CAPF, {}, {**ADAPT, "adaptive_gate_only": True}),                # adapt G6 only
+    ("capf_low", {**CAPF, "store_min": 0.1}, {}, {"containment_adaptive": 0.1}),   # exp: lower storage floor
+    ("capf_nu", {**CAPF, "near_unique": SUPER_NEAR_UNIQUE}, {}, {}),               # exp: near-unique keys
 ]
+
+
+def near_miss(joins, gold, mapping, db, accept, delta):
+    """LLM workload and reach: gold / other candidates in the band [accept, accept+delta) and just below it
+    [accept-delta, accept). A band widened downward would send the second group to the LLM too."""
+    out = {"band": [0, 0], "below": [0, 0]}
+    for r in joins["candidates"]:
+        sc = r.get("score")
+        if sc is None:
+            continue
+        k = "band" if accept <= sc < accept + delta else "below" if accept - delta <= sc < accept else None
+        if k:
+            out[k][0 if labels.norm_edge(mapping, db, r) in gold else 1] += 1
+    return out
 
 
 def threshold_view(joins, gold, mapping, db, accept):
@@ -159,7 +184,8 @@ def threshold_view(joins, gold, mapping, db, accept):
 def run_point(con_factory, mode, rate, args, ctx):
     con = con_factory()
     perturb(con, mode, rate, ctx["pk_cols"] if mode == "pk_null" else ctx["fk_cols"], ctx["tables"], args.seed)
-    prof = profile_database(con, "s", ctx["tables"], {**P_DEFAULTS, "seed": args.seed, "dense_pick": 10 ** 6},
+    prof = profile_database(con, "s", ctx["tables"], {**P_DEFAULTS, "seed": args.seed, "dense_pick": 10 ** 6,
+                                                       "containment_store_min": SUPER_STORE, "near_unique_min": SUPER_NEAR_UNIQUE},
                             ctx["db"], log=lambda *_: None)
     con.close()
     out = []
@@ -174,6 +200,8 @@ def run_point(con_factory, mode, rate, args, ctx):
         for g in ("direct", "stats"):
             edges = {labels.norm_edge(ctx["mapping"], ctx["db"], e) for e in joins["graphs"][g]}
             row[g] = {"tp": len(edges & ctx["gold"]), "predicted": len(edges)}
+        row["near_miss"] = near_miss(joins, ctx["gold"], ctx["mapping"], ctx["db"], fk.DEFAULTS["accept"],
+                                     fk.DEFAULTS["delta"])
         row["gold_status"], row["margins"] = threshold_view(joins, ctx["gold"], ctx["mapping"], ctx["db"],
                                                             fk.DEFAULTS["accept"])
         out.append(row)

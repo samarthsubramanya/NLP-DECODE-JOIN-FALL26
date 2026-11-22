@@ -1,0 +1,149 @@
+california_schools: normal band 0 {} | widened +0 {}
+card_games: normal band 6 {'accept': 1, 'reject': 5, 'abstain': 0} | widened +16 {'accept': 1, 'reject': 21, 'abstain': 0}
+Traceback (most recent call last):
+  File "/Users/samarthms/NLP/code/null_check/evals/llm_band_probe.py", line 125, in <module>
+    main()
+  File "/Users/samarthms/NLP/code/null_check/evals/llm_band_probe.py", line 96, in main
+    verdicts = dc.adjudicate(llm, prof, keys, joins, llm_cfg) if band else {}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 351, in adjudicate
+    verdicts = [v for vs in pool.map(lambda c: judge_batch(llm, c, profile, joins, cfg), chunks) for v in vs]
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 351, in <lambda>
+    verdicts = [v for vs in pool.map(lambda c: judge_batch(llm, c, profile, joins, cfg), chunks) for v in vs]
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 317, in judge_batch
+    return judge_group(llm, groups[0], profile, joins, cfg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 299, in judge_group
+    reply, effort = llm.complete("adjudicate", f"{s['table']}.{s['column']} ({len(recs)} targets)", ADJUDICATE_GROUP,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 491, in complete
+    text, usage = self._post(body)
+                  ^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 521, in _post
+    raise RuntimeError(f"Voyager {e.code}: {detail}") from None
+RuntimeError: Voyager 500: {"error":{"code":null,"param":null,"message":"Internal server error","type":"api_error"}}
+california_schools: normal band 0 {} | widened +0 {}
+card_games: normal band 0 {} | widened +0 {}
+codebase_community: normal band 3 {'accept': 0, 'reject': 3, 'abstain': 0} | widened +6 {'accept': 6, 'reject': 3, 'abstain': 0}
+debit_card_specializing: normal band 1 {'accept': 1, 'reject': 0, 'abstain': 0} | widened +0 {'accept': 0, 'reject': 0, 'abstain': 1}
+european_football_2: normal band 1 {'accept': 1, 'reject': 0, 'abstain': 0} | widened +1 {'accept': 1, 'reject': 1, 'abstain': 0}
+Traceback (most recent call last):
+  File "/Users/samarthms/NLP/code/null_check/evals/llm_band_probe.py", line 125, in <module>
+    main()
+  File "/Users/samarthms/NLP/code/null_check/evals/llm_band_probe.py", line 96, in main
+    verdicts = dc.adjudicate(llm, prof, keys, joins, llm_cfg) if band else {}
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 351, in adjudicate
+    verdicts = [v for vs in pool.map(lambda c: judge_batch(llm, c, profile, joins, cfg), chunks) for v in vs]
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 351, in <lambda>
+    verdicts = [v for vs in pool.map(lambda c: judge_batch(llm, c, profile, joins, cfg), chunks) for v in vs]
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 317, in judge_batch
+    return judge_group(llm, groups[0], profile, joins, cfg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 299, in judge_group
+    reply, effort = llm.complete("adjudicate", f"{s['table']}.{s['column']} ({len(recs)} targets)", ADJUDICATE_GROUP,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 491, in complete
+    text, usage = self._post(body)
+                  ^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 521, in _post
+    raise RuntimeError(f"Voyager {e.code}: {detail}") from None
+RuntimeError: Voyager 500: {"error":{"code":null,"param":null,"message":"Internal server error","type":"api_error"}}
+california_schools: normal band 0 {} | widened +0 {}
+Traceback (most recent call last):
+  File "/Users/samarthms/NLP/code/null_check/evals/llm_band_probe.py", line 125, in <module>
+    print(f"{db}: normal band {row['normal']['band']} {row['normal']['verdicts']} | widened +{row['widened']['added']} "
+^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/evals/llm_band_probe.py", line 96, in main
+    con = sw.copy_db(d["duckdb_file"], d["duckdb_schema"], d["tables"])
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 351, in adjudicate
+    verdicts = [v for vs in pool.map(lambda c: judge_batch(llm, c, profile, joins, cfg), chunks) for v in vs]
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 351, in <lambda>
+    verdicts = [v for vs in pool.map(lambda c: judge_batch(llm, c, profile, joins, cfg), chunks) for v in vs]
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 317, in judge_batch
+    return judge_group(llm, groups[0], profile, joins, cfg)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 299, in judge_group
+    reply, effort = llm.complete("adjudicate", f"{s['table']}.{s['column']} ({len(recs)} targets)", ADJUDICATE_GROUP,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 491, in complete
+    text, usage = self._post(body)
+                  ^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/NLP/code/null_check/src/describe_columns.py", line 515, in _post
+    with urllib.request.urlopen(req, timeout=self.cfg["timeout_s"]) as resp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/urllib/request.py", line 515, in open
+    response = self._open(req, data)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/urllib/request.py", line 532, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/urllib/request.py", line 1392, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/urllib/request.py", line 1348, in do_open
+    r = h.getresponse()
+        ^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/http/client.py", line 1478, in getresponse
+    response.begin()
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/http/client.py", line 343, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/Users/samarthms/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/http/client.py", line 312, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response

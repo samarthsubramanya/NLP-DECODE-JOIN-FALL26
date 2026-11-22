@@ -130,6 +130,8 @@ DEFAULTS = {
     "containment_adaptive": None,     # set (a floor, e.g. 0.5): containment into an int target is divided by
                                       # the target's density max(density, floor), so a parent with missing rows
                                       # (gaps in its id range) is not gated by G6 or the orphan penalty
+    "adaptive_max_density": 1.0,      # adapt only targets whose density is below this (gappy id ranges)
+    "adaptive_gate_only": False,      # True: the rescaled containment only decides G6; score and orphan use the raw one
     "g1": False,                      # G1 off (null_check): targets rejected by 2a may still be targets
     "keys_run": "frozen",
 }
@@ -224,8 +226,9 @@ def gate(pair, profile, keys, cfg, use_names):
         return "prefilter: fewer than 2 distinct values"
     if (a.get("text") or {}).get("avg_len", 0) > cfg["long_text_len"]:
         return f"prefilter: average length over {cfg['long_text_len']}"
-    if pair["containment"] < cfg["containment_min"]:
-        return f"G6: containment {pair['containment']:.3f} < {cfg['containment_min']}"
+    v = pair.get("containment_gate", pair["containment"])
+    if v < cfg["containment_min"]:
+        return f"G6: containment {v:.3f} < {cfg['containment_min']}"
     span = range_span(a, b) if cfg["min_range_span"] is not None else None
     if span is not None and span < cfg["min_range_span"]:
         return f"G9: source range spans {span:.3f} of the target's < {cfg['min_range_span']}"
@@ -380,15 +383,18 @@ def repair_records(graph, profile, keys, overlaps, cfg, use_names):
     return records
 
 
-def adapt_containment(pair, profile, floor):
+def adapt_containment(pair, profile, cfg):
     """Containment expected from a true FK into a parent missing rows is about the parent's density
-    (distinct / id range): rescale by it, capped at 1. Only int targets with density below 1."""
+    (distinct / id range): rescale by it, capped at 1. Only int targets with density below
+    adaptive_max_density. adaptive_gate_only: the rescaled value only decides G6."""
     (tt, tc) = pair["target"]
     dens = ((profile["tables"][tt]["columns"][tc].get("numeric") or {}).get("density"))
-    if dens is None or dens >= 1:
+    if dens is None or dens >= cfg.get("adaptive_max_density", 1.0):
         return pair
-    return {**pair, "containment_raw": pair["containment"],
-            "containment": min(1.0, pair["containment"] / max(dens, floor))}
+    v = min(1.0, pair["containment"] / max(dens, cfg["containment_adaptive"]))
+    if cfg.get("adaptive_gate_only"):
+        return {**pair, "containment_gate": v}
+    return {**pair, "containment_raw": pair["containment"], "containment": v}
 
 
 def score_database(profile, keys, cfg=DEFAULTS, overlaps=()):
@@ -396,7 +402,7 @@ def score_database(profile, keys, cfg=DEFAULTS, overlaps=()):
     records, passed = [], []
     for pair in profile.get("containment", []):
         if cfg.get("containment_adaptive") is not None:
-            pair = adapt_containment(pair, profile, cfg["containment_adaptive"])
+            pair = adapt_containment(pair, profile, cfg)
         reason = gate(pair, profile, keys, cfg, use_names)
         rec = make_record(pair, profile, keys, use_names)
         if reason:

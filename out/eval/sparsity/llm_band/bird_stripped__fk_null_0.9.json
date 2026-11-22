@@ -1,0 +1,413 @@
+{
+ "summary": {
+  "dataset": "bird_stripped",
+  "mode": "fk_null",
+  "rate": 0.9,
+  "gold": 104,
+  "stats": {
+   "tp": 67,
+   "predicted": 111,
+   "gold": 104,
+   "precision": 0.6036,
+   "recall": 0.6442,
+   "f1": 0.6233
+  },
+  "normal": {
+   "tp": 67,
+   "predicted": 80,
+   "gold": 104,
+   "precision": 0.8375,
+   "recall": 0.6442,
+   "f1": 0.7283
+  },
+  "widened": {
+   "tp": 99,
+   "predicted": 113,
+   "gold": 104,
+   "precision": 0.8761,
+   "recall": 0.9519,
+   "f1": 0.9124
+  },
+  "added": 131,
+  "added_gold_accepted": 32,
+  "added_other_accepted": 1
+ },
+ "per_db": [
+  {
+   "db": "california_schools",
+   "gold": 2,
+   "stats": [
+    2,
+    2
+   ],
+   "normal": {
+    "tp": 2,
+    "predicted": 2,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 2,
+    "predicted": 2,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "card_games",
+   "gold": 4,
+   "stats": [
+    4,
+    16
+   ],
+   "normal": {
+    "tp": 4,
+    "predicted": 11,
+    "band": 6,
+    "added": 0,
+    "verdicts": {
+     "accept": 1,
+     "reject": 5,
+     "abstain": 0
+    },
+    "band_gold": 1,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 4,
+    "predicted": 11,
+    "band": 22,
+    "added": 16,
+    "verdicts": {
+     "accept": 1,
+     "reject": 21,
+     "abstain": 0
+    },
+    "band_gold": 1,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "codebase_community",
+   "gold": 13,
+   "stats": [
+    10,
+    20
+   ],
+   "normal": {
+    "tp": 10,
+    "predicted": 11,
+    "band": 20,
+    "added": 0,
+    "verdicts": {
+     "accept": 11,
+     "reject": 9,
+     "abstain": 0
+    },
+    "band_gold": 10,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 12,
+    "predicted": 13,
+    "band": 49,
+    "added": 29,
+    "verdicts": {
+     "accept": 13,
+     "reject": 36,
+     "abstain": 0
+    },
+    "band_gold": 12,
+    "added_gold_accepted": 2,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "debit_card_specializing",
+   "gold": 1,
+   "stats": [
+    1,
+    7
+   ],
+   "normal": {
+    "tp": 1,
+    "predicted": 4,
+    "band": 4,
+    "added": 0,
+    "verdicts": {
+     "accept": 1,
+     "reject": 3,
+     "abstain": 0
+    },
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 1,
+    "predicted": 4,
+    "band": 4,
+    "added": 0,
+    "verdicts": {
+     "accept": 1,
+     "reject": 3,
+     "abstain": 0
+    },
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "european_football_2",
+   "gold": 31,
+   "stats": [
+    3,
+    13
+   ],
+   "normal": {
+    "tp": 3,
+    "predicted": 5,
+    "band": 10,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 8,
+     "abstain": 0
+    },
+    "band_gold": 1,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 28,
+    "predicted": 31,
+    "band": 59,
+    "added": 49,
+    "verdicts": {
+     "accept": 28,
+     "reject": 31,
+     "abstain": 0
+    },
+    "band_gold": 26,
+    "added_gold_accepted": 25,
+    "added_other_accepted": 1
+   }
+  },
+  {
+   "db": "financial",
+   "gold": 8,
+   "stats": [
+    7,
+    8
+   ],
+   "normal": {
+    "tp": 7,
+    "predicted": 7,
+    "band": 6,
+    "added": 0,
+    "verdicts": {
+     "accept": 5,
+     "reject": 1,
+     "abstain": 0
+    },
+    "band_gold": 5,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 8,
+    "predicted": 8,
+    "band": 11,
+    "added": 5,
+    "verdicts": {
+     "accept": 6,
+     "reject": 5,
+     "abstain": 0
+    },
+    "band_gold": 6,
+    "added_gold_accepted": 1,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "formula_1",
+   "gold": 19,
+   "stats": [
+    17,
+    17
+   ],
+   "normal": {
+    "tp": 17,
+    "predicted": 17,
+    "band": 17,
+    "added": 0,
+    "verdicts": {
+     "accept": 17,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 17,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 19,
+    "predicted": 19,
+    "band": 35,
+    "added": 18,
+    "verdicts": {
+     "accept": 19,
+     "reject": 16,
+     "abstain": 0
+    },
+    "band_gold": 19,
+    "added_gold_accepted": 2,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "student_club",
+   "gold": 8,
+   "stats": [
+    8,
+    8
+   ],
+   "normal": {
+    "tp": 8,
+    "predicted": 8,
+    "band": 2,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 8,
+    "predicted": 8,
+    "band": 2,
+    "added": 0,
+    "verdicts": {
+     "accept": 2,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "superhero",
+   "gold": 11,
+   "stats": [
+    11,
+    16
+   ],
+   "normal": {
+    "tp": 11,
+    "predicted": 11,
+    "band": 12,
+    "added": 0,
+    "verdicts": {
+     "accept": 7,
+     "reject": 5,
+     "abstain": 0
+    },
+    "band_gold": 7,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 11,
+    "predicted": 11,
+    "band": 24,
+    "added": 12,
+    "verdicts": {
+     "accept": 7,
+     "reject": 17,
+     "abstain": 0
+    },
+    "band_gold": 7,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "thrombosis_prediction",
+   "gold": 2,
+   "stats": [
+    1,
+    1
+   ],
+   "normal": {
+    "tp": 1,
+    "predicted": 1,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 1,
+    "predicted": 1,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   }
+  },
+  {
+   "db": "toxicology",
+   "gold": 5,
+   "stats": [
+    3,
+    3
+   ],
+   "normal": {
+    "tp": 3,
+    "predicted": 3,
+    "band": 0,
+    "added": 0,
+    "verdicts": {},
+    "band_gold": 0,
+    "added_gold_accepted": 0,
+    "added_other_accepted": 0
+   },
+   "widened": {
+    "tp": 5,
+    "predicted": 5,
+    "band": 2,
+    "added": 2,
+    "verdicts": {
+     "accept": 2,
+     "reject": 0,
+     "abstain": 0
+    },
+    "band_gold": 2,
+    "added_gold_accepted": 2,
+    "added_other_accepted": 0
+   }
+  }
+ ]
+}

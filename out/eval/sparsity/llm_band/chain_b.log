@@ -1,0 +1,43 @@
+battle_death: normal band 0 {} | widened +2 {'accept': 1, 'reject': 1, 'abstain': 0}
+car_1: normal band 1 {'accept': 0, 'reject': 1, 'abstain': 0} | widened +5 {'accept': 2, 'reject': 3, 'abstain': 1}
+concert_singer: normal band 1 {'accept': 1, 'reject': 0, 'abstain': 0} | widened +3 {'accept': 3, 'reject': 1, 'abstain': 0}
+course_teach: normal band 4 {'accept': 2, 'reject': 2, 'abstain': 0} | widened +2 {'accept': 2, 'reject': 4, 'abstain': 0}
+cre_Doc_Template_Mgt: normal band 2 {'accept': 2, 'reject': 0, 'abstain': 0} | widened +0 {'accept': 2, 'reject': 0, 'abstain': 0}
+dog_kennels: normal band 2 {'accept': 2, 'reject': 0, 'abstain': 0} | widened +4 {'accept': 3, 'reject': 3, 'abstain': 0}
+employee_hire_evaluation: normal band 3 {'accept': 2, 'reject': 0, 'abstain': 1} | widened +3 {'accept': 3, 'reject': 3, 'abstain': 0}
+flight_2: normal band 0 {} | widened +0 {}
+museum_visit: normal band 3 {'accept': 2, 'reject': 1, 'abstain': 0} | widened +1 {'accept': 2, 'reject': 2, 'abstain': 0}
+network_1: normal band 3 {'accept': 3, 'reject': 0, 'abstain': 0} | widened +0 {'accept': 3, 'reject': 0, 'abstain': 0}
+orchestra: normal band 1 {'accept': 1, 'reject': 0, 'abstain': 0} | widened +2 {'accept': 2, 'reject': 1, 'abstain': 0}
+pets_1: normal band 0 {} | widened +0 {}
+poker_player: normal band 1 {'accept': 1, 'reject': 0, 'abstain': 0} | widened +0 {'accept': 1, 'reject': 0, 'abstain': 0}
+real_estate_properties: normal band 1 {'accept': 1, 'reject': 0, 'abstain': 0} | widened +1 {'accept': 1, 'reject': 1, 'abstain': 0}
+singer: normal band 1 {'accept': 0, 'reject': 1, 'abstain': 0} | widened +0 {'accept': 0, 'reject': 1, 'abstain': 0}
+student_transcripts_tracking: normal band 4 {'accept': 4, 'reject': 0, 'abstain': 0} | widened +18 {'accept': 10, 'reject': 12, 'abstain': 0}
+tvshow: normal band 2 {'accept': 2, 'reject': 0, 'abstain': 0} | widened +0 {'accept': 1, 'reject': 0, 'abstain': 1}
+voter_1: normal band 0 {} | widened +0 {}
+world_1: normal band 0 {} | widened +0 {}
+wta_1: normal band 2 {'accept': 2, 'reject': 0, 'abstain': 0} | widened +0 {'accept': 2, 'reject': 0, 'abstain': 0}
+{"dataset": "spider_stripped", "mode": "fk_null", "rate": 0.9, "gold": 63, "stats": {"tp": 41, "predicted": 55, "gold": 63, "precision": 0.7455, "recall": 0.6508, "f1": 0.6949}, "normal": {"tp": 40, "predicted": 49, "gold": 63, "precision": 0.8163, "recall": 0.6349, "f1": 0.7143}, "widened": {"tp": 53, "predicted": 62, "gold": 63, "precision": 0.8548, "recall": 0.8413, "f1": 0.848}, "added": 41, "added_gold_accepted": 13, "added_other_accepted": 0}
+battle_death: normal band 0 {} | widened +0 {}
+car_1: normal band 0 {} | widened +0 {}
+concert_singer: normal band 0 {} | widened +1 {'accept': 1, 'reject': 0, 'abstain': 0}
+course_teach: normal band 0 {} | widened +0 {}
+cre_Doc_Template_Mgt: normal band 0 {} | widened +1 {'accept': 1, 'reject': 0, 'abstain': 0}
+dog_kennels: normal band 0 {} | widened +0 {}
+employee_hire_evaluation: normal band 1 {'accept': 0, 'reject': 1, 'abstain': 0} | widened +0 {'accept': 0, 'reject': 1, 'abstain': 0}
+flight_2: normal band 0 {} | widened +1 {'accept': 0, 'reject': 0, 'abstain': 1}
+museum_visit: normal band 0 {} | widened +0 {}
+network_1: normal band 1 {'accept': 0, 'reject': 1, 'abstain': 0} | widened +0 {'accept': 1, 'reject': 0, 'abstain': 0}
+orchestra: normal band 2 {'accept': 2, 'reject': 0, 'abstain': 0} | widened +0 {'accept': 2, 'reject': 0, 'abstain': 0}
+pets_1: normal band 0 {} | widened +0 {}
+poker_player: normal band 0 {} | widened +1 {'accept': 1, 'reject': 0, 'abstain': 0}
+real_estate_properties: normal band 0 {} | widened +2 {'accept': 1, 'reject': 0, 'abstain': 1}
+singer: normal band 0 {} | widened +0 {}
+student_transcripts_tracking: normal band 1 {'accept': 1, 'reject': 0, 'abstain': 0} | widened +0 {'accept': 1, 'reject': 0, 'abstain': 0}
+tvshow: normal band 0 {} | widened +1 {'accept': 1, 'reject': 0, 'abstain': 0}
+voter_1: normal band 0 {} | widened +0 {}
+world_1: normal band 0 {} | widened +0 {}
+wta_1: normal band 0 {} | widened +0 {}
+{"dataset": "spider_stripped", "mode": "row_sample", "rate": 0.5, "gold": 63, "stats": {"tp": 8, "predicted": 12, "gold": 63, "precision": 0.6667, "recall": 0.127, "f1": 0.2133}, "normal": {"tp": 8, "predicted": 10, "gold": 63, "precision": 0.8, "recall": 0.127, "f1": 0.2192}, "widened": {"tp": 13, "predicted": 16, "gold": 63, "precision": 0.8125, "recall": 0.2063, "f1": 0.3291}, "added": 7, "added_gold_accepted": 5, "added_other_accepted": 0}
+california_schools: normal band 0 {} | widened +0 {}

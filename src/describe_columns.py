@@ -46,6 +46,7 @@ Usage:
     python src/describe_columns.py --dataset bird --names-only --run names_only        # RQ2 ablation
     python src/describe_columns.py --dataset bird --joins-run no_names --run no_names  # obfuscated simulation
     python src/describe_columns.py --dataset bird_stripped --reasoning-effort low --run ""  # stripped file
+    python src/describe_columns.py --dataset bird --widen-sparse 0.3 --run widened     # wider band for sparse sources
 --run "" writes straight into out/descriptions/<dataset>/ (one run per setting, no sub-folder).
 
 Input:  out/profiles/<dataset>/<db_id>.json
@@ -87,6 +88,7 @@ DEFAULTS = {
     "joins_run": "default",
     "repeat": 0,                    # >0: ask again instead of replaying the cache (variance runs)
     "adjudication": "grouped",      # grouped: one call per source column; single: one per band record
+    "widen_sparse": None,           # set (a null rate, e.g. 0.3): see widen_band
     "batch_columns": 0,             # >0: pack small tables into one describe (or refine) call up to this many columns
     "batch_candidates": 0,          # >0: pack source groups into one grouped adjudication call up to this many targets
     "top_values": 5,
@@ -333,6 +335,27 @@ def judge_batch(llm, groups, profile, joins, cfg):
     return out
 
 
+def widen_band(joins, profile, null_rate):
+    """Sends more records to the LLM: rejected ones scoring in [accept - delta, accept) whose source has at least
+    `null_rate` nulls (the null term already docks them) or that passed G6 only through the containment
+    adjustment (raw containment under containment_min). The prompt then shows the band as
+    [accept - delta, accept + delta). Measured on the sparsity sweep (evals/llm_band_probe.py): +.18 F1 on BIRD
+    with 90% FK nulls, no cost on clean BIRD. Returns how many records were added."""
+    c = joins["config"]
+    lo = c["accept"] - c["delta"]
+    added = 0
+    for r in joins["candidates"]:
+        if r["decision"] != "rejected_score" or not lo <= r.get("score", -1) < c["accept"]:
+            continue
+        src = profile["tables"][r["source"]["table"]]["columns"][r["source"]["column"]]
+        if src["null_rate"] >= null_rate or r["containment"] < c["containment_min"]:
+            r["decision"], r["widened"] = "band", True
+            added += 1
+    joins["widened"] = {"null_rate": null_rate, "added": added, "stats_band": [c["accept"], c["accept"] + c["delta"]]}
+    joins["config"] = {**c, "accept": lo, "delta": 2 * c["delta"]}
+    return added
+
+
 def adjudicate(llm, profile, keys, joins, cfg):
     """Verdicts on the band records (in place), then graphs.llm. Returns the verdict counts."""
     # records judged by an earlier Stage 3 run are judged again, so a model or prompt change takes effect
@@ -551,8 +574,11 @@ def main():
     ap.add_argument("--names-only", action="store_true",
                     help="descriptions without values, sample rows or lookup labels (RQ2 ablation); "
                          "adjudication is unchanged")
+    ap.add_argument("--widen-sparse", type=float, default=DEFAULTS["widen_sparse"], metavar="NULL_RATE",
+                    help="also send rejected joins scoring within delta under the cutoff to the LLM when the source "
+                         "has at least this null rate or passed G6 only through the containment adjustment (0.3)")
     args = ap.parse_args()
-    cfg = {**DEFAULTS, "model": args.model, "reasoning_effort": args.reasoning_effort,
+    cfg = {**DEFAULTS, "widen_sparse": args.widen_sparse, "model": args.model, "reasoning_effort": args.reasoning_effort,
            "workers": args.workers, "joins_run": args.joins_run, "adjudication": args.adjudication,
            "repeat": args.repeat, "batch_columns": args.batch_columns, "batch_candidates": args.batch_candidates}
 
@@ -570,6 +596,8 @@ def main():
             sys.exit(f"{keys_path.relative_to(ROOT)} is missing; run src/primary_keys.py --run {joins['keys_run']} first")
         profile, keys = load_profile(args.dataset, db), json.loads(keys_path.read_text())
 
+        if cfg["widen_sparse"] is not None:
+            widen_band(joins, profile, cfg["widen_sparse"])
         verdicts = adjudicate(llm, profile, keys, joins, cfg)
         (out_dir / "joins" / f"{db['db_id']}.json").write_text(json.dumps(joins, indent=1, sort_keys=True))
         if args.no_describe:

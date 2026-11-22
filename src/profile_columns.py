@@ -61,7 +61,11 @@ DEFAULTS = {
     "overlap_min_share": 0.05,      # ... and this share of the smaller column's values
     "dense_pick": 5,                # each table's N densest key-family columns may be keys despite nulls,
                                     # if unique among their non-null values; 0 = off
-    "dense_null_max": None,         # set: instead of the top N, every key-family column with null rate at
+    "near_unique_min": None,        # set (e.g. 0.98): key-family columns with distinct >= this share of their
+                                    # non-null values are key-like targets too (duplicate keys, BEAVER dw)
+    "dense_fallback": False,        # with dense_null_max: a table where no column qualifies keeps its densest
+                                    # column that is unique among its non-null values
+    "dense_null_max": 0.2,          # set: instead of the top N, every key-family column with null rate at
                                     # most this (and some non-null value) is a dense pick (suggestion 2)
 }
 
@@ -236,11 +240,21 @@ def key_like(prof):
     """Could be a key: rows, every value distinct, not a boolean/date/float/free text. No nulls, unless
     mark_dense_picks chose the column, in which case it only has to be unique among its non-null values."""
     non_null = prof["rows"] - prof["nulls"]
-    unique = prof["distinct"] == (non_null if prof.get("dense_pick") else prof["rows"])
+    unique = prof["distinct"] == (non_null if prof.get("dense_pick") else prof["rows"]) or prof.get("near_unique", False)
     return non_null > 0 and (prof["nulls"] == 0 or prof.get("dense_pick", False)) and unique and key_family(prof)
 
 
-def mark_dense_picks(table, n, null_max=None):
+def mark_near_unique(table, share):
+    """Flag key-family columns whose distinct values are at least `share` of their non-null values."""
+    if share is None:
+        return
+    for p in table["columns"].values():
+        non_null = p["rows"] - p["nulls"]
+        if key_family(p) and non_null > 0 and p["distinct"] >= share * non_null:
+            p["near_unique"] = True
+
+
+def mark_dense_picks(table, n, null_max=None, fallback=False):
     """Flag every table's n densest key-family columns (fewest nulls; ties: more distinct values, then position)
     with "dense_pick": True. Such a column may be a key with nulls, if unique among its non-null values.
     null_max set: flag every key-family column whose null rate is at most null_max instead (no top-n race)."""
@@ -249,6 +263,10 @@ def mark_dense_picks(table, n, null_max=None):
         for p in cols:
             if key_family(p) and p["nulls"] < p["rows"] and p["nulls"] / p["rows"] <= null_max:
                 p["dense_pick"] = True
+        if fallback and not any(key_like(p) for p in cols):
+            ok = [p for p in cols if key_family(p) and 0 < p["rows"] - p["nulls"] == p["distinct"]]
+            if ok:
+                min(ok, key=lambda p: (p["nulls"], p["position"]))["dense_pick"] = True
         return
     if not n or not table["rows"]:
         return
@@ -396,7 +414,8 @@ def profile_database(con, schema, tables, cfg=DEFAULTS, db_id=None, log=print):
             "columns": {c["name"]: profile_column(con, schema, table, c, cfg) for c in cols},
             "sample_rows": sample_rows(con, schema, table, cfg["sample_rows"], cfg["seed"]),
         }
-        mark_dense_picks(out[table], cfg["dense_pick"], cfg.get("dense_null_max"))
+        mark_near_unique(out[table], cfg.get("near_unique_min"))
+        mark_dense_picks(out[table], cfg["dense_pick"], cfg.get("dense_null_max"), cfg.get("dense_fallback", False))
     pairs = containment(con, schema, out, cfg)
     n_cols = sum(len(t["columns"]) for t in out.values())
     log(f"  profile {db_id or schema}: {len(out)} tables, {n_cols} columns, {len(pairs)} containment pairs, "
