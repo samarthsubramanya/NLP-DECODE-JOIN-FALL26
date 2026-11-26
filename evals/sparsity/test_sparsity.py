@@ -162,3 +162,33 @@ def test_copy_table_rates_and_determinism(tmp_path):
     both = make("f.duckdb", {"keep": 0.3, "null": {"v": 0.5}})
     assert [i for i, _ in both] == [i for i, _ in kept]                            # nulls do not change which rows stay
     assert make("g.duckdb", {"keep": 0.01, "null": {}}, table="one") == [(1,)]      # a table keeps at least one row
+
+
+def test_content_alignment_matches_across_renamed_and_reordered_copies(tmp_path):
+    """make_variants.py: documented and obfuscated copies (other names, other row order) lose the same rows and cells."""
+    duckdb = pytest.importorskip("duckdb")
+    import sparsify as S
+    src = tmp_path / "src.duckdb"
+    c = duckdb.connect(str(src))
+    c.execute("CREATE SCHEMA s; CREATE TABLE s.t AS SELECT i AS id, i % 7 AS v, 'x' || i AS w FROM range(3000) r(i);"
+              "CREATE TABLE s.o AS SELECT id AS col_001, v AS col_002, w AS col_003 FROM s.t ORDER BY random()")
+    c.close()
+    spec = {"keep": 0.5, "null": {}}
+    con = duckdb.connect(str(tmp_path / "dst.duckdb"))
+    con.execute(f"ATTACH '{src}' AS src (READ_ONLY); CREATE SCHEMA s")
+    S.copy_table(con, "s", "t", ["id", "v", "w"], {**spec, "null": {"id": 0.3, "v": 0.3, "w": 0.3}}, 0, "content")
+    rows_t = con.execute("SELECT * FROM s.t").fetchall()
+    con.execute("ALTER TABLE s.t RENAME TO t_doc")
+    con.close()
+    # the "obfuscated" source: same table name, renamed columns, shuffled rows
+    c = duckdb.connect(str(src))
+    c.execute("ALTER TABLE s.t RENAME TO t_orig; ALTER TABLE s.o RENAME TO t")
+    c.close()
+    con = duckdb.connect(str(tmp_path / "dst.duckdb"))
+    con.execute(f"ATTACH '{src}' AS src (READ_ONLY)")
+    S.copy_table(con, "s", "t", ["col_001", "col_002", "col_003"],
+                 {**spec, "null": {"col_001": 0.3, "col_002": 0.3, "col_003": 0.3}}, 0, "content")
+    rows_o = con.execute("SELECT * FROM s.t").fetchall()
+    con.close()
+    assert len(rows_t) == 1500 and sorted(rows_t, key=str) == sorted(rows_o, key=str)
+    assert 0.25 < sum(r[1] is None for r in rows_t) / len(rows_t) < 0.35

@@ -10,6 +10,7 @@ Modes (rate = how much is taken away, 0 = an exact copy):
     fk_null        cells of gold FK *source* columns are nulled with probability rate         [gold chooses columns]
     pk_null        cells of gold FK *target* (key) columns are nulled with probability rate   [gold chooses columns]
     parent_delete  gold FK *target* tables keep (1 - rate) of their rows                       [gold chooses tables]
+    mix            row_sample at rate and cell_null at --null-rate (the saved sparse variants)  [no gold needed]
 
 Gold only decides WHICH columns or tables are changed; the pipeline never reads it. Gold FK direction: BIRD and
 Spider declare it; for FIBEN, BEAVER and KaggleDBQA the end that is unique and null-free in the data is the target
@@ -27,7 +28,7 @@ from pathlib import Path
 import common  # noqa: F401  (sets sys.path)
 from common import Gold, source_file, work_list
 
-MODES = ("row_sample", "cell_null", "hard", "fk_null", "pk_null", "parent_delete")
+MODES = ("row_sample", "cell_null", "hard", "fk_null", "pk_null", "parent_delete", "mix")
 GOLD_MODES = ("fk_null", "pk_null", "parent_delete")
 SCALE = 1_000_000
 
@@ -122,28 +123,39 @@ def plan_for(con, db, mode, rate, gold):
     return plan
 
 
-def copy_table(con, schema, table, columns, spec, seed):
-    """CREATE dst table from src with spec's row share and per-column null rates; deterministic in (table, seed)."""
-    row_key = f"hash(concat(rowid, '|', {lit(table)}, '|', {lit(seed)}))"
+def copy_table(con, schema, table, columns, spec, seed, align="rowid"):
+    """CREATE dst table from src with spec's row share and per-column null rates; deterministic in (table, seed).
+
+    align="rowid"    rows keyed by rowid, cells by column name (the sweep)
+    align="content"  rows keyed by their values, cells by column position: documented, stripped and obfuscated
+                     copies of a table lose exactly the same rows and cells even if row order or names differ
+                     (the saved variants, make_variants.py)"""
+    if align == "content":
+        values = ", ".join(f"CAST({q(c)} AS VARCHAR)" for c in columns)
+        row_key = f"hash(list_value({values}), {lit(table.lower())}, {lit(seed)})"
+    else:
+        row_key = f"hash(concat(rowid, '|', {lit(table)}, '|', {lit(seed)}))"
     exprs = []
-    for c in columns:
+    for i, c in enumerate(columns):
         r = spec["null"].get(c, 0)
         if r > 0:
-            cell = f"hash(concat(_k, '|', {lit(c)})) % {SCALE}"
+            cell_id = lit(i) if align == "content" else lit(c)
+            cell = f"hash(concat(_k, '|', {cell_id})) % {SCALE}"
             exprs.append(f"CASE WHEN {cell} < {int(round(r * SCALE))} THEN NULL ELSE {q(c)} END AS {q(c)}")
         else:
             exprs.append(q(c))
-    keyed = f"SELECT *, {row_key} AS _k FROM src.{q(schema)}.{q(table)}"
+    keyed = f"SELECT *, {row_key} AS _k, rowid AS _r FROM src.{q(schema)}.{q(table)}"
     keep = spec["keep"]
     if keep is not None and keep < 1:   # same pattern as evals/truncate_tables.py
-        keyed = (f"SELECT * FROM ({keyed}) QUALIFY row_number() OVER (ORDER BY _k) "
+        keyed = (f"SELECT * FROM ({keyed}) QUALIFY row_number() OVER (ORDER BY _k, _r) "
                  f"<= greatest(1, ceil({float(keep)!r} * count(*) OVER ()))")
     # rows are chosen on the row key first, so a row's survival does not depend on which cells are nulled
     con.execute(f"CREATE OR REPLACE TABLE {q(schema)}.{q(table)} AS SELECT {', '.join(exprs)} FROM ({keyed})")
 
 
-def build(dataset, out_dir, mode, rate, seed, databases=None, log=print):
-    """Writes the sparse copy; returns {"file": path, "plans": {db: plan}}. rate 0 gives an exact copy."""
+def build(dataset, out_dir, mode, rate, seed, databases=None, log=print, null_rate=None, fresh=True, align="rowid"):
+    """Writes the sparse copy; returns {"file": path, "plans": {db: plan}}. rate 0 gives an exact copy.
+    fresh=False adds this dataset's schemas to an existing file (Spider and BEAVER share decode_join.duckdb)."""
     import duckdb
     if mode not in MODES:
         raise ValueError(f"mode must be one of {MODES}")
@@ -155,7 +167,7 @@ def build(dataset, out_dir, mode, rate, seed, databases=None, log=print):
     src = source_file(filename)
     dst = Path(out_dir) / filename
     dst.parent.mkdir(parents=True, exist_ok=True)
-    if dst.exists():
+    if dst.exists() and fresh:
         dst.unlink()
     gold = None
     if mode in GOLD_MODES and rate > 0:
@@ -167,9 +179,16 @@ def build(dataset, out_dir, mode, rate, seed, databases=None, log=print):
     for db in dbs:
         schema = db["duckdb_schema"]
         con.execute(f"CREATE SCHEMA IF NOT EXISTS {q(schema)}")
-        plan = plan_for(con, db, mode, rate, gold) if rate > 0 else {t: {"keep": None, "null": {}} for t in db["tables"]}
+        if mode == "mix":
+            plan = {t: {"keep": 1 - rate if rate > 0 else None,
+                        "null": {c: null_rate for c in table_columns(con, "src", schema, t)} if null_rate else {}}
+                    for t in db["tables"]}
+        elif rate > 0:
+            plan = plan_for(con, db, mode, rate, gold)
+        else:
+            plan = {t: {"keep": None, "null": {}} for t in db["tables"]}
         for t in db["tables"]:
-            copy_table(con, schema, t, table_columns(con, "src", schema, t), plan[t], seed)
+            copy_table(con, schema, t, table_columns(con, "src", schema, t), plan[t], seed, align)
         plans[db["db_id"]] = plan
         if "_gold_edges" in plan:
             log(f"  {db['db_id']}: {mode} {rate} on {len(plan['_gold_edges'])} gold FKs")
@@ -191,9 +210,10 @@ def main():
     ap.add_argument("--mode", required=True, choices=MODES)
     ap.add_argument("--rate", type=float, required=True)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--null-rate", type=float, help="mix mode: share of cells nulled")
     ap.add_argument("--databases", nargs="*")
     args = ap.parse_args()
-    res = build(args.dataset, args.out_dir, args.mode, args.rate, args.seed, args.databases)
+    res = build(args.dataset, args.out_dir, args.mode, args.rate, args.seed, args.databases, null_rate=args.null_rate)
     print(json.dumps({"file": str(res["file"]), "dataset": args.dataset, "mode": args.mode, "rate": args.rate,
                       "seed": args.seed}))
 
