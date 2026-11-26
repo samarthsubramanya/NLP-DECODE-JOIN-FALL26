@@ -8,7 +8,7 @@ Owner: hp. Started 2026-11-16 from the suggestions Samarth relayed from Abhi:
 4. Optional memorization probe: about 5 new questions per database over tables no gold question uses, then the plain LLM against our method.
 5. Detailed ablations.
 
-**Status:** code and tests are written, but nothing has been run on the benchmarks yet. Results will go in `docs/sparsity_hp_results.md` (generated).
+**Status (2026-11-22):** no-LLM sweep done for BIRD, Spider and FIBEN, stripped and obfuscated: 6 modes × rates 0.01–0.7, seed 0, all arms. Full tables: `docs/sparsity_hp_results.md`. KaggleDBQA and BEAVER are waiting on their documented JoinGR graphs (gold).
 
 **Safety:** this adds new files only (`evals/sparsity/`, `evals/memorization/`, this doc). `src/`, `poc/`, `baselines/` and `tests/` are unchanged, and so is every existing `out/` run. Outputs go to `out/sparsity/` and `out/memorization/`. To revert, delete those folders and this file.
 
@@ -16,6 +16,43 @@ Owner: hp. Started 2026-11-16 from the suggestions Samarth relayed from Abhi:
 - This builds on `docs/rq3_plan.md` (Samarth, 2026-11-06), which planned a sparsity sweep that was never built. Its modes are covered here, plus `cell_null` and `hard`.
 - It does not include Samarth's `feature/sparse_improvements` (null_check: null-tolerant keys, G1 off), which is unmerged. Once that merges, rerun the sweep: it is the fix for the null cliff this sweep is expected to show.
 - The LLM-level ablation in `docs/ablation_hp.md` (`evals/ablation/`) is unchanged. This study adds the no-LLM Stage 2b ablations, on clean and on sparse data.
+
+## Findings (no LLM; stats = band accepted, direct = heuristics only)
+
+Clean FULL reproduces the saved team numbers (BIRD stripped: direct F1 .779 / 15 false joins, stats .656 / 99).
+
+**1. There are two different cliffs, at two different stages.**
+- **Null cliff (Stage 1/2a).** `pk_null`, `cell_null` and `hard` put nulls in key columns. A key with nulls stops being key-like, so joins into it disappear: BIRD stripped stats F1 goes .656 → .19 at 1% nulls and .06 at 5%; Spider stripped goes .71 → .35 at 5%. Nulls in FK *sources* (`fk_null`) barely matter (BIRD .65 → .61 at 70%). No Stage 2b threshold can fix this, and every `adapt_*` arm equals FULL here. The fix belongs in key detection (Samarth's null_check branch).
+- **Orphan cliff (Stage 2b G6).** `row_sample` and `parent_delete` are flat to 10%, then collapse by 30% (BIRD stripped row_sample .72 → .05). This is G6: τ = 0.75 rejects real joins once more than 25% of their values lose a parent row.
+
+**2. Sparsity-dependent thresholds fix the orphan cliff without fitting anything.**
+`adapt_all` at 30% (stats F1, FULL → adaptive):
+
+| | row_sample | parent_delete |
+|---|---|---|
+| BIRD stripped | .05 → .62 | .03 → .48 |
+| BIRD obfuscated | .05 → .62 | .01 → .28 |
+| Spider stripped | .47 → .76 | .47 → .61 |
+| Spider obfuscated | .37 → .46 | .38 → .46 |
+| FIBEN stripped | .04 → .47 | .06 → .06 |
+| FIBEN obfuscated | .04 → .66 | .05 → .05 |
+
+On clean data it changes nothing on Spider or FIBEN, and costs −.008 on BIRD stripped (`orphan_level` reads slightly above 0 there). At 50–70% it still recovers little. FIBEN `parent_delete` is not recovered: the signal only sees sources that still have a pair into a key, and FIBEN's deleted parents are mostly hub tables. Open: a signal for that case.
+
+**3. Distance from thresholds (clean FULL).** It depends on the setting:
+- BIRD obfuscated, stats: **359 of 432** false joins sit within 5 points of the accept line (60). Most of the graph explosion is just above one cutoff, so a threshold (or a pruning rule) can remove it.
+- FIBEN obfuscated (45 of 54) and Spider obfuscated (58 of 71): the false joins are *far* above the cutoffs. A threshold cannot remove them; they need new evidence (the LLM, or a new signal).
+- Heuristics-only false joins are roughly half near and half far everywhere.
+- Most gold joins missed by heuristics-only are near the auto line (BIRD stripped 11 near vs 13 far; Spider stripped 13 vs 3).
+
+**4. Detailed ablations (clean, stats graph, Δ F1 / Δ false joins vs FULL).**
+- The false-join guards with names are **QuantileMD** (BIRD stripped −.38 / +414), **fan-out** (−.40 / +472) and the **name term** (−.36 / +355). The effect is 5–20× smaller on Spider and FIBEN.
+- Without names, the picture flips on BIRD obfuscated. Removing cardinality, target-key or nulls each *removes* about 300 false joins (+.27 to +.32 F1), because their points go to overlap and distribution, which pushes chance pairs below 60. **The no-names weights are the main source of BIRD obfuscated's graph explosion.** Any reweighting must be tuned on Spider only.
+- The **G8 exception** matters only on FIBEN (−.14 / −.15 without it).
+- G5 is mixed: it helps on BIRD, but removing it hurts Spider obfuscated (−.07 / +28).
+- **The dist cap and adaptive weights change nothing on the stats graph** (0 and 1 of 222 points). The cap only blocks auto-accept, so its effect shows up in heuristics-only (BIRD stripped .779 → .760).
+
+**5. An odd one to check.** Light `row_sample` (5–10%) *raises* F1 on BIRD obfuscated (.39 → .55) and Spider stripped (.71 → .75). Fewer rows means fewer chance overlaps. It's worth one more seed before reading anything into it.
 
 ## 1. Sparsify (`evals/sparsity/sparsify.py`)
 
