@@ -14,7 +14,7 @@ kaggledbqa_stripped kaggledbqa_obfuscated beaver_stripped beaver_obfuscated"}
 MODES=${MODES:-"hard row_sample cell_null fk_null pk_null parent_delete"}
 RATES=${RATES:-"0.1 0.3 0.5 0.7 0.9"}
 SEEDS=${SEEDS:-"0"}
-export HF_HUB_OFFLINE=${HF_HUB_OFFLINE:-1}
+# benchmark files not in the Hugging Face cache yet are downloaded on first use (set HF_HUB_OFFLINE=1 to forbid)
 
 case "${1:-}" in
   test)

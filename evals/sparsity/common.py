@@ -62,6 +62,8 @@ class Gold:
         try:
             self.schemas, self.mapping, self._gold = load_gold(dataset)
         except FileNotFoundError as e:
+            if self.base not in ("beaver", "kaggledbqa") or not e.filename or "graphs" not in str(e.filename):
+                raise
             fix = ""
             if self.base == "kaggledbqa":
                 fix = "python -m baselines.build_graph --dataset kaggledbqa && "
