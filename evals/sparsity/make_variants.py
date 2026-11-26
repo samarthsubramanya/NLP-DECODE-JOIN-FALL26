@@ -128,13 +128,22 @@ def main():
         spec = LEVELS[level]
         level_dir = Path(args.out) / level
         if not args.validate_only:
-            if level_dir.exists() and any(level_dir.rglob("*.duckdb")) and not args.force:
-                raise SystemExit(f"{level_dir} already has files; --force to rebuild, --validate-only to recheck")
-            if args.force:
-                for f in level_dir.rglob("*.duckdb"):
-                    f.unlink()
-            written, t0 = set(), time.time()
-            for base in args.benchmarks:
+            mine = {work_list(b + s)[0]["duckdb_file"] for b in args.benchmarks for s in SETTINGS}
+            there = sorted(f for f in mine if (level_dir / f).exists())
+            man = level_dir / "manifest.json"   # a benchmark counts as built once it was validated
+            built = set(json.loads(man.read_text())["benchmarks"]) if man.exists() else set()
+            done = {b for b in args.benchmarks if b in built}
+            if done and not args.force:   # files shared with another benchmark (Spider/BEAVER) get schemas added
+                print(f"   skipping {sorted(done)}: already built in {level_dir} (--force to rebuild)")
+                args_benchmarks = [b for b in args.benchmarks if b not in done]
+            else:
+                args_benchmarks = list(args.benchmarks)
+                if args.force:
+                    for f in there:
+                        (level_dir / f).unlink()
+            t0 = time.time()
+            written = {f for f in there if not args.force}   # existing files get schemas added, not replaced
+            for base in args_benchmarks:
                 for s in SETTINGS:
                     ds = base + s
                     fname = work_list(ds)[0]["duckdb_file"]
