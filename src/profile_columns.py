@@ -7,6 +7,10 @@ top values, a value-inferred type family (declared SQLite-era types are loose),
 type-specific stats, value-pattern signals, and fixed-seed value samples. Each table
 keeps a few sample rows so later prompts can show a column next to its neighbours.
 
+e_gate (off by default; --e-gate, --missing-cap C): key_like is one rule instead of dense_pick / fallback_key: key
+family, at least one non-missing value, missing share e <= C (when set), and unique among the non-missing values
+(distinct_real == rows - nulls - placeholder rows). Each column then carries "e_eligible".
+
 Only table names, column names, types and rows are read (information_schema.columns
 and the tables themselves). Declared constraints, schema_mapping.csv and the
 *_metadata schemas are never touched: those are evaluation labels.
@@ -67,6 +71,10 @@ DEFAULTS = {
                                     # column that is unique among its non-null values
     "dense_null_max": 0.2,          # set: instead of the top N, every key-family column with null rate at
                                     # most this (and some non-null value) is a dense pick (suggestion 2)
+    "e_gate": False,                # on: key_like is one shared rule (see e_eligible) instead of dense_pick / fallback_key
+    "missing_cap": 0.5,             # e_gate: columns whose missing share e exceeds this are not key-like; None: no cap
+    "missing_fallback": True,       # a table with no strictly key-like column lets its lowest-missing-share
+                                    # key-family column that is unique among non-missing values be a key target
 }
 
 
@@ -109,11 +117,12 @@ def profile_column(con, schema, table, col, cfg):
     real = f"{c} IS NOT NULL AND NOT list_contains(?, {v})"
     ph = [cfg["placeholders"]]
 
-    n, nonnull, distinct, placeholders, zeros = one(
+    n, nonnull, distinct, placeholders, zeros, distinct_real = one(
         f"SELECT count(*), count({c}), count(DISTINCT {c}), "
         f"count(*) FILTER (WHERE {c} IS NOT NULL AND list_contains(?, {v})), "
-        f"count(*) FILTER (WHERE TRY_CAST({v} AS DOUBLE) = 0) FROM {t}",
-        ph,
+        f"count(*) FILTER (WHERE TRY_CAST({v} AS DOUBLE) = 0), "
+        f"count(DISTINCT {c}) FILTER (WHERE {real}) FROM {t}",
+        ph + ph,
     )
     out = {
         "name": col["name"],
@@ -124,6 +133,9 @@ def profile_column(con, schema, table, col, cfg):
         "null_rate": (n - nonnull) / n if n else 1.0,
         "placeholder_rate": placeholders / n if n else 0.0,
         "zero_rate": zeros / n if n else 0.0,
+        # missing = null or placeholder; e = (nulls + placeholder rows) / rows, 1.0 for an empty table
+        "missing_share": (n - nonnull + placeholders) / n if n else 1.0,
+        "distinct_real": distinct_real,   # distinct values that are neither null nor a placeholder
         "distinct": distinct,
         "uniqueness": distinct / nonnull if nonnull else 0.0,
     }
@@ -236,12 +248,59 @@ def key_family(prof):
     return prof["family"] in KEY_FAMILIES and prof["role"] not in NOT_KEY_ROLES
 
 
+def e_eligible(prof, cap=None):
+    """e_gate rule: key family, at least one non-missing value, e <= cap (when set), and unique among the
+    non-missing values (distinct_real == rows - nulls - placeholder rows). Nulls and placeholders both count as missing."""
+    present = prof["rows"] - missing_count(prof)
+    real = prof.get("distinct_real", prof["distinct"])
+    return key_family(prof) and present > 0 and (cap is None or missing_share_of(prof) <= cap) and real == present
+
+
+def missing_share_of(prof):
+    if "missing_share" in prof:
+        return prof["missing_share"]
+    return missing_count(prof) / prof["rows"] if prof["rows"] else 1.0
+
+
+def mark_e_eligible(table, cap):
+    for p in table["columns"].values():
+        p["e_eligible"] = e_eligible(p, cap)
+
+
 def key_like(prof):
     """Could be a key: rows, every value distinct, not a boolean/date/float/free text. No nulls, unless
     mark_dense_picks chose the column, in which case it only has to be unique among its non-null values."""
+    if "e_eligible" in prof:              # e_gate was on when Stage 1 ran: the one shared rule
+        return prof["e_eligible"]
     non_null = prof["rows"] - prof["nulls"]
+    if prof.get("fallback_key"):          # chosen by mark_fallback_key: unique among non-missing values
+        return non_null > 0 and key_family(prof)
     unique = prof["distinct"] == (non_null if prof.get("dense_pick") else prof["rows"]) or prof.get("near_unique", False)
     return non_null > 0 and (prof["nulls"] == 0 or prof.get("dense_pick", False)) and unique and key_family(prof)
+
+
+def missing_count(prof):
+    """Rows that are null or hold a placeholder."""
+    return prof["nulls"] + round(prof.get("placeholder_rate", 0.0) * prof["rows"])
+
+
+def strict_key_like(prof):
+    """key_like without dense_pick, near_unique or fallback_key: no nulls, every value distinct."""
+    return (prof["rows"] > 0 and prof["nulls"] == 0 and prof["distinct"] == prof["rows"] and key_family(prof))
+
+
+def mark_fallback_key(table):
+    """Only for a table with NO strictly key-like column: flag "fallback_key" on its lowest-missing-share
+    key-family column that is unique among non-missing values (distinct_real == rows - nulls - placeholders,
+    at least one such value). Ties go to the earlier column. Independent of dense_pick, which is decided
+    before and left as it is: a fallback column that is already a dense pick changes nothing."""
+    cols = table["columns"].values()
+    if not table["rows"] or any(strict_key_like(p) for p in cols):
+        return
+    ok = [p for p in cols if key_family(p) and p.get("distinct_real") is not None
+          and 0 < table["rows"] - missing_count(p) == p["distinct_real"]]
+    if ok:
+        min(ok, key=lambda p: (missing_count(p), p["position"]))["fallback_key"] = True
 
 
 def mark_near_unique(table, share):
@@ -416,6 +475,10 @@ def profile_database(con, schema, tables, cfg=DEFAULTS, db_id=None, log=print):
         }
         mark_near_unique(out[table], cfg.get("near_unique_min"))
         mark_dense_picks(out[table], cfg["dense_pick"], cfg.get("dense_null_max"), cfg.get("dense_fallback", False))
+        if cfg.get("missing_fallback", True):
+            mark_fallback_key(out[table])
+        if cfg.get("e_gate"):
+            mark_e_eligible(out[table], cfg.get("missing_cap"))
     pairs = containment(con, schema, out, cfg)
     n_cols = sum(len(t["columns"]) for t in out.values())
     log(f"  profile {db_id or schema}: {len(out)} tables, {n_cols} columns, {len(pairs)} containment pairs, "
@@ -432,10 +495,14 @@ def main():
     ap.add_argument("--databases", nargs="*", help="only these db_ids")
     ap.add_argument("--seed", type=int, default=DEFAULTS["seed"])
     ap.add_argument("--force", action="store_true", help="re-profile databases that already have a file")
+    ap.add_argument("--e-gate", action="store_true",
+                    help="key_like = key family, e <= --missing-cap, unique among non-missing values (replaces dense_pick)")
+    ap.add_argument("--missing-cap", type=lambda t: None if t.lower() in ("none", "off") else float(t),
+                    default=DEFAULTS["missing_cap"], help="with --e-gate: max missing share e (default 0.5; 'none' = no cap)")
     ap.add_argument("--overlaps", action="store_true", help="write out/overlaps from the existing profiles and stop")
     args = ap.parse_args()
 
-    cfg = {**DEFAULTS, "seed": args.seed}
+    cfg = {**DEFAULTS, "seed": args.seed, "e_gate": args.e_gate, "missing_cap": args.missing_cap}
     inp = ROOT / (args.inp or f"out/filtered/{args.dataset}")
     out_dir = ROOT / (args.out or f"out/profiles/{args.dataset}")
     out_dir.mkdir(parents=True, exist_ok=True)

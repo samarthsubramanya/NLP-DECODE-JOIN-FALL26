@@ -10,7 +10,7 @@ Score (adapted from DBAutoDoc):
       n    = 1 if the name matches the PK pattern (.*[Ii][Dd]$)
       d    = INT/BIGINT/UUID 1.0, VARCHAR 0.6, TEXT/BLOB 0.2, other 0.3
       p    = sequential int / UUID 15, natural key code 10, composite-derived 5 (all /15)
-    then   × 0.7 if nulls, × 0.5 if unique but the name is atypical, × (1 - 0.6·l_FK)
+    then   × (1 - e), e = missing share (nulls + placeholders), × 0.5 if unique but the name is atypical, × (1 - 0.6·l_FK)
            + 20 surrogate boost when the name is `id` or `{table}_id`, u >= 0.95, d >= 0.9
            × phi(position): 1.0, 0.85, 0.70, then 0.55
     accept s >= 70; the best accepted column is the table's primary key.
@@ -41,8 +41,15 @@ Choices the paper leaves open (all in DEFAULTS, change them there or on the CLI)
   - natural key code = short code-like strings: profile role "code", or a VARCHAR whose
     values are all upper/digit codes without spaces up to code_max_len (e.g. BIRD CDSCode).
   - DuckDB stores SQLite TEXT as VARCHAR, so the TEXT score (0.2) only fires for BLOB.
-  - null_check: a column with nulls is rejected unless Stage 1 marked it a dense pick (a table where every
-    column has a null keeps its 5 densest); u counts non-null rows, and the x0.7 null penalty applies.
+  - null_check: a column with nulls is rejected unless Stage 1 marked it a dense pick (every key-family column
+    with null rate <= dense_null_max) or the per-table fallback key (a table with no strictly key-like column).
+  - missing share e = (nulls + placeholder rows) / rows replaces the flat x0.7 null penalty: the score is
+    multiplied by (1 - e), recorded as multipliers["missing"]. u counts rows that are neither null nor a
+    placeholder (clamped at 1).
+  - e_gate (default off, --e-gate): the "has nulls" rejection and dense_pick are replaced by one rule shared
+    with Stage 1: a column is rejected only when e > missing_cap (reason "missing share e=<e> over cap <cap>"),
+    nulls and placeholders both count as missing, and u = distinct_real / (rows - nulls - placeholder rows),
+    unclamped (a warning is printed if u > 1). The (1 - e) multiplier is unchanged.
   - null_check: the "mostly empty or zero" rejection is off (empty_or_zero_max None).
   - The blacklist is matched on name tokens (snake_case/camelCase parts) and skipped for
     names that match the PK pattern, so payment_id or date_id are not rejected.
@@ -64,6 +71,7 @@ Output: out/keys/<dataset>/<run>/<db_id>.json
 import argparse
 import json
 import re
+import sys
 from collections import defaultdict
 from pathlib import Path
 
@@ -84,7 +92,8 @@ DEFAULTS = {
     "empty_or_zero_max": None,        # "most values are empty or zero"; None: off (null_check)
     "seq_min_density": 0.9,
     "code_max_len": 20,
-    "null_penalty": 0.7,
+    "e_gate": False,                  # on: nulls are gated by e (missing_cap) only, and u uses distinct_real (no clamp)
+    "missing_cap": 0.5,               # with e_gate: a column whose missing share e exceeds this is rejected; None: no cap
     "atypical_name_penalty": 0.5,
     "fk_penalty": 0.6,
     "surrogate_boost": 20,
@@ -213,11 +222,24 @@ def referenced(profile, cfg):
     return out
 
 
+def missing_share(prof):
+    """e = (nulls + placeholder rows) / rows. Read from Stage 1 (missing_share); older profiles are recomputed."""
+    if "missing_share" in prof:
+        return prof["missing_share"]
+    n = prof["rows"]
+    return (prof["nulls"] + round(prof["placeholder_rate"] * n)) / n if n else 1.0
+
+
 def hard_reject(prof, cfg, use_names):
     if prof["rows"] == 0:
         return "empty table"
-    if cfg["reject_nulls"] and prof["nulls"] and not prof.get("dense_pick"):
-        return "has nulls"
+    if cfg.get("e_gate"):
+        e = missing_share(prof)
+        if cfg["missing_cap"] is not None and e > cfg["missing_cap"]:
+            return f"missing share e={e:.3f} over cap {cfg['missing_cap']}"
+    else:
+        if cfg["reject_nulls"] and prof["nulls"] and not prof.get("dense_pick") and not prof.get("fallback_key"):
+            return "has nulls"
     if cfg["empty_or_zero_max"] is not None and prof["placeholder_rate"] + prof["zero_rate"] > cfg["empty_or_zero_max"]:
         return "mostly empty or zero"
     if use_names and not key_like_name(prof["name"], cfg):
@@ -238,7 +260,16 @@ def score_column(prof, table, other_tables, cfg, use_names, referenced_by=()):
         total = sum(w.values())
         w = {k: v + spill * v / total for k, v in w.items()}
 
-    u = prof["distinct"] / max(1, prof["rows"] - prof["nulls"])   # unique among non-null values
+    # unique among non-missing values (not null, not a placeholder). distinct still counts placeholder values, so
+    # a unique column with placeholders would exceed 1: clamp.
+    present = prof["rows"] - prof["nulls"] - round(prof["placeholder_rate"] * prof["rows"])
+    if cfg.get("e_gate"):
+        u = prof.get("distinct_real", prof["distinct"]) / max(1, present)
+        if u > 1 + 1e-9:
+            print(f"  WARNING u={u:.4f} > 1: {table}.{prof['name']} rows={prof['rows']} nulls={prof['nulls']} "
+                  f"distinct_real={prof.get('distinct_real')}", file=sys.stderr)
+    else:
+        u = min(1.0, prof["distinct"] / max(1, present))
     p_points, p_kind = pattern_score(prof, cfg)
     parts = {"u": u, "f_u": f_u(u, cfg), "dtype": dtype_score(prof["declared_type"]),
              "pattern": p_points / 15, "pattern_kind": p_kind}
@@ -251,8 +282,9 @@ def score_column(prof, table, other_tables, cfg, use_names, referenced_by=()):
         parts["referenced_by"] = list(referenced_by)
 
     mult = {}
-    if prof["nulls"]:
-        mult["nulls"] = cfg["null_penalty"]
+    e = missing_share(prof)
+    if e > 0:
+        mult["missing"] = 1 - e
     boost, boost_parts = 0, {}
     if use_names:
         stem = id_stem(prof["name"], cfg)
@@ -319,16 +351,20 @@ def score_database(profile, cfg=DEFAULTS):
             "accept": cfg["accept"], "tables": tables}
 
 
-def load_profile(dataset, db, force=False):
+def load_profile(dataset, db, force=False, profile_cfg=None):
     """Profile from out/profiles/<dataset>/, made (and saved) first if missing."""
     path = ROOT / "out" / "profiles" / dataset / f"{db['db_id']}.json"
     if path.exists() and not force:
         return json.loads(path.read_text())
     path.parent.mkdir(parents=True, exist_ok=True)
-    prof = profile_database(open_db(db["duckdb_file"]), db["duckdb_schema"], db["tables"], PROFILE_DEFAULTS, db["db_id"])
+    prof = profile_database(open_db(db["duckdb_file"]), db["duckdb_schema"], db["tables"], profile_cfg or PROFILE_DEFAULTS, db["db_id"])
     prof.update(dataset=db["dataset"], duckdb_file=db["duckdb_file"])
     path.write_text(json.dumps(prof, indent=1, sort_keys=True, default=str))
     return json.loads(path.read_text())   # same types as a cached load (dates become strings)
+
+
+def cap_arg(text):
+    return None if str(text).lower() in ("none", "off") else float(text)
 
 
 def add_args(ap):
@@ -341,13 +377,17 @@ def add_args(ap):
     ap.add_argument("--accept", type=float, default=DEFAULTS["accept"])
     ap.add_argument("--u-floor", type=float, default=DEFAULTS["u_floor"])
     ap.add_argument("--seq-min-density", type=float, default=DEFAULTS["seq_min_density"])
-    ap.add_argument("--allow-nulls", action="store_true", help="nulls get the x0.7 penalty instead of a hard reject")
+    ap.add_argument("--e-gate", action="store_true", help="gate nulls by missing share e only; u uses distinct_real")
+    ap.add_argument("--missing-cap", type=cap_arg, default=DEFAULTS["missing_cap"],
+                    help="with --e-gate: max missing share e (default 0.5; 'none' = no cap)")
+    ap.add_argument("--allow-nulls", action="store_true", help="nulls get the (1 - missing share) multiplier instead of a hard reject")
     ap.add_argument("--reprofile", action="store_true", help="recompute Stage 1 profiles")
 
 
 def config_from(args):
     return {**DEFAULTS, "use_names": not args.no_names, "accept": args.accept, "u_floor": args.u_floor,
             "seq_min_density": args.seq_min_density, "reject_nulls": not args.allow_nulls,
+            "e_gate": args.e_gate, "missing_cap": args.missing_cap,
             "rules": sorted(set(args.rules))}
 
 
@@ -364,7 +404,8 @@ def main():
     out_dir = ROOT / "out" / "keys" / args.dataset / args.run
     out_dir.mkdir(parents=True, exist_ok=True)
     for db in work_list(args):
-        keys = score_database(load_profile(args.dataset, db, args.reprofile), cfg)
+        keys = score_database(load_profile(args.dataset, db, args.reprofile,
+                                          {**PROFILE_DEFAULTS, "e_gate": args.e_gate, "missing_cap": args.missing_cap}), cfg)
         found = sum(t["primary_key"] is not None for t in keys["tables"].values())
         print(f"  keys {db['db_id']}: primary key for {found}/{len(keys['tables'])} tables")
         (out_dir / f"{db['db_id']}.json").write_text(json.dumps(keys, indent=1, sort_keys=True))
