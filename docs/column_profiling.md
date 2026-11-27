@@ -60,7 +60,7 @@ HF_HUB_OFFLINE=1 $PY evals/eval_primary_keys.py --dataset bird --no-names --run 
 ```
 
 - Profiles are cached in `out/profiles/`. Pass `--force` to `profile_columns.py`, or `--reprofile` to the key scripts, to recompute them after a Stage 1 change.
-- Key-scoring flags: `--rules` (§4.6; default `R1 R4 R5`, and `--rules` with no values runs the plain score), `--accept`, `--u-floor`, `--seq-min-density`, `--allow-nulls`, `--no-names`.
+- Key-scoring flags: `--rules` (§4.6; default `R1 R4 R5`, and `--rules` with no values runs the plain score), `--accept`, `--u-floor`, `--seq-min-density`, `--missing-cap` (default 0.5, `none` = no cap), `--no-names`.
 - `--run <name>` puts the output in its own folder. Name the run after what you changed so results sit side by side.
 
 ---
@@ -223,7 +223,7 @@ The score is adapted from DBAutoDoc. Its settings are in `DEFAULTS` in `primary_
 ### 4.1 Hard rejections (checked in this order)
 
 1. **Empty table** (`rows == 0`).
-2. **Any null.** On by default (`reject_nulls`); `--allow-nulls` turns it off.
+2. **Missing share over the cap.** `e = (nulls + placeholder rows) / rows` above `missing_cap` (default 0.5; `--missing-cap`, `none` = no cap). Below the cap a column with nulls is scored, multiplied by `1 - e`.
 3. **Mostly empty or zero:** `placeholder_rate + zero_rate > 0.5`.
 4. **Semantic blacklist.** This rule applies only when names are used, and only if the name does **not** match the PK name pattern. The name is split into lower-case tokens (snake_case, camelCase and spaces), and any token in one of these groups rejects the column:
 

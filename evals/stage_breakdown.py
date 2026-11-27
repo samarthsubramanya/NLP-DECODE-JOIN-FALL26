@@ -73,7 +73,7 @@ def stage1(db, prof):
                 "zeros": round(p["zero_rate"] * p["rows"]), "zero_rate": p["zero_rate"],
                 "distinct": p["distinct"], "uniqueness": p["uniqueness"],
                 "min": num.get("min"), "max": num.get("max"), "range_span": span, "density": num.get("density"),
-                "key_like": key_like(p), "dense_pick": p.get("dense_pick", False),
+                "key_like": key_like(p), "missing_share": p.get("missing_share"),
                 "table_all_columns_null": all(x["nulls"] for x in tp["columns"].values()),
             })
     for x in prof.get("containment", []):

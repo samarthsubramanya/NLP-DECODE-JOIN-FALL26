@@ -320,18 +320,13 @@ def test_repair_adds_band_records_for_isolated_tables_only():
     assert r["containment"] == 0.25 and len(out["graphs"]["stats"]) == 1 and not out["graphs"]["direct"]
 
 
-def test_dense_picks_are_each_tables_densest_key_columns():
-    """null_check: a table's N densest key-family columns may be keys, unique among their non-null values."""
-    from profile_columns import key_like, mark_dense_picks
+def test_key_like_follows_the_e_rule():
+    """One rule for nulls: key family, a non-missing value, e <= 0.5 (default cap), unique among non-missing values."""
+    from profile_columns import key_like
     def c(name, nulls, distinct, rows=10, position=0, role="int"):
         return col(name, position=position, nulls=nulls, distinct=distinct, rows=rows, role=role)
     t = table(10, a=c("a", 1, 9), b=c("b", 2, 7, position=1), e=c("e", 5, 5, position=2),
-              f=c("f", 0, 3, position=3, role="date"), g=c("g", 10, 0, position=4), h=c("h", 0, 10, position=5))
-    mark_dense_picks(t, 2)
-    picked = {n for n, p in t["columns"].items() if p.get("dense_pick")}
-    assert picked == {"h", "a"}                              # fewest nulls; the date and all-null columns never count
-    assert key_like(t["columns"]["a"]) and key_like(t["columns"]["h"])
-    assert not key_like(t["columns"]["e"])                   # unique among non-nulls, but not picked
-    t = table(10, b=c("b", 2, 7))
-    mark_dense_picks(t, 5)
-    assert not key_like(t["columns"]["b"])                   # picked, but repeats a value among non-nulls
+              f=c("f", 0, 3, position=3, role="date"), g=c("g", 10, 0, position=4), h=c("h", 0, 10, position=5),
+              i=c("i", 6, 4, position=6))
+    ok = {n for n, p in t["columns"].items() if key_like(p)}
+    assert ok == {"a", "e", "h"}      # b repeats a value among non-nulls, i has e = 0.6, f is a date, g is all null
